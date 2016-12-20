@@ -1,0 +1,283 @@
+﻿add_namespace = ww1_germany
+
+
+news_event = {
+    id = ww1_germany.2
+    title = ww1_germany.2.t
+    desc = ww1_germany.2.d
+    picture = ww1_germany_2
+
+    major = yes
+    is_triggered_only = yes
+
+    option = {
+        name = ww1_germany.2.a
+        ai_chance = {
+            factor = 100
+        }
+    }
+}
+
+country_event = {
+	title=ww1_germany.9.t#Brussels has Fallen
+	desc=ww1_germany.9.d#Brussels has fallen to our glorious soldiers, onwards to Paris and a swift victory.
+	id=ww1_germany.9
+	picture=ww1_germany_9NULL
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=1
+		}
+	trigger={
+		tag=GER
+		GER={
+			has_war_with=ENG
+			}
+		6={
+			is_controlled_by=GER
+			}
+		NOT={
+			has_country_flag=brussels_taken
+			}
+		}
+	option={
+		name=ww1_germany.9.a
+		add_manpower=100
+		set_country_flag=brussels_taken
+	}
+}
+
+
+
+country_event = {
+    id = ww1_germany.16
+    title = ww1_germany.16.t
+    desc = ww1_germany.16.d
+    picture = ww1_germany_16
+
+    fire_only_once = yes
+    is_triggered_only = yes
+
+    option = {
+        name = ww1_germany.16.a
+        ai_chance = {
+            factor = 100
+        }
+        GER = {
+            load_oob = "KIS_GER_Schutztruppe"#Schutztruppe Deployment
+        }
+    }
+}
+
+
+
+# Fascist Take Power
+country_event = {
+	id = ww1_germany.17
+	title = "Ludendorff Putsch"
+	desc = "Ludendorff Putsch"
+	picture = GFX_report_event_fascist_gathering
+	
+	fire_only_once=yes
+	is_triggered_only=yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+
+	option = {
+		name = "Ein volk, Ein reich, Ein Führer"
+		set_politics = {
+			ruling_party = fascism
+			elections_allowed = no
+			parties = {
+		        fascism = {
+		            popularity = 100
+		        }
+		    }
+		}
+		add_timed_idea = { idea = reign_of_terror days = 730 }
+	}
+}
+
+
+# Communist Take Power
+country_event = {
+	id = ww1_germany.18
+	title = "Revolution in Germany"
+	desc = "Revolution in Germany"
+	picture = GFX_report_event_gathering_protest
+	
+	fire_only_once=yes
+	is_triggered_only=yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+
+	option = {
+		name = political.3.a
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
+		add_timed_idea = { idea = reign_of_terror days = 730 }
+	}
+}
+
+# Democrat Take Power
+country_event = {
+	id = ww1_germany.19
+	title = "Weimar Republic is Proclaimed."
+	desc = "A national assembly was convened in Weimar, where a new constitution for the German Reich was written."
+	picture = GFX_report_event_gathering_protest
+	
+	fire_only_once=yes
+	is_triggered_only=yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = political.17.a
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes
+		}
+	}
+}
+
+# Boer Revolt
+#____________________________________________________________
+country_event = {
+	id=ww1_germany.20
+	title="Boer Revolt"
+	desc="A revolt occurend whith men who supported the recreation of a Boer South African Republic rose up against the government of the Union of South Africa."
+	picture = GFX_report_event_swedish_soldier
+	
+	fire_only_once=yes
+	is_triggered_only=yes
+	
+
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "Gut!"
+
+		GER = {
+			load_oob="BOER_1914" # Boer Revolt in South Africa
+		}
+		hidden_effect = {
+			news_event = { days = 1 id = kis_news.5 }
+		}
+	}
+
+}
+#____________________________________________________________
+
+# Military Access from HOL
+#____________________________________________________________
+country_event = {
+	id =  ww1_germany.21
+	title = ww1_germany.21.t
+	desc = ww1_germany.21.d
+	picture = GFX_report_event_generic_read_write
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.21.a
+		ai_chance = { factor = 80 }
+		GER = {
+			diplomatic_relation = {
+				country = HOL
+				relation = military_access
+				active = yes
+			}
+		}
+
+	}
+	option = {
+		name = ww1_germany.21.b
+		ai_chance = { factor = 20 }
+	}
+}
+#____________________________________________________________
+
+# Will Sweden join the Central Powers?
+#____________________________________________________________
+country_event = {
+	id =  ww1_germany.22
+	title = ww1_germany.22.t
+	desc = ww1_germany.22.d
+	picture = GFX_report_event_generic_read_write
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.22.a
+		ai_chance = { factor = 10 }
+		SWE={ add_opinion_modifier={ target=GER modifier=ger_tur_diplomacy_focus } if={ limit={ SWE={ is_ai=yes NOT={ is_in_faction=yes } NOT={ is_puppet=yes } } GER={ is_faction_leader=yes } } GER={ add_to_faction=SWE } } if={ limit={ GER={ has_government=fascism } } add_ideas=fascist_influence } if={ limit={ GER={ has_government=communism } } add_ideas=communist_influence } if={ limit={ GER={ has_government=democratic } } add_ideas=democratic_influence } country_event={ id=generic.1 } }
+		111 = { add_claim_by = SWE }
+		145 = { add_claim_by = SWE }
+		146 = { add_claim_by = SWE }
+		147 = { add_claim_by = SWE }
+		148 = { add_claim_by = SWE }
+		149 = { add_claim_by = SWE }
+		150 = { add_claim_by = SWE }
+		722 = { add_claim_by = SWE }
+	}
+	option = {
+		name = ww1_germany.22.b
+		ai_chance = { factor = 90 }
+	}
+}
+#____________________________________________________________
+
+### INTERWAR
+
+# Beer Hall Putsch
+#____________________________________________________________
+country_event = {
+	id =  ww1_germany.23
+	title = ww1_germany.23.t
+	desc = ww1_germany.23.d
+	picture = GFX_report_event_gathering_protest
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.23.a
+		ai_chance = { factor = 50 }
+
+		set_global_flag = interwar_hitler_putsch_success
+
+		hidden_effect = {
+			GER = {
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.72
+				}
+				set_politics = {
+					ruling_party = fascism
+					elections_allowed = no
+				}
+			}
+		}
+	}
+	option = {
+		name = ww1_germany.23.b
+		ai_chance = { factor = 50 }
+
+		set_global_flag = interwar_hitler_putsch_fail
+	}
+}
+#____________________________________________________________

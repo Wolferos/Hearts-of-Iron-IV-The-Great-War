@@ -1,0 +1,81 @@
+﻿add_namespace = ww1_southafrica
+country_event = {
+	title=ww1_southafrica.1.t#The Union of South Africa decides
+	desc=ww1_southafrica.1.d#When World War 1 broke out in 1914 the South African government chose to join the war on the side of the Entente ,and faced widespread Afrikaner opposition to fighting alongside Great Britian so soon after the Second Boer War. ,'They had to put down a Boer revolt before they could send an expeditionary force of some 67,000 troops to invade German South West Africa.
+	id=ww1_southafrica.1
+	picture=ww1_southafrica_1
+	is_triggered_only=yes
+	option={
+		name=ww1_southafrica.1.a
+		ai_chance={
+			factor=100
+			}
+		ENG={
+			add_to_faction=ROOT
+			}
+		create_wargoal={
+			type=annex_everything
+			target=GER
+			}
+		add_political_power=-50
+		add_national_unity=-0.05
+		remove_ideas=neutrality_idea
+		set_country_flag=boers
+		}
+	option={
+		name=ww1_southafrica.1.b
+		ai_chance={
+			factor=0
+			}
+		ENG={
+			remove_from_faction=ROOT
+			}
+		#GER={
+			#remove_unit_leader=34545
+			#remove_unit_leader=34546
+		#	}
+		add_national_unity=0.01
+		add_ideas=neutrality_idea
+		add_opinion_modifier={
+			target=ENG
+			modifier=large_decrease
+			}
+		}
+	}
+country_event = {
+	title=ww1_southafrica.2.t#Boer Rebellion against South Africa
+	desc=ww1_southafrica.2.d#Boers in in the Transvaal have rebelled against South Africa's decision to join the Entente. They stand ready to fight South Africa
+	id=ww1_southafrica.2
+	picture=ww1_southafrica_2
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=1
+		}
+	trigger={
+		tag=SAF
+		has_war_with=GER
+		date>1910.5.6
+		has_country_flag=boers
+		NOT={
+			has_country_flag=boer_rebellion
+			}
+		}
+	option={
+		name=ww1_southafrica.2.a
+		set_country_flag=boer_rebellion
+		#SAF={
+		#	remove_unit_leader=78011
+		#	remove_unit_leader=78013
+		#	}
+		custom_effect_tooltip=remove_chief_of_army
+		hidden_effect={
+			remove_ideas=SAF_christiaan_beyers
+			}
+		add_ideas=SAF_john_collyer
+		GER={
+			set_state_controller = 275
+			load_oob="Boer_1914"
+			}
+		}
+	}

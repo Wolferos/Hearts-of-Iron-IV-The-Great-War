@@ -1,0 +1,32 @@
+ideas={
+	naval_manufacturer={
+			designer = yes 
+			stocznia_gdynia={ allowed={ TAG=POL } research_bonus={ naval_equipment=0.10 } traits={ naval_manufacturer } }
+			}
+	aircraft_manufacturer={
+			designer = yes 
+			pws={ allowed={ TAG=POL } research_bonus={ air_equipment=0.10 } traits={ light_aircraft_manufacturer } }
+			pzl={ allowed={ TAG=POL } research_bonus={ air_equipment=0.10 } traits={ medium_aircraft_manufacturer } }
+			}
+	materiel_manufacturer={
+			designer = yes 
+			zaklady_starachowickie={ allowed={ TAG=POL } research_bonus={ artillery=0.10 } traits={ artillery_manufacturer } picture=generic_artillery_manufacturer_2 }
+			pzinz={ allowed={ TAG=POL } research_bonus={ artillery=0.10 } traits={ artillery_manufacturer } picture=generic_artillery_manufacturer_3 }
+			gerlach_and_pulst={ allowed={ TAG=POL } research_bonus={ artillery=0.10 } traits={ artillery_manufacturer } picture=generic_artillery_manufacturer_1 }
+			cws={ allowed={ TAG=POL } research_bonus={ motorized_equipment=0.10 } traits={ motorized_equipment_manufacturer } picture=generic_motorized_equipment_manufacturer_2 }
+			}
+	industrial_concern={
+			designer = yes 
+			centralny_okreg_przemyslowy={ allowed={ TAG=POL }    research_bonus = {
+							    industry = 0.10
+							    
+							   } traits={ industrial_concern } picture=generic_tank_manufacturer_2 }
+			}
+	country={
+			POL_ideological_fanaticism={ allowed={ always=no } allowed_civil_war={ has_government=neutrality } removal_cost=-1 picture=generic_pp_unity_bonus	 modifier={ unity_factor=0.05 } }
+			POL_militarism_focus={ allowed={ original_tag=POL always=no } allowed_civil_war={ always=yes } removal_cost=-1 picture=generic_manpower_bonus modifier={ conscription=0.025 enemy_partisan_effect=-0.1 } }
+			POL_authoritarianism_focus={ allowed={ original_tag=POL always=no } allowed_civil_war={ NOT={ has_government=democratic } } removal_cost=-1 picture=generic_intel_bonus modifier={ democratic_drift=-0.1 democratic_acceptance=-100 } }
+			POL_polish_revanchism_focus={ allowed={ original_tag=POL always=no } allowed_civil_war={ always=yes } removal_cost=-1 picture=generic_intel_bonus modifier={		 justify_war_goal_time=-0.25 generate_wargoal_tension=-0.4 } }
+			POL_internationalism_focus={ allowed={ original_tag=POL always=no } allowed_civil_war={ always=yes } removal_cost=-1 picture=generic_goods_red_bonus modifier={		 trade_opinion_factor=0.2 } }
+			}
+	}

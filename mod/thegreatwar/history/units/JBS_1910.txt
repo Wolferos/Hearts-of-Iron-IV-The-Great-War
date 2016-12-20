@@ -1,0 +1,47 @@
+﻿###################################################################
+
+division_template = {
+	name = "Infantry Division"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Infantry Brigade"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 0 }
+	}
+	priority = 0
+}
+
+division_template = {
+	name = "Cavalry Division"
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+}
+
+###################################################################
+
+units = {
+	division= { 
+			name = "Jabal Shammar Army"
+			location = 2057 # Ha'il
+			division_template="Infantry Brigade"
+			start_experience_factor=0.05
+			}
+	
+	}
+air_wings = { 
+	}
+instant_effect = {
+add_equipment_production = { equipment = { type = infantry_equipment_0 creator = "JBS" } requested_factories = 1 progress = 0.1 efficiency = 50}
+	}

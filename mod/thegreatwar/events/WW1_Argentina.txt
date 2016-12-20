@@ -1,0 +1,37 @@
+﻿add_namespace = ww1_argentina
+country_event = {
+	title=ww1_argentina.1.t#Roque Sáenz Peña Dies!
+	desc=ww1_argentina.1.d#Victorino de la Plaza is now President
+	id=ww1_argentina.1
+	picture=ww1_argentina_1
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=1
+		}
+	trigger={
+		tag=ARG
+		has_government=neutrality
+		not={
+			has_country_flag=roque_died
+			}
+		date>1910.10.12
+		}
+	option={
+		name=ww1_argentina.1.a
+		ai_chance={
+			factor=100
+			}
+		set_country_flag=roque_died
+		kill_country_leader=yes
+		create_country_leader={
+			name="Victorino de la Plaza"
+			desc=ARG_victorino_de_la_plaza_DESC
+			picture="gfx/leaders/ARG_victorino_de_la_plaza.dds"
+			expire="1935.1.1"
+			ideology=moderatism
+			traits={
+				}
+			}
+		}
+	}

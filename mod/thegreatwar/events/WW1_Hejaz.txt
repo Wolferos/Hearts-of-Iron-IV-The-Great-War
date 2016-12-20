@@ -1,0 +1,290 @@
+﻿add_namespace = ww1_hejaz
+country_event = {
+	title=ww1_hejaz.1.t#Letters with Hussein bin Ali
+	desc=ww1_hejaz.1.d#British secret services know that Hussein bin Ali, Sharif of Meccah, is displeased with the Ottoman Empire's rule. It's also certain that he'll be deposed by the Turks at the end of the war. High Commissioner Henry McMahon started an exchange of letter to convince the Sharif to rebel against the Ottoman rule.
+	id=ww1_hejaz.1
+	picture=ww1_hejaz_1
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=15
+		}
+	trigger={
+		TUR={
+			has_war_with=ENG
+			}
+		ENG={
+			controls_state=453
+			}
+		country_exists=HJZ
+		not={
+			HJZ={
+				has_war_with=ENG
+				}
+			}
+		tag=ENG
+		date>1916.1.1
+		not={
+			date>1925.12.30
+			}
+		}
+	option={
+		name=ww1_hejaz.1.a
+		HJZ={
+			country_event=ww1_hejaz.5
+			}
+		}
+	}
+country_event = {
+	title=ww1_hejaz.2.t#Promises for a great Arab Empire
+	desc=ww1_hejaz.2.d#In one of his latest letters, Henry MacMahon proposed Hussein bin Ali the creation, after the war, of an Arab Empire spanning from Egypt to Persia, excluding British areas like Yemen or Kuwait. This will certainly convince the Sharif.
+	id=ww1_hejaz.2
+	picture=ww1_hejaz_2
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=15
+		}
+	trigger={
+		TUR={
+			has_war_with=ENG
+			}
+		ENG={
+			controls_state=453
+			}
+		and={
+			country_exists=HJZ
+			not={
+				HJZ={
+					#government_in_exile=yes
+					}
+				}
+			}
+		not={
+			HJZ={
+				has_war_with=ENG
+				}
+			}
+		tag=ENG
+		date>1916.6.1
+		not={
+			date>1925.12.30
+			}
+		}
+	option={
+		name=ww1_hejaz.2.a
+		HJZ={
+			country_event=ww1_hejaz.6
+			}
+		}
+	}
+country_event = {
+	title=ww1_hejaz.3.t#Send assistance to Hedjaz
+	desc=ww1_hejaz.3.d#Arabs are doing well. Thanks to our coordinated efforts, a land route is opened and allows us to send them supplies.
+	id=ww1_hejaz.3
+	picture=ww1_hejaz_3
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=10
+		}
+	trigger={
+		TUR={
+			has_war_with=ENG
+			}
+		TUR={
+			has_war_with=HJZ
+			}
+		not={
+			HJZ={
+				has_war_with=ENG
+				}
+			}
+		ENG={
+			controls_state=453
+			}
+		not={
+			TUR={
+				controls_state=455
+				}
+			}
+		tag=ENG
+		date>1917.1.1
+		not={
+			date>1925.12.30
+			}
+		}
+	option={
+		name=ww1_hejaz.3.a
+		send_equipment={
+			target=HJZ
+			type=infantry_equipment
+			amount=500
+			}
+		HJZ={
+			country_event=ww1_hejaz.9
+			}
+		}
+	}
+country_event = {
+	title=ww1_hejaz.4.t#Renewed assistance to Hedjaz
+	desc=ww1_hejaz.4.d#Arabs are doing well. Thanks to our coordinated efforts, a land route is opened and allows us to send them supplies.
+	id=ww1_hejaz.4
+	picture=ww1_hejaz_4
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=10
+		}
+	trigger={
+		has_global_flag=te_lawrence
+		TUR={
+			has_war_with=ENG
+			}
+		TUR={
+			has_war_with=HJZ
+			}
+		not={
+			HJZ={
+				has_war_with=ENG
+				}
+			}
+		ENG={
+			controls_state=453
+			}
+		not={
+			TUR={
+				controls_state=455
+				}
+			}
+		tag=ENG
+		date>1918.2.1
+		not={
+			date>1925.12.30
+			}
+		}
+	option={
+		name=ww1_hejaz.4.a
+		send_equipment={
+			target=HJZ
+			type=infantry_equipment
+			amount=500
+			}
+		HJZ={
+			country_event=ww1_hejaz.10
+			}
+		}
+	}
+country_event = {
+	title=ww1_hejaz.5.t#Letters with Henry MacMahon
+	desc=ww1_hejaz.5.d#British secret services know that Hussein bin Ali, Sharif of Meccah, is displeased with Ottoman Empire's rule. It's also certain that he'll be deposed by the Turks at the end of the war. High Commissioner Henry McMahon started an exchange of letter to convince the Sharif to rebel against the Ottoman rule.
+	id=ww1_hejaz.5
+	picture=ww1_hejaz_5
+	fire_only_once=yes
+	is_triggered_only=yes
+	trigger={
+		tag=HJZ
+		}
+	option={
+		name=ww1_hejaz.5.a
+		set_global_flag=letters
+		}
+	}
+country_event = {
+	title=ww1_hejaz.6.t#England promises a great Arab Empire
+	desc=ww1_hejaz.6.d#In one of his latest letters, Henry MacMahon proposed to Hussein bin Ali the creation, after the war, of an Arab Empire spanning from Egypt to Persia, excluding British areas like Yemen or Kuwait.
+	id=ww1_hejaz.6
+	picture=ww1_hejaz_6
+	fire_only_once=yes
+	is_triggered_only=yes
+	trigger={
+		tag=HJZ
+		}
+	option={
+		name=ww1_hejaz.6.a
+		add_political_power=5
+		}
+	}
+country_event = {
+	title=ww1_hejaz.7.t#The Great Arab Revolt
+	desc=ww1_hejaz.7.d#Negotiations with British are too long. Hussein bin Ali has their support should he declare war on Ottomans. Let's not wasting time!
+	id=ww1_hejaz.7
+	picture=ww1_hejaz_7
+	fire_only_once=yes
+	is_triggered_only=yes
+	option={
+		name=ww1_hejaz.7.a
+		custom_effect_tooltip=remove_political_advisor
+		hidden_effect={
+			remove_ideas=HJZ_mehmet_vehib_kaci
+			#KiS#remove_ideas=HJZ_ali_galip_pasiner
+			}
+		TUR={
+			remove_from_faction=YEM
+			}
+		TUR={
+			remove_from_faction=HJZ
+			}
+		TUR={
+			remove_from_faction=ASR
+			}
+		ENG={
+			add_to_faction=HJZ
+			}
+		ENG={
+			add_to_faction=YEM
+			}
+		ENG={
+			add_to_faction=ASR
+			}
+		GER={
+			add_to_faction=JBS
+			}
+		}
+	}
+country_event = {
+	title=ww1_hejaz.8.t#T.E. Lawrence arrives
+	desc=ww1_hejaz.8.d#In order to coordinate British operations with Arab revolters, England sends a young officer, captain Themas Edward Lawrence. He's still a rookie but will provide useful experience.
+	id=ww1_hejaz.8
+	picture=ww1_hejaz_8
+	fire_only_once=yes
+	is_triggered_only=yes
+	trigger={
+		tag=HJZ
+		}
+	option={
+		name=ww1_hejaz.8.a
+		add_political_power=25
+		add_ideas=HJZ_thomas_edward_lawrence
+		}
+	}
+country_event = {
+	title=ww1_hejaz.9.t#Supplies from England
+	desc=ww1_hejaz.9.d#Thanks to our coordinated efforts with British forces, a land route is opened and allows them to send us supplies. The first crates are coming!
+	id=ww1_hejaz.9
+	picture=ww1_hejaz_9
+	fire_only_once=yes
+	is_triggered_only=yes
+	trigger={
+		tag=HJZ
+		}
+	option={
+		name=ww1_hejaz.9.a
+		add_political_power=25
+		}
+	}
+country_event = {
+	title=ww1_hejaz.10.t#Supplies from England
+	desc=ww1_hejaz.10.d#Thanks to our coordinated efforts with British forces, a land route is opened and allows them to send us supplies. More convoys have arrived!
+	id=ww1_hejaz.10
+	picture=ww1_hejaz_10
+	fire_only_once=yes
+	is_triggered_only=yes
+	trigger={
+		tag=HJZ
+		}
+	option={
+		name=ww1_hejaz.10.a
+		add_political_power=25
+		}
+	}
