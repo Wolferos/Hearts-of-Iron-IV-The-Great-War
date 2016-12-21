@@ -307,13 +307,13 @@ NMilitary = {
 	MAX_DIVISION_SUPPORT_WIDTH = 1,			-- Max width of support in division designer.
 	MAX_DIVISION_SUPPORT_HEIGHT = 5,		-- Max height of support in division designer.
 	
-	BASE_DIVISION_BRIGADE_GROUP_COST = 20, 	--Base cost to unlock a regiment slot,		#HOI4TGW ::: BASE_DIVISION_BRIGADE_GROUP_COST = 20,
-	BASE_DIVISION_BRIGADE_CHANGE_COST = 5,	--Base cost to change a regiment column.	#HOI4TGW ::: BASE_DIVISION_BRIGADE_CHANGE_COST = 5,
-	BASE_DIVISION_SUPPORT_SLOT_COST = 10, 	--Base cost to unlock a support slot		#HOI4TGW ::: BASE_DIVISION_SUPPORT_SLOT_COST = 10,
-
-	MAX_ARMY_EXPERIENCE = 500,			--Max army experience a country can store
-	MAX_NAVY_EXPERIENCE = 500,			--Max navy experience a country can store
-	MAX_AIR_EXPERIENCE = 500,				--Max air experience a country can store
+	BASE_DIVISION_BRIGADE_GROUP_COST = 25, 	--Base cost to unlock a regiment slot,		#HOI4TGW ::: BASE_DIVISION_BRIGADE_GROUP_COST = 20,
+	BASE_DIVISION_BRIGADE_CHANGE_COST = 9,	--Base cost to change a regiment column.	#HOI4TGW ::: BASE_DIVISION_BRIGADE_CHANGE_COST = 5,
+	BASE_DIVISION_SUPPORT_SLOT_COST = 13, 	--Base cost to unlock a support slot		#HOI4TGW ::: BASE_DIVISION_SUPPORT_SLOT_COST = 10,
+	
+	MAX_ARMY_EXPERIENCE = 999,			--Max army experience a country can store		#HOI4TGW ::: MAX_ARMY_EXPERIENCE = 500,
+	MAX_NAVY_EXPERIENCE = 999,			--Max navy experience a country can store		#HOI4TGW ::: MAX_NAVY_EXPERIENCE = 500,
+	MAX_AIR_EXPERIENCE = 999,			--Max air experience a country can store		#HOI4TGW ::: MAX_AIR_EXPERIENCE = 500,
 	
 	COMBAT_MINIMUM_TIME = 4,			-- Shortest time possible for a combat in hours
 	SPOTTING_QUALITY_DROP_HOURS = 4, 	-- Each X hours the intel quality drops after unit was spotted.
@@ -862,7 +862,7 @@ NAI = {
 	PLAN_ATTACK_MIN_STRENGTH_FACTOR_MED = 0.3,	
 	PLAN_ATTACK_MIN_ORG_FACTOR_HIGH = 0.2,		
 	PLAN_ATTACK_MIN_STRENGTH_FACTOR_HIGH = 0.15,	
-	PLAN_FRONTUNIT_DISTANCE_FACTOR = 4,			-- Factor for candidate units distance to front positions.
+	PLAN_FRONTUNIT_DISTANCE_FACTOR = 20,		-- Factor for candidate units distance to front positions.
 	PLAN_FRONTUNIT_DISTANCE_FACTOR_PEACE = 1.2,	-- Factor for candidate units distance to front positions.
 	PLAN_ATTACK_DEPTH_FACTOR = 0.5,				-- Factor applied to size or enemy being attacked.
 	PLAN_STEP_COST_LIMIT = 11,					-- When stepping to draw a plan this cost makes it break if it hits hard terrain (multiplied by number of desired steps)
@@ -900,7 +900,7 @@ NAI = {
 	ESTIMATED_CONVOYS_PER_DIVISION = 6,			-- Not always correct, but mainly used to make sure AI does not go crazy
 	FRONT_REASSIGN_DISTANCE = 120.0,			-- If a unit is this far away from a front it is not considered to be assigned to it unless the new front is much more important
 	OLD_FRONT_IMPORTANCE_FACTOR = 1.50,			-- If a unit is considered for reassignment, the importance of both new and old front is considered with a weight applied to the old ones score
-	ENTRENCHMENT_WEIGHT = 100.0,				-- AI should favour units with less entrenchment when assigning units around.
+	ENTRENCHMENT_WEIGHT = 2.0,					-- AI should favour units with less entrenchment when assigning units around.
 	FRONT_TERRAIN_DEFENSE_FACTOR = 5.0,			-- Multiplier applied to unit defense modifier for terrain on front province multiplied by terrain importance
 	FRONT_TERRAIN_ATTACK_FACTOR = 5.0,			-- Multiplier applied to unit attack modifier for terrain on enemy front province multiplied by terrain importance
 	
@@ -911,9 +911,9 @@ NAI = {
 	ORG_UNIT_WEAK = 0.15,						-- Organization % for unit to be considered weak
 	STR_UNIT_STRONG = 0.75,						-- Strength (equipment) % for unit to be considered strong
 	STR_UNIT_WEAK = 0.1,						-- Strength (equipment) % for unit to be considered weak
-	PLAN_FACTION_STRONG_TO_EXECUTE = 0.60,		-- % or more of units in an order to consider ececuting the plan
+	PLAN_FACTION_STRONG_TO_EXECUTE = 0.50,		-- % or more of units in an order to consider ececuting the plan
 	PLAN_FACTION_WEAK_TO_ABORT = 0.65,			-- % or more of units in an order to consider ececuting the plan
-	PLAN_AVG_PREPARATION_TO_EXECUTE = 0.7,		-- % or more average plan preparation before executing
+	PLAN_AVG_PREPARATION_TO_EXECUTE = 0.5,		-- % or more average plan preparation before executing
 	STATE_GARRISON_MAX_UNITS = 3,				-- Max units to guard a garrison under normal circumstances (isolated core areas like England has is excempt)
 	
 	REDEPLOY_DISTANCE_VS_ORDER_SIZE = 1.0,		-- Factor applied to the path length of a unit compared to length of an order to determine if it should use strategic redeployment
@@ -1036,7 +1036,8 @@ NAI = {
 	DIVISION_DESIGN_MANPOWER_WEIGHT = 0.005,
 	DIVISION_DESIGN_STOCKPILE_WEIGHT = 0.01,
 	DIVISION_DESIGN_COMBAT_WIDTH_WEIGHT = -3.0,
-	DIVISION_DESIGN_BASE_WEIGHT_SCORE = 100.0,			-- This score is reduced the farther the width is from the target width (if set)
+	DIVISION_DESIGN_BASE_WEIGHT_SCORE = -1000.0,			-- This score is reduced the farther the width is from the target width (if set)
+	DIVISION_DESIGN_MAX_FAILED_DAYS = 60,					-- max days we keep track of since failure of a design update
 
 	BUILD_ARMOR_BASE_COST_WEIGHT = 200.0,
 	BUILD_ARMOR_STRENGTH_MULTIPLIER_WEIGHT = 100.0,
@@ -1083,7 +1084,7 @@ NAI = {
 	NAVAL_MISSION_ESCORT_NEAR_OWNED = 20000,			-- Extra escort mission score near owned provinces
 	NAVAL_MISSION_PATROL_NEAR_CONTROLLED = 12000,		-- Extra patrol mission score near controlled provinces
 	NAVAL_MISSION_ESCORT_NEAR_CONTROLLED = 5500,		-- Extra escort mission score near controlled provinces
-	NEW_LEADER_EXTRA_PP_FACTOR = 5.0,					-- Country must have at least this many times extra PP to get new admirals or army leaders
+	NEW_LEADER_EXTRA_PP_FACTOR = 2.0,					-- Country must have at least this many times extra PP to get new admirals or army leaders
 	SCARY_LEVEL_AVERAGE_DEFENSE = -0.7,                 -- average front defense modifier to make it consider it as a PITA to go for
 	ATTACK_HEAVILY_DEFENDED_LIMIT = 0.45,				-- AI will not launch attacks against heavily defended fronts unless they consider to have this level of advantage (1.0 = 100%)
 	HOUR_BAD_COMBAT_REEVALUATE = 100,                   -- if we are in combat for this amount and it goes shitty then try skipping it 
@@ -1132,6 +1133,10 @@ NAI = {
 	PARADROP_MISSION_FACTOR = 1.0,						-- AI paradrop mission factor
 	KAMIKAZE_MISSION_FACTOR = 1.0,						-- AI naval kamikaze mission factor
 	PORT_STRIKE_MISSION_FACTOR = 1.0,					-- AI port strike mission factor
+	
+	ORDER_ASSIGNMENT_DISTANCE_FACTOR = 5.0,				-- When the AI assigns units to orders, it attempts to calculate the distance.
+	RELUCTANCE_TO_CHANGE_FRONT_FACTOR = 0.5,			-- Factor for how reluctant the AI is to change a units order group.
+	REVISITED_PROV_PENALTY_FACTOR = 1.5,				-- When the AI picks units for a front, it tries to spread out a bit which units it grabs.
 },
 
 NFocus = {
