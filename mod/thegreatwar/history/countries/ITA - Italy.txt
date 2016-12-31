@@ -1,0 +1,280 @@
+﻿capital = 2
+
+#-------------------------------------------------------
+#					GENERIC VALUES
+#-------------------------------------------------------
+set_research_slots = 4
+set_national_unity = 0.6
+set_convoys = 200
+
+#-------------------------------------------------------
+#					POLITICS & ARMY
+#-------------------------------------------------------
+#LEADERS
+create_country_leader={ name = "Giacinto Menotti Serrati" desc=ITA_giacinto_menotti_serrati_DESC picture="gfx/hoi4tgw_portraits/ITA/country_leaders/ITA_giacinto_menotti_serrati.dds" expire="1935.1.1" ideology=stalinism traits={  } }
+create_country_leader={ name = "Benito Mussolini" desc=ITA_benito_mussolini_DESC picture="gfx/hoi4tgw_portraits/ITA/country_leaders/ITA_benito_mussolini.dds" expire="1935.1.1" ideology=nazism traits={  } }
+create_country_leader={ name = "Vittorio Emanuele III" desc=ITA_vittorio_emanuele_iii_DESC picture="gfx/hoi4tgw_portraits/ITA/country_leaders/ITA_vittorio_emanuele_iii.dds" expire="1935.1.1" ideology=despotism traits={  } }
+create_country_leader={ name = "Vittorio Emanuele III" desc=ITA_vittorio_emanuele_iii_DESC picture="gfx/hoi4tgw_portraits/ITA/country_leaders/ITA_vittorio_emanuele_iii.dds" expire="1935.1.1" ideology=conservatism traits={  } }
+
+#ARMY
+create_field_marshal={  name = "Luigi Cadorna" id=46028 portrait_path="gfx/hoi4tgw_portraits/ITA/army_generals/ITA_Luigi_Cadorna.dds" traits={  old_guard } skill=2 }
+create_field_marshal={  name = "Armando Diaz" id=46025 portrait_path="gfx/hoi4tgw_portraits/ITA/army_generals/ITA_Armando_Diaz.dds" traits={   } skill=4 }
+
+create_corps_commander={  name = "Pecori Giraldi" id=46071 portrait_path="gfx/hoi4tgw_portraits/ITA/army_generals/ITA_Pecori_Giraldi.dds" traits={   } skill=2 }
+create_corps_commander={  name = "Carlo Caneva" id=46009 portrait_path="gfx/hoi4tgw_portraits/ITA/army_generals/ITA_Carlo_Caneva.dds" traits={   } skill=3 }
+create_corps_commander={  name = "Emanuele Filiberto" id=46070 portrait_path="gfx/hoi4tgw_portraits/ITA/army_generals/ITA_Emanuele_Filiberto.dds" traits={   } skill=3 }
+
+#NAVY
+create_navy_leader={  name = "Luigi Amedeo" id=46001 portrait_path="gfx/hoi4tgw_portraits/ITA/navy_admirals/ITA_duca_degli_abruzzi.tga" traits={   } skill=2 }
+create_navy_leader={  name = "Thaon di Revel" id=46075 portrait_path="gfx/hoi4tgw_portraits/ITA/navy_admirals/ITA_thaon_di_revel.tga" traits={   } skill=2 }
+
+1910.1.1 = {
+	oob = "ITA_1910"
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+	#Army
+	complete_national_focus = ITA_ww1_army_effort
+	complete_national_focus = ITA_ww1_industrial_effort
+	complete_national_focus = ITA_ww1_naval_effort
+
+	#Diplomatic
+	complete_national_focus = ITA_ww1_diplomatic_effort
+	#-------------------------------------------------------
+
+	set_technology = {
+
+		# Infantry
+		infantry_weapons = 1
+		ww1infantry_weapons1 = 1
+		support_weapons = 1
+		infantry_binoculars = 1
+		infantry_grenade = 1
+		motorised_infantry = 1
+		ww1_ambulance1 = 1
+		tech_mountaineers = 1
+
+		# Support
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		#tech_military_police = 1
+		#tech_maintenance_company = 1
+		#tech_field_hospital = 1
+		#tech_logistics_company = 1
+
+		# Armor
+		gwtank=1 # 1910 Armored Car
+
+		# Artillery
+		light_field_gun1 = 1
+		heavy_field_gun1 = 1
+
+		# Navy
+		ww1_destroyer0 = 1
+		ww1_destroyer1 = 1
+		ww1_light_cruiser0 = 1
+		ww1_light_cruiser1 = 1
+		ww1_battlecruiser0 = 1
+		ww1_battlecruiser0b = 1
+		ww1_battlecruiser1 = 1
+		ww1_battleship0 = 1
+		ww1_battleship1 = 1
+		ww1_submarine1 = 1
+		ww1_coastal_submarine1 = 1
+		transport = 1
+
+		# Air
+		ww1_fighter1 = 1
+		ww1_zeppelin1 = 1
+
+		# Engineering
+		electronic_mechanical_engineering = 1
+		chemical_research = 1
+
+		# Industry
+		ww1_fortification1 = 1
+	}
+
+	set_politics = {
+	    parties = {
+	        democratic = {
+	            popularity = 85
+	        }
+	        fascism = {
+	            popularity = 5
+	        }
+	        communism = {
+	            popularity = 10
+	        }
+	    }
+	    ruling_party = democratic last_election = "1909.3.14"
+	    election_frequency = 48 elections_allowed = yes
+	}
+
+	add_ideas = {
+		ITA_ww1_Risorgimento
+		ww1_Scramble_for_Africa
+		limited_conscription
+		partial_economic_mobilisation
+		limited_exports
+	}
+}
+
+
+1914.1.1 = {
+	oob = "ITA_1914"
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+	#Army
+	complete_national_focus = ITA_ww1_army_effort
+	complete_national_focus = ITA_ww1_equipment_effort
+	complete_national_focus = ITA_ww1_artillery_effort_1
+	complete_national_focus = ITA_ww1_doctrine_effort
+	complete_national_focus = ITA_ww1_trenchwarfare
+	
+	# Air
+	complete_national_focus = ITA_ww1_aviation_effort
+	complete_national_focus = ITA_ww1_aviation_effort_2
+	
+	# Industry
+	complete_national_focus = ITA_ww1_industrial_effort
+	complete_national_focus = ITA_ww1_infrastructure_effort
+	complete_national_focus = ITA_ww1_airfield_expansion_1
+	complete_national_focus = ITA_ww1_construction_effort
+	complete_national_focus = ITA_ww1_production_effort
+	complete_national_focus = ITA_ww1_dockyard_effort_1
+	
+	# Naval
+	complete_national_focus = ITA_ww1_naval_effort
+
+	#Political
+	complete_national_focus = ITA_ww1_political_effort
+	complete_national_focus = ITA_ww1_support_republic
+	complete_national_focus = ITA_ww1_democracy
+	complete_national_focus = ITA_ww1_freespeech
+	complete_national_focus = ITA_ww1_organize_colony
+
+	#Diplomatic
+	complete_national_focus = ITA_ww1_diplomatic_effort
+	complete_national_focus = ITA_ww1_europe_focus
+	complete_national_focus = ITA_ww1_italian_development
+	complete_national_focus = ITA_ww1_italian_highways
+	complete_national_focus = ITA_ww1_italian_expansionism	
+	unlock_national_focus = ITA_ww1_libyan_claims
+	#-------------------------------------------------------
+
+	set_technology = {
+
+		# Infantry
+		infantry_weapons = 1
+		ww1infantry_weapons1 = 1
+		ww1_infantry_equip1 = 1
+		support_weapons = 1
+		support_weapons2 = 1
+		infantry_binoculars = 1
+		infantry_grenade = 1
+		motorised_infantry = 1
+		ww1_ambulance1 = 1
+		tech_mountaineers = 1
+
+		# Support
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+
+		# Armor
+		gwtank=1 # 1910 Armored Car
+		ww1_armored_car_2 = 1
+
+		# Artillery
+		light_field_gun1 = 1
+		bonus_artillery1 = 1
+		heavy_field_gun1 = 1
+		bonus_bertha1 = 1
+
+		# Land Doctrine
+		ww1_landdoctrine = 1
+		ww1_directfire = 1
+
+		# Navy
+		ww1_destroyer0 = 1
+		ww1_destroyer1 = 1
+		ww1_destroyer2 = 1
+		ww1_light_cruiser0 = 1
+		ww1_light_cruiser1 = 1
+		ww1_battlecruiser0 = 1
+		ww1_battlecruiser0b = 1
+		ww1_battlecruiser1 = 1
+		ww1_battleship0 = 1
+		ww1_battleship1 = 1
+		ww1_submarine1 = 1
+		ww1_coastal_submarine1 = 1
+		transport = 1
+
+		# Air
+		ww1_fighter1 = 1
+		ww1_fighter1b = 1
+		ww1_zeppelin1 = 1
+
+		# Air Doctrine
+		ww1_airdoctrine = 1
+		ww1_airdoctrine_2 = 1
+		ww1_airdoctrine_3 = 1
+
+		# Navy Doctrine
+		ww1_navaldoctrine = 1
+		ww1_navaldoctrine_2 = 1
+		ww1_navaldoctrine_3 = 1
+
+		# Engineering
+		electronic_mechanical_engineering = 1
+		mechanical_computing = 1
+		chemical_research = 1
+		tank_unlocker1 = 1
+		radio = 1
+		supertech1 = 1
+		tankaircraft1 = 1
+		torpedotech1 = 1
+
+		# Industry
+		ww1_tools1 = 1
+		ww1_medicine1 = 1
+		ww1_fortification1 = 1
+		ww1_fortification2 = 1
+
+	}
+
+	set_politics = {
+	    parties = {
+	        democratic = {
+	            popularity = 85
+	        }
+	        fascism = {
+	            popularity = 5
+	        }
+	        communism = {
+	            popularity = 10
+	        }
+	    }
+	    ruling_party = democratic last_election = "1913.11.1"
+	    election_frequency = 48 elections_allowed = yes
+	}
+
+	add_ideas = {
+		ITA_ww1_Risorgimento
+		ww1_Scramble_for_Africa
+		limited_conscription
+		partial_economic_mobilisation
+		limited_exports
+	}
+
+	give_guarantee = ALB
+}

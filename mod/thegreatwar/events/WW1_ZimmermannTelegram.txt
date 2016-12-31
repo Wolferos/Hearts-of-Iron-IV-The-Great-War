@@ -1,0 +1,141 @@
+﻿
+add_namespace = ww1_zimmermanntelegram
+
+# Germany sends the Zimmermann Telegram
+#____________________________________________________________
+country_event = {
+	id =  ww1_zimmermanntelegram.1
+	title = ww1_zimmermanntelegram.1.t
+	desc = ww1_zimmermanntelegram.1.d
+	picture = ww1_zimmermanntelegram_1
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_zimmermanntelegram.1.a
+		ai_chance = { factor = 100 }
+		set_country_flag = Zimmermann_Telegram
+
+		hidden_effect = {
+			ENG = { 
+				set_country_flag = Zimmermann_Telegram 
+				country_event = { days = 1 id = ww1_zimmermanntelegram.2 }
+			}
+			MEX = {
+				set_country_flag = Zimmermann_Telegram
+				country_event = { days = 1 id = ww1_zimmermanntelegram.4 }
+			}
+		}
+	}
+}
+#____________________________________________________________
+
+# England Intercept the Zimmermann Telegram
+#____________________________________________________________
+country_event = {	
+	id =  ww1_zimmermanntelegram.2
+	title = ww1_zimmermanntelegram.2.t
+	desc = ww1_zimmermanntelegram.2.d
+	picture = ww1_zimmermanntelegram_1
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_zimmermanntelegram.2.a
+		ai_chance = { factor = 100 }
+		USA = {
+			set_country_flag = Zimmermann_Telegram
+			country_event = { days = 1 id = ww1_zimmermanntelegram.3 }
+		}
+	}
+}
+#____________________________________________________________
+
+# USA reacts to the Zimmermann Telegram
+#____________________________________________________________
+country_event = {	
+	id =  ww1_zimmermanntelegram.3
+	title = ww1_zimmermanntelegram.3.t
+	desc = ww1_zimmermanntelegram.3.d
+	picture = ww1_zimmermanntelegram_1
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_zimmermanntelegram.3.a
+		ai_chance = { factor = 100 }
+		hidden_effect = {
+			USA = {
+				set_country_flag = usa_zimmermann_telegram
+			}
+		}
+	}
+}
+#____________________________________________________________
+
+# Mexico reacts to the Zimmermann Telegram
+#____________________________________________________________
+country_event = {	
+	id =  ww1_zimmermanntelegram.4
+	title = ww1_zimmermanntelegram.4.t
+	desc = ww1_zimmermanntelegram.4.d
+	picture = ww1_zimmermanntelegram_1
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	# MEX joins the CP
+	option = {
+		name = ww1_zimmermanntelegram.4.a
+		ai_chance = { factor = 10 }
+		GER = { add_to_faction = MEX }
+		news_event = { days = 1 id = ww1_zimmermanntelegram.5 }
+	}
+
+	# MEX doesn't join the CP
+	option = {
+		name = ww1_zimmermanntelegram.4.b
+		ai_chance = { factor = 90 }
+		news_event = { days = 1 id = ww1_zimmermanntelegram.6 }
+	}
+}
+#____________________________________________________________
+
+# Mexico Accepted to join the CP
+#____________________________________________________________
+news_event = {	
+	id =  ww1_zimmermanntelegram.5
+	title = ww1_zimmermanntelegram.5.t
+	desc = ww1_zimmermanntelegram.5.d
+	picture = GFX_news_event_generic_sign_treaty2
+
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_zimmermanntelegram.5.a
+		ai_chance = { factor = 100 }
+	}
+}
+#____________________________________________________________
+
+# Mexico Refused to join the CP
+#____________________________________________________________
+news_event = {	
+	id =  ww1_zimmermanntelegram.6
+	title = ww1_zimmermanntelegram.6.t
+	desc = ww1_zimmermanntelegram.6.d
+	picture = GFX_news_event_generic_sign_treaty2
+
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_zimmermanntelegram.6.a
+		ai_chance = { factor = 100 }
+	}
+}
+#____________________________________________________________

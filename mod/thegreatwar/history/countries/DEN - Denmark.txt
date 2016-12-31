@@ -1,0 +1,172 @@
+﻿capital = 37
+
+#-------------------------------------------------------
+#					GENERIC VALUES
+#-------------------------------------------------------
+set_research_slots = 3
+set_national_unity = 0.75
+set_convoys = 40
+
+#-------------------------------------------------------
+#					POLITICS & ARMY
+#-------------------------------------------------------
+create_country_leader={ name = "Frederick VIII" desc=DEN_frederick_viii_DESC picture="gfx/leaders/DEN_frederick_viii.dds" expire="1935.1.1" ideology=centrism traits={  } }
+create_navy_leader={  name = "Carstensen" id=25001 portrait_path="gfx/admiral/DEN_carstensen.tga" traits={   } skill=2 }
+create_navy_leader={  name = "Evers" id=25002 portrait_path="gfx/admiral/DEN_evers.tga" traits={   } skill=2 }
+create_navy_leader={  name = "Garde" id=25003 portrait_path="gfx/admiral/DEN_garde.tga" traits={   } skill=2 }
+create_navy_leader={  name = "Kofoed-Hansen" id=25005 portrait_path="gfx/admiral/DEN_kofoed_hansen.tga" traits={   } skill=2 }
+create_navy_leader={  name = "Topsøe-Jensen" id=25006 portrait_path="gfx/admiral/DEN_topsoe_jensen.tga" traits={   } skill=2 }
+create_navy_leader={  name = "Juel-Brockdorff" id=25007 portrait_path="gfx/admiral/DEN_juel_brockdorff.tga" traits={   } skill=2 }
+
+
+1910.1.1 = {
+	oob = "DEN_1910"
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+
+	#-------------------------------------------------------
+
+	set_technology = {
+
+		# Infantry
+		infantry_weapons = 1
+		support_weapons = 1
+		infantry_binoculars = 1
+		motorised_infantry = 1
+		ww1_ambulance1 = 1
+
+
+		# Support
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		#tech_military_police = 1
+		#tech_maintenance_company = 1
+		#tech_field_hospital = 1
+		#tech_logistics_company = 1
+
+		# Armor
+
+		# Artillery
+		light_field_gun1 = 1
+		heavy_field_gun1 = 1
+
+		# Navy
+		ww1_destroyer0 = 1
+		ww1_destroyer1 = 1
+		ww1_light_cruiser1 = 1
+		ww1_light_cruiser0 = 1
+		ww1_battlecruiser0 = 1
+		ww1_battleship0 = 1
+		ww1_submarine1 = 1
+		ww1_coastal_submarine1 = 1
+		transport = 1
+
+		# Air
+
+		# Engineering
+		electronic_mechanical_engineering = 1
+
+		# Industry
+	}
+
+	set_politics={  parties={ neutrality={ popularity=92 } democratic={ popularity=5 } fascism={ popularity=1 }  communism={ popularity=2 } }  ruling_party=neutrality last_election="1910.4.31" election_frequency=48 elections_allowed=yes }
+
+	add_ideas = {
+		neutrality_idea
+	}	
+}
+
+1912.5.14 = {
+	create_country_leader={ name = "Christian X" desc=DEN_christian_x_DESC picture="gfx/leaders/DEN_christian_x.dds" expire="1935.1.1" ideology=centrism traits={  } }
+	set_country_flag=frederick_died
+}
+
+1914.1.1 = {
+	oob = "DEN_1914"
+
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+
+	#Army
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = ww1_artillery_effort_1
+	complete_national_focus = doctrine_effort
+	complete_national_focus = ww1_trenchwarfare
+
+	#Industrial
+	complete_national_focus = industrial_effort
+	complete_national_focus = infrastructure_effort
+
+	#Political
+	complete_national_focus = political_effort
+
+	#Diplomatic
+	complete_national_focus = ww1_diplomatic_effort
+	complete_national_focus = neutrality_focus
+	complete_national_focus = ww1_military_reserve
+	
+
+	#-------------------------------------------------------
+
+	set_technology = {
+
+		# Infantry
+		infantry_weapons = 1
+		ww1infantry_weapons1 = 1
+		support_weapons = 1
+		infantry_binoculars = 1
+		infantry_grenade = 1
+		motorised_infantry = 1
+		ww1_ambulance1 = 1
+
+
+		# Support
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+
+		# Armor
+		gwtank = 1 # 1910 Armored Car
+
+		# Artillery
+		light_field_gun1 = 1
+		bonus_artillery1 = 1
+		heavy_field_gun1 = 1
+		bonus_bertha1 = 1
+
+		# Navy
+		ww1_destroyer0 = 1
+		ww1_destroyer1 = 1
+		ww1_light_cruiser1 = 1
+		ww1_light_cruiser0 = 1
+		ww1_battleship0 = 1
+		ww1_battleship1 = 1
+		ww1_submarine1 = 1
+		ww1_coastal_submarine1 = 1
+		transport = 1
+
+		# Air
+		ww1_fighter1 = 1
+
+		# Engineering
+		electronic_mechanical_engineering = 1
+
+		# Industry
+	}
+
+	set_politics={  parties={ neutrality={ popularity=92 } democratic={ popularity=5 } fascism={ popularity=1 }  communism={ popularity=2 } }  ruling_party=neutrality last_election="1913.5.20" election_frequency=48 elections_allowed=yes }
+
+	add_ideas = {
+		neutrality_idea
+	}
+}

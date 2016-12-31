@@ -1,0 +1,62 @@
+﻿add_namespace = ww1_ottoman
+
+country_event = {
+	id = ww1_ottoman.21
+	title = "Idrisid Revolt"
+	desc = "Muhammad ibn Ali al-Idrisi established the Idrisid Emirate of Asir in rebellion against our great Ottoman Empire."
+
+	picture=EVENT_hoi4tgw_asir_revolt
+	
+	major = no
+	
+	trigger = {
+		TAG = TUR
+		date > 1910.5.1
+		NOT = { has_global_flag = asir_revolt_1910 }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+	
+	immediate = {
+		747 = { set_border_war = yes } # Asir Region will be striped
+		293 = { set_border_war = yes } # Yemen Region will be striped
+		set_global_flag = asir_revolt_1910
+	}
+	
+	option = {
+		name = "Organize the Repression"
+	}
+}
+
+# When Ottoman is asked to join the Central Powers 
+#____________________________________________________________
+country_event = {
+	id = ww1_ottoman.100
+	title = "Join Central Powers"
+	desc = "German Empire asks us to join the Central Powers. Should we accept and help them in war?"
+	picture = ww1_ottoman_100
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "Join Central Powers"
+		ai_chance = { factor = 100 }
+		TUR={ add_opinion_modifier={ target=GER modifier=ger_tur_diplomacy_focus } if={ limit={ TUR={ is_ai=yes NOT={ is_in_faction=yes } NOT={ is_puppet=yes } } GER={ is_faction_leader=yes } } GER={ add_to_faction=TUR } } if={ limit={ GER={ has_government=fascism } } add_ideas=fascist_influence } if={ limit={ GER={ has_government=communism } } add_ideas=communist_influence } if={ limit={ GER={ has_government=democratic } } add_ideas=democratic_influence } country_event={ id=generic.1 } } 
+
+		hidden_effect = {
+			TUR = {
+				remove_opinion_modifier = { 
+					target = BUL 
+					modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+				}
+			}
+		}
+	}
+	option = {
+		name = "Not Now"
+		ai_chance = { factor = 0 }
+	}
+#____________________________________________________________

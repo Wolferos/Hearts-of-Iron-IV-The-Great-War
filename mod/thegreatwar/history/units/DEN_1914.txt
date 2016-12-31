@@ -1,0 +1,114 @@
+﻿
+###################################################################
+
+division_template = {
+	name = "Infantry Division"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Infantry Brigade"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 0 }
+	}
+	priority = 0
+}
+
+division_template = {
+	name = "Cavalry Division"
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+}
+
+###################################################################
+
+units = {
+	division= { 
+			name = "Den Kongelige Livgarde Division"
+			location=6287 # Copenhagen
+			division_template="Infantry Division"
+			start_experience_factor=0.15
+			}
+	
+	
+	division= { 
+			name = "Sikringsstyrken Division"
+			location=6287 # Copenhagen
+			division_template="Infantry Division"
+			start_experience_factor=0.05
+			}
+	
+	
+	division= { 
+			name = "Københavns Amts Skyttekorps"
+			location = 6364 # Århus
+			division_template="Infantry Division"
+			start_experience_factor=0.05
+			}
+	
+	
+	division= { 
+			name = "Dragoons Cavalry Brigade"
+			location=6287 # Copenhagen
+			division_template="Cavalry Division"
+			start_experience_factor=0.05
+			}
+	
+	
+	division= { 
+			name = "Sjællands Hjemmeværn"
+			location = 394 # Aalborg
+			division_template="Infantry Brigade"
+			start_experience_factor=0.05
+			}
+	
+	
+	division= { 
+			name = "Jyllands Hjemmeværn"
+			location=3325 # Odense
+			division_template="Infantry Brigade"
+			start_experience_factor=0.05
+			}
+
+
+			
+	 navy = {
+		name = "Kongelige Danske Marine"
+		location=6287 # Copenhagen
+		base=6287 # Copenhagenship = { name = "KDM Herluf Trolle" definition = battleship equipment = { battleship_1890 = { amount = 1 owner = DEN } } }
+ship = { name = "KDM Olfert Fischer" definition = battleship equipment = { battleship_1890 = { amount = 1 owner = DEN } } }
+ship = { name = "KDM Peder Skram" definition = battleship equipment = { battleship_1890 = { amount = 1 owner = DEN } } }
+ship = { name = "KDM Skjold" definition = battleship equipment = { battleship_1890 = { amount = 1 owner = DEN } } }#KiS#version_name = "Skjold Class" } } }
+ship = { name = "KDM Iver Hvitfeldt" definition = battleship equipment = { battleship_1890 = { amount = 1 owner = DEN } } }#KiS#version_name = "Iver Hvitfeldt Class" } } }
+ship = { name = "KDM Heimdal" definition = light_cruiser equipment = { light_cruiser_1906 = { amount = 1 owner = DEN } } }
+ship = { name = "KDM Geiser" definition = light_cruiser equipment = { light_cruiser_1906 = { amount = 1 owner = DEN } } }
+ship = { name = "KDM Valkyrien" definition = light_cruiser equipment = { light_cruiser_1906 = { amount = 1 owner = DEN } } }#KiS#version_name = "Valkyrien Class" } } }
+
+		}
+	 navy = {
+		name = "Ubaatsflottiljen"
+		location=6287 # Copenhagen
+		base=6287 # Copenhagen
+ship = { name = "KDM Dykkeren" definition = coastal_submarine equipment = { coastal_submarine_1906 = { amount = 1 owner = DEN } } }
+ship = { name = "KDM Havmanden" definition = coastal_submarine equipment = { coastal_submarine_1906 = { amount = 1 owner = DEN } } }
+ship = { name = "KDM Havfruen" definition = coastal_submarine equipment = { coastal_submarine_1906 = { amount = 1 owner = DEN } } }
+ship = { name = "KDM Thetis" definition = coastal_submarine equipment = { coastal_submarine_1906 = { amount = 1 owner = DEN } } }
+ship = { name = "KDM Triton" definition = coastal_submarine equipment = { coastal_submarine_1906 = { amount = 1 owner = DEN } } }
+ship = { name = "KDM Najaden" definition = coastal_submarine equipment = { coastal_submarine_1906 = { amount = 1 owner = DEN } } }
+		}
+	}
+air_wings = { 
+	}
+instant_effect = {
+add_equipment_production = { equipment = { type = infantry_equipment_0 creator = "DEN" } requested_factories = 1 progress = 0.1 efficiency = 50}
+	}

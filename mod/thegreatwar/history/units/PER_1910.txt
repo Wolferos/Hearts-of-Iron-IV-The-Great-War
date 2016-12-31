@@ -1,0 +1,57 @@
+﻿###################################################################
+
+division_template = {
+	name = "Infantry Division"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Infantry Brigade"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 0 }
+	}
+	priority = 0
+}
+
+division_template = {
+	name = "Cavalry Division"
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+}
+
+###################################################################
+
+
+	
+units = {
+	division= { 
+			name = "1. Dastebandi Sarbaze Piyade"
+			location=10837 # Tehran
+			division_template="Infantry Division"
+			start_experience_factor=0.02
+			}
+	
+	
+	division= { 
+			name = "1. Dastebandi Savareh"
+			location=10837 # Tehran
+			division_template="Cavalry Division"
+			start_experience_factor=0
+			}
+	
+	}
+air_wings = { 
+	}
+instant_effect = {
+add_equipment_production = { equipment = { type = infantry_equipment_0 creator = "PER" } requested_factories = 1 progress = 0.1 efficiency = 50}
+	}
