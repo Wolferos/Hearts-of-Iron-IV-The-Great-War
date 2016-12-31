@@ -1,4 +1,4 @@
-﻿add_namespace = ww1_franzferdinand
+add_namespace = ww1_franzferdinand
 
 # Franz Ferdinand is dead! - KisNews
 #____________________________________________________________
@@ -376,7 +376,22 @@ country_event = {
 			#		target = FRA
 			#	}
 			#}
-
+			GER = {
+			declare_war_on = {
+				type = annex_everything
+				target = BEL
+			}
+			LUX = {
+				add_to_war = {
+		            targeted_alliance = BEL enemy = GER
+		        }
+	        }
+			
+			add_timed_idea = {
+				idea = schlieffen
+				days = 180
+			}
+		}
 	        AUH = {
 				add_to_war = {
 		            targeted_alliance = GER enemy = BEL
@@ -384,23 +399,7 @@ country_event = {
 		    }
 		}
 
-		GER = {
-
-			LUX = {
-				add_to_war = {
-		            targeted_alliance = BEL enemy = GER
-		        }
-	        }
-
-			declare_war_on = {
-				type = annex_everything
-				target = BEL
-			}
-			add_timed_idea = {
-				idea = schlieffen
-				days = 180
-			}
-		}
+		
 	}
 
 	# New Schlieffen Plan - War with FRA, BEL, HOL and RUS, Invasion of LUX
