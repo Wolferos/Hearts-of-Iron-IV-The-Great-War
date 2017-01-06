@@ -59,3 +59,7 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - Zak MacKay
    - Seonake
    - Benoît (Mundus Bellicus)
+   - lahvan
+   - tihhoni
+   - Darksaber501st
+   - DevilIris
