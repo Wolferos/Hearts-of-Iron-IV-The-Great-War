@@ -1,0 +1,53 @@
+﻿###########################
+# Soviet Events
+###########################
+
+add_namespace = soviet
+
+
+# When Petrograd or Moscow belong to Bolcheviks
+#____________________________________________________________
+country_event = {
+	id = soviet.1
+	title = "Bolcheviks Volunteers"
+	desc = "More Bolcheviks Volonteers join us in our fight in Petrograd against the Russian Empire!"
+	picture = COUNTRY_hoi4tgw_report_lenin
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		OR = {
+			195 = { controller = { TAG = SOV } }
+			219 = { controller = { TAG = SOV } }
+		}
+		NOT = {
+			has_country_flag = kis_secondrevoltsov
+		}
+	}
+
+	immediate = {
+		hidden_effect = {			
+			set_country_flag = kis_sov_petrograd_captured
+			add_manpower = 10000
+			load_oob="SOV_Revolt_02"
+			set_country_flag = kis_secondrevoltsov	
+			SOV = {
+				transfer_state = 637
+				transfer_state = 562
+				transfer_state = 644
+				transfer_state = 516
+				transfer_state = 579
+				transfer_state = 580
+			}
+		}
+	}
+
+	option = {
+		name = "It will help us"
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________

@@ -1,0 +1,106 @@
+﻿###########################
+# Generic Events
+###########################
+
+add_namespace = generic
+
+# President dies
+country_event = {
+	id = generic.1
+	title = generic.1.t
+	desc = { 
+		text = generic.1.d_neutral_good
+		trigger = {
+			has_government = FROM
+		}
+	}
+	desc = {
+		text = generic.1.d_bad
+		trigger = {
+			NOT = { has_government = FROM }
+		}
+	}
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = generic.1.a
+		trigger = {
+			has_government = FROM
+		}
+	}
+	option = {
+		name = generic.1.b
+		trigger = {
+			NOT = { has_government = FROM }
+		}
+	}
+}
+
+
+# We ask to players the difficulty they want
+#____________________________________________________________
+country_event = {
+	id = generic.3
+	title = generic.3.t
+	desc = generic.3.d
+	picture = COUNTRY_hoi4tgw_report_wolferos
+
+	major = yes
+
+	trigger = {
+		date > 1910.1.1
+		NOT = {
+			has_global_flag = player_choosed_difficulty
+		}
+	}
+
+	immediate = {
+		set_global_flag = player_choosed_difficulty
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	option = {
+		name = generic.3.a
+		ai_chance = { factor = 0 }
+		add_manpower = 4
+		add_ideas = ww1_difficulty_tinkywinki
+		hidden_effect = {
+			set_global_flag = player_choosed_difficulty
+		}
+	}
+
+	option = {
+		name = generic.3.b
+		ai_chance = { factor = 200 }
+		#add_ideas = ww1_difficulty_nottoday
+		hidden_effect = {
+			set_global_flag = player_choosed_difficulty
+		}
+	}
+
+	option = {
+		name = generic.3.c
+		ai_chance = { factor = 0 }
+		add_manpower = -2
+		add_ideas = ww1_difficulty_ballsofsteel
+		hidden_effect = {
+			set_global_flag = player_choosed_difficulty
+		}	
+	}
+
+	option = {
+		name = generic.3.e
+		ai_chance = { factor = 0 }
+		add_manpower = -300
+		add_ideas = ww1_difficulty_spartans
+		hidden_effect = {
+			set_global_flag = player_choosed_difficulty
+		}	
+	}
+}
+#____________________________________________________________

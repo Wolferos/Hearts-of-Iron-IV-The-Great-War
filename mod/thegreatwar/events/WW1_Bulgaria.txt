@@ -1,0 +1,42 @@
+﻿###########################
+# Bulgarian Events
+###########################
+
+add_namespace = ww1_bulgaria
+
+# When Bulgaria is asked to join the Central Powers 
+#____________________________________________________________
+country_event = {
+	id = ww1_bulgaria.1
+	title = ww1_bulgaria.1.t
+	desc = ww1_bulgaria.1.d
+	picture = ww1_bulgaria_1
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_bulgaria.1.a
+		ai_chance = { factor = 100 }
+		BUL={ add_opinion_modifier={ target=GER modifier=ger_tur_diplomacy_focus } if={ limit={ BUL={ is_ai=yes NOT={ is_in_faction=yes } NOT={ is_puppet=yes } } GER={ is_faction_leader=yes } } GER={ add_to_faction=BUL } } if={ limit={ GER={ has_government=fascism } } add_ideas=fascist_influence } if={ limit={ GER={ has_government=communism } } add_ideas=communist_influence } if={ limit={ GER={ has_government=democratic } } add_ideas=democratic_influence } country_event={ id=generic.1 } }
+		GER = {
+			send_equipment = {
+				target = BUL
+				type = infantry_equipment_1
+				amount = 800
+			}
+		}
+		hidden_effect = {
+			BUL = {
+				remove_opinion_modifier = { 
+					target = TUR 
+					modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+				}
+			}
+		}
+	}
+	option = {
+		name = ww1_bulgaria.1.b
+		ai_chance = { factor = 0 }
+	}
+#____________________________________________________________

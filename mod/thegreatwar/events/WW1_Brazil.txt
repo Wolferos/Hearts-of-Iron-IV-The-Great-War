@@ -1,0 +1,90 @@
+﻿add_namespace = ww1_brazil
+country_event = {
+	title=ww1_brazil.1.t#The Contestado War
+	desc=ww1_brazil.1.d#The Contestado War was a conflict between rebel civilians and the Brazilian military forces. The rebels of the Contestado region followed a local healer known as Miguel Lucena Boaventura who soon died in a confrontation with the Military Police. His followers refused to accept his death, however, and believed that he was either alive or would rise again. His story mixed with the Luso-Brazilian belief in supernatural assistance in desperate times. This phenomenon transformed the submissive population into a resolute fighting force. Their attacks on the railway and lumbering operations and the failure of negotiations with federal authorities led to an escalation of hostilities in 1912 and a fierce military campaign that involved 6,000 troops, modern artillery and machine guns. The fighting was spread over a wide area, and the many redoubts of about 20,000 rebels made suppression difficult and also revealed the military's weaknesses. The Contestado was subdued by the end of 1917.
+	id=ww1_brazil.1
+	picture=ww1_brazil_1
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=60
+		}
+	trigger={
+		tag=BRA
+		502={is_border_conflict=no }
+		503={is_border_conflict=no }
+		date>1912.10.1
+		not={
+			date>1918.12.30
+			}
+		}
+	option={
+		name=ww1_brazil.1.a
+		502 = { set_border_war = yes }
+		503 = { set_border_war = yes }
+		add_political_power=-25
+		}
+	}
+country_event = {
+	title=ww1_brazil.2.t#Brazil Declares War on Germany
+	desc=ww1_brazil.2.d#Another Brazilian merchant ship has been sunk by Germany. On April 5th 1917 the Brazilian steamship Parana was sailing according to the rules of neutral nations but was still sunk with the loss of 3 Brazilian lives. We must defend ourselves!
+	id=ww1_brazil.2
+	picture=ww1_brazil_2
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=60
+		}
+	trigger={
+		country_exists=BRA
+		GER={
+			has_war_with=ENG
+			}
+		BRA={
+			not={is_in_faction_with=GER
+				}
+			}
+		not={
+			BRA={
+				has_war_with=ENG
+				}
+			}
+		tag=BRA
+		GER={
+			has_country_flag=unrest_subs
+			}
+		date>1917.2.1
+		}
+	option={
+		name=ww1_brazil.2.a
+		ai_chance={
+			factor=100
+			}
+		ENG={
+			add_to_faction=ROOT
+			}
+		#hidden_effect={
+		#	if = {
+		#		limit = {
+		#			has_equipment = {
+		#				dreadnought > 0
+		#			}
+		#		}
+		#		send_equipment = {
+		#			target = ENG
+		#			type = dreadnought
+		#			amount = 1
+		#		}
+		#	}
+		#}
+		ENG={
+			country_event=ww1_england.17
+			}
+		}
+	option={
+		name=ww1_brazil.2.b
+		ENG={
+			add_to_faction=ROOT
+			}
+		}
+	}

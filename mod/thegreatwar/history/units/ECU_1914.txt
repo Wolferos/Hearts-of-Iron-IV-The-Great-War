@@ -1,0 +1,53 @@
+﻿
+###################################################################
+
+division_template = {
+	name = "Infantry Division"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Infantry Brigade"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 0 }
+	}
+	priority = 0
+}
+
+division_template = {
+	name = "Cavalry Division"
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+}
+
+###################################################################
+
+units = {
+	division= { 
+			name = "1a Brigada de Infantería"
+			location=12798 # Quito
+			division_template="Infantry Division"
+			start_experience_factor=0.05
+			}
+	 navy = {
+		name = "Ecuadorian Fleet"
+		location = 8252 # Manta
+		base =  8252 # Manta
+		 ship = { name = "1st Flotilla" definition = destroyer equipment = { destroyer_1890 = { amount = 1 owner = ECU } } } #type = destroyer  historical_model = 0 
+		}
+	}
+air_wings = { 
+	}
+instant_effect = {
+add_equipment_production = { equipment = { type = infantry_equipment_0 creator = "ECU" } requested_factories = 1 progress = 0.1 efficiency = 50}
+	}

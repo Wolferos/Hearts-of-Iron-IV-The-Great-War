@@ -1,0 +1,672 @@
+﻿add_namespace = ww1_russia
+
+
+# Sikorsky Ilya Muromets
+#____________________________________________________________
+#country_event = {
+#	id = ww1_russia.2
+#	title = ww1_russia.2.t #Sikorsky Ilya Muromets
+#	desc = ww1_russia.2.d #Initially designed as a civilian aircraft, this would make a most capable bomber. Should we seize them and put them to military use?
+#	picture = ww1_russia_2
+
+#	fire_only_once = yes
+
+#	trigger = {
+# 		TAG = RUS
+#		date > 1913.12.11
+#	}
+
+#	option = {
+#		name = ww1_russia.2.a
+#		ai_chance = {
+#			factor = 100
+#		}
+#		add_political_power = -50
+#		hidden_effect = {
+#			load_oob = "SIM"
+#		}
+#	}
+#	option={
+#		name = ww1_russia.2.b
+#		ai_chance = {
+#			factor = 0
+#		}
+#	}
+#}
+#____________________________________________________________
+
+# Rasputin Murdered!
+#____________________________________________________________
+country_event = {
+	id = ww1_russia.3
+	title = ww1_russia.3.t #Rasputin Murdered!
+	desc = ww1_russia.3.d #Rasputin, healer and confidant of the Tsarina has been killed by Prince Yusupov
+	picture = ww1_russia_3
+
+	fire_only_once = yes
+
+	trigger = {
+		RUS = {
+			has_war = yes
+			date > 1916.12.29
+			NOT = {
+				has_country_flag = dual_power
+			}
+		}
+	}
+	major = yes
+	option = {
+		name = ww1_russia.3.a
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = -50
+		add_national_unity = -0.02
+	}
+}
+#____________________________________________________________
+
+# Tsar Nicholas Abdicates! + Soviet Revolution
+#____________________________________________________________
+news_event = {
+	id = ww1_russia.4
+	title = ww1_russia.4.t
+	desc = ww1_russia.4.d
+	picture = EVENT_hoi4tgw_october_revolution
+
+	major = yes
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	trigger = {
+
+		NOT = {
+			has_global_flag = kis_ask_ger_surrend # Can't happened if Germany loosed the WW1
+		}
+		
+		RUS = {
+			OR = {
+				has_war_with = GER
+				has_war_with = AUH
+			}
+			NOT = {
+				has_country_flag = dual_power
+				has_government = communism
+			}
+			NOT = {	controls_state = 98 }
+			NOT = {	controls_state = 10 }
+			NOT = {	controls_state = 90 }
+			NOT = { controls_state = 97 }
+			NOT = { controls_state = 92 }
+			NOT = { controls_state = 93 }
+			NOT = { controls_state = 199 }
+		}
+	}
+
+	immediate = {
+		hidden_effect = {	
+			ENG = {
+				remove_from_faction = RUS
+				add_opinion_modifier = { 
+					target = RUS 
+					modifier = HOI4TGW_Opinion_Russia_Leave_Entente
+				} 
+			}
+			SOV = {
+				create_faction = "Comintern"		
+				
+				declare_war_on = {
+		            type = annex_everything
+		            target = RUS
+		        }
+		        #every_state={
+				#	limit={
+				#		# SOV will get the same core as RUS
+				#		#is_claimed_by = RUS
+				#		is_core_of = RUS
+				#	}
+				#	SOV={
+				#		add_state_claim = PREV
+				#	}
+				#}
+				set_national_unity = 0.9
+				add_political_power = 800
+				add_manpower = 500000
+				load_oob="SOV_Revolt_01"
+
+				transfer_state = 195
+				transfer_state = 219
+				transfer_state = 244
+				transfer_state = 263
+				transfer_state = 208
+				transfer_state = 246
+				transfer_state = 247
+				transfer_state = 248
+				transfer_state = 264
+				transfer_state = 253
+				transfer_state = 254
+
+				add_state_claim = 195
+				add_state_claim = 219
+				add_state_claim = 244
+				add_state_claim = 263
+				add_state_claim = 208
+				add_state_claim = 246
+				add_state_claim = 247
+				add_state_claim = 248
+				add_state_claim = 264
+				add_state_claim = 253
+				add_state_claim = 254
+			}
+			RUS = {
+				set_country_flag = dual_power
+				set_country_flag = kis_tsarnicholasabdicated
+				set_country_flag = bolsheviks
+				add_political_power = -100
+				add_national_unity = -0.10
+				add_timed_idea = {
+					idea = dual_power
+					days = 180
+				}
+				create_faction = "White Movement"
+				kill_country_leader = yes
+				create_country_leader = { 
+					name = "Georgy Lvov" 
+					desc = RUS_georgy_lvov_DESC 
+					picture = "gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_georgy_lvov.dds" 
+					expire = "1935.1.1" 
+					ideology = conservatism 
+					traits = { } 
+				}
+				set_politics = {
+				    parties = {
+				        neutrality = {
+				            popularity = 0
+				        }
+				        democratic = {
+				            popularity = 70
+				        }
+				        fascism = {
+				            popularity = 0
+				            banned = yes
+				        }
+				        communism = {
+				            popularity = 30
+				        }
+				    }
+				    ruling_party = democratic last_election = "1912.9.1"
+				    election_frequency = 60 elections_allowed = no
+				}			
+			}
+		}
+	}
+
+	option = {
+		name = ww1_russia.4.a
+		ai_chance = { factor = 100 }
+	}
+}
+#____________________________________________________________
+
+# If RUS Won Against SOV
+#____________________________________________________________
+news_event = {
+	id = ww1_russia.5
+	title = ww1_russia.5.t
+	desc = ww1_russia.5.d
+	picture = GFX_news_event_generic_sign_treaty2
+
+	major = yes
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	trigger = {
+		RUS = {
+			has_country_flag = kis_tsarnicholasabdicated
+			NOT = {
+				has_global_flag = kis_brestlitovsk
+				has_country_flag = kis_octoberrevolutioncrushed
+			}
+		}
+		OR = {
+			SOV = {
+				exists = no
+				#has_war_with = RUS
+				#surrender_progress > 0.60
+			}
+			# If AI Peace Conference Occured - SOV can become democratic, we want russia to annex the remaining SOV
+			SOV = {
+				exists = yes
+				has_government = democratic
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			RUS = {
+				set_country_flag = kis_octoberrevolutioncrushed
+				kill_country_leader = yes
+				create_country_leader={ name = "Nikolai II" desc=RUS_nikolai_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_nikolai_ii.dds" expire="1935.1.1" ideology=autocracy traits={  } }
+				set_politics = {
+				    parties = {
+				        neutrality = {
+				            popularity = 100
+				        }
+				        democratic = {
+				            popularity = 0
+				            banned = yes
+				        }
+				        fascism = {
+				            popularity = 0
+				            banned = yes
+				        }
+				        communism = {
+				            popularity = 0
+				            banned = yes
+				        }
+				    }
+				    ruling_party = neutrality last_election = "1912.9.1"
+				    election_frequency = 60 elections_allowed = no
+				}
+				annex_country = {
+					target = SOV
+					transfer_troops = no
+				}
+			}
+		}
+	}
+
+	option = {
+		name = ww1_russia.5.a
+		ai_chance = { factor = 100 }
+	}
+}
+#____________________________________________________________
+
+# Treaty of Brest-Litovsk - Part 1
+#____________________________________________________________
+news_event = {
+	id = ww1_russia.6
+	title = ww1_russia.6.t
+	desc = ww1_russia.6.d
+	picture = ww1_russia_5
+
+	major = yes
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	trigger = {
+
+		NOT = {
+			has_global_flag = kis_ask_ger_surrend # Can't happened if Germany loosed the WW1
+		}
+
+		country_exists = SOV
+		RUS = {
+			has_war_with = SOV
+			surrender_progress > 0.50
+			NOT = { 
+				has_global_flag = kis_brestlitovsk 
+				has_country_flag = kis_octoberrevolutioncrushed
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_global_flag = kis_brestlitovsk
+			SOV = {
+				country_event = { days = 20 id = ww1_russia.7 }
+				country_event = { days = 2 id = ww1_russia.8 }
+				RUS = {
+					every_state = {
+						limit = {
+							# SOV will get the same core as RUS
+							#is_claimed_by = RUS
+							is_core_of = RUS
+						}
+						SOV = {
+							add_state_core = PREV
+						}
+					}
+				}
+				diplomatic_relation = {
+					country = GER
+					relation = non_aggression_pact
+				}
+				diplomatic_relation = {
+					country = GER
+					relation = military_access
+					active = yes
+				}
+				diplomatic_relation = {
+					country = AUH
+					relation = non_aggression_pact
+				}
+				diplomatic_relation = {
+					country = AUH
+					relation = military_access
+					active = yes
+				}
+				diplomatic_relation = {
+					country = FIN
+					relation = non_aggression_pact
+				}
+				diplomatic_relation = {
+					country = EST
+					relation = non_aggression_pact
+				}
+				diplomatic_relation = {
+					country = LAT
+					relation = non_aggression_pact
+				}
+				diplomatic_relation = {
+					country = ROM
+					relation = non_aggression_pact
+				}
+				diplomatic_relation = {
+					country = UKR
+					relation = non_aggression_pact
+				}
+				diplomatic_relation = {
+					country = TUR
+					relation = non_aggression_pact
+				}
+				annex_country = {
+					target = RUS
+					transfer_troops = no
+				}
+				add_timed_idea = {
+					idea = octrev
+					days = 360
+				}	
+			}
+		}
+	}
+
+	option = {
+		name = "The October Revolution is Successful"
+		ai_chance = { factor = 100 }
+	}
+}
+#____________________________________________________________
+
+# Treaty of Brest-Litovsk - Part 2
+#____________________________________________________________
+country_event = {
+	id = ww1_russia.8
+	title = ww1_russia.8.t
+	desc = ww1_russia.8.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			FIN = {
+				transfer_state = 111
+				transfer_state = 149
+				transfer_state = 150
+				transfer_state = 148
+				transfer_state = 146
+			}
+			EST = {
+				transfer_state = 13
+				transfer_state = 191
+			}
+			LAT = {
+				transfer_state = 12
+			}
+			SOV = {
+				country_event = { days = 2 id = ww1_russia.9 }
+			}
+		}
+	}
+
+	option = {
+		name = ww1_russia.8.a
+		ai_chance = { factor = 100 }
+	}
+}
+#____________________________________________________________
+
+# Treaty of Brest-Litovsk - Part 3
+#____________________________________________________________
+country_event = {
+	id = ww1_russia.9
+	title = ww1_russia.9.t
+	desc = ww1_russia.9.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			GER = {
+				transfer_state = 10
+				transfer_state = 11
+				transfer_state = 87
+				transfer_state = 90
+				transfer_state = 92
+				transfer_state = 94
+				transfer_state = 95
+				transfer_state = 96
+				transfer_state = 97
+				transfer_state = 98
+				transfer_state = 189
+				transfer_state = 190
+			}
+			SOV = {
+				country_event = { days = 2 id = ww1_russia.10 }
+			}
+		}
+	}
+
+	option = {
+		name = ww1_russia.9.a
+		ai_chance = { factor = 100 }
+	}
+}
+#____________________________________________________________
+
+# Treaty of Brest-Litovsk - Part 4
+#____________________________________________________________
+country_event = {
+	id = ww1_russia.10
+	title = ww1_russia.10.t
+	desc = ww1_russia.10.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			UKR = {
+				transfer_state = 93 # Wolyn
+				transfer_state = 192
+				transfer_state = 193
+				transfer_state = 196
+				transfer_state = 197
+				transfer_state = 198
+				transfer_state = 199
+				transfer_state = 200
+				transfer_state = 201
+				transfer_state = 202
+				transfer_state = 203
+				transfer_state = 221
+				transfer_state = 225
+				transfer_state = 226
+				transfer_state = 227
+				#transfer_state = 228 #Open Beta 0.1.6
+				transfer_state = 259
+
+				add_state_core = 93
+				add_state_core = 192
+				add_state_core = 193
+				add_state_core = 196
+				add_state_core = 197
+				add_state_core = 198
+				add_state_core = 199
+				add_state_core = 200
+				add_state_core = 201
+				add_state_core = 202
+				add_state_core = 203
+				add_state_core = 221
+				add_state_core = 225
+				add_state_core = 226
+				add_state_core = 227
+				add_state_core = 228
+				add_state_core = 259
+			}
+			if = {
+				limit = {
+					ROM = {
+						exists = yes
+					}
+				}
+				ROM = {
+					transfer_state = 78
+					add_state_core = 78
+				}
+			}
+
+
+			if = {
+				limit = {
+					AUH = {
+						exists = yes
+					}
+				}
+				AUH = {
+					transfer_state = 93 # Wolyn
+				}
+			}
+
+		}
+	}
+
+	option = {
+		name = ww1_russia.10.a
+		ai_chance = { factor = 100 }
+		hidden_effect = {
+			country_event = { days = 240 id = ww1_russia.20}
+		}
+	}
+}
+#____________________________________________________________
+
+# Troops Head Home
+#____________________________________________________________
+country_event = {
+	title=ww1_russia.7.t#Troops Head Home
+	desc=ww1_russia.7.d#After the treaty of Brest-Litovsk, most soldiers simply abandoned their posts and went home
+	id=ww1_russia.7
+	picture=GFX_news_event_generic_sign_treaty2
+	fire_only_once=yes
+	is_triggered_only=yes
+	option={
+		name=ww1_russia.7.a
+		ai_chance={
+			factor=100
+		}
+		set_global_flag=imperial_dissolution
+	}
+}
+#____________________________________________________________
+
+
+#  The Russian Civil War
+#____________________________________________________________
+news_event = {
+	id = ww1_russia.20
+	title = ww1_russia.20.t
+	desc = ww1_russia.20.d
+	picture = ww1_russia_8
+
+	major = yes
+	is_triggered_only = yes
+
+	#trigger = {
+	#	#date > 1918.6.1
+	#	country_exists = SOV
+	#	NOT = {
+	#		country_exists = RUS
+	#		has_global_flag = kis_whitesvsreds
+	#	}
+	#	has_global_flag = kis_brestlitovsk
+	#
+	#}
+
+	immediate = {
+		hidden_effect = {
+			RUS = {
+				create_faction = "White Movement"
+				set_global_flag = kis_whitesvsreds
+				kill_country_leader = yes
+				create_country_leader={ name = "Alexander Kolchak" desc=RUS_kolchak_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/navy_admirals/RUS_kolchak.dds" expire="1935.1.1" ideology=fascism_ideology traits={ } }
+				set_politics = {
+				    parties = {
+				        neutrality = {
+				            popularity = 0
+				        }
+				        democratic = {
+				            popularity = 0
+				        }
+				        fascism = {
+				            popularity = 100
+				        }
+				        communism = {
+				            popularity = 0
+				        }
+				    }
+				    ruling_party = fascism last_election = "1912.9.1"
+				    election_frequency = 60 elections_allowed = no
+				}
+
+				declare_war_on = {
+		            type = annex_everything
+		            target = SOV
+		        }
+
+				transfer_state = 147
+				transfer_state = 137
+				transfer_state = 213
+				transfer_state = 214
+				transfer_state = 215
+				transfer_state = 216
+				transfer_state = 234
+				transfer_state = 235
+				transfer_state = 236
+				transfer_state = 237
+				transfer_state = 249
+				transfer_state = 250
+				transfer_state = 251
+				transfer_state = 256
+				transfer_state = 238
+				transfer_state = 351
+				transfer_state = 400
+				transfer_state = 401
+				transfer_state = 406
+				transfer_state = 407
+				transfer_state = 652
+				transfer_state = 722
+				load_oob = "SOV_Civil_War"
+			}
+		}
+	}
+	option = {
+		name = ww1_russia.20.a
+		ai_chance = { factor = 100 }				
+	}
+}
+#____________________________________________________________

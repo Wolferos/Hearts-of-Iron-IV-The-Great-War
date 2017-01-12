@@ -1,0 +1,75 @@
+﻿###################################################################
+
+division_template = {
+	name = "Infantry Division"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Infantry Brigade"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 0 }
+	}
+	priority = 0
+}
+
+division_template = {
+	name = "Cavalry Division"
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+}
+
+###################################################################
+
+units = {
+	division= { 
+			name = "1. Thai Infantry Div."
+			location = 12122 # Phet Buri
+			division_template="Infantry Division"
+			start_experience_factor=0
+			}
+	
+	
+	division= { 
+			name = "2. Thai Infantry Div."
+			location = 12122 # Phet Buri
+			division_template="Infantry Division"
+			start_experience_factor=0
+			}
+	
+	
+	division= { 
+			name = "Royal Thai Police Force"
+			location=7408 # Bangkok
+			division_template="Infantry Brigade"
+			start_experience_factor=0
+			}
+	 navy = {
+		name = "Royal Siamese Navy"
+		location = 7408 # Phet Buri
+		base =  7408 # Phet Buri
+ship = { name = "Maha Chakri" definition = light_cruiser equipment = { light_cruiser_1906 = { amount = 1 owner = SIA } } }
+ship = { name = "Sua Thaymon Chon" definition = destroyer equipment = { destroyer_1906 = { amount = 1 owner = SIA } } }
+ship = { name = "Sua Khamron Sin" definition = destroyer equipment = { destroyer_1906 = { amount = 1 owner = SIA } } }
+		}
+	}
+air_wings = { 
+	}
+instant_effect = {
+add_equipment_production = { equipment = { type = infantry_equipment_0 creator = "SIA" } requested_factories = 1 progress = 0.1 efficiency = 50}
+
+add_equipment_production = { equipment = { type = support_equipment_1 creator = "SIA" } requested_factories = 1 progress = 0.1 efficiency = 50}
+add_equipment_production = { equipment = { type = light_field_gun_equipment_1 creator = "SIA" } requested_factories = 1 progress = 0.1 efficiency = 50}
+add_equipment_production = { equipment = { type = motorized_equipment_0 creator = "SIA" } requested_factories = 1 progress = 0.1 efficiency = 50}
+
+	}

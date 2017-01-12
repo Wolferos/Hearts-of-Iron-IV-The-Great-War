@@ -1,0 +1,37 @@
+﻿add_namespace = ww1_ethiopia
+country_event = {
+	title=ww1_ethiopia.1.t#Menelik II Dies!
+	desc=ww1_ethiopia.1.d#Menelik II has died. Iyasu V is now Emperor
+	id=ww1_ethiopia.1
+	picture=ww1_ethiopia_1
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=1
+		}
+	trigger={
+		tag=ETH
+		has_government=neutrality
+		not={
+			has_country_flag=menelik_died
+			}
+		date>1913.12.12
+		}
+	option={
+		name=ww1_ethiopia.1.a
+		ai_chance={
+			factor=100
+			}
+		set_country_flag=menelik_died
+		kill_country_leader=yes
+		create_country_leader={
+			name="Iyasu V"
+			desc=ETH_iyasu_v_DESC
+			picture="gfx/leaders/ETH_iyasu_v.dds"
+			expire="1935.1.1"
+			ideology=despotism
+			traits={
+				}
+			}
+		}
+	}

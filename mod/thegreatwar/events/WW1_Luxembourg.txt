@@ -1,0 +1,45 @@
+﻿add_namespace = ww1_luxembourg
+
+news_event = {
+    id = ww1_luxembourg.1
+    title = ww1_luxembourg.1.t
+    desc = ww1_luxembourg.1.d
+    picture = ww1_luxembourg_1
+    
+    major = yes
+
+    mean_time_to_happen = {
+        days = 0
+    }
+    trigger = {
+        date > 1912.2.25
+        LUX = {
+	        has_government = democratic
+	        not = {
+	            has_country_flag = william_dead
+	        }    
+        }
+    }
+    immediate = {
+        hidden_effect = {
+        	LUX = {
+        		kill_country_leader = yes
+    	        create_country_leader = {
+    	            name = "Marie-Adelaide"
+    	            desc = LUX_marie_adelaide_DESC
+    	            picture = "gfx/leaders/LUX_marie_adelaide.dds"
+    	            expire = "1935.1.1"
+    	            ideology = liberalism
+    	            traits = {}
+    	        }
+    	        set_country_flag = william_dead
+        	}
+        }
+    }
+    option = {
+        name = ww1_luxembourg.1.a
+        ai_chance = {
+            factor = 100
+        }  
+    }
+}

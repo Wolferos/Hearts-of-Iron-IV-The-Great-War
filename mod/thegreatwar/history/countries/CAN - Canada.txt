@@ -1,0 +1,219 @@
+﻿capital = 276
+
+#-------------------------------------------------------
+#					GENERIC VALUES
+#-------------------------------------------------------
+set_research_slots = 3
+set_national_unity = 0.9
+set_convoys = 100
+
+#-------------------------------------------------------
+#					POLITICS & ARMY
+#-------------------------------------------------------
+create_country_leader={ name = "Wilfrid Laurier" desc=CAN_wilfrid_laurier_DESC picture="gfx/leaders/CAN_wilfrid_laurier.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+create_corps_commander={  name = "Radcliffe" id=13002 portrait_path="gfx/generals/CAN_radcliffe.tga" traits={   } skill=2 }
+create_corps_commander={  name = "Turner" id=13003 portrait_path="gfx/generals/CAN_turner.tga" traits={   } skill=2 }
+create_corps_commander={  name = "Lipsett,L.J." id=13004 portrait_path="gfx/generals/CAN_lipsett_lj.tga" traits={ fortress_buster  } skill=3 }
+create_corps_commander={  name = "Tuxford" id=13005 portrait_path="gfx/generals/CAN_tuxford.tga" traits={   } skill=2 }
+create_corps_commander={  name = "Loomis,C.B." id=13006 portrait_path="gfx/generals/CAN_loomis_cb.tga" traits={   } skill=2 }
+create_corps_commander={  name = "Hart-McHarg" id=13007 portrait_path="gfx/generals/CAN_hart_mcharg.tga" traits={   } skill=2 }
+create_corps_commander={  name = "Meighen" id=13008 portrait_path="gfx/generals/CAN_meighen.tga" traits={   } skill=2 }
+create_corps_commander={  name = "Boyle" id=13009 portrait_path="gfx/generals/CAN_boyle.tga" traits={   } skill=2 }
+create_corps_commander={  name = "Currie J.A." id=13015 portrait_path="gfx/generals/CAN_currie_ja.tga" traits={   } skill=2 }
+create_corps_commander={  name = "Mercer,M.S." id=13016 portrait_path="gfx/generals/CAN_mercer_ms.tga" traits={   } skill=2 }
+create_corps_commander={  name = "Burstall,H.E." id=13017 portrait_path="gfx/generals/CAN_burstall_he.tga" traits={   } skill=2 }
+create_corps_commander={  name = "Macdonell A.C." id=13018 portrait_path="gfx/generals/CAN_macdonell_ac.tga" traits={   } skill=2 }
+create_corps_commander={  name = "Steele" id=13019 portrait_path="gfx/generals/CAN_steele.tga" traits={   } skill=3 }
+create_corps_commander={  name = "Hughes" id=13020 portrait_path="gfx/generals/CAN_hughes.tga" traits={ commando  } skill=3 }
+create_corps_commander={  name = "O`Grady-Haly" id=13028 portrait_path="gfx/generals/CAN_o`grady_haly.tga" traits={   } skill=2 }
+create_corps_commander={  name = "Hutton" id=13029 portrait_path="gfx/generals/CAN_hutton.tga" traits={   } skill=2 }
+create_corps_commander={  name = "Otter" id=13030 portrait_path="gfx/generals/CAN_otter.tga" traits={   } skill=2 }
+create_corps_commander={  name = "Lake" id=13031 portrait_path="gfx/generals/CAN_lake.tga" traits={   } skill=2 }
+create_field_marshal={  name = "Cochrane" id=13027 portrait_path="gfx/fieldmarshal/CAN_cochrane.tga" traits={   } skill=2 }
+
+1910.1.1 = {
+	oob = "CAN_1910"
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+
+	#-------------------------------------------------------
+
+	set_technology = {
+
+		# Infantry
+		infantry_weapons = 1
+		support_weapons = 1
+		infantry_binoculars = 1
+		motorised_infantry = 1
+		ww1_ambulance1 = 1
+
+
+		# Support
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		#tech_military_police = 1
+		#tech_maintenance_company = 1
+		#tech_field_hospital = 1
+		#tech_logistics_company = 1
+
+		# Armor
+
+		# Artillery
+		light_field_gun1 = 1
+		heavy_field_gun1 = 1
+
+		# Navy
+		ww1_destroyer0 = 1
+		ww1_destroyer1 = 1
+		ww1_light_cruiser1 = 1
+		ww1_light_cruiser0 = 1
+		ww1_battlecruiser0 = 1
+		ww1_battleship0 = 1
+		ww1_submarine1 = 1
+		ww1_coastal_submarine1 = 1
+		transport = 1
+
+		# Air
+
+		# Engineering
+		electronic_mechanical_engineering = 1
+
+		# Industry
+	}
+
+	set_politics = {
+	    parties = {
+	        democratic = {
+	            popularity = 98
+	        }
+	        fascism = {
+	            popularity = 1
+	        }
+	        communism = {
+	            popularity = 1
+	        }
+	    }
+	    ruling_party = democratic last_election = "1908.10.26"
+	    election_frequency = 48 elections_allowed = yes
+	}
+
+	add_ideas = {
+		limited_conscription
+	}	
+}
+
+1914.1.1 = {
+	oob = "CAN_1914"
+
+	create_country_leader = {
+        name = "Robert Borden"
+        desc = CAN_robert_borden_DESC picture = "gfx/leaders/CAN_robert_borden.dds"
+        expire = "1935.1.1"
+        ideology = liberalism traits = {}
+    }
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+
+	#Army
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = ww1_artillery_effort_1
+	complete_national_focus = doctrine_effort
+	complete_national_focus = ww1_trenchwarfare
+
+	#Industrial
+	complete_national_focus = industrial_effort
+	complete_national_focus = infrastructure_effort
+
+	#Political
+	complete_national_focus = political_effort
+
+	#Diplomatic
+	complete_national_focus = ww1_diplomatic_effort
+	complete_national_focus = ww1_takeposition	
+	complete_national_focus = ww1_supportfrance
+	complete_national_focus = ww1_supportrussia	
+	complete_national_focus = interventionism_focus
+	complete_national_focus = volunteer_corps
+	complete_national_focus = foreign_expeditions
+	
+
+	#-------------------------------------------------------
+
+	set_technology = {
+
+		# Infantry
+		infantry_weapons = 1
+		ww1infantry_weapons1 = 1
+		support_weapons = 1
+		infantry_binoculars = 1
+		infantry_grenade = 1
+		motorised_infantry = 1
+		ww1_ambulance1 = 1
+
+
+		# Support
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+
+		# Armor
+		gwtank = 1 # 1910 Armored Car
+
+		# Artillery
+		light_field_gun1 = 1
+		bonus_artillery1 = 1
+		heavy_field_gun1 = 1
+		bonus_bertha1 = 1
+
+		# Navy
+		ww1_destroyer0 = 1
+		ww1_destroyer1 = 1
+		ww1_light_cruiser1 = 1
+		ww1_light_cruiser0 = 1
+		ww1_battleship0 = 1
+		ww1_battleship1 = 1
+		ww1_submarine1 = 1
+		ww1_coastal_submarine1 = 1
+		transport = 1
+
+		# Air
+		ww1_fighter1 = 1
+
+		# Engineering
+		electronic_mechanical_engineering = 1
+
+		# Industry
+	}
+
+	set_politics = {
+		parties = {
+	        democratic = {
+	            popularity = 98
+	        }
+	        fascism = {
+	            popularity = 0
+	        }
+	        communism = {
+	            popularity = 2
+	        }
+	    }
+	    ruling_party = democratic last_election = "1913.5.31"
+	    election_frequency = 36 elections_allowed = yes
+	}
+
+	add_ideas = {
+		limited_conscription
+	}
+
+	set_country_flag = grey_retired
+}
