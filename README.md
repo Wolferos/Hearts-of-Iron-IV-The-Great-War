@@ -14,6 +14,8 @@
 **Supported Languages:**
 - English Language 
 - Chinese Language (本MOD提供汉化版本，[汉化补丁链接](http://steamcommunity.com/sharedfiles/filedetails/?id=803029506)) 
+- Turkish Language (Türkçe Yama(http://paradoxfan.com/forum/index.php?topic=51341.0))
+- Russian Language (Already in the Mod thanks to the Community of Strategium.ru(https://www.strategium.ru))
 
 /!\ Warning /!\ Old Saves may not work with newer versions of the Mod
 
@@ -59,7 +61,9 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - Zak MacKay
    - Seonake
    - Benoît (Mundus Bellicus)
-   - lahvan
-   - tihhoni
    - Darksaber501st
    - DevilIris
+   - lahvan
+   - Mixmaximonster
+   - tihhoni
+   - Felicianum2
