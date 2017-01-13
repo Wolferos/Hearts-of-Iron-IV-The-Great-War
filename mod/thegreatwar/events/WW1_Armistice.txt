@@ -505,3 +505,217 @@ country_event = {
 	}
 }
 #____________________________________________________________
+# Entente Surrender - Trigger to the FRA
+#____________________________________________________________
+country_event = {
+	id = ww1_armistice.4
+	title = ww1_armistice.4.t
+	desc = ww1_armistice.4.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	trigger = {
+		TAG = FRA
+		FRA = {
+			surrender_progress > 0.55
+			has_war_with = GER
+			has_war_with = AUH
+
+			
+			NOT = {
+				has_global_flag = kis_ask_fra_surrend #
+			}
+		}
+	}
+
+	immediate = {
+		set_global_flag = kis_ask_fra_surrend
+	}
+
+	option = {
+		name = ww1_armistice.4.a
+		ai_chance = { factor = 100 }
+
+		hidden_effect = {
+
+			#Dirty Code but only way for now...
+			GER = { white_peace = FRA }
+			GER = { white_peace = ENG }
+			GER = { white_peace = RUS }
+			GER = { white_peace = SOV }
+			GER = { white_peace = HOL }
+			GER = { white_peace = BEL }
+			GER = { white_peace = ITA }
+			GER = { white_peace = LUX }
+			GER = { white_peace = MTN }
+			GER = { white_peace = SER }
+			GER = { white_peace = BUL }
+			GER = { white_peace = TUR }
+			GER = { white_peace = GRE }
+			GER = { white_peace = JAP }
+			GER = { white_peace = USA }
+			GER = { white_peace = ROM }
+			GER = { white_peace = CHI }
+			GER = { white_peace = QIN }
+
+			GER = {	diplomatic_relation = {	country = FRA relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = ENG relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = RUS relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = HOL relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = BEL relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = ITA relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = LUX relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = MTN relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = SER relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = BUL relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = TUR relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = GRE relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = JAP relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = USA relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = ROM relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = CHI relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
+
+			AUH = { white_peace = FRA }
+			AUH = { white_peace = ENG }
+			AUH = { white_peace = RUS }
+			AUH = { white_peace = SOV }
+			AUH = { white_peace = HOL }
+			AUH = { white_peace = BEL }
+			AUH = { white_peace = ITA }
+			AUH = { white_peace = LUX }
+			AUH = { white_peace = MTN }
+			AUH = { white_peace = SER }
+			AUH = { white_peace = BUL }
+			AUH = { white_peace = TUR }
+			AUH = { white_peace = GRE }
+			AUH = { white_peace = JAP }
+			AUH = { white_peace = USA }
+			AUH = { white_peace = ROM }
+			AUH = { white_peace = CHI }
+			AUH = { white_peace = QIN }
+
+			AUH = {	diplomatic_relation = {	country = FRA relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = ENG relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = RUS relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = HOL relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = BEL relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = ITA relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = LUX relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = MTN relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = SER relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = BUL relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = TUR relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = GRE relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = JAP relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = USA relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = ROM relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = CHI relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
+
+			# The Entente is dead after defeat in Great War
+			ENG = {
+				remove_from_faction = USA
+				remove_from_faction = RUS
+				remove_from_faction = JAP
+				remove_from_faction = ROM
+				remove_from_faction = SER
+				remove_from_faction = LUX
+				remove_from_faction = HOL
+				remove_from_faction = GRE
+				remove_from_faction = POL
+				remove_from_faction = DEN
+				remove_from_faction = BEL
+				remove_from_faction = POR
+				remove_from_faction = SPR
+				remove_from_faction = FRA
+				remove_from_faction = RAJ
+				remove_from_faction = CAN
+			}
+			GER = {
+				transfer_state = 8
+				transfer_state = 98
+				transfer_state = 87
+				transfer_state = 90
+				transfer_state = 10
+			}
+			AUH = {
+				transfer_state = 160
+				transfer_state = 159
+				transfer_state = 158
+				transfer_state = 161
+				transfer_state = 105
+				transfer_state = 761
+			}
+			TUR = {
+				transfer_state = 453
+				transfer_state = 446
+				transfer_state = 447
+				transfer_state = 452
+				transfer_state = 273
+				transfer_state = 663
+				transfer_state = 451
+				transfer_state = 450
+				transfer_state = 449
+				transfer_state = 448
+				transfer_state = 661
+				transfer_state = 662
+			}
+		news_event = { days = 3 id = ww1_armistice.5 }
+					
+		}
+	}
+}
+news_event = {
+	id = ww1_armistice.5
+	title = ww1_armistice.5.t
+	desc = ww1_armistice.5.d
+	picture = EVENT_hoi4tgw_treaty_of_versailles
+
+	major = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = kis_treaty_of_berlin
+		hidden_effect = {
+			GER = {
+				transfer_state = 545
+				transfer_state = 542
+				transfer_state = 763
+				transfer_state = 718
+				transfer_state = 538
+				transfer_state = 336
+				transfer_state = 539
+			}
+			AUH = {
+				transfer_state = 458
+				transfer_state = 665
+				transfer_state = 460
+				transfer_state = 513
+				transfer_state = 459
+				transfer_state = 719
+				transfer_state = 275
+				transfer_state = 295
+				transfer_state = 333
+			}
+			TUR = {
+				transfer_state = 671
+				transfer_state = 286
+			}
+			LAO = {
+				transfer_state = 670
+			}
+			CAM = {
+				transfer_state = 741
+			}
+			set_autonomy = { target = RAJ autonomy_state = autonomy_free } 
+			set_autonomy = { target = CAN autonomy_state = autonomy_free }
+		}
+	}
+}
+#____________________________________________________________
