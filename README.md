@@ -7,15 +7,15 @@
 
 **Project Lead:** Wolferos 
 
-**Current Version:** 0.1.8b 
+**Current Version:** 0.1.9 
 
 **Compatible with:** Hearts of Iron IV 1.3.1 "Torch"(with or without Together for Victory Paid DLC) 
 
 **Supported Languages:**
 - English Language 
 - Chinese Language (本MOD提供汉化版本，[汉化补丁链接](http://steamcommunity.com/sharedfiles/filedetails/?id=803029506)) 
-- Turkish Language (Türkçe Yama(http://paradoxfan.com/forum/index.php?topic=51341.0))
-- Russian Language (Already in the Mod thanks to the Community of Strategium.ru(https://www.strategium.ru))
+- Turkish Language ([Türkçe Yama](http://paradoxfan.com/forum/index.php?topic=51341.0))
+- Russian Language (Already in the Mod thanks to the [Community of Strategium.ru](https://www.strategium.ru))
 
 /!\ Warning /!\ Old Saves may not work with newer versions of the Mod
 
