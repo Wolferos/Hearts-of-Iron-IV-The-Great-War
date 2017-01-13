@@ -124,6 +124,7 @@ has_civil_war = no
   completion_reward = {
   add_manpower = 200000
   army_experience=20 navy_experience=25 air_experience=25
+	add_ideas=militarism_focus
   }
   cost = 10
   x = 0
@@ -1136,6 +1137,120 @@ focus = {
 }
 
 focus = {
+  id = mex_Invite_Brazil
+  prerequisite = { focus=mex_why_we_fight  }
+  icon = GFX_goal_generic_major_alliance
+	completion_reward = {
+	create_faction = "UNASUR"
+
+	if = {
+		 limit = {
+			 BRA = {
+				 is_ai = yes
+				 is_puppet = no
+			 }
+		 }
+		 add_to_faction = BRA
+		 BRA = {
+			 add_ai_strategy = {
+				 type = alliance
+				 id = "MEX"
+				 value = 200
+			 }
+		 }
+	 }
+}
+  cost = 10
+  x = 11
+  y = 8
+  ai_will_do = { factor = 10 }
+}
+focus = {
+  id = mex_Invite_COL
+  prerequisite = { focus=mex_Invite_Brazil  }
+  icon = GFX_goal_generic_major_alliance
+	completion_reward = {
+
+	if = {
+		 limit = {
+			 COL = {
+				 is_ai = yes
+				 is_puppet = no
+			 }
+		 }
+		 add_to_faction = COL
+		 COL = {
+			 add_ai_strategy = {
+				 type = alliance
+				 id = "MEX"
+				 value = 200
+			 }
+		 }
+	 }
+}
+  cost = 10
+  x = 11
+  y = 9
+  ai_will_do = { factor = 10 }
+}
+
+focus = {
+  id = mex_Invite_Argentina
+  prerequisite = { focus=mex_why_we_fight  }
+  icon = GFX_goal_generic_major_alliance
+ completion_reward = {
+	if = {
+		 limit = {
+			 ARG = {
+				 is_ai = yes
+				 is_puppet = no
+			 }
+		 }
+		 add_to_faction = ARG
+		  ARG = {
+			 add_ai_strategy = {
+				 type = alliance
+				 id = "MEX"
+				 value = 200
+			 }
+		 }
+	 }
+}
+  cost = 10
+  x = 13
+  y = 8
+  ai_will_do = { factor = 10 }
+}
+
+focus = {
+  id = mex_Invite_Bolivia
+  prerequisite = { focus=mex_Invite_Argentina  }
+  icon = GFX_goal_generic_major_alliance
+ completion_reward = {
+	if = {
+		 limit = {
+			 BOL = {
+				 is_ai = yes
+				 is_puppet = no
+			 }
+		 }
+		 add_to_faction = BOL
+		  BOL = {
+			 add_ai_strategy = {
+				 type = alliance
+				 id = "MEX"
+				 value = 200
+			 }
+		 }
+	 }
+}
+  cost = 10
+  x = 13
+  y = 9
+  ai_will_do = { factor = 10 }
+}
+
+focus = {
   id = mex_ww1_joingermany
   prerequisite = { focus=mex_ww1_supportaustria  }
   prerequisite = { focus=mex_foreign_expeditions }
@@ -1208,7 +1323,7 @@ focus = {
     army_experience=15 add_tech_bonus={ name=land_doc_bonus bonus=0.2 uses=1 category=land_doctrine }
   }
   cost = 10
-  x = 10
+  x = 8
   y = 8
   ai_will_do = { factor = 10 }
 }
@@ -1220,7 +1335,7 @@ focus = {
   available = { has_war=yes is_in_faction=yes }
   completion_reward = { if={ limit={ original_research_slots < 3 } add_research_slot=1 } if={ limit={ original_research_slots > 2 } add_tech_bonus={ name=electronics_bonus bonus=0.5 uses=1 category=electronics } add_tech_bonus={ name=industrial_bonus bonus=0.15 uses=1 category=industry }	 add_tech_bonus={ name=infantry_weapons_bonus bonus=0.5 uses=1 category=infantry_weapons category=artillery }				 }			 }
   cost = 10
-  x = 10
+  x = 8
   y = 9
   ai_will_do = { factor = 10 }
 }
