@@ -49,45 +49,6 @@ focus_tree = {
 		y = 2
 	}
 
-	focus = {
-		id = GER_ww1_annex_BAV
-		prerequisite = { focus = GER_ww1_support_kaiser }
-		icon = GFX_hoi4tgw_ironcross
-
-		available = {
-
-			country_exists=BAV
-
-			BAV = {
-				has_government=neutrality
-				is_puppet = yes
-			}
-		}
-
-		completion_reward = {
-
-			add_national_unity = -0.05
-
-			annex_country = {
-				target = BAV
-				transfer_troops = yes
-			}
-
-		}
-
-		ai_will_do = {
-			factor = 800
-			modifier = {
-				factor = 0
-				BAV = {	is_ai = no	}
-			}
-		}
-
-		cost = 3
-		x = 0
-		y = 2
-	}
-
 	#---------- Kaiser+
 
 	focus = {
@@ -563,9 +524,70 @@ focus_tree = {
 		y = 0
 	}
 
+	# HOI4TGW 0.1.9
+
+	focus = {
+		id = GER_ww1_free_BAV
+		prerequisite = { focus = GER_ww1_diplomatic_effort }
+		icon = GFX_goal_generic_propaganda
+
+		available = {
+			NOT = {country_exists=BAV }
+			controls_state = 52
+			controls_state = 53
+			controls_state = 54
+		}
+
+		completion_reward = {
+
+			add_national_unity = 0.10
+			add_manpower = 15000
+
+			BAV = {
+				transfer_state = 52
+				transfer_state = 53
+				transfer_state = 54
+			}
+
+			puppet = BAV
+
+	        # SPECIAL_DLC Together for Victory
+	        if = { limit = { has_dlc = "Together for Victory" }
+
+	            #IF-----------------------------------------
+	            set_autonomy = {
+	                target = BAV
+	                autonomous_state = autonomy_integrated_puppet
+	            }
+	            #-------------------------------------------
+
+	            #ELSE---------------------------------------
+	            else = {
+	                # WORK IN PROGRESS # Temporary Solution for Open Beta 0.1.9
+	            }
+	            #-------------------------------------------
+	        }
+
+	        hidden_effect {
+
+	        	BAV = { load_oob = "BAV_1910" }
+	        }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		cost = 9
+		x = 7
+		y = 1
+	}
+
+
 	#----------------------------------------------------------------------- 
 	# Bloc 1
 	#-----------------------------------------------------------------------
+
 	focus = {
 		id = GER_ww1_triple_alliance
 		prerequisite = { focus=GER_ww1_diplomatic_effort }
