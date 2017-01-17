@@ -1,11 +1,11 @@
 NDefines = {
 
 NGame = {
-	START_DATE = "1910.5.1.12",				-- #HOI4TGW ::: START_DATE = "1936.1.1.12",
+	START_DATE = "1910.5.1.12",				-- #HOI4TGW ::: START_DATE = "1936.1.1.12", <> Hearts of Iron IV: The Great War 0.1.9a <>
 	END_DATE = "1969.1.1.1",				-- #HOI4TGW ::: END_DATE = "1949.1.1.1",
 	MAP_SCALE_PIXEL_TO_KM = 7.114,			-- Yes, we did the math
 	SAVE_VERSION = 3,
-	LAG_DAYS_FOR_LOWER_SPEED = 10,			-- Days of client lag for decrease of gamespeed
+	LAG_DAYS_FOR_LOWER_SPEED = 10,		-- Days of client lag for decrease of gamespeed
 	LAG_DAYS_FOR_PAUSE = 25,				-- Days of client lag for pause of gamespeed.
 	MAJOR_PARTICIPANTS_FOR_MAJOR_WAR = 3,	-- Minimum number of major countries involved in a war to consider it major enough to not end the game even though the enddate has been reached.
 	COMBAT_LOG_MAX_MONTHS = 12
@@ -550,7 +550,7 @@ NAir = {
 	COMBAT_SITUATION_WIN_CHANCE_FROM_STATS = 0.2, 		-- How much good stats difference (speed+agility) affects the winning chance (situation win = give a hit, not necessary kill).
 	COMBAT_SITUATION_WIN_CHANCE_FROM_GANG = 0.18, 		-- How much bonus gives the airplanes amount advantage (2vs1), to winning the situation.
 	COMBAT_SITUATION_PASS_CHANCE = 0.6, 				-- Chance for pass. Nobody hits nobody in current situation.
-	COMBAT_MAX_WINGS_AT_ONCE = 2, 						-- Max amount of air wings in one combat simulation. The higher value, the quicker countries may loose their wings. It's a gameplay balance value.
+	COMBAT_MAX_WINGS_AT_ONCE = 6, 						-- Max amount of air wings in one combat simulation. The higher value, the quicker countries may loose their wings. It's a gameplay balance value.
 	COMBAT_MAX_WINGS_AT_GROUND_ATTACK = 30,	        	-- we can really pounce a land strike and escalate
 	COMBAT_MAX_WINGS_AT_ONCE_PORT_STRIKE = 1000,        -- we can really pounce a naval strike and escalate
 	COMBAT_ATTACK_PASSES_AT_ONCE = 0.1,					-- Wing attack stat determines of many re-approaches in single combat they do. This is a scale of this amount to balance the gameplay. Less retries = less bloody combats, and less calculations for the CPU.
@@ -565,8 +565,8 @@ NAir = {
 	DETECT_EFFICIENCY_FROM_RADAR = 0.7,					-- How much radars affect the efficiency.
 	DETECT_EFFICIENCY_RANDOM_FACTOR = 0.1,				-- How much randomness is in amount of detected aircrafts.
 	DAY_NIGHT_COVERAGE_FACTOR = 0.5,					-- How much of the land in the region must be covered by night to consider doing night missions. The same with the day.
-	HOURS_DELAY_AFTER_EACH_COMBAT = 8,					-- How many hours needs the wing to be ready for the next combat. Use for tweaking if combats happens too often. (generally used as double because of roundtrip)
-	CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 9,          -- how often carrier planes do battle inside naval combat
+	HOURS_DELAY_AFTER_EACH_COMBAT = 4,					-- How many hours needs the wing to be ready for the next combat. Use for tweaking if combats happens too often. (generally used as double because of roundtrip)
+	CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 4,          -- how often carrier planes do battle inside naval combat
 	NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.3,			-- Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
 	NAVAL_STRIKE_DAMAGE_TO_STR = 3.0,					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Strength reduction.
 	NAVAL_STRIKE_DAMAGE_TO_ORG = 3.0,					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Organisation reduction.
@@ -579,7 +579,7 @@ NAir = {
 	AIR_EXPERIANCE_FROM_LEND_LEASE = 0.5,				-- How much of the experience gained in the air combat, we get from our equipment sent by lend lease.
 	ACCIDENT_CHANCE_BASE = 0.1,							-- Base chance % (0 - 100) for accident to happen. Reduced with higher reliability stat.
 	ACCIDENT_CHANCE_CARRIER_MULT = 2.0,					-- The total accident chance is scaled up when it happens on the carrier ship.
-	ACCIDENT_CHANCE_BALANCE_MULT = 2.0,					-- Multiplier for balancing how often the air accident really happens. The higher mult, the more often.
+	ACCIDENT_CHANCE_BALANCE_MULT = 0.5,					-- Multiplier for balancing how often the air accident really happens. The higher mult, the more often.
 	ACE_DEATH_CHANCE_BASE = 0.003,						-- Base chance % for ace pilot die when an airplane is shot down in the Ace wing.
 	ACE_DEATH_CHANCE_PLANES_MULT = 0.001,				-- The more airplanes was lost in a single airplanes (more bloody it was) the higher chance of Ace to die.
 	ACE_EARN_CHANCE_BASE = 0.003,						-- Base chance % for ace pilot to be created. Happens only when successfully kill airplane/ship or damage the buildings.
@@ -1137,6 +1137,55 @@ NAI = {
 	ORDER_ASSIGNMENT_DISTANCE_FACTOR = 5.0,				-- When the AI assigns units to orders, it attempts to calculate the distance.
 	RELUCTANCE_TO_CHANGE_FRONT_FACTOR = 0.5,			-- Factor for how reluctant the AI is to change a units order group.
 	REVISITED_PROV_PENALTY_FACTOR = 1.5,				-- When the AI picks units for a front, it tries to spread out a bit which units it grabs.
+	
+	AIR_SCORE_DISTANCE_IMPACT = 0.1,					-- Effect of distance applied to the score calculations
+	
+	NAVAL_AIR_SUPERIORITY_IMPORTANCE = 0.10,			-- Strategic importance of air superiority ( amount of enemy planes in area )
+	NAVAL_SHIP_AIR_IMPORTANCE = 2.0,					-- Naval ship air importance
+	NAVAL_SHIP_IN_PORT_AIR_IMPORTANCE = 6.0,			-- Naval ship in the port air importance
+	NAVAL_COMBAT_AIR_IMPORTANCE = 12.0,					-- Naval combat air importance
+	NAVAL_TRANSFER_AIR_IMPORTANCE = 25.0,				-- Naval transfer air importance
+	NAVAL_COMBAT_TRANSFER_AIR_IMPORTANCE = 50.0,		-- Naval combat involving enemy land units
+	
+	NAVAL_FIGHTERS_PER_PLANE = 1.1,						-- Amounts of air superiority planes requested per enemy plane
+	NAVAL_STRIKE_PLANES_PER_ARMY = 15,					-- Amount of planes requested per enemy army
+	NAVAL_STRIKE_PLANES_PER_SHIP = 5,					-- Amount of bombers requested per enemy ship
+	PORT_STRIKE_PLANES_PER_SHIP = 10,					-- Amount of bombers request per enemy ship in the port
+	
+	LAND_DEFENSE_AIR_SUPERIORITY_IMPORTANCE = 0.10,		-- Strategic importance of air superiority ( amount of enemy planes in area )
+	LAND_DEFENSE_CIVIL_FACTORY_IMPORTANCE = 50,			-- Strategic importance of civil factories
+	LAND_DEFENSE_MILITARY_FACTORY_IMPORTANCE = 70,		-- Strategic importance of military factories
+	LAND_DEFENSE_NAVAL_FACTORY_IMPORTANCE = 30,			-- Strategic importance of naval factories
+	
+	LAND_DEFENSE_MIN_FACTORIES_FOR_AIR_IMPORTANCE = 6,	-- If amount of factories is less importance of factories won't apply
+	
+	LAND_DEFENSE_FIGHERS_PER_PLANE = 1.1,				-- Amount of air superiority planes requested per enemy plane
+	LAND_DEFENSE_INTERSEPTORS_PER_BOMBERS = 0.2,		-- Amount of air interceptor planes requested per enemy plane
+	
+	LAND_COMBAT_AIR_SUPERIORITY_IMPORTANCE = 0.20,		-- Strategic importance of air superiority ( amount of enemy planes in area )
+	LAND_COMBAT_OUR_ARMIES_AIR_IMPORTANCE = 12,		-- Strategic importance of our armies
+	LAND_COMBAT_OUR_COMBATS_AIR_IMPORTANCE = 55,		-- Strategic importance of our armies in the combats
+	LAND_COMBAT_FRIEND_ARMIES_AIR_IMPORTANCE = 12,	-- Strategic importance of friendly armies
+	LAND_COMBAT_FRIEND_COMBATS_AIR_IMPORTANCE = 6,		-- Strategic importance of friendly armies in the combat
+	LAND_COMBAT_ENEMY_ARMIES_AIR_IMPORTANCE = 8,		-- Strategic importance of our armies
+	LAND_COMBAT_ENEMY_LAND_FORTS_AIR_IMPORTANCE = 5,	-- Strategic importance of enemy land forts in the region
+	LAND_COMBAT_ENEMY_COASTAL_FORTS_AIR_IMPORTANCE = 3,-- Strategic importance of enemy coastal fronts in the region
+	
+	LAND_COMBAT_FIGHTERS_PER_PLANE = 1.1,				-- Amount of air superiority planes requested per enemy plane
+	LAND_COMBAT_CAS_PER_ENEMY_ARMY = 25,				-- Amount of CAS planes requested per enemy army
+	LAND_COMBAT_BOMBERS_PER_LAND_FORT_LEVEL = 15,		-- Amount of bomber planes requested per enemy land fort level
+	LAND_COMBAT_BOMBERS_PER_COASTAL_FORT_LEVEL = 10,	-- Amount of bomber planes requested per enemy coastal fort level
+	
+	STR_BOMB_AIR_SUPERIORITY_IMPORTANCE = 0.10,		-- Strategic importance of air superiority ( amount of enemy planes in area )
+	STR_BOMB_CIVIL_FACTORY_IMPORTANCE = 50,			-- Strategic importance of enemy civil factories
+	STR_BOMB_MILITARY_FACTORY_IMPORTANCE = 70,		-- Strategic importance of enemy military factories
+	STR_BOMB_NAVAL_FACTORY_IMPORTANCE = 30,			-- Strategic importance of enemy naval factories
+	
+	STR_BOMB_MIN_ENEMY_FIGHTERS_IN_AREA = 300,		-- If amount of enemy fighters is higher than this mission won't perform
+	STR_BOMB_FIGHTERS_PER_PLANE = 1.1,				-- Amount of air superiority planes requested per enemy plane
+	STR_BOMB_PLANES_PER_CIV_FACTORY = 20,			-- Amount of planes requested per enemy civ factory
+	STR_BOMB_PLANES_PER_MIL_FACTORY = 25,			-- Amount of planes requested per enemy military factory
+	STR_BOMB_PLANES_PER_NAV_FACTORY = 15,			-- Amount of planes requested per enemy naval factory
 },
 
 NFocus = {
