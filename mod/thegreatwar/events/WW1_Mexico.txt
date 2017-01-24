@@ -339,7 +339,7 @@ news_event = {
 	major = yes
 
 	trigger = {
-		has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+		NOT = { has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910 }
 
 		NOT = { has_global_flag = FLAG_MEX_adios_porfirio_diaz }
 	  has_completed_focus = MEX_ww1_Renew_the_republic
@@ -391,3 +391,42 @@ news_event = {
 		name = "En paz Descanse!"
 	}
 }
+
+##################
+#Columbus Raid###
+news_event = {
+	id=ww1_mexico.1081
+	title= ww1_mexico.1081.t
+  desc=ww1_mexico.1081_d
+
+
+		picture= EVENT_hoi4tgw_columbus_raid
+
+	major = yes
+
+	trigger = {
+	  has_global_flag = FLAG_MEX_Plan_San_D
+    has_completed_focus = mex_ww1_Support_the_columbus_raid
+		NOT = { has_government = democratic }
+
+		MEX = {
+			has_civil_war = no
+			has_government = fascism
+			has_government = communism
+			has_government = neutrality
+		}
+
+		date > 1910.1.2
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = { set_global_flag = FLAG_MEX_Columbus_raid }
+
+	option = {
+		name = "Viva el Centauro del Norte"
+	}
+}
+######################

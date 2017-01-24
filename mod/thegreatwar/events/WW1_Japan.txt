@@ -232,14 +232,14 @@ news_event = {
 	desc=ww1_japan.100.d
 
 	picture=EVENT_hoi4tgw_korea_annexation
-	
+
 	major = yes
-	
+
 	trigger = {
 		JAP = { has_completed_focus = JAP_ww1_Japan_Korea_Treaty }
 		NOT = { has_global_flag = kis_japankorea_annexation }
 	}
-	
+
 	mean_time_to_happen = {
 		days = 0
 	}
@@ -248,7 +248,7 @@ news_event = {
 		set_global_flag = kis_japankorea_annexation
 
 	}
-	
+
 	option = {
 		name = ww1_japan.100.a
 		ai_chance = {
@@ -267,7 +267,7 @@ news_event = {
 		}
 		trigger = {
 			TAG = JAP
-		}		
+		}
 	}
 }
 #____________________________________________________________
@@ -282,7 +282,7 @@ country_event = {
 	title = "Japan Nationalism"
 	desc = "Japan is the Center of the World, with its ruler, the Emperor, a divine being, who derives his divinity from ancestral descent from the great Amaterasu-Omikami, the Goddess of the Sun herself."
 	picture = GFX_report_event_fascist_gathering
-	
+
 	fire_only_once=yes
 	is_triggered_only=yes
 
@@ -315,7 +315,7 @@ country_event = {
 	title = "Taisho Democracy"
 	desc = "The Taisho Era is now called Taisho Democracy as Japan enjoyed a climate of political liberalism unforeseen after decades of Authoritarianism."
 	picture = GFX_report_event_gathering_protest
-	
+
 	fire_only_once=yes
 	is_triggered_only=yes
 
@@ -337,3 +337,41 @@ country_event = {
 }
 #____________________________________________________________
 
+#####Emperor Meji Dies###
+news_event = {
+    id = ww1_japan.103
+    title = ww1_japan.103.t
+    desc = ww1_japan.103.d
+    picture = EVENT_hoi4tgw_meiji_dead
+
+    major = yes
+
+    mean_time_to_happen = {
+        days = 0
+    }
+    trigger = {
+        date > 1912.7.29
+        JAP = {
+	        has_government = neutrality
+	        not = {
+	            has_country_flag = Meiji_dead
+	        }
+        }
+    }
+    immediate = {
+        hidden_effect = {
+        	JAP = {
+        		kill_country_leader = yes
+						create_country_leader={ name = "Emperor Taishō " desc=JAP_emperor_taisho_DESC picture="gfx/leaders/JAP_emperor_taisho.dds" expire="1940.1.1" ideology=autocracy traits={  } }
+
+    	        set_country_flag = Meiji_dead
+        	}
+        }
+    }
+    option = {
+        name = ww1_japan.103.a
+        ai_chance = {
+            factor = 100
+        }
+    }
+}
