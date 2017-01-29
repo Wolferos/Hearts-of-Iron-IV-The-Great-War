@@ -226,6 +226,41 @@ country_event = {
 
 # Japan–Korea Annexation Treaty
 #____________________________________________________________
+
+# Korea Empire's choice
+country_event = {
+	id = ww1_japan.700
+	title = ww1_japan.100.t
+	desc = ww1_japan.100.d
+	picture = EVENT_hoi4tgw_korea_annexation
+
+	is_triggered_only = yes
+	
+	option = {
+		name =  ww1_germany.22.a
+		ai_chance = {
+			factor = 100
+		}
+		JAP = {
+			annex_country = {
+				target = KOR
+				transfer_troops = yes
+			}
+		}
+	}	
+	
+	option = {
+		name = ww1_germany.22.b
+		ai_chance = { factor = 0 }
+		JAP = {
+			end_puppet = KOR
+			declare_war_on = {
+				target = KOR
+				type = annex_everything
+			}
+		}
+	}
+}
 news_event = {
 	id=ww1_japan.100
 	title=ww1_japan.100.t
