@@ -1,5 +1,37 @@
 ideas = {
     country = {
+		prohibition_accepted = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1 
+			modifier = {
+				consumer_goods_factor = -0.1 #Decreased demand as alcohol consumption "declines"
+				political_power_cost = 0.5 #That was a big change, new ones become extra expensive
+			}
+		}
+		prohibition_rejected = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1 
+			modifier = {
+				unity_weekly = -0.001 #Regular decline as women cause problems
+				consumer_goods_factor = 0.1 #Increased demand to account for miserable public
+			}
+		}
+		bootleggers = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1 
+			modifier = {
+				unity_weekly = -0.001 #Regular decline due to intense violence
+				consumer_goods_factor = 0.05 #Increased demand for consumer goods as bootleggers fill the void for liqour
+				political_power_cost = 0.5 #Corruption
+				
+			}
+		}
         army_mutiny = {
             allowed = {
                 always = no
@@ -24,14 +56,14 @@ ideas = {
                 conscription = -0.003
             }
         }
-        prohibition = {
-            allowed = {
-                always = no
-            }
-            removal_cost = -1 modifier = {
-                unity_weekly = -0.001
-            }
-        }
+    #    prohibition = {
+    #        allowed = {
+    #            always = no
+    #        }
+    #        removal_cost = -1 modifier = {
+    #            unity_weekly = -0.001
+    #        }
+    #    }
         officers_gain = {
             picture = generic_manpower_bonus allowed = {
                 always = no
