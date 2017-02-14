@@ -789,13 +789,13 @@ focus_tree = {
 	}
 
 	focus = {
-		id = TUR_ww1_anti_uk
+		id = TUR_ww1_anti_uk #Open Beta 0.2 | now it's anti_FRA because FRA is Entente Leader
 
 		prerequisite = { focus=TUR_ww1_anti_serb }
 		prerequisite = { focus = TUR_ww1_anti_ita }
 		icon = GFX_goal_generic_political_pressure
 
-		completion_reward = { TUR={ add_opinion_modifier={ target=ENG modifier=HOI4TGW_Opinion_anti_uk_policy_malus } } }
+		completion_reward = { TUR={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_anti_uk_policy_malus } } }
 
 		ai_will_do = { factor = 300 }
 		cost = 10
@@ -893,7 +893,7 @@ focus_tree = {
 		icon = GFX_goal_generic_improve_relations 
 
 		bypass = {
-			is_in_faction_with = ENG
+			is_in_faction_with = FRA
 		} 
 
 	 	available = {
@@ -902,10 +902,11 @@ focus_tree = {
 	 			has_war_with = GER
 	 		}
 	 		is_puppet = no
-	 		NOT = { has_war_with = ENG }
+	 		NOT = { has_war_with = FRA }
+	 		NOT = { has_war_with = RUS }
 			is_in_faction = no
 	 		
-	 		ENG = {
+	 		FRA = {
 	 			exists = yes
  				is_faction_leader = yes
 	 		}
@@ -913,7 +914,7 @@ focus_tree = {
 		}
 		completion_reward = {
 
-				ENG={
+				FRA={
 					add_to_faction=ROOT
 				}
 		}

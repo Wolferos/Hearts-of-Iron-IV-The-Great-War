@@ -343,7 +343,10 @@ focus_tree = {
 		prerequisite = { focus=FRA_ww1_diplomatic_effort }
 		available = { NOT = { has_country_flag = leaved_triple_entente } }
 		icon = GFX_goal_generic_demand_territory
-		completion_reward = { ENG={ add_opinion_modifier={ target=FRA modifier=triple_alliance_opinion } } RUS={ add_opinion_modifier={ target=FRA modifier=triple_alliance_opinion } } set_country_flag = in_triple_entente }
+		completion_reward = {
+			RUS={ add_opinion_modifier={ target=FRA modifier=triple_alliance_opinion } }
+			set_country_flag = in_triple_entente
+		}
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 6
@@ -356,7 +359,7 @@ focus_tree = {
 		icon = GFX_hoi4tgw_britania
 		available = { NOT={ has_war_with=ENG } NOT = { has_country_flag = leaved_triple_entente } }
 		completion_reward = { ENG={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_diplomats_bonus } } RUS={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_ger_auh_alliance_focus_malus } } }
-		ai_will_do = { factor = 20 }
+		ai_will_do = { factor = 200 }
 		cost = 10
 		x = 5
 		y = 2
@@ -369,7 +372,7 @@ focus_tree = {
 		icon = GFX_hoi4tgw_russianempire
 		available = { NOT={ has_war_with=RUS } NOT = { has_country_flag = leaved_triple_entente } }
 		completion_reward = { RUS={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_diplomats_bonus } } ENG={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_ger_ita_alliance_focus_malus } } }
-		ai_will_do = { factor = 20 }
+		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 7
 		y = 2
@@ -381,7 +384,7 @@ focus_tree = {
 		prerequisite = { focus=FRA_ww1_back_uk focus=FRA_ww1_back_russia }
 		icon = GFX_goal_generic_territory_or_war
 		available = { NOT = { has_country_flag = leaved_triple_entente } }
-		ai_will_do = { factor = 20 }
+		ai_will_do = { factor = 2000 }
 		completion_reward = { 
 			ENG = { 
 				add_opinion_modifier = { 
@@ -407,6 +410,46 @@ focus_tree = {
 		cost = 10
 		x = 6
 		y = 3
+	}
+
+	#Open Beta 0.2
+	focus = {
+		id = FRA_ww1_inviteUK #Open Beta 0.2
+		prerequisite = { focus=FRA_ww1_send_diplomats focus=FRA_ww1_back_uk }
+		icon = GFX_goal_generic_national_unity
+		available = {
+			ENG = { has_war_with = GER }
+			FRA = { has_war_with = GER }
+			NOT = { has_war_with = ENG }
+
+	        FRA = {
+	            is_faction_leader = yes
+	        }
+		}
+
+		bypass = {
+			ENG = { is_in_faction_with = FRA }
+		}
+
+		completion_reward = { 
+            FRA = {
+                add_to_faction = ENG
+            }
+		}
+
+
+		ai_will_do = {
+			factor = 800
+			modifier = {
+				factor = 0
+				ENG = {	is_ai = no	}
+			}
+		}
+
+
+		cost = 1
+		x = 5
+		y = 4
 	}
 
 	focus = {
@@ -439,7 +482,7 @@ focus_tree = {
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 6
-		y = 4
+		y = 5
 	}
 
 	focus = {
@@ -510,7 +553,7 @@ focus_tree = {
 		                #    is_faction_leader = yes
 		                #}
 		            }
-		            ENG = {
+		            FRA = {
 		                add_to_faction = GRE
 		            }
 		        }
@@ -548,7 +591,7 @@ focus_tree = {
 
 		cost = 10
 		x = 6
-		y = 5
+		y = 6
 		#mutually_exclusive = { focus = FRA_ww1_greece_puppet }
 	}
 
@@ -584,20 +627,45 @@ focus_tree = {
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 6
-		y = 6
+		y = 7
 	}
 
 	#----------------------------------------------------------------------- 
 	# Bloc 2
 	#-----------------------------------------------------------------------
 	focus = {
+		id = FRA_ww1_inviteBELGIUM #Open Beta 0.2
+		prerequisite = { focus=FRA_ww1_diplomatic_effort }
+		icon = GFX_goal_generic_improve_relations
+		available = {
+			BEL = { has_war_with = GER }
+			FRA = { has_war_with = GER }
+			NOT = { has_war_with = BEL }
+
+	        FRA = {
+	            is_faction_leader = yes
+	        }
+		}
+
+		completion_reward = { 
+            FRA = {
+                add_to_faction = BEL
+            }
+		}
+		ai_will_do = { factor = 12 }
+		cost = 1
+		x = 10
+		y = 1
+	}
+
+	focus = {
 		id = FRA_ww1_assert_position_west
 		prerequisite = { focus = FRA_ww1_diplomatic_effort }
 		icon = GFX_goal_generic_army_doctrines
 		completion_reward = { add_political_power=75 }
 		ai_will_do = { factor = 20 }
-		cost = 10
-		x = 9
+		cost = 9
+		x = 8
 		y = 1
 	}
 
@@ -4030,7 +4098,7 @@ focus_tree = {
 			NOT = { has_war_with = ENG }
 		}
 		bypass = {
-			is_in_faction_with = ENG
+			is_in_faction_with = FRA
 			NOT = {
 				has_completed_focus = FRA_little_entente
 			}

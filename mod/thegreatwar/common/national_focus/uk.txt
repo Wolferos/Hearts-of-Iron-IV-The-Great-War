@@ -362,47 +362,10 @@ focus_tree = {
 	#----------------------------------------------------------------------- 
 	# Bloc 1
 	#-----------------------------------------------------------------------
-	focus = {
-		id = ENG_ww1_triple_alliance
-		prerequisite = { focus=ENG_ww1_diplomatic_effort }
-		available = { NOT = { has_country_flag= leaved_triple_entente } }
-		icon = GFX_goal_generic_demand_territory
-		completion_reward = { ENG={ add_opinion_modifier={ target=FRA modifier=triple_alliance_opinion } } RUS={ add_opinion_modifier={ target=FRA modifier=triple_alliance_opinion } } }
-		ai_will_do = { factor = 20 }
-		cost = 10
-		x = 8
-		y = 1
-	}
-
-	focus = {
-		id = ENG_ww1_back_france
-		prerequisite = { focus=ENG_ww1_triple_alliance }
-		icon = GFX_hoi4tgw_marianne
-		available = { NOT={ has_war_with=ENG } }
-		completion_reward = { ENG={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_alliance_bonus } } RUS={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_alliance_malus } } }
-		ai_will_do = { factor = 20 }
-		cost = 10
-		x = 7
-		y = 2
-		mutually_exclusive = { focus=ENG_ww1_back_russia }
-	}
-
-	focus = {
-		id = ENG_ww1_back_russia
-		prerequisite = { focus=ENG_ww1_triple_alliance }
-		icon = GFX_hoi4tgw_russianempire
-		available = { NOT={ has_war_with=RUS } }
-		completion_reward = { RUS={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_alliance_bonus } } ENG={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_alliance_malus } } }
-		ai_will_do = { factor = 20 }
-		cost = 10
-		x = 9
-		y = 2
-		mutually_exclusive = { focus=ENG_ww1_back_france }
-	}
 
 	focus = {
 		id = ENG_ww1_send_diplomats
-		prerequisite = { focus=ENG_ww1_back_france focus=ENG_ww1_back_russia }
+		prerequisite = { focus=ENG_ww1_diplomatic_effort }
 		icon = GFX_goal_generic_territory_or_war
 		completion_reward = { 
 			ENG = { 
@@ -410,31 +373,167 @@ focus_tree = {
 					target = FRA modifier=HOI4TGW_Opinion_diplomats_bonus 
 				} 
 			}
-			FRA = { 
+			ENG = { 
 				add_opinion_modifier = { 
-					target = ENG modifier=HOI4TGW_Opinion_diplomats_bonus 
+					target = GER modifier=HOI4TGW_Opinion_diplomats_bonus 
 				} 
 			} 
-			RUS = { 
+			ENG = { 
 				add_opinion_modifier = { 
-					target = FRA modifier=HOI4TGW_Opinion_diplomats_bonus
+					target = SER modifier=HOI4TGW_Opinion_diplomats_bonus
 				} 
 			} 
-			FRA = { 
+			ENG = { 
 				add_opinion_modifier = { 
 					target = RUS modifier=HOI4TGW_Opinion_diplomats_bonus
 				} 
 			} 
+			ENG = { 
+				add_opinion_modifier = { 
+					target = TUR modifier=HOI4TGW_Opinion_diplomats_bonus 
+				} 
+			}
+			ENG = { 
+				add_opinion_modifier = { 
+					target = AUH modifier=HOI4TGW_Opinion_diplomats_bonus
+				} 
+			} 
 		}
-		ai_will_do = { factor = 20 }
+		ai_will_do = { factor = 120 }
 		cost = 10
 		x = 8
+		y = 1
+	}
+
+
+	focus = {
+		id = ENG_ww1_back_france
+		prerequisite = { focus=ENG_ww1_send_diplomats }
+		icon = GFX_hoi4tgw_marianne
+		available = { NOT={ has_war_with=FRA } }
+
+		completion_reward = {
+			ENG={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_alliance_bonus } }
+		}
+
+		ai_will_do = { factor = 70 }
+		cost = 9
+		x = 6
+		y = 2
+	}
+
+	focus = {
+		id = ENG_ww1_back_russia
+		prerequisite = { focus=ENG_ww1_send_diplomats }
+		icon = GFX_hoi4tgw_russianempire
+		available = { NOT={ has_war_with=RUS } }
+
+		completion_reward = {
+			ENG={ add_opinion_modifier={ target=RUS modifier=HOI4TGW_Opinion_alliance_bonus } }
+		}
+
+		ai_will_do = { factor = 70 }
+		cost = 9
+		x = 8
+		y = 2
+	}
+
+	#Open Beta 0.2
+	focus = {
+		id = ENG_ww1_triple_alliance
+		prerequisite = { focus=ENG_ww1_back_france focus=ENG_ww1_back_russia }
+
+		mutually_exclusive = { focus = ENG_ww1_join_GERMANY }
+
+		icon = GFX_goal_generic_demand_territory
+
+		bypass = {
+			is_in_faction_with = FRA
+		}
+
+		available = {
+			NOT = { has_war_with = FRA }
+			NOT = { has_war_with = RUS }
+
+	        FRA = {
+	            is_faction_leader = yes
+	        }
+		}
+
+		completion_reward = { 
+            FRA = {
+                add_to_faction = ENG
+            }
+		}
+
+		ai_will_do = {
+			factor = 800
+			modifier = {
+				factor = 0
+				FRA = {	is_ai = no	}
+			}
+		}
+
+		cost = 10
+		x = 7
 		y = 3
 	}
 
 	focus = {
+		id = ENG_ww1_join_GERMANY
+		prerequisite = { focus=ENG_ww1_pro_ger }
+
+		mutually_exclusive = { focus = ENG_ww1_triple_alliance }
+
+		icon = GFX_goal_generic_major_alliance
+		available = {
+			NOT = { has_war_with = GER }
+			NOT = { has_war_with = AUH }
+
+	        GER = {
+	            is_faction_leader = yes
+	        }
+		}
+
+		completion_reward = { 
+            GER = {
+                add_to_faction = ENG
+            }
+		}
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 9
+		y = 3
+	}
+
+	focus = {
+		id = ENG_ww1_austria_friend
+		prerequisite = { focus=ENG_ww1_join_GERMANY focus=ENG_ww1_ready_country }
+		icon = GFX_hoi4tgw_austriahungary
+		available = {
+
+		    AUH = {
+		        exists = yes 
+		    }
+
+		    is_in_faction_with = AUH
+		    is_in_faction_with = GER
+		}
+
+		completion_reward = {
+			ENG={ add_opinion_modifier={ target=AUH modifier=HOI4TGW_Opinion_alliance_bonus } }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 8
+		x = 9
+		y = 5
+	}
+
+	focus = {
 		id = ENG_ww1_portugal_friend
-		prerequisite = { focus=ENG_ww1_send_diplomats }
+		prerequisite = { focus=ENG_ww1_triple_alliance focus=ENG_ww1_ready_country }
 		icon = GFX_goal_generic_improve_relations
 		available = {
 			has_war_with = GER
@@ -469,8 +568,8 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 8
-		y = 4
+		x = 7
+		y = 5
 	}
 
 	focus = {
@@ -484,8 +583,8 @@ focus_tree = {
 		completion_reward = { add_ideas=british_arms_discount }
 		ai_will_do = { factor = 20 }
 		cost = 10
-		x = 8
-		y = 5
+		x = 7
+		y = 6
 	}	
 
 	focus = {
@@ -498,8 +597,8 @@ focus_tree = {
 		completion_reward = { add_tech_bonus={ name=codebreaking_bonus bonus=0.5 uses=3 category=decryption_tech category=computing_tech } }
 		ai_will_do = { factor = 20 }
 		cost = 10
-		x = 8
-		y = 6
+		x = 7
+		y = 7
 	}	
 
 	focus = {
@@ -513,7 +612,7 @@ focus_tree = {
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 6
-		y = 7
+		y = 8
 	}
 	
 	focus = {
@@ -544,7 +643,7 @@ focus_tree = {
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 8
-		y = 7
+		y = 8
 	}
 
 	focus = {
@@ -575,7 +674,7 @@ focus_tree = {
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 10
-		y = 7
+		y = 8
 	}
 
 	focus = {
@@ -604,7 +703,7 @@ focus_tree = {
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 8
-		y = 8
+		y = 9
 	}
 
 	#----------------------------------------------------------------------- 
@@ -621,9 +720,37 @@ focus_tree = {
 		y = 1
 	}
 
+	# Open Beta 0.2
+	focus = {
+		id = ENG_ww1_pro_ger
+		prerequisite = { focus = ENG_ww1_send_diplomats }
+		mutually_exclusive = { focus = ENG_ww1_anti_ger }
+
+		available = {
+	  		has_war=no
+	  		NOT = { is_in_faction_with = FRA }
+	  	}
+
+		icon = GFX_hoi4tgw_germanempire
+		completion_reward = {
+
+			diplomatic_relation = { country = BEL relation = guarantee active = no }
+
+			ENG={ add_opinion_modifier={ target=GER modifier=HOI4TGW_Opinion_alliance_bonus } }
+			ENG={ add_opinion_modifier={ target=BEL modifier=HOI4TGW_Opinion_alliance_malus } }
+			ENG={ add_opinion_modifier={ target=RUS modifier=HOI4TGW_Opinion_alliance_malus } }
+			ENG={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_alliance_malus } }
+		}
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 10
+		y = 2
+	}
+
 	focus = {
 		id = ENG_ww1_anti_ger
 		prerequisite = { focus = ENG_ww1_assert_position_west }
+		mutually_exclusive = { focus = ENG_ww1_pro_ger }
 		bypass = {
 			has_war_with = GER
 			NOT = { country_exists = GER }
@@ -694,18 +821,17 @@ focus_tree = {
 	}
 	#------------------------
 
-
 	focus = {
 		id = ENG_ww1_ready_country
-		prerequisite = { focus = ENG_ww1_ireland_release focus = ENG_ww1_ireland_crush focus = ENG_ww1_nordic_countries}
+		prerequisite = { focus = ENG_ww1_join_GERMANY focus = ENG_ww1_triple_alliance }
 		icon = GFX_goal_demand_sudetenland    
 		completion_reward = {
 			add_manpower = 100000 
 		}   
 		ai_will_do = { factor = 20 }
 		cost = 10
-		x = 13
-		y = 5
+		x = 8
+		y = 4
 	}	
 
 	focus = {
@@ -791,7 +917,7 @@ focus_tree = {
 	#-----------------------------------------------------------------------
 
 	#-----------------------------------------------------------------------
-	# Bloc 4 - France Position in the East
+	# Bloc 4 - UK Position in the East
 	#-----------------------------------------------------------------------
 	focus = {
 		id = ENG_ww1_assert_position_east
@@ -820,7 +946,7 @@ focus_tree = {
 		id = ENG_ww1_support_romania
 		prerequisite = { focus = ENG_ww1_balkan_strategy }
 		icon = GFX_goal_generic_intelligence_exchange
-		available = { ROM={ exists=yes has_war=no NOT={ is_in_faction_with=ENG } } }
+		available = { ROM={ exists=yes has_war=no NOT={ is_in_faction_with = ENG } } }
 		completion_reward = { ROM={ add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } add_ideas=democratic_influence country_event={ id=generic.1 } } every_country={ limit={ NOT={ has_government=democratic } num_of_factories > 30 } add_opinion_modifier={ target=ROM modifier=democratic_leanings_bad } } }
 		ai_will_do = { factor = 20 }
 		cost = 10
@@ -987,7 +1113,7 @@ focus_tree = {
 		prerequisite = { focus=ENG_ww1_diplomatic_effort }
 		icon = GFX_goal_generic_improve_relations
 		available = { }
-		completion_reward = { CAN={ if={ limit={ is_in_faction_with=ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } AST={ if={ limit={ is_in_faction_with=ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } RAJ={ if={ limit={ is_in_faction_with=ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } NZL={ if={ limit={ is_in_faction_with=ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } SAF={ if={ limit={ is_in_faction_with=ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } }
+		completion_reward = { CAN={ if={ limit={ is_in_faction_with = ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } AST={ if={ limit={ is_in_faction_with = ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } RAJ={ if={ limit={ is_in_faction_with = ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } NZL={ if={ limit={ is_in_faction_with = ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } SAF={ if={ limit={ is_in_faction_with = ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } }
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 21
