@@ -169,6 +169,139 @@ focus = {
 			ai_will_do = { factor = 10 }
 		}
 
+		focus = {
+			id = HOL_Claim_our_colies
+			icon = GFX_goal_generic_territory_or_war
+			prerequisite = { focus=HOL_Colony_freedom }
+			available = {
+			has_government=communism }
+
+			completion_reward = {
+			add_political_power = 100
+			333 = { add_core_of = HOL }
+			721 = { add_core_of = HOL }
+			753 = { add_core_of = HOL }
+			737 = { add_core_of = HOL }
+			523 = { add_core_of = HOL }
+			711 = { add_core_of = HOL }
+			733 = { add_core_of = HOL }
+			712 = { add_core_of = HOL }
+			336 = { add_core_of = HOL }
+			}
+
+			cost = 10
+			x = 2
+			y = 7
+			ai_will_do = { factor = 10 }
+		}
+
+		focus = {
+			id = HOL_Claim_our_colies_america
+			icon = GFX_goal_generic_political_pressure
+			prerequisite = { focus=HOL_Claim_our_colies }
+			available = {
+			has_government=communism }
+
+			completion_reward = {
+			add_political_power = 100
+			687 = { add_core_of = HOL }
+			310 = { add_core_of = HOL }
+			}
+
+			cost = 10
+			x = 2
+			y = 8
+			ai_will_do = { factor = 10 }
+		}
+
+		focus = {
+			id = HOL_Fate_of_Siam
+			icon = GFX_goal_generic_more_territorial_claims
+			prerequisite = { focus=HOL_Claim_our_colies_america focus=HOL_Faction_LUX_Com }
+			available = {
+			has_government=communism
+			SIA = {
+		        exists = yes
+		    }}
+
+			completion_reward = {
+			create_wargoal = {
+		type = annex_everything
+		target = SIA
+	}
+			}
+
+			cost = 10
+			x = 1
+			y = 9
+			ai_will_do = { factor = 10 }
+		}
+
+		focus = {
+			id = HOL_Faction_Bel_COM
+			icon = GFX_goal_generic_major_alliance
+
+		 prerequisite = { focus=HOL_Troelstra_reforms }
+		 completion_reward = {
+		 set_rule = { can_create_factions = yes }
+		 create_faction = "New Groot Nederland"
+
+		 if = {
+				limit = {
+					BEL = {
+						is_ai = yes
+						is_puppet = no
+					}
+				}
+				add_to_faction = BEL
+				BEL = {
+					add_ai_strategy = {
+						type = alliance
+						id = "HOL"
+						value = 200
+					}
+				}
+			}
+
+		 }
+			cost = 10
+			x = 0
+			y = 7
+			ai_will_do = { factor = 10 }
+		}
+
+		focus = {
+			id = HOL_Faction_LUX_Com
+			icon = GFX_goal_generic_major_alliance
+
+		 prerequisite = { focus=HOL_Faction_Bel_COM }
+		 completion_reward = {
+
+		 if = {
+				limit = {
+					LUX = {
+						is_ai = yes
+						is_puppet = no
+					}
+				}
+				add_to_faction = LUX
+				LUX = {
+					add_ai_strategy = {
+						type = alliance
+						id = "HOL"
+						value = 200
+					}
+				}
+			}
+
+		 }
+			cost = 10
+			x = 0
+			y = 8
+			ai_will_do = { factor = 10 }
+		}
+
+
 	###Comunistas Fin###
 
 ###Ai Historico###
@@ -628,6 +761,8 @@ focus = {
 
  prerequisite = { focus=HOL_weapons }
  completion_reward = {
+ set_rule={ can_send_volunteers=yes }
+ add_ideas=foreign_expeditions_focus
   add_ideas=foreign_expeditions_focus
  }
 	cost = 10
@@ -700,7 +835,127 @@ focus = {
 	y = 7
 	ai_will_do = { factor = 10 }
 }
+#####Colony Effort ###
 
+focus = {
+  id = HOL_ww1_Colony_effort_1
+  icon = GFX_goal_generic_intelligence_exchange
+  completion_reward = {
+    add_political_power=120
+  }
+  cost = 10
+  x = 12
+  y = 8
+  ai_will_do = { factor = 2000 }
+}
+
+focus = {
+  id = HOL_ww1_Improve_Colony_Dockyards
+	prerequisite = { focus=HOL_ww1_Colony_effort_1 }
+  icon = GFX_goal_generic_construct_naval_dockyard
+  completion_reward = {
+	335 = {
+		add_building_construction = {
+			type = dockyard
+			level = 2
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = dockyard
+			level = 2
+			instant_build = yes
+		}
+	}
+  }
+  cost = 10
+  x = 12
+  y = 9
+  ai_will_do = { factor = 10 }
+}
+
+focus = {
+  id = HOL_ww1_Improve_Colony_Military
+	prerequisite = { focus=HOL_ww1_Colony_effort_1 }
+  icon = GFX_goal_generic_construct_mil_factory
+  completion_reward = {
+	672 = {
+		add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+		}
+	}
+  }
+  cost = 10
+  x = 10
+  y = 9
+  ai_will_do = { factor = 10 }
+}
+
+focus = {
+  id = HOL_ww1_Improve_Colony_Industry
+	prerequisite = { focus=HOL_ww1_Colony_effort_1 }
+  icon = GFX_goal_generic_construct_civ_factory
+  completion_reward = {
+	334 = {
+		add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		}
+	}
+  }
+  cost = 10
+  x = 14
+  y = 9
+  ai_will_do = { factor = 10 }
+}
+
+focus = {
+  id = HOL_ww1_Improve_Colony_Air
+	prerequisite = { focus=HOL_ww1_Improve_Colony_Industry focus=HOL_ww1_Improve_Colony_Military focus=HOL_ww1_Improve_Colony_Dockyards }
+  icon = GFX_goal_generic_construction
+  completion_reward = {
+	673 = {
+		add_building_construction = {
+			type = air_base
+			level = 1
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = air_base
+			level = 1
+			instant_build = yes
+		}
+	}
+  }
+  cost = 10
+  x = 12
+  y = 10
+  ai_will_do = { factor = 10 }
+}
+
+focus = {
+	id = HOL_WW1_Colony_Research
+	prerequisite = { focus=HOL_ww1_Improve_Colony_Air }
+	available = { date > 1916.1.1 }
+	icon = GFX_focus_research
+	completion_reward = { add_research_slot=1 }
+	cost = 10
+	x = 12
+	y = 11
+	ai_will_do = { factor = 10 }
+}
 #######Diplomatic 	Focus#####
 
 focus = {

@@ -354,24 +354,55 @@ focus = {
 }
 
 focus = {
- id= mex_ww1_oppression_minorities
- prerequisite = { focus = mex_ww1_massive_effort }
- icon = GFX_goal_generic_demand_territory
+ id= mex_ww1_Restore_Autocracy
+ prerequisite = { focus = mex_ww1_Support_the_democracy }
+ icon = GFX_goal_generic_territory_or_war
  completion_reward = {
  add_political_power= -150
- add_timed_idea = {
-   idea = idea_oppression_minorities
-   days = 360
- }
- add_timed_idea = {
-   idea = ideological_fanaticism_focus
-   days = 420
-     }
+ add_ideas = authoritarianism
    }
    cost = 10
-   x = 6
+   x = 7
+   y = 9
+   ai_will_do = { factor = 0}
+}
+
+focus = {
+ id= mex_ww1_Take_Action
+ prerequisite = { focus = mex_ww1_Restore_Autocracy }
+ icon = GFX_goal_molotov_ribbentrop_pact
+ completion_reward = {
+ add_political_power= 150
+ add_national_unity = 0.05
+   }
+   cost = 10
+   x = 8
    y = 10
-   ai_will_do = { factor = 100}
+   ai_will_do = { factor = 10}
+}
+
+focus = {
+	id = mex_ww1_paramilitarism
+	prerequisite = { focus=mex_ww1_Take_Action }
+	icon = GFX_goal_generic_military_sphere
+	mutually_exclusive = { focus=mex_ww1_preserve }
+	completion_reward = { add_ideas=paramilitarism_focus }
+	cost = 10
+	x = 9
+	y = 11
+	ai_will_do = { factor = 10 }
+}
+
+focus = {
+	id = mex_ww1_preserve
+	prerequisite = { focus=mex_ww1_Take_Action }
+	icon = GFX_goal_generic_defence
+	mutually_exclusive = { focus=mex_ww1_paramilitarism }
+	completion_reward = { add_ideas=political_commissars_focus }
+	cost = 10
+	x = 7
+	y = 11
+	ai_will_do = { factor = 10 }
 }
 
 focus = {
@@ -779,7 +810,7 @@ focus = {
     add_national_unity = 0.10
   }
   cost = 4
-  x = 7
+  x = 6
   y = 8
   ai_will_do = { factor = 0 }
 }
