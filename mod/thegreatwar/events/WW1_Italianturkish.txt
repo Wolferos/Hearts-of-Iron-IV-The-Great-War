@@ -66,6 +66,9 @@ country_event = {
 		    TUR = {
 		        country_event = { id = ww1_italianturkish.2 days = 1 }
 		    }
+		    HAI = {
+		        country_event = { id = ww1_haiti.1 days = 600 }
+		    }
 	        news_event = { days = 1 id = ww1_italianturkish.8 }
 	    }
 	}
@@ -228,56 +231,56 @@ country_event = {
 }
 #____________________________________________________________
 
-# If Italy is kicked out from Libya
+# If Italy is kicked out from Libya - Overridden by ww1_haiti.1
 #____________________________________________________________
-country_event = {
-	id = ww1_italianturkish.7
-	title = "We have lost our positions!"
-	desc = "We have lost our positions in Libya."
-	picture = GFX_report_event_generic_read_write
-
-	fire_only_once = yes
-	
-	trigger = {
-		ITA = {
-			has_war_with = TUR
-			NOT = {
-				controls_state = 448
-				controls_state = 449
-				controls_state = 450
-				controls_state = 451
-				has_country_flag = ITA_Lib_War_End_Lost_States
-			}
-		}	
-	}
-
-	option = {
-		name = "It's a defeat"
-		ai_chance={
-			factor=100
-		}
-		ITA = {
-			white_peace = TUR
-		}
-		hidden_effect = {
-			TUR = {
-	 			transfer_state=164
-				transfer_state=273
-				transfer_state=448
-				transfer_state=449
-				transfer_state=450
-				transfer_state=451
-				transfer_state=661
-				transfer_state=662
-				transfer_state=663
-			}
-			ITA = {
-				set_country_flag = ITA_Lib_War_End_Lost_States
-			}
-			news_event = { days = 1 id = ww1_italianturkish.10 }
-		}		
-	}
-}
+#country_event = {
+#	id = ww1_italianturkish.7
+#	title = "We have lost our positions!"
+#	desc = "We have lost our positions in Libya."
+#	picture = GFX_report_event_generic_read_write
+#
+#	fire_only_once = yes
+#	
+#	trigger = {
+#		ITA = {
+#			has_war_with = TUR
+#			NOT = {
+#				controls_state = 448
+#				controls_state = 449
+#				controls_state = 450
+#				controls_state = 451
+#				has_country_flag = ITA_Lib_War_End_Lost_States
+#			}
+#		}	
+#	}
+#
+#	option = {
+#		name = "It's a defeat"
+#		ai_chance={
+#			factor=100
+#		}
+#		ITA = {
+#			white_peace = TUR
+#		}
+#		hidden_effect = {
+#			TUR = {
+#	 			transfer_state=164
+#				transfer_state=273
+#				transfer_state=448
+#				transfer_state=449
+#				transfer_state=450
+#				transfer_state=451
+#				transfer_state=661
+#				transfer_state=662
+#				transfer_state=663
+#			}
+#			ITA = {
+#				set_country_flag = ITA_Lib_War_End_Lost_States
+#			}
+#			news_event = { days = 1 id = ww1_italianturkish.10 }
+#		}		
+#	}
+#}
 #____________________________________________________________
 
 # Italian invasion of Libya - Global News

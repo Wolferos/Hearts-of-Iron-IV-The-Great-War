@@ -26,7 +26,9 @@ focus_tree = {
 		prerequisite = { focus=BUL_ww1_political_effort }
 		icon = GFX_goal_support_democracy
 
-		available = { has_government=democratic }
+		available = { 
+			# has_government = democratic
+		}
 
 		completion_reward = { add_political_power=50 add_national_unity = 0.03 }
 
@@ -916,22 +918,22 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 		icon = GFX_goal_generic_improve_relations 
 
 		bypass = {
-			is_in_faction_with = ENG
+			is_in_faction_with = FRA
 		} 
 
 	 	available = {
 	 		is_puppet = no
-	 		NOT = { has_war_with = ENG }
+	 		NOT = { has_war_with = FRA }
 			is_in_faction = no
 	 		
-	 		ENG = {
+	 		FRA = {
 	 			exists = yes
  				is_faction_leader = yes
 	 		}
 		}
 		completion_reward = {
 
-				ENG={
+				FRA={
 					add_to_faction=ROOT
 				}
 		}

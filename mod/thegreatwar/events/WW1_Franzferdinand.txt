@@ -337,7 +337,7 @@ country_event = {
 	desc = ww1_franzferdinand.8.d
 	picture = ww1_franzferdinand_8
 
-	fire_only_once = yes
+	#fire_only_once = yes
 	is_triggered_only = yes
 	mean_time_to_happen = {
 		days = 1
@@ -353,6 +353,18 @@ country_event = {
 				remove_from_faction = BUL
 				remove_from_faction = MTN
 			}
+			GRE = {
+				remove_from_faction = BUL
+				remove_from_faction = SER
+				remove_from_faction = BUL
+				remove_from_faction = MTN
+			}
+			BUL = {
+				remove_from_faction = SER
+				remove_from_faction = GRE
+				remove_from_faction = BUL
+				remove_from_faction = MTN
+			}
 		}
 	}
 
@@ -361,11 +373,19 @@ country_event = {
 		name = ww1_franzferdinand.8.a
 		ai_chance =  { factor = 100 }
 
-		hidden_effect = {
-			ENG = {
-				add_to_faction = BEL
+		GER = {
+			declare_war_on = {
+				type = annex_everything
+				target = BEL
 			}
-		
+			add_timed_idea = {
+				idea = schlieffen
+				days = 180
+			}
+		}
+
+
+		hidden_effect = {
 			add_named_threat = {
 				threat = 10
 				name = "The Great War"
@@ -384,23 +404,11 @@ country_event = {
 		    }
 		}
 
-		GER = {
-
-			LUX = {
-				add_to_war = {
-		            targeted_alliance = BEL enemy = GER
-		        }
+		LUX = {
+			add_to_war = {
+	            targeted_alliance = BEL enemy = GER
 	        }
-
-			declare_war_on = {
-				type = annex_everything
-				target = BEL
-			}
-			add_timed_idea = {
-				idea = schlieffen
-				days = 180
-			}
-		}
+        }
 	}
 
 	# New Schlieffen Plan - War with FRA, BEL, HOL and RUS, Invasion of LUX
@@ -408,11 +416,18 @@ country_event = {
 		name = ww1_franzferdinand.8.b
 		ai_chance =  { factor = 0 }
 
-		hidden_effect = {
-			ENG = {
-				add_to_faction = BEL
-				add_to_faction = HOL
+		GER = {
+			declare_war_on = {
+				type = annex_everything
+				target = BEL
 			}
+			add_timed_idea = {
+				idea = schlieffen
+				days = 180
+			}
+		}
+		
+		hidden_effect = {
 			add_named_threat = {
 				threat = 10
 				name = "The Great War"
@@ -431,16 +446,6 @@ country_event = {
 		
 		}
 
-		GER = {
-			declare_war_on = {
-				type = annex_everything
-				target = BEL
-			}
-			add_timed_idea = {
-				idea = schlieffen
-				days = 180
-			}
-		}
 		HOL = {
 			add_to_war = {
 	            targeted_alliance = BEL enemy = GER
