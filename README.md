@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos 
 
-**Current Version:** 0.2
+**Current Version:** 0.2a
 
 **Compatible with:** Hearts of Iron IV 1.3.2 "Torch"(with or without Together for Victory Paid DLC) 
 
@@ -19,6 +19,7 @@
 - Russian Language (Already in the Mod thanks to the [Community of Strategium.ru](https://www.strategium.ru))
 - Japanese Language ([+JP: The Great War](http://steamcommunity.com/sharedfiles/filedetails/?id=854550667&searchtext=%2BJP%3A+The+Great+War))
 - Early German Language
+- Early Spanish Language
 
 /!\ Warning /!\ Old Saves may not work with newer versions of the Mod
 
