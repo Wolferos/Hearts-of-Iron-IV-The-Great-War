@@ -1,0 +1,3990 @@
+﻿###########################
+# News Events
+###########################
+
+add_namespace = news
+
+# Games of the XI Olympiad
+news_event = {
+	id = news.66
+	title = news.66.t
+	desc = news.66.d
+	picture = GFX_news_event_olympics_1940
+	
+	major = yes
+	
+	trigger = {
+		date > 1936.8.15
+		NOT = { has_global_flag = olympics_1936 }
+		country_exists = GER
+		country_exists = USA
+		GER = { has_war = no }
+		FRA = { has_war = no }
+		ENG = { has_war = no }
+		USA = { has_war = no }
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	immediate = {
+		set_global_flag = olympics_1936 
+	}
+	
+	option = {
+		name = news.66.a
+		trigger = { 
+			NOT = { TAG = GER }
+		}
+	}
+	option = {
+		name = news.66.b
+		trigger = { TAG = GER }
+	}
+}
+
+# Games of the XII Olympiad (Tokyo)
+news_event = {
+	id = news.67
+	title = news.67.t
+	desc = news.67.d
+	picture = GFX_news_event_070
+	
+	major = yes
+	
+	trigger = {
+		date > 1940.10.5
+		has_global_flag = olympics_1936 
+		NOT = {
+			has_global_flag = olympics_jap_1940
+			has_global_flag = olympics_fin_1940
+		}
+		country_exists = JAP
+		country_exists = USA
+		country_exists = GER
+		GER = { has_war = no }
+		FRA = { has_war = no }
+		ENG = { has_war = no }
+		USA = { has_war = no }
+		JAP = { has_war = no }
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	immediate = {
+		set_global_flag = olympics_jap_1940
+	}
+	
+	option = {
+		name = news.66.a
+	}
+}
+
+# Games of the XII Olympiad (Helsinki)
+news_event = {
+	id = news.68
+	title = news.67.t
+	desc = news.68.d
+	picture = GFX_news_event_069
+	
+	major = yes
+	
+	trigger = {
+		date > 1940.8.3
+		has_global_flag = olympics_1936
+		NOT = {
+			has_global_flag = olympics_jap_1940
+			has_global_flag = olympics_fin_1940
+		}
+		country_exists = FIN
+		country_exists = USA
+		country_exists = GER
+		country_exists = ITA
+		JAP = { has_war = yes }
+		FIN = { has_war = no }
+		ITA = { has_war = no }
+		SOV = { has_war = no }
+		GER = { has_war = no }
+		FRA = { has_war = no }
+		ENG = { has_war = no }
+		USA = { has_war = no }
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	immediate = {
+		set_global_flag = olympics_fin_1940
+	}
+	
+	option = {
+		name = news.66.a
+	}
+}
+
+# The Fall of Paris (Germany)
+news_event = {
+	id = news.101
+	title = news.101.t
+	desc = news.101.d
+	picture = GFX_news_event_german_soldiers
+	
+	major = yes
+	
+	trigger = {
+		16 = { is_controlled_by = GER }
+		16 = { is_owned_by = FRA }
+		FRA = { has_war_with = GER }
+		NOT = { has_global_flag = fall_of_paris_ger }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_paris_ger
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.101.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = FRA
+			}
+		}
+	}
+	option = {
+		name = news.100.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = FRA }
+	}
+}
+
+# The Fall of London (Germany)
+news_event = {
+	id = news.102
+	title = news.102.t
+	desc = news.102.d
+	picture = GFX_news_event_soldiers_marching
+	
+	major = yes
+	
+	trigger = {
+		126 = { is_controlled_by = GER }
+		126 = { is_owned_by = FRA }
+		GER = { has_war_with = FRA }
+		NOT = { has_global_flag = fall_of_london_ger }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_london_ger
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = ENG
+			}
+		}
+	}
+	option = {
+		name = news.100.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = ENG }
+	}
+}
+
+# Komet Sighted
+news_event = {
+	id = news.156
+	title = news.156.t
+	desc = news.156.d
+	picture = GFX_news_event_komet
+	
+	#major = yes
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = GER
+		has_tech = rocket_engines
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.156.a
+		custom_effect_tooltip = news.156.a.tt
+	}
+}
+
+news_event = {
+	id = news.172
+	title = news.172.t
+	desc = news.172.d
+
+	picture = GFX_news_event_009
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = news.172.a
+		trigger = {
+			TAG = GER
+		}
+	}
+	option = {
+		name = news.172.b
+		trigger = {
+			NOT = { TAG = GER }
+			NOT = { TAG = GRE }
+			is_in_faction_with = GER
+		}		
+	}
+	option = {
+		name = news.172.c
+		trigger = {
+			NOT = { TAG = GER }
+			NOT = { is_in_faction_with = GER }
+			is_in_faction = yes
+			NOT = { tag = GRE }
+		}
+	}
+	option = {
+		name = news.172.e
+		trigger = {
+			NOT = { TAG = GER }
+			is_in_faction = no
+			NOT = { tag = GRE }
+		}
+	}
+	option = {
+		name = news.172.f
+		trigger = {
+			tag = GRE
+		}
+	}
+}
+
+news_event = {
+	id = news.173
+	title = news.173.t
+	picture = GFX_news_event_023
+	
+	fire_only_once = yes
+
+	trigger = {
+		SOV = {
+			OR = {
+				has_completed_focus = SOV_great_purge
+				NOT = { has_country_flag = SOV_purge_started }
+			}
+			has_government = communism
+		}		
+		date > 1938.9.1
+	}
+
+	immediate = {
+		set_global_flag = SOV_fourth_international_fired
+
+		# Set flag for amount of purges (completing focus counts as 1)
+		SOV = {
+			#1
+			if = {
+				limit = {
+					has_completed_focus = SOV_great_purge
+					has_country_flag = no_political_purge
+					has_country_flag = purge_1_no_purge
+					has_country_flag = purge_2_no_purge
+				}
+				set_country_flag = SOV_purged_1
+			}
+			#2
+			if = {
+				limit = {
+					has_completed_focus = SOV_great_purge
+					OR = {
+						AND = {
+							NOT = { has_country_flag = no_political_purge }
+							has_country_flag = purge_1_no_purge
+							has_country_flag = purge_2_no_purge
+						}
+						AND = {
+							has_country_flag = no_political_purge
+							NOT = { has_country_flag = purge_1_no_purge }
+							has_country_flag = purge_2_no_purge
+						}
+						AND = {
+							has_country_flag = no_political_purge
+							has_country_flag = purge_1_no_purge
+							NOT = { has_country_flag = purge_2_no_purge }
+						}
+					}
+				}
+				set_country_flag = SOV_purged_2
+			}
+			#3
+			if = {
+				limit = {
+					has_completed_focus = SOV_great_purge
+					OR = {
+						AND = {
+							NOT = { has_country_flag = no_political_purge }
+							NOT = { has_country_flag = purge_1_no_purge }
+							has_country_flag = purge_2_no_purge
+						}
+						AND = {
+							has_country_flag = no_political_purge
+							NOT = { has_country_flag = purge_1_no_purge }
+							NOT = { has_country_flag = purge_2_no_purge }
+						}
+						AND = {
+							NOT = { has_country_flag = no_political_purge }
+							has_country_flag = purge_1_no_purge
+							NOT = { has_country_flag = purge_2_no_purge }
+						}
+					}
+				}
+				set_country_flag = SOV_purged_3
+			}
+			#4
+			if = {
+				limit = {
+					SOV = {
+						has_completed_focus = SOV_great_purge
+						NOT = { has_country_flag = no_political_purge }
+						NOT = { has_country_flag = purge_1_no_purge }
+						NOT = { has_country_flag = purge_2_no_purge	}
+					}
+				}
+				set_country_flag = SOV_purged_4
+			}
+		}
+	}
+
+	mean_time_to_happen = { days = 1 }
+
+	desc = {
+		#not enough ppl killed
+		text = news.173.d_1
+		trigger = {
+			SOV = {
+				OR = {
+					NOT = { has_completed_focus = SOV_great_purge }
+					has_country_flag = no_political_purge
+					has_country_flag = purge_1_no_purge
+					has_country_flag = purge_2_no_purge
+				}
+			}
+		}
+	}
+	desc = {
+		text = news.173.d_2
+		trigger = {
+			SOV = {
+				has_completed_focus = SOV_great_purge
+				NOT = { has_country_flag = no_political_purge }
+				NOT = { has_country_flag = purge_1_no_purge }
+				NOT = { has_country_flag = purge_2_no_purge	}
+			}
+		}
+	}
+
+	option = {
+		name = news.173.a
+		trigger = { NOT = {	tag = SOV } }
+	}
+	option = {
+		name = news.173.b
+		trigger = { tag = SOV }
+	}
+}
+
+
+#FROM pursues nuclear technology
+news_event = {
+	id = news.174
+	title = news.174.t
+	picture = GFX_news_event_069
+	desc = news.174.d
+
+	major = yes
+
+	is_triggered_only = yes
+
+	#We should follow this development.
+	option = {
+		name = news.174.a
+		trigger = {
+			NOT = {
+				is_in_faction_with = FROM
+				has_war_with = FROM
+				tag = FROM
+			}
+		}
+	}
+
+	#Let us hope their research bears fruit.
+	option = {
+		name = news.174.b
+		trigger = {
+			is_in_faction_with = FROM
+			NOT = {
+				tag = FROM
+			}
+		}
+	}
+
+	#It will never amount to anything.
+	option = {
+		name = news.174.c
+		trigger = {
+			has_war_with = FROM
+		}
+	}
+
+	#We will conduct our research in secret.
+	option = {
+		name = news.174.e
+		trigger = {
+			tag = FROM
+		}
+	}
+}
+
+
+#France joins Britain
+news_event = {
+	id = news.175
+	title = news.175.t
+	picture = GFX_news_event_churchill_degaulle
+	desc = news.175.d
+
+	major = yes
+
+	is_triggered_only = yes
+
+	#We stand together.
+	option = {
+		name = news.175.a
+		trigger = {
+			OR = {
+				tag = ENG
+				tag = FRA
+			}
+		}
+	}
+
+	#They are preparing for the worst.
+	option = {
+		name = news.175.b
+		trigger = {
+			FRA = {
+				has_war = no
+			}
+			NOT = {
+				OR = {
+					tag = FRA
+					tag = ENG
+					tag = GER
+				}
+			}
+		}
+	}
+
+	#Banding together like cornered rats.
+	option = {
+		name = news.175.c
+		trigger = {
+			OR = {
+				tag = GER
+				has_war_with = FRA
+			}
+		}
+	}
+
+	#Britain has thrown in their lot.
+	option = {
+		name = news.175.e
+		trigger = {
+			FRA = {
+				has_war = yes
+			}
+			NOT = {
+				has_war_with = FRA
+			}
+			NOT = {
+				OR = {
+					tag = FRA
+					tag = ENG
+					tag = GER
+				}
+			}
+		}
+	}
+}
+
+
+
+#Britain rejects French alliance
+news_event = {
+	id = news.176
+	title = news.176.t
+	picture = GFX_news_event_churchill_degaulle
+	desc = news.176.d
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	#They should have asked more nicely.
+	option = {
+		name = news.176.a
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	#Our old enemies stand divided.
+	option = {
+		name = news.176.b
+		trigger = {
+			tag = GER
+		}
+	}
+
+	#A dark day for the old allies.
+	option = {
+		name = news.176.b
+		trigger = {
+			NOT = {
+				OR = {
+					tag = ENG
+					tag = GER
+				}
+			}
+		}
+	}
+}
+
+#The Little Entente
+news_event = {
+	id = news.177
+	title = news.177.t
+	desc = news.177.d
+	picture = GFX_news_event_057
+
+	major = yes
+
+	is_triggered_only = yes
+
+	#Don't come crying to us later, then!
+	option = {
+		name = news.177.a
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	#Vive la France!
+	option = {
+		name = news.177.b
+		trigger = {
+			tag = FRA
+		}
+	}
+
+	#We must never again let France have hegemony in Europe.
+	option = {
+		name = news.177.c
+		trigger = {
+			OR = {
+				tag = GER
+				tag = ITA
+				AND = {
+					original_tag = SPR
+					has_government = fascism
+				}
+				tag = SOV
+			}
+		}
+	}
+
+	#Europe must unite against Fascist aggressors!
+	option = {
+		name = news.177.e
+		trigger = {
+			tag = CZE
+			NOT = {
+				has_government = fascism
+			}
+		}
+	}
+
+	#European tension is growing.
+	option = {
+		name = news.177.f
+		trigger = {
+			NOT = {
+				tag = GER
+				tag = ITA
+				tag = SOV
+				AND = {
+					original_tag = SPR
+					NOT = {
+						has_government = fascism
+					}
+				}
+				tag = FRA
+				tag = ENG
+				AND = {
+					tag = CZE
+					has_government = fascism
+				}
+			}
+		}
+	}
+}
+
+
+#The Left Ascendant in France
+news_event = {
+	id = news.178
+	title = news.178.t
+	desc = news.178.d
+	picture = GFX_news_event_french_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	#France is with us towards the future!
+	option = {
+		name = news.178.a
+		trigger = {
+			has_government = communism
+		}
+	}
+
+	#A sure sign of French weakness.
+	option = {
+		name = news.178.b
+		trigger = {
+			has_government = fascism
+		}
+	}
+
+	#A tragic day for the Third Republic.
+	option = {
+		name = news.178.c
+		trigger = {
+			has_government = democratic
+		}
+	}
+
+	#A worrisome development.
+	option = {
+		name = news.178.e
+		trigger = {
+			has_government = neutrality
+		}
+	}
+}
+
+
+#The Right Ascendant in France
+news_event = {
+	id = news.179
+	title = news.179.t
+	desc = news.179.d
+	picture = GFX_news_event_french_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	#The French government is an enemy of its people!
+	option = {
+		name = news.179.a
+		trigger = {
+			has_government = communism
+		}
+	}
+
+	#This could once again make France a great nation.
+	option = {
+		name = news.179.b
+		trigger = {
+			has_government = fascism
+		}
+	}
+
+	#A tragic day for the Third Republic.
+	option = {
+		name = news.179.c
+		trigger = {
+			has_government = democratic
+		}
+	}
+
+	#A worrisome development.
+	option = {
+		name = news.179.e
+		trigger = {
+			has_government = neutrality
+		}
+	}
+}
+
+
+#France Is Welcomed by the Comintern
+news_event = {
+	id = news.180
+	title = news.180.t
+	desc = news.180.d
+	picture = GFX_news_event_french_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		FRA = {
+			save_event_target_as = France		
+		}
+	}
+
+	#United towards the World Revolution!
+	option = {
+		name = news.180.a
+		trigger = {
+			OR = {
+				has_government = communism
+				tag = FRA
+			}
+		}
+	}
+
+	#Their alliance will crumble soon enough.
+	option = {
+		name = news.180.b
+		trigger = {
+			has_government = fascism
+			NOT = {
+				tag = FRA
+			}
+		}
+	}
+
+	#The enemies of democracy must not be allowed to grow stronger.
+	option = {
+		name = news.180.c
+		trigger = {
+			has_government = democratic
+			NOT = {
+				tag = FRA
+			}
+		}
+	}
+
+	#France has picked her side.
+	option = {
+		name = news.180.e
+		trigger = {
+			has_government = neutrality
+			NOT = {
+				tag = FRA
+			}
+		}
+	}
+}
+
+
+#Italy And France Unite
+news_event = {
+	id = news.181
+	title = news.181.t
+	desc = news.181.d
+	picture = GFX_news_event_french_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		FRA = {
+			save_event_target_as = France		
+		}
+	}
+
+	#Together we stand strong!
+	option = {
+		name = news.181.a
+		trigger = {
+			OR = {
+				tag = FRA
+				tag = ITA
+			}
+		}
+	}
+
+
+	#The enemies of democracy grow stronger.
+	option = {
+		name = news.181.b
+		trigger = {
+			NOT = {
+				tag = FRA
+			}
+			NOT = {
+				tag = ITA
+			}
+			has_government = democratic
+		}
+	}
+
+	#An unexpected Friendship
+	option = {
+		name = news.181.c
+		trigger = {
+			NOT = {
+				tag = FRA
+			}
+			NOT = {
+				tag = ITA
+			}
+			NOT = {
+				has_government = democratic
+			}
+		}
+	}
+}
+
+
+#France Joins the [From.GetFaction] (Germany)
+news_event = {
+	id = news.182
+	title = news.182.t
+	desc = news.182.d
+	picture = GFX_news_event_french_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		FRA = {
+			save_event_target_as = France		
+		}
+	}
+
+	#Nothing can threaten the [From.GetFaction]!
+	option = {
+		name = news.182.a
+		trigger = {
+			is_in_faction_with = GER
+		}
+	}
+
+	#The new [From.GetName] looms over Europe.
+	option = {
+		name = news.182.b
+		trigger = {
+			NOT = {
+				is_in_faction_with = GER
+			}
+			is_in_faction = yes
+			NOT = {
+				tag = ENG
+			}
+		}
+	}
+
+	#European diplomacy realigns along the Paris-Berlin Axis.
+	option = {
+		name = news.182.c
+		trigger = {
+			NOT = {
+				is_in_faction = yes
+			}
+		}
+	}
+
+	option = {
+		name = news.182.e
+		trigger = {
+			tag = ENG
+		}
+	}
+}
+
+
+#[From.GetName] Rejects French Offer of Alliance!
+news_event = {
+	id = news.183
+	title = news.183.t
+	desc = news.183.d
+	picture = GFX_news_event_french_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		FRA = {
+			save_event_target_as = France		
+		}
+	}
+
+	#How dare they!
+	option = {
+		name = news.183.a
+		trigger = {
+			tag = FRA
+		}
+	}
+
+	#We can live with them as our enemies.
+	option = {
+		name = news.183.b
+		trigger = {
+			tag = FROM
+		}
+	}
+
+	#As long as they are busy fighting each other...
+	option = {
+		name = news.183.c
+		trigger = {
+			NOT = {
+				OR = {
+					tag = FRA
+					tag = FROM
+				}
+			}
+		}
+	}
+}
+
+
+#Italy Pursues Closer Bonds With Germany
+news_event = {
+	id = news.184
+	title = news.184.t
+	desc = news.184.d
+	picture = GFX_news_event_french_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	#Our nations share many common interests.
+	option = {
+		name = news.184.a
+		trigger = {
+			tag = GER
+		}
+	}
+
+	#We will keep an eye on the situation.
+	option = {
+		name = news.184.b
+		trigger = {
+			NOT = { tag = GER }
+		}
+	}
+}
+
+#Italy Seeks Extensive Military Pact
+news_event = {
+	id = news.185
+	title = news.185.t
+	desc = news.185.d
+	picture = GFX_news_053
+
+	major = yes
+
+	is_triggered_only = yes
+
+	#Italy at the heart of a new power structure.
+	option = {
+		name = news.185.a
+		trigger = {
+			OR = {
+				tag = ITA
+				is_in_faction_with = ITA
+			}
+		}
+	}
+
+	#A new power structure in the Mediterrenean
+	option = {
+		name = news.185.b
+		trigger = {
+			NOT = {
+				OR = {
+					tag = ITA
+					is_in_faction_with = ITA
+				}
+			}
+			NOT = {
+				OR = {
+					tag = YUG
+					tag = BUL
+					tag = ALB
+				}
+			}
+		}
+	}
+
+	option = {
+		name = news.185.c
+		trigger = {
+			NOT = {
+				is_in_faction_with = ITA
+			}
+			OR = {
+				tag = YUG
+				tag = BUL
+				tag = ALB
+			}
+		}
+	}
+}
+
+#Italy Lays Claim to Greek Territory
+news_event = {
+	id = news.186
+	title = news.186.t
+	desc = news.186.d
+	picture = GFX_news_event_french_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	immediate = {
+		GRE = {
+			save_event_target_as = Greece
+		}
+	}
+
+	#Italy should be in control of the Aegean
+	option = {
+		name = news.186.a
+		trigger = {
+			is_in_faction_with = ITA
+		}
+	}
+
+	#Outrageous claims!
+	option = {
+		name = news.186.b
+		trigger = {
+			NOT = {
+				is_in_faction_with = ITA
+			}
+		}
+	}
+}
+
+#Italy Seeks to Improve Relations With Greece
+news_event = {
+	id = news.187
+	title = news.187.t
+	desc = news.187.d
+	picture = GFX_news_event_generic_sign_treaty1
+
+	major = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		GRE = {
+			save_event_target_as = Greece
+		}
+	}
+
+	#Surely they share our interests.
+	option = {
+		name = news.187.a
+		trigger = {
+			is_in_faction_with = ITA
+		}
+	}
+
+	#This is not surprising.
+	option = {
+		name = news.187.b
+		trigger = {
+			NOT = {
+				is_in_faction_with = ITA
+			}
+		}
+	}
+
+	#We do have much shared history.
+	option = {
+		name = news.187.c
+		trigger = {
+			NOT = {
+				is_in_faction_with = ITA
+			}
+			tag = GRE
+		}
+	}
+}
+
+#Italy Seeks Reconciliation With Turkey
+news_event = {
+	id = news.188
+	title = news.188.t
+	desc = news.188.d
+	picture = GFX_news_event_french_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = {
+			OR = {
+				tag = ITA
+				tag = TUR
+			}
+		}
+	}
+
+	option = {
+		name = news.188.a
+		trigger = {
+			is_in_faction_with = ITA
+		}
+	}
+
+	option = {
+		name = news.188.b
+		trigger = {
+			has_war_with = ITA
+		}
+	}
+
+	option = {
+		name = news.188.c
+		trigger = {
+			NOT = {
+				OR = {
+					is_in_faction_with = ITA
+					has_war_with = ITA
+				}
+			}
+		}
+	}
+}
+
+#Italy Demands Anatolian Naval Bases
+news_event = {
+	id = news.189
+	title = news.189.t
+	desc = news.189.d
+	picture = GFX_news_event_german_speech
+
+	major = yes
+
+	is_triggered_only = yes
+
+	#This matter was settled!
+	option = {
+		name = news.189.a
+		trigger = {
+			tag = TUR
+		}
+	}
+
+	#We will have what we were promised!
+	option = {
+		name = news.189.c
+		trigger = {
+			tag = ITA
+		}
+	}
+
+	#Their rivalry is intensifying.
+	option = {
+		name = news.189.c
+		trigger = {
+			NOT ={
+				OR = {
+					tag = ITA
+					tag = TUR
+				}
+			}
+		}
+	}
+}
+
+#Spain Cedes the Balearic Islands
+news_event = {
+	id = news.190
+	title = news.190.t
+	desc = news.190.d
+	picture = GFX_news_event_generic_sign_treaty2
+
+	major = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		ITA = {
+			save_event_target_as = Italy
+		}
+	}
+
+	#This is an important step towards complete Mediterranean dominance.
+	option = {
+		name = news.190.a
+		trigger = {
+			tag = ITA
+		}
+	}
+
+	#
+	option = {
+		name = news.190.b
+		trigger = {
+			is_in_faction_with = ITA
+		}
+	}
+
+	#Italy is strengthening its grip on the Mediterrenean.
+	option = {
+		name = news.190.b
+		trigger = {
+			NOT = {
+				OR = {
+					tag = FROM
+					tag = ITA
+				}
+			}
+		}
+	}
+
+	#A symbol of the \"dear friendship\" between our nations.
+	option = {
+		name = news.190.c
+		trigger = {
+			tag = FROM
+		}
+	}
+}
+
+
+#Italy Establishes Alliance With Spain
+#news_event = {
+#	id = news.191
+#	title = news.191.t
+#	desc = news.191.d
+#	picture = GFX_news_event_french_parade
+#
+#	is_triggered_only = yes
+#
+#	option = {
+#		name = news.191.a
+#	}
+#}
+
+#Italy Announces Claims On Yugoslavian Territory
+news_event = {
+	id = news.192
+	title = news.192.t
+	desc = news.192.d
+	picture = GFX_news_event_journalists_speech
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	#Those are Yugoslavian lands, not Italian!
+	option = {
+		name = news.192.a
+		trigger = {
+			tag = YUG
+		}
+	}
+
+	#They are upsetting the already fragile balance in the region.
+	option = {
+		name = news.192.b
+		trigger = {
+			NOT = {
+				OR = {
+					tag = YUG
+					tag = ITA
+				}
+			}
+			NOT = {
+				has_government = fascism
+			}
+		}
+	}
+
+	#Those territories seem more Italian than Yugoslavian.
+	option = {
+		name = news.192.c
+		trigger = {
+			NOT = {
+				OR = {
+					tag = YUG
+					tag = ITA
+				}
+			}
+			has_government = fascism
+		}
+	}
+}
+
+#Italy Establishes Permanent Diplomatic Mission in Yugoslavia
+news_event = {
+	id = news.193
+	title = news.193.t
+	desc = news.193.d
+	picture = GFX_news_event_yugoslavian_coup
+
+	major = yes
+
+	is_triggered_only = yes
+
+	#Our nations stand together as friends.
+	option = {
+		name = news.193.a
+		trigger = {
+			OR = {
+				tag = ITA
+				tag = YUG
+			}
+		}
+	}
+
+	#There will be peace in the Adriatic.
+	option = {
+		name = news.193.b
+		trigger =  {
+			NOT = {
+				OR = {
+					tag = ITA
+					tag = YUG
+				}
+			}
+			ITA = {
+				has_war = no
+			}
+		}
+	}
+
+	#It will be interesting to see where this ends.
+	option = {
+		name = news.193.c
+		trigger =  {
+			NOT = {
+				OR = {
+					tag = ITA
+					tag = YUG
+				}
+			}
+			ITA = {
+				has_war = yes
+			}
+		}
+	}
+}
+
+#Eastern Poland Ceded to the Soviet Union
+news_event = {
+	id = news.194
+	title = news.194.t
+	desc = news.194.d
+	picture = GFX_news_event_generic_sign_treaty1
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	immediate = {
+		POL = {
+			save_event_target_as = Poland
+		}
+	}
+
+	#[Poland.GetName] recognises the strength of the [From.GetFactionName]!
+	option = {
+		name = news.194.a
+		trigger = {
+			is_in_faction_with = SOV
+		}
+	}
+
+	#The [From.GetName] consumes everything in its path.
+	option = {
+		name = news.194.b
+		trigger = {
+			NOT = {
+				is_in_faction_with = SOV
+			}
+			is_in_faction = yes
+		}
+	}
+
+	#[Poland.GetName] must have been left with no other choice.
+	option = {
+		name = news.194.c
+		trigger = {
+			is_in_faction = no
+		}
+	}
+}
+
+#Eastern Germany Passed to Poland
+news_event = {
+	id = news.195
+	title = news.195.t
+	desc = news.195.d
+	picture = GFX_news_event_polish_tanks
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	immediate = {
+		SOV = {
+			save_event_target_as = Soviet
+		}
+		GER = {
+			save_event_target_as = Germany
+		}
+	}
+
+	#[Soviet.GetName] honors its treaties.
+	option = {
+		name = news.195.a
+		trigger = {
+			is_in_faction_with = SOV
+		}
+	}
+
+	#Let us hope a free Poland can rise from the ashes created by its \"protector.\"
+	option = {
+		name = news.195.b
+		trigger = {
+			NOT = {
+				is_in_faction_with = SOV
+			}
+			is_in_faction = yes
+		}
+	}
+
+	#A geographic shift for Poland. Again.
+	option = {
+		name = news.195.c
+		trigger = {
+			is_in_faction = no
+		}
+	}
+}
+
+
+#The Comintern Seeks to Destabilize Western Powers
+news_event = {
+	id = news.196
+	title = news.196.t
+	desc = news.196.d
+	picture = GFX_news_event_worker_protest
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	#Democracy shall never be brought low!
+	option = {
+		name = news.196.a
+		trigger = {
+			has_government = democratic
+		}
+	}
+
+	#A laughable effort!
+	option = {
+		name = news.196.b
+		trigger = {
+			has_government = fascism
+		}
+	}
+
+	#Rise, brothers and sisters!
+	option = {
+		name = news.196.c
+		trigger = {
+			has_government = communism
+		}
+	}
+
+	#The clash of ideologies is the last battle of civilizations.
+	option = {
+		name = news.196.e
+		trigger = {
+			has_government = neutrality
+		}
+	}
+}
+
+
+#[From.GetName] Gives in to [Soviet.GetAdjective] Ultimatum
+news_event = {
+	id = news.197
+	title = news.197.t
+	desc = news.197.d
+	picture = GFX_news_events_generic_sign_treaty2
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	immediate = {
+		SOV = {
+			save_event_target_as = Soviet
+		}
+	}
+
+	#They should be pleased we offered them such good terms.
+	option = {
+		name = news.197.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	#The [Soviet.GetName] must be stopped!
+	option = {
+		name = news.197.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			has_war_with = SOV
+		}
+	}
+
+	#The [Soviet.GetName] is positioning to enter the Mediterranean.
+	option = {
+		name = news.197.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				has_war_with = SOV
+			}
+		}
+	}
+}
+
+#Greece Resists Soviet Ultimatum
+news_event = {
+	id = news.198
+	title = news.198.t
+	desc = news.198.d
+	picture = GFX_news_event_020
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	immediate = {
+		SOV = {
+			save_event_target_as = Soviet
+		}
+	}
+
+	#Then the time for talk is over.
+	option = {
+		name = news.198.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	#The warmongers of [Soviet.GetName] must be stopped!
+	option = {
+		name = news.198.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			has_war_with = SOV
+			NOT = {
+				is_in_faction_with = GRE
+			}
+		}
+	}
+
+	#This was their ultimatum. Greece must prepare for war.
+	option = {
+		name = news.198.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				has_war_with = SOV
+			}
+			NOT = {
+				is_in_faction_with = GRE
+			}
+		}
+	}
+
+	#We stand with [From.GetName]
+	option = {
+		name = news.198.e
+		trigger = {
+			is_in_faction_with = GRE
+		}
+	}
+}
+
+
+#[Romania.GetName] Cedes Bessarabia to the [From.GetName]
+news_event = {
+	id = news.199
+	title = news.199.t
+	desc = news.199.d
+	picture = GFX_news_events_generic_sign_treaty2
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	immediate = {
+		ROM = {
+			save_event_target_as = Romania
+		}
+	}
+
+	#This is essential to the [From.GetAdjective] strategy.
+	option = {
+		name = news.199.a
+		trigger = {
+			is_in_faction_with = SOV
+		}
+	}
+
+	#The countries of the world must face the evil of the [From.GetName]!
+	option = {
+		name = news.199.b
+		trigger = {
+			has_war_with = SOV
+		}
+	}
+
+	#[Romania.GetName] is in an unfortunate position. 
+	option = {
+		name = news.199.c
+		trigger = {
+			NOT = {
+				is_in_faction_with = SOV
+			}
+			NOT = {
+				has_war_with = SOV
+			}
+		}
+	}
+}
+
+#Germany Exerts Influence Over Czechoslovakia
+news_event = {
+	id = news.200
+	title = news.200.t
+	desc = news.200.d
+	picture = GFX_news_event_hitler_speech
+
+	major = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		CZE = {
+			save_event_target_as = Czech
+		}
+	}
+
+	#German friendship is preferable to German overlordship.
+	option = {
+		name = news.200.a
+		trigger = {
+			tag = CZE
+		}
+	}
+
+	#The Czech have always been friends of the Germans.
+	option = {
+		name = news.200.b
+		trigger = {
+			tag = GER
+		}
+	}
+
+	#The [From.GetName] continues to expand their sphere of influence unabated.
+	option = {
+		name = news.200.c
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = communism
+			}
+			NOT = {
+				OR = {
+					tag = GER
+					tag = CZE
+					tag = ENG
+				}
+			}
+		}
+	}
+
+	#Peace for our time?
+	option = {
+		name = news.200.e
+		trigger = {
+			NOT = {
+				OR = {
+					has_government = democratic
+					has_government = communism
+				}
+			}
+			NOT = {
+				OR = {
+					tag = GER
+					tag = CZE
+					tag = ENG
+				}
+			}
+		}
+	}
+
+	#Great news for when [Root.GetLeader] returns from vacation in Munich!
+	option = {
+		name = news.200.f
+		trigger = {
+			tag = ENG
+		}
+	}
+}
+
+
+#Germany Puppets Turkey
+news_event = {
+	id = news.201
+	title = news.201.t
+	desc = news.201.d
+	picture = GFX_news_events_generic_sign_treaty2
+
+	major = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		GER = {
+			save_event_target_as = Germany
+		}
+		SOV = {
+			save_event_target_as = Soviet
+		}
+	}
+
+	trigger = {
+		NOT = {
+			tag = TUR
+		}
+	}
+
+	#The new Turkish government secures our competitiveness in the Mediterranean.
+	option = {
+		name = news.201.a
+		trigger = {
+			tag = GER
+		}
+	}
+
+	#This terrible force is felling countries like dominoes.
+	option = {
+		name = news.201.b
+		trigger = {
+			OR = {
+				has_war_with = GER
+				has_war_with = SOV
+			}
+		}
+	}
+
+	#[From.GetName] couldn't resist the strength of the [Germany.GetFactionName].
+	option = {
+		name = news.201.c
+		trigger = {
+			is_in_faction_with = GER
+			NOT = {
+				OR = {
+					tag = GER
+					tag = SOV
+				}
+			}
+		}
+	}
+
+	#The alliance is strengthening our position and remains highly beneficial. For now.
+	option = {
+		name = news.201.e
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	#Turkey has fallen victim to the predatory [Germany.GetFactionName].
+	option = {
+		name = news.201.f
+		trigger = {
+			NOT = {
+				is_in_faction_with = GER
+			}
+			NOT = {
+				OR = {
+					tag = GER
+					tag = SOV
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+#Danzig For Slovakia
+news_event = {
+	id = news.202
+	title = news.202.t
+	desc = news.202.d
+	picture = GFX_news_events_generic_sign_treaty2
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	immediate = {
+		POL = {
+			save_event_target_as = Poland
+		}
+	}
+
+	#A fair exchange to correct the mistakes of Versailles.
+	option = {
+		name = news.202.a
+		trigger = {
+			is_in_faction_with = GER
+		}
+	}
+
+	#Cooperation makes us stronger than conflict does.
+	option = {
+		name = news.202.b
+		trigger = {
+			is_in_faction_with = POL
+			NOT = {
+				is_in_faction_with = GER 
+			}
+		}
+	}
+
+	#This is a blatant breach of Versailles!
+	option = {
+		name = news.202.c
+		trigger = {
+			OR = {
+				tag = ENG
+				tag = FRA
+			}
+		}
+	}
+
+	#Conflict over Danzig has been averted.
+	option = {
+		name = news.202.e
+		trigger = {
+			NOT = {
+				OR = {
+					tag = ENG
+					tag = FRA
+				}
+			}
+			NOT = {
+				is_in_faction_with = POL
+			}
+			NOT = {
+				is_in_faction_with = GER
+			}
+		}
+	}
+}
+
+#Danzig Ceded
+news_event = {
+	id = news.203
+	title = news.203.t
+	desc = news.203.d
+	picture = GFX_news_events_generic_sign_treaty2
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.203.a
+		trigger = {
+			has_government = democratic
+			NOT = {
+				is_in_faction_with = GER
+			}
+		}
+	}
+
+	option = {
+		name = news.203.b
+		trigger = {
+			is_in_faction_with = GER
+		}
+	}
+
+	option = {
+		name = news.203.c
+		trigger = {
+			has_government = neutrality
+			NOT = {
+				is_in_faction_with = GER
+			}
+		}
+	}
+
+	option = {
+		name = news.203.e
+		trigger = {
+			has_government = communism
+			NOT = {
+				is_in_faction_with = GER
+			}
+		}
+	}
+}
+
+
+#Poland Refuses to Cede Danzig
+news_event = {
+	id = news.204
+	title = news.204.t
+	desc = news.204.d
+	picture = GFX_news_event_polish_tanks
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	#They have ignored every warning!
+	option = {
+		name = news.204.a
+		trigger = {
+			is_in_faction = yes
+			NOT = {
+				is_in_faction_with = GER
+			}
+			NOT = {
+				is_in_faction_with = POL
+			}
+		}
+	}
+
+	#
+	option = {
+		name = news.204.b
+		trigger = {
+			is_in_faction_with = GER
+		}
+	}
+
+	#Together we must stop this aggressor!
+	option = {
+		name = news.204.c
+		trigger = {
+			is_in_faction_with = POL
+		}
+	}
+
+	#This is a grave situation.
+	option = {
+		name = news.204.e
+		trigger = {
+			is_in_faction = no
+		}
+	}
+}
+
+
+#Pax Americana
+news_event = {
+	id = news.205
+	title = news.205.t
+	desc = {
+		text = news.205.d_america
+		trigger = {
+			has_country_flag = monroe_doctrine
+		}
+	}
+	desc = {
+		text = news.205.d_not_america
+		trigger = {
+			NOT = {
+				has_country_flag = monroe_doctrine
+			}
+		}
+	}
+	picture = GFX_news_event_soldiers_marching
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.205.a
+		trigger = {
+			has_country_flag = monroe_doctrine
+		}
+	}
+
+	option = {
+		name = news.205.b
+		trigger = {
+			is_in_faction_with = USA
+			NOT = {
+				has_country_flag = monroe_doctrine
+			}
+		}
+	}
+
+	option = {
+		name = news.205.c
+		trigger = {
+			has_war_with = USA
+		}
+	}
+
+	option = {
+		name = news.205.e
+		trigger = {
+			NOT = {
+				OR = {
+					is_in_faction_with = USA
+					has_war_with = USA
+					has_country_flag = monroe_doctrine
+				}
+			}
+		}
+	}
+}
+
+#US Aims for the Empire
+news_event = {
+	id = news.206
+	title = news.206.t
+	desc = {
+		text = news.206.d_communist
+		trigger = {
+			has_government = communism
+		}
+	}
+	desc = {
+		text = news.206.d_not_communist
+		trigger = {
+			NOT = {
+				has_government = communism
+			}
+		}
+	}
+	picture = GFX_news_event_006
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.206.a
+		trigger = {
+			has_government = communism
+		}
+	}
+
+	option = {
+		name = news.206.b
+		trigger = {
+			OR = {
+				tag = ENG
+				is_puppet_of = ENG
+			}
+			not = {
+				has_government = communism
+			}
+		}
+	}
+
+	option = {
+		name = news.206.c
+		trigger = {
+			has_government = democratic
+			NOT = {
+				OR = {
+					tag = ENG
+					is_puppet_of = ENG
+				}
+			}
+		}
+	}
+
+	option = {
+		name = news.206.e
+		trigger = {
+			has_government = fascism
+			NOT = {
+				OR = {
+					tag = ENG
+					is_puppet_of = ENG
+				}
+			}
+		}
+	}
+
+	option = {
+		name = news.206.f
+		trigger = {
+			has_government = neutrality
+		}
+	}
+}
+
+#US Seeks to Dismantle the Comintern
+news_event = {
+	id = news.207
+	title = news.207.t
+	desc = {
+		text = news.207.d_fascism
+		trigger = {
+			has_government = fascism
+		}
+	}
+	desc = {
+		text = news.207.d_not_fascism
+		trigger = {
+			NOT = {
+				has_government = fascism
+			}
+		}
+	}
+	picture = GFX_news_event_021
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.207.a
+		trigger = {
+			has_government = fascism
+			NOT = {
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = {
+		name = news.207.b
+		trigger = {
+			has_government = communism
+			NOT = {
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = {
+		name = news.207.c
+		trigger = {
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = {
+		name = news.207.e
+		trigger = {
+			NOT = {
+				has_government = fascism
+				is_in_faction_with = USA
+			}
+		}
+	}
+
+	option = {
+		name = news.207.f
+		trigger = {
+			NOT = {
+				has_government = fascism
+			}
+			is_in_faction_with = USA
+		}
+	}
+}
+
+#Japan Embraces Nanshin-ron
+news_event = {
+	id = news.208
+	title = news.208.t
+	desc = news.208.d
+	picture = GFX_news_event_020
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.208.a
+		trigger = {
+			OR = {
+				tag = ENG
+				tag = FRA
+				tag = HOL
+			}
+		}
+	}
+
+	option = {
+		name = news.208.b
+		trigger = {
+			tag = USA
+		}
+	}
+
+	option = {
+		name = news.208.c
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = {
+		name = news.208.e
+		trigger = {
+			NOT = {
+				OR = {
+					tag = ENG
+					tag = FRA
+					tag = HOL
+					tag = USA
+					tag = SOV
+				}
+			}
+		}
+	}
+}
+
+#Japanese Embraces Hokushin-ron
+news_event = {
+	id = news.209
+	title = news.209.t
+	desc = news.209.d
+	picture = GFX_news_event_041
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.209.a
+		trigger = {
+			OR = {
+				tag = ENG
+				tag = FRA
+				tag = HOL
+			}
+		}
+	}
+
+	option = {
+		name = news.209.b
+		trigger = {
+			tag = USA
+		}
+	}
+
+	option = {
+		name = news.209.c
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = {
+		name = news.209.e
+		trigger = {
+			NOT = {
+				OR = {
+					tag = ENG
+					tag = FRA
+					tag = HOL
+					tag = USA
+					tag = SOV
+				}
+			}
+		}
+	}
+}
+
+#Japan Puppets China
+news_event = {
+	id = news.210
+	title = news.210.t
+	desc = news.210.d
+	picture = GFX_news_event_040
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.210.a
+		trigger = {
+			is_in_faction_with = JAP
+		}
+	}
+
+	option = {
+		name = news.210.b
+		trigger = {
+			tag = SOV
+			NOT = {
+				is_in_faction_with = JAP
+			}
+		}
+	}
+
+	option = {
+		name = news.210.c
+		trigger = {
+			OR = {
+				tag = USA
+				tag = ENG
+				tag = FRA
+			}
+			NOT = {
+				is_in_faction_with = JAP
+			}
+		}
+	}
+
+	option = {
+		name = news.210.e
+		trigger = {
+			NOT = {
+				OR = {
+					tag = USA
+					tag = ENG
+					tag = FRA
+					tag = SOV
+				}
+			}
+			NOT = {
+				is_in_faction_with = JAP
+			}
+		}
+	}
+}
+
+#Japan Claims Hegemony Over East Asia
+news_event = {
+	id = news.211
+	title = news.211.t
+	desc = news.211.d
+	picture = GFX_news_event_048
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.211.a
+		trigger = {
+			is_in_faction_with = JAP
+		}
+	}
+
+	option = {
+		name = news.211.b
+		trigger = {
+			tag = GER
+			NOT = {
+				is_in_faction_with = JAP
+			}
+		}
+	}
+
+	option = {
+		name = news.211.c
+		trigger = {
+			tag = SOV
+			NOT = {
+				is_in_faction_with = JAP
+			}
+		}
+	}
+
+	option = {
+		name = news.211.e
+		trigger = {
+			tag = USA
+			NOT = {
+				is_in_faction_with = JAP
+			}
+		}
+	}
+
+	option = {
+		name = news.211.f
+		trigger = {
+			OR = {
+				tag = ENG
+				tag = FRA
+				tag = HOL
+				tag = RAJ
+			}
+			NOT = {
+				is_in_faction_with = JAP
+			}
+		}
+	}
+
+	option = {
+		name = news.211.g
+		trigger = {
+			NOT = {
+				OR = {
+					tag = GER
+					tag = SOV
+					tag = USA
+					tag = ENG
+					tag = FRA
+					tag = HOL
+					tag = RAJ
+				}
+			}
+			NOT = {
+				is_in_faction_with = JAP
+			}
+		}
+	}
+}
+
+#Japan Moves Closer to Germany
+news_event = {
+	id = news.212
+	title = news.212.t
+	desc = {
+		text = news.212.d_axis
+		trigger = {
+			OR = {
+				tag = GER
+				is_in_faction_with = GER
+			}
+		}
+	}
+	desc = {
+		text = news.212.d_not_axis
+		trigger = {
+			NOT = {
+				OR = {
+					tag = GER
+					is_in_faction_with = GER
+				}
+			}
+		}
+	}
+	picture = GFX_news_event_hitler_handshake
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = news.212.a
+		trigger = {
+			OR = {
+				tag = GER
+				is_in_faction_with = GER
+			}
+			NOT = {
+				has_war_with = JAP
+			}
+		}
+	}
+
+	option = {
+		name = news.212.b
+		trigger = {
+			OR = {
+				has_war_with = JAP
+				has_war_with = GER
+			}
+		}
+	}
+
+	option = {
+		name = news.212.c
+		trigger = {
+			NOT = {
+				OR = {
+					tag = GER
+					is_in_faction_with = GER
+				}
+			}
+			NOT = {
+				OR = {
+					has_war_with = GER
+					has_war_with = JAP
+				}
+			}
+		}
+	}
+}
+
+
+#US Aims to Stop Fascism
+news_event = {
+	id = news.213
+	title = news.213.t
+	desc = {
+		text = news.213.d_peace
+		trigger = {
+			NOT = {
+				USA = {
+					has_war_with = GER
+				}
+			}
+		}
+	}
+	desc = {
+		text = news.213.d_war
+		trigger = {
+			OR = {
+				USA = {
+					has_war_with = GER
+				}
+				any_country = {
+					is_in_faction_with = USA
+					has_war_with = GER
+				}
+			}
+		}
+	}
+	picture = GFX_news_event_005
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.213.a
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = {
+		name = news.213.b
+		trigger = {
+			is_in_faction_with = GER
+			NOT = {
+				tag = GER
+			}
+		}
+	}
+
+	option = {
+		name = news.213.c
+		trigger = {
+			has_war_with = GER
+		}
+	}
+
+	option = {
+		name = news.213.e
+		trigger = {
+			NOT = {
+				tag = GER
+			}
+			NOT = {
+				is_in_faction_with = GER
+			}
+			NOT = {
+				has_war_with = GER
+			}
+		}
+	}
+}
+
+#Poland Seeks Baltic Cooperation
+news_event = {
+	id = news.214
+	title = news.214.t
+	desc = {
+		text = news.214.d_baltic
+		trigger = {
+			OR = {
+				tag = EST
+				tag = LAT
+				tag = LIT
+			}
+		}
+	}
+	desc = {
+		text = news.214.d_not_baltic
+		trigger = {
+			NOT = {
+				OR = {
+					tag = EST
+					tag = LAT
+					tag = LIT
+				}
+			}
+		}
+	}
+	picture = GFX_news_event_polish_army
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.214.a
+		trigger = {
+			NOT = {
+				OR = {
+					tag = EST
+					tag = LAT
+					tag = LIT
+					tag = GER
+					tag = SOV
+				}
+			}
+		}
+	}
+
+	option = {
+		name = news.214.b
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = {
+		name = news.214.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = {
+		name = news.214.e
+		trigger = {
+			OR = {
+				tag = EST
+				tag = LAT
+				tag = LIT
+			}
+		}
+	}
+}
+
+
+#Anti-Soviet Pact
+news_event = {
+	id = news.215
+	title = news.215.t
+	desc = {
+		text = news.215.d_soviet
+		trigger = {
+			tag = SOV
+		}
+	}
+	desc = {
+		text = news.215.d_not_soviet
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+	picture = GFX_news_event_hitler_handshake
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = news.215.a
+		trigger = {
+			has_idea = anti_soviet_pact
+		}
+	}
+
+	option = {
+		name = news.215.b
+		trigger = {
+			has_government = communism
+			NOT = {
+				has_idea = anti_soviet_pact
+			}
+		}
+	}
+
+	option = {
+		name = news.215.c
+		trigger = {	
+			NOT = {
+				OR = {
+					has_government = communism
+					has_idea = anti_soviet_pact
+				}
+			}
+		}
+	}
+}
+
+#Turkey Resists German Ultimatum
+news_event = {
+	id = news.216
+	title = news.216.t
+	desc = news.216.d
+	picture = GFX_news_event_journalists_speech
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.216.a
+		trigger = {
+			has_war_with = GER
+			NOT = {
+				is_in_faction_with = TUR
+			}
+		}
+	}
+
+	option = {
+		name = news.216.b
+		trigger = {
+			is_in_faction_with = TUR
+			NOT = {
+				is_in_faction_with = GER
+			}
+		}
+	}
+
+	option = {
+		name = news.216.c
+		trigger = {
+			is_in_faction_with = GER
+		}
+	}
+
+	option = {
+		name = news.216.e
+		trigger = {
+			NOT = {
+				OR = {
+					is_in_faction_with = GER
+					is_in_faction_with = TUR
+					has_war_with = GER
+				}
+			}
+		}
+	}
+}
+
+#Turkey Joins Allies to Avoid Ultimatum
+news_event = {
+	id = news.217
+	title = news.217.t
+	desc = news.217.d
+	picture = GFX_news_event_journalists_speech
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.217.a
+		trigger = {
+			is_in_faction_with = TUR
+		}
+	}
+
+	option = {
+		name = news.217.b
+		trigger = {
+			has_war_with = GER
+			NOT = {
+				is_in_faction_with = TUR
+			}
+		}
+	}
+
+	option = {
+		name = news.217.c
+		trigger = {
+			OR = {
+				tag = GER
+				is_in_faction_with = GER
+			}
+		}
+	}
+
+	option = {
+		name = news.217.e
+		trigger = {
+			NOT = {
+				OR = {
+					tag = GER
+					is_in_faction_with = GER
+					is_in_faction_with = TUR
+					has_war_with = GER
+				}
+			}
+		}
+	}
+}
+
+#No bananas
+news_event = {
+	id = news.218
+	title = news.218.t
+	desc = news.218.d
+	picture = GFX_news_event_worker_protests
+
+	trigger = {
+		tag = ENG
+		OR = {
+			has_idea = war_economy
+			has_idea = tot_economic_mobilisation
+		}
+		any_country = {
+			is_major = yes
+			has_war_with = ENG
+		}
+		controls_state = 126
+	}
+
+	mean_time_to_happen = {
+		months = 160
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = news.218.a
+	}
+}
+
+#Soviet Union's Great Purge
+news_event = {
+	id = news.219
+	title = news.219.t
+	desc = news.219.d
+	picture = GFX_news_event_journalists_speech
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.219.a
+		trigger = {
+			has_government = communism
+		}
+	}
+
+	option = {
+		name = news.219.b
+		trigger = {
+			has_government = fascism
+		}
+	}
+
+	option ={
+		name = news.219.c
+		trigger = {
+			NOT = {
+				OR = {
+					has_government = fascism
+					has_government = communism
+				}
+			}
+		}
+	}
+}
+
+#Officers Revolt in the Soviet Union
+news_event = {
+	id = news.220
+	title = news.220.t
+	desc = news.220.d
+	picture = GFX_news_event_journalists_speech
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = news.220.a
+		trigger = {
+			has_government = communism
+			NOT = {
+				tag = SOV
+			}
+			NOT = {
+				has_war_with = SOV
+			}
+		}
+	}
+
+	option = {
+		name = news.220.b
+		trigger = {
+			original_tag = SOV
+		}
+	}
+
+	option = {
+		name = news.220.c
+		trigger = {
+			has_war_with = SOV
+			NOT = {
+				original_tag = SOV
+			}
+		}
+	}
+
+	option = {
+		name = news.220.e
+		trigger = {
+			has_government = fascism
+			NOT = {
+				original_tag = SOV
+			}
+			NOT = {
+				has_war_with = SOV
+			}
+		}
+	}
+
+	option = {
+		name = news.220.f
+		trigger = {
+			NOT = {
+				OR = {
+					has_government = communism
+					has_government = fascism
+					original_tag = SOV
+					has_war_with = SOV 
+				}
+			}
+		}
+	}
+}
+
+#Trotsky Strikes Back
+news_event = {
+	id = news.221
+	title = news.221.t
+	desc = news.221.d
+	picture = GFX_news_event_journalists_speech
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.221.a
+		trigger = {
+			OR = {
+				has_government = communism
+			}
+		}
+	}
+
+	option = {
+		name = news.221.b
+		trigger = {
+			NOT = {
+				has_government = communism 
+			}
+			NOT = {
+				tag = MEX
+			}
+		}
+	}
+
+	option = {
+		name = news.221.c
+		trigger = {
+			tag = MEX
+		}
+	}
+}
+
+#UK Plans Scandinavian Intervention
+news_event = {
+	id = news.222
+	title = news.222.t
+	desc = news.222.d
+	picture = GFX_news_event_journalists_speech
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = news.222.a
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	option = {
+		name = news.222.b
+		trigger = {
+			OR = {
+				tag = NOR
+				tag = SWE
+				tag = DEN
+			}
+			NOT = {
+				is_in_faction_with = FRA
+			}
+		}
+	}
+
+	option = {
+		name = news.222.c
+		trigger = {
+			is_in_faction_with = FRA
+			NOT = {
+				OR = {
+					tag = ENG
+				}
+			}
+		}
+	}
+
+	option = {
+		name = news.222.e
+		trigger = {
+			is_in_faction = yes
+			NOT = {
+				is_in_faction_with = FRA
+			}
+			NOT = {
+				OR = {
+					tag = SWE
+					tag = NOR
+					tag = DEN
+				}
+			}
+		}
+	}
+
+	option = {
+		name = news.222.f
+		trigger = {
+			NOT = {
+				OR = {
+					tag = ENG
+					tag = DEN
+					tag = NOR
+					tag = SWE
+					is_in_faction_with = FRA
+					is_in_faction = yes
+				}
+			}
+		}
+	}
+}
+
+#UK Plans Intervention in the Benelux
+news_event = {
+	id = news.223
+	title = news.223.t
+	desc = news.223.d
+	picture = GFX_news_event_journalists_speech
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = news.223.a
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	option = {
+		name = news.223.b
+		trigger = {
+			OR = {
+				tag = BEL
+				tag = HOL
+				tag = LUX
+			}
+		}
+	}
+
+	option = {
+		name = news.223.c
+		trigger = {
+			is_in_faction_with = FRA
+			NOT = {
+				tag = ENG
+			}
+		}
+	}
+
+	option = {
+		name = news.223.e
+		trigger = {
+			is_in_faction = yes
+			NOT = {
+				is_in_faction_with = FRA
+			}
+			NOT = {
+				OR = {
+					tag = BEL
+					tag = HOL
+					tag = LUX
+				}
+			}
+		}
+	}
+
+	option = {
+		name = news.223.f
+		trigger = {
+			NOT = {
+				OR = {
+					tag = ENG
+					tag = BEL
+					tag = HOL
+					tag = LUX
+					is_in_faction_with = FRA
+					is_in_faction = yes
+				}
+			}
+		}
+	}
+}
+
+
+#British Influence on Spain
+news_event = {
+	id = news.224
+	title = news.224.t
+	desc = news.224.d
+	picture = GFX_news_event_generic_sign_treaty2
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	immediate = {
+		hidden_effect = {
+			random_country = {
+				limit = {
+					original_tag = SPR
+				}
+				save_event_target_as = Spain
+			}
+		}
+	}
+
+	option = {
+		name = news.224.a
+		trigger = {
+			original_tag = SPR
+		}
+	}
+
+	option = {
+		name = news.224.b
+		trigger = {
+			NOT = {
+				original_tag = SPR
+			}
+			OR = {
+				has_government = fascism
+				has_government = communism
+			}
+		}
+	}
+
+	option = {
+		name = news.224.c
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = SPR
+					has_government = fascism
+					has_government = communism
+				}
+			}
+		}
+	}
+}
+
+ 
+
+
+#British Influence on Turkey
+news_event = {
+	id = news.225
+	title = news.225.t
+	desc = news.225.d
+	picture = GFX_news_event_generic_sign_treaty1
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.225.a
+		trigger = {
+			tag = TUR
+		}
+	}
+
+	option = {
+		name = news.225.b
+		trigger = {
+			NOT = {
+				tag = TUR
+			}
+			OR = {
+				has_government = fascism
+				has_government = communism
+			}
+		}
+	}
+
+	option = {
+		name = news.225.c
+		trigger = {
+			NOT = {
+				OR = {
+					tag = TUR
+					has_government = fascism
+					has_government = communism
+				}
+			}
+		}
+	}
+}
+
+#British Influence on Greece
+news_event = {
+	id = news.226
+	title = news.226.t
+	desc = news.226.d
+	picture = GFX_news_event_generic_sign_treaty1
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.226.a
+		trigger = {
+			tag = GRE
+		}
+	}
+
+	option = {
+		name = news.226.b
+		trigger = {
+			NOT = {
+				tag = GRE
+			}
+			OR = {
+				has_government = fascism
+				has_government = communism
+			}
+		}
+	}
+
+	option = {
+		name = news.226.c
+		trigger = {
+			NOT = {
+				OR = {
+					tag = GRE
+					has_government = fascism
+					has_government = communism
+				}
+			}
+		}
+	}
+}
+
+news_event = {
+	id = news.227
+	title = news.227.t
+	desc = news.227.d
+	picture = GFX_news_event_generic_sign_treaty1
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+		has_war_with = GER
+		divisions_in_state = {
+			state = 64
+			size > 0
+		}
+		NOT = {
+			GER = {
+				has_capitulated = yes
+			}
+		}
+		NOT = {
+			SOV = {
+				divisions_in_state = {
+					state = 64
+					size > 0
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	option = {
+		name = news.227.a
+	}
+}
+
+
+#British Diplomatic Balkan Strategy
+news_event = {
+	id = news.228
+	title = news.228.t
+	desc = news.228.d
+	picture = GFX_news_event_generic_sign_treaty1
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = news.228.a
+		trigger = {
+			OR = {
+				tag = YUG
+				tag = GRE
+				tag = ROM
+			}
+			NOT = {
+				is_in_faction_with = GER
+			}
+		}
+	}
+
+	option = {
+		name = news.228.b
+		trigger = {
+			OR = {
+				is_in_faction_with = GER
+				AND = {
+					tag = GER
+					NOT = {
+						is_in_faction_with = FRA
+					}
+				}
+				AND = {
+					tag = ITA
+					NOT = {
+						is_in_faction_with = FRA
+					}
+				}			
+				AND = {
+					tag = BUL
+					NOT = {
+						is_in_faction_with = FRA
+					}
+				}
+				AND = {
+					tag = HUN
+					NOT = {
+						is_in_faction_with = FRA
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = news.228.c
+		trigger = {
+			OR = {
+				is_in_faction_with = FRA
+				tag = ENG
+			}
+			NOT = {
+				OR = {
+					tag = YUG
+					tag = GRE
+					tag = ROM
+				}
+			}
+		}
+	}
+
+	option = {
+		name = news.228.e
+		trigger = {
+			NOT = {
+				OR = {
+					tag = YUG
+					tag = HUN
+					tag = GRE
+					tag = ROM
+					tag = BUL
+					tag = GER
+					tag = ENG
+				}
+			}
+		}
+	}
+}
+
+
+#Greece Refuses Puppeting
+news_event = {
+	id = news.229
+	title = news.229.t
+	desc = news.229.d
+	picture = GFX_news_event_generic_sign_treaty1
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.229.a
+		trigger = {
+			OR = {
+				tag = ENG
+				has_war_with = GER
+				is_in_faction_with = FRA
+			}
+		}
+	}
+
+	option = {
+		name = news.229.b
+		trigger = {
+			OR = {
+				is_in_faction_with = GER
+				has_war_with = GRE
+			}
+		}
+	}
+
+	option = {
+		name = news.229.c
+		trigger = {
+			NOT = {
+				OR = {
+					tag = ENG
+					has_war_with = GER
+					is_in_faction_with = FRA
+					is_in_faction_with = GER
+					has_war_with = GRE
+				}
+			}
+		}
+	}
+}
+
+#US Supports Democratic Rebellions
+news_event = {
+	id = news.230
+	title = news.230.t
+	desc = news.230.d
+	picture = GFX_news_event_generic_sign_treaty1
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = news.230.a
+		trigger = {
+			OR = {
+				tag = MEX
+				tag = ARG
+			}
+		}
+	}
+
+	option = {
+		name = news.230.b
+		trigger = {
+			tag = USA
+		}
+	}
+
+	option = {
+		name = news.230.c
+		trigger = {
+			has_government = democratic
+			NOT = {
+				OR = {
+					tag = USA
+					tag = MEX
+					tag = ARG
+				}
+			}
+		}
+	}
+
+	option = {
+		name = news.230.e
+		trigger = {
+			NOT = {
+				has_government = democratic
+				tag = USA
+				tag = MEX
+				tag = ARG
+			}
+		}
+	}
+}
+
+#Japan Seeks War in China
+news_event = {
+	id = news.231
+	title = news.231.t
+	desc = news.231.d
+	picture = GFX_news_event_generic_sign_treaty1
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.231.a
+		trigger = {
+			is_independent_china_or_warlord = yes
+		}
+	}
+
+	option = {
+		name = news.231.b
+		trigger = {
+			is_independent_china_or_warlord = no
+		}
+	}
+}
+
+
+#Germany Seeks Scandinavian Support
+news_event = {
+	id = news.232
+	title = news.232.t
+	desc = news.232.d
+	picture = GFX_news_event_generic_sign_treaty1
+
+	major = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = {
+			tag = GER
+		}
+	}
+
+	option = {
+		name = news.232.a
+		trigger = {
+			OR = {
+				tag = DEN
+				tag = SWE
+				tag = NOR
+			}
+			NOT = {
+				has_war_with = GER
+			}
+		}
+	}
+
+	option = {
+		name = news.232.b
+		trigger = {
+			has_war_with = GER
+		}
+	}
+
+	option = {
+		name = news.232.c
+		trigger = {
+			NOT = {
+				OR = {
+					tag = DEN
+					tag = SWE
+					tag = NOR
+					has_war_with = GER
+				}
+			}
+		}
+	}
+}
+
+
+#Germany Plans Northern Intervention
+news_event = {
+	id = news.233
+	title = news.233.t
+	desc = {
+		text = news.233.d_war
+		trigger = {
+			OR = {
+				NOR = {
+					has_war_with = GER
+				}
+				DEN = {
+					has_war_with = GER
+				}
+			}
+		}
+	}
+	desc = {
+		text = news.233.d_no_war
+		trigger = {
+			NOT = {
+				OR = {
+					NOR = {
+						has_war_with = GER
+					}
+					DEN = {
+						has_war_with = GER
+					}
+				}
+			}
+		}
+	}
+	picture = GFX_news_event_generic_sign_treaty1
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_for_sender = no
+
+	option = {
+		name = news.233.a
+		trigger = {
+			OR = {
+				tag = DEN
+				tag = NOR
+			}
+		}
+	}
+
+	option = {
+		name = news.233.b
+		trigger = {
+			has_war_with = GER
+		}
+	}
+
+	option = {
+		name = news.233.c
+		trigger = {
+			NOT = {
+				OR = {
+					tag = DEN
+					tag = NOR
+					has_war_with = GER
+				}
+			}
+		}
+	}
+}
+
+
+#Germany Moves to Strike Around Maginot
+news_event = {
+	id = news.234
+	title = news.234.t
+	desc = news.234.d
+	picture = GFX_news_event_generic_sign_treaty1
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = news.234.a
+		trigger = {
+			tag = BEL
+			tag = LUX
+		}
+	}
+
+	option = {
+		name = news.234.b
+		trigger = {
+			OR = {
+				tag = HOL
+				is_in_faction_with = BEL
+				is_in_faction_with = LUX
+				is_in_faction_with = HOL
+			}
+			has_war_with = GER
+		}
+	}
+
+	option = {
+		name = news.234.c
+		trigger = {
+			NOT = {
+				OR = {
+					tag = HOL
+					tag = BEL
+					tag = LUX
+					is_in_faction_with = HOL
+					is_in_faction_with = LUX
+					is_in_faction_with = BEL
+				}
+			}
+		}
+	}
+}
+
+news_event = {
+	id = news.235
+	title = news.235.t
+	desc = news.235.d
+	picture = GFX_news_event_generic_sign_treaty1
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = GER
+		has_government = fascism
+		has_war_with = USA
+		divisions_in_state = {
+			state = 378
+			size > 3
+		}
+		NOT = {
+			OR = {
+				has_global_flag = chaplin_seized
+				has_global_flag = chaplin_resistance
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_global_flag = chaplin_seized
+		}
+	}
+
+	option = {
+		name = news.235.a
+	}
+}
+
+#Yalta Conference
+news_event = {
+	id = news.236
+	title = news.236.t
+	desc = news.236.d
+	picture = GFX_news_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	major = yes
+
+	option = {
+		name = news.236.a
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = {
+		name = news.236.b
+		trigger = {
+			OR = {
+				event_target:yalta_origin = {
+					tag = ROOT
+				}
+				event_target:yalta_partner = {
+					tag = ROOT
+				}
+			}
+		}
+	}
+
+	option = {
+		name = news.236.c
+		trigger = {
+			NOT = {
+				OR = {
+					event_target:yalta_origin = {
+						tag = ROOT
+					}
+					event_target:yalta_partner = {
+						tag = ROOT
+					}
+				}
+			}
+			has_war_with = GER				
+		}
+	}
+
+	option = {
+		name = news.236.e
+		trigger = {
+			NOT = {
+				OR = {
+					event_target:yalta_origin = {
+						tag = ROOT
+					}
+					event_target:yalta_partner = {
+						tag = ROOT
+					}
+				}
+			}
+			NOT = {
+				has_war_with = GER
+			}
+			NOT = {
+				tag = GER
+			}
+		}
+	}
+}

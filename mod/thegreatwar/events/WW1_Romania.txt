@@ -1,0 +1,214 @@
+﻿add_namespace = ww1_romania
+
+news_event = {
+	id=ww1_romania.1
+	title=ww1_romania.1.t#Carol I Dies!
+	desc=ww1_romania.1.d#Carol I has died. Ferdinand is now King
+	picture=ww1_romania_1
+
+	major = yes
+
+	trigger = {
+		#has_government = neutrality
+		ROM = {
+			NOT = {
+				has_country_flag=carol_dead
+			}
+		
+		}
+		date > 1914.10.10
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		hidden_effect = {
+			ROM = {
+				kill_country_leader=yes
+				create_country_leader={
+					name="Ferdinand I"
+					desc=ROM_ferdinand_i_DESC
+					picture="gfx/leaders/ROM_ferdinand_i.dds"
+					expire="1935.1.1"
+					ideology=conservatism
+					traits={}
+				}
+				set_country_flag=carol_dead
+			}
+		}
+	}
+
+	option={
+		name = ww1_romania.1.a
+		ai_chance={
+			factor=100
+		}	
+	}
+}
+
+# AUH swear to give Bucovnia if Romania joins them
+#____________________________________________________________
+country_event = {
+	id=ww1_romania.5
+	title = "A fair Offer"
+	desc = "Austria-Hungary propose to give us South Tyrol and Istria if we promise to join them in case of war. Should We accept the offer ?"
+	picture = ww1_romania_5
+
+	fire_only_once = yes
+	is_triggered_only=yes
+
+	option = {
+		name = "Accept the Offer"
+		ai_chance={
+			factor = 100
+		}
+		AUH = {
+			remove_state_core = 80
+		}
+		ROM = {
+			transfer_state = 80
+			set_country_flag = kis_romania_accept_auh_offer
+		}
+	}
+
+	option = {
+		name = "Decline the Offer"
+		ai_chance={
+			factor = 0
+		}
+		ROM = {
+			set_country_flag = kis_romania_decline_auh_offer
+		}
+	}
+}
+#____________________________________________________________
+
+# Romania Honour the Triple Alliance?
+#____________________________________________________________
+country_event = {
+	id=ww1_romania.6
+	title="Honnor our Pact?"#Honour the Triple Alliance?
+	desc = "Austria-Hungary gave us some of their states in exchange "
+	picture=ww1_romania_6
+	is_triggered_only=yes
+
+	option={
+		name="Honnor the Pact"
+		ai_chance={
+			factor = 100
+		}
+		GER = {
+			add_opinion_modifier={
+				target=SER
+				modifier=large_increase
+			}
+		}
+		AUH = {
+			add_opinion_modifier={
+				target=SER
+				modifier=large_increase
+			}
+		}
+
+		AUH = {
+			add_opinion_modifier={
+				target=SER
+				modifier=large_increase
+			}
+		}
+		FRA = {
+			add_opinion_modifier={
+				target=SER
+				modifier=large_increase
+			}
+		}
+		RUS = {
+			add_opinion_modifier={
+				target=SER
+				modifier=large_increase
+			}
+		}
+		ROM = {
+			#remove_ideas=neutrality_idea
+			add_opinion_modifier={
+				target=RUS
+				modifier=large_decrease
+			}
+			add_opinion_modifier={
+				target=ENG
+				modifier=large_decrease
+			}
+			add_opinion_modifier={
+				target=FRA
+				modifier=large_decrease
+			}
+
+			add_opinion_modifier={
+				target=GER
+				modifier=large_increase
+			}
+			add_opinion_modifier={
+				target=AUH
+				modifier=large_increase
+			}
+			if = {
+				limit = {
+					GER = { is_faction_leader = yes}
+				}
+				GER = {
+					add_to_faction = ROM
+				}
+			}
+			if = {
+				limit = {
+					AUH = { is_faction_leader = yes}
+				}
+				AUH = {
+					add_to_faction = ROM
+				}
+			}
+		}
+	}
+
+	option={
+		name="Betray Austria-Hungary"
+		ai_chance={
+			factor=0
+		}
+		ROM = {
+			add_ideas=neutrality_idea
+			add_opinion_modifier={
+				target=RUS
+				modifier=medium_increase
+			}
+			add_opinion_modifier={
+				target=ENG
+				modifier=large_increase
+			}
+			add_opinion_modifier={
+				target=FRA
+				modifier=large_increase
+			}
+			add_opinion_modifier={
+				target=GER
+				modifier=large_decrease
+			}
+			add_opinion_modifier={
+				target=AUH
+				modifier=large_decrease
+			}
+			if={
+				limit={
+					is_in_faction_with=GER
+				}
+				GER={
+					remove_from_faction=ROM
+				}
+			}
+		}
+	}
+	
+}
+#____________________________________________________________

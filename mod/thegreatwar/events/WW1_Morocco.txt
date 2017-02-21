@@ -1,0 +1,137 @@
+﻿add_namespace = ww1_morocco
+
+country_event = {
+    id = ww1_morocco.1
+    title = ww1_morocco.1.t
+    desc = ww1_morocco.1.d
+    picture = GFX_report_event_usa_destroyers
+
+    fire_only_once = yes
+    is_triggered_only = yes
+
+    option = {
+        name = ww1_morocco.1.a
+        set_global_flag = kis_agadir_crisis_done
+        ai_chance = {
+            factor = 100
+        }
+        GER = {
+            remove_ideas = neutrality_idea
+        }
+        AUH = {
+            remove_ideas = neutrality_idea
+        }
+        add_named_threat = {
+            threat = 5
+            name = ww1_morocco.1.t
+        }
+        FRA = {
+            country_event = ww1_morocco.2
+            set_country_flag = agadir
+        }
+    }
+}
+
+country_event = {
+    title = ww1_morocco.2.t
+    desc = ww1_morocco.2.d
+    id = ww1_morocco.2
+    picture = GFX_report_event_usa_destroyers
+    fire_only_once = yes
+    is_triggered_only = yes
+    option = {
+        name = ww1_morocco.2.a
+        ai_chance = {
+            factor = 100
+        }
+        hidden_effect = {
+            remove_ideas = neutrality_idea
+        }
+    }
+}
+
+country_event = {
+    title = ww1_morocco.3.t
+    desc = ww1_morocco.3.d
+    id = ww1_morocco.3
+    picture = GFX_report_event_usa_destroyers
+    fire_only_once = yes
+    is_triggered_only = yes
+    option = {
+        name = ww1_morocco.3.a
+        ai_chance = {
+            factor = 100
+        }
+        remove_ideas = neutrality_idea
+    }
+}
+
+country_event = {
+    title = ww1_morocco.4.t
+    desc = ww1_morocco.4.d
+    id = ww1_morocco.4
+    picture = GFX_report_event_usa_destroyers
+    fire_only_once = yes
+    is_triggered_only = no
+    mean_time_to_happen = {
+        days = 7
+    }
+    trigger = {
+        tag = FRA
+        country_exists = MOR
+        FRA = {
+            has_country_flag = agadir
+        }
+    }
+    option = {
+        name = ww1_morocco.4.a
+        ai_chance = {
+            factor = 100
+        }
+        FRA = {
+            annex_country = {
+                target = MOR
+                transfer_troops = no
+            }
+        }
+        SPR = {
+            transfer_state = 290
+            add_state_claim = 290
+        }
+        GER = {
+            country_event = ww1_morocco.7
+        }
+    }
+}
+
+country_event = {
+    title = ww1_morocco.7.t
+    desc = ww1_morocco.7.d
+    id = ww1_morocco.7
+    picture = GFX_report_event_usa_destroyers
+    is_triggered_only = yes
+    option = {
+        name = ww1_morocco.7.a
+        ai_chance = {
+            factor = 100
+        }
+        GER = {
+            transfer_state = 755
+            add_state_claim = 755
+        }
+        set_global_flag = SUPER_GLOBAL_Agadir_Crisis_Historical
+    }
+    option = {
+        name = ww1_morocco.7.b
+        ai_chance = {
+            factor = 0
+        }
+        GER = {
+            set_country_flag = GER_ww1_schlieffen_plan
+            country_event = {
+                id = ww1_franzferdinand.8 days = 1
+            }
+        }
+        set_global_flag = SUPER_GLOBAL_Agadir_Crisis_War
+    }
+}

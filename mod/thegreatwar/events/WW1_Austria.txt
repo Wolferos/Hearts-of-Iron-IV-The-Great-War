@@ -1,0 +1,228 @@
+﻿add_namespace = ww1_austria
+
+news_event = {
+    id = ww1_austria.1
+    title = ww1_austria.1.t
+    desc = ww1_austria.1.d
+    picture = ww1_austria_1
+
+    major = yes
+
+    mean_time_to_happen = {
+        days = 0
+    }
+
+    trigger = {
+        AUH = {
+            NOT = {
+                has_country_flag = emperor_franz_dead
+            }
+            date > 1916.11.21
+        }
+    }
+    immediate = {
+        hidden_effect = {
+            AUH = {
+                kill_country_leader = yes
+                create_country_leader={ name = "Karl I" desc=AUH_karl_i_DESC picture="gfx/hoi4tgw_portraits/AUH/country_leaders/AUH_karl_i.dds" expire="1935.1.1" ideology=autocracy  traits={  } }
+                set_country_flag = emperor_franz_dead
+            }
+        }
+    }
+    option = {
+        name = ww1_austria.1.a
+        ai_chance = {
+            factor = 100
+        }
+        trigger = {
+            TAG = AUH
+        }
+
+    }
+    option = {
+        name = "Karl I is the new Emperor"
+        ai_chance = {
+            factor = 100
+        }
+        trigger = {
+            NOT = {
+                TAG = AUH
+            }
+        }
+    }
+}
+
+
+# Trialist Proposal
+#____________________________________________________________
+country_event = {
+    id = ww1_austria.2
+    title = ww1_austria.2.t
+    desc = ww1_austria.2.d
+    picture = COUNTRY_hoi4tgw_report_austria_hungary
+
+    fire_only_once = yes
+
+    trigger = {
+        TAG = AUH
+        date > 1910.6.6
+        date < 1914.2.2
+        NOT = {
+            has_global_flag = hoi4tgw_TrialistProposal
+            has_global_flag = kis_franzferdinand_murdered
+        }
+
+        NOT = {
+            country_exists = BOS
+            country_exists = CRO
+            country_exists = HUN
+        }
+        AUH = {
+            is_puppet = no 
+            has_war = no
+        }
+    }
+    
+    mean_time_to_happen = {
+        days = 20
+    }
+
+    immediate = {
+        hidden_effect = {
+            set_global_flag = hoi4tgw_TrialistProposal
+        }
+    }
+
+    # Refuse Trialism
+    option = {
+        name = ww1_austria.2.a
+
+        ai_chance = {
+            factor = 100
+            modifier = {
+                factor = 0
+                NOT = { is_historical_focus_on = yes }
+            }
+        }
+
+        add_political_power = -150
+        add_national_unity = -0.05
+
+        hidden_effect = {
+            set_global_flag = hoi4tgw_Trialism_NO
+        }
+    }
+
+    # Accept Trialism
+    option = {
+        name = ww1_austria.2.b
+
+        ai_chance = {
+            factor = 0
+            modifier = {
+                factor = 100
+                NOT = { is_historical_focus_on = yes }
+            }
+        }
+
+        add_political_power = 50
+
+        hidden_effect = {
+            set_global_flag = hoi4tgw_Trialism_YES
+
+            HUN = {
+                add_ideas = {
+                    AUH_ww1_Trialism
+                }
+                transfer_state = 43
+                transfer_state = 154
+                transfer_state = 76
+                transfer_state = 84
+                transfer_state = 83
+                transfer_state = 82
+                transfer_state = 45
+                transfer_state = 155
+                transfer_state = 664
+                transfer_state = 70
+                transfer_state = 71
+                transfer_state = 73
+
+                load_oob = "HUN_Trialism"
+            }
+            CRO = {
+                add_ideas = {
+                    AUH_ww1_Trialism
+                }
+                transfer_state = 109
+                transfer_state = 104
+                transfer_state = 102
+                transfer_state = 103
+                transfer_state = 163
+
+                load_oob = "CRO_Trialism"
+            }
+
+            BOS = {
+                remove_state_core = 104
+            }
+
+            43 = { add_core_of = HUN }
+            154 = { add_core_of = HUN }
+            76 = { add_core_of = HUN }
+            84 = { add_core_of = HUN }
+            83 = { add_core_of = HUN }
+            82 = { add_core_of = HUN }
+            45 = { add_core_of = HUN }
+            155 = { add_core_of = HUN }
+            664 = { add_core_of = HUN }
+            70 = { add_core_of = HUN }
+            71 = { add_core_of = HUN }
+            73 = { add_core_of = HUN }
+
+            109 = { add_core_of = CRO }
+            104 = { add_core_of = CRO }
+            102 = { add_core_of = CRO }
+            103 = { add_core_of = CRO }
+            163 = { add_core_of = CRO }
+        }
+
+        AUH = {
+            add_ideas = {
+                AUH_ww1_Trialism
+            }
+            set_cosmetic_tag = AUH_EMP
+            puppet = HUN
+            puppet = CRO
+        }
+
+        HUN = {
+            create_country_leader={ name = "Franz Ferdinand" desc=AUH_franz_ferdinand_DESC picture="gfx/hoi4tgw_portraits/AUH/country_leaders/AUH_franz_ferdinand.dds" expire="1935.1.1" ideology=autocracy  traits={  } }
+        }
+
+        CRO = {
+            create_country_leader={ name = "Karl I" desc=CRO_karl_i_DESC picture="gfx/hoi4tgw_portraits/AUH/country_leaders/AUH_karl_i.dds" expire="1935.1.1" ideology=autocracy  traits={  } }
+        }
+
+        # SPECIAL_DLC Together for Victory
+        if = { limit = { has_dlc = "Together for Victory" }
+
+            #IF-----------------------------------------
+            set_autonomy = {
+                target = HUN
+                autonomous_state = autonomy_integrated_puppet
+            }
+            set_autonomy = {
+                target = CRO
+                autonomous_state = autonomy_integrated_puppet
+            }
+            #-------------------------------------------
+
+            #ELSE---------------------------------------
+            else = {
+                # WORK IN PROGRESS # Temporary Solution for Open Beta 0.1.7
+            }
+            #-------------------------------------------
+        }
+    }
+}
+#____________________________________________________________

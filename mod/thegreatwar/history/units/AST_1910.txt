@@ -1,0 +1,62 @@
+﻿
+###################################################################
+
+division_template = {
+	name = "Infantry Division"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Infantry Brigade"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 0 }
+	}
+	priority = 0
+}
+
+division_template = {
+	name = "Cavalry Division"
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+}
+
+###################################################################
+
+units = {
+	division= { 
+			name = "1st Australian Division"
+			location=7798 # Melbourne
+			division_template="Infantry Division"
+			start_experience_factor=0.1
+			}
+	
+	
+	division= { 
+			name = "Australian 2nd Light Horse Brigade"
+			location=7798 # Melbourne
+			division_template="Cavalry Division"
+			start_experience_factor=0.1
+			}
+	 navy = {
+		name = "Royal Australian Navy"
+		location=12406 # Sydney
+		base=12406 # Sydney
+ship = { name = "HMAS Encounter" definition = light_cruiser equipment = { light_cruiser_1906 = { amount = 1 owner = AST } } }#KiS#version_name = "Hermes Class" } } }
+ship = { name = "HMAS Pioneer" definition = light_cruiser equipment = { light_cruiser_1906 = { amount = 1 owner = AST } } }#KiS#version_name = "Pelorus Class" } } }
+		}
+	}
+air_wings = { 
+	}
+instant_effect = {
+add_equipment_production = { equipment = { type = infantry_equipment_0 creator = "AST" } requested_factories = 1 progress = 0.1 efficiency = 50}
+	}
