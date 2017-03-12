@@ -7,9 +7,9 @@
 
 **Project Lead:** Wolferos 
 
-**Current Version:** 0.2a
+**Current Version:** 0.2b
 
-**Compatible with:** Hearts of Iron IV 1.3.2 "Torch"(with or without Together for Victory Paid DLC) 
+**Compatible with:** Hearts of Iron IV 1.3.3 "Torch"(with or without Together for Victory Paid DLC) 
 
 **Supported Languages:**
 - English Language
@@ -74,3 +74,9 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - Polemarque
    - AlainEtCo
    - Kraftbruehe
+   - Xabi273
+   - Mindeufair
+   - EnderVod
+   
+
+[Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow

@@ -1,6 +1,44 @@
 ﻿add_namespace = ww1_russia
 
 
+# Saint Petersburg renamed to Petrograd
+#____________________________________________________________
+country_event = {
+	id = ww1_russia.1
+	title = ww1_russia.1.t
+	desc = ww1_russia.1.d
+	picture = GFX_report_event_german_reichstag_gathering
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = RUS
+		RUS = {
+			has_war_with = GER
+			owns_state = 195 
+		}
+	}
+
+	option = { #a great idea!
+		name = ww1_russia.1.a
+		ai_chance = {
+			base = 100
+		}
+		set_province_name = { id = 3151 name = "Petrograd"}
+	}
+
+	option = { #rather not
+		name = ww1_russia.1.b
+		ai_chance = {
+			base = 0
+		}
+		#Open Beta 0.2b
+		add_national_unity = -0.05
+	}
+}
+#____________________________________________________________
+
+
 # Sikorsky Ilya Muromets
 #____________________________________________________________
 #country_event = {
