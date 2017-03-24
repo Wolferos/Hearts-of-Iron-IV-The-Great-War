@@ -1,0 +1,91 @@
+﻿add_namespace = ww1_holland
+
+news_event = {
+	id=ww1_holland.1
+	title="End of census kiesrecht"
+
+	desc="Finally all men can vote! No longer we have to follow the rich! This is one of the first steps to improving our country."
+
+	picture=EVENT_hoi4tgw_Censuskiesrecht
+  fire_only_once=yes
+	major = no
+
+	trigger = {
+		TAG = HOL
+
+		NOT = { has_global_flag = SUPER_GLOBAL_KIES }
+		has_completed_focus = HOL_End_census_kies
+    has_completed_focus = HOL_End_census_neu
+
+		HOL = {
+			has_civil_war = no
+			has_government = democratic
+		}
+
+		date > 1910.10.12
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+  set_global_flag = SUPER_GLOBAL_KIES
+
+
+		hidden_effect = {
+
+     add_manpower = 1000
+
+			}
+		}
+
+
+	option = {
+		name = "Hurray for the Dutch nation!"
+	}
+}
+
+############
+news_event = {
+	id=ww1_holland.2
+	title="The potato revolution"
+
+	desc="Today, there is unrest in the Netherlands, the communist part has staged a coup and they are using war as a motivation for the Dutch people to support to communists. Will this be a new beacon for communism around the world?"
+
+	picture=EVENT_hoi4tgw_PotatoRev
+	fire_only_once=yes
+
+	major = yes
+
+	trigger = {
+		has_global_flag = SUPER_GLOBAL_KIES
+		has_completed_focus = HOL_Let_them_eat_potatoes
+
+
+		HOL = {
+			has_civil_war = no
+		}
+
+		date > 1912.10.12
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+  set_global_flag = SUPER_GLOBAL_POTATO
+
+
+		hidden_effect = {
+    add_national_unity = 0.05
+
+			}
+		}
+
+
+	option = {
+		name = "Terrible!"
+	}
+}

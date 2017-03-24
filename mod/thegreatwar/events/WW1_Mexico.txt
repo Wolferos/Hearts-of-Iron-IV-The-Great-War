@@ -1,0 +1,489 @@
+﻿add_namespace = ww1_mexico
+
+
+	#########################################################
+	#														#
+	#														#
+#####				   MEXICAN REVOLUTION					#
+	#														#
+	#														#
+	#########################################################
+
+# Start of the Mexican Revolution (In Chihuahua State on November 10, 1910)
+#____________________________________________________________
+country_event = {
+	id = ww1_mexico.100
+	title = "Revolution in Mexico"
+	desc = "ww1_mexico.100.d"
+	picture = EVENT_hoi4tgw_mexican_revolution
+
+	fire_only_once = yes
+
+	trigger = {
+		TAG = MEX
+		date > 1910.11.8 # Historical = November 20, 1910
+		date < 1911.1.1
+		NOT = { has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910 }
+		NOT = { has_global_flag = SUPER_GLOBAL_Adios_Francisco_Madero_1913 }
+		NOT = { has_global_flag = FLAG_MEX_adios_porfirio_diaz }
+		has_defensive_war = no
+		NOT = { has_government = democratic }
+		NOT = { has_completed_focus = MEX_ww1_supress_the_rebels }
+	}
+
+	mean_time_to_happen = {
+		days = 0.1
+	}
+
+	option = { # Support Revolution (Play as Francisco I. Madero)
+		name = "Support The Revolution"
+
+		hidden_effect = {
+		MEX = {
+			set_capital = 482 # Chihuahua State
+			start_civil_war = {
+				ruling_party = democratic
+				ideology = neutrality
+				size = 0.5
+				capital = 277
+				states = { 277 477 479 478 485}
+			}
+			random_other_country = {
+				limit = {
+					original_tag = MEX
+					has_government = neutrality
+				}
+				load_oob = "MEX_1910"
+				set_equipment_fraction = 0.4
+				set_national_unity = 0.35
+
+       create_field_marshal={  name = "Porfirio Diaz"  portrait_path="gfx/fieldmarshal/MEX_Diaz.tga" traits={ defensive_doctrine  offensive_doctrine old_guard } skill=4 }
+       create_corps_commander={  name = "Huerta, V"  portrait_path="gfx/generals/MEX_huerta__v.tga" traits={ fortress_buster  } skill=2 }
+			 create_corps_commander={  name = "Bernardo Reyes"  portrait_path="gfx/generals/MEX_Reyes.tga" traits={   } skill=1 }
+			 create_corps_commander={  name = "Felix Diaz"  portrait_path="gfx/generals/MEX_Felix_Diaz.tga" traits={   } skill=1 }
+
+				add_manpower = -80000
+
+				add_popularity = {
+					ideology = neutrality
+					popularity = 1
+				}
+			}
+			news_event = { hours = 6 id = ww1_mexico.101 }
+			set_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+
+      add_manpower = 200000
+			load_oob = "Mexican_Revolution_1910"
+      create_field_marshal={  name = "Pancho Villa"  portrait_path="gfx/fieldmarshal/MEX_Villa.tga" traits={ logistics_wizard offensive_doctrine inspirational_leader fast_planner} skill= 4 }
+			create_field_marshal={  name = "Emiliano Zapata"  portrait_path="gfx/fieldmarshal/MEX_Zapata.tga" traits={  defensive_doctrine inspirational_leader } skill=2 }
+      create_corps_commander={  name = "Alvaro Obregon"  portrait_path="gfx/generals/MEX_A_Obregon.dds" traits={ trickster } skill=2 }
+			create_corps_commander={  name = "Pascual Orozco"  portrait_path="gfx/generals/MEX_Orozco.tga" traits={   } skill=1 }
+
+
+			set_equipment_fraction = 0.9
+			set_national_unity = 0.8
+
+			add_popularity = {
+				ideology = democratic
+				popularity = 1
+			}
+		}
+		}
+	}
+	option = { # Fight Revolution (Stay with Diaz)
+		name = "Counter-Revolution"
+		trigger = { is_ai = no }
+
+		hidden_effect = {
+		MEX = {
+			start_civil_war = {
+				ideology = democratic
+				size = 0.5
+				capital = 482
+				states = { 482 483 481 484 474 475 480 476  }
+			}
+			random_other_country = {
+				limit = {
+					original_tag = MEX
+					has_government = democratic
+				}
+
+				load_oob = "Mexican_Revolution_1910"
+				add_manpower = -8000
+				create_field_marshal={  name = "Pancho Villa"  portrait_path="gfx/fieldmarshal/MEX_Villa.tga" traits={ logistics_wizard offensive_doctrine } skill=2 }
+				create_field_marshal={  name = "Emiliano Zapata"  portrait_path="gfx/fieldmarshal/MEX_Zapata.tga" traits={  defensive_doctrine } skill=2 }
+				create_corps_commander={  name = "Alvaro Obregon"  portrait_path="gfx/generals/MEX_Obregon.tga" traits={ trickster } skill=2 }
+				create_corps_commander={  name = "Pascual Orozco"  portrait_path="gfx/generals/MEX_Orozco.tga" traits={   } skill=1 }
+
+				set_equipment_fraction = 0.9
+				set_national_unity = 0.9
+			}
+			news_event = { hours = 6 id = ww1_mexico.101 }
+
+			set_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+
+			set_politics = {
+				ruling_party = neutrality
+				elections_allowed = yes
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = neutrality
+				popularity = 1
+			}
+			add_manpower = 20000
+
+			create_field_marshal={  name = "Porfirio Diaz"  portrait_path="gfx/fieldmarshal/MEX_Diaz.tga" traits={ defensive_doctrine  offensive_doctrine old_guard } skill=4 }
+			create_corps_commander={  name = "Huerta, V"  portrait_path="gfx/generals/MEX_huerta__v.tga" traits={ fortress_buster  } skill=2 }
+			create_corps_commander={  name = "Bernardo Reyes"  portrait_path="gfx/generals/MEX_Reyes.tga" traits={   } skill=1 }
+			create_corps_commander={  name = "Felix Diaz"  portrait_path="gfx/generals/MEX_Felix_Diaz.tga" traits={   } skill=1 }
+
+			load_oob = "MEX_1910"
+			set_equipment_fraction = 0.9
+			set_national_unity = 0.5
+		}
+		}
+	}
+}
+
+#____________________________________________________________
+
+# News about Mexican Revolution
+#____________________________________________________________
+news_event = {
+	id=ww1_mexico.101
+	title="Revolution in Mexico"
+
+	desc="On October 5, 1910, Madero issued a letter from jail, known as the Plan de San Luis Potosí, with its main slogan Sufragio Efectivo, No re-elección (free suffrage and no re-election). It declared the Díaz presidency illegal and called for revolt."
+
+	picture=EVENT_hoi4tgw_mexican_revolution
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Díaz is too old..."
+		trigger = {
+			NOT = { original_tag = MEX }
+		}
+	}
+	option = {
+		name = "It had to happen sooner or later"
+		trigger = {
+			original_tag = MEX
+		}
+	}
+}
+#____________________________________________________________
+
+# News about Madero takes power and Porfirio Díaz (exil)
+#____________________________________________________________
+news_event = {
+	id=ww1_mexico.102
+	title="Porfirio Díaz fled to Spain"
+
+	desc="Porfirio Díaz is no longer the President of Mexico. Díaz fell from power after he imprisoned Francisco I. Madero, his electoral rival, and declared himself the winner of an eighth term in office. He has been deposed in the Mexican Revolution."
+
+#"Porfirio Díaz is no longer the President of Mexico. Díaz fell from power after he imprisoned Francisco I. Madero, his electoral rival, and declared himself the winner of an eighth term in office. He has been deposed in the Mexican Revolution and fled to Spain. Francisco I. Madero will now rules Mexico, the Porfiriato period, started in 1876, is definitely over."
+
+	picture=EVENT_hoi4tgw_adios_porfirio_diaz
+
+	major = yes
+
+	trigger = {
+		has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+		NOT = { has_global_flag = FLAG_MEX_adios_porfirio_diaz }
+
+		MEX = {
+			has_civil_war = no
+			has_government = democratic
+		}
+
+		date > 1910.11.10
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = { set_global_flag = FLAG_MEX_adios_porfirio_diaz }
+
+	option = {
+		name = "Adios Amigo"
+		set_global_flag = FLAG_MEX_adios_porfirio_diaz
+	}
+}
+
+##################
+#news about the plan of san diego###
+news_event = {
+	id=ww1_mexico.1080
+	title= ww1_mexico.1080
+  desc=ww1_mexico.1080_d
+
+
+	picture= EVENT_hoi4tgw_plan_san_diego
+
+	major = yes
+
+	trigger = {
+		NOT = { has_global_flag = FLAG_MEX_adios_porfirio_diaz }
+		NOT = { has_global_flag = FLAG_MEX_Plan_San_D }
+    has_completed_focus = mex_ww1_Plan_of_San_Diego
+		NOT = { has_government = democratic }
+
+		MEX = {
+			has_civil_war = no
+			has_government = fascism
+			has_government = communism
+			has_government = neutrality
+		}
+
+		date > 1910.10.10
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = { set_global_flag = FLAG_MEX_Plan_San_D }
+
+	option = {
+		name = "Horrible, This might be a war. "
+	}
+}
+######################
+
+#____________________________________________________________
+
+# Madero has been assassinated
+#____________________________________________________________
+news_event = {
+	id=ww1_mexico.103
+	title="Military Coup"
+
+	desc="A military coup took place in the Mexico Cityl led by General Victoriano Huerta, the military commander of the city. Madero was arrested and a short time later assassinated along with his Vice-President, José María Pino Suárez."
+
+	picture=EVENT_hoi4tgw_adios_francisco_madero
+
+	major = yes
+
+	trigger = {
+		has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+		has_global_flag = FLAG_MEX_adios_porfirio_diaz
+
+		NOT = { has_global_flag = SUPER_GLOBAL_Adios_Francisco_Madero_1913 }
+		NOT = { has_completed_focus = MEX_ww1_Save_Madero }
+
+		MEX = {
+			has_civil_war = no
+			has_government = democratic
+		}
+
+		date > 1913.2.18 # Historical 22 February 1913
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = SUPER_GLOBAL_Adios_Francisco_Madero_1913
+
+
+		hidden_effect = {
+
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.75
+			}
+
+			MEX = {
+				set_politics = {
+					ruling_party = neutrality
+					elections_allowed = no
+				}
+
+				kill_country_leader = yes
+
+		        create_country_leader = {
+		            name = "Victoriano Huerta"
+		            desc = MXR_victoriano_huerta_DESC
+		            picture = "gfx/hoi4tgw_portraits/MEX/country_leaders/MEX_victoriano_huerta.dds"
+		            expire = "1935.1.1"
+		            ideology = autocracy
+		            traits = {}
+		        }
+			}
+		}
+	}
+
+	option = {
+		name = "Adios El Apóstol de la Revolución"
+	}
+}
+#____________________________________________________________
+
+news_event = {
+	id=ww1_mexico.1013
+	title="Porfirio Diaz dies!!!"
+
+	desc="After he won the revolution. Porfirio had a heart attack which cost him his life. Leaving thus to charge to Victorian Huerta"
+
+	picture=EVENT_hoi4tgw_adios_Diaz
+
+	major = yes
+
+	trigger = {
+		NOT = { has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910 }
+
+		NOT = { has_global_flag = FLAG_MEX_adios_porfirio_diaz }
+	  has_completed_focus = MEX_ww1_Renew_the_republic
+
+		MEX = {
+			has_civil_war = no
+			has_government = neutrality
+		}
+
+		date > 1910.1.10
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}
+   fire_only_once=yes
+	immediate = {
+		set_global_flag = SUPER_GLOBAL_HOLA_VICTORIANO
+
+
+		hidden_effect = {
+
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.80
+			}
+
+			MEX = {
+				set_politics = {
+					ruling_party = neutrality
+					elections_allowed = yes
+				}
+
+				kill_country_leader = yes
+
+		        create_country_leader = {
+		            name = "Victoriano Huerta"
+		            desc = MXR_victoriano_huerta_DESC
+		            picture = "gfx/hoi4tgw_portraits/MEX/country_leaders/MEX_victoriano_huerta.dds"
+		            expire = "1935.1.1"
+		            ideology = autocracy
+		            traits = {}
+		        }
+			}
+		}
+	}
+
+	option = {
+		name = "En paz Descanse!"
+	}
+}
+
+##################
+#Columbus Raid###
+news_event = {
+	id=ww1_mexico.1081
+	title= ww1_mexico.1081.t
+  desc=ww1_mexico.1081_d
+
+
+		picture= EVENT_hoi4tgw_columbus_raid
+
+	major = yes
+
+	trigger = {
+	  has_global_flag = FLAG_MEX_Plan_San_D
+    has_completed_focus = mex_ww1_Support_the_columbus_raid
+		NOT = { has_government = democratic }
+
+		MEX = {
+			has_civil_war = no
+			has_government = fascism
+			has_government = communism
+			has_government = neutrality
+		}
+
+		date > 1910.1.2
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = { set_global_flag = FLAG_MEX_Columbus_raid }
+  fire_only_once=yes
+	option = {
+		name = "Viva el Centauro del Norte"
+	}
+}
+######################
+######Failed Occupattion of the salinas cruz port
+
+news_event = {
+	id=ww1_mexico.1082
+	title= ww1_mexico.1082.t
+  desc=ww1_mexico.1082_d
+
+
+		picture= EVENT_hoi4tgw_Salinas_Cruz
+
+	major = yes
+ fire_only_once=yes
+	trigger = {
+
+		date > 1910.7.12
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+
+	option = {
+		name = "Ohh, Well"
+	}
+}
+
+#######
+#####La batalla del carrizal #####
+
+
+news_event = {
+	id=ww1_mexico.1083
+	title= ww1_mexico.1083.t
+  desc=ww1_mexico.1083_d
+
+
+		picture= EVENT_hoi4tgw_Batalla_carrizal
+
+	major = yes
+ fire_only_once=yes
+	trigger = {
+
+		date > 1916.6.21
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+
+	option = {
+		name = "Hopefully this is the end of this conflict."
+	}
+}
+
+#######

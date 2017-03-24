@@ -1,0 +1,89 @@
+﻿add_namespace = ww1_denmark
+country_event = {
+	title=ww1_denmark.1.t#Frederick VIII Dies!
+	desc=ww1_denmark.1.d#Frederick VIII has died. Christian X is now King
+	id=ww1_denmark.1
+	picture=ww1_denmark_1
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=1
+		}
+	trigger={
+		tag=DEN
+		has_government=neutrality
+		not={
+			has_country_flag=frederick_died
+			}
+		date>1912.5.14
+		}
+	option={
+		name=ww1_denmark.1.a
+		ai_chance={
+			factor=100
+			}
+		set_country_flag=frederick_died
+		kill_country_leader=yes
+		create_country_leader={
+			name="Christian X"
+			desc=DEN_christian_x_DESC
+			picture="gfx/leaders/DEN_christian_x.dds"
+			expire="1935.1.1"
+			ideology=centrism
+			traits={
+				}
+			}
+		}
+	}
+country_event = {
+	title=ww1_denmark.2.t#Treaty of the Danish West Indies
+	desc=ww1_denmark.2.d#The US wishes to buy our West Indian colonies, in part out of fears that the Germans could use them as a base for convoy raiding. Should we sell the territory to them?
+	id=ww1_denmark.2
+	picture=ww1_denmark_2
+	fire_only_once=yes
+	is_triggered_only=yes
+	option={
+		name=ww1_denmark.2.a
+		ai_chance={
+			factor=100
+			}
+		USA={
+			transfer_state=750
+			}
+		add_political_power=100
+		USA={
+			add_political_power=-100
+			}
+		add_opinion_modifier={
+			target=USA
+			modifier=large_increase
+			}
+		add_opinion_modifier={
+			target=ENG
+			modifier=medium_increase
+			}
+		add_opinion_modifier={
+			target=GER
+			modifier=large_decrease
+			}
+		}
+	option={
+		name=ww1_denmark.2.b
+		ai_chance={
+			factor=0
+			}
+		add_political_power=-100
+		add_opinion_modifier={
+			target=USA
+			modifier=large_decrease
+			}
+		add_opinion_modifier={
+			target=ENG
+			modifier=medium_decrease
+			}
+		add_opinion_modifier={
+			target=GER
+			modifier=medium_increase
+			}
+		}
+	}

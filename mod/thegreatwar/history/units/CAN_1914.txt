@@ -1,0 +1,64 @@
+﻿
+###################################################################
+
+division_template = {
+	name = "Infantry Division"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Infantry Brigade"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 0 }
+	}
+	priority = 0
+}
+
+division_template = {
+	name = "Cavalry Division"
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+}
+
+###################################################################
+
+units = {
+	division= { 
+			name = "1st Canadian Infantry Div."
+			location=3778 # Ottawa
+			division_template="Infantry Division"
+			start_experience_factor=0.1
+			}
+	
+	
+	division= { 
+			name = "2nd Canadian Infantry Div."
+			location=3778 # Ottawa
+			division_template="Infantry Division"
+			start_experience_factor=0.05
+			}
+	 navy = {
+		name = "Royal Canadian Navy"
+		location=7361 # Halifax
+		base=7361 # Halifax
+		ship = { name = "HMS Rainbow" definition = light_cruiser equipment = { light_cruiser_1906 = { amount = 1 owner = CAN } } }#KiS#version_name = "Apollo Class" } } }
+ship = { name = "HMS Niobe" definition = battle_cruiser equipment = { battle_cruiser_1890 = { amount = 1 owner = CAN } } }#KiS#version_name = "Diadem Class" } } }
+
+		 ship = { name = "Destroyer Flotilla 1" definition = destroyer equipment = { destroyer_1890 = { amount = 1 owner = CAN } } } #type = destroyer  historical_model = 9 
+		}
+	}
+air_wings = { 
+	}
+instant_effect = {
+add_equipment_production = { equipment = { type = infantry_equipment_0 creator = "CAN" } requested_factories = 1 progress = 0.1 efficiency = 50}
+	}

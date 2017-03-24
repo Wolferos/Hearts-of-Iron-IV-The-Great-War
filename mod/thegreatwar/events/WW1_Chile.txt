@@ -1,0 +1,37 @@
+﻿add_namespace = ww1_chile
+country_event = {
+	title=ww1_chile.1.t#Pedro Montt Dies!
+	desc=ww1_chile.1.d#Ramón Barros Luco is now President
+	id=ww1_chile.1
+	picture=ww1_chile_1
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=1
+		}
+	trigger={
+		tag=CHL
+		has_government=democratic
+		not={
+			has_country_flag=montt_died
+			}
+		date>1910.8.16
+		}
+	option={
+		name=ww1_chile.1.a
+		ai_chance={
+			factor=100
+			}
+		set_country_flag=montt_died
+		kill_country_leader=yes
+		create_country_leader={
+			name="Ramón Barros Luco"
+			desc=CHL_ramon_barros_luco_DESC
+			picture="gfx/leaders/CHL_ramon_barros_luco.dds"
+			expire="1935.1.1"
+			ideology=liberalism
+			traits={
+				}
+			}
+		}
+	}

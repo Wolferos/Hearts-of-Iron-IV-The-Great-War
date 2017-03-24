@@ -1,0 +1,59 @@
+﻿
+###################################################################
+
+division_template = {
+	name = "Infantry Division"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Infantry Brigade"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 0 }
+	}
+	priority = 0
+}
+
+division_template = {
+	name = "Cavalry Division"
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+}
+
+###################################################################
+
+units = {
+	division= { 
+			name = "Brigada de Ejercito"
+			location = 7622 # La Habana
+			division_template="Infantry Division"
+			start_experience_factor=0.05
+			}
+	
+	
+	division= { 
+			name = "Brigada de Caballería 'Floridita'"
+			location = 7622 # La Habana
+			division_template="Cavalry Division"
+			start_experience_factor=0.05
+			}
+	}
+air_wings = { 
+	}
+instant_effect = {
+add_equipment_production = { equipment = { type = infantry_equipment_0 creator = "CUB" } requested_factories = 1 progress = 0.1 efficiency = 50}
+
+add_equipment_production = { equipment = { type = support_equipment_1 creator = "CUB" } requested_factories = 1 progress = 0.1 efficiency = 50}
+add_equipment_production = { equipment = { type = light_field_gun_equipment_1 creator = "CUB" } requested_factories = 1 progress = 0.1 efficiency = 50}
+add_equipment_production = { equipment = { type = motorized_equipment_0 creator = "CUB" } requested_factories = 1 progress = 0.1 efficiency = 50}
+	}

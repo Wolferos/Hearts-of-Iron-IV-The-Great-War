@@ -1,0 +1,68 @@
+﻿###################################################################
+
+division_template = {
+	name = "Infantry Division"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Infantry Brigade"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 0 }
+	}
+	priority = 0
+}
+
+division_template = {
+	name = "Cavalry Division"
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+}
+
+###################################################################
+
+units = {
+	division= { 
+			name = "1. Infanteridivisjon"
+			location=6115 # Oslo
+			division_template="Infantry Division"
+			start_experience_factor=0.1
+			}
+	
+	
+	division= { 
+			name = "6. Infanteridivisjon"
+			location=192 # Narvik
+			division_template="Infantry Division"
+			start_experience_factor=0.1
+			}
+	 navy = {
+		name = "Sjøforsvaret"
+		location = 9296 # Kristiansand
+		base =  9296 # Kristiansand
+ship = { name = "KNM Norge" definition = battleship equipment = { battleship_1890 = { amount = 1 owner = NOR } } }
+ship = { name = "KNM Eidsvold" definition = battleship equipment = { battleship_1890 = { amount = 1 owner = NOR } } }
+ship = { name = "KNM Harald Haarfagre" definition = battleship equipment = { battleship_1890 = { amount = 1 owner = NOR } } }
+ship = { name = "KNM Tordenskjold" definition = battleship equipment = { battleship_1890 = { amount = 1 owner = NOR } } }
+ship = { name = "KNM Frithjof" definition = light_cruiser equipment = { light_cruiser_1906 = { amount = 1 owner = NOR } } }
+ship = { name = "KNM Viking" definition = light_cruiser equipment = { light_cruiser_1906 = { amount = 1 owner = NOR } } }#KiS#version_name = "Viking Class" } } }
+ship = { name = "KNM Valkyrjen" definition = destroyer equipment = { destroyer_1890 = { amount = 1 owner = NOR } } }
+ship = { name = "KNM Draug" definition = destroyer equipment = { destroyer_1906 = { amount = 1 owner = NOR } } }
+ship = { name = "KNM Kobben" definition = coastal_submarine equipment = { coastal_submarine_1906 = { amount = 1 owner = NOR } } }
+		}
+	}
+air_wings = { 
+	}
+instant_effect = {
+add_equipment_production = { equipment = { type = infantry_equipment_0 creator = "NOR" } requested_factories = 1 progress = 0.1 efficiency = 50}
+	}

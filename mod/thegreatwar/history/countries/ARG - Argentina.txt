@@ -1,0 +1,214 @@
+﻿capital = 278
+
+#-------------------------------------------------------
+#					GENERIC VALUES
+#-------------------------------------------------------
+set_research_slots = 3
+set_national_unity = 0.75
+set_convoys = 120
+
+#-------------------------------------------------------
+#					POLITICS & ARMY
+#-------------------------------------------------------
+create_country_leader={ name = "Agustín P. Justo" desc=ARG_agustin_p_justo_DESC picture="gfx/leaders/ARG_agustin_p_justo.dds" expire="1935.1.1" ideology=despotism  traits={  } }
+create_country_leader={ name = "Hipólito Yrigoyen" desc=ARG_hipolito_yrigoyen_DESC picture="gfx/leaders/ARG_hipolito_yrigoyen.dds" expire="1935.1.1" ideology=marxism traits={  } }
+create_country_leader={ name = "Victorino de la Plaza" desc=ARG_victorino_de_la_plaza_DESC picture="gfx/leaders/ARG_victorino_de_la_plaza.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+create_country_leader={ name = "Marcelo Torcuato de Alvear" desc=ARG_marcelo_torcuato_de_alvear_DESC picture="gfx/leaders/ARG_marcelo_torcuato_de_alvear.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+create_country_leader={ name = "Manuel Quintana" desc=ARG_manuel_quintana_DESC picture="gfx/leaders/ARG_manuel_quintana.dds" expire="1935.1.1" ideology=despotism  traits={  } }
+create_country_leader={ name = "José Figueroa Alcorta" desc=ARG_jose_figueroa_alcorta_DESC picture="gfx/leaders/ARG_jose_figueroa_alcorta.dds" expire="1935.1.1" ideology=despotism  traits={  } }
+create_corps_commander={  name = "Uriburu" id=3004 portrait_path="gfx/generals/ARG_uriburu.tga" traits={   } skill=2 }
+
+1910.1.1 = {
+	oob = "ARG_1910"
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+
+	#-------------------------------------------------------
+
+	set_technology = {
+
+		# Infantry
+		infantry_weapons = 1
+		support_weapons = 1
+		infantry_binoculars = 1
+		motorised_infantry = 1
+		ww1_ambulance1 = 1
+
+
+		# Support
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		#tech_military_police = 1
+		#tech_maintenance_company = 1
+		#tech_field_hospital = 1
+		#tech_logistics_company = 1
+
+		# Armor
+
+		# Artillery
+		light_field_gun1 = 1
+		heavy_field_gun1 = 1
+
+		# Navy
+		ww1_destroyer0 = 1
+		ww1_destroyer1 = 1
+		ww1_light_cruiser1 = 1
+		ww1_light_cruiser0 = 1
+		ww1_battlecruiser0 = 1
+		ww1_battleship0 = 1
+		ww1_submarine1 = 1
+		ww1_coastal_submarine1 = 1
+		transport = 1
+
+		# Air
+
+		# Engineering
+		electronic_mechanical_engineering = 1
+
+		# Industry
+	}
+
+	set_politics = {
+	    parties = {
+	        democratic = {
+	            popularity = 5
+	        }
+	        fascism = {
+	            popularity = 5
+	        }
+	        communism = {
+	            popularity = 12
+	        }
+	        neutrality = {
+	            popularity = 78
+	        }
+	    }
+	    ruling_party = neutrality last_election = "1910.4.12"
+	    election_frequency = 72 elections_allowed = yes
+	}
+
+	add_ideas = {
+		neutrality_idea
+		limited_conscription
+	}	
+
+	set_country_flag = monroe_doctrine
+}
+1910.10.12 = {
+    create_country_leader = {
+        name = "Roque Sáenz Peña"
+        desc = ARG_roque_saenz_pena_DESC picture = "gfx/leaders/ARG_roque_saenz_pena.dds"
+        expire = "1935.1.1"
+        ideology = moderatism traits = {}
+    }
+    set_country_flag = roque_died
+}
+1914.1.1 = {
+	oob = "ARG_1910"
+
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+
+	#Army
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = ww1_artillery_effort_1
+	complete_national_focus = doctrine_effort
+	complete_national_focus = ww1_trenchwarfare
+
+	#Industrial
+	complete_national_focus = industrial_effort
+	complete_national_focus = infrastructure_effort
+
+	#Political
+	complete_national_focus = political_effort
+
+	#Diplomatic
+	complete_national_focus = ww1_diplomatic_effort
+	complete_national_focus = neutrality_focus
+	complete_national_focus = ww1_military_reserve
+	
+
+	#-------------------------------------------------------
+
+	set_technology = {
+
+		# Infantry
+		infantry_weapons = 1
+		ww1infantry_weapons1 = 1
+		support_weapons = 1
+		infantry_binoculars = 1
+		infantry_grenade = 1
+		motorised_infantry = 1
+		ww1_ambulance1 = 1
+
+
+		# Support
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+
+		# Armor
+		gwtank = 1 # 1910 Armored Car
+
+		# Artillery
+		light_field_gun1 = 1
+		bonus_artillery1 = 1
+		heavy_field_gun1 = 1
+		bonus_bertha1 = 1
+
+		# Navy
+		ww1_destroyer0 = 1
+		ww1_destroyer1 = 1
+		ww1_light_cruiser1 = 1
+		ww1_light_cruiser0 = 1
+		ww1_battleship0 = 1
+		ww1_battleship1 = 1
+		ww1_submarine1 = 1
+		ww1_coastal_submarine1 = 1
+		transport = 1
+
+		# Air
+		ww1_fighter1 = 1
+
+		# Engineering
+		electronic_mechanical_engineering = 1
+
+		# Industry
+	}
+
+	set_politics = {
+        parties = {
+            democratic = {
+                popularity = 5
+            }
+            fascism = {
+                popularity = 5
+            }
+            communism = {
+                popularity = 12
+            }
+            neutrality = {
+                popularity = 78
+            }
+        }
+        ruling_party = neutrality last_election = "1910.4.12"
+        election_frequency = 72 elections_allowed = yes
+    }
+
+	add_ideas = {
+		neutrality_idea
+		limited_conscription
+	}
+
+	set_country_flag = monroe_doctrine
+}
