@@ -1,4 +1,4 @@
-name="Hearts of Iron IV: The Great War (dev03)"
+name="Hearts of Iron IV: The Great War (dev04)"
 path="mod/thegreatwar/"
 tags={
 	"Historical"
