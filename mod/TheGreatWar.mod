@@ -1,4 +1,4 @@
-name="Hearts of Iron IV: The Great War"
+name="Hearts of Iron IV: The Great War (dev03)"
 path="mod/thegreatwar/"
 tags={
 	"Historical"
@@ -7,5 +7,5 @@ tags={
 	"Gameplay"
 }
 picture="tgw_picture.png"
-remote_file_id="699709023"
+#remote_file_id="699709023"
 supported_version="1.3.3"
