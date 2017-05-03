@@ -1,35 +1,95 @@
 ideas={
-	country = {		
+	country = {
 		RUS_ww1_orthodox_church = {
 			allowed = {original_tag = RUS}
 			allowed_civil_war = {always = yes}
 			removal_cost = -1
 			modifier = {
-				unity_factor = 0.08
+				unity_factor = 0.05
+				consumer_goods_factor = -0.1
 			}
 		}
+		
 		RUS_ww1_tsushima_humiliation = {
 			allowed = {original_tag = RUS} 
 			allowed_civil_war = {always = yes} 
 			removal_cost = -1 
 			modifier = {
 				army_org = -5
-				political_power_cost = 0.8
+				army_morale_factor = -0.1
+				training_time_army_factor = 0.1
+				unity_factor = -0.05
+				production_speed_coastal_bunker_factor = 0.2
+			}
+			equipment_bonus = {
+				capital_ship = {
+					build_cost_ic = 0.10 instant = yes
+				}
+				
+				screen_ship = {
+					build_cost_ic = 0.05 instant = yes
+				}
+				submarine = {
+					build_cost_ic = 0.05 instant = yes
+				}
+				destroyer = {
+					build_cost_ic = 0.05 instant = yes
+				}
 			}
 		}
+		
 		RUS_ww1_mixed_railways = {
 			allowed = {original_tag = RUS}
 			allowed_civil_war = {always = yes}
 			removal_cost = -1
 			modifier = {
 				attrition = 0.05
+				production_factory_efficiency_gain_factor = -0.05
+				production_factory_max_efficiency_factor = -0.05
+				line_change_production_efficiency_factor = -0.05
+
+			}
+		}
+		
+		RUS_ww1_tsushima_humiliation_counter = {
+			allowed = {original_tag = RUS} 
+			allowed_civil_war = {always = yes} 
+			removal_cost = -1 
+			modifier = {
+				army_morale_factor = 0.1
+				training_time_army_factor = -0.1
+			}
+			equipment_bonus = {
+				capital_ship = {
+					build_cost_ic = -0.20 instant = yes
+				}
+				
+				screen_ship = {
+					build_cost_ic = -0.15 instant = yes
+				}
+				submarine = {
+					build_cost_ic = -0.15 instant = yes
+				}
+				destroyer = {
+					build_cost_ic = -0.15 instant = yes
+				}
 			}
 		}
 	}
 
 
 	political_advisor={
-			RUS_boris_sturmer={ allowed={ tag=RUS } traits={ silent_workhorse } ai_will_do={ factor=1 } }
+		RUS_boris_sturmer={
+			allowed={
+				tag=RUS
+			}
+			traits={
+				silent_workhorse
+			}
+			ai_will_do={
+				factor=1
+			}
+		}
 			RUS_vladimir_kokovtsov={ allowed={ tag=RUS } traits={ quartermaster_general } ai_will_do={ factor=1 } }
 			RUS_nikolai_golitsyn={ allowed={ tag=RUS } traits={ compassionate_gentleman } ai_will_do={ factor=1 } }
 			RUS_pavel_ryabushinsky={ allowed={ tag=RUS } traits={ armaments_organizer } ai_will_do={ factor=1 } }
