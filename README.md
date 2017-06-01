@@ -1,4 +1,5 @@
 # Hearts of Iron IV: Fall of Empires
+forked from Wolferos/Hearts-of-Iron-IV-The-Great-War
 
 ----------
 
@@ -8,7 +9,7 @@
 
 **Supported Languages:**
 - English Language
-- Russian Language (Already in the Mod thanks to the [Community of Strategium.ru](https://www.strategium.ru))
+- Russian Language
 
 /!\ Warning /!\ Old Saves may not work with newer versions of the Mod
 
