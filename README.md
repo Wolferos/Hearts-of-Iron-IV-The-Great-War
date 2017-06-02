@@ -1,31 +1,17 @@
-# Hearts of Iron IV: The Great War
+# Hearts of Iron IV: Fall of Empires
+forked from Wolferos/Hearts-of-Iron-IV-The-Great-War
 
 ----------
-[**Donwload on Steam**](http://steamcommunity.com/sharedfiles/filedetails/?id=699709023) or [**Donwload on Mod DB**](http://www.moddb.com/mods/hearts-of-iron-iv-the-great-war1)
 
-**Status:** Open Beta 
-
-**Project Lead:** Wolferos 
-
-**Current Version:** 0.2b
+**Status:** In progress
 
 **Compatible with:** Hearts of Iron IV 1.3.3 "Torch"(with or without Together for Victory Paid DLC) 
 
 **Supported Languages:**
 - English Language
-- French Language
-- Chinese Language (本MOD提供汉化版本，[汉化补丁链接](http://steamcommunity.com/sharedfiles/filedetails/?id=803029506)) 
-- Turkish Language ([Türkçe Yama](http://paradoxfan.com/forum/index.php?topic=51341.0))
-- Russian Language (Already in the Mod thanks to the [Community of Strategium.ru](https://www.strategium.ru))
-- Japanese Language ([+JP: The Great War](http://steamcommunity.com/sharedfiles/filedetails/?id=854550667&searchtext=%2BJP%3A+The+Great+War))
-- Early German Language
-- Early Spanish Language
+- Russian Language
 
 /!\ Warning /!\ Old Saves may not work with newer versions of the Mod
-
-**The Great War** has been created by Wolferos with the help of the Community. 
-
-Wolferos is a small independent game development studio founded in 2015. More Information about Wolferos on [Facebook](https://www.facebook.com/WolferosProductions), [Twitter](https://twitter.com/WolferosProd) and [Youtube](https://www.youtube.com/c/WolferosProductions).
 
 ----------
 > **How to Install:**
@@ -52,31 +38,5 @@ Wolferos is a small independent game development studio founded in 2015. More In
  - [Event Modding](http://www.hoi4wiki.com/Event_Modding)
 
 ----------
-
-THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
-
-   - Dizzle
-   - Kaiser Anony
-   - Jadasong
-   - Zkuhh
-   - Vale
-   - Crouching Lemur
-   - Tsunami
-   - Zak MacKay
-   - Seonake
-   - Benoît (Mundus Bellicus)
-   - Darksaber501st
-   - DevilIris
-   - lahvan
-   - Mixmaximonster
-   - tihhoni
-   - Felicianum2
-   - Polemarque
-   - AlainEtCo
-   - Kraftbruehe
-   - Xabi273
-   - Mindeufair
-   - EnderVod
-   
 
 [Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow
