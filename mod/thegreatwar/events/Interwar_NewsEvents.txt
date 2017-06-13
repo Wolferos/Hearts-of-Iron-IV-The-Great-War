@@ -266,3 +266,72 @@ news_event = {
 	}
 }
 #____________________________________________________________
+
+# Second Spanish Republic
+#____________________________________________________________
+news_event = {
+	id = interwar_news.7
+	title = interwar_news.7.t
+	desc = interwar_news.7.d
+
+	picture = EVENT_hoi4tgw_second_spanish_republic
+
+	is_triggered_only = yes
+	major = yes
+
+
+	trigger = {
+		date > 1931.4.14
+		NOT = { has_global_flag = interwar_second_spanish_republic }
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	immediate = {
+		set_global_flag = interwar_second_spanish_republic
+		hidden_effect = {
+			SPR = {
+				kill_country_leader = yes
+
+				create_country_leader = {
+					name = "Niceto Alcalá-Zamora"
+					desc = "POLITICS_Niceto_DESC"
+					picture = "gfx/hoi4tgw_portraits/SPR/country_leaders/SPR_niceto_alcala-zamora.dds"
+					expire = "1965.1.1"
+					ideology = marxism
+					traits = { }
+				}
+				
+				set_politics = {
+				    parties = {
+				        neutrality = {
+				            popularity = 20
+				        }
+				        fascism = {
+				            popularity = 2
+				        }
+				        democratic = {
+				            popularity = 8
+				        }
+				        communism = {
+				            popularity = 70
+				        }
+				    }
+				    ruling_party = communism last_election = "1931.4.14"
+				    election_frequency = 48 
+				    elections_allowed = yes
+				}
+			}
+		}
+	}
+
+	option = {
+		name = interwar_news.7.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________
