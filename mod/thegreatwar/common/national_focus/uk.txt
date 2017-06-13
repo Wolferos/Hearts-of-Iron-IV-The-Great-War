@@ -364,6 +364,70 @@ focus_tree = {
 	#-----------------------------------------------------------------------
 
 	focus = {
+		id = ENG_ww1_sultanate_egypt
+		icon = GFX_goal_molotov_ribbentrop_pact
+		prerequisite = { focus=ENG_ww1_diplomatic_effort }
+		available = {
+			ENG = {
+				has_war_with = TUR
+			}
+			EGY = {
+				is_puppet_of = ENG
+				NOT = {
+					has_government = democratic
+				}
+			}
+			date > 1914.11.11
+		}
+		completion_reward = {
+			news_event = { days = 1 id = kis_news.121 }
+			hidden_effect = {
+				EGY = {
+					kill_country_leader = yes
+					set_politics = {
+					    parties = {
+					        neutrality = {
+					            popularity = 0
+					        }
+					        fascism = {
+					            popularity = 0
+					        }
+					        democratic = {
+					            popularity = 100
+					        }
+					        communism = {
+					            popularity = 0
+					        }
+					    }
+					    ruling_party = democratic last_election = "1911.7.1"
+					    election_frequency = 48 
+					    elections_allowed = no
+					}					
+					add_popularity = {
+						ideology = democratic
+						popularity = 1
+					}
+				}
+			}
+
+			EGY = {
+				create_country_leader = {
+					name = "Hussein Kamel"
+					desc = "POLITICS_HusseinKamel_DESC"
+					picture = "gfx/hoi4tgw_portraits/EGY/country_leaders/EGY_hussein_kamel.dds"
+					expire = "1965.1.1"
+					ideology = conservatism
+					traits = { }
+				}
+			}
+		}
+		ai_will_do = { factor = 20 }
+		cost = 10
+		x = 6
+		y = 1
+	}
+
+	focus = {
 		id = ENG_ww1_send_diplomats
 		prerequisite = { focus=ENG_ww1_diplomatic_effort }
 		icon = GFX_goal_generic_territory_or_war
