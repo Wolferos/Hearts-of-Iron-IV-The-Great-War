@@ -13,13 +13,14 @@
 
 **Supported Languages:**
 - English Language
-- French Language
 - Chinese Language (本MOD提供汉化版本，[汉化补丁链接](http://steamcommunity.com/sharedfiles/filedetails/?id=803029506)) 
 - Turkish Language ([Türkçe Yama](http://paradoxfan.com/forum/index.php?topic=51341.0))
 - Russian Language (Already in the Mod thanks to the [Community of Strategium.ru](https://www.strategium.ru))
+- French Language (Integrated in the Mod, not finished, experimental stage)
+- German Language (Integrated in the Mod, not finished, experimental stage)
 - Japanese Language ([+JP: The Great War](http://steamcommunity.com/sharedfiles/filedetails/?id=854550667&searchtext=%2BJP%3A+The+Great+War))
-- Early German Language
-- Early Spanish Language
+- Spanish Language (Integrated in the Mod, not finished, experimental stage)
+- Portugês do Brazil (Integrated in the Mod, not finished, experimental stage)
 
 /!\ Warning /!\ Old Saves may not work with newer versions of the Mod
 
@@ -77,6 +78,10 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - Xabi273
    - Mindeufair
    - EnderVod
-   
+   - Tigerass
+   - Shkiv
+   - BaCe21
+   - Felixiinho
 
+----------
 [Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow
