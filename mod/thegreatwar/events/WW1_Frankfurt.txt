@@ -72,8 +72,8 @@ country_event = {
 	option = {		
 		name = ww1_frankfurt.500.a
 		ai_chance = { factor = 100 }
-		GER = {
-			country_event = { days = 1 id = ww1_frankfurt.503 }
+		FRA = {
+			country_event = { days = 1 id = ww1_frankfurt.3 }
   		}
   		hidden_effect = {
   			set_global_flag = kis_player_decided_ger_surrend
@@ -136,10 +136,6 @@ country_event = {
 			is_ai = yes
 			is_in_faction_with = GER
 		}
-		ITA = {
-			is_ai = yes
-			is_in_faction_with = GER
-		}
 	}
 
 	option = {
@@ -147,6 +143,138 @@ country_event = {
 		ai_chance = { factor = 100 }
 
 		hidden_effect = {
+
+			if = {
+				limit = {
+					GER = {
+						has_war_with = BEL
+						controls_state = 34
+						controls_state = 6
+					}
+				}
+
+
+				BEL = {
+					kill_country_leader = yes
+
+					create_country_leader = {
+						name = "Leopold III"
+						desc = "POLITICS_LEOPOLD3_DESC"
+						picture = "gfx/hoi4tgw_portraits/BEL/country_leaders/BEL_leopold_iii.dds"
+						expire = "1965.1.1"
+						ideology = autocracy
+						traits = { }
+					}
+					
+					set_politics = {
+					    parties = {
+					        neutrality = {
+					            popularity = 100
+					        }
+					        fascism = {
+					            popularity = 0
+					        }
+					        democratic = {
+					            popularity = 0
+					        }
+					        communism = {
+					            popularity = 0
+					        }
+					    }
+					    ruling_party = neutrality last_election = "1911.7.1"
+					    election_frequency = 48 
+					    elections_allowed = no
+					}
+					
+					add_popularity = {
+						ideology = neutrality
+						popularity = 1
+					}
+				}
+				GER = {
+					puppet = BEL
+					transfer_state = 6 	# Vlaanderen
+					transfer_state = 295
+					transfer_state = 538
+					transfer_state = 718
+					add_to_faction = BEL
+
+				}
+
+				# SPECIAL_DLC Together for Victory
+	        	if = { 
+	        		limit = { 
+	        			has_dlc = "Together for Victory" 
+	        		}
+					#IF-----------------------------------------
+		            set_autonomy = {
+		                target = BEL
+		                autonomous_state = autonomy_integrated_puppet
+		            }
+		            #-------------------------------------------
+
+		            #ELSE---------------------------------------
+		            else = {
+		                # WORK IN PROGRESS # Temporary Solution for Open Beta 0.1.9
+		            }
+		            #-------------------------------------------
+				}
+			}
+
+			if = {
+				limit = {
+					LUX = {
+						has_war_with = GER
+					}
+					GER = {
+						controls_state = 8
+					}
+				}
+				GER = {
+					annex_country={
+						target = LUX
+						transfer_troops = no
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					FRA = {
+						has_war_with = GER
+					}
+				}
+				GER = {
+					transfer_state = 17		# Vosges
+					transfer_state = 461	# Casablanca
+					transfer_state = 462	# Marrakech
+					transfer_state = 539	# Cameroon
+					transfer_state = 755	# Cameroon
+					transfer_state = 752	# Cameroon
+				}
+			}
+
+			if = {
+				limit = {
+					ENG = {
+						has_war_with = AUH
+					}
+				}
+				AUH = {
+					transfer_state = 333		# North Borneo
+				}
+			}
+
+			if = {
+				limit = {
+					ENG = {
+						has_war_with = GER
+					}
+				}
+				GER = {
+					transfer_state = 763		# Walwis Bay
+				}
+			}
 
 			#Dirty Code but only way for now...
 			GER = { white_peace = FRA }
@@ -233,7 +361,6 @@ country_event = {
 				remove_from_faction = SER
 				remove_from_faction = MTN
 				remove_from_faction = GRE
-				remove_from_faction = FRA
 				remove_from_faction = RUS
 				remove_from_faction = SOV
 				remove_from_faction = HOL
@@ -245,25 +372,8 @@ country_event = {
 				remove_from_faction = ROM
 				remove_from_faction = CHI
 				remove_from_faction = QIN
+				remove_from_faction = FRA
 			}
-
-			GER = {
-
-			}
-
-			#If France n'a plus Paris, if FRA n'a pas les trucs qui longent belgique
-
-			#Second Traité de Francfort
-
-			#Alors, la FRA
-
-			#lâche, le truc à l'ouest de l'alsace lorraine
-
-			#les FRA donne le Maroc à l'Allemand, ils donnent aussi ce qui est autour du Kamerun et Djibouti
-
-			#if GER has Bruxelles, dans ce cas, BEL devient puppet Allemande et Congo Belge devient allemand
-
-			#if GER has Luxembourg, dans ce cas, Luxembourg est avalé par GER
 
 			news_event = { days = 3 id = ww1_frankfurt.1 }
 		}
@@ -278,7 +388,7 @@ news_event = {
 	id = ww1_frankfurt.1
 	title = ww1_frankfurt.1.t
 	desc = ww1_frankfurt.1.d
-	picture = EVENT_hoi4tgw_armistice
+	picture = EVENT_hoi4tgw_second_treaty_of_frankfort
 
 	major = yes
 	is_triggered_only = yes
@@ -286,6 +396,9 @@ news_event = {
 	option = {
 		name = ww1_frankfurt.1.a
 		ai_chance = { factor = 100 }
+		hidden_effect = {
+			set_global_flag = kis_second_treaty_frankfort
+		}
 	}
 }
 #____________________________________________________________
