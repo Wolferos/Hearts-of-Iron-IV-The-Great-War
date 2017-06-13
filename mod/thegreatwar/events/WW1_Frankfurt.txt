@@ -1,0 +1,291 @@
+﻿# Beta 0.3
+
+add_namespace = ww1_frankfurt
+
+# Let the Player choose for the Treaty of Frankfort or the Peace Conference Mechanism
+#____________________________________________________________
+country_event = {
+	id = ww1_frankfurt.500
+	title = ww1_frankfurt.500.t
+	desc = ww1_frankfurt.500.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	trigger = {
+		OR = {
+			AND = {
+				TAG = GER
+				GER = {
+					is_ai = no
+				}		
+			}
+			AND = {
+				TAG = AUH
+				AUH = {
+					is_ai = no
+					is_in_faction_with = GER
+				}
+			}
+			AND = {
+				TAG = TUR
+				TUR = {
+					is_ai = no
+					is_in_faction_with = GER
+				}
+			}
+			AND = {
+				TAG = BUL
+				BUL = {
+					is_ai = no
+					is_in_faction_with = GER
+				}
+			}			
+			AND = {
+				TAG = ITA
+				ITA = {
+					is_ai = no
+					is_in_faction_with = GER
+				}
+			}
+		}
+
+		FRA = {
+			surrender_progress > 0.55
+			has_war_with = GER
+			has_war_with = AUH
+
+			has_global_flag = kis_brestlitovsk # Open Beta 0.1.8 - Temporary Solution
+			
+			NOT = {
+				has_global_flag = kis_ask_fra_surrend #
+				has_global_flag = kis_player_decided_fra_surrend #
+			}
+		}
+	}
+
+	# The Player chooses the Treaty of Frankfort
+	option = {		
+		name = ww1_frankfurt.500.a
+		ai_chance = { factor = 100 }
+		GER = {
+			country_event = { days = 1 id = ww1_frankfurt.503 }
+  		}
+  		hidden_effect = {
+  			set_global_flag = kis_player_decided_ger_surrend
+  		}
+	}
+
+	# The Player chooses the Peace Conference Mechanism
+	option = {
+		name = ww1_frankfurt.500.b
+		ai_chance = { factor = 0 }		
+  		hidden_effect = {
+  			set_global_flag = kis_player_decided_ger_surrend
+  		}
+	}
+}
+#____________________________________________________________
+
+# Germany Surrend - Trigger to the FRA
+#____________________________________________________________
+country_event = {
+	id = ww1_frankfurt.3
+	title = ww1_frankfurt.3.t
+	desc = ww1_frankfurt.3.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+
+	immediate = {
+		set_global_flag = kis_ask_ger_surrend
+	}
+
+	trigger = {
+		TAG = FRA
+
+		FRA = {
+			surrender_progress > 0.55
+			has_war_with = ENG
+			has_war_with = FRA
+
+			has_global_flag = kis_brestlitovsk # Open Beta 0.1.8 - Temporary Solution
+			
+			NOT = {
+				has_global_flag = kis_ask_ger_surrend #
+				has_global_flag = kis_player_decided_ger_surrend #
+			}
+		}
+
+		GER = {
+			is_ai = yes
+		}		
+		AUH = {
+			is_ai = yes
+			is_in_faction_with = GER
+		}
+		TUR = {
+			is_ai = yes
+			is_in_faction_with = GER
+		}
+		BUL = {
+			is_ai = yes
+			is_in_faction_with = GER
+		}
+		ITA = {
+			is_ai = yes
+			is_in_faction_with = GER
+		}
+	}
+
+	option = {
+		name = ww1_frankfurt.3.a
+		ai_chance = { factor = 100 }
+
+		hidden_effect = {
+
+			#Dirty Code but only way for now...
+			GER = { white_peace = FRA }
+			GER = { white_peace = ENG }
+			GER = { white_peace = RUS }
+			GER = { white_peace = SOV }
+			GER = { white_peace = HOL }
+			GER = { white_peace = BEL }
+			GER = { white_peace = ITA }
+			GER = { white_peace = LUX }
+			GER = { white_peace = MTN }
+			GER = { white_peace = SER }
+			GER = { white_peace = BUL }
+			GER = { white_peace = TUR }
+			GER = { white_peace = GRE }
+			GER = { white_peace = JAP }
+			GER = { white_peace = USA }
+			GER = { white_peace = ROM }
+			GER = { white_peace = CHI }
+			GER = { white_peace = QIN }
+
+			GER = {	diplomatic_relation = {	country = FRA relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = ENG relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = RUS relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = HOL relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = BEL relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = ITA relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = LUX relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = MTN relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = SER relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = BUL relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = TUR relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = GRE relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = JAP relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = USA relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = ROM relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = CHI relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
+
+			AUH = { white_peace = FRA }
+			AUH = { white_peace = ENG }
+			AUH = { white_peace = RUS }
+			AUH = { white_peace = SOV }
+			AUH = { white_peace = HOL }
+			AUH = { white_peace = BEL }
+			AUH = { white_peace = ITA }
+			AUH = { white_peace = LUX }
+			AUH = { white_peace = MTN }
+			AUH = { white_peace = SER }
+			AUH = { white_peace = BUL }
+			AUH = { white_peace = TUR }
+			AUH = { white_peace = GRE }
+			AUH = { white_peace = JAP }
+			AUH = { white_peace = USA }
+			AUH = { white_peace = ROM }
+			AUH = { white_peace = CHI }
+			AUH = { white_peace = QIN }
+
+			AUH = {	diplomatic_relation = {	country = FRA relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = ENG relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = RUS relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = HOL relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = BEL relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = ITA relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = LUX relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = MTN relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = SER relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = BUL relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = TUR relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = GRE relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = JAP relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = USA relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = ROM relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = CHI relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
+
+			FRA = {
+				remove_from_faction = ENG
+				remove_from_faction = USA
+				remove_from_faction = JAP
+				remove_from_faction = ITA
+				remove_from_faction = MEX
+				remove_from_faction = SWE
+				remove_from_faction = SER
+				remove_from_faction = MTN
+				remove_from_faction = GRE
+				remove_from_faction = FRA
+				remove_from_faction = RUS
+				remove_from_faction = SOV
+				remove_from_faction = HOL
+				remove_from_faction = BEL
+				remove_from_faction = ITA
+				remove_from_faction = LUX
+				remove_from_faction = BUL
+				remove_from_faction = TUR
+				remove_from_faction = ROM
+				remove_from_faction = CHI
+				remove_from_faction = QIN
+			}
+
+			GER = {
+
+			}
+
+			#If France n'a plus Paris, if FRA n'a pas les trucs qui longent belgique
+
+			#Second Traité de Francfort
+
+			#Alors, la FRA
+
+			#lâche, le truc à l'ouest de l'alsace lorraine
+
+			#les FRA donne le Maroc à l'Allemand, ils donnent aussi ce qui est autour du Kamerun et Djibouti
+
+			#if GER has Bruxelles, dans ce cas, BEL devient puppet Allemande et Congo Belge devient allemand
+
+			#if GER has Luxembourg, dans ce cas, Luxembourg est avalé par GER
+
+			news_event = { days = 3 id = ww1_frankfurt.1 }
+		}
+	}
+}
+#____________________________________________________________
+
+
+# Armistice
+#____________________________________________________________
+news_event = {
+	id = ww1_frankfurt.1
+	title = ww1_frankfurt.1.t
+	desc = ww1_frankfurt.1.d
+	picture = EVENT_hoi4tgw_armistice
+
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_frankfurt.1.a
+		ai_chance = { factor = 100 }
+	}
+}
+#____________________________________________________________
