@@ -138,3 +138,42 @@ news_event = {
 	}
 }
 #____________________________________________________________
+
+# Rename Event for Strasbourg and Mulhouse
+#____________________________________________________________
+country_event = {
+	id = ww1_france.200
+	title = ww1_france.200.t
+	desc = ww1_france.200.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FRA
+		FRA = {
+			has_war_with = GER
+			owns_state = 28 
+		}
+	}
+
+	option = { #a great idea!
+		name = ww1_france.200.a
+		ai_chance = {
+			base = 100
+		}
+		set_province_name = { id = 9503 name = "Strasbourg"}
+		set_province_name = { id = 678 name = "Mulhouse"}
+		add_manpower = 3200
+	}
+
+	option = { #rather not
+		name = ww1_france.200.b
+		ai_chance = {
+			base = 0
+		}
+		#Open Beta 0.3
+		add_national_unity = -0.05
+	}
+}
+#____________________________________________________________

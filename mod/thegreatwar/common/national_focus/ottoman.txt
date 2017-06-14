@@ -1049,6 +1049,101 @@ focus = {
 	}
 
 	focus = {
+		id = TUR_ww1_khedivate_egypt
+		prerequisite = { focus=TUR_ww1_assert_position_east }
+		icon = GFX_goal_molotov_ribbentrop_pact
+		available = {
+			TUR = {
+				has_war_with = ENG
+			}
+			EGY = {
+				is_puppet_of = ENG
+				NOT = {
+					has_government = democratic
+				}
+			}
+			ENG = {
+				NOT = {
+					has_completed_focus = ENG_ww1_sultanate_egypt
+				}
+			}
+		}
+		completion_reward = {
+			news_event = { days = 1 id = kis_news.122 }
+			hidden_effect = {
+				ENG = {
+					end_puppet = EGY
+					remove_from_faction = EGY
+					declare_war_on = {
+						target = EGY
+						type = annex_everything
+					}
+				}
+				EGY = {
+					kill_country_leader = yes
+					set_politics = {
+					    parties = {
+					        neutrality = {
+					            popularity = 0
+					        }
+					        fascism = {
+					            popularity = 100
+					        }
+					        democratic = {
+					            popularity = 0
+					        }
+					        communism = {
+					            popularity = 0
+					        }
+					    }
+					    ruling_party = fascism last_election = "1911.7.1"
+					    election_frequency = 48 
+					    elections_allowed = no
+					}					
+					add_popularity = {
+						ideology = fascism
+						popularity = 1
+					}
+
+					create_country_leader = {
+						name = "Fuad I"
+						desc = "POLITICS_FuadI_DESC"
+						picture = "gfx/hoi4tgw_portraits/EGY/country_leaders/EGY_fuad_i.dds"
+						expire = "1965.1.1"
+						ideology = autocracy
+						traits = { }
+					}
+				}
+
+				TUR = {
+					diplomatic_relation = {
+						country = EGY
+						relation = military_access
+						active = yes
+					}
+				}
+				EGY = {
+					diplomatic_relation = {
+						country = TUR
+						relation = military_access
+						active = yes
+					}
+				}
+			}
+		}
+		ai_will_do = { 
+			factor = 7 
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		cost = 10
+		x = 13
+		y = 2
+	}
+
+	focus = {
 		id = TUR_ww1_develop_arab
 		prerequisite = { focus=TUR_ww1_assert_position_east }
 		icon = GFX_goal_generic_construct_infrastructure
@@ -1340,40 +1435,40 @@ focus = {
 		y = 7
 	}
 
-	focus = {
-		id = TUR_ww1_support_egypt
-		prerequisite = { focus= TUR_ww1_support_oman  focus= TUR_ww1_support_libya }
-		icon = GFX_hoi4tgw_islam
+	#focus = {
+	#	id = TUR_ww1_support_egypt
+	#	prerequisite = { focus= TUR_ww1_support_oman  focus= TUR_ww1_support_libya }
+	#	icon = GFX_hoi4tgw_islam
 
-		available = {
+	#	available = {
 
-			NOT={ country_exists=EGY }
+	#		NOT={ country_exists=EGY }
 
-			has_war_with=ENG
+	#		has_war_with=ENG
 
-			ENG = { 
-				controls_state = 551 
-			}
-		}
-		completion_reward = {
+	#		ENG = { 
+	#			controls_state = 551 
+	#		}
+	#	}
+	#	completion_reward = {
 
-			EGY = {
-				transfer_state = 551
-			}
-			EGY={
-				declare_war_on={
-						target=ENG
-						type = take_state
-						generator = {551 456 457 552 453 446 447 452}
-				}
-			}
-		}
+	#		EGY = {
+	#			transfer_state = 551
+	#		}
+	#		EGY={
+	#			declare_war_on={
+	#					target=ENG
+	#					type = take_state
+	#					generator = {551 456 457 552 453 446 447 452}
+	#			}
+	#		}
+	#	}
 
-		ai_will_do = { factor = 0 }
-		cost = 10
-		x = 15
-		y = 8
-	}
+	#	ai_will_do = { factor = 0 }
+	#	cost = 10
+	#	x = 15
+	#	y = 8
+	#}
 
 	#-----------------------------------------------------------------------
 

@@ -344,27 +344,26 @@ country_event = {
 	}
 
 	immediate = {
-		# Dirty fix, need to fix it in a future version
+		# Dirty fix
 		hidden_effect = {
 			set_global_flag = hoi4tgw_SchlieffenSecurity
 			SER = {
-				remove_from_faction = BUL
-				remove_from_faction = GRE
-				remove_from_faction = BUL
-				remove_from_faction = MTN
+				dismantle_faction = yes
+			}
+			MTN = {
+				dismantle_faction = yes
 			}
 			GRE = {
-				remove_from_faction = BUL
-				remove_from_faction = SER
-				remove_from_faction = BUL
-				remove_from_faction = MTN
+				dismantle_faction = yes
 			}
 			BUL = {
-				remove_from_faction = SER
-				remove_from_faction = GRE
-				remove_from_faction = BUL
-				remove_from_faction = MTN
+				dismantle_faction = yes
 			}
+			TUR = {
+				dismantle_faction = yes
+			}			
+			FRA = { add_to_faction = SER }
+			FRA = { add_to_faction = MTN }
 		}
 	}
 
@@ -387,7 +386,7 @@ country_event = {
 
 		hidden_effect = {
 			add_named_threat = {
-				threat = 10
+				threat = 30
 				name = "The Great War"
 			}
 			#GER = {
@@ -429,7 +428,7 @@ country_event = {
 		
 		hidden_effect = {
 			add_named_threat = {
-				threat = 10
+				threat = 30
 				name = "The Great War"
 			}
 			#GER = {

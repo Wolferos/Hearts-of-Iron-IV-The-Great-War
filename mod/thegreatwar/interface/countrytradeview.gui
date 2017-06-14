@@ -22,9 +22,8 @@ guiTypes = {
 			spriteType = "GFX_header_bg"
 			position = { x= 5 y = 07 }
 			Orientation = "UPPER_LEFT"
-		}	
+		}
 
-		# Title "TRADE"
 		instantTextboxType = {
 			name = "trade_title"
 			position = { x = 45 y = 8 }
@@ -39,60 +38,128 @@ guiTypes = {
 
 		iconType = {
 			name = "trade_header"
-			position = { x = 12 y = 270 }
+			position = { x = 12 y = 43 }
 			quadTextureSprite = "GFX_trade_header"
 		}
 
-		# Background for TraddedGoods
-		iconType = {
-			name = "factories_bg"
-			position = { x = 140 y = 273 }
-			quadTextureSprite = "GFX_generic_text_bg_258"
-		}		
+		#iconType = {
+		#	name = "factories_bg"
+		#	position = { x = 140 y = 43 }
+		#	quadTextureSprite = "GFX_generic_text_bg_258"
+		#}		
 
-		# Icon of the civilian factory
 		iconType = {
 			name = "civilian_factory_icon"
-			position = { x = 290 y = 275 }
+			position = { x = 185 y = 47 }
 			spriteType = "GFX_non_available_factory_icon"
+			alwaystransparent = yes
 		}
 		
-		# Text for TraddedGoods
 		instantTextboxType = {
-			name = "trade_goods"
-			position = { x = 147 y = 277 }
+			name = "civ_factories"
+			position = { x = 28 y = 50 }
 			font = "hoi_18mbs"
-			text = "CONSTRUCTION_FACTORIES_TRADE_LABEL"
-			maxWidth = 140
+			text = "TRADE_CIV_FACTORIES"
+			maxWidth = 150
 			maxHeight = 18
 			fixedsize = yes
-			format = left			
+			format = right
+			alwaystransparent = yes
 		}
 		
-		# Text for numbers of factories
 		instantTextboxType = {
-			name = "factories"
-			position = { x = 318 y = 277 }
+			name = "factories_total"
+			position = { x = 216 y = 50 }
 			font = "hoi_18mbs"
-			text = "ic"
-			maxWidth = 75
+			maxWidth = 45
 			maxHeight = 18
-			format = center			
+			format = left
+			alwaystransparent = yes			
 		}
-		
-		# Resources Panel
+
+		instantTextboxType = {
+			name = "factories_used"
+			position = { x = 268 y = 50 }
+			font = "hoi_18mbs"
+			maxWidth = 120
+			maxHeight = 18
+			format = center	
+			alwaystransparent = yes
+		}
+
+		instantTextboxType = {
+			name = "factories_available"
+			position = { x = 388 y = 50 }
+			font = "hoi_18mbs"
+			maxWidth = 120
+			maxHeight = 18
+			format = center	
+			alwaystransparent = yes
+		}
+
+		# Productions etc.
 		containerWindowType = {
 			name = "resources"
-			position = { x = 13 y = 20 }	
-			size = { width = 480 height = 200 }
+			position = { x = 11 y = 75 }	
+			size = { width = 518 height = 156 }
 			verticalScrollbar = "right_vertical_slider"
-				
+
+			iconType = {
+				name ="resources_bg"
+				spriteType = "GFX_trade_resource_bg"
+				position = {x=0 y=0}
+			}
+
+			instantTextboxType = {
+				name = "produced_title"
+				position = { x=12 y=38 }
+				font = "hoi_16mbs"
+				text = "TRADEVIEW_RES_PRODUCED"
+				maxWidth = 78
+				maxHeight = 18
+				format = left
+				#alwaystransparent = yes
+			}
+		
+			instantTextboxType = {
+				name = "imported_title"
+				position = { x=12 y=58 }
+				font = "hoi_16mbs"
+				text = "TRADEVIEW_RES_IMPORTED"
+				maxWidth = 78
+				maxHeight = 18
+				format = left
+				#alwaystransparent = yes
+			}
+
+			instantTextboxType = {
+				name = "exported_title"
+				position = { x=12 y=78 }
+				font = "hoi_16mbs"
+				text = "TRADEVIEW_RES_EXPORTED"
+				maxWidth = 78
+				maxHeight = 18
+				format = left
+				#alwaystransparent = yes
+			}
+
+			instantTextboxType = {
+				name = "needed_title"
+				position = { x=12 y=98 }
+				font = "hoi_16mbs"
+				text = "TRADEVIEW_RES_PRODUCTION"
+				maxWidth = 78
+				maxHeight = 18
+				format = left
+				#alwaystransparent = yes
+			}
+
 			gridBoxType = {
 				name = "resources_grid"
-				position = { x = 2 y = 25 }
-				size = { width = 400 height = 100%% }
-				slotsize = { width = 127 height = 113 }
-				max_slots = { x = 4 y = 2 }
+				position = { x = 90 y = 0 }
+				size = { width = 422 height = 100%% }
+				slotsize = { width = 50 height = 156 }
+				max_slots = { x = 8 y = 1 }
 				format = "UPPER_LEFT"
 			}
 		}
@@ -100,27 +167,27 @@ guiTypes = {
 		iconType ={
 			name ="trade_divider"
 			spriteType = "GFX_divider"
-			position = { x= 13 y = 341 }
+			position = { x= 13 y = 267 }
 			Orientation = "UPPER_LEFT"
 		}
 		
 		iconType ={
 			name ="trade_filter_bg"
 			spriteType = "GFX_trade_filter_bg"
-			position = { x= 12 y = 349 }
+			position = { x= 18 y = 278 }
 			Orientation = "UPPER_LEFT"
 		}
 		
-		# Sort by Country
 		buttonType = {
 			name = "sort_country"
-			position = {x=14 y=440}
-			quadTextureSprite ="GFX_sort_173"
+			position = {x=17 y=400}
+			quadTextureSprite ="GFX_trade_filter_btn_country"
 			clicksound = click_scroll
 		}
+
 		instantTextboxType = {
 			name = "name"
-			position = { x = 21 y = 442 }
+			position = { x = 21 y = 407 }
 			font = "hoi_16mbs"
 			text = "TRADE_SORT_COUNTRY"
 			maxWidth = 160
@@ -129,16 +196,16 @@ guiTypes = {
 			fixedsize = yes
 		}
 		
-		# Sorty by Export
 		buttonType = {
 			name = "sort_export"
-			position = {x=185 y=440}
-			quadTextureSprite ="GFX_sort_99"
+			position = {x=187 y=400}
+			quadTextureSprite ="GFX_trade_filter_btn_export"
 			clicksound = click_scroll
 		}
+
 		instantTextboxType = {
 			name = "export_label"
-			position = { x = 190 y = 442 }
+			position = { x = 190 y = 407 }
 			font = "hoi_16mbs"
 			text = "TRADE_SORT_EXPORT"
 			maxWidth = 90
@@ -147,16 +214,16 @@ guiTypes = {
 			fixedsize = yes
 		}
 		
-		# Sorty by Delivered
 		buttonType = {
 			name = "sort_request"
-			position = {x=281 y=440}
-			quadTextureSprite ="GFX_sort_108"
+			position = {x=285 y=400}
+			quadTextureSprite ="GFX_trade_filter_btn_delivered"
 			clicksound = click_scroll
 		}
+
 		instantTextboxType = {
 			name = "request_label"
-			position = { x = 285 y = 442 }
+			position = { x = 285 y = 407 }
 			font = "hoi_16mbs"
 			text = "TRADE_SORT_REQUEST"
 			maxWidth = 100
@@ -165,63 +232,43 @@ guiTypes = {
 			fixedsize = yes
 		}
 
-		# Sorty by Trade Laws
 		buttonType = {
-			name = "sort_laws"
-			position = {x=386 y=440}
-			quadTextureSprite ="GFX_sort_75"
+			name = "sort_convoys"
+			position = {x=389 y=400}
+			quadTextureSprite ="GFX_trade_filter_btn_convoy"
 			clicksound = click_scroll
 		}
+
 		instantTextboxType = {
-			name = "laws_label"
-			position = { x=390 y=442 }
+			name = "convoys_label"
+			position = { x=403 y=407 }
 			font = "hoi_16mbs"
-			text = "TRADE_SORT_LAW"
+			text = "TRADE_SORT_CONVOYS"
 			maxWidth = 66
 			maxHeight = 18
 			format = center	
 			fixedsize = yes	
 		}
 		
-		# Sorty by Influence
-		buttonType = {
-			name = "sort_influence"
-			position = {x=458 y=440}
-			quadTextureSprite ="GFX_sort_68"
-			clicksound = click_scroll
-		}
-		instantTextboxType = {
-			name = "influence_label"
-			position = { x = 458 y = 442 }
-			font = "hoi_16mbs"
-			text = "TRADE_SORT_INFLUENCE"
-			maxWidth = 66
-			maxHeight = 18
-			format = center
-			fixedsize = yes
-		}
-		
-		# Filters for each resources 
 		containerWindowType = {
 			name = "filters"
-			position = { x = 12 y = 300 }	
+			position = { x = 12 y = 228 }	
 			size = { width = 450 height = 50 }
 			verticalScrollbar = "right_vertical_slider"
 			
 			gridBoxType = {
 				name = "resources_grid"
-				position = { x = 0 y = 0 }
-				size = { width = 400 height = 100% }
-				slotsize = { width = 60 height = 50 }
-				max_slots_vertical = 0
+				position = { x = 1 y = 0 }
+				size = { width = 400 height = 100%% }
+				slotsize = { width = 63 height = 50 }
+				max_slots_vertical = 1
 				format = "UPPER_LEFT"
 			}
 		}
 		
-		# Counties filters (Europe, North America, Aisa...)
 		containerWindowType = {
 			name = "country_filters"
-			position = { x = 10 y = 350 }	
+			position = { x = 10 y = 278 }	
 			size = { width = 520 height = 50 }
 			verticalScrollbar = "right_vertical_slider"
 				
@@ -230,16 +277,15 @@ guiTypes = {
 				name = "country_filters_grid"
 				position = { x = 7 y = 12 }
 				size = { width = 100%% height = 100%% }
-				slotsize = { width = 127 height = 35 }
-				max_slots_horizontal = 4
+				slotsize = { width = 150 height = 35 }
+				max_slots_horizontal = 3
 				format = "UPPER_LEFT"
 			}
 		}
 		
-		# Size of the Country, Export, Delivered, Trade Law, Influence
 		containerWindowType = {
 			name = "trade"
-			position = { x = 15 y = 464 }	
+			position = { x = 15 y = 427 }	
 			size = { width = 535 height = 100%% }
 			verticalScrollbar = "right_vertical_slider"
 			margin = {top = 1 bottom = 13 }			
@@ -259,7 +305,6 @@ guiTypes = {
 			}
 		}
 		
-		# Close Button
 		buttonType = {
 			name = "close_button"
 			position = { x = -42 y = 9 }
@@ -272,7 +317,7 @@ guiTypes = {
 		}
 	}
 	
-	# PopUp Trade
+	# Trade Offer
 	containerWindowType = {
 		name = "tradeoffer_window"
 		position = { x= -263 y= -218}	
@@ -304,11 +349,12 @@ guiTypes = {
 			
 		instantTextboxType = {
 			name = "country"
-			position = { x = 152 y = 30 }
+			position = { x = 132 y = 32 }
 			font = "hoi_24header"
 			text = "country"
-			maxWidth = 230
+			maxWidth = 260
 			maxHeight = 18
+			vertical_alignment = center 			
 			format = center			
 		}
 		
@@ -328,7 +374,6 @@ guiTypes = {
 			format = left			
 		}
 			
-		# PopUp when trade
 		containerWindowType = {
 			name = "flags"
 			position = { x = 294 y = 80 }	
@@ -344,321 +389,248 @@ guiTypes = {
 				name = "traded_nations_label"
 				position = { x = 15 y = 10 }
 				font = "hoi_18mbs"
-				text = "Traded Nations" # MOD "TRADED_NATIONS" ; VANILLE "Traded Nations"
+				text = "TRADED_NATIONS"
 				fixedsize = yes
 				maxWidth = 190
 				maxHeight = 80
 				format = left
 			}
 			
-				gridBoxType = {
-					name = "flags_grid"
-					position = { x = 10 y = 30 }
-					size = { width = 100% height = 100% }
-					slotsize = { width=45 height=31 }
-					max_slots_horizontal = 4
-					format = "UPPER_LEFT"
-				}
+			gridBoxType = {
+				name = "flags_grid"
+				position = { x = 10 y = 30 }
+				size = { width = 100% height = 100% }
+				slotsize = { width=45 height=31 }
+				max_slots_horizontal = 4
+				format = "UPPER_LEFT"
 			}
-			
-			buttonType = {
-				name = "buy_needed_amount_button"
-				position = {x=350 y=260}
-				spriteType = "GFX_set_need_amount_button"
-				pdx_tooltip = "SET_NEEDED_AMOUNT"
-			}
-			
-			instantTextboxType = {
-				name = "trade_reset"
-				position = { x = 124 y = 348 }
-				font = "hoi_16mbs"
-				text = "TRADE_RESET"
-				maxWidth = 290
-				maxHeight = 80
-				format = center
-			}
-
-			iconType ={
-				name ="convoys_icon"
-				spriteType = "GFX_topbar_convoys"
-				position = {x=30 y=211}
-			}
-			
-			instantTextboxType = {
-				name = "convoys_description"
-				position = { x = 69 y = 200 }
-				font = "hoi_18mbs"
-				text = ""
-				maxWidth = 230
-				maxHeight = 80
-				format = left
-			}
-			
-			iconType = {
-				name = "civilian_factory_icon"
-				position = { x = 70 y = 274 }
-				spriteType = "GFX_non_available_factory_icon"
-			}
-			
-			instantTextboxType = {
-				name = "factories_description"
-				position = { x = 104 y = 265 }
-				font = "hoi_18mbs"
-				text = ""
-				maxWidth = 240
-				maxHeight = 80
-				format = left
-				fixedsize = yes
-			}
-			
-			extendedScrollbarType = {
-				name = "buy_slider"
-				position = { x = 116 y = 320 }
-				size = { width = 300 height = 18 }
-				tileSize = { width = 12 height = 12}
-				maxValue = 1
-				minValue = 0
-				stepSize = 1
-				startValue = 0
-				horizontal = yes
-				clickonly = yes
-				
-				background = {
-					name = "Background"	
-					quadTextureSprite = "GFX_slider_bg"
-					position = { x= -52 y = -13 }
-				}
-				
-				slider = {
-					name = "Slider"	
-					quadTextureSprite = "GFX_scroll_drager"
-					position = { x=0 y = 1 }			
-				}
-	
-				track = {
-					name = "Track"
-					quadTextureSprite = "GFX_scroll_track_horisontal"
-					position = { x=0 y = 3 }
-					alwaystransparent = yes
-				}	
-	
-				decreaseButton = {
-					name = "Decrease"
-					quadTextureSprite = "GFX_scroll_left"
-					position = { x=3 y = 1 }
-					clicksound = click_scroll
-				}
-				
-				increaseButton = {
-					name = "Increase"
-					quadTextureSprite = "GFX_scroll_right"
-					position = { x=-19 y = -17 }
-					clicksound = click_scroll
-				}
-			}
-			
-			instantTextboxType = {
-				name = "min_amount"
-				position = { x = 74 y = 320 }
-				font = "hoi_18mbs"
-				text = "0"
-				maxWidth = 35
-				maxHeight = 18
-				format = center
-			}
-			
-			instantTextboxType = {
-				name = "max_amount"
-				position = { x = 424 y = 320 }
-				font = "hoi_18mbs"
-				text = "max"
-				maxWidth = 35
-				maxHeight = 18
-				format = center			
-			}
-			
-			iconType ={
-				name ="warning_icon"
-				spriteType = "GFX_warning_icon"
-				position = { x = 277 y = 270 }	
-			}
-			
-			iconType ={
-				name ="convoys_icon_bg"
-				spriteType = "GFX_diplo_action_bottom"
-				position = {x=7 y=-70}
-				Orientation = "LOWER_LEFT"			
-			}
-			
-			buttonType = {
-				name = "send_button"
-				position = { x = 350 y = -55 }
-				quadTextureSprite ="GFX_button_123x34"
-				buttonFont = "hoi_16mbs"
-				buttonText = "SEND"
-				Orientation = "LOWER_LEFT"
-				clicksound = click_send
-				pdx_tooltip = "SEND"
-			}
-			
-			buttonType = {
-				name = "cancel_button"
-				position = { x = 70 y = -55 }
-				quadTextureSprite ="GFX_button_123x34"
-				buttonFont = "hoi_16mbs"
-				buttonText = "CLOSE"
-				shortcut = "ESCAPE"
-				Orientation = "LOWER_LEFT"
-				clicksound = click_close
-				pdx_tooltip = "CANCEL"
-			}
-			
-			
 		}
+			
+		buttonType = {
+			name = "buy_needed_amount_button"
+			position = {x=350 y=260}
+			spriteType = "GFX_set_need_amount_button"
+			pdx_tooltip = "SET_NEEDED_AMOUNT"
+		}
+			
+		instantTextboxType = {
+			name = "trade_reset"
+			position = { x = 124 y = 348 }
+			font = "hoi_16mbs"
+			text = "TRADE_RESET"
+			maxWidth = 290
+			maxHeight = 80
+			format = center
+		}
+
+		iconType ={
+			name ="convoys_icon"
+			spriteType = "GFX_topbar_convoys"
+			position = {x=30 y=211}
+		}
+			
+		instantTextboxType = {
+			name = "convoys_description"
+			position = { x = 69 y = 200 }
+			font = "hoi_18mbs"
+			text = ""
+			maxWidth = 230
+			maxHeight = 80
+			format = left
+		}
+			
+		iconType = {
+			name = "civilian_factory_icon"
+			position = { x = 70 y = 274 }
+			spriteType = "GFX_non_available_factory_icon"
+		}
+			
+		instantTextboxType = {
+			name = "factories_description"
+			position = { x = 104 y = 265 }
+			font = "hoi_18mbs"
+			text = ""
+			maxWidth = 240
+			maxHeight = 80
+			format = left
+			fixedsize = yes
+		}
+			
+		extendedScrollbarType = {
+			name = "buy_slider"
+			position = { x = 116 y = 320 }
+			size = { width = 300 height = 18 }
+			tileSize = { width = 12 height = 12}
+			maxValue = 1
+			minValue = 0
+			stepSize = 1
+			startValue = 0
+			horizontal = yes
+			clickonly = yes
+				
+			background = {
+				name = "Background"	
+				quadTextureSprite = "GFX_slider_bg"
+				position = { x= -52 y = -13 }
+			}
+			
+			slider = {
+				name = "Slider"	
+				quadTextureSprite = "GFX_scroll_drager"
+				position = { x=0 y = -2 }			
+			}
 	
-	# Resources Panel Entries
+			track = {
+				name = "Track"
+				quadTextureSprite = "GFX_scroll_track_horisontal"
+				position = { x=0 y = 4 }
+				alwaystransparent = yes
+			}	
+	
+			decreaseButton = {
+				name = "Decrease"
+				quadTextureSprite = "GFX_scroll_left"
+				position = { x=3 y = 1 }
+				clicksound = click_scroll
+			}
+			
+			increaseButton = {
+				name = "Increase"
+				quadTextureSprite = "GFX_scroll_right"
+				position = { x=-19 y = -17 }
+				clicksound = click_scroll
+			}
+		}
+			
+		instantTextboxType = {
+			name = "min_amount"
+			position = { x = 74 y = 320 }
+			font = "hoi_18mbs"
+			text = "0"
+			maxWidth = 35
+			maxHeight = 18
+			format = center
+		}
+			
+		instantTextboxType = {
+			name = "max_amount"
+			position = { x = 424 y = 320 }
+			font = "hoi_18mbs"
+			text = "max"
+			maxWidth = 35
+			maxHeight = 18
+			format = center			
+		}
+			
+		iconType ={
+			name ="warning_icon"
+			spriteType = "GFX_warning_icon"
+			position = { x = 277 y = 270 }	
+		}
+			
+		iconType ={
+			name ="convoys_icon_bg"
+			spriteType = "GFX_diplo_action_bottom"
+			position = {x=7 y=-70}
+			Orientation = "LOWER_LEFT"			
+		}
+			
+		buttonType = {
+			name = "send_button"
+			position = { x = 350 y = -55 }
+			quadTextureSprite ="GFX_button_123x34"
+			buttonFont = "hoi_16mbs"
+			buttonText = "SEND"
+			Orientation = "LOWER_LEFT"
+			clicksound = click_send
+			pdx_tooltip = "SEND"
+		}
+			
+		buttonType = {
+			name = "cancel_button"
+			position = { x = 70 y = -55 }
+			quadTextureSprite ="GFX_button_123x34"
+			buttonFont = "hoi_16mbs"
+			buttonText = "CLOSE"
+			shortcut = "ESCAPE"
+			Orientation = "LOWER_LEFT"
+			clicksound = click_close
+			pdx_tooltip = "CANCEL"
+		}
+	}
+	
+	# Resources Top
 	containerWindowType = {
 		name = "resources_info_entry"
 		position = { x = 0 y = 0 }	
-		size = { width = 150 height = 100 }	# ??? Maybe background size
+		size = { width = 150 height = 100 }
 		clipping = no
 		
-		# To show the backgound debug
-		#background = {
-		#	name = "Background"	
-		#	quadTextureSprite ="GFX_placeholder_bordered"
-		#}
-
-		iconType = {
-			name ="Background"
-			spriteType = "GFX_trade_resource_bg"
-			position = {x=5 y=39}
-		}
-
-		# Background behind resources names
-		buttonType = {
-			name = "carrier_icon"
-			position = {x=0 y=0}
-			spriteType = "GFX_trade_resource_button"
-		}
-		
-		# Resource Name
-		instantTextboxType = {
-			name = "name"
-			position = { x=17 y=10 }
-			font = "hoi_18mbs"
-			text = "name"
-			maxWidth = 100
-			maxHeight = 18
-			format = center
-			alwaystransparent = yes
-		}
-		
-		# Produced
-		instantTextboxType = {
-			name = "produced_title"
-			position = { x=10 y=40 }
-			font = "hoi4_typewriter16"
-			text = "TRADEVIEW_RES_PRODUCED"
-			maxWidth = 100
-			maxHeight = 18
-			format = left
-			alwaystransparent = yes
-		}		
-		iconType ={
+		buttonType ={
 			name ="resources_icon"
 			spriteType = "GFX_resources_strip"
-			position = { x= 4 y = 7 }
-			alwaystransparent = yes
+			position = { x= 14 y = 5 }
 		}		
+		
+		instantTextboxType = {
+			name = "balance"
+			position = { x=24 y=8 }
+			font = "hoi_16mbs"
+			maxWidth = 35
+			maxHeight = 18
+			format = right
+		}
+
 		instantTextboxType = {
 			name = "produced"
-			position = { x=20 y=40 }
-			font = "hoi4_typewriter16"
-			text = ""
-			maxWidth = 100
+			position = { x=20 y=36 }
+			font = "hoi_16mbs"
+			maxWidth = 32
 			maxHeight = 18
 			format = right
 		}
 		
-		# Exported
-		instantTextboxType = {
-			name = "exported_title"
-			position = { x=10 y=58 }
-			font = "hoi4_typewriter16"
-			text = "TRADEVIEW_RES_EXPORTED"
-			maxWidth = 100
-			maxHeight = 18
-			format = left
-			alwaystransparent = yes
-		}
-		instantTextboxType = {
-			name = "exported"
-			position = { x=20 y=58 }
-			font = "hoi4_typewriter16"
-			text = ""
-			maxWidth = 100
-			maxHeight = 18
-			format = right
-		}
-		
-		# Imported
-		instantTextboxType = {
-			name = "imported_title"
-			position = { x=10 y=76 }
-			font = "hoi4_typewriter16"
-			text = "TRADEVIEW_RES_IMPORTED"
-			maxWidth = 100
-			maxHeight = 18
-			format = left
-			alwaystransparent = yes
-		}
 		instantTextboxType = {
 			name = "imported"
+			position = { x=20 y=56 }
+			font = "hoi_16mbs"
+			maxWidth = 32
+			maxHeight = 18
+			format = right
+		}
+
+		instantTextboxType = {
+			name = "exported"
+			font = "hoi_16mbs"
 			position = { x=20 y=76 }
-			font = "hoi4_typewriter16"
-			text = ""
-			maxWidth = 100
+			maxWidth = 32
 			maxHeight = 18
 			format = right
 		}
 		
-		# Button to cancel imports
+		instantTextboxType = {
+			name = "needed"
+			position = { x=20 y=96 }
+			font = "hoi_16mbs"
+			maxWidth = 32
+			maxHeight = 18
+			format = right
+		}
+		
 		buttonType = {
 			name = "cancel_imports"
-			position = { x= 100 y= 4 }
+			position = { x= 26 y= 125 }
 			pdx_tooltip = "CANCEL_RESOURCE_IMPORT"
 			quadTextureSprite ="GFX_cancel_import_button"
 			clicksound = click_default
 		}
-		
-		# Needed or Surplus
-		instantTextboxType = {
-			name = "needed_title"
-			position = { x=10 y=94 }
-			font = "hoi4_typewriter16"
-			text = "TRADEVIEW_RES_NEEDED"
-			maxWidth = 100
-			maxHeight = 18
-			format = left
-			alwaystransparent = yes
-		}
-		instantTextboxType = {
-			name = "needed"
-			position = { x=20 y=94 }
-			font = "hoi4_typewriter16"
-			text = ""
-			maxWidth = 100
-			maxHeight = 18
-			format = right
-		}
 	}
 	
-	# Display resources' icons
+	# Resources Filters Horizontal - Display resources' icons
 	containerWindowType = {
 		name = "resources_filter_entry"
-		position = { x = 12 y = 1 }
-		size = { width = 60 height = 50 }
+		position = { x = 0 y = 1 }
+		size = { width = 75 height = 50 }
 		clipping = no
 		
 		buttonType = {
@@ -671,16 +643,16 @@ guiTypes = {
 		iconType = {
 			name ="icon"
 			spriteType = "GFX_resources_strip"
-			position = { x= 22 y = 12 }
+			position = { x= 21 y = 12 }
 			alwaystransparent = yes
 		}
 	}
 	
-	# Text for Europe, North America...
+	# Filter Countries
 	containerWindowType = {
 		name = "filter_entry"
-		position = { x = 0 y = 0 }
-		size = { width = 75 height = 50 }
+		position = { x = 45 y = -04 }
+		size = { width = 168 height = 50 }
 		clipping = no
 
 		background = {
@@ -702,7 +674,7 @@ guiTypes = {
 		}
 	}
 	
-	# Informations about trade
+	# ???
 	containerWindowType = {
 		name = "country_trade_entry"
 		position = { x = 0 y = 0 }
@@ -715,11 +687,11 @@ guiTypes = {
 			clicksound = click_action
 		}
 		
-		iconType = {
+		buttonType = {
 			name = "country_flag"
 			quadTextureSprite ="GFX_flag_small2"
 			position = { x= 6 y = 07}
-			alwaystransparent = yes
+			#alwaystransparent = yes
 		}
 		
 		iconType ={
@@ -736,8 +708,10 @@ guiTypes = {
 			font = "hoi_16mbs"
 			text = "name"
 			vertical_alignment = center 			
-			maxWidth = 120
+			maxWidth = 130
 			maxHeight = 28
+			fixedsize = yes
+			alwaystransparent = yes
 		}
 		
 		instantTextboxType = {
@@ -759,36 +733,15 @@ guiTypes = {
 			maxWidth = 110
 			maxHeight = 18
 		}
-
-		iconType = {
-			name = "current_trade_law"
-			spriteType ="GFX_import_icon"
-			position = { x= 390 y = 4 }
-			scale = 0.6
-		}
 		
 		instantTextboxType = {
-			name = "current_trade_factor_value"
-			position = { x = 450 y = 12 }
+			name = "convoys"
+			position = { x = 390 y = 12 }
 			font = "hoi_18mbs"
 			text = ""
 			format = center
-			maxWidth = 50
+			maxWidth = 100
 			maxHeight = 18
 		}
-		
-		#iconType = {
-		#	name = "stockpiled_icon"
-		#	spriteType ="GFX_stockpiled_icon"
-		#	position = { x= 214 y = 9}
-		#}			
-
-#		iconType = {
-#			name = "selected_trade_entry_frame"
-#			quadTextureSprite ="GFX_selected_trade_entry_frame"
-#			position = { x= 1 y = 1}
-#			alwaystransparent = yes
-#		}
-		
 	}
 }

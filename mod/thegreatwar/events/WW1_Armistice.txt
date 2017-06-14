@@ -3,12 +3,13 @@
 add_namespace = ww1_armistice
 
 
-# Germany Surrend - Trigger to the GER
+
+# Let the Player choose for the Treaty of Versailles or the Peace Conference Mechanism
 #____________________________________________________________
 country_event = {
-	id = ww1_armistice.3
-	title = ww1_armistice.3.t
-	desc = ww1_armistice.3.d
+	id = ww1_armistice.500
+	title = ww1_armistice.500.t
+	desc = ww1_armistice.500.d
 	picture = GFX_report_event_generic_read_write
 
 	fire_only_once = yes
@@ -18,7 +19,50 @@ country_event = {
 	}
 
 	trigger = {
-		TAG = GER
+		OR = {
+			AND = {
+				TAG = FRA
+				FRA = {
+					is_ai = no
+				}		
+			}
+			AND = {
+				TAG = ENG
+				ENG = {
+					is_ai = no
+					is_in_faction_with = FRA
+				}
+			}
+			AND = {
+				TAG = USA
+				USA = {
+					is_ai = no
+					is_in_faction_with = FRA
+				}
+			}
+			AND = {
+				TAG = ITA
+				ITA = {
+					is_ai = no
+					is_in_faction_with = FRA
+				}
+			}
+			AND = {
+				TAG = BEL
+				BEL = {
+					is_ai = no
+					is_in_faction_with = FRA
+				}
+			}
+			AND = {
+				TAG = SER
+				SER = {
+					is_ai = no
+					is_in_faction_with = FRA
+				}
+			}
+		}
+
 		GER = {
 			surrender_progress > 0.55
 			has_war_with = ENG
@@ -28,16 +72,51 @@ country_event = {
 			
 			NOT = {
 				has_global_flag = kis_ask_ger_surrend #
+				has_global_flag = kis_player_decided_ger_surrend #
 			}
 		}
 	}
+
+	# The Player chooses the Treaty of Versailles
+	option = {		
+		name = ww1_armistice.500.a
+		ai_chance = { factor = 100 }
+		GER = {
+			country_event = { days = 1 id = ww1_armistice.503 }
+  		}
+  		hidden_effect = {
+  			set_global_flag = kis_player_decided_ger_surrend
+  		}
+	}
+
+	# The Player chooses the Peace Conference Mechanism
+	option = {
+		name = ww1_armistice.500.b
+		ai_chance = { factor = 0 }
+		hidden_effect = {
+  			set_global_flag = kis_player_decided_ger_surrend
+  		}
+	}
+}
+#____________________________________________________________
+
+
+#____________________________________________________________
+country_event = {
+	id = ww1_armistice.503
+	title = ww1_armistice.503.t
+	desc = ww1_armistice.503.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
 
 	immediate = {
 		set_global_flag = kis_ask_ger_surrend
 	}
 
 	option = {
-		name = ww1_armistice.3.a
+		name = ww1_armistice.503.a
 		ai_chance = { factor = 100 }
 
 		hidden_effect = {
@@ -118,13 +197,7 @@ country_event = {
 			AUH = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
 
 			GER = {
-				remove_from_faction = AUH
-				remove_from_faction = BUL
-				remove_from_faction = ROM
-				remove_from_faction = ITA
-				remove_from_faction = MEX
-				remove_from_faction = SWE
-				remove_from_faction = GER
+				dismantle_faction = yes
 			}
 
 			HUN = {
@@ -133,7 +206,7 @@ country_event = {
 				transfer_state = 154
 
                 kill_country_leader = yes
-                create_country_leader={ name = "Miklós Horthy" desc=HUN_miklos_horothy_DESC picture="gfx/leaders/HUN_miklos_horthy.dds" expire="1935.1.1" ideology=despotism traits={  } }
+                create_country_leader={ name = "Miklós Horthy" desc=HUN_miklos_horothy_DESC picture="gfx/leaders/HUN_miklos_horthy.dds" expire="1935.1.1" ideology=despotism traits = { }}
 
 			}
 
@@ -440,20 +513,8 @@ country_event = {
 		hidden_effect = {
 
 			# The Entente is dead after the Great War ### OPEN BETA 0.1.6
-			ENG = {
-				remove_from_faction = USA
-				remove_from_faction = RUS
-				remove_from_faction = JAP
-				remove_from_faction = ROM
-				remove_from_faction = SER
-				remove_from_faction = LUX
-				remove_from_faction = HOL
-				remove_from_faction = GRE
-				remove_from_faction = POL
-				remove_from_faction = DEN
-				remove_from_faction = BEL
-				remove_from_faction = POR
-				remove_from_faction = SPR
+			FRA = {
+				dismantle_faction = yes
 			}
 
 			AUH = {
