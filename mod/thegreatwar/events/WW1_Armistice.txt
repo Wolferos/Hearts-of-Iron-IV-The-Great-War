@@ -100,189 +100,6 @@ country_event = {
 }
 #____________________________________________________________
 
-# Germany Surrend - Trigger to the GER
-#____________________________________________________________
-country_event = {
-	id = ww1_armistice.3
-	title = ww1_armistice.3.t
-	desc = ww1_armistice.3.d
-	picture = GFX_report_event_generic_read_write
-
-	fire_only_once = yes
-
-	immediate = {
-		set_global_flag = kis_ask_ger_surrend
-	}
-
-	trigger = {
-		TAG = GER
-
-		GER = {
-			surrender_progress > 0.55
-			has_war_with = ENG
-			has_war_with = FRA
-
-			has_global_flag = kis_brestlitovsk # Open Beta 0.1.8 - Temporary Solution
-			
-			NOT = {
-				has_global_flag = kis_ask_ger_surrend #
-				has_global_flag = kis_player_decided_ger_surrend #
-			}
-		}
-
-		FRA = {
-			is_ai = yes
-		}		
-		ENG = {
-			is_ai = yes
-			is_in_faction_with = FRA
-		}
-		USA = {
-			is_ai = yes
-			is_in_faction_with = FRA
-		}
-		BEL = {
-			is_ai = yes
-			is_in_faction_with = FRA
-		}
-		SER = {
-			is_ai = yes
-			is_in_faction_with = FRA
-		}
-	}
-
-	option = {
-		name = ww1_armistice.3.a
-		ai_chance = { factor = 100 }
-
-		hidden_effect = {
-
-			#Dirty Code but only way for now...
-			GER = { white_peace = FRA }
-			GER = { white_peace = ENG }
-			GER = { white_peace = RUS }
-			GER = { white_peace = SOV }
-			GER = { white_peace = HOL }
-			GER = { white_peace = BEL }
-			GER = { white_peace = ITA }
-			GER = { white_peace = LUX }
-			GER = { white_peace = MTN }
-			GER = { white_peace = SER }
-			GER = { white_peace = BUL }
-			GER = { white_peace = TUR }
-			GER = { white_peace = GRE }
-			GER = { white_peace = JAP }
-			GER = { white_peace = USA }
-			GER = { white_peace = ROM }
-			GER = { white_peace = CHI }
-			GER = { white_peace = QIN }
-
-			GER = {	diplomatic_relation = {	country = FRA relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = ENG relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = RUS relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = HOL relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = BEL relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = ITA relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = LUX relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = MTN relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = SER relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = BUL relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = TUR relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = GRE relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = JAP relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = USA relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = ROM relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = CHI relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
-
-			AUH = { white_peace = FRA }
-			AUH = { white_peace = ENG }
-			AUH = { white_peace = RUS }
-			AUH = { white_peace = SOV }
-			AUH = { white_peace = HOL }
-			AUH = { white_peace = BEL }
-			AUH = { white_peace = ITA }
-			AUH = { white_peace = LUX }
-			AUH = { white_peace = MTN }
-			AUH = { white_peace = SER }
-			AUH = { white_peace = BUL }
-			AUH = { white_peace = TUR }
-			AUH = { white_peace = GRE }
-			AUH = { white_peace = JAP }
-			AUH = { white_peace = USA }
-			AUH = { white_peace = ROM }
-			AUH = { white_peace = CHI }
-			AUH = { white_peace = QIN }
-
-			AUH = {	diplomatic_relation = {	country = FRA relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = ENG relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = RUS relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = HOL relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = BEL relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = ITA relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = LUX relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = MTN relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = SER relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = BUL relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = TUR relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = GRE relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = JAP relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = USA relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = ROM relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = CHI relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
-
-			GER = {
-				remove_from_faction = AUH
-				remove_from_faction = BUL
-				remove_from_faction = ROM
-				remove_from_faction = ITA
-				remove_from_faction = MEX
-				remove_from_faction = SWE
-				remove_from_faction = GER
-			}
-
-			HUN = {
-				transfer_state = 43
-				transfer_state = 155
-				transfer_state = 154
-
-                kill_country_leader = yes
-                create_country_leader={ name = "Miklós Horthy" desc=HUN_miklos_horothy_DESC picture="gfx/leaders/HUN_miklos_horthy.dds" expire="1935.1.1" ideology=despotism traits = { }}
-
-			}
-
-			CZE = {
-				transfer_state = 69
-				transfer_state = 9		
-				transfer_state = 75		
-				transfer_state = 74		
-				transfer_state = 70		
-				transfer_state = 72		
-			}
-
-			SWI = {
-				transfer_state = 3
-				transfer_state = 151		
-			}
-
-			BEL = {
-				transfer_state = 768
-				transfer_state = 6
-				transfer_state = 34
-			}
-
-			HOL = {
-				transfer_state = 35
-				transfer_state = 7			
-				transfer_state = 36			
-			}	
-
-			news_event = { days = 3 id = ww1_armistice.1 }
-		}
-	}
-}
-#____________________________________________________________
 
 #____________________________________________________________
 country_event = {
@@ -291,6 +108,7 @@ country_event = {
 	desc = ww1_armistice.503.d
 	picture = GFX_report_event_generic_read_write
 
+	fire_only_once = yes
 	is_triggered_only = yes
 
 	immediate = {
@@ -379,13 +197,7 @@ country_event = {
 			AUH = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
 
 			GER = {
-				remove_from_faction = AUH
-				remove_from_faction = BUL
-				remove_from_faction = ROM
-				remove_from_faction = ITA
-				remove_from_faction = MEX
-				remove_from_faction = SWE
-				remove_from_faction = GER
+				dismantle_faction = yes
 			}
 
 			HUN = {
@@ -702,21 +514,7 @@ country_event = {
 
 			# The Entente is dead after the Great War ### OPEN BETA 0.1.6
 			FRA = {
-				remove_from_faction = USA
-				remove_from_faction = RUS
-				remove_from_faction = JAP
-				remove_from_faction = ROM
-				remove_from_faction = SER
-				remove_from_faction = LUX
-				remove_from_faction = HOL
-				remove_from_faction = GRE
-				remove_from_faction = POL
-				remove_from_faction = DEN
-				remove_from_faction = BEL
-				remove_from_faction = POR
-				remove_from_faction = SPR
-				remove_from_faction = ENG
-				remove_from_faction = FRA
+				dismantle_faction = yes
 			}
 
 			AUH = {
