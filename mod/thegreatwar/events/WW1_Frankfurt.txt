@@ -17,42 +17,6 @@ country_event = {
 	}
 
 	trigger = {
-		OR = {
-			AND = {
-				TAG = GER
-				GER = {
-					is_ai = no
-				}		
-			}
-			AND = {
-				TAG = AUH
-				AUH = {
-					is_ai = no
-					is_in_faction_with = GER
-				}
-			}
-			AND = {
-				TAG = TUR
-				TUR = {
-					is_ai = no
-					is_in_faction_with = GER
-				}
-			}
-			AND = {
-				TAG = BUL
-				BUL = {
-					is_ai = no
-					is_in_faction_with = GER
-				}
-			}			
-			AND = {
-				TAG = ITA
-				ITA = {
-					is_ai = no
-					is_in_faction_with = GER
-				}
-			}
-		}
 
 		FRA = {
 			surrender_progress > 0.55
@@ -64,6 +28,111 @@ country_event = {
 			NOT = {
 				has_global_flag = kis_ask_fra_surrend #
 				has_global_flag = kis_player_decided_fra_surrend #
+			}
+		}
+
+		# If Player is one of the Main
+		if = {
+			limit = {
+				GER = {
+					is_ai = no
+				}
+			}
+			TAG = GER
+			else = {
+				if = {
+					limit = {
+						AUH = {
+							is_ai = no
+							is_in_faction_with = GER
+							has_war_with = FRA
+						}
+					}
+					TAG = AUH
+					else = 	{
+						if = {
+							limit = {
+								BUL = {
+									is_ai = no
+									is_in_faction_with = GER
+									has_war_with = FRA
+								}
+							}
+							TAG = BUL
+							else = {
+								if = {
+									limit = {
+										ITA = {
+											is_ai = no
+											is_in_faction_with = GER
+											has_war_with = FRA
+										}
+									}
+									TAG = ITA
+									else = {
+										if = {
+											limit = {
+												TUR = {
+													is_ai = no
+													is_in_faction_with = GER
+													has_war_with = FRA
+												}
+											}
+											TAG = TUR
+											else = {
+												# If Player is not one of the Main
+												if = {
+													limit = {
+														GER = {
+															is_ai = yes
+														}
+													}
+													TAG = GER
+													else = {
+														if = {
+															limit = {
+																AUH = {
+																	is_ai = yes
+																	is_in_faction_with = GER
+																	has_war_with = FRA
+																}
+															}
+															TAG = AUH
+															else = {
+																if = {
+																	limit = {
+																		TUR = {
+																			is_ai = yes
+																			is_in_faction_with = GER
+																			has_war_with = FRA
+																		}
+																	}
+																	TAG = TUR
+																	else = {
+																		if = {
+																			limit = {
+																				BUL = {
+																					is_ai = yes
+																					is_in_faction_with = GER
+																					has_war_with = FRA
+																				}
+																			}
+																			TAG = BUL
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}	
+				}
 			}
 		}
 	}
@@ -100,42 +169,10 @@ country_event = {
 	picture = GFX_report_event_generic_read_write
 
 	fire_only_once = yes
+	is_triggered_only = yes
 
 	immediate = {
 		set_global_flag = kis_ask_ger_surrend
-	}
-
-	trigger = {
-		TAG = FRA
-
-		FRA = {
-			surrender_progress > 0.55
-			has_war_with = ENG
-			has_war_with = FRA
-
-			has_global_flag = kis_brestlitovsk # Open Beta 0.1.8 - Temporary Solution
-			
-			NOT = {
-				has_global_flag = kis_ask_ger_surrend #
-				has_global_flag = kis_player_decided_ger_surrend #
-			}
-		}
-
-		GER = {
-			is_ai = yes
-		}		
-		AUH = {
-			is_ai = yes
-			is_in_faction_with = GER
-		}
-		TUR = {
-			is_ai = yes
-			is_in_faction_with = GER
-		}
-		BUL = {
-			is_ai = yes
-			is_in_faction_with = GER
-		}
 	}
 
 	option = {
@@ -352,27 +389,7 @@ country_event = {
 			AUH = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
 
 			FRA = {
-				remove_from_faction = ENG
-				remove_from_faction = USA
-				remove_from_faction = JAP
-				remove_from_faction = ITA
-				remove_from_faction = MEX
-				remove_from_faction = SWE
-				remove_from_faction = SER
-				remove_from_faction = MTN
-				remove_from_faction = GRE
-				remove_from_faction = RUS
-				remove_from_faction = SOV
-				remove_from_faction = HOL
-				remove_from_faction = BEL
-				remove_from_faction = ITA
-				remove_from_faction = LUX
-				remove_from_faction = BUL
-				remove_from_faction = TUR
-				remove_from_faction = ROM
-				remove_from_faction = CHI
-				remove_from_faction = QIN
-				remove_from_faction = FRA
+				dismantle_faction = yes
 			}
 
 			news_event = { days = 3 id = ww1_frankfurt.1 }
@@ -380,6 +397,7 @@ country_event = {
 	}
 }
 #____________________________________________________________
+
 
 
 # Armistice
