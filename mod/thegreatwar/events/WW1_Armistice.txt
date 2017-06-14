@@ -19,49 +19,6 @@ country_event = {
 	}
 
 	trigger = {
-		OR = {
-			AND = {
-				TAG = FRA
-				FRA = {
-					is_ai = no
-				}		
-			}
-			AND = {
-				TAG = ENG
-				ENG = {
-					is_ai = no
-					is_in_faction_with = FRA
-				}
-			}
-			AND = {
-				TAG = USA
-				USA = {
-					is_ai = no
-					is_in_faction_with = FRA
-				}
-			}
-			AND = {
-				TAG = ITA
-				ITA = {
-					is_ai = no
-					is_in_faction_with = FRA
-				}
-			}
-			AND = {
-				TAG = BEL
-				BEL = {
-					is_ai = no
-					is_in_faction_with = FRA
-				}
-			}
-			AND = {
-				TAG = SER
-				SER = {
-					is_ai = no
-					is_in_faction_with = FRA
-				}
-			}
-		}
 
 		GER = {
 			surrender_progress > 0.55
@@ -73,6 +30,111 @@ country_event = {
 			NOT = {
 				has_global_flag = kis_ask_ger_surrend #
 				has_global_flag = kis_player_decided_ger_surrend #
+			}
+		}
+
+		# If Player is one of the Main
+		if = {
+			limit = {
+				FRA = {
+					is_ai = no
+				}
+			}
+			TAG = FRA
+			else = {
+				if = {
+					limit = {
+						ENG = {
+							is_ai = no
+							is_in_faction_with = FRA
+							has_war_with = GER
+						}
+					}
+					TAG = ENG
+					else = 	{
+						if = {
+							limit = {
+								ITA = {
+									is_ai = no
+									is_in_faction_with = FRA
+									has_war_with = GER
+								}
+							}
+							TAG = ITA
+							else = {
+								if = {
+									limit = {
+										SER = {
+											is_ai = no
+											is_in_faction_with = FRA
+											has_war_with = GER
+										}
+									}
+									TAG = SER
+									else = {
+										if = {
+											limit = {
+												USA = {
+													is_ai = no
+													is_in_faction_with = FRA
+													has_war_with = GER
+												}
+											}
+											TAG = USA
+											else = {
+												# If Player is not one of the Main
+												if = {
+													limit = {
+														FRA = {
+															is_ai = yes
+														}
+													}
+													TAG = FRA
+													else = {
+														if = {
+															limit = {
+																ENG = {
+																	is_ai = yes
+																	is_in_faction_with = FRA
+																	has_war_with = GER
+																}
+															}
+															TAG = ENG
+															else = {
+																if = {
+																	limit = {
+																		USA = {
+																			is_ai = yes
+																			is_in_faction_with = FRA
+																			has_war_with = GER
+																		}
+																	}
+																	TAG = USA
+																	else = {
+																		if = {
+																			limit = {
+																				ITA = {
+																					is_ai = yes
+																					is_in_faction_with = FRA
+																					has_war_with = GER
+																				}
+																			}
+																			TAG = ITA
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}	
+				}
 			}
 		}
 	}
@@ -121,85 +183,6 @@ country_event = {
 
 		hidden_effect = {
 
-			#Dirty Code but only way for now...
-			GER = { white_peace = FRA }
-			GER = { white_peace = ENG }
-			GER = { white_peace = RUS }
-			GER = { white_peace = SOV }
-			GER = { white_peace = HOL }
-			GER = { white_peace = BEL }
-			GER = { white_peace = ITA }
-			GER = { white_peace = LUX }
-			GER = { white_peace = MTN }
-			GER = { white_peace = SER }
-			GER = { white_peace = BUL }
-			GER = { white_peace = TUR }
-			GER = { white_peace = GRE }
-			GER = { white_peace = JAP }
-			GER = { white_peace = USA }
-			GER = { white_peace = ROM }
-			GER = { white_peace = CHI }
-			GER = { white_peace = QIN }
-
-			GER = {	diplomatic_relation = {	country = FRA relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = ENG relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = RUS relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = HOL relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = BEL relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = ITA relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = LUX relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = MTN relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = SER relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = BUL relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = TUR relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = GRE relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = JAP relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = USA relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = ROM relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = CHI relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
-
-			AUH = { white_peace = FRA }
-			AUH = { white_peace = ENG }
-			AUH = { white_peace = RUS }
-			AUH = { white_peace = SOV }
-			AUH = { white_peace = HOL }
-			AUH = { white_peace = BEL }
-			AUH = { white_peace = ITA }
-			AUH = { white_peace = LUX }
-			AUH = { white_peace = MTN }
-			AUH = { white_peace = SER }
-			AUH = { white_peace = BUL }
-			AUH = { white_peace = TUR }
-			AUH = { white_peace = GRE }
-			AUH = { white_peace = JAP }
-			AUH = { white_peace = USA }
-			AUH = { white_peace = ROM }
-			AUH = { white_peace = CHI }
-			AUH = { white_peace = QIN }
-
-			AUH = {	diplomatic_relation = {	country = FRA relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = ENG relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = RUS relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = HOL relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = BEL relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = ITA relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = LUX relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = MTN relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = SER relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = BUL relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = TUR relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = GRE relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = JAP relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = USA relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = ROM relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = CHI relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
-
-			GER = {
-				dismantle_faction = yes
-			}
-
 			HUN = {
 				transfer_state = 43
 				transfer_state = 155
@@ -207,7 +190,6 @@ country_event = {
 
                 kill_country_leader = yes
                 create_country_leader={ name = "Miklós Horthy" desc=HUN_miklos_horothy_DESC picture="gfx/leaders/HUN_miklos_horthy.dds" expire="1935.1.1" ideology=despotism traits = { }}
-
 			}
 
 			CZE = {
@@ -290,6 +272,7 @@ news_event = {
 				limit = {
 					TUR = {
 						is_in_faction_with = GER
+						has_war_with = FRA
 					}
 				}
 				FRA = {
@@ -380,6 +363,85 @@ news_event = {
 
 			LUX = {
 				transfer_state = 8
+			}
+
+			#Dirty Code but only way for now...
+			GER = { white_peace = FRA }
+			GER = { white_peace = ENG }
+			GER = { white_peace = RUS }
+			GER = { white_peace = SOV }
+			GER = { white_peace = HOL }
+			GER = { white_peace = BEL }
+			GER = { white_peace = ITA }
+			GER = { white_peace = LUX }
+			GER = { white_peace = MTN }
+			GER = { white_peace = SER }
+			GER = { white_peace = BUL }
+			GER = { white_peace = TUR }
+			GER = { white_peace = GRE }
+			GER = { white_peace = JAP }
+			GER = { white_peace = USA }
+			GER = { white_peace = ROM }
+			GER = { white_peace = CHI }
+			GER = { white_peace = QIN }
+
+			GER = {	diplomatic_relation = {	country = FRA relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = ENG relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = RUS relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = HOL relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = BEL relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = ITA relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = LUX relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = MTN relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = SER relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = BUL relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = TUR relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = GRE relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = JAP relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = USA relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = ROM relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = CHI relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
+
+			AUH = { white_peace = FRA }
+			AUH = { white_peace = ENG }
+			AUH = { white_peace = RUS }
+			AUH = { white_peace = SOV }
+			AUH = { white_peace = HOL }
+			AUH = { white_peace = BEL }
+			AUH = { white_peace = ITA }
+			AUH = { white_peace = LUX }
+			AUH = { white_peace = MTN }
+			AUH = { white_peace = SER }
+			AUH = { white_peace = BUL }
+			AUH = { white_peace = TUR }
+			AUH = { white_peace = GRE }
+			AUH = { white_peace = JAP }
+			AUH = { white_peace = USA }
+			AUH = { white_peace = ROM }
+			AUH = { white_peace = CHI }
+			AUH = { white_peace = QIN }
+
+			AUH = {	diplomatic_relation = {	country = FRA relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = ENG relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = RUS relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = HOL relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = BEL relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = ITA relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = LUX relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = MTN relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = SER relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = BUL relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = TUR relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = GRE relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = JAP relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = USA relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = ROM relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = CHI relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
+
+			GER = {
+				dismantle_faction = yes
 			}
 
 			news_event = { days = 3 id = ww1_armistice.2 }
