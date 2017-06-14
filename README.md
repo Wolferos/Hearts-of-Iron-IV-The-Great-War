@@ -7,9 +7,9 @@
 
 **Project Lead:** Wolferos 
 
-**Current Version:** 0.2b
+**Current Version:** 0.3
 
-**Compatible with:** Hearts of Iron IV 1.3.3 "Torch"(with or without Together for Victory Paid DLC) 
+**Compatible with:** Hearts of Iron IV 1.4.0 "Torch"(with or without Paid DLC) 
 
 **Supported Languages:**
 - English Language
