@@ -9,7 +9,8 @@ NGame = {
 	LAG_DAYS_FOR_PAUSE = 25,						-- Days of client lag for pause of gamespeed.
 	MAJOR_PARTICIPANTS_FOR_MAJOR_WAR = 3,			-- Minimum number of major countries involved in a war to consider it major enough to not end the game even though the enddate has been reached.
 	COMBAT_LOG_MAX_MONTHS = 12,
-	MESSAGE_TIMEOUT_DAYS = 60						-- Useful if running the handsoff game. The popup messages that doesn't require the player respond will automatically hide after some timeout.	
+	MESSAGE_TIMEOUT_DAYS = 60,						-- Useful if running the handsoff game. The popup messages that doesn't require the player respond will automatically hide after some timeout.	
+	AIR_LOG_TIMEOUT_HOURS = 24,						-- Data storring data
 },
 
 NDiplomacy = {
@@ -28,7 +29,8 @@ NDiplomacy = {
 	BASE_PEACE_ANNEX_FACTOR = 100,					-- Base factor for annexation in %.
 	BASE_PEACE_PUPPET_FACTOR = 100,					-- Base factor for puppet in %.
 	BASE_PEACE_LIBERATE_FACTOR = 100,				-- Base factor for liberate in %.
-	BASE_PEACE_TAKE_UNCONTROLLED_STATE_FACTOR = 125,-- Base factor for taking state you do not control in %
+	BASE_PEACE_TAKE_UNCONTROLLED_STATE_FACTOR = 10.0, -- Base factor for taking state you do not control
+	BASE_PEACE_TAKE_FACTION_CONTROLLED_STATE_FACTOR = 0.5, -- Base factor for taking state you do not control, but someone in faction does
 	BASE_PEACE_FORCE_GOVERNMENT_COST = 100, 		-- Base cost for forcing a country to change government.
 	BASE_IMPROVE_RELATION_COST = 10,                -- Political power cost to initiate relation improvement
 	BASE_IMPROVE_RELATION_SAME_IDEOLOGY_GROUP_MAINTAIN_COST = 0.2, -- Political power cost each update when boosting relations with nation of same ideology
@@ -125,6 +127,11 @@ NDiplomacy = {
 	VICTORY_POINT_WORTH_FACTOR_WARSCORE = 0.2,		-- multiplier when calcualting province worth with autonomy/warscore
 	IDEOLOGY_JOIN_FACTION_MIN_LEVEL = 0.3,			-- ideology limit required to join faction
 	JOIN_FACTION_LIMIT_CHANGE_AT_WAR = 0.5,			-- if in defensive war this or your modifier is counted as limit to join factions (so if you have 80% join limit this now means you can join at 50%)
+	LICENSE_ACCEPTANCE_OPINION_FACTOR = 0.2,		-- Opinion modifier for acceptance of license production requests.
+	LICENSE_ACCEPTANCE_PUPPET_BASE = 20,			-- Acceptance modifier for puppets requesting production licenses.
+	LICENSE_ACCEPTANCE_TECH_DIFFERENCE = 5, 		-- Acceptance modifier for each year of technology difference.
+	LICENSE_ACCEPTANCE_TECH_DIFFERENCE_BASE = 20,    -- Acceptance base for tech difference
+	LICENSE_ACCEPTANCE_SAME_FACTION = 20,			-- Acceptance modifier for being in the same faction
 },
 
 NCountry = {
@@ -184,6 +191,8 @@ NCountry = {
 	MAX_INTELLIGENCE_AIR_DATA_DEVIATION = 1.0,		-- Max deviation in estimating enemy air planes amount ( 0.0 - 1.0 )
 	MAX_INTELLIGENCE_INDUSTRY_DATA_DEVIATION = 0.4,	-- Max deviation in estimating enemy industry amount ( 0.0 - 1.0 )
 	MAX_INTELLIGENCE_CONVOY_DATA_DEVIATION = 0.3,	-- Max deviation in estimating enemy convoys amount ( 0.0 - 1.0 )
+	MAX_INTELLIGENCE_MANPOWER_DATA_DEVIATION = 0.4,	-- Max deviation in estimating enemy total manpower amount ( 0.0 - 1.0 )
+	MAX_INTELLIGENCE_FIELDED_MANPOWER_DATA_DEVIATION = 0.35, -- Max deviation in estimating enemy fielded manpower amount ( 0.0 - 1.0 )
 	MIN_MANPOWER_RATIO = 0.15,						-- Min manpower ratio to show manpower alert
 	ARMY_IMPORTANCE_FACTOR = 5.0,					-- Army factor for AI and calculations
 	VICTORY_POINTS_IMPORTANCE_FACTOR = 5.0,			-- State victory points importance factor for AI and calculations
@@ -207,7 +216,8 @@ NCountry = {
 	MIN_FOCUSES_FOR_CONTINUOUS = 10,				-- Focuses needed to unlock continuous focuses
 	AUTONOMOUS_TOTAL_SCORE = 4000,					-- Total score for autonomous scale
 	AUTONOMOUS_SPILLOVER = 0.025,					-- Total score that can be saved to reach next level
-	CIVIL_WAR_INVOLVEMENT_MIN_TENSION = 0.5,			-- base value of world tension to involve other sides to the civil war
+	CIVIL_WAR_INVOLVEMENT_MIN_TENSION = 0.5,		-- base value of world tension to involve other sides to the civil war
+	UNCAPITULATE_LEVEL = 0.1,                       -- if we reclaim this much and our capital we reset capitulate status
 },
 
 NProduction = {
@@ -237,9 +247,19 @@ NProduction = {
 	ANNEX_CONVOYS_RATIO = 0.15,			-- How many convoys will be transferred on annexation
 	MIN_POSSIBLE_TRAINING_MANPOWER = 100000,	-- How many deployment lines minimum can be training
 	MIN_FIELD_TO_TRAINING_MANPOWER_RATIO = 0.75,	-- Ratio which % of army in field can be trained
-	CAPITULATE_STOCKPILES_RATIO = 0.75, -- How much equipment from deployed divisions will be transferred on capitulation
+	CAPITULATE_STOCKPILES_RATIO = 0.5, -- How much equipment from deployed divisions will be transferred on capitulation
 	INFRA_MAX_CONSTRUCTION_COST_EFFECT = 1, 		-- Building in a state with higher infrastructure will reduce the cost of shared buildings.
 	PRODUCTION_RESOURCE_LACK_PENALTY = -0.05,			-- Penalty decrease while lack of resource per factory
+	MIN_LICENSE_ACTIVE_DAYS = 30,						-- Min days for license to be active
+	BASE_LICENSE_IC_COST = 1,							-- Base IC cost for lended license
+	LICENSE_IC_COST_YEAR_INCREASE = 1,					-- IC cost equipment for every year of equipment after 1936
+	LICENSE_EQUIPMENT_BASE_SPEED = -0.25,				-- base MIC speed modifier for licensed equipment
+	LICENSE_EQUIPMENT_TECH_SPEED_PER_YEAR = -0.05,		-- MIC speed modifier for licensed equipment for each year of difference between actual and latest equipment
+	LICENSE_EQUIPMENT_TECH_SPEED_MAX_YEARS = 4,			-- Maximum years for MIC speed modifier
+	LICENSE_EQUIPMENT_SPEED_NOT_FACTION = -0.10,		-- MIC speed modifier for licensed equipment for not being in faction
+	LICENSE_EQUIPMENT_UPGRADE_XP_FACTOR = 2.0,			-- XP cost for upgrading licensed equipment
+	LICENSE_EQUIPMENT_SPEED_NO_LICENSE = -0.50,			-- Penalty for producing non licensed equipment
+	CONVERSION_SPEED_BONUS = 2.0,						-- Modifier to the production speed when converting equipment
 },
 
 NTechnology = {
@@ -247,7 +267,8 @@ NTechnology = {
 	BASE_RESEARCH_POINTS_SAVED = 30.0,		-- Base amount of research points a country can save per slot.
 	BASE_YEAR_AHEAD_PENALTY_FACTOR = 2,		-- Base year ahead penalty
 	BASE_TECH_COST = 100,					-- Base cost for a tech. multiplied with tech cost and ahead of time penalties
-	MAX_TECH_SHARING_BONUS = 0.5 			-- Max technology sharing bonus that can be applied instantly
+	MAX_TECH_SHARING_BONUS = 0.5, 			-- Max technology sharing bonus that can be applied instantly
+	LICENSE_PRODUCTION_TECH_BONUS = 0.2,	-- License production tech bonus
 },
 
 NPolitics = {
@@ -305,7 +326,7 @@ NMilitary = {
 
 	WAR_SCORE_LOSSES_RATIO = 0.2,				-- Scale how much losses will affect warscore ( per 1000 losses ).
 	WAR_SCORE_LOSSES_MULT_IF_CAPITULATED = 0.5, -- How much your losses count towards warscore if you have capitulated.
-	WAR_SCORE_AIR_WORTH = 0.2,              	-- how much strategic bombing will affect warscore
+	WAR_SCORE_AIR_WORTH = 0.1,              	-- how much strategic bombing will affect warscore
 	WAR_SCORE_AIR_WORTH_CAP = 1000,				-- the warscore limit we get from strategic bombing
 	WAR_SCORE_AIR_MONTHLY_FALLOFF = 10,			-- how much the warscore we got from the strategic bombing falls off every month.
 	
@@ -457,15 +478,15 @@ NMilitary = {
 	PLAN_SPREAD_ATTACK_WEIGHT = 13.0,				-- The higher the value, the less it should crowd provinces with multiple attacks.
 	PLAN_SUPPLY_FACTOR = 0.1,						-- Factor applied to available supply on a front location when determining priority
 	PLAN_NEIGHBORING_ENEMY_PROVINCE_FACTOR = 0.7,	-- When calculating the importance of provinces, it takes number of enemy provinces into account, factored by this
-	PLAN_PROVINCE_BASE_IMPORTANCE = 1.0,			-- Used when calculating the calue of front and defense area provinces for the battle plan system
+	PLAN_PROVINCE_BASE_IMPORTANCE = 2.0,			-- Used when calculating the calue of front and defense area provinces for the battle plan system
 	
 	PLAN_PROVINCE_LOW_VP_IMPORTANCE_AREA = 2.0,     -- Used when calculating the calue of defense area in the battle plan system
 	PLAN_PROVINCE_MEDIUM_VP_IMPORTANCE_AREA = 5.0,  -- Used when calculating the calue of defense area in the battle plan system
 	PLAN_PROVINCE_HIGH_VP_IMPORTANCE_AREA = 50.0,   -- Used when calculating the calue of defense area in the battle plan system
 	
 	PLAN_PROVINCE_LOW_VP_IMPORTANCE_FRONT = 2.0,    -- Used when calculating the calue of fronts in the battle plan system
-	PLAN_PROVINCE_MEDIUM_VP_IMPORTANCE_FRONT = 3.0, -- Used when calculating the calue of fronts in the battle plan system
-	PLAN_PROVINCE_HIGH_VP_IMPORTANCE_FRONT = 4.0,  -- Used when calculating the calue of fronts in the battle plan system
+	PLAN_PROVINCE_MEDIUM_VP_IMPORTANCE_FRONT = 2.25, -- Used when calculating the calue of fronts in the battle plan system
+	PLAN_PROVINCE_HIGH_VP_IMPORTANCE_FRONT = 2.75,  -- Used when calculating the calue of fronts in the battle plan system
 	
 	PLAN_SHARED_FRONT_PROV_IMPORTANCE_FACTOR = 0.8,	-- If fornt orders share end provinces, they should each have a somewhat reduced prio due to it being shared.
 	
@@ -484,7 +505,11 @@ NMilitary = {
 	PLAN_AREA_DEFENSE_COAST_NO_FORT_IMPORTANCE = 2.0,-- Used when calculating the calue of defense area provinces for the battle plan system
 	
 	PLAN_STICKINESS_FACTOR = 100.0,					-- Factor used in unitcontroller when prioritizing units for locations
-	PLAN_STICKINESS_IGNORE_STACK_LIMIT = 1,			-- 1 == yes, 0 == no. Alloes player to override prio to stack units where they want to.
+	
+	PLAN_PROVINCE_PRIO_DISTRIBUTION_MIN = 0.8,		-- Lowest fraction of divisions that will be distributed based on province priority
+	PLAN_PROVINCE_PRIO_DISTRIBUTION_MAX = 1.0,		-- Highest fraction of divisions that will be distributed based on province priority
+	PLAN_PROVINCE_PRIO_DISTRIBUTION_DPP_HIGH = 4.0, -- At what divisions per province should we use PLAN_PROVINCE_PRIO_DISTRIBUTION_MIN
+	PLAN_PROVINCE_PRIO_DISTRIBUTION_DPP_LOW = 2.0,	-- At what divisions per province should we use PLAN_PROVINCE_PRIO_DISTRIBUTION_MAX
 	
 	PLAN_EXECUTE_CAREFUL_LIMIT = 25,				-- When looking for an attach target, this score limit is required in the battle plan to consider province for attack
 	PLAN_EXECUTE_BALANCED_LIMIT = 0,				-- When looking for an attach target, this score limit is required in the battle plan to consider province for attack
@@ -554,25 +579,25 @@ NAir = {
 	COMBAT_ESCORT_PASS_CHANCE_MULT = 0.25,	 			-- How much the difference in airplanes stats (agility+speed) affects the escort passing chance.
 	COMBAT_ESCORT_PASS_CHANCE_LIMIT = 0.95, 			-- So a big difference in airplanes stats never gives 100% chance for passing escorts.
 	COMBAT_STACK_LIMIT = 2,								-- The biggest allowed dogfight combination (1vs1 or 2vs1). Bigger value cause that amount of airplanes matters more then their stats.
-	COMBAT_STAT_IMPORTANCE_SPEED = 0.25, 				-- How important is speed when comparing stats.
+	COMBAT_STAT_IMPORTANCE_SPEED = 1, 				-- How important is speed when comparing stats.
 	COMBAT_STAT_IMPORTANCE_AGILITY = 1, 				-- How important is agility when comparing stats.
 	BIGGEST_AGILITY_FACTOR_DIFF = 3,					-- biggest factor difference in agility for doing damage (caps to this)
 	COMBAT_BETTER_AGILITY_DAMAGE_REDUCTION = 0.2, 		-- How much the better agility (then opponent's) can reduce their damage to us.
-	COMBAT_AMOUNT_DIFF_AFFECT_GANG_CHANCE = 0.4, 		-- More aircrafts increases chance of situation 2vs1.
+	COMBAT_AMOUNT_DIFF_AFFECT_GANG_CHANCE = 0.5, 		-- More aircrafts increases chance of situation 2vs1.
 	COMBAT_ONE_ON_ONE_CHANCE = 0.6, 					-- Base chance for 1vs1 situation.
-	COMBAT_SITUATION_WIN_CHANCE_FROM_STATS = 0.2, 		-- How much good stats difference (speed+agility) affects the winning chance (situation win = give a hit, not necessary kill).
-	COMBAT_SITUATION_WIN_CHANCE_FROM_GANG = 0.18, 		-- How much bonus gives the airplanes amount advantage (2vs1), to winning the situation.
-	COMBAT_SITUATION_PASS_CHANCE = 0.6, 				-- Chance for pass. Nobody hits nobody in current situation.
-	COMBAT_MAX_WINGS_AT_ONCE = 6, 						-- Max amount of air wings in one combat simulation. The higher value, the quicker countries may loose their wings. It's a gameplay balance value.
-	COMBAT_MAX_WINGS_AT_GROUND_ATTACK = 30,	        	-- we can really pounce a land strike and escalate
-	COMBAT_MAX_WINGS_AT_ONCE_PORT_STRIKE = 1000,        -- we can really pounce a naval strike and escalate
+	COMBAT_SITUATION_WIN_CHANCE_FROM_STATS = 0.3, 		-- How much good stats difference (speed+agility) affects the winning chance (situation win = give a hit, not necessary kill).
+	COMBAT_SITUATION_WIN_CHANCE_FROM_GANG = 0.3, 		-- How much bonus gives the airplanes amount advantage (2vs1), to winning the situation.
+	COMBAT_SITUATION_PASS_CHANCE = 0.0, 				-- Chance for pass. Nobody hits nobody in current situation.
+	COMBAT_MAX_WINGS_AT_ONCE = 10000, 						-- Max amount of air wings in one combat simulation. The higher value, the quicker countries may loose their wings. It's a gameplay balance value.
+	COMBAT_MAX_WINGS_AT_GROUND_ATTACK = 10000,	        	-- we can really pounce a land strike and escalate
+	COMBAT_MAX_WINGS_AT_ONCE_PORT_STRIKE = 10000,        -- we can really pounce a naval strike and escalate
 	COMBAT_ATTACK_PASSES_AT_ONCE = 0.1,					-- Wing attack stat determines of many re-approaches in single combat they do. This is a scale of this amount to balance the gameplay. Less retries = less bloody combats, and less calculations for the CPU.
 	AIR_REGION_SUPERIORITY_PIXEL_SCALE = 0.04,           -- air superiority scale = superiority/(pixels*this)
 	COMBAT_SUP_VS_SUP_ATTACK_CHANCE_SPEED_DIFF = 0.25, 	-- How much diff in speed between aircrafts affects the chance of who attacks first in superiority vs superiority.
 	DETECT_CHANCE_FROM_OCCUPATION = 0.10, 				-- How much the controlled provinces in area affects the air detection base value.
-	DETECT_CHANCE_FROM_RADARS = 0.25, 					-- How much the radars in area affects detection chance.
-	DETECT_CHANCE_FROM_AIRCRAFTS_EFFECTIVE_COUNT = 2000, -- Max amount of aircrafts in region to give full detection bonus.
-	DETECT_CHANCE_FROM_AIRCRAFTS = 0.05,				-- How much aircrafts in region improves air detection (up to effective count).
+	DETECT_CHANCE_FROM_RADARS = 0.5, 					-- How much the radars in area affects detection chance.
+	DETECT_CHANCE_FROM_AIRCRAFTS_EFFECTIVE_COUNT = 3000, -- Max amount of aircrafts in region to give full detection bonus.
+	DETECT_CHANCE_FROM_AIRCRAFTS = 0.8,					-- How much aircrafts in region improves air detection (up to effective count).
 	DETECT_CHANCE_FROM_NIGHT = -0.2,					-- How much the night can reduce the air detection. (see static modifiers to check how weather affects it too.)
 	DETECT_EFFICIENCY_BASE = 0.1,						-- Base value for detection efficiency (once something detected, efficiency says how many airplanes was detected).
 	DETECT_EFFICIENCY_FROM_RADAR = 0.7,					-- How much radars affect the efficiency.
@@ -606,7 +631,7 @@ NAir = {
 	BASE_STRATEGIC_BOMBING_HIT_SHIP_CHANCE = 0.01,		-- Chance to hit a ship in port when it is bombed.
 	BASE_STRATEGIC_BOMBING_HIT_SHIP_DAMAGE_FACTOR = 50,
 	BASE_STRATEGIC_BOMBING_HIT_PLANE_CHANCE = 0.5,		-- Chance to hit a plane in airbase when it is bombed.
-	BASE_STRATEGIC_BOMBING_HIT_PLANE_DAMAGE_FACTOR = 50,
+	BASE_STRATEGIC_BOMBING_HIT_PLANE_DAMAGE_FACTOR = 0.2,
 	STRATEGIC_BOMBER_NUKE_AIR_SUPERIORITY = 0.75,		-- How much air superiority is needed for a tactical bomber to be able to nuke a province
 	AGGRESSION_THRESHOLD = { 0.0, 0.25, 0.5 },			-- Threshold levels for mission aggressivity for air
 	ACE_WING_SIZE =	100,								-- size of wing ace bonuses are set up for. if lower more bonus, if higher less bonus
@@ -614,7 +639,10 @@ NAir = {
 	NO_SEARCH_MISSION_DETECT_FACTOR = -0.5,				-- value of planes not on active search missions for detection
 	SUPPLY_NEED_FACTOR = 0.3, 							-- multiplies supply usage
 	CAPACITY_PENALTY = 2,								-- scales penalty of having overcrowded bases.
-	AIR_COMBAT_FINAL_DAMAGE_SCALE = 0.5,                -- % how many max disrupted only planes are alloed to die in a single combat
+	AIR_COMBAT_FINAL_DAMAGE_SCALE = 0.015,               -- % how many max disrupted only planes are alloed to die in a single combat
+	AIR_COMBAT_FINAL_DAMAGE_SCALE_GROUND = 0.1,         -- scaling damage factor for fight in defense of bombers etc which can generally get bloodier
+	AIR_COMBAT_FINAL_DAMAGE_PLANES = 50,                -- scaling/control for when only very few planes exist to stop roundoff issues
+	AIR_COMBAT_FINAL_DAMAGE_PLANES_FACTOR = 0.1,
 	LAST_PLANE_DIE_FACTOR = 0.5,                        -- chance to kill last plane if our damage was too low to kill even one plane (1 = 50% chance if it had 50% dmg)
 	AA_INDUSTRY_AIR_DAMAGE_FACTOR = -0.12,				-- 5x levels = 60% defense from bombing
 	NAVAL_STRIKE_DETECTION_BALANCE_FACTOR = 0.7,		-- Value used to scale the surface_visibility stats to balance the gameplay, so 100% detection chance still won't spam the strikes.
@@ -625,6 +653,9 @@ NAir = {
 	PORT_STRIKE_ENEMY_SUPERIORITY_LIMIT = 0.3,			-- Min air superiority for performing of naval strike
 	NAVAL_STRIKE_BASE_STR_TO_PLANES_RATIO = 0.1,		-- Max airbombers to do port strike comparing to strength
 	NAVAL_COMBAT_EXTERNAL_PLANES_JOIN_RATIO = 0.05,		-- Max planes that can join a combat comparing to the total strength of the ships
+	NAVAL_COMBAT_EXTERNAL_PLANES_MIN_CAP = 20,			-- Min cap for planes that can join naval combat
+	DISRUPTION_FACTOR = 1,								-- multiplier on disruption damage to scale its effects on planes
+	CAS_NIGHT_ATTACK_FACTOR = 0.1,                      -- CAS damaged get multiplied by this in land combats at night
 },
 
 NNavy = {
@@ -792,8 +823,7 @@ NAI = {
 	DIPLOMACY_IMPROVE_RELATION_COST_FACTOR = 5.0,-- Desire to boost relations subtracts the cost multiplied by this
 	DIPLOMACY_IMPROVE_RELATION_PP_FACTOR = 0.1,	-- Desire to boost relations adds total PP multiplied by this
 	DIPLOMACY_REJECTED_WAIT_MONTHS_BASE = 4,	-- AI will not repeat offers until at least this time has passed, and at most the double
-	DIPLOMACY_SEND_EXPEDITIONARY_INDUSTRY_FACTOR = 2.0, -- Weight when counting industry (will be added to military strength)
-	DIPLOMACY_SEND_EXPEDITIONARY_BASE = 25,		-- Multiplied with relative strength factor to get result (if other is twice as "strong" the result with 25 would be 50)
+	DIPLOMACY_SEND_MAX_FACTION = 0.75,			-- Country should not send away more units than this as expeditionaries
 	DIPLOMACY_ACCEPT_VOLUNTEERS_BASE = 50,		-- Base value of volunteer acceptance (help is welcome)
 	DIPLOMACY_FACTION_MAJOR_AT_WAR = 1000.0,	-- Factor that will be multiplied with the surrender level in the desire to offer to the other ai to join a faction
 	DIPLOMACY_FACTION_SURRENDER_LEVEL = 20, 	-- How much the recipient nation losing matters for joining a faction
@@ -804,6 +834,7 @@ NAI = {
 	RESEARCH_NAVAL_DOCTRINE_NEED_GAIN_FACTOR = 0.05, -- Multiplies value based on relative naval industry size / country size.
 	RESEARCH_AIR_DOCTRINE_NEED_GAIN_FACTOR = 0.07, -- Multiplies value based on relative number of air base / country size.
 	RESEARCH_NEW_WEIGHT_FACTOR = 0.3, 			-- Impact of previously unexplored tech weights. Higher means more random exploration.
+	RESEARCH_AHEAD_BONUS_FACTOR = 2.0,          -- To which extent AI should care about ahead of time bonuses to research
 	RESEARCH_BONUS_FACTOR = 0.9, 				-- To which extent AI should care about bonuses to research
 	MAX_AHEAD_RESEARCH_PENALTY = 2,             -- max ahead of tiem penalty ai will pick ever
 	RESEARCH_AHEAD_OF_TIME_FACTOR = 4.0, 		-- To which extent AI should care about ahead of time penalties to research
@@ -875,8 +906,7 @@ NAI = {
 	PLAN_ATTACK_MIN_STRENGTH_FACTOR_MED = 0.3,	
 	PLAN_ATTACK_MIN_ORG_FACTOR_HIGH = 0.2,		
 	PLAN_ATTACK_MIN_STRENGTH_FACTOR_HIGH = 0.15,	
-	PLAN_FRONTUNIT_DISTANCE_FACTOR = 20,		-- Factor for candidate units distance to front positions.
-	PLAN_FRONTUNIT_DISTANCE_FACTOR_PEACE = 1.2,	-- Factor for candidate units distance to front positions.
+	PLAN_FRONTUNIT_DISTANCE_FACTOR = 10.0,		-- Factor for candidate units distance to front positions.
 	PLAN_ATTACK_DEPTH_FACTOR = 0.5,				-- Factor applied to size or enemy being attacked.
 	PLAN_STEP_COST_LIMIT = 11,					-- When stepping to draw a plan this cost makes it break if it hits hard terrain (multiplied by number of desired steps)
 	PLAN_STEP_COST_LIMIT_REDUCTION = 3,			-- Cost limit is reduced per iteration, making hard terrain less likely to be crossed the further into enemy territory it is
@@ -923,7 +953,7 @@ NAI = {
 	ORG_UNIT_STRONG = 0.9,						-- Organization % for unit to be considered strong
 	ORG_UNIT_WEAK = 0.15,						-- Organization % for unit to be considered weak
 	STR_UNIT_STRONG = 0.75,						-- Strength (equipment) % for unit to be considered strong
-	STR_UNIT_WEAK = 0.1,						-- Strength (equipment) % for unit to be considered weak
+	STR_UNIT_WEAK = 0.2,						-- Strength (equipment) % for unit to be considered weak
 	PLAN_FACTION_STRONG_TO_EXECUTE = 0.50,		-- % or more of units in an order to consider ececuting the plan
 	PLAN_FACTION_WEAK_TO_ABORT = 0.65,			-- % or more of units in an order to consider ececuting the plan
 	PLAN_AVG_PREPARATION_TO_EXECUTE = 0.5,		-- % or more average plan preparation before executing
@@ -1165,7 +1195,7 @@ NAI = {
 	NAVAL_STRIKE_PLANES_PER_ARMY = 15,					-- Amount of planes requested per enemy army
 	NAVAL_STRIKE_PLANES_PER_SHIP = 5,					-- Amount of bombers requested per enemy ship
 	PORT_STRIKE_PLANES_PER_SHIP = 10,					-- Amount of bombers request per enemy ship in the port
-	NAVAL_MIN_EXCORT_WINGS = 1,							-- Min amount of airwings requested to excort operations
+	NAVAL_MIN_EXCORT_WINGS = 0,							-- Min amount of airwings requested to excort operations
 	
 	LAND_DEFENSE_AIR_SUPERIORITY_IMPORTANCE = 0.10,		-- Strategic importance of air superiority ( amount of enemy planes in area )
 	LAND_DEFENSE_CIVIL_FACTORY_IMPORTANCE = 50,			-- Strategic importance of civil factories
@@ -1192,8 +1222,9 @@ NAI = {
 	
 	LAND_COMBAT_FIGHTERS_PER_PLANE = 1.1,				-- Amount of air superiority planes requested per enemy plane
 	LAND_COMBAT_CAS_WINGS_PER_ENEMY_ARMY_LIMIT = 4,		-- Limit of CAS wings requested by enemy armies
-	LAND_COMBAT_CAS_PER_ENEMY_ARMY = 15,				-- Amount of CAS planes requested per enemy army
-	LAND_COMBAT_CAS_PER_COMBAT = 50,					-- Amount of CAS requested per combat
+	LAND_COMBAT_CAS_PER_ENEMY_ARMY = 10,				-- Amount of CAS planes requested per enemy army
+	LAND_COMBAT_CAS_PER_COMBAT = 30,					-- Amount of CAS requested per combat
+	LAND_COMBAT_CAS_PER_COMBAT = 30,					-- CAS penalty during night
 	LAND_COMBAT_BOMBERS_PER_LAND_FORT_LEVEL = 15,		-- Amount of bomber planes requested per enemy land fort level
 	LAND_COMBAT_BOMBERS_PER_COASTAL_FORT_LEVEL = 10,	-- Amount of bomber planes requested per enemy coastal fort level
 	LAND_COMBAT_MIN_EXCORT_WINGS = 2,					-- Min amount of airwings requested to excort operations
@@ -1221,6 +1252,8 @@ NAI = {
 	WAIT_YEARS_BEFORE_FREER_BUILDING = 3,				-- The AI will skip considering certain buildings during the buildup phase, after htese many years it starts building them regardless of threat.
 	
 	STRIKE_FLEET_MAX_DISTANCE_TO_COMBAT = 500.0,		-- The strike fleet will not attempt to intervene in combats further away than this.
+	
+	DOCKYARDS_PER_NAVAL_DESIRE_EFFECT = -20.0,			-- Effects how much AI wants to build dockyards based on how navally focused they are in general. Recommended range -100.0 to 100.0.
 },
 
 NFocus = {
