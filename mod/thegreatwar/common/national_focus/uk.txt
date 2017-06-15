@@ -317,10 +317,14 @@ focus_tree = {
 		prerequisite = { focus=ENG_ww1_liberate_policy }
 		icon = GFX_goal_generic_forceful_treaty
 		available = {
-			NOT={ country_exists=EGY }
+			# Open Beta 0.3.1
+			EGY = {
+				exists = yes
+				is_puppet_of = ENG
+			}
 		}
 		completion_reward = { 
-			release = EGY
+			end_puppet = EGY
 		}
 		ai_will_do = { factor = 0 }
 		cost = 10
@@ -687,14 +691,19 @@ focus_tree = {
 		  	TUR={
 			   	has_war_with=ENG
 		   	}
-		  	ENG={
-			   	controls_state=453
-		   	}
 		  	not={
 			   	HJZ={
 			    	has_war_with=ENG
 			    }
 		   	}
+
+		   	# Open Beta 0.3.1
+			EGY = {
+				exists = yes
+				is_puppet_of = ENG
+			}
+
+
 		  	date>1917.1.1
 	   		date<1925.12.30
 	  	}
