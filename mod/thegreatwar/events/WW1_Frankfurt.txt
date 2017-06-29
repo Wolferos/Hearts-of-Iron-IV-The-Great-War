@@ -313,6 +313,109 @@ country_event = {
 				}
 			}
 
+			if = {
+				limit = {
+					ENG = {
+						has_war_with = GER
+						has_war_with = TUR
+					}
+					TUR = {
+						is_in_faction_with = GER
+					}
+				}
+				TUR = {
+					transfer_state = 184		# CYPRUS
+					transfer_state = 656		# KUWAIT
+					transfer_state = 658		# ABU DHABI
+					transfer_state = 659		# ADEN
+				}
+			}
+
+			if = {
+				limit = {
+					BUL = {
+						has_war_with = SER
+						has_war_with = FRA
+						is_in_faction_with = GER
+					}
+				}
+				BUL = {
+					transfer_state = 759		# EAST MACEDONIA
+				}
+			}
+
+			if = {
+				limit = {
+					BUL = {
+						has_war_with = GRE
+						has_war_with = FRA
+						is_in_faction_with = GER
+					}
+				}
+				BUL = {
+					transfer_state = 184		# THRACE
+					transfer_state = 731		# CENTRAL MACEDONIA
+				}
+			}
+
+			if = {
+				limit = {
+					BUL = {
+						has_war_with = ROM
+						has_war_with = FRA
+						is_in_faction_with = GER
+					}
+				}
+				BUL = {
+					transfer_state = 77		# DOBRUDJA
+				}
+			}
+
+			if = {
+				limit = {
+					AUH = {
+						has_war_with = MTN
+						is_in_faction_with = GER
+					}
+				}
+				AUH = {
+					transfer_state = 105		# MONTENEGRO
+					transfer_state = 761		# MONTENEGRO
+				}
+			}
+
+			if = {
+				limit = {
+					AUH = {
+						has_war_with = SER
+						is_in_faction_with = GER
+					}
+				}
+				AUH = {
+					puppet = SER
+				}
+				# SPECIAL_DLC Together for Victory
+	        	if = { 
+	        		limit = { 
+	        			has_dlc = "Together for Victory" 
+	        		}
+					#IF-----------------------------------------
+		            set_autonomy = {
+		                target = SER
+		                autonomous_state = autonomy_integrated_puppet
+		            }
+		            #-------------------------------------------
+
+		            #ELSE---------------------------------------
+		            else = {
+		                # WORK IN PROGRESS # Temporary Solution for Open Beta 0.1.9
+		            }
+		            #-------------------------------------------
+				}
+			}
+
+
+
 			#Dirty Code but only way for now...
 			GER = { white_peace = FRA }
 			GER = { white_peace = ENG }
