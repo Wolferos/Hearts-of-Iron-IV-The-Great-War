@@ -741,6 +741,7 @@ country_event = {
 	trigger = {
 	    tag = SOV
 		date > 1925.1.19
+		date < 1936.1.1
 		SOV = { has_war_with = JAP has_war_with = FRA }
 	}
 	
@@ -754,6 +755,7 @@ country_event = {
 		trigger = {
 		    tag = SOV
 		}
+		if = { limit = { JAP = { is_in_faction_with = FRA } }
 		every_country = {
 		    limit = {
 			    OR = {
@@ -762,6 +764,19 @@ country_event = {
 			    }
 			}
 			white_peace = SOV
+		}
+		}
+		else = {
+		every_country = {
+		    limit = {
+			    OR = {
+			        tag = FRA
+		            is_in_faction_with = FRA
+			    }
+			}
+			white_peace = SOV
+		}
+		JAP = { white_peace = SOV }
 		}
 	}
 	option={
