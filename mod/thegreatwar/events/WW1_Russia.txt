@@ -427,9 +427,8 @@ news_event = {
 					target = RUS
 					transfer_troops = no
 				}
-				add_timed_idea = {
+				add_ideas = {
 					idea = octrev
-					days = 360
 				}	
 			}
 		}
@@ -615,9 +614,6 @@ country_event = {
 	option = {
 		name = ww1_russia.10.a
 		ai_chance = { factor = 100 }
-		hidden_effect = {
-			country_event = { days = 240 id = ww1_russia.20}
-		}
 	}
 }
 #____________________________________________________________
@@ -651,18 +647,18 @@ news_event = {
 	picture = ww1_russia_8
 
 	major = yes
-	is_triggered_only = yes
 
-	#trigger = {
-	#	#date > 1918.6.1
-	#	country_exists = SOV
-	#	NOT = {
-	#		country_exists = RUS
-	#		has_global_flag = kis_whitesvsreds
-	#	}
-	#	has_global_flag = kis_brestlitovsk
-	#
-	#}
+	trigger = {
+		date > 1918.6.1
+		country_exists = SOV
+		NOT = {
+			country_exists = RUS
+			has_global_flag = kis_whitesvsreds
+			has_completed_focus = SOV_ww1_claim_victory
+		}
+		has_global_flag = kis_brestlitovsk
+	
+	}
 
 	immediate = {
 		hidden_effect = {
@@ -743,8 +739,6 @@ country_event = {
 		date > 1925.1.19
 		SOV = { has_war_with = JAP has_war_with = FRA }
 	}
-	
-	mean_time_to_happen = { days = 1 }
 	
 	option={
 		name= "It's time to stop"
