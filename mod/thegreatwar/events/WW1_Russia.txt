@@ -1,4 +1,4 @@
-﻿add_namespace = ww1_russia
+add_namespace = ww1_russia
 
 
 # Saint Petersburg renamed to Petrograd
@@ -245,6 +245,12 @@ news_event = {
 		name = ww1_russia.4.a
 		ai_chance = { factor = 100 }
 	}
+	option = {
+	name = "What happens now? (play as Soviets)"
+	    SOV = {
+		    change_tag_from = RUS
+		}
+	}
 }
 #____________________________________________________________
 
@@ -421,16 +427,15 @@ news_event = {
 					target = RUS
 					transfer_troops = no
 				}
-				add_timed_idea = {
+				add_ideas = {
 					idea = octrev
-					days = 360
 				}	
 			}
 		}
 	}
-
+	
 	option = {
-		name = "The October Revolution is Successful"
+		name = "The October Revolution is Successful!"
 		ai_chance = { factor = 100 }
 	}
 }
@@ -459,10 +464,19 @@ country_event = {
 			EST = {
 				transfer_state = 13
 				transfer_state = 191
-			}
-			LAT = {
 				transfer_state = 12
+				transfer_state = 190
+				set_cosmetic_tag = UBD
+				create_country_leader = {
+				    name = "Adolf Friedrich, Duke of Mecklenburg-Schwerin"
+				    picture = "gfx/leaders/hoi4tgw/Adolf_Friedrich.dds"			
+				    expire = "1965.1.1"
+				    ideology = despotism
+				    traits = {}
+				}
+				set_politics = { ruling_party = neutrality elections_allowed = no }
 			}
+			GER = { puppet = EST }
 			SOV = {
 				country_event = { days = 2 id = ww1_russia.9 }
 			}
@@ -501,8 +515,12 @@ country_event = {
 				transfer_state = 97
 				transfer_state = 98
 				transfer_state = 189
-				transfer_state = 190
 			}
+			LIT = {
+			    transfer_state = 11
+				transfer_state = 189
+			}
+			GER = { puppet = LIT }
 			SOV = {
 				country_event = { days = 2 id = ww1_russia.10 }
 			}
@@ -596,9 +614,6 @@ country_event = {
 	option = {
 		name = ww1_russia.10.a
 		ai_chance = { factor = 100 }
-		hidden_effect = {
-			country_event = { days = 240 id = ww1_russia.20}
-		}
 	}
 }
 #____________________________________________________________
@@ -632,18 +647,21 @@ news_event = {
 	picture = ww1_russia_8
 
 	major = yes
-	is_triggered_only = yes
 
-	#trigger = {
-	#	#date > 1918.6.1
-	#	country_exists = SOV
-	#	NOT = {
-	#		country_exists = RUS
-	#		has_global_flag = kis_whitesvsreds
-	#	}
-	#	has_global_flag = kis_brestlitovsk
-	#
-	#}
+	trigger = {
+		date > 1918.6.1
+		country_exists = SOV
+		NOT = {
+			country_exists = RUS
+			has_global_flag = kis_whitesvsreds
+			OR = {
+			has_completed_focus = SOV_ww1_claim_victory
+			has_completed_focus = SOV_ww1_establish_cheka
+			}
+		}
+		has_global_flag = kis_brestlitovsk
+	
+	}
 
 	immediate = {
 		hidden_effect = {
@@ -705,6 +723,66 @@ news_event = {
 	option = {
 		name = ww1_russia.20.a
 		ai_chance = { factor = 100 }				
+	}
+}
+#____________________________________________________________
+
+#  Peace treaty between Entente and Soviets
+#____________________________________________________________
+
+country_event = {
+	title=ww1_russia.21.t#Peace treaty between Entente and Soviets
+	desc=ww1_russia.21.d#Ends eternal war between Soviets and Entente (irl: Soviet–Japanese Basic Convention)
+	id=ww1_russia.21
+	picture=GFX_report_event_generic_read_write
+	fire_only_once=yes
+	
+	trigger = {
+	    tag = SOV
+		date > 1925.1.19
+		SOV = { has_war_with = JAP has_war_with = FRA }
+	}
+	
+	option={
+		name= "It's time to stop"
+		ai_chance={
+			factor=100
+		}
+		trigger = {
+		    tag = SOV
+		}
+		if = { limit = { JAP = { is_in_faction_with = FRA } }
+		every_country = {
+		    limit = {
+			    OR = {
+			        tag = JAP
+		            is_in_faction_with = JAP
+			    }
+			}
+			white_peace = SOV
+		}
+		}
+		else = {
+		every_country = {
+		    limit = {
+			    OR = {
+			        tag = FRA
+		            is_in_faction_with = FRA
+			    }
+			}
+			white_peace = SOV
+		}
+		JAP = { white_peace = SOV }
+		}
+	}
+	option={
+		name= "Never"
+		trigger = {
+		    tag = SOV
+		}
+		ai_chance={
+			factor=0
+		}
 	}
 }
 #____________________________________________________________
