@@ -614,6 +614,9 @@ country_event = {
 	option = {
 		name = ww1_russia.10.a
 		ai_chance = { factor = 100 }
+		hidden_effect = {
+			country_event = { days = 420 id = ww1_russia.20 }
+		}
 	}
 }
 #____________________________________________________________
@@ -648,23 +651,21 @@ news_event = {
 
 	major = yes
 
-	trigger = {
-		date > 1918.6.1
-		country_exists = SOV
-		NOT = {
-			country_exists = RUS
-			has_global_flag = kis_whitesvsreds
-			OR = {
-			has_completed_focus = SOV_ww1_claim_victory
-			has_completed_focus = SOV_ww1_establish_cheka
-			}
-		}
-		has_global_flag = kis_brestlitovsk
-	
-	}
+	#trigger = {
+	#	date > 1918.6.1
+	#	country_exists = SOV
+	#	NOT = {
+	#		country_exists = RUS
+	#		has_global_flag = kis_whitesvsreds
+	#	}
+	#	has_global_flag = kis_brestlitovsk
+	#
+	#}
 
 	immediate = {
 		hidden_effect = {
+		    SOV = { country_event = { days = 210 id = ww1_soviet.2 }
+		    if = { limit = { NOT = { OR = { has_completed_focus = SOV_ww1_claim_victory has_completed_focus = SOV_ww1_establish_cheka } } }
 			RUS = {
 				create_faction = "White Movement"
 				set_global_flag = kis_whitesvsreds
@@ -718,6 +719,7 @@ news_event = {
 				transfer_state = 722
 				load_oob = "SOV_Civil_War"
 			}
+		    }
 		}
 	}
 	option = {
@@ -743,6 +745,8 @@ country_event = {
 		SOV = { has_war_with = JAP has_war_with = FRA }
 	}
 	
+	mean_time_to_happen = { days = 1 }
+	
 	option={
 		name= "It's time to stop"
 		ai_chance={
@@ -761,7 +765,6 @@ country_event = {
 			}
 			white_peace = SOV
 		}
-		}
 		else = {
 		every_country = {
 		    limit = {
@@ -774,6 +777,7 @@ country_event = {
 		}
 		JAP = { white_peace = SOV }
 		}
+	    }
 	}
 	option={
 		name= "Never"
