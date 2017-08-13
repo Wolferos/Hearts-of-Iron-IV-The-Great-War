@@ -172,8 +172,7 @@ news_event = {
 				set_national_unity = 0.9
 				add_political_power = 800
 				add_manpower = 500000
-				load_oob="SOV_Revolt_01"
-
+				
 				transfer_state = 195
 				transfer_state = 219
 				transfer_state = 244
@@ -197,6 +196,8 @@ news_event = {
 				add_state_claim = 264
 				add_state_claim = 253
 				add_state_claim = 254
+				
+				country_event = { days = 1 id = ww1_soviet.999 }
 			}
 			RUS = {
 				set_country_flag = dual_power
@@ -243,13 +244,21 @@ news_event = {
 
 	option = {
 		name = ww1_russia.4.a
+		trigger = { tag = RUS NOT = { tag = SOV } }
 		ai_chance = { factor = 100 }
 	}
 	option = {
 	name = "What happens now? (play as Soviets)"
+	trigger = { tag = RUS NOT = { tag = SOV } }
+	ai_chance = { factor = 0 }
 	    SOV = {
 		    change_tag_from = RUS
 		}
+	}
+	option = {
+		name = "What happens now?"
+		trigger = { NOT = { tag = SOV tag = RUS } }
+		ai_chance = { factor = 100 }
 	}
 }
 #____________________________________________________________
@@ -427,9 +436,7 @@ news_event = {
 					target = RUS
 					transfer_troops = no
 				}
-				add_ideas = {
-					idea = octrev
-				}	
+				add_ideas = octrev
 			}
 		}
 	}
@@ -722,6 +729,7 @@ news_event = {
 			}
 		    }
 		}
+	}
 	}
 	option = {
 		name = ww1_russia.20.a
