@@ -1,0 +1,1 @@
+NDefines.NProduction.BASE_FACTORY_SPEED_MIL = 3
