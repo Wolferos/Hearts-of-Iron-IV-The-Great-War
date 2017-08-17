@@ -119,6 +119,7 @@ has_civil_war = no
 	create_field_marshal={  name = "Emiliano Zapata"  portrait_path="gfx/fieldmarshal/MEX_Zapata.tga" traits={  defensive_doctrine inspirational_leader } skill=4 }
 	create_corps_commander={  name = "Alvaro Obregon"  portrait_path="gfx/generals/MEX_A_Obregon.dds" traits={ trickster } skill=3 }
 	create_corps_commander={  name = "Pascual Orozco"  portrait_path="gfx/generals/MEX_Orozco.tga" traits={   } skill=2 }
+	load_oob = "Mexican_Revolution_1910"
    }
 	}
   cost = 10
@@ -581,7 +582,7 @@ focus = {
   cost = 10
   x = 2
   y = 8
-  ai_will_do = { factor = 10 }
+  ai_will_do = { factor = 100 }
 }
 
 focus = {
@@ -635,7 +636,7 @@ focus = {
   cost = 10
   x = 0
   y = 8
-  ai_will_do = { factor = 10 }
+  ai_will_do = { factor = 100 }
 }
 
 focus = {
@@ -676,7 +677,7 @@ focus = {
   cost = 10
   x = 2
   y = 9
-  ai_will_do = { factor = 10 }
+  ai_will_do = { factor = 100 }
 }
 
 focus = {
@@ -698,7 +699,7 @@ focus = {
   cost = 10
   x = 2
   y = 10
-  ai_will_do = { factor = 10 }
+  ai_will_do = { factor = 100 }
 }
 
 focus = {
@@ -764,7 +765,7 @@ focus = {
   cost = 10
   x = 0
   y = 10
-  ai_will_do = { factor = 10 }
+  ai_will_do = { factor = 1000 }
 }
 
 focus = {
@@ -1045,7 +1046,7 @@ focus = {
   x = 12
   y = 1
 
-  ai_will_do = { factor = 10 }
+  ai_will_do = { factor = 100 }
 
   mutually_exclusive = { focus=mex_ww1_takeposition }
 }
@@ -1164,7 +1165,7 @@ focus = {
 
   }
 
-  ai_will_do = { factor = 10 }
+  ai_will_do = { factor = 1000 }
 
   cost = 10
   x = 12
@@ -1197,7 +1198,7 @@ focus = {
     add_opinion_modifier = { target = AUH modifier = HOI4TGW_Opinion_give_weapons }
   }
 
-  ai_will_do = { factor = 10 }
+  ai_will_do = { factor = 100 }
   cost = 10
   x = 13
   y = 6
@@ -1214,7 +1215,7 @@ focus = {
   cost = 10
   x = 12
   y = 7
-  ai_will_do = { factor = 10 }
+  ai_will_do = { factor = 1000 }
 }
 
 focus = {
@@ -1244,7 +1245,7 @@ focus = {
   cost = 10
   x = 11
   y = 8
-  ai_will_do = { factor = 10 }
+  ai_will_do = { factor = 1000 }
 }
 focus = {
   id = mex_Invite_COL
@@ -1280,6 +1281,7 @@ focus = {
   prerequisite = { focus=mex_why_we_fight  }
   icon = GFX_goal_generic_major_alliance
  completion_reward = {
+    create_faction = "UNASUR"
 	if = {
 		 limit = {
 			 ARG = {
