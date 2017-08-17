@@ -1,0 +1,725 @@
+﻿add_namespace = kis_news
+
+# Albanian Revolt of 1910 | https://en.wikipedia.org/wiki/Albanian_Revolt_of_1910
+#____________________________________________________________
+news_event = {
+	id=kis_news.4
+	title="Albanian Revolt"
+	desc="The Albanians refused to submit to the Turks. A new Albanian uprisings began in Kosovo and the northern mountains. Ottoman government declared martial law and sent a military expedition."
+
+	picture=EVENT_hoi4tgw_albanian_revolt
+	
+	major = yes
+	
+	trigger = {
+		date > 1910.5.17
+		NOT = { has_global_flag = albanian_revolt_1910 }
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	immediate = {
+		set_global_flag = albanian_revolt_1910
+	}
+	
+	option = {
+		name = "The Balkans are a powder keg..."
+		trigger = {
+			NOT = { TAG = ALB } #
+		}
+	}
+}
+#____________________________________________________________
+
+# Boer Revolt
+#____________________________________________________________
+news_event = {
+	id = kis_news.5
+	title = "Boer Revolt"
+	desc = "A revolt whith men who supported the recreation of a Boer South African Republic rose up against the government of the Union of South Africa."
+	picture = kis_news_5
+	
+	major = yes
+
+	is_triggered_only=yes
+	
+	trigger = {
+		NOT = {
+			tag = GER
+		}
+		NOT = {
+			tag = SAF
+		}
+	}
+	
+	option = {
+		name = "An another revolt in Africa..."
+	}
+}
+#____________________________________________________________
+
+#======================================================================
+# Generic News
+#======================================================================
+
+# South Pole Reached
+#____________________________________________________________
+news_event = {
+	id = kis_news.100
+	title = kis_news.100.t
+	desc = kis_news.100.d
+
+	picture = ww1_news_2
+	
+	major = yes
+	
+	trigger = {
+		date > 1911.12.13
+		NOT = { has_global_flag = kis_northpole }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_northpole
+		hidden_effect = {}
+	}
+	
+	option = {
+		name = kis_news.100.a
+	}
+}
+#____________________________________________________________
+
+# Machu Picchu Uncovered
+#____________________________________________________________
+news_event = {
+	id = kis_news.101
+	title = kis_news.101.t
+	desc = kis_news.101.d
+
+	picture = ww1_news_4
+	
+	major = yes
+	
+	trigger = {
+		date > 1911.6.24
+		NOT = { has_global_flag = kis_machupicchu }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_machupicchu
+		hidden_effect = {}
+	}
+	
+	option = {
+		name = kis_news.101.a
+	}
+}
+#____________________________________________________________
+
+# Mass Production
+#____________________________________________________________
+news_event = {
+	id = kis_news.102
+	title = kis_news.102.t
+	desc = kis_news.102.d
+
+	picture = ww1_news_5
+	
+	major = yes
+	
+	trigger = {
+		date > 1913.6.30
+		NOT = { has_global_flag = kis_massproduction }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_massproduction
+		hidden_effect = {}
+	}
+	
+	option = {
+		name = kis_news.102.a
+	}
+}
+#____________________________________________________________
+
+# Suffragette Demonstrations
+#____________________________________________________________
+news_event = {
+	id = kis_news.103
+	title = kis_news.103.t
+	desc = kis_news.103.d
+
+	picture = ww1_news_6
+	
+	major = yes
+	
+	trigger = {
+		date > 1913.3.1
+		NOT = { has_global_flag = kis_suffragettes }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_suffragettes
+		hidden_effect = {}
+	}
+	
+	option = {
+		name = kis_news.103.a
+	}
+}
+#____________________________________________________________
+
+# Mata Hari Executed
+#____________________________________________________________
+news_event = {
+	id = kis_news.104
+	title = kis_news.104.t
+	desc = kis_news.104.d
+
+	picture = ww1_news_7
+	
+	major = yes
+	
+	trigger = {
+		date > 1917.3.12
+		FRA={
+			has_war_with=GER
+		}
+		NOT = { has_global_flag = kis_matahari }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_matahari
+		hidden_effect = {}
+	}
+	
+	option = {
+		name = kis_news.104.a
+	}
+}
+#____________________________________________________________
+
+# Spanish Flu
+#____________________________________________________________
+news_event = {
+	id = kis_news.105
+	title = kis_news.105.t
+	desc = kis_news.105.d
+
+	picture = ww1_news_8
+	
+	major = yes
+	
+	trigger = {
+		date > 1918.1.01
+		NOT = { has_global_flag = kis_spanishflu }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_spanishflu
+		hidden_effect = {}
+	}
+	
+	option = {
+		name = kis_news.105.a
+	}
+}
+#____________________________________________________________
+
+# The Olympic Games
+#____________________________________________________________
+news_event = {
+	id = kis_news.106
+	title = kis_news.106.t
+	desc = kis_news.106.d
+
+	picture = ww1_news_12
+	
+	major = yes
+	
+	trigger = {
+		date > 1912.5.1
+		NOT = { has_global_flag = kis_olympicgames }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_olympicgames
+		hidden_effect = {}
+	}
+	
+	option = {
+		name = kis_news.106.a
+	}
+}
+#____________________________________________________________
+
+# Xinhai Revolution
+#____________________________________________________________
+news_event = {
+	id = kis_news.107
+	title = ww1_xinhai.2.t
+	desc = ww1_xinhai.2.d
+
+	picture = EVENT_hoi4tgw_xinhai_revolution
+	
+	major = yes
+	
+	trigger = {
+		#date > 1911.10.25
+		has_global_flag = kis_xinhairenews
+		NOT = { has_global_flag = kis_xinhaire }
+		NOT = {
+			TAG = QIN
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_xinhaire
+		hidden_effect = {}
+	}
+	
+	option = {
+		name = kis_news.107.a
+	}
+}
+#____________________________________________________________
+
+# The Balkan League Formation
+#____________________________________________________________
+news_event = {
+	id = kis_news.108
+	title = kis_news.108.t
+	desc = kis_news.108.d
+	picture = EVENT_hoi4tgw_balkan_league
+	
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = kis_news.108.a
+	}
+}
+#____________________________________________________________
+
+# Pacifist Jaurès Assassination
+#____________________________________________________________
+news_event = {
+	id = kis_news.109
+	title = kis_news.109.t
+	desc = kis_news.109.d
+
+	picture = EVENT_hoi4tgw_assassination_jean_jaures
+	
+	major = yes
+	
+	trigger = {
+		date > 1914.7.31
+		NOT = { has_global_flag = kis_jauresassassination }
+		SER={
+			has_war_with=AUH
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_jauresassassination
+		hidden_effect = {
+			FRA = {
+				remove_ideas = FRA_jean_jaures
+				add_political_power = -150
+			}
+		}
+	}
+	
+	option = {
+		name = kis_news.109.a
+	}
+}
+#____________________________________________________________
+
+# Opening of Panama Canal
+#____________________________________________________________
+news_event = {
+	id = kis_news.110
+	title = kis_news.110.t
+	desc = kis_news.110.d
+
+	picture = EVENT_hoi4tgw_panama_canal
+	
+	major = yes
+	
+	trigger = {
+		date > 1914.8.15
+		NOT = { has_global_flag = kis_panamacanal }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_panamacanal
+		hidden_effect = {}
+	}
+	
+	option = {
+		name = kis_news.110.a
+	}
+}
+#____________________________________________________________
+
+# Mona Lisa
+#____________________________________________________________
+news_event = {
+	id = kis_news.111
+	title = kis_news.111.t
+	desc = kis_news.111.d
+
+	picture = EVENT_hoi4tgw_mona_lisa
+	
+	major = yes
+	
+	trigger = {
+		date > 1911.8.21
+		NOT = { has_global_flag = kis_monalisastolen }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_monalisastolen
+		hidden_effect = {}
+	}
+	
+	option = {
+		name = kis_news.111.a
+	}
+}
+#____________________________________________________________
+
+# Ottoman joined Central Powers
+#____________________________________________________________
+news_event = {
+	id = kis_news.112
+	title = kis_news.112.t
+	desc = kis_news.112.d
+	picture = GFX_news_event_generic_sign_treaty1
+	
+	major = yes
+	
+	trigger = {
+		TUR = {
+			is_in_faction_with = GER
+		}
+		NOT = { has_global_flag = kis_ottomanjoinedcentralpower }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_ottomanjoinedcentralpower
+		hidden_effect = {}
+	}
+	
+	option = {
+		name = kis_news.112.a
+	}
+}
+#____________________________________________________________
+
+# Serbia refused Austrian Demands - REMOVED - Conflict with Franzferdinand.102
+#____________________________________________________________
+#news_event = {
+#	id = kis_news.113
+#	title = "Serbia refused Austrian Demands"
+#	desc = "After the assassination of Franz Ferdinand, Austria has made outrageous demands to the Kingdom of Serbia which threaten their sovereignty. Serbia could not accept those Demands and had no choice that to refuse Austrian Demands."
+
+#	picture = ww1_news_12
+	
+#	major = yes
+	
+#	trigger = {
+#		has_global_flag = kis_serbia_refuse
+#		NOT = { has_global_flag = kis_serbia_refuse_news }
+#	}
+	
+#	mean_time_to_happen = {
+#		days = 0
+#	}
+
+#	immediate = {
+#		set_global_flag = kis_serbia_refuse_news
+#		hidden_effect = {}
+#	}
+	
+#	option = {
+#		name = "Ok"
+#	}
+#}
+#____________________________________________________________
+
+# Serbia accepted Austrian Demands
+#____________________________________________________________
+news_event = {
+	id = kis_news.114
+	title = kis_news.114.t
+	desc = kis_news.114.d
+
+	picture = ww1_news_12
+	
+	major = yes
+	
+	trigger = {
+		has_global_flag = kis_serbia_accept
+		NOT = { has_global_flag = kis_serbia_accept_news }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_serbia_accept_news
+		hidden_effect = {}
+	}
+	
+	option = {
+		name = kis_news.114.a
+	}
+}
+#____________________________________________________________
+
+
+# 1916 Olympic
+#____________________________________________________________
+news_event = {
+	id = kis_news.115
+	title = kis_news.115.t
+	desc = kis_news.115.d
+
+	picture=EVENT_hoi4tgw_1916_olympics
+	
+	major = yes
+	
+	trigger = {
+
+		GER = {
+			has_war_with = ENG
+		}
+
+		date > 1915.11.15
+
+		NOT = { has_global_flag = kis_1916_olympic }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_1916_olympic
+	}
+	
+	option = {
+		name = kis_news.115.a
+	}
+}
+#____________________________________________________________
+
+# Italy joined Entente - not used
+#____________________________________________________________
+news_event = {
+	id = kis_news.116
+	title = kis_news.116.t
+	desc = kis_news.116.d
+	#picture = EVENT_hoi4tgw_first_balkan_war
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = kis_news.116.a
+	}
+}
+#____________________________________________________________
+
+# Roland Garros
+#____________________________________________________________
+news_event = {
+	id = kis_news.118
+	title = kis_news.118.t
+	desc = kis_news.118.d
+	picture = EVENT_hoi4tgw_roland_garros_mediterranean
+	
+	major = yes
+	
+	trigger = {
+		date > 1913.9.23
+		NOT = { has_global_flag = kis_roland_garros }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+	immediate = {
+		set_global_flag = kis_roland_garros
+	}
+	
+	option = {
+		name = kis_news.118.a
+		ai_chance = { factor = 100 }
+	}
+}
+#____________________________________________________________
+
+# Xinhai Revolution End
+#____________________________________________________________
+news_event = {
+	id = kis_news.119
+	title = kis_news.119.t
+	desc = kis_news.119.d
+
+	picture = EVENT_hoi4tgw_xinhai_end
+	
+	major = yes
+	
+	trigger = {
+		has_global_flag = kis_xinhairenews
+		NOT = { has_global_flag = kis_xinhaire_end }
+		QIN = {
+			has_civil_war = no
+		}
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_xinhaire_end
+		hidden_effect = {}
+	}
+	
+	option = {
+		name = kis_news.119.a
+	}
+}
+#____________________________________________________________
+
+# Trialism has been adopted in Austria-Hungary
+#____________________________________________________________
+news_event = {
+	id = kis_news.120
+	title = kis_news.120.t
+	desc = kis_news.120.d
+
+	picture = EVENT_hoi4tgw_trialism
+	
+	major = yes
+	
+	trigger = {
+		has_global_flag = hoi4tgw_Trialism_YES
+		NOT = { has_global_flag = kis_trialism }
+		date < 1914.4.4
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_trialism
+	}
+	
+	option = {
+		name = kis_news.120.a
+	}
+}
+#____________________________________________________________
+
+# EGY for ENG
+#____________________________________________________________
+news_event = {
+	id = kis_news.121
+	title = kis_news.121.t
+	desc = kis_news.121.d
+
+	picture = EVENT_hoi4tgw_1914egypt
+	
+	major = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = kis_egypt1914_eng
+	}
+	
+	option = {
+		name = kis_news.121.a
+	}
+}
+#____________________________________________________________
+
+# EGY for TUR
+#____________________________________________________________
+news_event = {
+	id = kis_news.122
+	title = kis_news.122.t
+	desc = kis_news.122.d
+
+	picture = EVENT_hoi4tgw_1914egypt
+	
+	major = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = kis_egypt1914_tur
+	}
+	
+	option = {
+		name = kis_news.122.a
+	}
+}
+#____________________________________________________________

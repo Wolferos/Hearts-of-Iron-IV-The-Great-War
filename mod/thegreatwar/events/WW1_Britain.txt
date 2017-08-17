@@ -1,0 +1,167 @@
+﻿add_namespace = ww1_england
+
+# King Edward VII is dead
+#____________________________________________________________
+news_event = {
+	id = ww1_england.100
+	title = ww1_england.100.t
+	desc = ww1_england.100.d
+	picture = ww1_england_1
+	
+	major = yes
+	
+	trigger = {
+		date > 1910.5.5
+		NOT = { has_global_flag = kis_king_death_george }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+	immediate = {
+		set_global_flag = kis_king_death_george
+		hidden_effect = {
+			ENG = {
+				kill_country_leader = yes
+		        create_country_leader = {
+		            name = "George V"
+		            desc = ENG_george_v_DESC
+		            picture = "gfx/leaders/ENG_george_v.dds"
+		            expire = "1935.1.1"
+		            ideology = socialism
+		            traits = {}
+		        }
+			}
+		}
+	}
+	
+	option = {
+		name = ww1_england.100.b
+		ai_chance = {
+			factor = 100
+		}
+		trigger = {
+			TAG = ENG
+		}
+	}
+	option = {
+		name = ww1_england.100.a
+		ai_chance = {
+			factor = 100
+		}
+		trigger = {			
+			NOT = {
+				TAG = ENG
+			}
+		}		
+	}
+}
+#____________________________________________________________
+
+# South Africa Act
+#____________________________________________________________
+news_event = {
+	id=ww1_england.101
+	title="South Africa Independence"
+	desc="South Africa came into being on 31 May, 1910 with the unification of the previously separate colonies of the Cape Natal, Transvaal and the Orange Free State. The Union of South Africa was founded as a dominion of the British Empire."
+	picture=EVENT_hoi4tgw_south_africa_act
+	
+	major = yes
+	
+	trigger = {
+		date > 1910.5.31
+		NOT = { has_global_flag = kis_south_africa_act }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+	immediate = {
+		set_global_flag = kis_south_africa_act
+		hidden_effect = {
+			SAF = {
+				transfer_state = 681
+				transfer_state = 719
+				transfer_state = 275
+			}
+			ENG={
+				puppet = SAF
+			}
+			SAF={
+				add_political_power=101
+				add_manpower=20000
+				load_oob="SAF_1910"
+				set_country_flag=saf_release
+			}
+		}
+	}
+	
+	option = {
+		name = "The Union is formed!"
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________
+
+# Sinking of the Titanic
+#____________________________________________________________
+news_event = {
+	id=ww1_england.102
+	title=ww1_england.102.t
+	desc = ww1_england.102.d
+
+	picture=EVENT_hoi4tgw_titanic
+	
+	major = yes
+	
+	trigger = {
+		date > 1912.4.15
+		NOT = { has_global_flag = kis_titanic_sinked }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+	immediate = {
+		set_global_flag = kis_titanic_sinked
+		hidden_effect = {
+
+		}
+	}
+	
+	option = {
+		name = "They said the Titanic was unsinkable..."
+		ai_chance = {
+			factor = 100
+		}		
+	}
+}
+#____________________________________________________________
+
+# Communist Take Power
+#____________________________________________________________
+country_event = {
+	id = ww1_england.20
+	title = "Revolution in United-Kingdom"
+	desc = "Revolution in United-Kingdom"
+	picture = GFX_report_event_gathering_protest
+	
+	fire_only_once=yes
+	is_triggered_only=yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = political.3.a
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
+		add_timed_idea = { idea = reign_of_terror days = 730 }
+	}
+}
+#____________________________________________________________

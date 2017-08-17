@@ -1,0 +1,375 @@
+﻿capital = 126
+
+#-------------------------------------------------------
+#					GENERIC VALUES
+#-------------------------------------------------------
+set_research_slots = 4
+set_national_unity = 0.6
+set_convoys = 800
+
+# DIPLOMACY
+if = {
+	limit = {
+		has_dlc = "Together for Victory"
+	}
+
+	set_autonomy = {
+		target = RAJ
+		autonomous_state = autonomy_colony
+		freedom_level = 0.35
+	}
+	set_autonomy = {
+		target = CAN
+		autonomous_state = autonomy_dominion
+		freedom_level = 0.4
+	}
+
+	set_autonomy = {
+		target = AST
+		autonomous_state = autonomy_dominion
+		freedom_level = 0.2
+	}
+	set_autonomy = {
+		target = NZL
+		autonomous_state = autonomy_dominion
+		freedom_level = 0.2
+	}
+	else = {
+		puppet = RAJ
+		puppet = CAN
+		puppet = AST
+		puppet = NZL
+	}
+}
+
+puppet = OMA
+puppet = NEP
+puppet = BHU
+puppet = EGY
+
+
+
+give_guarantee = BEL # United Kingdom guaranteed the independence of Belgium - Treaty of London (1839)
+
+give_military_access = RAJ
+
+#-------------------------------------------------------
+#					POLITICS & ARMY
+#-------------------------------------------------------
+create_country_leader={ name = "Tom Mann" desc=ENG_tom_mann_DESC picture="gfx/leaders/ENG_tom_mann.dds" expire="1935.1.1" ideology=stalinism traits={  } }
+create_country_leader={ name = "Gilbert Elliot-Murray-Kynynmound" desc=ENG_gilbert_elliot_murray_kynynmound_DESC picture="gfx/leaders/ENG_gilbert_elliot_murray_kynynmound.dds" expire="1935.1.1" ideology=conservatism traits={  } }
+create_country_leader={ name = "Charles Hardinge" desc=ENG_charles_hardinge_DESC picture="gfx/leaders/ENG_charles_hardinge.dds" expire="1935.1.1" ideology=conservatism traits={  } }
+create_country_leader={ name = "Frederic Thesiger" desc=ENG_frederic_thesiger_DESC picture="gfx/leaders/ENG_frederic_thesiger.dds" expire="1935.1.1" ideology=conservatism traits={  } }
+create_country_leader={ name = "Rufus Isaacs" desc=ENG_rufus_isaacs_DESC picture="gfx/leaders/ENG_rufus_isaacs.dds" expire="1935.1.1" ideology=conservatism traits={  } }
+create_country_leader={ name = "Walter Davidson" desc=ENG_walter_davidson_DESC picture="gfx/leaders/ENG_walter_davidson.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+create_country_leader={ name = "Edward VII" desc=ENG_edward_vii_DESC picture="gfx/leaders/ENG_edward_vii.dds" expire="1935.1.1" ideology=conservatism traits={  } }
+
+#create_field_marshal={  name = "French" id=28033 portrait_path="gfx/fieldmarshal/ENG_french.tga" traits={ defensive_doctrine  } skill=2 }
+create_field_marshal={  name = "Sir Douglas Haig" id=28039 portrait_path="gfx/fieldmarshal/ENG_haig__sir_d.tga" traits={ offensive_doctrine  } skill=4 }
+create_field_marshal={  name = "Hamilton I.S.M." id=28044 portrait_path="gfx/fieldmarshal/ENG_hamilton_ism.tga" traits={   } skill=2 }
+create_field_marshal={  name = "Aylmer Hunter-Weston" id=28049 portrait_path="gfx/fieldmarshal/ENG_hunter.tga" traits={   } skill=2 }
+create_field_marshal={  name = "Sir Leslie Rundle" id=28077 portrait_path="gfx/fieldmarshal/ENG_rundle.tga" traits={ old_guard  } skill=2 }
+create_field_marshal={  name = "Kitchener H.H." id=28258 portrait_path="gfx/fieldmarshal/ENG_kitchener_hh.tga" traits={ logistics_wizard organisational_leader } skill=4 }
+#create_field_marshal={  name = "Lyttelton" id=28259 portrait_path="gfx/fieldmarshal/ENG_lyttelton.tga" traits={   } skill=2 }
+
+#create_corps_commander={  name = "Aston" id=28005 portrait_path="gfx/generals/ENG_aston.tga" traits={ commando  } skill=2 }
+create_corps_commander={  name = "Baden-Powell" id=28007 portrait_path="gfx/generals/ENG_baden_powell.tga" traits={   } skill=3 }
+create_corps_commander={  name = "Baker-Carr" id=28008 portrait_path="gfx/generals/ENG_baker_carr.tga" traits={ panzer_leader  } skill=2 }
+create_corps_commander={  name = "Butler, Sir R.H.K" id=28015 portrait_path="gfx/generals/ENG_butler__sir_rhk.tga" traits={ fortress_buster  } skill=3 }
+create_corps_commander={  name = "Byng,J.H.G" id=28016 portrait_path="gfx/generals/ENG_byng_jhg.tga" traits={  fortress_buster } skill=3 }
+create_corps_commander={  name = "Cavan" id=28018 portrait_path="gfx/generals/ENG_cavan.tga" traits={   } skill=4 }
+create_corps_commander={  name = "Elles" id=28028 portrait_path="gfx/generals/ENG_elles.tga" traits={ panzer_leader  } skill=2 }
+create_corps_commander={  name = "Glubb" id=28034 portrait_path="gfx/generals/ENG_glubb.tga" traits={  winter_specialist } skill=3 }
+create_corps_commander={  name = "Grierson" id=28038 portrait_path="gfx/generals/ENG_grierson.tga" traits={   } skill=4 }
+create_corps_commander={  name = "Horne, Sir H." id=28047 portrait_path="gfx/generals/ENG_horne__sir_h.tga" traits={ fortress_buster  } skill=3 }
+create_corps_commander={  name = "Knox" id=28055 portrait_path="gfx/generals/ENG_knox.tga" traits={ winter_specialist  } skill=3 }
+create_corps_commander={  name = "Maude" id=28063 portrait_path="gfx/generals/ENG_maude.tga" traits={   } skill=3 }
+create_corps_commander={  name = "Maxse, Sir I." id=28065 portrait_path="gfx/generals/ENG_maxse__sir_i.tga" traits={   } skill=4 }
+#create_corps_commander={  name = "Paris" id=28072 portrait_path="gfx/generals/ENG_paris.tga" traits={ commando  } skill=2 }
+create_corps_commander={  name = "Plumer, H." id=28073 portrait_path="gfx/generals/ENG_plumer__h.tga" traits={  fortress_buster } skill=4 }
+create_corps_commander={  name = "Rawlinson, Sir H." id=28075 portrait_path="gfx/generals/ENG_rawlinson__sir_h.tga" traits={ fortress_buster  } skill=3 }
+create_corps_commander={  name = "Snow" id=28083 portrait_path="gfx/generals/ENG_snow.tga" traits={ fortress_buster  } skill=3 }
+create_corps_commander={  name = "Hickie W.B." id=28116 portrait_path="gfx/generals/ENG_hickie_wb.tga" traits={ fortress_buster  } skill=3 }
+create_corps_commander={  name = "Capper J.E." id=28122 portrait_path="gfx/generals/ENG_capper_je.tga" traits={ trait_engineer  } skill=3 }
+create_corps_commander={  name = "Nugent O.S.W." id=28129 portrait_path="gfx/generals/ENG_nugent_osw.tga" traits={ fortress_buster  } skill=3 }
+#create_corps_commander={  name = "Roberts" id=28261 portrait_path="gfx/generals/ENG_roberts.tga" traits={   } skill=4 }
+create_corps_commander={  name = "Dartnell" id=28290 portrait_path="gfx/generals/ENG_dartnell.tga" traits={ commando  } skill=2 }
+create_corps_commander={  name = "Wolseley" id=28303 portrait_path="gfx/generals/ENG_wolseley.tga" traits={  trait_engineer } skill=3 }
+create_corps_commander={  name = "Willcocks" id=28550 portrait_path="gfx/generals/ENG_willcocks.tga" traits={ trickster  } skill=2 }
+create_corps_commander={  name = "Stewart" id=28557 portrait_path="gfx/generals/ENG_stewart.tga" traits={ commando  } skill=2 }
+
+create_navy_leader={  name = "Bridgeman" id=28329 portrait_path="gfx/admiral/ENG_bridgeman.tga" traits={ superior_tactician  } skill=3 }
+#create_navy_leader={  name = "Scott P." id=28335 portrait_path="gfx/admiral/ENG_scott_p.tga" traits={ seawolf  } skill=3 }
+create_navy_leader={  name = "Beatty" id=28374 portrait_path="gfx/admiral/ENG_beatty.tga" traits={ spotter  } skill=3 }
+create_navy_leader={  name = "Jellicoe" id=28376 portrait_path="gfx/admiral/ENG_jellicoe.tga" traits={ superior_tactician  } skill=4 }
+create_navy_leader={  name = "Egerton" id=28384 portrait_path="gfx/admiral/ENG_egerton.tga" traits={ old_guard  } skill=3 }
+create_navy_leader={  name = "Pakenham" id=28394 portrait_path="gfx/admiral/ENG_pakenham.tga" traits={ superior_tactician  } skill=4 }
+#create_navy_leader={  name = "Hood" id=28413 portrait_path="gfx/admiral/ENG_hood.tga" traits={ old_guard  } skill=4 }
+create_navy_leader={  name = "Goodenough" id=28447 portrait_path="gfx/admiral/ENG_goodenough.tga" traits={ spotter  } skill=2 }
+create_navy_leader={  name = "Keyes" id=28461 portrait_path="gfx/admiral/ENG_keyes.tga" traits={ spotter  } skill=4 }
+create_navy_leader={  name = "Tyrwhitt" id=28485 portrait_path="gfx/admiral/ENG_tyrwhitt.tga" traits={ superior_tactician spotter } skill=3 }
+
+
+1910.1.1 = {
+	oob = "ENG_1910"
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+	#Army
+	complete_national_focus = ENG_ww1_army_effort
+	complete_national_focus = ENG_ww1_industrial_effort
+	complete_national_focus = ENG_ww1_naval_effort
+
+	#Diplomatic
+	complete_national_focus = ENG_ww1_diplomatic_effort
+	#-------------------------------------------------------
+
+	set_technology = {
+
+		# Infantry
+		infantry_weapons = 1
+		ww1infantry_weapons1 = 1
+		support_weapons = 1
+		infantry_binoculars = 1
+		infantry_grenade = 1
+		motorised_infantry = 1
+		ww1_ambulance1 = 1
+
+		# Support
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		#tech_military_police = 1
+		#tech_maintenance_company = 1
+		#tech_field_hospital = 1
+		#tech_logistics_company = 1
+
+		# Armor
+		gwtank=1 # 1910 Armored Car
+
+		# Artillery
+		light_field_gun1 = 1
+		heavy_field_gun1 = 1
+
+		# Navy
+		ww1_destroyer0 = 1
+		ww1_destroyer1 = 1
+		ww1_light_cruiser0 = 1
+		ww1_light_cruiser1 = 1
+		ww1_battlecruiser0 = 1
+		ww1_battlecruiser0b = 1
+		ww1_battlecruiser1 = 1
+		ww1_battleship0 = 1
+		ww1_battleship1 = 1
+		ww1_submarine1 = 1
+		ww1_coastal_submarine1 = 1
+		transport = 1
+
+		# Air
+		ww1_fighter1 = 1
+		ww1_zeppelin1 = 1
+
+		# Engineering
+		electronic_mechanical_engineering = 1
+		chemical_research = 1
+		tank_unlocker1 = 1
+
+		# Industry
+		ww1_fortification1 = 1
+	}
+
+	set_politics = {
+	    parties = {
+	        democratic = {
+	            popularity = 97
+	        }
+	        fascism = {
+	            popularity = 2
+	        }
+	        communism = {
+	            popularity = 1
+	        }
+	    }
+	    ruling_party = democratic last_election = "1910.1.15"
+	    election_frequency = 60 elections_allowed = yes
+	}
+
+	add_ideas = {
+		ww1_Scramble_for_Africa
+		stiff_upper_lip
+		volunteer_only
+		#ENG_Staff
+	}
+
+	set_country_flag = monroe_doctrine
+}
+1910.6.1 = {
+	create_country_leader={ name = "George V" desc=ENG_george_v_DESC picture="gfx/leaders/ENG_george_v.dds" expire="1935.1.1" ideology=conservatism traits={  } }
+	set_country_flag = king_death_george
+	set_country_flag = saf_release
+}
+1914.1.1 = {
+	oob = "ENG_1914"
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+	#Army
+	complete_national_focus = ENG_ww1_army_effort
+	complete_national_focus = ENG_ww1_equipment_effort
+	complete_national_focus = ENG_ww1_artillery_effort_1
+	complete_national_focus = ENG_ww1_doctrine_effort
+	complete_national_focus = ENG_ww1_trenchwarfare
+
+	# Air
+	complete_national_focus = ENG_ww1_aviation_effort
+	complete_national_focus = ENG_ww1_aviation_effort_2
+	complete_national_focus = ENG_ww1_airship_focus
+
+	# Industry
+	complete_national_focus = ENG_ww1_industrial_effort
+	complete_national_focus = ENG_ww1_infrastructure_effort
+	complete_national_focus = ENG_ww1_airfield_expansion_1
+	complete_national_focus = ENG_ww1_construction_effort
+	complete_national_focus = ENG_ww1_production_effort
+	complete_national_focus = ENG_ww1_dockyard_effort_1
+
+	# Naval
+	complete_national_focus = ENG_ww1_naval_effort
+	complete_national_focus = ENG_ww1_newnavalcanons_1
+	complete_national_focus = ENG_ww1_dreadnought_effort
+	complete_national_focus = ENG_ww1_newnavalcanons_2
+
+	#Political
+	complete_national_focus = ENG_ww1_political_effort
+	complete_national_focus = ENG_ww1_support_republic
+	complete_national_focus = ENG_ww1_democracy
+	complete_national_focus = ENG_ww1_freespeech
+
+	#Diplomatic
+	complete_national_focus = ENG_ww1_diplomatic_effort
+	complete_national_focus = ENG_ww1_triple_alliance
+	complete_national_focus = ENG_ww1_back_france
+	complete_national_focus = ENG_ww1_back_russia
+	complete_national_focus = ENG_ww1_send_diplomats
+	complete_national_focus = ENG_ww1_assert_position_west
+	complete_national_focus = ENG_ww1_anti_ger
+	complete_national_focus = ENG_ww1_assert_position_east
+	complete_national_focus = ENG_ww1_balkan_strategy
+	complete_national_focus = ENG_ww1_support_romania
+	complete_national_focus = ENG_ww1_nordic_countries
+	complete_national_focus = ENG_ww1_bureau_colonies
+	complete_national_focus = ENG_ww1_commonwealth_focus
+	#-------------------------------------------------------
+
+	set_technology = {
+
+		# Infantry
+		infantry_weapons = 1
+		ww1infantry_weapons1 = 1
+		ww1_infantry_equip1 = 1
+		support_weapons = 1
+		support_weapons2 = 1
+		infantry_binoculars = 1
+		infantry_grenade = 1
+		motorised_infantry = 1
+		ww1_ambulance1 = 1
+		tech_mountaineers = 1
+
+		# Support
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+
+		# Armor
+		gwtank=1 # 1910 Armored Car
+		ww1_armored_car_2 = 1
+
+		# Artillery
+		light_field_gun1 = 1
+		bonus_artillery1 = 1
+		heavy_field_gun1 = 1
+		bonus_bertha1 = 1
+
+		# Land Doctrine
+		ww1_landdoctrine = 1
+		ww1_directfire = 1
+
+		# Navy
+		ww1_destroyer0 = 1
+		ww1_destroyer1 = 1
+		ww1_destroyer2 = 1
+		ww1_light_cruiser0 = 1
+		ww1_light_cruiser1 = 1
+		ww1_battlecruiser0 = 1
+		ww1_battlecruiser0b = 1
+		ww1_battlecruiser1 = 1
+		ww1_battleship0 = 1
+		ww1_battleship1 = 1
+		ww1_submarine1 = 1
+		ww1_coastal_submarine1 = 1
+		transport = 1
+
+		# Air
+		ww1_fighter1 = 1
+		ww1_fighter1b = 1
+		ww1_zeppelin1 = 1
+
+		# Air Doctrine
+		ww1_airdoctrine = 1
+		ww1_airdoctrine_2 = 1
+		ww1_airdoctrine_3 = 1
+
+		# Navy Doctrine
+		ww1_navaldoctrine = 1
+		ww1_navaldoctrine_2 = 1
+		ww1_navaldoctrine_3 = 1
+
+		# Engineering
+		electronic_mechanical_engineering = 1
+		mechanical_computing = 1
+		chemical_research = 1
+		tank_unlocker1 = 1
+		radio = 1
+		supertech1 = 1
+		tankaircraft1 = 1
+		torpedotech1 = 1
+
+		# Industry
+		ww1_tools1 = 1
+		ww1_medicine1 = 1
+		ww1_fortification1 = 1
+		ww1_fortification2 = 1
+
+	}
+
+	set_politics = {
+        parties = {
+	        democratic = {
+	            popularity = 97
+	        }
+	        fascism = {
+	            popularity = 2
+	        }
+	        communism = {
+	            popularity = 1
+	        }
+	    }
+        ruling_party = democratic last_election = "1910.1.15"
+        election_frequency = 60 elections_allowed = yes
+    }
+
+	add_ideas = {
+		ww1_Scramble_for_Africa
+		stiff_upper_lip
+		limited_conscription
+		#ENG_Staff
+	}
+
+	set_country_flag = titanic
+}

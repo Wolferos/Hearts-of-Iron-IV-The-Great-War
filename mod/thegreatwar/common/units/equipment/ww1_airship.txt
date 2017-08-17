@@ -1,0 +1,85 @@
+equipments = {
+	
+	airship_bomber_equipment = {
+		is_archetype = yes
+		is_buildable = no
+		type = strategic_bomber
+		group_by = archetype
+		sprite = airship_plane
+		air_map_icon_frame = 10
+		
+		interface_category = interface_category_air
+		
+		# Strategic bomber
+		interface_overview_category_index = 5
+		
+		upgrades = {
+			plane_bomb_upgrade
+			plane_range_upgrade
+			plane_engine_upgrade
+			plane_reliability_upgrade
+		}
+
+		air_superiority = 1
+		reliability = 0.8
+
+		# Air vs Navy - high damage / low hit chance / hard to hurt
+		naval_strike_attack = 1.5
+		naval_strike_targetting = 0.6
+
+		#Space taken in convoy
+		lend_lease_cost = 12
+		
+		build_cost_ic = 60
+		#resources = {
+		#	oil = 1
+		#	aluminium = 3
+		#	rubber = 2
+		#}
+		
+		manpower = 80
+	}
+	
+	# Zeppelin 1
+	ww1_zeppelin_equipment_1 = {
+		archetype = airship_bomber_equipment
+		priority = 140
+		
+		air_range = 2450
+		maximum_speed = 120
+		air_agility = 3
+		air_attack = 2
+		air_defence = 10
+		air_bombing = 10
+		
+		build_cost_ic = 60
+		resources = {
+			oil = 1
+			aluminium = 2
+			wood = 6
+		}
+	}
+
+
+	# Zeppelin 2
+	ww1_zeppelin_equipment_2 = {
+		archetype = airship_bomber_equipment
+		parent = ww1_zeppelin_equipment_1
+		priority = 140
+
+		air_range = 2480
+		maximum_speed = 150
+		air_agility = 4
+		air_attack = 3
+		air_defence = 12
+		air_bombing = 14
+		
+		build_cost_ic = 70
+		resources = {
+			oil = 1
+			aluminium = 3
+			wood = 7
+		}
+	}
+
+}

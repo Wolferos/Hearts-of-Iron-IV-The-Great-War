@@ -1,0 +1,456 @@
+﻿add_namespace = ww1_secondbalkan
+
+# BUL declares war Second Balkan War
+#____________________________________________________________
+country_event = {
+	id = ww1_secondbalkan.1
+	title = ww1_secondbalkan.1.t
+	desc = ww1_secondbalkan.1.d
+	#picture = ww1_secondbalkan_1
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_secondbalkan.1.a
+		ai_chance = { factor = 100 }
+
+		hidden_effect = {
+			set_country_flag = kis_secondbalkan_war
+			# Factions
+			SER = {
+				create_faction = anti_bulg_league
+				add_to_faction = GRE
+				add_to_faction = MTN
+			}
+			BUL = {
+				create_faction = "Greater Bulgaria"
+				add_named_threat = {
+					threat = 5
+					name = "Second War in the Balkans"
+				}
+			}
+
+			BUL = {
+			    declare_war_on = {
+			        target = SER
+			        type = take_claimed_state
+			        generator = {
+			            106 758
+			        }
+			    }
+			    set_country_flag = kis_secondbalkanwar_start
+			}
+
+			GRE = {
+			    add_to_war = {
+		            targeted_alliance = SER enemy = BUL
+		        }
+			}
+			MTN = {
+			    add_to_war = {
+		            targeted_alliance = SER enemy = BUL
+		        }
+			}
+			ROM = {
+                country_event = { days = 7 id = ww1_secondbalkan.2 }
+            }
+			news_event = { days = 1 id = ww1_secondbalkan.100 }
+		}
+
+		effect_tooltip = {
+			BUL = {
+			    declare_war_on = {
+			        target = SER
+			        type = take_claimed_state
+			        generator = {
+			            106 758
+			        }
+			    }
+			    create_wargoal = {
+			        target = GRE
+			        type = take_claimed_state
+			        generator = {
+			            731
+			        }
+			    }
+			}
+		}		
+	}
+}
+#____________________________________________________________
+
+# Romanian Intervention
+#____________________________________________________________
+country_event = {
+	id = ww1_secondbalkan.2
+	title = ww1_secondbalkan.2.t
+	desc = ww1_secondbalkan.2.d
+	#picture = ww1_secondbalkan_2
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_secondbalkan.2.a
+		ai_chance = { factor = 100 }
+		SER = {
+			add_to_faction = ROM
+		}
+		ROM = {
+			set_country_flag = kis_secondbalkanwar_romanian_intervention
+			create_wargoal = {
+	            type = take_state_focus 
+	            target = BUL 
+	            generator = {
+	                77
+	            }
+	        }
+	        add_to_war = {
+	            targeted_alliance = SER enemy = BUL
+	        }
+		}
+		hidden_effect = {
+			news_event = { days = 1 id = ww1_secondbalkan.102 }
+		}
+	}
+
+	option = {
+		name = ww1_secondbalkan.2.b
+		ai_chance = { factor = 0 }
+	}
+}
+#____________________________________________________________
+
+# Bulgaria Offers Peace
+#____________________________________________________________
+country_event = {
+	id = ww1_secondbalkan.3
+	title = ww1_secondbalkan.3.t
+	desc = ww1_secondbalkan.3.d
+	#picture = ww1_secondbalkan_3
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = BUL
+		has_war_with = SER
+		surrender_progress > 0.12
+		NOT = {
+			has_global_flag = kis_secondbalkanwar_victory
+			is_in_faction_with = GER 
+		}
+	}
+
+	option = { 
+		name = ww1_secondbalkan.3.a
+		ai_chance = { factor = 100 }
+
+		hidden_effect = {
+			set_global_flag = kis_secondbalkanwar_victory
+			BUL = {
+				transfer_state = 48
+				transfer_state = 211
+				transfer_state = 212
+				transfer_state = 756
+				transfer_state = 759
+				transfer_state = 762
+				remove_opinion_modifier = { 
+					target = TUR 
+					modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+				}
+			}
+
+			if = {
+				limit = {
+					SER = {
+						has_war_with = BUL
+					}
+				}
+				SER = { 
+					white_peace = BUL
+					transfer_state = 759
+					diplomatic_relation = {
+						country = BUL
+						relation = non_aggression_pact
+					}
+					remove_opinion_modifier = { 
+						target = TUR 
+						modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+					}
+				}
+			}
+			if = {
+				limit = {
+					MTN = {
+						has_war_with = BUL
+					}
+				}
+				MTN = { 
+					white_peace = BUL
+					diplomatic_relation = {
+						country = BUL
+						relation = non_aggression_pact
+					}
+					remove_opinion_modifier = { 
+						target = TUR 
+						modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+					}
+				}	
+			}
+			if = {
+				limit = {
+					GRE = {
+						has_war_with = BUL
+					}
+				}
+				GRE = { 
+					white_peace = BUL
+					transfer_state = 184
+					diplomatic_relation = {
+						country = BUL
+						relation = non_aggression_pact
+					}
+					remove_opinion_modifier = { 
+						target = TUR 
+						modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+					}
+				}			
+			}
+			if = {
+				limit = {
+					ROM = {
+						has_war_with = BUL
+					}
+				}
+				ROM = { 
+					white_peace = BUL
+					transfer_state = 77
+					diplomatic_relation = {
+						country = BUL
+						relation = non_aggression_pact
+					}
+				}
+			}
+			if = {
+				limit = {
+					TUR = {
+						has_war_with = BUL
+					}
+				}
+				TUR = { 
+					white_peace = BUL
+					transfer_state = 756
+					diplomatic_relation = {
+						country = BUL
+						relation = non_aggression_pact
+					}
+					remove_opinion_modifier = { 
+						target = SER 
+						modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+					}
+					remove_opinion_modifier = { 
+						target = BUL 
+						modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+					}
+					remove_opinion_modifier = { 
+						target = GRE 
+						modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+					}
+					remove_opinion_modifier = { 
+						target = MTN 
+						modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+					}
+				}
+			}
+
+			SER = {
+				dismantle_faction = yes
+			}
+			MTN = {
+				dismantle_faction = yes
+			}
+			GRE = {
+				dismantle_faction = yes
+			}
+			ROM = {
+				dismantle_faction = yes
+			}
+			TUR = {
+				dismantle_faction = yes
+			}
+
+			BUL = {
+				dismantle_faction = yes
+			}
+
+			news_event = { days = 1 id = ww1_secondbalkan.101 }
+		}
+
+		effect_tooltip = {
+			if = {
+				limit = {
+					SER = {
+						has_war_with = BUL
+					}
+				}
+				SER = { 
+					white_peace = BUL
+					transfer_state = 759
+					diplomatic_relation = {
+						country = BUL
+						relation = non_aggression_pact
+					}
+				}
+			}
+			if = {
+				limit = {
+					MTN = {
+						has_war_with = BUL
+					}
+				}
+				MTN = { 
+					white_peace = BUL
+					diplomatic_relation = {
+						country = BUL
+						relation = non_aggression_pact
+					}
+				}	
+			}
+			if = {
+				limit = {
+					GRE = {
+						has_war_with = BUL
+					}
+				}
+				GRE = { 
+					white_peace = BUL
+					transfer_state = 184
+					diplomatic_relation = {
+						country = BUL
+						relation = non_aggression_pact
+					}
+				}			
+			}
+			if = {
+				limit = {
+					ROM = {
+						has_war_with = BUL
+					}
+				}
+				ROM = { 
+					white_peace = BUL
+					transfer_state = 77
+					diplomatic_relation = {
+						country = BUL
+						relation = non_aggression_pact
+					}
+				}
+			}
+			if = {
+				limit = {
+					TUR = {
+						has_war_with = BUL
+					}
+				}
+				TUR = { 
+					white_peace = BUL
+					transfer_state = 756
+					diplomatic_relation = {
+						country = BUL
+						relation = non_aggression_pact
+					}
+				}
+			}
+			if = {
+				limit = {
+					BUL = {
+						has_war_with = TUR
+					}
+				}
+				BUL = { 
+					white_peace = BUL
+					
+				}
+				TUR = {
+					transfer_state = 756
+					diplomatic_relation = {
+						country = BUL
+						relation = non_aggression_pact
+					}
+				}
+			}
+		}
+	}
+}
+#____________________________________________________________
+
+
+# Second Balkan War Starts
+#____________________________________________________________
+news_event = {
+	id = ww1_secondbalkan.100
+	title = ww1_secondbalkan.100.t
+	desc = ww1_secondbalkan.100.d
+	picture = EVENT_hoi4tgw_second_balkan_war
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = ww1_secondbalkan.100.a
+	}
+}
+
+#____________________________________________________________
+
+# Second Balkan War Victory
+#____________________________________________________________
+news_event = {
+	id = ww1_secondbalkan.101
+	title = ww1_secondbalkan.101.t
+	desc = ww1_secondbalkan.101.d
+	picture = EVENT_hoi4tgw_second_balkan_war_end
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = ww1_secondbalkan.101.a
+	}
+}
+#____________________________________________________________
+
+# Romania joins the Second Balkan War
+#____________________________________________________________
+news_event = {
+	id = ww1_secondbalkan.102
+	title = ww1_secondbalkan.102.t
+	desc = ww1_secondbalkan.102.d
+	picture = EVENT_hoi4tgw_second_balkan_war
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = ww1_secondbalkan.102.a
+	}
+}
+#____________________________________________________________
+
+# Ottoman joins the Second Balkan War
+#____________________________________________________________
+news_event = {
+	id = ww1_secondbalkan.103
+	title = ww1_secondbalkan.103.t
+	desc = ww1_secondbalkan.103.d
+	picture = EVENT_hoi4tgw_second_balkan_war
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = ww1_secondbalkan.103.a
+	}
+}
+#____________________________________________________________

@@ -1,0 +1,645 @@
+﻿# Beta 0.1.6
+
+add_namespace = ww1_armistice
+
+
+
+# Let the Player choose for the Treaty of Versailles or the Peace Conference Mechanism
+#____________________________________________________________
+country_event = {
+	id = ww1_armistice.500
+	title = ww1_armistice.500.t
+	desc = ww1_armistice.500.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	trigger = {
+
+		GER = {
+			surrender_progress > 0.55
+			has_war_with = ENG
+			has_war_with = FRA
+
+			has_global_flag = kis_brestlitovsk # Open Beta 0.1.8 - Temporary Solution
+			
+			NOT = {
+				has_global_flag = kis_ask_ger_surrend #
+				has_global_flag = kis_player_decided_ger_surrend #
+			}
+		}
+
+		# If Player is one of the Main
+		if = {
+			limit = {
+				FRA = {
+					is_ai = no
+				}
+			}
+			TAG = FRA
+			else = {
+				if = {
+					limit = {
+						ENG = {
+							is_ai = no
+							is_in_faction_with = FRA
+							has_war_with = GER
+						}
+					}
+					TAG = ENG
+					else = 	{
+						if = {
+							limit = {
+								ITA = {
+									is_ai = no
+									is_in_faction_with = FRA
+									has_war_with = GER
+								}
+							}
+							TAG = ITA
+							else = {
+								if = {
+									limit = {
+										SER = {
+											is_ai = no
+											is_in_faction_with = FRA
+											has_war_with = GER
+										}
+									}
+									TAG = SER
+									else = {
+										if = {
+											limit = {
+												USA = {
+													is_ai = no
+													is_in_faction_with = FRA
+													has_war_with = GER
+												}
+											}
+											TAG = USA
+											else = {
+												# If Player is not one of the Main
+												if = {
+													limit = {
+														FRA = {
+															is_ai = yes
+														}
+													}
+													TAG = FRA
+													else = {
+														if = {
+															limit = {
+																ENG = {
+																	is_ai = yes
+																	is_in_faction_with = FRA
+																	has_war_with = GER
+																}
+															}
+															TAG = ENG
+															else = {
+																if = {
+																	limit = {
+																		USA = {
+																			is_ai = yes
+																			is_in_faction_with = FRA
+																			has_war_with = GER
+																		}
+																	}
+																	TAG = USA
+																	else = {
+																		if = {
+																			limit = {
+																				ITA = {
+																					is_ai = yes
+																					is_in_faction_with = FRA
+																					has_war_with = GER
+																				}
+																			}
+																			TAG = ITA
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}	
+				}
+			}
+		}
+	}
+
+	# The Player chooses the Treaty of Versailles
+	option = {		
+		name = ww1_armistice.500.a
+		ai_chance = { factor = 100 }
+		GER = {
+			country_event = { days = 1 id = ww1_armistice.503 }
+  		}
+  		hidden_effect = {
+  			set_global_flag = kis_player_decided_ger_surrend
+  		}
+	}
+
+	# The Player chooses the Peace Conference Mechanism
+	option = {
+		name = ww1_armistice.500.b
+		ai_chance = { factor = 0 }
+		hidden_effect = {
+  			set_global_flag = kis_player_decided_ger_surrend
+  		}
+	}
+}
+#____________________________________________________________
+
+
+#____________________________________________________________
+country_event = {
+	id = ww1_armistice.503
+	title = ww1_armistice.503.t
+	desc = ww1_armistice.503.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = kis_ask_ger_surrend
+	}
+
+	option = {
+		name = ww1_armistice.503.a
+		ai_chance = { factor = 100 }
+
+		hidden_effect = {
+
+			HUN = {
+				transfer_state = 43
+				transfer_state = 155
+				transfer_state = 154
+
+                kill_country_leader = yes
+                create_country_leader={ name = "Miklós Horthy" desc=HUN_miklos_horothy_DESC picture="gfx/leaders/HUN_miklos_horthy.dds" expire="1935.1.1" ideology=despotism traits = { }}
+			}
+
+			CZE = {
+				transfer_state = 69
+				transfer_state = 9		
+				transfer_state = 75		
+				transfer_state = 74		
+				transfer_state = 70		
+				transfer_state = 72		
+			}
+
+			SWI = {
+				transfer_state = 3
+				transfer_state = 151		
+			}
+
+			BEL = {
+				transfer_state = 768
+				transfer_state = 6
+				transfer_state = 34
+			}
+
+			HOL = {
+				transfer_state = 35
+				transfer_state = 7			
+				transfer_state = 36			
+			}	
+
+			news_event = { days = 3 id = ww1_armistice.1 }
+		}
+	}
+}
+#____________________________________________________________
+
+
+# Armistice
+#____________________________________________________________
+news_event = {
+	id = ww1_armistice.1
+	title = ww1_armistice.1.t
+	desc = ww1_armistice.1.d
+	picture = EVENT_hoi4tgw_armistice
+
+	major = yes
+	is_triggered_only = yes
+
+	# GER Accepts - The German Empire fall and Democratic Germany is
+	option = {
+		name = ww1_armistice.1.a
+		ai_chance = { factor = 100 }
+
+		hidden_effect = {
+
+			add_named_threat = {
+				threat = -15
+				name = "The Great War Armistice"
+			}
+			GER = {
+				set_politics = {
+				    parties = {
+				        neutrality = {
+				            popularity = 10
+				        }
+				        fascism = {
+				            popularity = 5
+				        }
+				        democratic = {
+				            popularity = 80
+				        }
+				        communism = {
+				            popularity = 5
+				        }
+				    }
+				    ruling_party = democratic last_election = "1911.7.1"
+				    election_frequency = 48 elections_allowed = yes
+				}
+			}
+
+			if = {
+				limit = {
+					TUR = {
+						is_in_faction_with = GER
+						has_war_with = FRA
+					}
+				}
+				FRA = {
+					transfer_state = 553
+					transfer_state = 554
+					transfer_state = 680
+					transfer_state = 677
+				}
+				ENG = {
+					transfer_state = 675
+					transfer_state = 291
+					transfer_state = 455
+					transfer_state = 454
+				}
+				SAU = {
+					transfer_state = 747
+				}
+			}
+
+
+
+			FRA = {
+				transfer_state = 28
+				#transfer_state = 667
+			}					
+
+			ROM = {
+				transfer_state = 80
+				transfer_state = 79
+				transfer_state = 46
+				transfer_state = 77
+				transfer_state = 81
+				transfer_state = 82
+				transfer_state = 83
+				transfer_state = 84
+				transfer_state = 76
+			}
+
+			ITA = {
+				transfer_state = 39
+				transfer_state = 736
+			}	
+
+			SER = {
+				transfer_state = 107
+				transfer_state = 108
+				transfer_state = 760
+				transfer_state = 106
+				transfer_state = 759
+				transfer_state = 104
+				transfer_state = 103
+				transfer_state = 109
+				if = {
+					limit = {
+						MTN = {
+							is_ai = yes
+						}
+					}
+					transfer_state = 105
+					transfer_state = 761
+				}
+				country_event = { days = 1 id = ww1_armistice.101 }
+			}
+
+				
+			ENG = {
+				transfer_state = 656
+				transfer_state = 676
+			}
+
+
+			POL = {
+				transfer_state = 85
+				transfer_state = 86
+				transfer_state = 87
+				transfer_state = 98
+				transfer_state = 10
+				transfer_state = 90
+			}
+
+			AUH = {
+				drop_cosmetic_tag = yes # Open Beta 0.1.8
+				transfer_state = 153
+				transfer_state = 152
+				transfer_state = 4
+				country_event = { days = 1 id = ww1_armistice.100 }
+			}
+
+			LUX = {
+				transfer_state = 8
+			}
+
+			#Dirty Code but only way for now...
+			GER = { white_peace = FRA }
+			GER = { white_peace = ENG }
+			GER = { white_peace = RUS }
+			GER = { white_peace = SOV }
+			GER = { white_peace = HOL }
+			GER = { white_peace = BEL }
+			GER = { white_peace = ITA }
+			GER = { white_peace = LUX }
+			GER = { white_peace = MTN }
+			GER = { white_peace = SER }
+			GER = { white_peace = BUL }
+			GER = { white_peace = TUR }
+			GER = { white_peace = GRE }
+			GER = { white_peace = JAP }
+			GER = { white_peace = USA }
+			GER = { white_peace = ROM }
+			GER = { white_peace = CHI }
+			GER = { white_peace = QIN }
+
+			GER = {	diplomatic_relation = {	country = FRA relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = ENG relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = RUS relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = HOL relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = BEL relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = ITA relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = LUX relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = MTN relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = SER relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = BUL relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = TUR relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = GRE relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = JAP relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = USA relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = ROM relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = CHI relation = non_aggression_pact } }
+			GER = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
+
+			AUH = { white_peace = FRA }
+			AUH = { white_peace = ENG }
+			AUH = { white_peace = RUS }
+			AUH = { white_peace = SOV }
+			AUH = { white_peace = HOL }
+			AUH = { white_peace = BEL }
+			AUH = { white_peace = ITA }
+			AUH = { white_peace = LUX }
+			AUH = { white_peace = MTN }
+			AUH = { white_peace = SER }
+			AUH = { white_peace = BUL }
+			AUH = { white_peace = TUR }
+			AUH = { white_peace = GRE }
+			AUH = { white_peace = JAP }
+			AUH = { white_peace = USA }
+			AUH = { white_peace = ROM }
+			AUH = { white_peace = CHI }
+			AUH = { white_peace = QIN }
+
+			AUH = {	diplomatic_relation = {	country = FRA relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = ENG relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = RUS relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = HOL relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = BEL relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = ITA relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = LUX relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = MTN relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = SER relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = BUL relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = TUR relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = GRE relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = JAP relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = USA relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = ROM relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = CHI relation = non_aggression_pact } }
+			AUH = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
+
+			GER = {
+				dismantle_faction = yes
+			}
+
+			news_event = { days = 3 id = ww1_armistice.2 }
+		}
+	}
+}
+#____________________________________________________________
+
+
+# Treaty of Versailles 
+#____________________________________________________________
+news_event = {
+	id = ww1_armistice.2
+	title = ww1_armistice.2.t
+	desc = ww1_armistice.2.d
+	picture = EVENT_hoi4tgw_treaty_of_versailles
+
+	major = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = kis_treaty_of_versailles
+		hidden_effect = {
+			DEN = {
+				transfer_state = 751
+			}
+
+			CZE = {
+				transfer_state = 664
+				transfer_state = 73
+				transfer_state = 71
+			}
+
+			ROM = {
+				transfer_state = 78
+			}
+
+			ITA = {
+				transfer_state = 163
+			}
+
+			SER = {
+				transfer_state = 102
+				transfer_state = 45
+			}
+
+			ENG = {
+				transfer_state = 770
+				transfer_state = 546
+				transfer_state = 725
+			}
+
+			FRA = {
+				transfer_state = 769
+				transfer_state = 539
+				transfer_state = 755
+			}
+
+			SAF = {
+				transfer_state = 541
+			}
+
+			AST = {
+				transfer_state = 523
+				transfer_state = 737
+			}
+
+			JAP = {
+				transfer_state = 684
+				transfer_state = 646
+				transfer_state = 648
+				transfer_state = 633
+				transfer_state = 647
+			}
+
+			EST = {
+				transfer_state = 13
+				transfer_state = 191
+			}
+
+			LAT = {
+				transfer_state = 12
+				transfer_state = 190
+			}
+
+			LIT = {
+				transfer_state = 189
+				transfer_state = 188
+				transfer_state = 11
+			}
+
+			GRE = {
+				transfer_state = 184
+				transfer_state = 757
+			}
+
+			POL = {
+				transfer_state = 90
+				transfer_state = 89
+				transfer_state = 88
+				transfer_state = 92
+				transfer_state = 91
+				transfer_state = 93
+				transfer_state = 94
+				transfer_state = 97
+				transfer_state = 95
+				transfer_state = 96
+			}
+		}
+	}
+
+	option = {
+		name = ww1_armistice.2.a
+		ai_chance = { factor = 100 }
+	}
+}
+#____________________________________________________________
+
+# AUH - AUH needs to change itself it politics in order to have the right name on map
+#____________________________________________________________
+country_event = {
+	id = ww1_armistice.100
+	title = ww1_armistice.100.t
+	desc = ww1_armistice.100.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+
+			# The Entente is dead after the Great War ### OPEN BETA 0.1.6
+			FRA = {
+				dismantle_faction = yes
+			}
+
+			AUH = {
+			#	kill_country_leader = yes
+			#	create_country_leader = {
+			#		name = "Kurt Schuschnigg"
+			#		desc = "POLITICS_KURT_SCHUSCHNIGG_DESC"
+			#		picture = "Portrait_Austria_Kurt_Schuschnigg.dds"
+			#		expire = "1965.1.1"
+			#		ideology = conservatism
+			#		traits = { }
+			#	}
+				set_politics = {
+				    parties = {
+				        neutrality = {
+				            popularity = 10
+				        }
+				        fascism = {
+				            popularity = 5
+				        }
+				        democratic = {
+				            popularity = 80
+				        }
+				        communism = {
+				            popularity = 5
+				        }
+				    }
+				    ruling_party = democratic last_election = "1911.7.1"
+				    election_frequency = 48 elections_allowed = yes
+				}
+			}
+		}
+	}
+
+	option = {
+		name = ww1_armistice.100.a
+		ai_chance = { factor = 100 }
+
+	}
+}
+#____________________________________________________________
+
+# SER - SER needs to change itself it politics in order to have the right name on map
+#____________________________________________________________
+country_event = {
+	id = ww1_armistice.101
+	title = ww1_armistice.101.t
+	desc = ww1_armistice.101.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			# Set Correct Country Tag and Name with the TFV
+		}
+	}
+
+	option = {
+		name = ww1_armistice.101.a
+		ai_chance = { factor = 100 }
+
+	}
+}
+#____________________________________________________________

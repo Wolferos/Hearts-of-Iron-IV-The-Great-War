@@ -1,0 +1,335 @@
+﻿add_namespace = interwar_news
+
+# Hitler Chancellor of Germany
+#____________________________________________________________
+news_event = {
+	id = interwar_news.1
+	title = interwar_news.1.t
+	desc = interwar_news.1.d
+	picture = EVENT_hoi4tgw_hitler_chancellor
+
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name=interwar_news.1.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________
+
+# The March on Rome (Mussolini)
+#____________________________________________________________
+news_event = {
+	id = interwar_news.2
+	title = interwar_news.2.t
+	desc = interwar_news.2.d
+	picture = EVENT_hoi4tgw_march_on_rome
+
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = interwar_news.2.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________
+
+# Wall Street Crash
+#____________________________________________________________
+news_event = {
+	id = interwar_news.3
+	title = interwar_news.3.t
+	desc = interwar_news.3.d
+	picture = EVENT_hoi4tgw_1929_wallstreet_crash
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	major = yes
+
+	trigger = {
+		date > 1929.10.24
+		NOT = {
+			has_global_flag = interwar_wall_street_crash_1929
+		}
+	}
+
+	immediate = {
+		set_global_flag = interwar_wall_street_crash_1929
+	}
+
+	option = {
+		name = interwar_news.3.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________
+
+# Lenin is dead
+#____________________________________________________________
+news_event = {
+	id = interwar_news.4
+	title = interwar_news.4.t
+	desc = interwar_news.4.d
+	picture = EVENT_hoi4tgw_stalin_replace_lenin
+
+	is_triggered_only = yes
+	major = yes
+
+	trigger = {
+
+		date > 1924.1.20
+
+		NOT = {
+			has_global_flag = interwar_lenin_is_dead
+		}
+
+		OR = {
+			RUS = {
+				has_government = communism
+			}
+
+			SOV = {
+				has_government = communism
+			}
+		}
+	}
+
+	immediate = {
+		set_global_flag = interwar_lenin_is_dead
+		hidden_effect = {
+			SOV = {
+				kill_country_leader = yes
+				create_country_leader={ name = "Josef Stalin" desc=SOV_josef_stalin_DESC picture="gfx/leaders/SOV_josef_stalin.dds" expire="1935.1.1" ideology=stalinism traits={  } }
+				set_politics = {
+				    parties = {
+				        neutrality = {
+				            popularity = 0
+				        }
+				        fascism = {
+				            popularity = 0
+				        }
+				        democratic = {
+				            popularity = 0
+				        }
+				        communism = {
+				            popularity = 100
+				        }
+				    }
+				    ruling_party = communism last_election = "1911.7.1"
+				    election_frequency = 48 elections_allowed = no
+				}
+			}
+			RUS = {
+				kill_country_leader = yes
+				create_country_leader={ name = "Josef Stalin" desc=SOV_josef_stalin_DESC picture="gfx/leaders/SOV_josef_stalin.dds" expire="1935.1.1" ideology=stalinism traits={  } }
+				set_politics = {
+				    parties = {
+				        neutrality = {
+				            popularity = 0
+				        }
+				        fascism = {
+				            popularity = 0
+				        }
+				        democratic = {
+				            popularity = 0
+				        }
+				        communism = {
+				            popularity = 100
+				        }
+				    }
+				    ruling_party = communism last_election = "1911.7.1"
+				    election_frequency = 48 elections_allowed = no
+				}
+			}
+		}
+	}
+
+	option = {
+		name = interwar_news.4.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________
+
+# Revolution in Egypt
+#____________________________________________________________
+news_event = {
+	id = interwar_news.5
+	title = interwar_news.5.t
+	desc = interwar_news.5.d
+
+	picture = EVENT_hoi4tgw_albanian_revolt # TEMP 0.1.6
+
+	is_triggered_only = yes
+	major = yes
+
+	trigger = {
+		date > 1919.1.1
+		has_global_flag = kis_treaty_of_versailles
+		ENG = { has_war = no }
+		NOT={
+			country_exists=EGY
+			has_global_flag = interwar_revolution_egypt
+		}
+		ENG = { 
+			controls_state = 551 
+		}
+	}
+
+	immediate = {
+		set_global_flag = interwar_revolution_egypt
+		hidden_effect = {
+			EGY = {
+				transfer_state = 446
+				transfer_state = 447
+			}
+			ENG = {
+				end_puppet = EGY
+				remove_from_faction = EGY
+				declare_war_on={
+					target=EGY
+					type = annex_everything
+				}
+			}
+		}
+	}
+
+	option = {
+		name = interwar_news.5.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________
+
+# Polish–Soviet War
+#____________________________________________________________
+news_event = {
+	id = interwar_news.6
+	title = interwar_news.6.t
+	desc = interwar_news.6.d
+
+	picture = EVENT_hoi4tgw_polish_soviet_war # TEMP 0.1.6
+
+	is_triggered_only = yes
+	major = yes
+
+	trigger = {
+		date > 1919.2.2
+		has_global_flag = kis_treaty_of_versailles
+		SOV = { has_war = no }
+		country_exists=POL
+		country_exists=SOV
+
+		NOT={
+			has_global_flag = interwar_polish_soviet_war
+		}
+	}
+
+	immediate = {
+		set_global_flag = interwar_polish_soviet_war
+		hidden_effect = {
+
+			SOV={
+				puppet = UKR
+
+				declare_war_on={
+						target=POL
+						type = annex_everything
+				}
+			}
+			POL={
+				add_manpower = 250000
+			}
+
+		}
+	}
+
+	option = {
+		name = interwar_news.6.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________
+
+# Second Spanish Republic
+#____________________________________________________________
+news_event = {
+	id = interwar_news.7
+	title = interwar_news.7.t
+	desc = interwar_news.7.d
+
+	picture = EVENT_hoi4tgw_second_spanish_republic
+
+	major = yes
+
+	trigger = {
+		date > 1931.4.14
+		NOT = { has_global_flag = interwar_second_spanish_republic }
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	immediate = {
+		set_global_flag = interwar_second_spanish_republic
+		hidden_effect = {
+			SPR = {
+				kill_country_leader = yes
+
+				create_country_leader = {
+					name = "Niceto Alcalá-Zamora"
+					desc = "POLITICS_Niceto_DESC"
+					picture = "gfx/hoi4tgw_portraits/SPR/country_leaders/SPR_niceto_alcala-zamora.dds"
+					expire = "1965.1.1"
+					ideology = marxism
+					traits = { }
+				}
+				
+				set_politics = {
+				    parties = {
+				        neutrality = {
+				            popularity = 20
+				        }
+				        fascism = {
+				            popularity = 2
+				        }
+				        democratic = {
+				            popularity = 8
+				        }
+				        communism = {
+				            popularity = 70
+				        }
+				    }
+				    ruling_party = communism last_election = "1931.4.14"
+				    election_frequency = 48 
+				    elections_allowed = yes
+				}
+			}
+		}
+	}
+
+	option = {
+		name = interwar_news.7.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________

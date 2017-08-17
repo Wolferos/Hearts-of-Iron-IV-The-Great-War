@@ -1,0 +1,329 @@
+﻿add_namespace = ww1_usa
+
+news_event = {
+	title=ww1_usa.2.t#Organization of American States
+	desc=ww1_usa.2.d#At the Fourth International Conference of American States (Buenos Aires, 1910), the name of the organization was changed to the 'Union of American Republics' and the Bureau became the 'Pan American Union'. The Pan American Union (building) was constructed in 1910, on Constitution Avenue, Northwest, Washington, D.C.
+	id=ww1_usa.2
+	picture=ww1_usa_2
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=1
+		}
+	trigger={
+		tag=USA
+		date>1910.8.1
+		NOT={
+			has_country_flag=panamerican
+			}
+		}
+	option={
+		name=ww1_usa.2.a
+		ai_chance={
+			factor=100
+			}
+		add_political_power=50
+		add_opinion_modifier={
+			target=ENG
+			modifier=small_increase
+			}
+		add_opinion_modifier={
+			target=FRA
+			modifier=small_increase
+			}
+		add_opinion_modifier={
+			target=CAN
+			modifier=small_increase
+			}
+		add_opinion_modifier={
+			target=MEX
+			modifier=small_increase
+			}
+		USA={
+			give_guarantee=PAR
+			give_guarantee=URG
+			give_guarantee=ARG
+			give_guarantee=CHL
+			give_guarantee=BRA
+			give_guarantee=BOL
+			give_guarantee=PRU
+			give_guarantee=VEN
+			give_guarantee=COL
+			give_guarantee=PAN
+			give_guarantee=COS
+			give_guarantee=NIC
+			give_guarantee=HON
+			give_guarantee=ELS
+			give_guarantee=GUA
+			set_country_flag=panamerican
+		}
+	}
+}
+
+# Woodrow Wilson new President of USA
+#____________________________________________________________
+news_event = {
+    id = ww1_usa.5
+    title = ww1_usa.5.t
+    desc = ww1_usa.5.d
+    picture = ww1_usa_6
+
+    major = yes
+
+    mean_time_to_happen = {
+        days = 0
+    }
+
+    trigger = {
+        date > 1913.3.3
+        USA = {
+	        has_government = democratic
+	        not = {
+	            has_country_flag = new_nationalism
+	        }
+        }
+    }
+
+    immediate = {
+    	hidden_effect = {
+	    	USA = {
+	    		retire_country_leader = yes
+		        create_country_leader = {
+		            name = "Woodrow Wilson"
+		            desc = USA_woodrow_wilson_DESC 
+		            picture = "gfx/leaders/USA_woodrow_wilson.dds"
+		            expire = "1935.1.1"
+		            ideology = liberalism traits = {}
+		        }
+		        add_political_power = -200
+		        set_country_flag = new_nationalism
+	    	}
+    	}
+    }
+    
+    option = {
+        name = ww1_usa.5.a
+        
+    }
+}
+#____________________________________________________________
+
+news_event = {
+	title=ww1_usa.18.t #US Declaration of Neutrality
+	desc=ww1_usa.18.d #When the war began the United States proclaimed a policy of strict neutrality—'in thought and deed', as President Woodrow Wilson put it. His goal was to broker a peace and he sent his top aide Colonel House on repeated missions to the belligerents, but they were so confident of victory that the peace was ignored.
+	id=ww1_usa.18
+	picture=ww1_usa_18NULL
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=1
+		}
+	trigger={
+		tag=USA
+		has_war=no
+		GER={
+			has_war_with=ENG
+			}
+		USA={
+			NOT={
+				has_country_flag=neutr
+				}
+			}
+		}
+	option={
+		name=ww1_usa.18.a
+		ai_chance={
+			factor=100
+			}
+		USA={
+			add_ideas=neutrality_idea
+			}
+		USA={
+			set_country_flag=neutr
+			}
+	}
+}
+
+
+news_event = {
+	title=ww1_usa.30.t #Eighteenth Amendment to the United States Constitution
+	desc=ww1_usa.30.d #Since the earliest days of the colonial period, the issue of alcoholic beverages has been a hotly debated topic in what would become the United States. The religious roots of several of the thirteen colonies provided for a strong belief in the sinful nature of intoxicating liquors, and a variety of temperance movements made attempts over the nation's history to bring an end to what they often viewed as the social rot of alcoholism, which they frequently tied to numerous other social ills, with such thoughts being especially fervent amongst women's organizations that were often the subject of drunken attacks by their spouses. The issue has evolved, and after numerous state bans and repeals, the rise of major national groups like the Women's Christian Temperance Union and the Anti-Saloon league, the time has come for the Congress of the United States to debate a proposed 18th Amendment to the United States Constitution, which would ban the manufacture, sale, or transportation of intoxicating liqours within, into, or out of the United States and its territories. Both the proposed ban and its opponents have strong bipartisan support, and the opinions of our national leader would go far towards swinging support in one direction or another. 
+	id=ww1_usa.30
+	picture=ww1_usa_30
+	fire_only_once=no
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=1461 #4 years
+		modifier = {
+			factor = 0.001
+			NOT={USA={has_idea=prohibition_rejected}}
+		}
+	}
+		
+	trigger = {
+		tag=USA
+        date > 1917.12.18
+        USA = {
+	        has_government = democratic
+	        not = {
+	            has_country_flag = prohibition_repealed
+	        }
+			not = {
+	            has_idea = prohibition_accepted
+	        }
+        }
+    }
+	
+	option = {
+        name = ww1_usa.30.a #Rid us of the scourge of alcohol!
+		ai_chance={
+			factor=100
+		}
+		USA = {
+			if={ 
+				limit={ 
+					has_idea=prohibition_rejected
+				} 
+				remove_ideas=prohibition_rejected
+			}
+		}
+        USA={
+			add_ideas=prohibition_accepted
+			}
+		USA={
+			add_political_power = -100
+		}
+		USA={ #Shut down some alcohol distilleries
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+	}
+	
+	option = {
+        name = ww1_usa.30.b #This assault on American liberty is unacceptable!
+        USA={
+			add_ideas=prohibition_rejected
+			}
+		USA={
+			add_political_power = -400
+		}
+    }
+}
+
+news_event = {
+	title=ww1_usa.31.t #Bootleggers
+	desc=ww1_usa.31.d #Prohibition's passage in no way lessened the American public's demand for alcohol, and since that demand can no longer be legally filled, a variety of criminal organizations have stepped into the void. The Italian-American mafia, in particular, has become well-known for its involvement in tbe alcohol trade, as well as its role in the violence that is taking place between groups of gangsters.
+	id=ww1_usa.31
+	picture=ww1_usa_31
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=1000
+		}
+		
+	trigger = {
+		tag=USA
+        USA = {
+	        has_idea = prohibition_accepted
+        }
+    }
+	
+	option = {
+        name = ww1_usa.31.a #These hoodlums and their violence have no place in a civilized society
+		USA = {
+			USA={
+				add_ideas=bootleggers
+			}
+		}
+	}
+	
+#	option = {
+#	    name = ww1_usa.XX.b#
+#   	USA={
+#			
+#		}
+#    }
+}
+
+news_event = {
+	title=ww1_usa.32.t #Repeal of Prohibition
+	desc=ww1_usa.32.d #Prohibition has been a disaster for its proponents. Alcohol is still being widely consumed, criminal organizations have grown wealthy and powerful supplying it, and the violence these gangasters are doing daily across America makes us question whether it is worth keeping prohibition in place. There is political momentum towards a new constitutional amendment to repeal Prohibition. Should we give it our support?
+	id=ww1_usa.32
+	picture=ww1_usa_32
+	fire_only_once=no
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=365
+		}
+		
+	trigger = {
+		date > 1930.1.1
+		tag=USA
+        USA = {
+	        has_idea = bootleggers
+	        has_idea = prohibition_accepted
+        }
+    }
+	
+	option = {
+		ai_chance={
+			factor=100
+		}
+        name = ww1_usa.32.a #Repeal!
+		USA = {
+			USA={
+				remove_ideas = prohibition_accepted
+			}
+			USA={
+				remove_ideas = bootleggers
+			}
+			USA={
+				set_country_flag = prohibition_repealed
+			}
+		}
+	}
+	
+	option = {
+	    name = ww1_usa.32.b #Stay the course.
+		USA={
+			#Maybe do something here, but I think keeping the already major negatives is enough
+		}
+    }
+}

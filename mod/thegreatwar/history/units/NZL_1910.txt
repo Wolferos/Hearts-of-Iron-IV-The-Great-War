@@ -1,0 +1,76 @@
+﻿
+###################################################################
+
+division_template = {
+	name = "Infantry Division"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Infantry Brigade"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 0 }
+	}
+	priority = 0
+}
+
+division_template = {
+	name = "Cavalry Division"
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+}
+
+###################################################################
+
+units = {
+	division= { 
+			name = "1st NZ Infantry Division"
+			location=1814 # Wellington
+			division_template="Infantry Division"
+			start_experience_factor=0.1
+			}
+	
+	
+	division= { 
+			name = "North Island Garrison"
+			location = 10609 # Napier
+			division_template="Infantry Brigade"
+			start_experience_factor=0.05
+			# start_equipment_factor = 0.3 
+			# start_manpower_factor = 0.3
+			}
+	
+	
+	division= { 
+			name = "South Island Garrison"
+			location=2211 # Dunedin
+			division_template="Infantry Brigade"
+			start_experience_factor=0.05
+			# start_equipment_factor = 0.3 
+			# start_manpower_factor = 0.3
+			}
+	 navy = {
+		name = "Royal New Zealand Navy"
+		location=1814 # Wellington
+		base=1814 # Wellington
+ship = { name = "HMNZS Psyche" definition = light_cruiser equipment = { light_cruiser_1890 = { amount = 1 owner = NZL } } }#KiS#version_name = "Pelorus Class" } } }
+ship = { name = "HMNZS Pyramus" definition = light_cruiser equipment = { light_cruiser_1890 = { amount = 1 owner = NZL } } }#KiS#version_name = "Pelorus Class" } } }
+ship = { name = "HMNZS Philomel" definition = light_cruiser equipment = { light_cruiser_1890 = { amount = 1 owner = NZL } } }#KiS#version_name = "Pearl Class" } } }
+
+		}
+}
+air_wings = { 
+	}
+instant_effect = {
+add_equipment_production = { equipment = { type = infantry_equipment_0 creator = "NZL" } requested_factories = 1 progress = 0.1 efficiency = 50}
+	}

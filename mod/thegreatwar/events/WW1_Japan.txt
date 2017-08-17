@@ -1,0 +1,446 @@
+﻿add_namespace = ww1_japan
+ 
+ country_event = {
+ 	id = ww1_japan.700
+ 	title = ww1_japan.100.t
+ 	desc = ww1_japan.100.d
+ 	picture = EVENT_hoi4tgw_korea_annexation
+ 
+ 	is_triggered_only = yes
+ 	
+ 	option = {
+ 		name =  ww1_japan.700.a
+ 		ai_chance = {
+ 			factor = 100
+ 		}
+ 		JAP = {
+ 			annex_country = {
+ 				target = KOR
+ 				transfer_troops = yes
+ 		}
+ 		}
+ 	}	
+ 	option = {
+ 		name = ww1_japan.700.b
+ 		ai_chance = { factor = 0 }
+ 		JAP = {
+ 			end_puppet = KOR
+ 			declare_war_on = {
+ 				target = KOR
+ 				type = annex_everything
+ 			}
+ 		}
+ 	}
+ }
+ 
+country_event = {
+	title=ww1_japan.1.t#Ultimatum on Germany
+	desc=ww1_japan.1.d#With the recent war that sparked between Germany and our British allies, we can negotiate our neutrality with the latter. The price for neutrality is all Germany's Pacific possessions as well as Qingdao.
+	id=ww1_japan.1
+	picture=ww1_japan_1
+	fire_only_once=yes
+	is_triggered_only=yes
+	option={
+		name=ww1_japan.1.a
+		ai_chance={
+			factor=95
+			}
+		GER={
+			country_event=ww1_japan.14
+			}
+		}
+	option={
+		name=ww1_japan.1.b
+		ai_chance={
+			factor=5
+			}
+		set_global_flag=JAP_ultimatum_extended
+		GER={
+			country_event=ww1_japan.14
+			}
+		}
+	}
+country_event = {
+	title=ww1_japan.2.t#Germany did not answer
+	desc=ww1_japan.2.d#Germany did not care for our ultimatum. Our diplomats did not receive any answer.
+	id=ww1_japan.2
+	picture=ww1_japan_2
+	fire_only_once=yes
+	is_triggered_only=yes
+	trigger={
+		tag=JAP
+		}
+	option={
+		name=ww1_japan.2.a
+		ai_chance={
+			factor=99
+			}
+		ENG={
+			add_to_faction=ROOT
+			}
+		every_country={
+			limit={
+				tag=THIS
+				has_global_flag=JAP_ultimatum_extended
+				}
+			clr_global_flag=JAP_ultimatum_extended
+			}
+		}
+	option={
+		name=ww1_japan.2.b
+		ai_chance={
+			factor=1
+			}
+		add_political_power=-5
+		every_country={
+			limit={
+				tag=THIS
+				has_global_flag=JAP_ultimatum_extended
+				}
+			clr_global_flag=JAP_ultimatum_extended
+			}
+		}
+	}
+country_event = {
+	title=ww1_japan.3.t#Germany accepts our conditions
+	desc=ww1_japan.3.d#Surprisingly, Germany accepted our conditions. It is now up to us to honor our promise and stay neutral, which will displease the United Kingdom, or not.
+	id=ww1_japan.3
+	picture=ww1_japan_3
+	fire_only_once=yes
+	is_triggered_only=yes
+	trigger={
+		tag=JAP
+		}
+	option={
+		name=ww1_japan.3.a
+		ai_chance={
+			factor=99
+			}
+		clr_global_flag=JAP_ultimatum_extended
+		add_opinion_modifier={
+			target=ENG
+			modifier=medium_decrease
+			}
+		add_ideas=neutrality_idea
+		}
+	option={
+		name=ww1_japan.3.b
+		ai_chance={
+			factor=1
+			}
+		add_political_power=-5
+		ENG={
+			add_to_faction=ROOT
+			}
+		clr_global_flag=JAP_ultimatum_extended
+		}
+	option={
+		name=ww1_japan.3.c
+		ai_chance={
+			factor=0
+			}
+		add_political_power=-5
+		GER={
+			add_to_faction=ROOT
+			}
+		clr_global_flag=JAP_ultimatum_extended
+		}
+	}
+country_event = {
+	title=ww1_japan.4.t#Japanese Ultimatum
+	desc=ww1_japan.4.d#Japan, allied to United Kingdom, proposes to stay neutral in exchange of all our Pacific and Chinese possessions.
+	id=ww1_japan.4
+	picture=ww1_japan_4
+	fire_only_once=yes
+	is_triggered_only=yes
+	trigger={
+		tag=GER
+		}
+	option={
+		name=ww1_japan.4.a
+		ai_chance={
+			factor=75
+			}
+		JAP={
+			country_event=ww1_japan.9
+			}
+		}
+	option={
+		name=ww1_japan.4.b
+		ai_chance={
+			factor=25
+			}
+		JAP={
+			country_event=ww1_japan.10
+			}
+		add_political_power=-5
+		every_state={
+			limit={
+				is_owned_by=GER
+				is_claimed_by=JAP
+				}
+			JAP={
+				transfer_state=PREV
+				}
+			}
+		every_state={
+			limit={
+				is_owned_by=GER
+				is_claimed_by=AST
+				}
+			JAP={
+				transfer_state=PREV
+				}
+			}
+		every_country={
+			limit={
+				tag=GER
+				has_global_flag=JAP_ultimatum_extended
+				}
+			}
+		}
+	}
+country_event = {
+	title=ww1_japan.5.t#Emperor Meiji dies
+	desc=ww1_japan.5.d#On 30 June 1912 Emperor Meiji died and Yoshihito became Emperor.
+	id=ww1_japan.5
+	picture=ww1_japan_5
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=1
+		}
+	trigger={
+		tag=JAP
+		has_government=democratic
+		not={
+			has_country_flag=king_death_meiji
+			}
+		date>1912.6.30
+		}
+	option={
+		name=ww1_japan.5.a
+		ai_chance={
+			factor=100
+			}
+		kill_country_leader=yes
+		create_country_leader={
+			name="Yoshihito"
+			desc=JAP_yoshihito_DESC
+			picture="gfx/leaders/JAP_yoshihito.dds"
+			expire="1935.1.1"
+			ideology=liberalism
+			traits={
+				}
+			}
+		set_country_flag=king_death_meiji
+		}
+	}
+
+
+country_event = {
+	title=ww1_japan.6.t#Japan–Korea Annexation Treaty
+	desc=ww1_japan.6.d#The Japan–Korea Treaty, of 1910 also known as the, Japan–Korea Annexation Treaty was, made by representatives of the Empire, of Japan and the Korean Empire, in 1910. Negotiations were concluded, on August 20 1910. The, document was signed on August 22 1910
+	id=ww1_japan.6
+	picture=ww1_japan_6
+	is_triggered_only=yes
+	option={
+		name=ww1_japan.6.a
+		ai_chance={
+			factor=100
+			}
+		JAP={
+			annex_country={
+				target=KOR
+				transfer_troops=yes
+				}
+			}
+		}
+	}
+
+# Japan–Korea Annexation Treaty
+#____________________________________________________________
+# Korea Empire's choice
+country_event = {
+	id = ww1_japan.90
+	title = ww1_japan.100.t
+	desc = ww1_japan.100.d
+	picture = EVENT_hoi4tgw_korea_annexation
+
+	is_triggered_only = yes
+
+	option = {
+		name =  "We have no other choice"
+		ai_chance = {
+			factor = 100
+		}
+		JAP = {
+			annex_country = {
+				target = KOR
+				transfer_troops = yes
+			}
+		}
+	}
+
+	option = {
+		name = "Enough! We Must Free Ourselves!"
+		ai_chance = { factor = 0 }
+		JAP = {
+			end_puppet = KOR
+			declare_war_on = {
+				target = KOR
+				type = annex_everything
+			}
+		}
+	}
+}
+
+news_event = {
+	id=ww1_japan.100
+	title=ww1_japan.100.t
+	desc=ww1_japan.100.d
+
+	picture=EVENT_hoi4tgw_korea_annexation
+
+	major = yes
+
+	trigger = {
+		JAP = { has_completed_focus = JAP_ww1_Japan_Korea_Treaty }
+		NOT = { has_global_flag = kis_japankorea_annexation }
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kis_japankorea_annexation
+
+	}
+
+	option = {
+		name = ww1_japan.100.a
+		ai_chance = {
+			factor = 100
+		}
+		trigger = {
+			NOT = {
+				TAG = JAP
+			}
+		}
+	}
+	option = {
+		name = ww1_japan.100.b
+		ai_chance = {
+			factor = 100
+		}
+		trigger = {
+			TAG = JAP
+		}
+	}
+}
+#____________________________________________________________
+
+
+
+
+# Fascist Take Power
+#____________________________________________________________
+country_event = {
+	id = ww1_japan.101
+	title = "Japan Nationalism"
+	desc = "Japan is the Center of the World, with its ruler, the Emperor, a divine being, who derives his divinity from ancestral descent from the great Amaterasu-Omikami, the Goddess of the Sun herself."
+	picture = GFX_report_event_fascist_gathering
+
+	fire_only_once=yes
+	is_triggered_only=yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+
+	option = {
+		name = "The Emperor is now a Puppet..."
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.51
+		}
+		set_politics = {
+			ruling_party = fascism
+			elections_allowed = no
+		}
+		add_timed_idea = { idea = reign_of_terror days = 730 }
+	}
+}
+#____________________________________________________________
+
+
+
+# Democrat Take Power
+#____________________________________________________________
+country_event = {
+	id = ww1_japan.102
+	title = "Taisho Democracy"
+	desc = "The Taisho Era is now called Taisho Democracy as Japan enjoyed a climate of political liberalism unforeseen after decades of Authoritarianism."
+	picture = GFX_report_event_gathering_protest
+
+	fire_only_once=yes
+	is_triggered_only=yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "We are Free!"
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.51
+		}
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes
+		}
+	}
+}
+#____________________________________________________________
+
+#####Emperor Meji Dies###
+news_event = {
+    id = ww1_japan.103
+    title = ww1_japan.103.t
+    desc = ww1_japan.103.d
+    picture = EVENT_hoi4tgw_meiji_dead
+
+    major = yes
+
+    mean_time_to_happen = {
+        days = 0
+    }
+    trigger = {
+        date > 1912.7.29
+        JAP = {
+	        has_government = neutrality
+	        not = {
+	            has_country_flag = Meiji_dead
+	        }
+        }
+    }
+    immediate = {
+        hidden_effect = {
+        	JAP = {
+        		kill_country_leader = yes
+						create_country_leader={ name = "Emperor Taishō " desc=JAP_emperor_taisho_DESC picture="gfx/leaders/JAP_emperor_taisho.dds" expire="1940.1.1" ideology=autocracy traits={  } }
+
+    	        set_country_flag = Meiji_dead
+        	}
+        }
+    }
+    option = {
+        name = ww1_japan.103.a
+        ai_chance = {
+            factor = 100
+        }
+    }
+}

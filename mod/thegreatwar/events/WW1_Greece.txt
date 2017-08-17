@@ -1,0 +1,51 @@
+﻿add_namespace = ww1_greece
+country_event = {
+	title=ww1_greece.1.t#George I Assasinated!
+	desc=ww1_greece.1.d#While out on an afternoon walk near the White Tower on 18 March 1913, he was shot at close range in the back by Alexandros Schinas, who was said to belong to a Socialist organization. Constantine I is now King
+	id=ww1_greece.1
+	picture=ww1_greece_1
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen={
+		days=1
+		}
+	trigger={
+		tag=GRE
+		has_government=neutrality
+		not={
+			has_country_flag=george_died
+			}
+		date>1913.3.13
+		}
+	option={
+		name=ww1_greece.1.a
+		ai_chance={
+			factor=100
+			}
+		set_country_flag=george_died
+		kill_country_leader=yes
+		create_country_leader={
+			name="Constantine I"
+			desc=GRE_constantine_i_DESC
+			picture="gfx/leaders/GRE_constantine_i.dds"
+			expire="1935.1.1"
+			ideology=despotism
+			traits={
+				}
+			}
+		}
+	}
+# France Sends Troops - Armée d'Orient
+#____________________________________________________________
+country_event = {
+	id = ww1_greece.5
+	title = "France sends l'Armée d'Orient"
+	desc = "TODO - France sends us an army to help us fight"
+
+	is_triggered_only=yes
+
+	option = {
+		name = "This Army will help us!"
+	}
+}
+#____________________________________________________________

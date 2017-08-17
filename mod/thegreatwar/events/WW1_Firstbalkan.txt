@@ -1,0 +1,513 @@
+﻿add_namespace = ww1_firstbalkan
+
+add_namespace = ww1_firstbalkan
+
+# BUL propose SER to form the Balkan League
+#____________________________________________________________
+country_event = {
+	id = ww1_firstbalkan.1
+	title = ww1_firstbalkan.1.t
+	desc = ww1_firstbalkan.1.d
+	#picture = ww1_firstbalkan_1
+
+	is_triggered_only = yes
+	
+	# SER Yes
+	option = {
+		name = ww1_firstbalkan.1.a
+		ai_chance = { factor = 100 }
+		SER = {
+			country_event = { id = ww1_firstbalkan.2 days = 1 }
+		}
+	}
+
+	# SER No
+	option = {
+		name = ww1_firstbalkan.1.b
+		ai_chance = { factor = 0 }
+	}
+}
+#____________________________________________________________
+
+# SER forms the Balkan League and sends invitation to others
+#____________________________________________________________
+country_event = {
+	id = ww1_firstbalkan.2
+	title = ww1_firstbalkan.2.t
+	desc = ww1_firstbalkan.2.d
+	#picture = ww1_firstbalkan_2
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	# SER Yes
+	option = {
+		name = ww1_firstbalkan.2.a
+		ai_chance = { factor = 100 }
+		SER = {
+			set_rule = {
+	            can_create_factions = yes
+	        }
+	        create_faction = "balkan_league"
+
+	        # Bulgaria
+            BUL = {
+                country_event = ww1_firstbalkan.3
+            }
+
+	        # Greece
+            GRE = {
+                country_event = ww1_firstbalkan.3
+            }
+
+	        # Montenegro
+            MTN = {
+                country_event = ww1_firstbalkan.3
+            }
+		}
+		hidden_effect = {
+			news_event = { days = 1 id = kis_news.108 }
+		}
+	}
+}
+#____________________________________________________________
+
+# Invitation to join the Balkan League sent by SER
+#____________________________________________________________
+country_event = {
+	id = ww1_firstbalkan.3
+	title = ww1_firstbalkan.3.t
+	desc = ww1_firstbalkan.3.d
+	#picture = ww1_firstbalkan_3
+
+	is_triggered_only = yes
+	
+	# ROOT Yes
+	option = {
+		name = ww1_firstbalkan.3.a
+		ai_chance = { factor = 100 }
+		SER = {
+			add_to_faction = ROOT
+		}
+		hidden_effect = {
+			ROOT = {
+				add_opinion_modifier = {
+					target = SER
+					modifier = HOI4TGW_Opinion_improved_diplomatic_relations
+				}
+			}
+			SER = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HOI4TGW_Opinion_improved_diplomatic_relations
+				}
+			}
+		}
+	}
+
+	# ROOT No
+	option = {
+		name = ww1_firstbalkan.3.b
+		ai_chance = { factor = 0 }
+	}
+}
+#____________________________________________________________
+
+# Declaration of War - Triggered by SER
+#____________________________________________________________
+country_event = {
+	id = ww1_firstbalkan.4
+	title = ww1_firstbalkan.4.t
+	desc = ww1_firstbalkan.4.d
+	#picture = ww1_firstbalkan_4
+
+	is_triggered_only = yes
+	
+	# SER Yes
+	option = {
+		name = ww1_firstbalkan.4.a
+		ai_chance = { factor = 100 }
+		# Serbia
+		SER = {
+			declare_war_on = {
+			    type = take_state_focus 
+			    target = TUR 
+			    generator = {
+			        106 757 758
+			    }
+			}
+		}
+
+		hidden_effect = {
+			SER = {
+				add_named_threat = {
+					threat = 10
+					name = "War in the Balkans"
+				}
+			}
+			set_global_flag = kis_firstbalkan_war
+			news_event = { days = 1 id = ww1_firstbalkan.100 }
+
+			44 = { set_border_war = no }
+
+			SER = {
+				add_manpower = 15000
+			}			
+			BUL = {
+				add_manpower = 15000
+			}
+			GRE = {
+				add_manpower = 15000
+			}
+			MTN = {
+				add_manpower = 3500
+			}
+		}
+
+		# Bulgaria
+		if = {
+			limit = {
+				OR = {
+					BUL = {
+						is_in_faction_with = SER
+						is_in_faction_with = GRE
+						is_in_faction_with = MTN
+					}
+				}
+			}
+			BUL = {
+				create_wargoal = {
+		            type = take_state_focus 
+		            target = TUR 
+		            generator = {
+		                757 754 755 760
+		            }
+		        }
+		        add_to_war = {
+		            targeted_alliance = SER enemy = TUR
+		        }
+			}
+		}
+
+		# Greece
+		if = {
+			limit = {
+				OR = {
+					GRE = {
+						is_in_faction_with = SER
+						is_in_faction_with = BUL
+						is_in_faction_with = MTN
+					}
+				}
+			}
+			GRE = {
+				create_wargoal = {
+		            type = take_state_focus 
+		            target = TUR 
+		            generator = {
+		                731 756 184
+		            }
+		        }
+		        add_to_war = {
+		            targeted_alliance = SER enemy = TUR
+		        }
+		    }
+		}
+
+		# Montenegro
+		if = {
+			limit = {
+				OR = {
+					MTN = {
+						is_in_faction_with = SER
+						is_in_faction_with = BUL
+						is_in_faction_with = GRE
+					}
+				}
+			}
+			MTN = {
+				create_wargoal = {
+		            type = take_state_focus 
+		            target = TUR 
+		            generator = {
+		                759
+		            }
+		        }
+		        add_to_war = {
+		            targeted_alliance = SER enemy = TUR
+		        }
+			}
+		}
+
+	}
+}
+#____________________________________________________________
+
+# Ottoman Offer Peace to Serbia
+#____________________________________________________________
+country_event = {
+	id = ww1_firstbalkan.5
+	title = ww1_firstbalkan.5.t
+	desc = ww1_firstbalkan.5.d
+	#picture = ww1_firstbalkan_5
+
+	fire_only_once = yes
+
+	trigger = {
+		date < 1915.5.5
+
+		tag = TUR
+
+
+		NOT = {
+			has_global_flag = kis_war
+			has_global_flag = hoi4tgw_SchlieffenSecurity
+			has_global_flag = kis_firstbalkanwar_victory
+		}
+		TUR = {
+			has_war_with = SER
+			NOT = {
+				controls_state = 44
+				controls_state = 106
+				controls_state = 184
+				controls_state = 731
+				controls_state = 758
+				controls_state = 766
+				controls_state = 759
+				controls_state = 757
+				controls_state = 760
+				controls_state = 761
+				controls_state = 762
+			}
+		}
+	}
+	
+	# ROOT Yes
+	option = {
+		name = ww1_firstbalkan.5.a
+		ai_chance = { factor = 100 }
+		SER = {
+			country_event = { days = 1 id = ww1_firstbalkan.6 }
+		}
+		hidden_effect = {
+			SER = {
+				country_event = { days = 1 id = ww1_firstbalkan.6 }
+			}
+		} 
+		effect_tooltip = {
+			SER = { white_peace = TUR }
+			BUL = { white_peace = TUR }
+			GRE = { white_peace = TUR }
+			MTN = { white_peace = TUR }
+			SER = {
+				transfer_state = 106
+				transfer_state = 760
+			}
+			GRE = {
+				transfer_state = 731
+				transfer_state = 758
+				transfer_state = 764
+			}
+			BUL = {
+				transfer_state = 184
+				transfer_state = 756
+				transfer_state = 757
+				transfer_state = 759
+				transfer_state = 762
+			}
+			MTN = {
+				transfer_state = 761
+			}
+			ALB = {
+				transfer_state = 44
+				transfer_state = 766
+			}
+		}
+	}
+}
+#____________________________________________________________
+
+# Serbia receive Peace Offer from Ottoman
+#____________________________________________________________
+country_event = {
+	id = ww1_firstbalkan.6
+	title = ww1_firstbalkan.6.t
+	desc = ww1_firstbalkan.6.d
+	#picture = ww1_firstbalkan_6
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	# SER Yes
+	option = {
+		name = ww1_firstbalkan.6.a
+		ai_chance = { factor = 100 }
+
+		SER = { white_peace = TUR }
+		BUL = { white_peace = TUR }
+		GRE = { white_peace = TUR }
+		MTN = { white_peace = TUR }
+
+		SER = {
+			transfer_state = 106
+			transfer_state = 760
+			add_state_core = 106
+			add_state_core = 760
+
+			diplomatic_relation = {
+				country = TUR
+				relation = non_aggression_pact
+			}
+		}
+		GRE = {
+			transfer_state = 731
+			transfer_state = 758
+			transfer_state = 764			
+			add_state_core = 731
+			add_state_core = 758
+			add_state_core = 764
+			diplomatic_relation = {
+				country = TUR
+				relation = non_aggression_pact
+			}
+		}
+		BUL = {
+			transfer_state = 184
+			transfer_state = 756
+			transfer_state = 757
+			transfer_state = 762
+			transfer_state = 759			
+			add_state_core = 184
+			add_state_core = 756
+			add_state_core = 757
+			add_state_core = 762
+			add_state_core = 759
+			diplomatic_relation = {
+				country = TUR
+				relation = non_aggression_pact
+			}
+		}
+		MTN = {
+			transfer_state = 761
+			diplomatic_relation = {
+				country = TUR
+				relation = non_aggression_pact
+			}
+		}
+		ALB = {
+			transfer_state = 44
+			transfer_state = 766
+			add_state_core = 44
+			add_state_core = 766
+			diplomatic_relation = {
+				country = TUR
+				relation = non_aggression_pact
+			}
+		}
+
+		hidden_effect = {
+			set_global_flag = kis_firstbalkanwar_victory
+			news_event = { days = 1 id = ww1_firstbalkan.101 }
+			# Diplomatics relations changed to avoid AI to do stupid stuff
+			GRE = {
+				diplomatic_relation = {
+					country = TUR
+					relation = non_aggression_pact
+				}
+				add_opinion_modifier = { 
+					target = TUR 
+					modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+				}
+			}
+			BUL = {
+				diplomatic_relation = {
+					country = TUR
+					relation = non_aggression_pact
+				}
+				add_opinion_modifier = { 
+					target = TUR 
+					modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+				}
+			}
+			MTN = {
+				diplomatic_relation = {
+					country = TUR
+					relation = non_aggression_pact
+				}
+				add_opinion_modifier = { 
+					target = TUR 
+					modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+				}
+			}
+			ALB = {
+				diplomatic_relation = {
+					country = TUR
+					relation = non_aggression_pact
+				}
+			}
+			SER = {
+				diplomatic_relation = {
+					country = TUR
+					relation = non_aggression_pact
+				}
+				add_opinion_modifier = { 
+					target = TUR 
+					modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+				}
+			}
+			TUR = {
+				add_opinion_modifier = { 
+					target = SER 
+					modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+				}
+				add_opinion_modifier = { 
+					target = BUL 
+					modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+				}
+				add_opinion_modifier = { 
+					target = GRE 
+					modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+				}
+				add_opinion_modifier = { 
+					target = MTN 
+					modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+				}
+			}
+		}
+	}
+}
+#____________________________________________________________
+
+# First Balkan War Starts
+#____________________________________________________________
+news_event = {
+	id = ww1_firstbalkan.100
+	title = ww1_firstbalkan.100.t
+	desc = ww1_firstbalkan.100.d
+	picture = EVENT_hoi4tgw_first_balkan_war
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = ww1_firstbalkan.100.a
+	}
+}
+#____________________________________________________________
+
+# First Balkan War Victory
+#____________________________________________________________
+news_event = {
+	id = ww1_firstbalkan.101
+	title = ww1_firstbalkan.101.t
+	desc = ww1_firstbalkan.101.d
+	picture = EVENT_hoi4tgw_first_balkan_war_end
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = ww1_firstbalkan.101.a
+	}
+}
+#____________________________________________________________

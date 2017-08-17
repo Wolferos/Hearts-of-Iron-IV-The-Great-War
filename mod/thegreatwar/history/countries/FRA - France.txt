@@ -1,0 +1,441 @@
+﻿capital = 16
+
+#-------------------------------------------------------
+#					GENERIC VALUES
+#-------------------------------------------------------
+set_research_slots = 4
+set_national_unity = 0.7
+set_convoys = 300
+
+create_faction = entente # France is now Leader of the Entente | Since Beta 0.2
+
+add_to_faction = FRA
+add_to_faction = RUS
+
+puppet = MOR
+puppet = TUN
+
+# SPECIAL_DLC Together for Victory
+if = { limit = { has_dlc = "Together for Victory" }
+
+	#IF-----------------------------------------
+	set_autonomy = {
+		target = TUN
+		autonomous_state = autonomy_integrated_puppet
+	}
+	#-------------------------------------------
+
+	#ELSE---------------------------------------
+	else = {
+		# WORK IN PROGRESS #
+	}
+	#-------------------------------------------
+}
+
+give_guarantee = BEL # France guaranteed the independence of Belgium - Treaty of London (1839)
+
+#-------------------------------------------------------
+#					POLITICS & ARMY
+#-------------------------------------------------------
+create_country_leader={ name = "Charles Jonnart" desc=FRA_charles_jonnart_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_charles_jonnart.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+create_country_leader={ name = "Gaston Doumergue" desc=FRA_gaston_doumergue_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_gaston_doumergue.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+create_country_leader={ name = "Louis Frossard" desc=FRA_louis_frossard_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_louis_frossard.dds" expire="1935.1.1" ideology=stalinism traits={  } }
+create_country_leader={ name = "Alexandre Millerand" desc=FRA_alexandre_millerand_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_alexandre_millerand.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+create_country_leader={ name = "Georges Clemenceau" desc=FRA_georges_clemenceau_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_georges_clemenceau.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+create_country_leader={ name = "Paul Painlevé" desc=FRA_paul_painleve_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_paul_painleve.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+create_country_leader={ name = "Jules Méline" desc=FRA_jules_meline_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_jules_meline.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+create_country_leader={ name = "Jules Pams" desc=FRA_jules_pams_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_jules_pams.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+create_country_leader={ name = "Paul Doumer" desc=FRA_paul_doumer_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_paul_doumer.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+create_country_leader={ name = "Philippe VIII" desc=FRA_philippe_viii_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_philippe_viii.dds" expire="1935.1.1" ideology=conservatism traits={  } }
+create_country_leader={ name = "Armand Fallières" desc=FRA_armand_fallieres_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_armand_fallieres.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+
+create_field_marshal={
+	name = "Joseph Joffre" id=32007
+	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_joseph_joffre.dds"
+	traits={ offensive_doctrine old_guard }
+	skill=4
+}
+
+create_field_marshal={
+	name = "Joseph Gallieni" id=32019
+	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_joseph_gallieni.dds"
+	traits={ defensive_doctrine old_guard }
+	skill=4
+}
+
+create_field_marshal={
+	name = "Ferdinand Foch" id=32006
+	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_ferdinand_foch.dds"
+	traits={ offensive_doctrine }
+	skill=4
+}
+
+create_corps_commander={
+	name = "Philippe Pétain" id=32009
+	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_philippe_petain.dds"
+	traits={ trickster }
+	skill=3
+}
+
+create_corps_commander={
+	name = "Robert Nivelle" id=32031
+	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_robert_nivelle.dds"
+	traits={ }
+	skill=2
+}
+
+create_corps_commander={
+	name = "Louis Franchet d'Espèrey" id=32003
+	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_louis_franchet_d_esperey.dds"
+	traits={ }
+	skill=3
+}
+
+create_corps_commander={
+	name = "Émile Fayolle" id=32293
+	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_emile_fayolle.dds"
+	traits={ }
+	skill=2
+}
+
+create_corps_commander={
+	name = "Hubert Lyautey" id=32004
+	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_hubert_lyautey.dds"
+	traits={ }
+	skill=2
+}
+
+create_corps_commander={
+	name = "Michel Maunoury" id=32033
+	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_michel_maunoury.dds"
+	traits={ }
+	skill=3
+}
+
+create_navy_leader={
+	name = "Auguste Boué de Lapeyrère" id=32302
+	portrait_path="gfx/hoi4tgw_portraits/FRA/navy_admirals/FRA_de_lapeyrere.dds"
+	traits={ }
+	skill=3
+}
+
+create_navy_leader={
+	name = "Jean Merveilleux du Vignaux" id=32306
+	portrait_path="gfx/hoi4tgw_portraits/FRA/navy_admirals/FRA_du_vignaux.dds"
+	traits={ old_guard }
+	skill=2
+}
+
+create_navy_leader={
+	name = "Lucien Lacaze" id=32329
+	portrait_path="gfx/hoi4tgw_portraits/FRA/navy_admirals/FRA_lucien_lacaze.dds"
+	traits={ }
+	skill=3
+}
+
+create_navy_leader={
+	name = "Pierre-Alexis Ronarc'h" id=32341
+	portrait_path="gfx/hoi4tgw_portraits/FRA/navy_admirals/FRA_ronarc_h.dds"
+	traits={ }
+	skill=3
+}
+
+1910.1.1 = {
+	oob = "FRA_1910"
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+	#Army
+	complete_national_focus = FRA_ww1_army_effort
+	complete_national_focus = FRA_ww1_industrial_effort
+	complete_national_focus = FRA_ww1_naval_effort
+
+	#Diplomatic
+	complete_national_focus = FRA_ww1_diplomatic_effort
+	#-------------------------------------------------------
+
+	set_technology = {
+
+		# Infantry
+		infantry_weapons = 1
+		ww1infantry_weapons1 = 1
+		support_weapons = 1
+		infantry_binoculars = 1
+		infantry_grenade = 1
+		motorised_infantry = 1
+		ww1_ambulance1 = 1
+		tech_mountaineers = 1
+
+		# Support
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		#tech_military_police = 1
+		#tech_maintenance_company = 1
+		#tech_field_hospital = 1
+		#tech_logistics_company = 1
+
+		# Armor
+		gwtank=1 # 1910 Armored Car
+
+		# Artillery
+		light_field_gun1 = 1
+		heavy_field_gun1 = 1
+
+		# Navy
+		ww1_destroyer0 = 1
+		ww1_destroyer1 = 1
+		ww1_light_cruiser0 = 1
+		ww1_light_cruiser1 = 1
+		ww1_battlecruiser0 = 1
+		ww1_battlecruiser0b = 1
+		ww1_battlecruiser1 = 1
+		ww1_battleship0 = 1
+		ww1_battleship1 = 1
+		ww1_submarine1 = 1
+		ww1_coastal_submarine1 = 1
+		transport = 1
+
+		# Air
+		ww1_fighter1 = 1
+		ww1_fighter1b = 1
+		ww1_zeppelin1 = 1
+
+		# Engineering
+		electronic_mechanical_engineering = 1
+		mechanical_computing = 1
+		chemical_research = 1
+		tank_unlocker1 = 1
+		radio = 1
+		supertech1 = 1
+		tankaircraft1 = 1
+		torpedotech1 = 1
+
+		# Industry
+		ww1_tools1 = 1
+		ww1_medicine1 = 1
+		ww1_fortification1 = 1
+	}
+
+	set_politics = {
+	    parties = {
+	        democratic = {
+	            popularity = 85
+	        }
+	        fascism = {
+	            popularity = 2
+	        }
+	        communism = {
+	            popularity = 13
+	        }
+	    }
+	    ruling_party = democratic last_election = "1910.4.30"
+	    election_frequency = 48 elections_allowed = yes
+	}
+
+	add_ideas = {
+		FRA_ww1_Revanchism
+		ww1_Scramble_for_Africa
+		FRA_disjointed_government
+		limited_conscription
+		#Franch_Staff
+	}
+
+
+}
+
+# Raymond Poincaré
+1913.2.18 = {
+	create_country_leader={ name = "Raymond Poincaré" desc=FRA_raymond_poincare_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_raymond_poincare.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+}
+
+
+1914.1.1 = {
+	oob = "FRA_1914"
+
+	add_to_faction = ENG # In 1914, United Kingdom and its Puppets are in the Entente
+	add_to_faction = CAN
+	add_to_faction = AST
+	add_to_faction = NZL
+	add_to_faction = OMA
+	add_to_faction = BHU
+	add_to_faction = NEP
+	add_to_faction = RAJ
+
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+	#Army
+	complete_national_focus = FRA_ww1_army_effort
+	complete_national_focus = FRA_ww1_equipment_effort
+	complete_national_focus = FRA_ww1_artillery_effort_1
+	complete_national_focus = FRA_ww1_doctrine_effort
+	complete_national_focus = FRA_ww1_trenchwarfare
+
+	# Air
+	complete_national_focus = FRA_ww1_aviation_effort
+	complete_national_focus = FRA_ww1_aviation_effort_2
+
+	# Industry
+	complete_national_focus = FRA_ww1_industrial_effort
+	complete_national_focus = FRA_ww1_infrastructure_effort
+	complete_national_focus = FRA_ww1_airfield_expansion_1
+	complete_national_focus = FRA_ww1_construction_effort
+	complete_national_focus = FRA_ww1_production_effort
+	complete_national_focus = FRA_ww1_dockyard_effort_1
+
+	# Naval
+	complete_national_focus = FRA_ww1_naval_effort
+	complete_national_focus = FRA_ww1_newnavalcanons_1
+	complete_national_focus = FRA_ww1_dreadnought_effort
+
+	#Political
+	complete_national_focus = FRA_ww1_political_effort
+	complete_national_focus = FRA_ww1_support_republic
+	complete_national_focus = FRA_ww1_democracy
+	complete_national_focus = FRA_ww1_freespeech
+	complete_national_focus = FRA_ww1_vivani
+
+	#Diplomatic
+	complete_national_focus = FRA_ww1_diplomatic_effort
+	complete_national_focus = FRA_ww1_triple_alliance
+	complete_national_focus = FRA_ww1_back_uk
+	complete_national_focus = FRA_ww1_assert_position_west
+	complete_national_focus = FRA_ww1_anti_ger
+	complete_national_focus = FRA_ww1_anti_ah
+	complete_national_focus = FRA_ww1_assert_position_east
+	complete_national_focus = FRA_ww1_anti_ottoman
+	complete_national_focus = FRA_ww1_support_romania
+	complete_national_focus = FRA_ww1_help_serbia
+	unlock_national_focus = FRA_ww1_agadir_crisis
+	complete_national_focus = FRA_ww1_bureau_colonies
+	#-------------------------------------------------------
+
+	set_technology = {
+
+		# Infantry
+		infantry_weapons = 1
+		ww1infantry_weapons1 = 1
+		ww1_infantry_equip1 = 1
+		support_weapons = 1
+		support_weapons2 = 1
+		infantry_binoculars = 1
+		infantry_grenade = 1
+		motorised_infantry = 1
+		ww1_ambulance1 = 1
+		tech_mountaineers = 1
+
+		# Support
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+
+		# Armor
+		gwtank=1 # 1910 Armored Car
+		ww1_armored_car_2 = 1
+
+		# Artillery
+		light_field_gun1 = 1
+		bonus_artillery1 = 1
+		heavy_field_gun1 = 1
+		bonus_bertha1 = 1
+
+		# Land Doctrine
+		ww1_landdoctrine = 1
+		ww1_directfire = 1
+
+		# Navy
+		ww1_destroyer0 = 1
+		ww1_destroyer1 = 1
+		ww1_destroyer2 = 1
+		ww1_light_cruiser0 = 1
+		ww1_light_cruiser1 = 1
+		ww1_battlecruiser0 = 1
+		ww1_battlecruiser0b = 1
+		ww1_battlecruiser1 = 1
+		ww1_battleship0 = 1
+		ww1_battleship1 = 1
+		ww1_submarine1 = 1
+		ww1_coastal_submarine1 = 1
+		transport = 1
+
+		# Air
+		ww1_fighter1 = 1
+		ww1_fighter1b = 1
+		ww1_zeppelin1 = 1
+
+		# Air Doctrine
+		ww1_airdoctrine = 1
+		ww1_airdoctrine_2 = 1
+		ww1_airdoctrine_3 = 1
+
+		# Navy Doctrine
+		ww1_navaldoctrine = 1
+		ww1_navaldoctrine_2 = 1
+		ww1_navaldoctrine_3 = 1
+
+		# Engineering
+		electronic_mechanical_engineering = 1
+		mechanical_computing = 1
+		chemical_research = 1
+		tank_unlocker1 = 1
+
+		# Industry
+		ww1_medicine1 = 1
+		ww1_fortification1 = 1
+		ww1_fortification2 = 1
+
+	}
+
+	set_politics = {
+	    parties = {
+	        democratic = {
+	            popularity = 85
+	        }
+	        fascism = {
+	            popularity = 2
+	        }
+	        communism = {
+	            popularity = 13
+	        }
+	    }
+	    ruling_party = democratic last_election = "1910.4.30"
+	    election_frequency = 48 elections_allowed = yes
+	}
+
+	add_ideas = {
+		FRA_ww1_Revanchism
+		ww1_Scramble_for_Africa
+		#FRA_disjointed_government
+		limited_conscription
+		#Franch_Staff 
+	}
+
+	# Global Flags for 1914 Start Up
+
+	set_global_flag = albanian_revolt_1910
+	set_global_flag = kis_albanian_revolt_1911
+	set_global_flag = kis_northpole
+	set_global_flag = kis_machupicchu
+	set_global_flag = kis_massproduction
+	set_global_flag = kis_suffragettes
+	set_global_flag = kis_olympicgames
+	set_global_flag = kis_xinhaire
+	set_global_flag = kis_monalisastolen
+	set_global_flag = kis_king_death_george
+	set_global_flag = kis_titanic_sinked
+	set_global_flag = kis_south_africa_act
+	set_global_flag = kis_firstbalkanwar_victory
+	set_global_flag = kis_secondbalkanwar_victory
+	set_global_flag = kis_roland_garros
+	set_global_flag = kis_xinhaire_end
+
+	set_global_flag = kis_start_1914
+
+}

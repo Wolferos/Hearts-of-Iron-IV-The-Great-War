@@ -1,0 +1,86 @@
+﻿add_namespace = ww1_portugal
+
+# Portugal - 5 October 1910 revolution
+#____________________________________________________________
+news_event = {
+	id=ww1_portugal.100
+	title = ww1_portugal.100.t
+	desc = ww1_portugal.100.d
+
+	picture=EVENT_hoi4tgw_portugal_republic
+	
+	major = yes
+	
+	trigger = {
+		date > 1910.10.5
+		NOT = { has_global_flag = kis_portugal_revolution }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+	immediate = {
+		set_global_flag = kis_portugal_revolution
+		hidden_effect = {
+			POR={
+				set_politics={
+					parties = {
+				        democratic = {
+				            popularity = 85
+				        }
+				        fascism = {
+				            popularity = 5
+				        }
+				        communism = {
+				            popularity = 5
+				        }
+				        neutrality = {
+				            popularity = 5
+				        }
+				    }
+					ruling_party = democratic
+					elections_allowed = yes
+					last_election = "1910.9.28"
+				}
+				retire_country_leader = yes
+				create_country_leader = {
+					name = "Teofilo Braga"
+					desc = POR_teofilo_braga_DESC
+					picture = "gfx/leaders/POR_teofilo_braga.dds"
+					expire = "1935.1.1"
+					ideology = liberalism
+					traits = {}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = ww1_portugal.100.a
+		ai_chance = { factor = 100 }
+	}
+}
+#____________________________________________________________
+
+
+# When Portugal is asked to join the Central Powers 
+#____________________________________________________________
+country_event = {
+	id = ww1_portugal.1
+	title = ww1_portugal.1.t
+	desc = ww1_portugal.1.d
+	picture = ww1_portugal_1
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_portugal.1.a
+		ai_chance = { factor = 100 }
+		POR={ add_opinion_modifier={ target=ENG modifier=ger_tur_diplomacy_focus } if={ limit={ POR={ is_ai=yes NOT={ is_in_faction=yes } NOT={ is_puppet=yes } } FRA={ is_faction_leader=yes } } FRA={ add_to_faction=POR } } if={ limit={ ENG={ has_government=fascism } } add_ideas=fascist_influence } if={ limit={ ENG={ has_government=communism } } add_ideas=communist_influence } if={ limit={ ENG={ has_government=democratic } } add_ideas=democratic_influence } country_event={ id=generic.1 } } 
+	}
+	option = {
+		name = ww1_portugal.1.b
+		ai_chance = { factor = 0 }
+	}
+#____________________________________________________________

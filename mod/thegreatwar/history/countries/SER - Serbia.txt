@@ -1,0 +1,307 @@
+﻿capital = 107
+
+#-------------------------------------------------------
+#					GENERIC VALUES
+#-------------------------------------------------------
+set_research_slots = 3
+set_national_unity = 0.6
+set_convoys = 0
+
+#-------------------------------------------------------
+#					POLITICS & ARMY
+#-------------------------------------------------------
+create_country_leader={
+	name = "Filip Filipovic"
+	desc=SER_filip_filipovic_DESC
+	picture="gfx/hoi4tgw_portraits/SER/country_leaders/SER_filip_filipovic.dds"
+	expire="1935.1.1"
+	ideology=stalinism
+	traits={  }
+}
+create_country_leader={
+	name = "Peter I"
+	desc=SER_peter_i_DESC
+	picture="gfx/hoi4tgw_portraits/SER/country_leaders/SER_peter_i.dds"
+	expire="1935.1.1"
+	ideology=conservatism
+	traits={  }
+}
+create_country_leader={
+	name = "Peter I"
+	desc=SER_peter_i_DESC
+	picture="gfx/hoi4tgw_portraits/SER/country_leaders/SER_peter_i.dds"
+	expire="1935.1.1"
+	ideology=autocracy
+	traits={  }
+}
+create_field_marshal={
+	name = "Radomir Putnik" id=82002
+	portrait_path="gfx/hoi4tgw_portraits/SER/army_generals/SER_radomir_putnik.dds"
+	traits={ defensive_doctrine old_guard }
+	skill=4
+}
+create_corps_commander={
+	name = "Stepa Stepanović" id=82003
+	portrait_path="gfx/hoi4tgw_portraits/SER/army_generals/SER_stepa_stepanovic.dds"
+	traits={ trickster commando }
+	skill=3
+}
+create_corps_commander={
+	name = "Živojin Mišić" id=82004
+	portrait_path="gfx/hoi4tgw_portraits/SER/army_generals/SER_zivojin_misic.dds"
+	traits={ trickster }
+	skill=3
+}
+create_corps_commander={
+	name = "Pavle Jurišić Šturm" id=82005
+	portrait_path="gfx/hoi4tgw_portraits/SER/army_generals/SER_jurisic_sturm.dds"
+	traits={ old_guard }
+	skill=3
+}
+create_corps_commander={
+	name = "Petar Bojović" id=82006
+	portrait_path="gfx/hoi4tgw_portraits/SER/army_generals/SER_petar_bojovic.dds"
+	traits={ fortress_buster }
+	skill=3
+}
+
+1910.1.1 = {
+	oob = "SER_1910"
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+
+	#-------------------------------------------------------
+
+	set_technology = {
+
+		# Infantry
+		infantry_weapons = 1
+		ww1infantry_weapons1 = 1
+		support_weapons = 1
+		infantry_binoculars = 1
+		infantry_grenade = 1
+		motorised_infantry = 1
+		ww1_ambulance1 = 1
+
+		# Support
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		#tech_military_police = 1
+		#tech_maintenance_company = 1
+		#tech_field_hospital = 1
+		#tech_logistics_company = 1
+
+		# Armor
+		gwtank=1 # 1910 Armored Car
+
+		# Artillery
+		light_field_gun1 = 1
+		heavy_field_gun1 = 1
+
+		# Navy
+		ww1_destroyer0 = 1
+		ww1_destroyer1 = 1
+		ww1_light_cruiser0 = 1
+		ww1_light_cruiser1 = 1
+		ww1_battlecruiser0 = 1
+		ww1_battlecruiser0b = 1
+		ww1_battlecruiser1 = 1
+		ww1_battleship0 = 1
+		ww1_battleship1 = 1
+		ww1_submarine1 = 1
+		ww1_coastal_submarine1 = 1
+		transport = 1
+
+		# Air
+		ww1_fighter1 = 1
+		ww1_zeppelin1 = 1
+
+		# Engineering
+		electronic_mechanical_engineering = 1
+		chemical_research = 1
+
+		# Industry
+		ww1_fortification1 = 1
+	}
+
+	set_politics = {
+	    parties = {
+	        democratic = {
+	            popularity = 78
+	        }
+	        fascism = {
+	            popularity = 2
+	        }
+	        communism = {
+	            popularity = 8
+	        }
+	        neutrality = {
+	            popularity = 12
+	        }
+	    }
+	    ruling_party = democratic last_election = "1908.5.31"
+	    election_frequency = 36 elections_allowed = yes
+	}
+
+	add_ideas = {
+		limited_conscription
+		partial_economic_mobilisation
+	}
+
+	add_manpower = 25874
+}
+1914.1.1 = {
+	oob = "SER_1914"
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+	#Army
+	complete_national_focus = SER_ww1_army_effort
+	complete_national_focus = SER_ww1_equipment_effort
+	complete_national_focus = SER_ww1_artillery_effort_1
+	complete_national_focus = SER_ww1_doctrine_effort
+	complete_national_focus = SER_ww1_trenchwarfare
+	
+	# Air
+	complete_national_focus = SER_ww1_aviation_effort
+	complete_national_focus = SER_ww1_aviation_effort_2
+	
+	# Industry
+	complete_national_focus = SER_ww1_industrial_effort
+	complete_national_focus = SER_ww1_infrastructure_effort
+	complete_national_focus = SER_ww1_airfield_expansion_1
+	complete_national_focus = SER_ww1_construction_effort
+	complete_national_focus = SER_ww1_production_effort
+	
+	# Naval
+
+	#Political
+	complete_national_focus = SER_ww1_political_effort
+	complete_national_focus = SER_ww1_Reconciliation
+	complete_national_focus = SER_ww1_LimitDemocracy
+	complete_national_focus = SER_ww1_reorganization_act
+
+	#Diplomatic
+	complete_national_focus = SER_ww1_diplomatic_effort
+	complete_national_focus = SER_ww1_BalkansPolitics
+	complete_national_focus = SER_ww1_anti_ottoman
+	complete_national_focus = SER_ww1_italo_turkish_opportunity
+	unlock_national_focus = SER_balkan_league
+	unlock_national_focus = SER_first_balkan
+	complete_national_focus = SER_ww1_GreeceFriend
+	complete_national_focus = SER_second_balkan
+	complete_national_focus = SER_ww1_assert_position_west
+	complete_national_focus = SER_ww1_assert_position_east
+	complete_national_focus = SER_ww1_anti_auh
+	complete_national_focus = SER_ww1_pro_fra
+	complete_national_focus = SER_ww1_pro_rus
+	complete_national_focus = SER_ww1_equip_rus
+	#-------------------------------------------------------
+
+	set_technology = {
+
+		# Infantry
+		infantry_weapons = 1
+		ww1infantry_weapons1 = 1
+		ww1_infantry_equip1 = 1
+		support_weapons = 1
+		support_weapons2 = 1
+		infantry_binoculars = 1
+		infantry_grenade = 1
+		motorised_infantry = 1
+		ww1_ambulance1 = 1
+		tech_mountaineers = 1
+
+		# Support
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+
+		# Armor
+		gwtank=1 # 1910 Armored Car
+		ww1_armored_car_2 = 1
+
+		# Artillery
+		light_field_gun1 = 1
+		bonus_artillery1 = 1
+		heavy_field_gun1 = 1
+		bonus_bertha1 = 1
+
+		# Land Doctrine
+		ww1_landdoctrine = 1
+		ww1_directfire = 1
+
+		# Navy
+		ww1_destroyer0 = 1
+		ww1_destroyer1 = 1
+		ww1_destroyer2 = 1
+		ww1_light_cruiser0 = 1
+		ww1_light_cruiser1 = 1
+		ww1_battlecruiser0 = 1
+		ww1_battlecruiser0b = 1
+		ww1_battlecruiser1 = 1
+		ww1_battleship0 = 1
+		ww1_battleship1 = 1
+		ww1_submarine1 = 1
+		ww1_coastal_submarine1 = 1
+		transport = 1
+
+		# Air
+		ww1_fighter1 = 1
+		ww1_fighter1b = 1
+		ww1_zeppelin1 = 1
+
+		# Air Doctrine
+		ww1_airdoctrine = 1
+		ww1_airdoctrine_2 = 1
+		ww1_airdoctrine_3 = 1
+
+		# Engineering
+		electronic_mechanical_engineering = 1
+		mechanical_computing = 1
+		chemical_research = 1
+		tank_unlocker1 = 1
+		radio = 1
+		supertech1 = 1
+		tankaircraft1 = 1
+
+		# Industry
+		ww1_tools1 = 1
+		ww1_medicine1 = 1
+		ww1_fortification1 = 1
+		ww1_fortification2 = 1
+
+	}
+
+	set_politics = {
+	    parties = {
+	        democratic = {
+	            popularity = 78
+	        }
+	        fascism = {
+	            popularity = 2
+	        }
+	        communism = {
+	            popularity = 8
+	        }
+	        neutrality = {
+	            popularity = 12
+	        }
+	    }
+	    ruling_party = democratic last_election = "1911.5.31"
+	    election_frequency = 36 elections_allowed = yes
+	}
+
+	add_ideas = {		
+		limited_conscription
+		partial_economic_mobilisation
+	}
+}

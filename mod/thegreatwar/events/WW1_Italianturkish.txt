@@ -1,0 +1,380 @@
+﻿
+add_namespace = ww1_italianturkish
+
+
+# Italo-Turkish War
+#____________________________________________________________
+country_event = {
+	id=ww1_italianturkish.1
+	title=ww1_italianturkish.1.t
+	desc=ww1_italianturkish.1.d
+	picture=GFX_report_event_generic_read_write
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+	    name = ww1_italianturkish.1.a
+	    ai_chance = {
+	        factor = 100
+	    }
+
+	    TUR = {
+	        remove_ideas = neutrality_idea
+	    }
+
+	    # The Italian contingent of 20, 000 troops was deemed sufficient to accomplish the conquest at the time.Tobruk, Derna and Khoms were easily conquered, but the same was not true for Benghazi.
+	    # We must do that otherwise IA won't be able to attack Libya
+	    TUR = {
+	        ITA = {
+	            transfer_state = 451 # Tobruk, Derna and Khoms were easily conquered
+	        }
+	    }
+
+	    ITA = {
+	        load_oob = "ITA_Tobruk" # Italian troops on Tobruk
+
+	        declare_war_on = {
+	            type = take_claimed_state
+	            target = TUR
+	        }
+	    }
+	    hidden_effect = {
+	        ITA = {
+	            white_peace = HJZ
+	            white_peace = ASR
+	            white_peace = YEM
+
+	            diplomatic_relation = {
+	                country = HJZ
+	                relation = non_aggression_pact
+	            }
+	            diplomatic_relation = {
+	                country = ASR
+	                relation = non_aggression_pact
+	            }
+	            diplomatic_relation = {
+	                country = YEM
+	                relation = non_aggression_pact
+	            }
+				add_named_threat = {
+					threat = 3
+					name = "Italo-Turkish War"
+				}
+        		set_country_flag = italian_libya_war
+	        }
+		    TUR = {
+		        country_event = { id = ww1_italianturkish.2 days = 1 }
+		    }
+		    HAI = {
+		        country_event = { id = ww1_haiti.1 days = 600 }
+		    }
+	        news_event = { days = 1 id = ww1_italianturkish.8 }
+	    }
+	}
+}
+#____________________________________________________________
+
+# Pop some troops to Ottomans
+#____________________________________________________________
+country_event = {
+	id = ww1_italianturkish.2
+	title = ww1_italianturkish.2.t
+	desc = ww1_italianturkish.2.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_italianturkish.2.a
+		ai_chance = {
+			factor = 100
+		}
+		TUR = {
+			load_oob = "Libyan"
+		}
+	}
+}
+#____________________________________________________________
+
+# Ottomans offers peace to Italy	
+#____________________________________________________________
+country_event = {
+	id = ww1_italianturkish.3
+	title = ww1_italianturkish.3.t
+	desc = ww1_italianturkish.3.d
+	picture = GFX_report_event_generic_read_write
+	
+	trigger = {
+		tag = TUR
+		has_war_with = ITA
+		OR = {
+			TUR = {
+				surrender_progress > 0.15
+			}
+			ITA = {
+				controls_state = 448
+				controls_state = 449
+				controls_state = 450
+				controls_state = 451
+
+				controls_state = 661
+				controls_state = 662
+				controls_state = 663
+			}
+		}
+		has_civil_war = no
+		is_in_faction = no
+	}
+
+	mean_time_to_happen = { days = 5 }
+
+	fire_only_once = yes
+
+	option = {
+		name = ww1_italianturkish.3.a
+		ai_chance = { factor = 100 }
+		ITA = {
+			country_event = { days = 1 id = ww1_italianturkish.4 }
+		}
+		effect_tooltip = {
+			ITA = { white_peace = TUR }
+			transfer_state=164
+			transfer_state=273
+			transfer_state=448
+			transfer_state=449
+			transfer_state=450
+			transfer_state=451
+			transfer_state=661
+			transfer_state=662
+			transfer_state=663
+		}
+	}
+}
+#____________________________________________________________
+
+# Italy accepts Ottoman's reddition
+#____________________________________________________________
+country_event = {
+	id = ww1_italianturkish.4
+	title = ww1_italianturkish.4.t
+	desc = ww1_italianturkish.4.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	#Accept surrender
+	option = {
+		name = ww1_italianturkish.4.a
+		ai_chance = {
+			factor = 100
+		}
+		white_peace = TUR
+		transfer_state = 164
+		transfer_state = 273
+		transfer_state = 448
+		transfer_state = 449
+		transfer_state = 450
+		transfer_state = 451
+		transfer_state = 661
+		transfer_state = 662
+		transfer_state = 663
+		transfer_state = 663
+		transfer_state = 754 	# Fixed bug introduced by 1.4 Oak  
+
+		hidden_effect = {
+			ITA = {
+				set_country_flag = ITA_Lib_War_End_Victory
+				diplomatic_relation = {
+					country = TUR
+					relation = non_aggression_pact
+				}
+			}
+			news_event = { days = 1 id = ww1_italianturkish.9 }
+		}
+	}
+}
+#____________________________________________________________
+
+# If Ottomans join a faction, the war stops
+#____________________________________________________________
+country_event = {
+	id = ww1_italianturkish.6
+	title = "Ottomans joined a faction"
+	desc = "Ottomans joined a faction, we can't afford to fight on several fronts. We have to end the war."
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+
+	trigger = {
+		OR = {
+			TUR = {
+				has_war_with = ITA
+				is_in_faction = yes
+			}
+			ITA = {
+				has_war_with = TUR
+				is_in_faction = yes
+			}
+		}
+		ITA = {
+			has_country_flag = ITA_Lib_War_End_Victory
+		}	
+	}
+
+	option = {
+		name = "Stop the War"
+		ITA = {
+			white_peace = TUR
+			set_country_flag = ITA_Lib_War_End_Victory
+		}
+	}
+}
+#____________________________________________________________
+
+# If Italy is kicked out from Libya - Overridden by ww1_haiti.1
+#____________________________________________________________
+#country_event = {
+#	id = ww1_italianturkish.7
+#	title = "We have lost our positions!"
+#	desc = "We have lost our positions in Libya."
+#	picture = GFX_report_event_generic_read_write
+#
+#	fire_only_once = yes
+#	
+#	trigger = {
+#		ITA = {
+#			has_war_with = TUR
+#			NOT = {
+#				controls_state = 448
+#				controls_state = 449
+#				controls_state = 450
+#				controls_state = 451
+#				has_country_flag = ITA_Lib_War_End_Lost_States
+#			}
+#		}	
+#	}
+#
+#	option = {
+#		name = "It's a defeat"
+#		ai_chance={
+#			factor=100
+#		}
+#		ITA = {
+#			white_peace = TUR
+#		}
+#		hidden_effect = {
+#			TUR = {
+#	 			transfer_state=164
+#				transfer_state=273
+#				transfer_state=448
+#				transfer_state=449
+#				transfer_state=450
+#				transfer_state=451
+#				transfer_state=661
+#				transfer_state=662
+#				transfer_state=663
+#			}
+#			ITA = {
+#				set_country_flag = ITA_Lib_War_End_Lost_States
+#			}
+#			news_event = { days = 1 id = ww1_italianturkish.10 }
+#		}		
+#	}
+#}
+#____________________________________________________________
+
+# Italian invasion of Libya - Global News
+#____________________________________________________________
+news_event = {
+	id = ww1_italianturkish.8
+	title = "Italian invasion of Libya"
+	desc = "An ultimatum was presented to the Ottoman government. Through Austrian intermediation, the Ottomans replied with the proposal of transferring control of Libya without war, maintaining a formal Ottoman suzerainty. The Italian refused, and war is now declared."
+	picture = EVENT_hoi4tgw_italo_turkish_war
+
+	major = yes
+	is_triggered_only = yes
+		
+	option = {
+		name = "A war for a piece of sand?"
+		trigger = { 
+			NOT = { TAG = ITA }
+			NOT = { TAG = TUR }
+		}
+	}
+	option = {
+		name = "Let's Fight!"
+		trigger = { 
+			TAG = ITA
+			TAG = TUR
+		}
+	}
+}
+#____________________________________________________________
+
+# Italo-Turkish War - Italy Wins - Global News
+#____________________________________________________________
+news_event = {
+	id = ww1_italianturkish.9
+	title = "Italy Won the Italo-Turkish War"
+	desc = "Yesterday, Italy and the Ottoman Empire signed a treaty in Ouchy near Lausanne. The Ottomans would withdraw all military personnel from Trablus and Benghazi vilayets."
+	picture = GFX_news_event_generic_sign_treaty2
+	
+	major = yes
+	is_triggered_only = yes
+		
+	option = {
+		name = "Italy won the Italo-turkish War"
+		trigger = { 
+			NOT = { TAG = ITA }
+			NOT = { TAG = TUR }
+		}
+	}
+	option = {
+		name = "A Great Victory!"
+		trigger = { 
+			TAG = ITA
+		}
+	}
+	option = {
+		name = "Let's go home..."
+		trigger = { 
+			TAG = TUR
+		}
+	}
+}
+#____________________________________________________________
+
+# Italo-turkish War - Italy Looses - Global News
+#____________________________________________________________
+news_event = {
+	id = ww1_italianturkish.10
+	title = "Ottoman Empire Won the Italo-turkish "
+	desc = "Italy lost the Italo-Turkish War."
+	picture = GFX_news_event_generic_sign_treaty2
+	
+	major = yes
+	is_triggered_only = yes
+		
+	option = {
+		name = "Ottoman Empire won the Italo-turkish War"
+		trigger = { 
+			NOT = { TAG = ITA }
+			NOT = { TAG = TUR }
+		}
+	}
+	option = {
+		name = "Let's go home..."
+		trigger = { 
+			TAG = ITA
+		}
+	}
+	option = {
+		name = "A Great Victory!"
+		trigger = { 
+			TAG = TUR
+		}
+	}
+}
+#____________________________________________________________

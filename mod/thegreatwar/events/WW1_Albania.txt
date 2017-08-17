@@ -1,0 +1,210 @@
+﻿add_namespace = ww1_albania
+
+
+#country_event = {
+#	title=ww1_albania.1.t#Albanian Uprising!
+#	desc=ww1_albania.1.d#The Albanian Revolt of 1910 was one of many Albanian revolts in the Ottoman Empire and lasted from May until June 1910. ,
+#	id=ww1_albania.1
+#	picture=ww1_albania_1
+#	fire_only_once=yes
+#	is_triggered_only=no
+#	mean_time_to_happen={
+#		days=2
+#		}
+#	trigger={
+#		tag=TUR
+#		controls_state = 44
+#		NOT={
+#			country_exists=ALB
+#			}
+#		#
+#		date>1910.5.3
+#		}
+#	option={
+#		name=ww1_albania.1.a
+#		ai_chance={
+#			factor=100
+#			}
+#		44 = { set_border_war = yes }
+#
+#		if = {
+#			limit = {
+#				TUR = {
+#					controls_state = 766
+#				}
+#			}
+#			766 = { set_border_war = yes }
+#		}
+#		add_political_power=-25
+#		}
+#	}
+
+
+
+country_event = {
+	title="Albanian insurrection!"
+	desc="The Albanians refused to submit to the Turks. A new Albanian uprisings began in Kosovo and the northern mountains. Ottoman government declared martial law and sent a military expedition."
+	id=ww1_albania.kis1
+	picture=ww1_albania_1
+	fire_only_once=yes
+	is_triggered_only=no
+	mean_time_to_happen=
+	{
+		days=1
+	}
+	trigger=
+	{
+		tag=TUR
+		controls_state = 44
+		NOT={ country_exists=ALB }
+		date>1910.6.5
+	}
+	option={
+		name=ww1_albania.kis1.a
+		ai_chance={
+			factor=100
+			}
+		44 = { set_border_war = yes }
+
+		if = {
+			limit = {
+				TUR = {
+					controls_state = 766
+				}
+			}
+			766 = { set_border_war = yes }
+		}
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+country_event = {
+	title=ww1_albania.4.t#Assembly of Vlorë
+	desc=ww1_albania.4.d#The Albanian Declaration of Independence was the declaration of independence of the Albanian Vilayet from the Ottoman Empire. Albania was proclaimed independent in Vlorë on November 28 1912.
+	id=ww1_albania.4
+	picture=ww1_albania_4
+	fire_only_once=yes
+	is_triggered_only=yes
+	option={
+		name=ww1_albania.4.a
+		ai_chance={
+			factor=100
+			}
+		TUR={
+			set_country_flag=form_albania
+			set_country_flag=alb_peace
+			}
+		if = {
+			limit = {
+				TUR = {
+					controls_state = 766
+				}
+			}
+			transfer_state=766
+			}
+		if = {
+			limit = {
+				TUR = {
+					controls_state = 44
+				}
+			}
+			transfer_state=44
+			}
+		hidden_effect = {
+			44 = {
+				if = {
+					limit = { is_border_conflict = yes }
+					set_border_war = no
+					}
+				}
+			766 = {
+				if = {
+					limit = { is_border_conflict = yes }
+					set_border_war = no
+					}
+				}
+			}
+		set_capital=44
+		}
+	}
+country_event = {
+	title=ww1_albania.5.t#Greece proclaimed the annexation of Northern Epirus
+	desc=ww1_albania.5.d#Greece decided to proclaim the annexation of Northern Epirus and formally incorporate it within the Greek state.
+	id=ww1_albania.5
+	picture=ww1_albania_5
+	fire_only_once=yes
+	is_triggered_only=yes
+	option={
+		name=ww1_albania.5.a
+		GRE={
+			add_opinion_modifier={
+				target=ALB
+				modifier=medium_decrease
+				}
+			}
+		ALB={
+			GRE={
+				transfer_state=764
+				}
+			}
+		}
+	}
+
+
+# 
+#____________________________________________________________
+news_event = {
+	id=ww1_albania.100
+	title=ww1_albania.100.t
+	desc=ww1_albania.100.d
+
+	picture=EVENT_hoi4tgw_albanian_revolt
+	
+	major = yes
+	
+	trigger = {
+		date > 1911.4.6
+		NOT = { has_global_flag = kis_albanian_revolt_1911 }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+	immediate = {
+		set_global_flag = kis_albanian_revolt_1911
+		hidden_effect = {
+
+		}
+	}
+	
+	option = {
+		name = "The Ottoman Empire is too weak"
+		ai_chance = {
+			factor = 100
+		}
+		trigger = {
+			NOT = {
+				TAG = TUR
+			}
+		}
+	}
+	option = {
+		name = "Shame on us"
+		ai_chance = {
+			factor = 100
+		}
+		trigger = {
+			TAG = TUR
+		}		
+	}
+}
+#____________________________________________________________

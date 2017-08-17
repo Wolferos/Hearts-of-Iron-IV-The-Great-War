@@ -1,0 +1,112 @@
+no_one_gets_our_troops = {
+	enable = {
+		original_tag = GER
+		is_historical_focus_on = yes
+		date < 1914.1.1
+	}
+	
+	abort = {
+	is_historical_focus_on = no
+	date > 1914.4.5
+	}
+	
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "QIN"
+		value = -2000
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "BUL"
+		value = -2000
+	}
+}
+
+invading_france_through_to_benelux_so_we_can_make_it_historical = {
+	enable = {
+		tag = GER
+		date > 1914.2.4
+	}
+	abort = {
+		date < 1914.1.1
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "FRA"			
+		value = -1000 
+	}
+
+	# If Germany invades liege it can be a possiblity to make it historical
+	ai_strategy = {
+		type = invade
+		id = "BEL"			
+		value = 1000 
+	}
+}
+
+
+#centralpowers_stay_away_from_the_royal_navy = {
+#	enable = {
+#		has_war_with = ENG
+#		date < 1914.1.1
+#		
+#		OR = {
+#			GER = {
+#				naval_strength_ratio = {
+#					tag = ENG 
+#  					ratio < 0.5
+#  				}
+#  			}
+#
+#			# if we manage to get a foothold in UK we must do what we can to exploit it! (checks coastal states)
+#			divisions_in_state = { state = 127 size > 0 }
+#			divisions_in_state = { state = 126 size > 0 }
+#			divisions_in_state = { state = 125 size > 0 }
+#			divisions_in_state = { state = 129 size > 0 }
+#			divisions_in_state = { state = 130 size > 0 }
+#			divisions_in_state = { state = 131 size > 0 }
+#			divisions_in_state = { state = 123 size > 0 }
+#			divisions_in_state = { state = 122 size > 0 }
+#			divisions_in_state = { state = 132 size > 0 }
+#			divisions_in_state = { state = 121 size > 0 }
+#			divisions_in_state = { state = 136 size > 0 }
+#			divisions_in_state = { state = 120 size > 0 }
+#			divisions_in_state = { state = 133 size > 0 }
+#		}		
+#	}
+#	abort = {
+#		OR = {
+#			date > 1915.1.1
+#			NOT = { has_war_with = ENG }
+#			AND = {
+#				GER = {
+#					naval_strength_ratio = {
+#						tag = ENG 
+#	  					ratio > 0.5
+#	  				}
+#	  			}
+#
+#				divisions_in_state = { state = 127 size < 1 }
+#				divisions_in_state = { state = 126 size < 1 }
+#				divisions_in_state = { state = 125 size < 1 }
+#				divisions_in_state = { state = 129 size < 1 }
+#				divisions_in_state = { state = 130 size < 1 }
+#				divisions_in_state = { state = 131 size < 1 }
+#				divisions_in_state = { state = 123 size < 1 }
+#				divisions_in_state = { state = 122 size < 1 }
+#				divisions_in_state = { state = 132 size < 1 }
+#				divisions_in_state = { state = 121 size < 1 }
+#				divisions_in_state = { state = 136 size < 1 }
+#				divisions_in_state = { state = 120 size < 1 }
+#				divisions_in_state = { state = 133 size < 1 }
+#			}
+#		}
+#	}
+#	
+#	ai_strategy = {
+#		type = naval_avoid_region
+#		id = 18 #english channel
+#		value = 100
+#	}
+#}

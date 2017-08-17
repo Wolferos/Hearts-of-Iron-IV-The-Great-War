@@ -1,0 +1,164 @@
+﻿
+add_namespace = ww1_italy
+
+
+# Communist Take Power
+#____________________________________________________________
+country_event = {
+	id = ww1_italy.16
+	title = "Revolution in Italy"
+	desc = "Revolution in Italy"
+	picture = GFX_report_event_gathering_protest
+	
+	fire_only_once=yes
+	is_triggered_only=yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = political.3.a
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = 0.70
+		}
+		add_timed_idea = { idea = reign_of_terror days = 730 }
+	}
+}
+#____________________________________________________________
+
+# AUH swear to give South Tyrol and Istria if Italy joins them
+#____________________________________________________________
+country_event = {
+	id=ww1_italy.5
+	title = "A fair Offer"
+	desc = "Austria-Hungary propose to give us South Tyrol and Istria if we promise to join them in case of war. Should We accept the offer ?"
+	picture = ww1_italy_5
+
+	fire_only_once = yes
+	is_triggered_only=yes
+
+	option = {
+		name = "Accept the Offer"
+		ai_chance={
+			factor = 99
+		}
+		AUH = {
+			remove_state_core = 39
+			remove_state_core = 736
+		}
+		ITA = {
+			transfer_state = 39
+			transfer_state = 736
+			set_country_flag = kis_italy_accept_auh_offer
+		}
+	}
+
+	option = {
+		name = "Decline the Offer"
+		ai_chance={
+			factor = 1
+		}
+		ITA = {
+			set_country_flag = kis_italy_decline_auh_offer
+		}
+	}
+}
+#____________________________________________________________
+
+# Italy Honour the Pact ?
+#____________________________________________________________
+country_event = {
+	id = ww1_italy.6
+	title = ww1_italy.6.t
+	desc = ww1_italy.6.t
+	#picture = ww1_italy_6
+
+	fire_only_once = yes
+
+	trigger = {
+		TAG = ITA
+		OR = {
+			AND = {
+				GER = {	has_war_with = FRA }
+				GER = {	has_war_with = ENG }
+			}
+			AND = {
+				GER = {	has_war_with = RUS }
+				GER = {	has_war_with = ENG }
+				GER = {	has_war_with = FRA }
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 10
+	}
+
+	# Honour
+	option = {
+		name = ww1_italy.6.a
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 80
+				AUH = {
+					has_completed_focus = AUH_ww1_give_italy_territories
+				}
+			}
+		}
+		
+		GER = {
+			add_to_faction = ITA
+		}
+
+		ITA = {
+			add_to_war = {
+	            targeted_alliance = GER enemy = BEL
+	        }
+		}
+
+
+		hidden_effect = {
+			news_event = { days = 1 id = ww1_italy.7 }
+		}
+	}
+
+	# Don't Honour
+	option = {
+		name = ww1_italy.6.b
+		ai_chance = {
+			factor = 95
+			modifier = {
+				factor = 20
+				AUH = {
+					has_completed_focus = AUH_ww1_give_italy_territories
+				}
+			}
+		}
+	}	
+}
+#____________________________________________________________
+
+# Italy joined the Central Powers - Global News
+#____________________________________________________________
+news_event = {
+	id = ww1_italy.7
+	title = ww1_italy.7.t
+	desc = ww1_italy.7.d
+	#picture = COUNTRY_hoi4tgw_auh_versus_ser_4
+
+	major = yes
+	is_triggered_only = yes	
+
+	option = {
+		name = ww1_italy.7.a
+		ai_chance = { factor = 100 }
+	}
+}
+#____________________________________________________________

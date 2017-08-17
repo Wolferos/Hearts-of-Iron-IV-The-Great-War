@@ -1,0 +1,158 @@
+ideas={
+	country = {
+		RUS_ww1_orthodox_church = {
+			allowed = {original_tag = RUS}
+			allowed_civil_war = {always = yes}
+			removal_cost = -1
+			modifier = {
+				unity_factor = 0.05
+				consumer_goods_factor = -0.1
+			}
+		}
+		
+		RUS_ww1_tsushima_humiliation = {
+			allowed = {original_tag = RUS} 
+			allowed_civil_war = {always = yes} 
+			removal_cost = -1 
+			modifier = {
+				army_org = -5
+				army_morale_factor = -0.1
+				training_time_army_factor = 0.1
+				unity_factor = -0.05
+				production_speed_coastal_bunker_factor = 0.2
+			}
+			equipment_bonus = {
+				capital_ship = {
+					build_cost_ic = 0.10 instant = yes
+				}
+				
+				screen_ship = {
+					build_cost_ic = 0.05 instant = yes
+				}
+				submarine = {
+					build_cost_ic = 0.05 instant = yes
+				}
+				destroyer = {
+					build_cost_ic = 0.05 instant = yes
+				}
+			}
+		}
+		
+		RUS_ww1_mixed_railways = {
+			allowed = {original_tag = RUS}
+			allowed_civil_war = {always = yes}
+			removal_cost = -1
+			modifier = {
+				attrition = 0.05
+				production_factory_efficiency_gain_factor = -0.05
+				production_factory_max_efficiency_factor = -0.05
+				line_change_production_efficiency_factor = -0.05
+
+			}
+		}
+		
+		RUS_ww1_tsushima_humiliation_counter = {
+			allowed = {original_tag = RUS} 
+			allowed_civil_war = {always = yes} 
+			removal_cost = -1 
+			modifier = {
+				army_morale_factor = 0.1
+				training_time_army_factor = -0.1
+			}
+			equipment_bonus = {
+				capital_ship = {
+					build_cost_ic = -0.20 instant = yes
+				}
+				
+				screen_ship = {
+					build_cost_ic = -0.15 instant = yes
+				}
+				submarine = {
+					build_cost_ic = -0.15 instant = yes
+				}
+				destroyer = {
+					build_cost_ic = -0.15 instant = yes
+				}
+			}
+		}
+	}
+
+
+	political_advisor={
+		RUS_boris_sturmer={
+			allowed={
+				tag=RUS
+			}
+			traits={
+				silent_workhorse
+			}
+			ai_will_do={
+				factor=1
+			}
+		}
+			RUS_vladimir_kokovtsov={ allowed={ tag=RUS } traits={ quartermaster_general } ai_will_do={ factor=1 } }
+			RUS_nikolai_golitsyn={ allowed={ tag=RUS } traits={ compassionate_gentleman } ai_will_do={ factor=1 } }
+			RUS_pavel_ryabushinsky={ allowed={ tag=RUS } traits={ armaments_organizer } ai_will_do={ factor=1 } }
+			RUS_vasily_shulgin={ allowed={ tag=RUS } traits={ captain_of_industry } ai_will_do={ factor=1 } }
+			RUS_konstantin_v_rodzaevsky={ allowed={ tag=RUS } available = {has_completed_focus = RUS_ww1_condemn_marxist_ideas} traits={ fascist_demagogue } ai_will_do={ factor=1 } }
+			}
+	theorist={
+			RUS_alexei_polivanov={ allowed={ tag=RUS } traits={ military_theorist } ai_will_do={ factor=1 } }
+			RUS_michael_alexandrovich={ allowed={ tag=RUS } traits={ victory_through_airpower } ai_will_do={ factor=1 } }
+			}
+	army_chief={
+			RUS_alexei_brusilov={ allowed={ tag=RUS } traits={ army_chief_maneuver_1 } ai_will_do={ factor=1 } }
+			RUS_vasily_gurko={ allowed={ tag=RUS } traits={ army_chief_organizational_1 } ai_will_do={ factor=1 } }
+			RUS_nikolai_dukhonin={ allowed={ tag=RUS } traits={ army_chief_morale_1 } ai_will_do={ factor=1 } }
+			RUS_grand_duke_nikolai={ allowed={ tag=RUS } traits={ army_chief_offensive_1 } ai_will_do={ factor=1 } }
+			}
+	navy_chief={
+			RUS_alexander_kolchak={ allowed={ tag=RUS } traits={ navy_chief_maneuver_1 } ai_will_do={ factor=1 } }
+			RUS_ivan_grigorovich={ allowed={ tag=RUS } traits={ navy_chief_decisive_battle_1 } ai_will_do={ factor=1 } }
+			}
+	air_chief={
+			RUS_pyotr_nesterov={ allowed={ tag=RUS } traits={ air_chief_safety_2 } ai_will_do={ factor=1 } } #Needs a Localisation for RUS_pyotr_nesterov
+			}
+
+	high_command={
+			RUS_vladimir_sukhomlinov={ allowed={ tag=RUS } traits={ army_cavalry_1 } ai_will_do={ factor=1 } }
+			RUS_mikhail_alexeev={ allowed={ tag=RUS } traits={ army_entrenchment_1 } ai_will_do={ factor=1 } }
+			RUS_stepan_voevodsky={ allowed={ tag=RUS } traits={ navy_capital_ship_1 } ai_will_do={ factor=1 } }
+			RUS_aleksandr_rusin={ allowed={ tag=RUS } traits={ navy_anti_submarine_1 } ai_will_do={ factor=1 } }
+			RUS_aleksandr_lukomsky={ allowed={ tag=RUS } traits={ army_artillery_1 } ai_will_do={ factor=1 } }
+			RUS_pyotr_krasnov={ allowed={ tag=RUS } traits={ army_commando_1 } ai_will_do={ factor=1 } }
+			RUS_andrei_shkuro={ allowed={ tag=RUS } traits={ army_regrouping_1 } ai_will_do={ factor=1 } }
+			}
+	naval_manufacturer={
+			designer = yes 
+			central_research_institute_of_shipbuilding_technology={ allowed={ TAG=RUS } research_bonus={ naval_equipment=0.10 } traits={ naval_manufacturer } picture=generic_naval_manufacturer_2 }
+			rubin_marine_engineering={ allowed={ TAG=RUS } research_bonus={ naval_equipment=0.10 } traits={ raiding_fleet_naval_manufacturer } picture=generic_naval_manufacturer_3 }
+			baltic_shipyard={ allowed={ TAG=RUS } research_bonus={ naval_equipment=0.10 } traits={ coastal_defence_naval_manufacturer } picture=generic_naval_manufacturer_1 }
+			}
+	aircraft_manufacturer={
+			designer = yes 
+			igor_sikorsky={ allowed={ TAG=RUS } research_bonus={ air_equipment=0.10 } traits={ medium_aircraft_manufacturer } picture=generic_air_manufacturer_2 }
+			zhukovsky_air_force_academy={ allowed={ TAG=RUS } research_bonus={ air_equipment=0.10 } traits={ light_aircraft_manufacturer } picture=generic_air_manufacturer_3 }
+			}
+	materiel_manufacturer={
+			designer = yes 
+			va_degtyarev_plant={ allowed={ TAG=RUS } research_bonus={ infantry_weapons=0.10 } traits={ infantry_equipment_manufacturer } picture=generic_infantry_equipment_manufacturer_2 }
+			tula_arms_plant={ allowed={ TAG=RUS } research_bonus={ infantry_weapons=0.10 } traits={ infantry_equipment_manufacturer } }
+			obukhov_plant={ allowed={ TAG=RUS } research_bonus={ artillery=0.10 } traits={ artillery_manufacturer } picture=generic_artillery_manufacturer_1 }
+			}
+	industrial_concern={
+			designer = yes 
+			machine_building_plant_mzik={ allowed={ TAG=RUS }    research_bonus = {
+							    industry = 0.10
+							    
+							   } traits={ industrial_concern } picture=generic_tank_manufacturer_2 }
+			kharkov_locomotive_factory={ allowed={ TAG=RUS }    research_bonus = {
+							    industry = 0.10
+							    
+							   } traits={ industrial_concern } picture=generic_tank_manufacturer_3 }
+			}
+	tank_manufacturer={
+			designer = yes 
+			vyatka_factory_design_bureau={ allowed={ TAG=RUS } research_bonus={ armor=0.10 } traits={ tank_manufacturer } picture=generic_tank_manufacturer_2 }
+			}
+	}
