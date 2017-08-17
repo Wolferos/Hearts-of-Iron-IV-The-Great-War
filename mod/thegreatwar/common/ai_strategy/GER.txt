@@ -46,67 +46,67 @@ invading_france_through_to_benelux_so_we_can_make_it_historical = {
 }
 
 
-centralpowers_stay_away_from_the_royal_navy = {
-	enable = {
-		has_war_with = ENG
-		date < 1914.1.1
-		
-		OR = {
-			GER = {
-				naval_strength_ratio = {
-					tag = ENG 
-  					ratio < 0.5
-  				}
-  			}
-
-			# if we manage to get a foothold in UK we must do what we can to exploit it! (checks coastal states)
-			divisions_in_state = { state = 127 size > 0 }
-			divisions_in_state = { state = 126 size > 0 }
-			divisions_in_state = { state = 125 size > 0 }
-			divisions_in_state = { state = 129 size > 0 }
-			divisions_in_state = { state = 130 size > 0 }
-			divisions_in_state = { state = 131 size > 0 }
-			divisions_in_state = { state = 123 size > 0 }
-			divisions_in_state = { state = 122 size > 0 }
-			divisions_in_state = { state = 132 size > 0 }
-			divisions_in_state = { state = 121 size > 0 }
-			divisions_in_state = { state = 136 size > 0 }
-			divisions_in_state = { state = 120 size > 0 }
-			divisions_in_state = { state = 133 size > 0 }
-		}		
-	}
-	abort = {
-		OR = {
-			date > 1915.1.1
-			NOT = { has_war_with = ENG }
-			AND = {
-				GER = {
-					naval_strength_ratio = {
-						tag = ENG 
-	  					ratio > 0.5
-	  				}
-	  			}
-
-				divisions_in_state = { state = 127 size < 1 }
-				divisions_in_state = { state = 126 size < 1 }
-				divisions_in_state = { state = 125 size < 1 }
-				divisions_in_state = { state = 129 size < 1 }
-				divisions_in_state = { state = 130 size < 1 }
-				divisions_in_state = { state = 131 size < 1 }
-				divisions_in_state = { state = 123 size < 1 }
-				divisions_in_state = { state = 122 size < 1 }
-				divisions_in_state = { state = 132 size < 1 }
-				divisions_in_state = { state = 121 size < 1 }
-				divisions_in_state = { state = 136 size < 1 }
-				divisions_in_state = { state = 120 size < 1 }
-				divisions_in_state = { state = 133 size < 1 }
-			}
-		}
-	}
-	
-	ai_strategy = {
-		type = naval_avoid_region
-		id = 18 #english channel
-		value = 100
-	}
-}
+#centralpowers_stay_away_from_the_royal_navy = {
+#	enable = {
+#		has_war_with = ENG
+#		date < 1914.1.1
+#		
+#		OR = {
+#			GER = {
+#				naval_strength_ratio = {
+#					tag = ENG 
+#  					ratio < 0.5
+#  				}
+#  			}
+#
+#			# if we manage to get a foothold in UK we must do what we can to exploit it! (checks coastal states)
+#			divisions_in_state = { state = 127 size > 0 }
+#			divisions_in_state = { state = 126 size > 0 }
+#			divisions_in_state = { state = 125 size > 0 }
+#			divisions_in_state = { state = 129 size > 0 }
+#			divisions_in_state = { state = 130 size > 0 }
+#			divisions_in_state = { state = 131 size > 0 }
+#			divisions_in_state = { state = 123 size > 0 }
+#			divisions_in_state = { state = 122 size > 0 }
+#			divisions_in_state = { state = 132 size > 0 }
+#			divisions_in_state = { state = 121 size > 0 }
+#			divisions_in_state = { state = 136 size > 0 }
+#			divisions_in_state = { state = 120 size > 0 }
+#			divisions_in_state = { state = 133 size > 0 }
+#		}		
+#	}
+#	abort = {
+#		OR = {
+#			date > 1915.1.1
+#			NOT = { has_war_with = ENG }
+#			AND = {
+#				GER = {
+#					naval_strength_ratio = {
+#						tag = ENG 
+#	  					ratio > 0.5
+#	  				}
+#	  			}
+#
+#				divisions_in_state = { state = 127 size < 1 }
+#				divisions_in_state = { state = 126 size < 1 }
+#				divisions_in_state = { state = 125 size < 1 }
+#				divisions_in_state = { state = 129 size < 1 }
+#				divisions_in_state = { state = 130 size < 1 }
+#				divisions_in_state = { state = 131 size < 1 }
+#				divisions_in_state = { state = 123 size < 1 }
+#				divisions_in_state = { state = 122 size < 1 }
+#				divisions_in_state = { state = 132 size < 1 }
+#				divisions_in_state = { state = 121 size < 1 }
+#				divisions_in_state = { state = 136 size < 1 }
+#				divisions_in_state = { state = 120 size < 1 }
+#				divisions_in_state = { state = 133 size < 1 }
+#			}
+#		}
+#	}
+#	
+#	ai_strategy = {
+#		type = naval_avoid_region
+#		id = 18 #english channel
+#		value = 100
+#	}
+#}
