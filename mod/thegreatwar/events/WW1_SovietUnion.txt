@@ -1,4 +1,4 @@
-###########################
+﻿###########################
 # Soviet Events
 ###########################
 
@@ -43,13 +43,20 @@ news_event = {
 	
 	option={
 		name=ww1_soviet.2.uprising
-		trigger = { tag = SOV NOT = { has_completed_focus = SOV_ww1_restore_order } }
-		ai_chance={
-			factor=100
+		ai_chance = {
+			factor = 100
 		}
-		ARM = { declare_war_on = { targer = SOV type = take_state_focus } }
-		AZR = { declare_war_on = { targer = SOV type = take_state_focus } }
-		GEO = { declare_war_on = { targer = SOV type = take_state_focus } }
+		trigger = { 
+			TAG = SOV
+			SOV = {
+				NOT = { 
+					has_completed_focus = SOV_ww1_restore_order 
+				}
+			}
+		}
+		ARM = { declare_war_on = { target = SOV type = take_state_focus } }
+		AZR = { declare_war_on = { target = SOV type = take_state_focus } }
+		GEO = { declare_war_on = { target = SOV type = take_state_focus } }
 	}
 	option={
 		name=ww1_soviet.2.notsov
