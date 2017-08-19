@@ -48,3 +48,84 @@ country_event = {
 			}
 		}
 	}
+	
+	country_event = {
+	    id = ww1_belgium.2
+		title = ww1_belgium.2.t
+		desc = ww1_belgium.2.d
+		
+		is_triggered_only = yes
+		
+		option = {
+		    ai_chance = { factor = 80 modifier = { factor = 50 BEL = { has_completed_focus = BEL_neutrality_focus } } }
+		    name = ww1_belgium.2.a
+			BEL = { add_to_faction = ROOT }
+		}
+		option = {
+		    ai_chance = { factor = 20 modifier = { factor = 50 BEL = { has_completed_focus = BEL_neutrality_focus } } }
+		    name = ww1_belgium.2.b
+		}
+	}
+	
+	country_event = {
+	    id = ww1_belgium.3
+		title = ww1_belgium.3.t
+		desc = ww1_belgium.3.d
+		
+		is_triggered_only = yes
+		
+		option = {
+		    ai_chance = { factor = 60 modifier = { factor = 50 BEL = { has_completed_focus = BEL_neutrality_focus } } modifier = { factor = 95 BEL = { has_completed_focus = BEL_ally_benilux } } }
+		    name = ww1_belgium.3.a
+			BEL = { annex_country = { target = ROOT transfer_troops = yes } }
+			if = { limit = { BEL = { has_completed_focus = BEL_unite_benilux } } every_state = { limit = { is_controlled_by = ROOT } add_core_of = BEL } }
+		}
+		option = {
+		    ai_chance = { factor = 40 modifier = { factor = 50 BEL = { has_completed_focus = BEL_neutrality_focus } } modifier = { factor = 5 BEL = { has_completed_focus = BEL_ally_benilux } } }
+			every_state = { limit = { is_controlled_by = ROOT } add_core_of = BEL }
+			BEL = { create_wargoal = { target = ROOT type = annex_everything } }
+		    name = ww1_belgium.3.b
+		}
+	}
+	
+	country_event = {
+	    id = ww1_belgium.4
+		title = ww1_belgium.4.t
+		desc = ww1_belgium.4.d
+		
+		is_triggered_only = yes
+		
+		option = {
+		    ai_chance = { factor = 50 modifier = { factor = 85 BEL = { is_in_faction_with = ROOT } } modifier = { factor = 0 BEL = { is_in_faction_with = FRA } } }
+		    name = ww1_belgium.4.a
+			BEL = { transfer_state = 768 }
+		}
+		option = {
+		    ai_chance = { factor = 50 modifier = { factor = 15 BEL = { is_in_faction_with = ROOT } } modifier = { factor = 100 BEL = { is_in_faction_with = FRA } } }
+		    name = ww1_belgium.4.b
+		}
+	}
+	
+	country_event = {
+	    id = ww1_belgium.5
+		title = ww1_belgium.5.t
+		desc = ww1_belgium.5.d
+		
+		is_triggered_only = yes
+		
+		immediate = { hidden_effect = { set_cosmetic_tag = GBL } }
+		
+		option = {
+		    ai_chance = { factor = 100 }
+			trigger = { OR = { country_exists = HOL country_exists = LUX } }
+		    name = ww1_belgium.5.a
+			if = { limit = { country_exists = HOL } HOL = { country_event = ww1_belgium.3 } }
+			if = { limit = { country_exists = LUX } LUX = { country_event = ww1_belgium.3 } }
+		}
+		option = {
+		    ai_chance = { factor = 100 }
+			trigger = { NOT = { country_exists = HOL country_exists = LUX } }
+			every_state = { limit = { is_controlled_by = ROOT } add_core_of = ROOT }
+		    name = ww1_belgium.5.b
+		}
+	}
