@@ -59,9 +59,11 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - Dizzle
    - Kaiser Anony
    - DevilIris
+   - MasterWaifuman
    - skullbe
    - Kuebelwagen
    - Stluvik
+   - MurderMountain
    - M3Henry
    - fedcba
    - MrBlazzar
