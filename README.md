@@ -7,9 +7,9 @@
 
 **Project Lead:** Wolferos 
 
-**Current Version:** 0.3.2
+**Current Version:** 0.4
 
-**Compatible with:** Hearts of Iron IV 1.4.1 "Oak"(with or without Paid DLC) 
+**Compatible with:** Hearts of Iron IV 1.4.2 "Oak"(with or without Paid DLC) 
 
 **Supported Languages:**
 - English Language
@@ -58,6 +58,16 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
 
    - Dizzle
    - Kaiser Anony
+   - DevilIris
+   - MasterWaifuman
+   - skullbe
+   - Kuebelwagen
+   - Stluvik
+   - MurderMountain
+   - M3Henry
+   - fedcba
+   - MrBlazzar
+   - Citofis
    - Jadasong
    - Zkuhh
    - Vale
@@ -67,7 +77,6 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - Seonake
    - Benoît (Mundus Bellicus)
    - Darksaber501st
-   - DevilIris
    - lahvan
    - Mixmaximonster
    - tihhoni
