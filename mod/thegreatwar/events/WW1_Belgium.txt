@@ -1,4 +1,4 @@
-﻿add_namespace = ww1_belgium
+add_namespace = ww1_belgium
 country_event = {
 	title=ww1_belgium.1.t#Atrocities commited in Belgium
 	desc=ww1_belgium.1.d#After the German occupation of some Belgian cities there were reports of harsh treatment of civilians in retaliation to very active Belgian resistance fighters sabotage.
@@ -78,11 +78,11 @@ country_event = {
 		    ai_chance = { factor = 60 modifier = { factor = 50 BEL = { has_completed_focus = BEL_neutrality_focus } } modifier = { factor = 95 BEL = { has_completed_focus = BEL_ally_benilux } } }
 		    name = ww1_belgium.3.a
 			BEL = { annex_country = { target = ROOT transfer_troops = yes } }
-			if = { limit = { BEL = { has_completed_focus = BEL_unite_benilux } } every_state = { limit = { is_controlled_by = ROOT } add_core_of = BEL } }
+			if = { limit = { BEL = { has_completed_focus = BEL_unite_benilux } } every_state = { limit = { is_controlled_by = ROOT is_on_continent = europe } add_core_of = BEL } }
 		}
 		option = {
 		    ai_chance = { factor = 40 modifier = { factor = 50 BEL = { has_completed_focus = BEL_neutrality_focus } } modifier = { factor = 5 BEL = { has_completed_focus = BEL_ally_benilux } } }
-			every_state = { limit = { is_controlled_by = ROOT } add_core_of = BEL }
+			every_state = { limit = { is_controlled_by = ROOT is_on_continent = europe } add_core_of = BEL }
 			BEL = { create_wargoal = { target = ROOT type = annex_everything } }
 		    name = ww1_belgium.3.b
 		}
@@ -119,13 +119,13 @@ country_event = {
 		    ai_chance = { factor = 100 }
 			trigger = { OR = { country_exists = HOL country_exists = LUX } }
 		    name = ww1_belgium.5.a
-			if = { limit = { country_exists = HOL } HOL = { country_event = ww1_belgium.3 } }
-			if = { limit = { country_exists = LUX } LUX = { country_event = ww1_belgium.3 } }
+			if = { limit = { country_exists = HOL } HOL = { country_event = { id = ww1_belgium.3 } } }
+			if = { limit = { country_exists = LUX } LUX = { country_event = { id = ww1_belgium.3 } } }
 		}
 		option = {
 		    ai_chance = { factor = 100 }
 			trigger = { NOT = { country_exists = HOL country_exists = LUX } }
-			every_state = { limit = { is_controlled_by = ROOT } add_core_of = ROOT }
+			every_state = { limit = { is_controlled_by = ROOT is_on_continent = europe } add_core_of = ROOT }
 		    name = ww1_belgium.5.b
 		}
 	}
