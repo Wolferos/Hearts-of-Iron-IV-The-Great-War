@@ -29,7 +29,7 @@ focus_tree = {
 	focus = {
 		id = SOV_ww1_defend_revolution
 		icon = GFX_focus_generic_soviet_politics
-		available = { NOT = { has_completed_focus = SOV_ww1_end_revolution } }
+		available = { NOT = { has_completed_focus = SOV_ww1_end_revolution } NOT = { country_exists = RUS has_war_with = RUS } }
 		prerequisite = { focus = SOV_ww1_political_effort }
 		completion_reward = { add_political_power = 20
 		    swap_ideas = {
@@ -56,6 +56,7 @@ focus_tree = {
 	focus = {
 		id = SOV_ww1_execute_imperial_family
 		icon = GFX_hoi4tgw_knifeintheback
+		available = { NOT = { country_exists = RUS has_war_with = RUS } }
 		prerequisite = { focus = SOV_ww1_volunteers }
 		prerequisite = { focus = SOV_ww1_support_bolsheviks }
 		completion_reward = { add_national_unity = 0.02 add_opinion_modifier = { target = ENG modifier = romanovs_executed } add_opinion_modifier = { target = DEN modifier = romanovs_executed } }
@@ -67,10 +68,11 @@ focus_tree = {
 	
 	focus = {
 		id = SOV_ww1_claim_victory
+		available = { NOT = { country_exists = RUS has_war_with = RUS } }
 		icon = GFX_goal_anschluss
 		prerequisite = { focus = SOV_ww1_execute_imperial_family }
 		completion_reward = { add_political_power = 20 add_national_unity = 0.05 custom_effect_tooltip = prevent_white_uprising }
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 100 }
 		cost = 10
 		x = 1
 		y = 5
@@ -78,6 +80,7 @@ focus_tree = {
 	
 	focus = {
 		id = SOV_ww1_complete_revolution
+		available = { NOT = { country_exists = RUS has_war_with = RUS } }
 		icon = GFX_goal_generic_national_unity
 		mutually_exclusive = { focus = SOV_ww1_end_revolution }
 		prerequisite = { focus = SOV_ww1_political_effort }
@@ -103,7 +106,7 @@ focus_tree = {
 		id = SOV_ww1_foster_new_values
 		icon = GFX_goal_generic_propaganda
 		prerequisite = { focus = SOV_ww1_soviet_constitution focus = SOV_ww1_liberty }
-		completion_reward = { add_political_power = -20 if = { limit = { country_exists = FIN FIN = { is_subject_of = SOV } } FIN = { country_event = { id = ww1_soviet.1 } } } }
+		completion_reward = { add_political_power = -20 if = { limit = { country_exists = FIN FIN = { is_subject_of = SOV } } country_event = { id = ww1_soviet.1 } } }
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 9
@@ -127,7 +130,7 @@ focus_tree = {
 		prerequisite = { focus = SOV_ww1_SWP }
 		available = { has_completed_focus = SOV_ww1_soviet_constitution }
 		completion_reward = { add_ideas = undisturbed_isolation add_ideas = disarmed_nation add_ideas = closed_economy }
-		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes} }
+		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes } }
 		cost = 10
 		x = 9
 		y = 6
@@ -172,7 +175,7 @@ focus_tree = {
 		id = SOV_ww1_red_terror
 		icon = GFX_goal_generic_war_with_comintern
 		prerequisite = { focus = SOV_ww1_establish_cheka }
-		completion_reward = { add_timed_idea = { idea = red_terror days = 180 } hidden_effect = { if = { limit = { country_exists = FIN FIN = { is_subject_of = SOV } } FIN = { country_event = { id = ww1_soviet.1 } } } } }
+		completion_reward = { add_timed_idea = { idea = red_terror days = 180 } hidden_effect = { if = { limit = { country_exists = FIN FIN = { is_subject_of = SOV } } country_event = { id = ww1_soviet.1 } } } }
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 5
@@ -196,7 +199,7 @@ focus_tree = {
 		id = SOV_ww1_end_revolution
 		icon = GFX_goal_anti_comintern_pact
 		mutually_exclusive = { focus = SOV_ww1_complete_revolution }
-		available = { NOT = { has_completed_focus = SOV_ww1_defend_revolution } }
+		available = { NOT = { has_completed_focus = SOV_ww1_defend_revolution } NOT = { country_exists = RUS has_war_with = RUS } }
 		prerequisite = { focus = SOV_ww1_political_effort }
 		completion_reward = { add_popularity = { ideology = communism popularity = -0.1 } }
 		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes} }
@@ -291,7 +294,7 @@ focus_tree = {
 	focus = {
 		id = SOV_ww1_diplomatic_effort
 		icon = GFX_goal_generic_intelligence_exchange
-		available = { NOT = { has_idea = octrev } has_completed_focus = SOV_ww1_recover_after_civwar }
+		available = { NOT = { has_idea = octrev } has_completed_focus = SOV_ww1_recover_after_civwar NOT = { country_exists = RUS has_war_with = RUS } }
 		completion_reward = { add_political_power = 75 }
 		ai_will_do = { factor = 10 modifier = { factor = 100 is_historical_focus_on = yes} }
 		cost = 10
@@ -325,6 +328,7 @@ focus_tree = {
 	
 	focus = {
 		id = SOV_ww1_restore_order
+		available = { NOT = { country_exists = RUS has_war_with = RUS } }
 		icon = GFX_goal_generic_national_unity
 		prerequisite = { focus = SOV_ww1_respect_treaty }
 		completion_reward = { add_political_power = 20 custom_effect_tooltip = prevents_releases }
@@ -480,7 +484,7 @@ focus_tree = {
 	
 	focus = {
 		id = SOV_ww1_poland_war
-		available = { country_exists = POL UKR = { NOT = { is_subject_of = ROOT is_in_faction_with = ROOT } } }
+		available = { country_exists = POL POL = { NOT = { is_subject_of = ROOT is_in_faction_with = ROOT } } }
 		icon = GFX_goal_generic_major_war
 		prerequisite = { focus = SOV_ww1_finland_intervention }
 		completion_reward = { create_wargoal = {
@@ -511,7 +515,7 @@ focus_tree = {
 		id = SOV_ww1_europe_revolution
 		icon = GFX_goal_generic_war_with_comintern
 		prerequisite = { focus = SOV_ww1_third_international }
-		completion_reward = { every_other_country = { limit = { any_owned_state = { is_on_continent = europe } } add_ideas = comintern_influence } }
+		completion_reward = { every_other_country = { limit = { any_owned_state = { is_on_continent = europe } } add_timed_idea = { idea = comintern_influence days = 360 } } }
 		ai_will_do = { factor = 10 modifier = { factor = 1 is_historical_focus_on = yes} }
 		cost = 10
 		x = 8
@@ -522,7 +526,7 @@ focus_tree = {
 		id = SOV_ww1_asia_revolution
 		icon = GFX_goal_generic_war_with_comintern
 		prerequisite = { focus = SOV_ww1_europe_revolution }
-		completion_reward = { every_other_country = { limit = { NOT = { has_idea = comintern_influence } any_owned_state = { is_on_continent = asia } } add_ideas = comintern_influence } }
+		completion_reward = { every_other_country = { limit = { NOT = { has_idea = comintern_influence } any_owned_state = { is_on_continent = asia } } add_timed_idea = { idea = comintern_influence days = 360 } } }
 		ai_will_do = { factor = 10 modifier = { factor = 1 is_historical_focus_on = yes} }
 		cost = 10
 		x = 8
@@ -533,7 +537,7 @@ focus_tree = {
 		id = SOV_ww1_americas_revolution
 		icon = GFX_goal_generic_war_with_comintern
 		prerequisite = { focus = SOV_ww1_asia_revolution }
-		completion_reward = { every_other_country = { limit = { NOT = { has_idea = comintern_influence } any_owned_state = { OR = { is_on_continent = north_america is_on_continent = south_america } } } add_ideas = comintern_influence } }
+		completion_reward = { every_other_country = { limit = { NOT = { has_idea = comintern_influence } any_owned_state = { OR = { is_on_continent = north_america is_on_continent = south_america } } } add_timed_idea = { idea = comintern_influence days = 360 } } }
 		ai_will_do = { factor = 10 modifier = { factor = 1 is_historical_focus_on = yes} }
 		cost = 10
 		x = 8
@@ -542,6 +546,7 @@ focus_tree = {
 	
 	focus = {
 		id = SOV_ww1_contact_french
+		available = { NOT = { has_war_with = FRA FRA = { is_subject = yes } } }
 		icon = GFX_hoi4tgw_marianne
 		prerequisite = { focus = SOV_ww1_break_treaty }
 		completion_reward = { add_political_power = -20 FRA = { add_opinion_modifier = { target = ROOT modifier = contact_french } } add_opinion_modifier = { target = FRA modifier = contact_french } }

@@ -11,18 +11,23 @@
  	option = {
  		name =  ww1_japan.700.a
  		ai_chance = {
- 			factor = 100
+ 			factor = 70
  		}
  		JAP = {
  			annex_country = {
  				target = KOR
  				transfer_troops = yes
+ 		    }
  		}
- 		}
+		hidden_effect = {
+			news_event = { id = japan.100 hours = 6 }
+		}
  	}	
  	option = {
  		name = ww1_japan.700.b
- 		ai_chance = { factor = 0 }
+ 		ai_chance = {
+		    factor = 30
+		}
  		JAP = {
  			end_puppet = KOR
  			declare_war_on = {
@@ -30,6 +35,9 @@
  				type = annex_everything
  			}
  		}
+		hidden_effect = {
+			news_event = { id = japan.101 hours = 6 }
+		}
  	}
  }
  
@@ -260,40 +268,7 @@ country_event = {
 
 # Japan–Korea Annexation Treaty
 #____________________________________________________________
-# Korea Empire's choice
-country_event = {
-	id = ww1_japan.90
-	title = ww1_japan.100.t
-	desc = ww1_japan.100.d
-	picture = EVENT_hoi4tgw_korea_annexation
-
-	is_triggered_only = yes
-
-	option = {
-		name =  "We have no other choice"
-		ai_chance = {
-			factor = 100
-		}
-		JAP = {
-			annex_country = {
-				target = KOR
-				transfer_troops = yes
-			}
-		}
-	}
-
-	option = {
-		name = "Enough! We Must Free Ourselves!"
-		ai_chance = { factor = 0 }
-		JAP = {
-			end_puppet = KOR
-			declare_war_on = {
-				target = KOR
-				type = annex_everything
-			}
-		}
-	}
-}
+# Korea Accept
 
 news_event = {
 	id=ww1_japan.100
@@ -301,13 +276,9 @@ news_event = {
 	desc=ww1_japan.100.d
 
 	picture=EVENT_hoi4tgw_korea_annexation
-
+	
+    is_triggered_only = yes
 	major = yes
-
-	trigger = {
-		JAP = { has_completed_focus = JAP_ww1_Japan_Korea_Treaty }
-		NOT = { has_global_flag = kis_japankorea_annexation }
-	}
 
 	mean_time_to_happen = {
 		days = 0
@@ -331,6 +302,44 @@ news_event = {
 	}
 	option = {
 		name = ww1_japan.100.b
+		ai_chance = {
+			factor = 100
+		}
+		trigger = {
+			TAG = JAP
+		}
+	}
+}
+
+#Korea Refuse
+
+news_event = {
+	id=ww1_japan.101
+	title=ww1_japan.101.t
+	desc=ww1_japan.101.d
+
+	picture=EVENT_hoi4tgw_korea_independence
+	
+    is_triggered_only = yes
+	major = yes
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	option = {
+		name = ww1_japan.101.a
+		ai_chance = {
+			factor = 100
+		}
+		trigger = {
+			NOT = {
+				TAG = JAP
+			}
+		}
+	}
+	option = {
+		name = ww1_japan.101.b
 		ai_chance = {
 			factor = 100
 		}

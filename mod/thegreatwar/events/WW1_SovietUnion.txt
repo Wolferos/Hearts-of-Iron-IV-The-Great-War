@@ -1,4 +1,4 @@
-﻿###########################
+###########################
 # Soviet Events
 ###########################
 
@@ -9,20 +9,29 @@ country_event = {
 	desc=ww1_soviet.1.d
 	id=ww1_soviet.1
 	picture=GFX_report_event_generic_finnish_letter
-	fire_only_once=yes
 	is_triggered_only=yes
 	option={
 		name=ww1_soviet.1.a
 		ai_chance={
 			factor=80
+			modifier = {
+			    factor = 100
+			    is_historical_focus_on = yes
+			}
 		}
 		end_puppet = FIN
+		add_national_unity = 0.1
 	}
 	option={
 		name=ww1_soviet.1.b
 		ai_chance={
 			factor=20
+			modifier = {
+			    factor = 0
+			    is_historical_focus_on = yes
+			}
 		}
+		FIN = { country_event = { days = 1 id = ww1_soviet.3 } }
 	}
 }
 
@@ -76,7 +85,30 @@ news_event = {
 }
 
 country_event = {
-	title=ww1_soviet.999.t #oob for sov
+	title=ww1_soviet.3.t#Independence of Finland
+	desc=ww1_soviet.3.d
+	id=ww1_soviet.3
+	picture=GFX_report_event_generic_finnish_letter
+	is_triggered_only=yes
+	option={
+		name=ww1_soviet.3.a
+		ai_chance={
+			factor=80
+		}
+		end_puppet = FIN
+		declare_war_on = { target = SOV type = take_state_focus }
+	}
+	option={
+		name=ww1_soviet.3.b
+		ai_chance={
+			factor=20
+		}
+		add_national_unity = -0.05
+	}
+}
+
+country_event = {
+	title=ww1_soviet.999.t #oob for sov ( now do nothing, but maybe useful in future )
 	desc=ww1_soviet.999.d
 	id=ww1_soviet.999
 	fire_only_once=yes
