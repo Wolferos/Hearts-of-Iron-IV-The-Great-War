@@ -11,6 +11,8 @@ create_faction = central_powers
 add_to_faction = GER
 add_to_faction = AUH
 add_to_faction = BOS
+add_to_faction = GTL
+add_to_faction = KAM
 
 #add_to_faction = BAV
 #puppet = BAV
@@ -70,6 +72,40 @@ create_navy_leader={  name = "Henning von Holtzendorff" id=34312 portrait_path="
 create_navy_leader={  name = "Friedrich Graf von Baudissin" id=34313 portrait_path="gfx/admiral/GER_von_baudissin.dds" traits={   } skill=3 }
 create_navy_leader={  name = "Max von Fischel" id=34314 portrait_path="gfx/admiral/GER_von_fischel.dds" traits={   } skill=3 }
 
+# DIPLOMACY
+if = {
+	limit = {
+		has_dlc = "Together for Victory"
+	}
+	set_autonomy = {
+		target = GTL
+		autonomous_state = autonomy_colony
+	}
+	set_autonomy = {
+		target = KAM
+		autonomous_state = autonomy_colony
+	}
+	#set_autonomy = {
+	#	target = 
+	#	autonomous_state = autonomy_dominion
+	#}
+	#set_autonomy = {
+	#	target = 
+	#	autonomous_state = autonomy_dominion
+	#}
+	#set_autonomy = {
+	#	target = 
+	#	autonomous_state = autonomy_dominion
+	#}
+	#set_autonomy = {
+	#	target = 
+	#	autonomous_state = autonomy_dominion
+	#}
+	else = {
+		puppet = GTL
+		puppet = KAM
+	}
+}
 
 1910.1.1 = {
 	oob = "GER_1910"
