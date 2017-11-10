@@ -143,7 +143,6 @@ news_event = {
 			NOT = { controls_state = 206 }
 			NOT = { controls_state = 202 }
 			NOT = { controls_state = 194 }
-			NOT = { controls_state = 96 }
 			NOT = { controls_state = 95 }
 		}
 	}
@@ -158,7 +157,12 @@ news_event = {
 				} 
 			}
 			SOV = {
-				create_faction = "Comintern"		
+				create_faction = "Comintern"
+
+				annex_country = {
+					target = MON
+					transfer_troops = yes
+				}
 				
 				declare_war_on = {
 		            type = annex_everything
@@ -707,12 +711,19 @@ news_event = {
 				    election_frequency = 60 elections_allowed = no
 				}
 
+				SOV = {
+					release = MON
+				}
+
 				declare_war_on = {
 		            type = annex_everything
 		            target = SOV
 		        }
 
 				transfer_state = 147
+
+				puppet = MON
+
 				transfer_state = 137
 				transfer_state = 213
 				transfer_state = 214
