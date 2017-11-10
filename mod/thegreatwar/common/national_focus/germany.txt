@@ -823,6 +823,52 @@ focus_tree = {
 		y = 6
 	}
 
+	# Finnish Civil War # Open Beta 0.5
+	focus = {
+		id = GER_ww1_finnish_civil_war
+
+		available = {
+
+			SOV = {exists = yes}
+
+			date > 1917.1.1
+			not = {has_global_flag = kis_treaty_of_versailles }
+
+			FIN = {
+				exists = yes
+				is_puppet=no
+			}
+		}
+		prerequisite = { focus=GER_ww1_send_advisor }
+
+		icon = GFX_goal_anti_comintern_pact
+
+		completion_reward = {
+			FIN = {
+				start_civil_war = {
+					ruling_party = democratic
+					ideology = communism
+					size = 0.1
+					capital = 150
+					states = { 150 }
+				}
+			}
+
+			hidden_effect = {
+				news_event = { id = ww1_finland.1 days = 3 } # Finnish Civil War
+			}
+		}
+
+		ai_will_do = { factor = 10 }
+		cost = 10
+		x = 9
+		y = 7
+	}
+
+
+
+
+
 	#----------------------------------------------------------------------- 
 	# Bloc 2
 	#-----------------------------------------------------------------------
