@@ -170,7 +170,7 @@ news_event = {
 	title = interwar_news.5.t
 	desc = interwar_news.5.d
 
-	picture = EVENT_hoi4tgw_albanian_revolt # TEMP 0.1.6
+	picture = EVENT_hoi4tgw_albanian_revolt #
 
 	is_triggered_only = yes
 	major = yes
@@ -327,6 +327,199 @@ news_event = {
 
 	option = {
 		name = interwar_news.7.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________
+
+
+# The Turkish National Movement # Open Beta 0.5
+#____________________________________________________________
+news_event = {
+	id = interwar_news.8
+	title = interwar_news.8.t
+	desc = interwar_news.8.d
+
+	picture = EVENT_hoi4tgw_turkish_national_movement
+
+	major = yes
+
+	trigger = {
+		date > 1919.5.5
+		has_global_flag = kis_treaty_of_versailles
+		NOT = { has_global_flag = interwar_turkish_national_movement }
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	immediate = {
+		set_global_flag = interwar_turkish_national_movement
+		hidden_effect = {
+
+			GRE = {
+				country_event = { id = ww1_greece.6 }
+			}
+
+			TUR = {
+				start_civil_war = {
+					ruling_party = democratic
+					ideology = neutrality
+					size = 0.5
+					capital = 49
+					states = { 49 348 346 345 355}
+				}
+
+				#load_oob = "TUR_1919"
+				create_country_leader={ name = "Mustafa Kemal" desc=TUR_mustafa_kemal_DESC picture="gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_mustafa_kemal.dds" expire="1935.1.1" ideology=liberalism  traits={  } }
+			}
+
+		}
+	}
+
+	option = {
+		name = interwar_news.8.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________
+
+
+# The Greco-Turkish War # Open Beta 0.5
+#____________________________________________________________
+news_event = {
+	id = interwar_news.9
+	title = interwar_news.9.t
+	desc = interwar_news.9.d
+
+	picture = EVENT_hoi4tgw_greco_turkish_war
+
+	major = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = interwar_greco_turkish_war }
+	}
+
+	immediate = {
+		set_global_flag = interwar_greco_turkish_war
+	}
+
+	option = {
+		name = interwar_news.9.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________
+
+
+# Treaty of Lausanne # Open Beta 0.5
+#____________________________________________________________
+news_event = {
+	id = interwar_news.10
+	title = interwar_news.10.t
+	desc = interwar_news.10.d
+
+	picture = EVENT_hoi4tgw_interwar_treaty_of_lausanne
+
+	major = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = interwar_treaty_of_lausanne }
+	}
+
+	immediate = {
+		set_global_flag = interwar_treaty_of_lausanne
+	}
+
+	option = {
+		name = interwar_news.10.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________
+
+
+
+# Irish War of Independence # Open Beta 0.5
+#____________________________________________________________
+news_event = {
+	id = interwar_news.11
+	title = interwar_news.11.t
+	desc = interwar_news.11.d
+
+	picture = EVENT_hoi4tgw_interwar_irish_war_of_independence
+
+	major = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = interwar_irish_war_of_independence }
+	}
+
+	immediate = {
+		set_global_flag = interwar_irish_war_of_independence
+
+		hidden_effect = {
+
+			IRE = {
+				transfer_state = 113
+			}
+
+			ENG = {
+				declare_war_on = {
+				    type = annex_everything 
+				    target = IRE
+				}
+			}
+		}
+
+	}
+
+	option = {
+		name = interwar_news.11.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________
+
+
+
+
+# Irish Free State # Open Beta 0.5
+#____________________________________________________________
+news_event = {
+	id = interwar_news.12
+	title = interwar_news.12.t
+	desc = interwar_news.12.d
+
+	picture = EVENT_hoi4tgw_interwar_irish_free_state
+
+	major = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = interwar_irish_free_state }
+	}
+
+	immediate = {
+		set_global_flag = interwar_irish_free_state
+	}
+
+	option = {
+		name = interwar_news.12.a
 		ai_chance = {
 			factor = 100
 		}

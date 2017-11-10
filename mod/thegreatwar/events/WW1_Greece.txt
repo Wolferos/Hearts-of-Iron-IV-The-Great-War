@@ -40,12 +40,51 @@ country_event = {
 country_event = {
 	id = ww1_greece.5
 	title = "France sends l'Armée d'Orient"
-	desc = "TODO - France sends us an army to help us fight"
+	desc = "France sends us an army to help us fight"
 
 	is_triggered_only=yes
 
 	option = {
 		name = "This Army will help us!"
 	}
+}
+#____________________________________________________________
+
+# GRE can attack TUR for the Greco-Turkish War
+#____________________________________________________________
+country_event = {
+	id = ww1_greece.6
+	title = ww1_greece.6.t
+	desc = ww1_greece.6.d
+	#picture = ww1_greece.6
+
+	is_triggered_only = yes
+	
+	# GRE Yes
+	option = {
+		name = ww1_greece.6.a
+		ai_chance = { factor = 100 }
+
+	    GRE = {
+
+	        declare_war_on = {
+	            type = annex_everything
+	            target = TUR
+	        }
+	    }
+
+		hidden_effect = {
+			news_event = { days = 15 id = interwar_news.9 }
+		}
+
+
+	}
+
+	# GRE No
+	option = {
+		name = ww1_greece.6.b
+		ai_chance = { factor = 0 }
+	}
+
 }
 #____________________________________________________________
