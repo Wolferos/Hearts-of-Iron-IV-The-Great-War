@@ -2423,28 +2423,90 @@ focus_tree = {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	# 0.1.5
-
 	################ INTERWAR START
 
-	#Allied occupation of the Rhineland
+	# Open Beta 0.5
+
+	#Treaty of Lausanne
+	focus = {
+		id = FRA_interwar_treaty_of_lausanne
+		mutually_exclusive = { focus = FRA_interwar_invade_constantinople }
+		
+		icon = GFX_goal_generic_forceful_treaty
+
+		available = {
+			date>1922.1.1
+			has_global_flag = interwar_greco_turkish_war
+			not = { has_global_flag = interwar_treaty_of_lausanne }
+
+			ENG = { has_war = no }
+			FRA = { has_war = no }
+			GRE = { has_war_with = TUR }
+		}
+
+		x = 14
+		y = 7
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 100	
+		}
+
+		completion_reward = {
+
+			news_event = { id = interwar_news.10 } #Treaty of Lausanne
+
+			hidden_effect = {
+
+				GRE = { 
+					white_peace = TUR
+				}
+				TUR = { 
+					white_peace = GRE
+				}
+
+			}
+
+		}
+	}
+
+	#Invade Constantinople
+	focus = {
+		id = FRA_interwar_invade_constantinople
+		mutually_exclusive = { focus = FRA_interwar_treaty_of_lausanne }
+
+		icon = GFX_goal_generic_territory_or_war
+
+		available = {
+			date>1921.1.1
+			has_global_flag = interwar_greco_turkish_war
+			not = { has_global_flag = interwar_treaty_of_lausanne }
+
+			GRE = { has_war_with = TUR }
+		}
+
+		x = 16
+		y = 7
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+
+		completion_reward = {
+
+	        declare_war_on = {
+	            type = annex_everything
+	            target = TUR
+	        }
+		}
+	}
+
+
+
+
 
 	#Allied Occupation of the Rhineland
 	focus = {

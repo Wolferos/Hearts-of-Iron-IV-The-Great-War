@@ -987,6 +987,173 @@ focus_tree = {
 		y = 7
 	}
 
+
+	#-----------------------------------------------------------------------
+	# Bloc X - Interwar
+	#-----------------------------------------------------------------------
+
+
+	focus = {
+		id = ENG_interwar_aftermath_of_world_war_i
+		icon = GFX_goal_generic_national_unity
+		available = { has_global_flag = kis_treaty_of_versailles }
+
+		completion_reward = {
+			add_national_unity = 0.1
+			army_experience=-500
+			navy_experience=-500
+			air_experience=-500
+
+
+			hidden_effect = {
+				news_event = { id = interwar_news.11 days = 30 } #Irish War of Independence
+			}
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 17
+		y = 8
+	}
+
+	#Irish Free State
+	focus = {
+		id = ENG_interwar_irish_free_state
+		prerequisite = { focus=ENG_interwar_aftermath_of_world_war_i }
+		
+		icon = GFX_goal_support_democracy
+
+		available = {
+
+			has_global_flag = interwar_irish_war_of_independence
+
+			ENG = { has_war_with = IRE }
+		}
+
+		x = 17
+		y = 9
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 100	
+		}
+
+		completion_reward = {
+
+			news_event = { id = interwar_news.12 } #Irish Free State
+
+			IRE = {
+				transfer_state = 113
+				transfer_state = 134
+				transfer_state = 135
+			}
+
+			hidden_effect = {
+
+				ENG = { 
+					white_peace = IRE
+				}
+				IRE = { 
+					white_peace = ENG
+				}
+
+			}
+
+		}
+	}
+
+
+
+
+	#Treaty of Lausanne
+	focus = {
+		id = ENG_interwar_treaty_of_lausanne
+		prerequisite = { focus=ENG_interwar_aftermath_of_world_war_i }
+		mutually_exclusive = { focus = ENG_interwar_invade_constantinople }
+		
+		icon = GFX_goal_generic_forceful_treaty
+
+		available = {
+			date>1922.1.1
+			has_global_flag = interwar_greco_turkish_war
+			not = { has_global_flag = interwar_treaty_of_lausanne }
+
+			ENG = { has_war = no }
+			FRA = { has_war = no }
+			GRE = { has_war_with = TUR }
+		}
+
+		x = 16
+		y = 10
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 100	
+		}
+
+		completion_reward = {
+
+			news_event = { id = interwar_news.10 } #Treaty of Lausanne
+
+			hidden_effect = {
+
+				GRE = { 
+					white_peace = TUR
+				}
+				TUR = { 
+					white_peace = GRE
+				}
+
+			}
+
+		}
+	}
+
+	#Invade Constantinople
+	focus = {
+		id = ENG_interwar_invade_constantinople
+		mutually_exclusive = { focus = ENG_interwar_treaty_of_lausanne }
+
+		icon = GFX_goal_generic_territory_or_war
+
+		available = {
+			date>1921.1.1
+			has_global_flag = interwar_greco_turkish_war
+			not = { has_global_flag = interwar_treaty_of_lausanne }
+
+			GRE = { has_war_with = TUR }
+		}
+
+		x = 18
+		y = 10
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+
+		completion_reward = {
+
+	        declare_war_on = {
+	            type = annex_everything
+	            target = TUR
+	        }
+		}
+	}
+
+
+
+
+
+
+
+
+
 	#-----------------------------------------------------------------------
 
 	#-----------------------------------------------------------------------
