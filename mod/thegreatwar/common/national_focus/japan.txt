@@ -241,6 +241,11 @@ focus_tree = {
 			add_political_power=-15
 			news_event=ww1_japan.101
 
+
+			hidden_effect = {
+
+				create_country_leader={ name = "Emperor Taishō " desc=JAP_emperor_taisho_DESC picture="gfx/leaders/JAP_emperor_taisho.dds" expire="1970.1.1" ideology=fascism_ideology traits={  } }
+			}
 		}
 
 		ai_will_do = { factor = 0 }
@@ -1104,7 +1109,142 @@ focus_tree = {
 		x = 15
 		y = 8
 	}
+
+	#-----------------------------------------
+	focus = {
+		id = JAP_ww1_Fukoku_Kyohei # Open Beta 0.5
+		prerequisite = { focus =  JAP_ww1_Leave_Entente }
+		icon = GFX_goal_support_fascism
+
+	 	available = {
+
+			date > 1922.1.1
+		}
+
+		completion_reward = {
+
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.82
+			}
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = no
+			}
+
+			hidden_effect = {
+				create_country_leader={ name = "Emperor Taishō " desc=JAP_emperor_taisho_DESC picture="gfx/leaders/JAP_emperor_taisho.dds" expire="1970.1.1" ideology=fascism_ideology traits={  } }
+			}
+
+		}
+
+		ai_will_do = { factor = 100 }
+		cost = 10
+		x = 13
+		y = 8
+	}
 	#-----------------------------------------------------------------------
+
+	#-----------------------------------------
+	focus = {
+		id = JAP_ww1_Invasion_of_Manchuria # Open Beta 0.5
+		prerequisite = { focus =  JAP_ww1_Fukoku_Kyohei }
+		icon = GFX_goal_demand_sudetenland
+
+	 	available = {
+
+			date > 1927.1.1
+		}
+
+		completion_reward = {
+
+				create_wargoal = {
+					type = annex_everything
+					target = CHI
+				}
+
+				create_wargoal = {
+					type = annex_everything
+					target = QIN
+				}
+		}
+
+		ai_will_do = { factor = 100 }
+		cost = 10
+		x = 13
+		y = 9
+	}
+	#-----------------------------------------------------------------------
+
+
+	#-----------------------------------------
+	focus = {
+		id = JAP_ww1_Form_Manchukuo # Open Beta 0.5
+		prerequisite = { focus =  JAP_ww1_Invasion_of_Manchuria }
+		icon = GFX_goal_generic_army_doctrines
+
+	 	available = {
+
+			date > 1930.1.1
+
+			OR = {
+				AND = {
+					country_exists = CHI
+					has_war_with = CHI
+				}
+
+				AND = {
+					country_exists = QIN
+					has_war_with = QIN
+				}
+			}
+
+			JAP = { controls_state = 716 controls_state = 328 }
+
+		}
+
+		completion_reward = {
+
+			# MAN = Manchukuo
+			MAN = {
+				transfer_state = 716
+				transfer_state = 328
+				transfer_state = 610
+				transfer_state = 715
+				transfer_state = 717
+				transfer_state = 714
+			}
+
+            JAP = {
+            	puppet = MAN
+            }
+
+			hidden_effect = {
+
+				716 = { add_core_of = MAN }
+				328 = { add_core_of = MAN }
+				610 = { add_core_of = MAN }
+				715 = { add_core_of = MAN }
+				717 = { add_core_of = MAN }
+				714 = { add_core_of = MAN }
+
+
+				JAP = { 
+					white_peace = CHI
+					white_peace = QIN
+				}
+			}
+
+
+		}
+
+		ai_will_do = { factor = 100 }
+		cost = 1
+		x = 13
+		y = 10
+	}
+	#-----------------------------------------------------------------------
+
 
 	#-----------------------------------------
 	focus = {

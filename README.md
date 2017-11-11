@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos 
 
-**Current Version:** 0.4.1
+**Current Version:** 0.5
 
 **Compatible with:** Hearts of Iron IV 1.4.2 "Oak"(with or without Paid DLC) 
 
