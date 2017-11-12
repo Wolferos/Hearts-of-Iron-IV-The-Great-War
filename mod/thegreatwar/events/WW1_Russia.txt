@@ -1,4 +1,4 @@
-﻿add_namespace = ww1_russia
+add_namespace = ww1_russia
 
 
 # Saint Petersburg renamed to Petrograd
@@ -403,46 +403,21 @@ news_event = {
 				}
 				diplomatic_relation = {
 					country = GER
-					relation = non_aggression_pact
-				}
-				diplomatic_relation = {
-					country = GER
 					relation = military_access
 					active = yes
-				}
-				diplomatic_relation = {
-					country = AUH
-					relation = non_aggression_pact
 				}
 				diplomatic_relation = {
 					country = AUH
 					relation = military_access
 					active = yes
 				}
-				diplomatic_relation = {
-					country = FIN
-					relation = non_aggression_pact
+				every_country = {
+					limit = {
+						has_war_with = SOV
+					}
+					white_peace = SOV
 				}
-				diplomatic_relation = {
-					country = EST
-					relation = non_aggression_pact
-				}
-				diplomatic_relation = {
-					country = LAT
-					relation = non_aggression_pact
-				}
-				diplomatic_relation = {
-					country = ROM
-					relation = non_aggression_pact
-				}
-				diplomatic_relation = {
-					country = UKR
-					relation = non_aggression_pact
-				}
-				diplomatic_relation = {
-					country = TUR
-					relation = non_aggression_pact
-				}
+				MON = { white_peace = GER }
 				annex_country = {
 					target = RUS
 					transfer_troops = no
@@ -685,71 +660,73 @@ news_event = {
 
 	immediate = {
 		hidden_effect = {
-		    SOV = { country_event = { days = 210 id = ww1_soviet.2 }
+		    SOV = { country_event = { days = 210 id = ww1_soviet.2 } }
 		    if = { limit = { NOT = { OR = { has_completed_focus = SOV_ww1_claim_victory has_completed_focus = SOV_ww1_establish_cheka } } }
-			RUS = {
-				create_faction = "White Movement"
-				set_global_flag = kis_whitesvsreds
-				kill_country_leader = yes
-				create_country_leader={ name = "Alexander Kolchak" desc=RUS_kolchak_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/navy_admirals/RUS_kolchak.dds" expire="1935.1.1" ideology=fascism_ideology traits={ } }
-				set_politics = {
-				    parties = {
-				        neutrality = {
-				            popularity = 0
-				        }
-				        democratic = {
-				            popularity = 0
-				        }
-				        fascism = {
-				            popularity = 100
-				        }
-				        communism = {
-				            popularity = 0
-				        }
-				    }
-				    ruling_party = fascism last_election = "1912.9.1"
-				    election_frequency = 60 elections_allowed = no
+				RUS = {
+					create_faction = "White Movement"
+					set_global_flag = kis_whitesvsreds
+					kill_country_leader = yes
+					create_country_leader={ name = "Alexander Kolchak" desc=RUS_kolchak_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/navy_admirals/RUS_kolchak.dds" expire="1935.1.1" ideology=fascism_ideology traits={ } }
+					set_politics = {
+						parties = {
+							neutrality = {
+								popularity = 0
+							}
+							democratic = {
+								popularity = 0
+							}
+							fascism = {
+								popularity = 100
+							}
+							communism = {
+								popularity = 0
+							}
+						}
+						ruling_party = fascism last_election = "1912.9.1"
+						election_frequency = 60 elections_allowed = no
+					}
+
+					declare_war_on = {
+						type = annex_everything
+						target = SOV
+					}
+
+					transfer_state = 147
+					transfer_state = 137
+					transfer_state = 213
+					transfer_state = 214
+					transfer_state = 215
+					transfer_state = 216
+					transfer_state = 234
+					transfer_state = 235
+					transfer_state = 236
+					transfer_state = 237
+					transfer_state = 249
+					transfer_state = 250
+					transfer_state = 251
+					transfer_state = 256
+					transfer_state = 238
+					transfer_state = 351
+					transfer_state = 400
+					transfer_state = 401
+					transfer_state = 406
+					transfer_state = 407
+					transfer_state = 652
+					transfer_state = 722
+					load_oob = "SOV_Civil_War"
+				}
+				every_country = {
+					limit = {
+						OR = {
+							is_in_faction_with = FRA
+							tag = FRA
+						}
+					}
+					declare_war_on = { target = SOV type = liberate_wargoal }
 				}
 
-				SOV = {
-					release = MON
-				}
-
-				declare_war_on = {
-		            type = annex_everything
-		            target = SOV
-		        }
-
-				transfer_state = 147
-
-				puppet = MON
-
-				transfer_state = 137
-				transfer_state = 213
-				transfer_state = 214
-				transfer_state = 215
-				transfer_state = 216
-				transfer_state = 234
-				transfer_state = 235
-				transfer_state = 236
-				transfer_state = 237
-				transfer_state = 249
-				transfer_state = 250
-				transfer_state = 251
-				transfer_state = 256
-				transfer_state = 238
-				transfer_state = 351
-				transfer_state = 400
-				transfer_state = 401
-				transfer_state = 406
-				transfer_state = 407
-				transfer_state = 652
-				transfer_state = 722
-				load_oob = "SOV_Civil_War"
 			}
-		    }
 		}
-	}
 	}
 	option = {
 		name = ww1_russia.20.a
