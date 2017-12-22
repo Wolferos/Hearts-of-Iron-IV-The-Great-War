@@ -1,5 +1,4 @@
-add_namespace = ww1_russia
-
+﻿add_namespace = ww1_russia
 
 # Saint Petersburg renamed to Petrograd
 #____________________________________________________________
@@ -106,250 +105,9 @@ country_event = {
 
 # Tsar Nicholas Abdicates! + Soviet Revolution
 #____________________________________________________________
-news_event = {
-	id = ww1_russia.4
-	title = ww1_russia.4.t
-	desc = ww1_russia.4.d
-	picture = EVENT_hoi4tgw_october_revolution
-
-	major = yes
-
-	mean_time_to_happen = {
-		days = 0
-	}
-
-	trigger = {
-
-		NOT = {
-			has_global_flag = kis_ask_ger_surrend # Can't happened if Germany loosed the WW1
-		}
-		
-		RUS = {
-			OR = {
-				has_war_with = GER
-				has_war_with = AUH
-			}
-			NOT = {
-				has_country_flag = dual_power
-				has_government = communism
-			}
-			NOT = {	controls_state = 98 }
-			NOT = {	controls_state = 10 }
-			NOT = {	controls_state = 90 }
-			NOT = { controls_state = 97 }
-			NOT = { controls_state = 92 }
-			NOT = { controls_state = 93 }
-			NOT = { controls_state = 199 }
-			NOT = { controls_state = 206 }
-			NOT = { controls_state = 202 }
-			NOT = { controls_state = 194 }
-			NOT = { controls_state = 95 }
-		}
-	}
-
-	immediate = {
-		hidden_effect = {	
-			ENG = {
-				remove_from_faction = RUS
-				add_opinion_modifier = { 
-					target = RUS 
-					modifier = HOI4TGW_Opinion_Russia_Leave_Entente
-				} 
-			}
-			SOV = {
-				create_faction = "Comintern"
-
-				annex_country = {
-					target = MON
-					transfer_troops = yes
-				}
-				
-				declare_war_on = {
-		            type = annex_everything
-		            target = RUS
-		        }
-		        #every_state={
-				#	limit={
-				#		# SOV will get the same core as RUS
-				#		#is_claimed_by = RUS
-				#		is_core_of = RUS
-				#	}
-				#	SOV={
-				#		add_state_claim = PREV
-				#	}
-				#}
-				set_national_unity = 0.9
-				add_political_power = 800
-				add_manpower = 500000
-				
-				transfer_state = 195
-				transfer_state = 219
-				transfer_state = 244
-				transfer_state = 263
-				transfer_state = 208
-				transfer_state = 246
-				transfer_state = 247
-				transfer_state = 248
-				transfer_state = 264
-				transfer_state = 253
-				transfer_state = 254
-
-				add_state_claim = 195
-				add_state_claim = 219
-				add_state_claim = 244
-				add_state_claim = 263
-				add_state_claim = 208
-				add_state_claim = 246
-				add_state_claim = 247
-				add_state_claim = 248
-				add_state_claim = 264
-				add_state_claim = 253
-				add_state_claim = 254
-				
-				load_oob = SOV_Revolt_01
-				
-				country_event = { days = 1 id = ww1_soviet.999 }
-			}
-			RUS = {
-				set_country_flag = dual_power
-				set_country_flag = kis_tsarnicholasabdicated
-				set_country_flag = bolsheviks
-				add_political_power = -100
-				add_national_unity = -0.10
-				add_timed_idea = {
-					idea = dual_power
-					days = 180
-				}
-				create_faction = "White Movement"
-				kill_country_leader = yes
-				create_country_leader = { 
-					name = "Georgy Lvov" 
-					desc = RUS_georgy_lvov_DESC 
-					picture = "gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_georgy_lvov.dds" 
-					expire = "1935.1.1" 
-					ideology = conservatism 
-					traits = { } 
-				}
-				set_politics = {
-				    parties = {
-				        neutrality = {
-				            popularity = 0
-				        }
-				        democratic = {
-				            popularity = 70
-				        }
-				        fascism = {
-				            popularity = 0
-				            banned = yes
-				        }
-				        communism = {
-				            popularity = 30
-				        }
-				    }
-				    ruling_party = democratic last_election = "1912.9.1"
-				    election_frequency = 60 elections_allowed = no
-				}			
-			}
-		}
-	}
-
-	option = {
-		name = ww1_russia.4.a
-		trigger = { tag = RUS NOT = { tag = SOV } }
-		ai_chance = { factor = 100 }
-	}
-	option = {
-	name = "What happens now? (play as Soviets)"
-	trigger = { tag = RUS NOT = { tag = SOV } }
-	ai_chance = { factor = 0 }
-	    SOV = {
-		    change_tag_from = RUS
-		}
-	}
-	option = {
-		name = "What happens now?"
-		trigger = { NOT = { tag = SOV tag = RUS } }
-		ai_chance = { factor = 100 }
-	}
-}
 #____________________________________________________________
 
-# If RUS Won Against SOV
-#____________________________________________________________
-news_event = {
-	id = ww1_russia.5
-	title = ww1_russia.5.t
-	desc = ww1_russia.5.d
-	picture = GFX_news_event_generic_sign_treaty2
 
-	major = yes
-
-	mean_time_to_happen = {
-		days = 0
-	}
-
-	trigger = {
-		RUS = {
-			has_country_flag = kis_tsarnicholasabdicated
-			NOT = {
-				has_global_flag = kis_brestlitovsk
-				has_country_flag = kis_octoberrevolutioncrushed
-			}
-		}
-		OR = {
-			SOV = {
-				exists = no
-				#has_war_with = RUS
-				#surrender_progress > 0.60
-			}
-			# If AI Peace Conference Occured - SOV can become democratic, we want russia to annex the remaining SOV
-			SOV = {
-				exists = yes
-				has_government = democratic
-			}
-		}
-	}
-
-	immediate = {
-		hidden_effect = {
-			RUS = {
-				set_country_flag = kis_octoberrevolutioncrushed
-				kill_country_leader = yes
-				create_country_leader={ name = "Nikolai II" desc=RUS_nikolai_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_nikolai_ii.dds" expire="1935.1.1" ideology=autocracy traits={  } }
-				set_politics = {
-				    parties = {
-				        neutrality = {
-				            popularity = 100
-				        }
-				        democratic = {
-				            popularity = 0
-				            banned = yes
-				        }
-				        fascism = {
-				            popularity = 0
-				            banned = yes
-				        }
-				        communism = {
-				            popularity = 0
-				            banned = yes
-				        }
-				    }
-				    ruling_party = neutrality last_election = "1912.9.1"
-				    election_frequency = 60 elections_allowed = no
-				}
-				annex_country = {
-					target = SOV
-					transfer_troops = no
-				}
-			}
-		}
-	}
-
-	option = {
-		name = ww1_russia.5.a
-		ai_chance = { factor = 100 }
-	}
-}
 #____________________________________________________________
 
 # Treaty of Brest-Litovsk - Part 1
@@ -363,7 +121,7 @@ news_event = {
 	major = yes
 
 	mean_time_to_happen = {
-		days = 0
+		days = 1
 	}
 
 	trigger = {
@@ -374,6 +132,7 @@ news_event = {
 
 		country_exists = SOV
 		RUS = {
+		has_country_flag = october_revolution
 			has_war_with = SOV
 			surrender_progress > 0.50
 			NOT = { 
@@ -403,21 +162,46 @@ news_event = {
 				}
 				diplomatic_relation = {
 					country = GER
+					relation = non_aggression_pact
+				}
+				diplomatic_relation = {
+					country = GER
 					relation = military_access
 					active = yes
+				}
+				diplomatic_relation = {
+					country = AUH
+					relation = non_aggression_pact
 				}
 				diplomatic_relation = {
 					country = AUH
 					relation = military_access
 					active = yes
 				}
-				every_country = {
-					limit = {
-						has_war_with = SOV
-					}
-					white_peace = SOV
+				diplomatic_relation = {
+					country = FIN
+					relation = non_aggression_pact
 				}
-				MON = { white_peace = GER }
+				diplomatic_relation = {
+					country = EST
+					relation = non_aggression_pact
+				}
+				diplomatic_relation = {
+					country = LAT
+					relation = non_aggression_pact
+				}
+				diplomatic_relation = {
+					country = ROM
+					relation = non_aggression_pact
+				}
+				diplomatic_relation = {
+					country = UKR
+					relation = non_aggression_pact
+				}
+				diplomatic_relation = {
+					country = TUR
+					relation = non_aggression_pact
+				}
 				annex_country = {
 					target = RUS
 					transfer_troops = no
@@ -461,7 +245,7 @@ country_event = {
 				transfer_state = 190
 				set_cosmetic_tag = UBD
 				create_country_leader = {
-				    name = "Adolf Friedrich, Duke of Mecklenburg-Schwerin"
+				    name = "Adolf Friedrich"
 				    picture = "gfx/leaders/hoi4tgw/Adolf_Friedrich.dds"			
 				    expire = "1965.1.1"
 				    ideology = despotism
@@ -610,7 +394,7 @@ country_event = {
 		name = ww1_russia.10.a
 		ai_chance = { factor = 100 }
 		hidden_effect = {
-			country_event = { days = 420 id = ww1_russia.20 }
+			country_event = { days = 14  id = ww1_russia.20 }
 		}
 	}
 }
@@ -660,74 +444,95 @@ news_event = {
 
 	immediate = {
 		hidden_effect = {
-		    SOV = { country_event = { days = 210 id = ww1_soviet.2 } }
+		    SOV = { country_event = { days = 30 id = ww1_soviet.2 }
 		    if = { limit = { NOT = { OR = { has_completed_focus = SOV_ww1_claim_victory has_completed_focus = SOV_ww1_establish_cheka } } }
-				RUS = {
-					create_faction = "White Movement"
-					set_global_flag = kis_whitesvsreds
-					kill_country_leader = yes
-					create_country_leader={ name = "Alexander Kolchak" desc=RUS_kolchak_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/navy_admirals/RUS_kolchak.dds" expire="1935.1.1" ideology=fascism_ideology traits={ } }
-					set_politics = {
-						parties = {
-							neutrality = {
-								popularity = 0
-							}
-							democratic = {
-								popularity = 0
-							}
-							fascism = {
-								popularity = 100
-							}
-							communism = {
-								popularity = 0
-							}
-						}
-						ruling_party = fascism last_election = "1912.9.1"
-						election_frequency = 60 elections_allowed = no
-					}
-
-					declare_war_on = {
-						type = annex_everything
-						target = SOV
-					}
-
-					transfer_state = 147
-					transfer_state = 137
-					transfer_state = 213
-					transfer_state = 214
-					transfer_state = 215
-					transfer_state = 216
-					transfer_state = 234
-					transfer_state = 235
-					transfer_state = 236
-					transfer_state = 237
-					transfer_state = 249
-					transfer_state = 250
-					transfer_state = 251
-					transfer_state = 256
-					transfer_state = 238
-					transfer_state = 351
-					transfer_state = 400
-					transfer_state = 401
-					transfer_state = 406
-					transfer_state = 407
-					transfer_state = 652
-					transfer_state = 722
-					load_oob = "SOV_Civil_War"
-				}
-				every_country = {
-					limit = {
-						OR = {
-							is_in_faction_with = FRA
-							tag = FRA
-						}
-					}
-					declare_war_on = { target = SOV type = liberate_wargoal }
+			RUS = {
+				create_faction = "white_movement"
+				set_global_flag = kis_whitesvsreds
+				kill_country_leader = yes
+				create_country_leader={ name = "Alexander Kolchak" desc=RUS_kolchak_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/navy_admirals/RUS_kolchak.dds" expire="1935.1.1" ideology=fascism_ideology traits={ } }
+				set_politics = {
+				    parties = {
+				        neutrality = {
+				            popularity = 0
+				        }
+				        democratic = {
+				            popularity = 34 }
+				        fascism = {
+				            popularity = 64
+				        }
+				        communism = {
+				            popularity = 2
+				        }
+				    }
+					
+				    ruling_party = fascism last_election = "1912.9.1"
+				    election_frequency = 60 elections_allowed = no
 				}
 
-			}
+				SOV = {
+					release = MON
+				}
+
+				declare_war_on = {
+		            type = annex_everything
+		            target = SOV
+		        }
+
+				puppet = MON
+
+				transfer_state = 218
+				transfer_state = 245
+				transfer_state = 233
+				transfer_state = 573
+				transfer_state = 579
+				transfer_state = 516
+				transfer_state = 644
+				transfer_state = 637
+				transfer_state = 562
+				transfer_state = 651
+				transfer_state = 398
+				transfer_state = 581
+				transfer_state = 574
+				transfer_state = 565
+				transfer_state = 566
+				transfer_state = 564
+				transfer_state = 567
+				transfer_state = 568
+				transfer_state = 569
+				transfer_state = 40
+				transfer_state = 570
+				transfer_state = 578
+				transfer_state = 571
+				transfer_state = 403
+				transfer_state = 653
+				transfer_state = 572
+				transfer_state = 582
+				transfer_state = 583
+				transfer_state = 590
+				transfer_state = 588
+				transfer_state = 654
+				transfer_state = 329
+				transfer_state = 576
+				transfer_state = 575
+				transfer_state = 563
+				transfer_state = 235
+				transfer_state = 234
+				transfer_state = 580
+				transfer_state = 577
+				transfer_state = 238
+				transfer_state = 137
+				transfer_state = 228
+				load_oob = "SOV_Civil_War"
+				add_national_unity = 0.10
+				set_capital = 1278
+			
+		    }
 		}
+	
 	}
+}
+}
 	option = {
 		name = ww1_russia.20.a
 		ai_chance = { factor = 100 }				

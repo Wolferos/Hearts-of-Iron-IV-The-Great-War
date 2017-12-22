@@ -1,0 +1,509 @@
+﻿add_namespace = rusrevolt 
+
+
+# Tsar Nicholas Abdicates
+country_event = {
+	id = rusrevolt.2
+	title = rusrevolt.2.t
+	desc = rusrevolt.2.d
+	picture = report_tsar_tryapka
+
+	fire_only_once = yes
+
+		trigger = {
+		date < 1917.2.30
+		tag = RUS
+		NOT = { has_global_flag = kis_ask_ger_surrend }
+		NOT = {	has_country_flag = dual_power }
+		NOT = {	has_government = communism }
+		NOT = {	has_government = democratic }
+		RUS = {
+			OR = {
+				has_war_with = GER
+				has_war_with = AUH
+			}
+			NOT = {	controls_state = 98 }
+			NOT = {	controls_state = 10 }
+			NOT = {	controls_state = 90 }
+			NOT = { controls_state = 97 }
+			NOT = { controls_state = 92 }
+			NOT = { controls_state = 93 }
+			NOT = { controls_state = 199 }
+			NOT = { controls_state = 202 }
+			NOT = { controls_state = 194 }
+			NOT = { controls_state = 95 }
+		}
+		}
+
+	mean_time_to_happen = {
+		days = 0
+	}
+				 		
+	option = {
+	
+	name = rusrevolt.2.a
+	news_event = { hours = 6 id = rusrevolt.5 }
+	hidden_effect = {
+		
+		set_global_flag = democratic_russia 
+		set_country_flag = kis_tsarnicholasabdicated
+		set_country_flag = dual_power
+		add_political_power = -100
+		add_national_unity = -0.10 
+					}
+
+	create_country_leader = {
+			name = "The Provisional Goverment"
+			desc = "RUS_Provisional_goverment_DESC"
+			picture="gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_Provisional_goverment.dds"
+			expire = "1927.1.1"
+			ideology = liberalism
+			traits = {	}
+	}
+	set_politics = {
+				    parties = {
+				        neutrality = {
+				            popularity = 0
+						 banned = yes
+				        }
+				        democratic = {
+				            popularity = 52
+				        }
+				        fascism = {
+				            popularity = 10
+				        }
+				        communism = {
+				            popularity = 38
+				        }
+				    }
+				    ruling_party = democratic 
+					last_election = "1912.9.1"
+				    election_frequency = 60 elections_allowed = no
+		}
+	}
+}
+
+
+# New about Tsar Nikolay II! Царь спекся#########################################
+news_event = {
+	id = rusrevolt.5
+	title = rusrevolt.5.t
+	desc = rusrevolt.5.d
+	picture = event_february_revolution
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	major = yes
+
+	option = {
+		name=rusrevolt.5.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+
+# Lvov is Minister
+country_event = {
+	id = rusrevolt.3
+    title = rusrevolt.3.t
+    desc = rusrevolt.3.d
+    picture = report_lvov_minister
+
+	fire_only_once = yes
+
+	trigger = {
+	tag = RUS
+	has_government = democratic
+	has_country_flag = dual_power
+	has_global_flag = democratic_russia
+	}	
+
+	mean_time_to_happen = {
+		days = 5
+	}
+
+	option = {
+		name = rusrevolt.3.a
+		hidden_effect = { set_country_flag = lvov_minister }
+		
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Georgiy Lvov"
+			desc = "RUS_georgy_lvov_DESC"
+			picture = "gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_georgy_lvov.dds"
+			expire = "1935.1.1"
+			ideology = liberalism
+			traits = { }
+		}
+	}
+}
+
+
+# Otstavka Lvova #############################################################
+country_event = {
+    id = rusrevolt.1
+    title = rusrevolt.1.t
+    desc = rusrevolt.1.d
+    picture = report_kerenskiy
+ 
+    fire_only_once = yes
+ 
+    trigger = {
+        tag = RUS
+        has_government = democratic
+		has_country_flag = dual_power
+		has_country_flag = lvov_minister
+		NOT = { has_country_flag = lvov_resigned }
+    }
+
+    mean_time_to_happen = {
+        days = 90
+    }
+
+    option = {
+        name = rusrevolt.1.a
+		hidden_effect = { set_country_flag = lvov_resigned }
+		
+        retire_country_leader = yes
+        create_country_leader = {
+        	name = "Alexander Kerenskiy"
+			desc = "RUS_kerenskiy_DESC"
+        	picture="gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_kerenskiy.dds"
+        	expire = "1935.1.1"
+        	ideology = liberalism
+        	traits = { }
+            }
+		add_national_unity = 0.10
+      }
+}
+
+
+# Lenin's Demonstration!############################################################
+country_event = {
+     id = rusrevolt.4
+    title = rusrevolt.4.t
+    desc = rusrevolt.4.d
+    picture = report_kornilov
+ 
+    fire_only_once = yes
+	
+	trigger = {
+        tag = RUS
+		NOT = { has_country_flag = soviet_government }
+		has_country_flag = dual_power
+		has_country_flag = lvov_resigned
+        has_government = democratic
+		RUS = {
+			OR = {
+				has_war_with = GER
+				has_war_with = AUH
+			}
+		}
+    }
+	
+	mean_time_to_happen = {
+        days = 60
+    }
+	
+	option = {
+	ai_chance = {
+			factor = 90
+		}
+	name = rusrevolt.4.a
+	custom_effect_tooltip = rusrevolt.4_tt
+	hidden_effect = { 
+			set_country_flag = bolsheviks
+			add_popularity = {
+				ideology = communism
+				popularity = 0.09
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.01
+			}
+	}
+
+	add_political_power = -250
+	}
+	
+	option = {
+	ai_chance = {
+			factor = 10
+		}
+	name = rusrevolt.4.b
+	news_event = { hours = 6 id = rusrevolt.8 }
+	hidden_effect = {
+		set_country_flag = kis_octoberrevolutioncrushed
+		set_country_flag = kornilov_revolt
+		clr_global_flag = democratic_russia
+		set_global_flag = kornilov_russia
+		
+	}
+	
+    create_country_leader = {
+        	name = "Lavr Kornilov"
+        	picture="gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_kornilov_dictator.dds"
+        	expire = "1935.1.1"
+        	ideology = fascism_ideology
+        	traits = { }
+            }
+	set_politics = {
+				    parties = {
+				        neutrality = {
+				            popularity = 0
+				        }
+				        democratic = {
+				            popularity = 37
+				        }
+				        fascism = {
+				            popularity = 63
+				        }
+				        communism = {
+				            popularity = 0
+							banned = yes
+				        }
+				    }
+				    ruling_party = fascism 
+					last_election = "1912.9.12"
+				    election_frequency = 60 elections_allowed = no
+		}
+		
+	set_party_name = {
+					ideology = fascism 
+					long_name = RUS_kornilov_dictatorship 
+					name = RUS_kornilov_dictatorship  
+	}
+	add_national_unity = -0.15
+	}
+}
+	
+	
+# Great Revolution!!!############################################################
+
+country_event = {
+	id = rusrevolt.6
+	title = rusrevolt.6.t
+	desc = rusrevolt.6.d
+	picture = report_october_revolution
+
+	fire_only_once = yes
+
+	
+	mean_time_to_happen = {
+		days = 60
+	}
+	
+	trigger = {
+		tag = RUS
+		NOT = { has_global_flag = kis_ask_ger_surrend }
+		NOT = { has_country_flag = kornilov_revolt }
+		NOT = { has_country_flag = kis_octoberrevolutioncrushed }
+		has_country_flag = bolsheviks
+		has_country_flag = dual_power
+		has_government = democratic
+			OR = {
+				has_war_with = GER
+				has_war_with = AUH
+			}
+	}
+
+
+
+	immediate = {
+		hidden_effect = {	
+			ENG = {
+				remove_from_faction = RUS
+				add_opinion_modifier = { 
+					target = RUS 
+					modifier = HOI4TGW_Opinion_Russia_Leave_Entente
+				} 
+			}
+			SOV = {
+				create_faction = "red_movement"
+
+				
+				declare_war_on = {
+		            type = annex_everything
+		            target = RUS
+		        }
+		        #every_state={
+				#	limit={
+				#		# SOV will get the same core as RUS
+				#		#is_claimed_by = RUS
+				#		is_core_of = RUS
+				#	}
+				#	SOV={
+				#		add_state_claim = PREV
+				#	}
+				#}
+				set_national_unity = 0.9
+				add_political_power = 800
+				add_manpower = 500000
+				
+				transfer_state = 210
+				transfer_state = 250
+				transfer_state = 245
+				transfer_state = 265
+				transfer_state = 239
+				transfer_state = 260
+				transfer_state = 251
+				transfer_state = 256
+				transfer_state = 252
+				transfer_state = 249
+				transfer_state = 207
+				transfer_state = 209
+				transfer_state = 195
+				transfer_state = 219
+				transfer_state = 244
+				transfer_state = 263
+				transfer_state = 208
+				transfer_state = 246
+				transfer_state = 247
+				transfer_state = 248
+				transfer_state = 264
+				transfer_state = 253
+				transfer_state = 254
+
+				add_state_claim = 210
+				add_state_claim = 250
+				add_state_claim = 245
+				add_state_claim = 265
+				add_state_claim = 239
+				add_state_claim = 260
+				add_state_claim = 251
+				add_state_claim = 256
+				add_state_claim = 249
+				add_state_claim = 252
+				add_state_claim = 209
+				add_state_claim = 207
+				add_state_claim = 195
+				add_state_claim = 219
+				add_state_claim = 244
+				add_state_claim = 263
+				add_state_claim = 208
+				add_state_claim = 246
+				add_state_claim = 247
+				add_state_claim = 248
+				add_state_claim = 264
+				add_state_claim = 253
+				add_state_claim = 254
+				
+				load_oob = SOV_Revolt_01
+				
+			country_event = { days = 1 id = ww1_soviet.999 }
+			}
+			RUS = {
+			
+			annex_country = {
+					target = MON
+					transfer_troops = yes
+				}
+				
+				set_country_flag = october_revolution
+				add_political_power = -100
+				add_national_unity = -0.12
+				
+				create_faction = "white_movement"
+				
+					add_popularity = {
+						ideology = fascism
+						popularity = 0.34
+				    }
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.66
+				    }			
+			}
+		}
+	}
+	option = {
+		name = rusrevolt.6.a
+		hidden_effect = {
+			news_event = { hours = 6 id = rusrevolt.7 } 
+		}
+		trigger = { tag = RUS NOT = { tag = SOV }
+		}
+		ai_chance = { factor = 100 }
+	}
+	
+	option = {
+		name = rusrevolt.6.b
+		hidden_effect = {
+			news_event = { hours = 6 id = rusrevolt.7 } 
+		}
+		trigger = {
+		tag = RUS
+		NOT = { tag = SOV } 
+		}
+		ai_chance = { factor = 0 }
+	    SOV = {
+		    change_tag_from = RUS
+		}
+	}
+	option = {
+		name = rusrevolt.6.c
+		hidden_effect = {
+			news_event = { hours = 6 id = rusrevolt.7 } 
+		}
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = RUS }
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+
+
+#News about Revolution!############################################################
+news_event = {
+	id = rusrevolt.7
+	title = rusrevolt.7.t
+	desc = rusrevolt.7.d
+	picture = event_october_revolution
+	
+	is_triggered_only = yes
+	
+	major = yes
+
+	option = {
+		name=rusrevolt.7.a
+		trigger = { 
+			NOT = { TAG = SOV }
+		}
+	}
+	option = {
+		name=rusrevolt.7.b
+		trigger = { TAG = SOV }
+	}
+}	
+
+	############################################################ Kornilov is Dictator ############################################################
+news_event = {
+	id = rusrevolt.8
+	title = rusrevolt.8.t
+	desc = rusrevolt.8.d
+	picture = event_kornilov
+	
+	is_triggered_only = yes
+	
+	major = yes
+
+	option = {
+		name=rusrevolt.8.a
+		}
+}
+
+ ############################################################ Revolution of Kolchak! ############################################################
+ 
+ ############################################################ New - Revolution of Kolchak! ############################################################
+ 
+ ############################################################ Daddy Mahno is here! ############################################################
+ 
+ ############################################################ Mahno with bolsheviks ############################################################
+ 
+ ############################################################ Mahno attack bolsheviks! ############################################################

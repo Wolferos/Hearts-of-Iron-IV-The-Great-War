@@ -211,17 +211,17 @@ focus_tree = {
 		mutually_exclusive = {
 				focus = RUS_ww1_reinforce_tsar_authority
         }
-        available = {}
+        available = { NOT = { has_government = democratic } }
 		x = 4
         y = 3
         cost = 10
         completion_reward = {
 			create_country_leader = { 
-				name = "Georgy Lvov" 
+				name = "Georgiy Lvov" 
 				desc = RUS_georgy_lvov_DESC 
 				picture = "gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_georgy_lvov.dds" 
 				expire = "1935.1.1" 
-				ideology = conservatism 
+				ideology = liberalism 
 				traits = { } 
 			}
 		}
@@ -234,7 +234,7 @@ focus_tree = {
         prerequisite = {
 				focus = RUS_ww1_parliamentary_immunity
 		}
-        available = {}
+        available = { has_government = neutrality }
 		x = 4
         y = 4
         cost = 10
@@ -279,6 +279,7 @@ focus_tree = {
         cost = 10
         completion_reward = {			
 			add_ideas = communist_influence
+			set_country_flag = support_petrograd_soviet
         }
         ai_will_do = { factor = 0 }
     }
@@ -288,12 +289,13 @@ focus_tree = {
         prerequisite = {
 			focus = RUS_ww1_adopt_marxist_ideas
 		}
-        available = {}
+        available = { NOT = { has_government = communism } }
 		x = 6
         y = 3
         cost = 10
         completion_reward = {
 			add_ideas = idea_political_correctness
+			set_country_flag = soviet_government
         }
         ai_will_do = { factor = 0 }
     }
