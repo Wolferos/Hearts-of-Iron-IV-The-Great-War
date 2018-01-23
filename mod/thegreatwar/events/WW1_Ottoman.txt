@@ -2,8 +2,8 @@
 
 country_event = {
 	id = ww1_ottoman.21
-	title = "Idrisid Revolt"
-	desc = "Muhammad ibn Ali al-Idrisi established the Idrisid Emirate of Asir in rebellion against our great Ottoman Empire."
+	title = ww1_ottoman.21.t
+	desc = ww1_ottoman.21.d
 
 	picture=EVENT_hoi4tgw_asir_revolt
 	
@@ -26,7 +26,7 @@ country_event = {
 	}
 	
 	option = {
-		name = "Organize the Repression"
+		name = ww1_ottoman.21.a
 	}
 }
 
@@ -34,15 +34,15 @@ country_event = {
 #____________________________________________________________
 country_event = {
 	id = ww1_ottoman.100
-	title = "Join Central Powers"
-	desc = "German Empire asks us to join the Central Powers. Should we accept and help them in war?"
+	title = ww1_ottoman.100.t
+	desc = ww1_ottoman.100.d
 	picture = ww1_ottoman_100
 
 	fire_only_once = yes
 	is_triggered_only = yes
 
 	option = {
-		name = "Join Central Powers"
+		name = ww1_ottoman.100.a
 		ai_chance = { factor = 100 }
 		TUR={ add_opinion_modifier={ target=GER modifier=ger_tur_diplomacy_focus } if={ limit={ TUR={ is_ai=yes NOT={ is_in_faction=yes } NOT={ is_puppet=yes } } GER={ is_faction_leader=yes } } GER={ add_to_faction=TUR } } if={ limit={ GER={ has_government=fascism } } add_ideas=fascist_influence } if={ limit={ GER={ has_government=communism } } add_ideas=communist_influence } if={ limit={ GER={ has_government=democratic } } add_ideas=democratic_influence } country_event={ id=generic.1 } } 
 
@@ -56,7 +56,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "Not Now"
+		name = ww1_ottoman.100.b
 		ai_chance = { factor = 0 }
 	}
 #____________________________________________________________
