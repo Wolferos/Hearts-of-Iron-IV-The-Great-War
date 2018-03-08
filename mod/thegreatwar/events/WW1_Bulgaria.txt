@@ -18,13 +18,14 @@ country_event = {
 	option = {
 		name = ww1_bulgaria.1.a
 		ai_chance = { factor = 100 }
-		BUL={ add_opinion_modifier={ target=GER modifier=ger_tur_diplomacy_focus } if={ limit={ BUL={ is_ai=yes NOT={ is_in_faction=yes } NOT={ is_puppet=yes } } GER={ is_faction_leader=yes } } GER={ add_to_faction=BUL } } if={ limit={ GER={ has_government=fascism } } add_ideas=fascist_influence } if={ limit={ GER={ has_government=communism } } add_ideas=communist_influence } if={ limit={ GER={ has_government=democratic } } add_ideas=democratic_influence } country_event={ id=generic.1 } }
+
 		GER = {
 			send_equipment = {
 				target = BUL
 				type = infantry_equipment_1
 				amount = 800
 			}
+			add_to_faction = BUL
 		}
 		hidden_effect = {
 			BUL = {

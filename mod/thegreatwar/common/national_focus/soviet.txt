@@ -7,7 +7,7 @@ focus_tree = {
 		id = SOV_ww1_recover_after_civwar
 		icon = GFX_goal_generic_construction
 		available = { has_idea = octrev NOT = { country_exists = RUS has_war_with = RUS } }
-		completion_reward = { add_political_power = 150 remove_ideas = octrev add_national_unity = -1.0 }
+		completion_reward = { add_political_power = 150 remove_ideas = octrev add_stability = -1.0 }
 		ai_will_do = { factor = 10 }
 		cost = 20
 		x = 22
@@ -59,7 +59,7 @@ focus_tree = {
 		available = { NOT = { country_exists = RUS has_war_with = RUS } }
 		prerequisite = { focus = SOV_ww1_volunteers }
 		prerequisite = { focus = SOV_ww1_support_bolsheviks }
-		completion_reward = { add_national_unity = 0.02 add_opinion_modifier = { target = ENG modifier = romanovs_executed } add_opinion_modifier = { target = DEN modifier = romanovs_executed } }
+		completion_reward = { add_stability = 0.02 add_opinion_modifier = { target = ENG modifier = romanovs_executed } add_opinion_modifier = { target = DEN modifier = romanovs_executed } }
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 1
@@ -71,7 +71,7 @@ focus_tree = {
 		available = { NOT = { country_exists = RUS has_war_with = RUS } }
 		icon = GFX_goal_anschluss
 		prerequisite = { focus = SOV_ww1_execute_imperial_family }
-		completion_reward = { add_political_power = 20 add_national_unity = 0.05 custom_effect_tooltip = prevent_white_uprising }
+		completion_reward = { add_political_power = 20 add_stability = 0.05 custom_effect_tooltip = prevent_white_uprising }
 		ai_will_do = { factor = 100 }
 		cost = 10
 		x = 1
@@ -117,7 +117,7 @@ focus_tree = {
 		id = SOV_ww1_SWP
 		icon = GFX_goal_generic_production
 		prerequisite = { focus = SOV_ww1_foster_new_values }
-		completion_reward = { add_national_unity = 0.05 add_ideas = social_welfare_programs }
+		completion_reward = { add_stability = 0.05 add_ideas = social_welfare_programs }
 		ai_will_do = { factor = 10 modifier = { factor = 1 is_historical_focus_on = yes} }
 		cost = 10
 		x = 9
@@ -141,7 +141,7 @@ focus_tree = {
 		icon = GFX_goal_generic_military_deal
 		prerequisite = { focus = SOV_ww1_complete_revolution }
 		mutually_exclusive = { focus = SOV_ww1_support_bolsheviks }
-		completion_reward = { add_political_power = 20 add_national_unity = 0.1 create_country_leader = { name = "Julius Martov" picture = "gfx/leaders/hoi4tgw/Julius_Martov.dds" expire = "1935.1.1" ideology = leninism traits = {  } } }
+		completion_reward = { add_political_power = 20 add_stability = 0.1 create_country_leader = { name = "Julius Martov" picture = "gfx/leaders/hoi4tgw/Julius_Martov.dds" expire = "1935.1.1" ideology = leninism traits = {  } } }
 		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes} }
 		cost = 10
 		x = 6
@@ -153,7 +153,7 @@ focus_tree = {
 		icon = GFX_goal_generic_political_pressure
 		prerequisite = { focus = SOV_ww1_complete_revolution }
 		mutually_exclusive = { focus = SOV_ww1_support_mensheviks }
-		completion_reward = { add_political_power = 20 add_national_unity = -0.1 }
+		completion_reward = { add_political_power = 20 add_stability = -0.1 }
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 4
@@ -187,7 +187,7 @@ focus_tree = {
 		prerequisite = { focus = SOV_ww1_red_terror }
 		icon = GFX_goal_generic_demand_territory
 		bypass = { custom_trigger_tooltip={ tooltip=construction_effort_tt all_owned_state={ free_building_slots={ building=industrial_complex size < 1 include_locked=yes }					 } } }
-		completion_reward = { random_owned_state={ limit={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } is_on_continent = asia OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } is_in_home_area=yes } } } } } add_extra_state_shared_building_slots=1 add_building_construction={ type=industrial_complex level=1 instant_build=yes } } add_national_unity = -0.1 }
+		completion_reward = { random_owned_state={ limit={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } is_on_continent = asia OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } is_in_home_area=yes } } } } } add_extra_state_shared_building_slots=1 add_building_construction={ type=industrial_complex level=1 instant_build=yes } } add_stability = -0.1 }
 		complete_tooltip = { add_extra_state_shared_building_slots=1 add_building_construction={ type=industrial_complex level=1 instant_build=yes }			 }
 		ai_will_do = { factor = 10 }
 		cost = 10
@@ -260,7 +260,7 @@ focus_tree = {
 		icon = GFX_goal_support_fascism
 		prerequisite = { focus = SOV_ww1_authority }
 		mutually_exclusive = { focus = SOV_ww1_imperial_glory }
-		completion_reward = { add_popularity = { ideology = fascism popularity = 0.1 } add_national_unity = 0.05 add_political_power = -20 }
+		completion_reward = { add_popularity = { ideology = fascism popularity = 0.1 } add_stability = 0.05 add_political_power = -20 }
 		ai_will_do = { factor = 10 modifier = { factor = 1 is_historical_focus_on = yes} }
 		cost = 10
 		x = 15
@@ -306,7 +306,7 @@ focus_tree = {
 		id = SOV_ww1_respect_treaty
 		icon = GFX_goal_generic_forceful_treaty
 		prerequisite = { focus = SOV_ww1_diplomatic_effort }
-		completion_reward = { add_national_unity = 0.1 every_other_country = { limit = { OR = { tag = FRA is_in_faction_with = FRA } } add_opinion_modifier = { target = ROOT modifier = brestlitowsk_malus } } every_other_country = { limit = { OR = { tag = GER is_in_faction_with = GER } } add_opinion_modifier = { target = ROOT modifier = brestlitowsk_boost } } }
+		completion_reward = { add_stability = 0.1 every_other_country = { limit = { OR = { tag = FRA is_in_faction_with = FRA } } add_opinion_modifier = { target = ROOT modifier = brestlitowsk_malus } } every_other_country = { limit = { OR = { tag = GER is_in_faction_with = GER } } add_opinion_modifier = { target = ROOT modifier = brestlitowsk_boost } } }
 		mutually_exclusive = { focus = SOV_ww1_break_treaty }
 		ai_will_do = { factor = 10 modifier = { factor = 100 is_historical_focus_on = yes} }
 		cost = 10
@@ -319,7 +319,7 @@ focus_tree = {
 		icon = GFX_focus_renounce_the_treaty_of_trianon
 		prerequisite = { focus = SOV_ww1_diplomatic_effort }
 		mutually_exclusive = { focus = SOV_ww1_respect_treaty }
-		completion_reward = { add_national_unity = -0.2 every_other_country = { limit = { OR = { tag = GER is_in_faction_with = GER } } add_opinion_modifier = { target = ROOT modifier = brestlitowsk_malus } } every_other_country = { limit = { OR = { tag = FRA is_in_faction_with = FRA } } add_opinion_modifier = { target = ROOT modifier = brestlitowsk_boost  } } }
+		completion_reward = { add_stability = -0.2 every_other_country = { limit = { OR = { tag = GER is_in_faction_with = GER } } add_opinion_modifier = { target = ROOT modifier = brestlitowsk_malus } } every_other_country = { limit = { OR = { tag = FRA is_in_faction_with = FRA } } add_opinion_modifier = { target = ROOT modifier = brestlitowsk_boost  } } }
 		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes} }
 		cost = 10
 		x = 8
@@ -342,7 +342,7 @@ focus_tree = {
 		id = SOV_ww1_collectivisation
 		icon = GFX_goal_generic_consumer_goods
 		prerequisite = { focus = SOV_ww1_restore_order }
-		completion_reward = { add_national_unity = -0.05 add_ideas = collectivisation }
+		completion_reward = { add_stability = -0.05 add_ideas = collectivisation }
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 2
@@ -354,7 +354,7 @@ focus_tree = {
 		icon = GFX_goal_generic_construction2
 		prerequisite = { focus = SOV_ww1_collectivisation }
 		bypass = { custom_trigger_tooltip={ tooltip=construction_effort_tt all_owned_state={ free_building_slots={ building=industrial_complex size < 1 include_locked=yes }					 } } }
-		completion_reward = { add_national_unity = -0.05 random_owned_state={ limit={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } is_in_home_area=yes } } } } } add_extra_state_shared_building_slots=1 add_building_construction={ type=industrial_complex level=1 instant_build=yes } } }
+		completion_reward = { add_stability = -0.05 random_owned_state={ limit={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } is_in_home_area=yes } } } } } add_extra_state_shared_building_slots=1 add_building_construction={ type=industrial_complex level=1 instant_build=yes } } }
 		complete_tooltip = { add_extra_state_shared_building_slots=1 add_building_construction={ type=industrial_complex level=1 instant_build=yes }			 }
 		ai_will_do = { factor = 10 }
 		cost = 10
@@ -560,7 +560,7 @@ focus_tree = {
 		id = SOV_ww1_prepare_people
 		icon = GFX_goal_generic_propaganda
 		prerequisite = { focus = SOV_ww1_contact_french }
-		completion_reward = { add_national_unity = 1 }
+		completion_reward = { add_stability = 1 }
 		ai_will_do = { factor = 10 modifier = { factor = 1 is_historical_focus_on = yes} }
 		cost = 10
 		x = 10

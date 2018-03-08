@@ -540,7 +540,7 @@ focus_tree = {
 
 		completion_reward = {
 
-			add_national_unity = 0.10
+			add_stability = 0.10
 			add_manpower = 15000
 
 			BAV = {
@@ -756,19 +756,24 @@ focus_tree = {
 		icon = GFX_goal_generic_improve_relations
 
 		available = {
-		NOT = { has_global_flag = kis_treaty_of_versailles }
-		is_puppet=no NOT={ has_war_with=TUR } TUR={ exists=yes is_puppet=no } TUR={ custom_trigger_tooltip={ tooltip=GER_alone_or_peace_faction_tt is_alone_or_in_faction_at_peace_with_GER=yes } }
+			NOT = { 
+				has_global_flag = kis_treaty_of_versailles 
+			}
+			is_puppet = no 
+			NOT = { 
+				has_war_with = TUR 
+			} 
+			TUR = { 
+				exists=yes 
+				is_puppet=no 
+			} 
 		}
-
-
-
 
 		completion_reward = {
 			TUR = {
 				country_event = ww1_ottoman.100
 			}
 		}
-
 
 		ai_will_do = {
 			factor = 800
@@ -1070,11 +1075,24 @@ focus_tree = {
 		icon = GFX_goal_generic_military_deal
 		available = {
 
-		NOT = { has_global_flag = kis_treaty_of_versailles }
+			NOT = { 
+				has_global_flag = kis_treaty_of_versailles 
+			}
 
-		date > 1915.6.1 is_puppet=no NOT={ has_war_with=BUL } BUL={ exists=yes is_puppet=no } BUL={ custom_trigger_tooltip={ tooltip=GER_alone_or_peace_faction_tt is_alone_or_in_faction_at_peace_with_GER=yes } } }
+			date > 1915.6.1 
+			is_puppet = no 
+			NOT= {  
+				has_war_with = BUL 
+			} 
+			BUL = { 
+				exists = yes 
+				is_puppet = no
+			}
+		}
 		completion_reward = { 
-			BUL = { country_event = ww1_bulgaria.1 }
+			BUL = { 
+				country_event = ww1_bulgaria.1 
+			}
 		}
 		ai_will_do = { factor = 800 }
 		cost = 10
@@ -2395,6 +2413,47 @@ focus_tree = {
 	# 0.1.5
 
 	################ INTERWAR START
+	
+	# 0.5.1 (03/2018)
+
+	# The Locarno Treaties
+	focus = {
+		id = GER_interwar_locarno_treaties
+
+		icon = GFX_goal_generic_national_unity
+
+		available = {
+			date > 1922.1.1
+			has_global_flag = kis_treaty_of_versailles
+			has_war = no
+			is_puppet = no		
+			NOT = { has_government = fascism }
+			FRA = { has_completed_focus = FRA_interwar_occupation_ruhr }
+		}
+
+		x = 11
+		y = 7
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 10	
+		}
+		completion_reward = {
+			add_political_power=-5
+			add_named_threat = {
+				threat = -10
+				name = "The Locarno Treaties"
+			}
+
+			hidden_effect = {
+				news_event = { id = interwar_news.13 days = 1 } # News The Locarno Treaties
+			}
+
+
+		}
+	}
+
 
 
 	# Beer Hall Putsch
@@ -2408,10 +2467,10 @@ focus_tree = {
 			has_war = no
 			is_puppet = no		
 			NOT = { has_government = fascism }
-			# Emplacement pour Treaty of Versailles
+			has_global_flag = kis_treaty_of_versailles
 		}
 
-		x = 12
+		x = 13
 		y = 7
 
 		cost = 10

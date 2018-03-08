@@ -292,57 +292,77 @@ news_event = {
 				}
 			}
 
-
-
 			FRA = {
 				transfer_state = 28
 				#transfer_state = 667
-			}					
-
-			ROM = {
-				transfer_state = 80
-				transfer_state = 79
-				transfer_state = 46
-				transfer_state = 77
-				transfer_state = 81
-				transfer_state = 82
-				transfer_state = 83
-				transfer_state = 84
-				transfer_state = 76
 			}
 
-			ITA = {
-				transfer_state = 39
-				transfer_state = 736
-			}	
-
-			SER = {
-				transfer_state = 107
-				transfer_state = 108
-				transfer_state = 760
-				transfer_state = 106
-				transfer_state = 759
-				transfer_state = 104
-				transfer_state = 103
-				transfer_state = 109
-				if = {
-					limit = {
-						MTN = {
-							is_ai = yes
-						}
+			if = {
+				limit = {
+					ROM = {
+						has_war_with = AUH
+						is_in_faction_with = FRA
 					}
-					transfer_state = 105
-					transfer_state = 761
 				}
-				country_event = { days = 1 id = ww1_armistice.101 }
+				ROM = {
+					transfer_state = 80
+					transfer_state = 79
+					transfer_state = 46
+					transfer_state = 77
+					transfer_state = 81
+					transfer_state = 82
+					transfer_state = 83
+					transfer_state = 84
+					transfer_state = 76
+				}
 			}
 
+			if = {
+				limit = {
+					ITA = {
+						has_war_with = AUH
+						is_in_faction_with = FRA
+					}
+				}
+				ITA = {
+					transfer_state = 39
+					transfer_state = 736
+				}
+			}
+
+
+			if = {
+				limit = {
+					SER = {
+						is_in_faction_with = FRA
+					}
+				}
+				SER = {
+					transfer_state = 107
+					transfer_state = 108
+					transfer_state = 760
+					transfer_state = 106
+					transfer_state = 759
+					transfer_state = 104
+					transfer_state = 103
+					transfer_state = 109
+					if = {
+						limit = {
+							MTN = {
+								is_ai = yes
+							}
+						}
+						transfer_state = 105
+						transfer_state = 761
+					}
+					country_event = { days = 1 id = ww1_armistice.101 }
+				}
+			}
 				
 			ENG = {
 				transfer_state = 656
 				transfer_state = 676
 			}
-
 
 			POL = {
 				transfer_state = 85
@@ -441,13 +461,11 @@ news_event = {
 			#AUH = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
 			
 			#More appropriate, logical and less buggy code (MasterWaifuman)
+			# Updated by Wolferos
 			every_country = {
 			    limit = {
 				    has_war_with = GER
-					OR = {
-						tag = FRA
-						is_in_faction_with = FRA
-					}
+					is_in_faction_with = FRA
 				}
 				white_peace = GER
 			}
@@ -455,10 +473,7 @@ news_event = {
 			every_country = {
 			    limit = {
 				    has_war_with = AUH
-					OR = {
-						tag = FRA
-						is_in_faction_with = FRA
-					}
+					is_in_faction_with = FRA
 				}
 				white_peace = AUH
 			}
@@ -472,10 +487,7 @@ news_event = {
 				every_country = {
 			        limit = {
 				        has_war_with = BUL
-					    OR = {
-							tag = FRA
-							is_in_faction_with = FRA
-						}
+						is_in_faction_with = FRA
 				    }
 				    white_peace = BUL
 			    }
@@ -490,16 +502,11 @@ news_event = {
 				every_country = {
 			        limit = {
 				        has_war_with = TUR
-					    OR = {
-							tag = FRA
-							is_in_faction_with = FRA
-						}
+						is_in_faction_with = FRA
 				    }
 				    white_peace = TUR
 			    }
 			}
-
-			
 
 			news_event = { days = 3 id = ww1_armistice.2 }
 		}
