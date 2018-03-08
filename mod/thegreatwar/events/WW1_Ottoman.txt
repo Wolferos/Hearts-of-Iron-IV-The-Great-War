@@ -44,7 +44,10 @@ country_event = {
 	option = {
 		name = ww1_ottoman.100.a
 		ai_chance = { factor = 100 }
-		TUR={ add_opinion_modifier={ target=GER modifier=ger_tur_diplomacy_focus } if={ limit={ TUR={ is_ai=yes NOT={ is_in_faction=yes } NOT={ is_puppet=yes } } GER={ is_faction_leader=yes } } GER={ add_to_faction=TUR } } if={ limit={ GER={ has_government=fascism } } add_ideas=fascist_influence } if={ limit={ GER={ has_government=communism } } add_ideas=communist_influence } if={ limit={ GER={ has_government=democratic } } add_ideas=democratic_influence } country_event={ id=generic.1 } } 
+		
+		GER = { 
+			add_to_faction = TUR 
+		}
 
 		hidden_effect = {
 			TUR = {
