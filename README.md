@@ -9,18 +9,21 @@
 
 **Current Version:** 0.5
 
-**Compatible with:** Hearts of Iron IV 1.4.2 "Oak"(with or without Paid DLC) 
+**Compatible with:** Hearts of Iron IV 1.5 "Cornflakes"(with or without Paid DLC) 
 
 **Supported Languages:**
-- English Language
-- Chinese Language (本MOD提供汉化版本，[汉化补丁链接](http://steamcommunity.com/sharedfiles/filedetails/?id=803029506)) 
-- Turkish Language ([Türkçe Yama](http://paradoxfan.com/forum/index.php?topic=51341.0))
-- Russian Language (Already in the Mod thanks to the [Community of Strategium.ru](https://www.strategium.ru))
-- French Language (Integrated in the Mod, not finished, experimental stage)
-- German Language (Integrated in the Mod, not finished, experimental stage)
-- Japanese Language ([+JP: The Great War](http://steamcommunity.com/sharedfiles/filedetails/?id=854550667&searchtext=%2BJP%3A+The+Great+War))
-- Spanish Language (Integrated in the Mod, not finished, experimental stage)
-- Portugês do Brazil (Integrated in the Mod, not finished, experimental stage)
+- English
+- French (Integrated in the Mod)
+- Russian (Already in the Mod thanks to the [Community of Strategium.ru](https://www.strategium.ru))
+- Japanese ([+JP: The Great War](http://steamcommunity.com/sharedfiles/filedetails/?id=854550667&searchtext=%2BJP%3A+The+Great+War))
+- Polish ([The Great War: Polskie Tłumaczenie](http://steamcommunity.com/sharedfiles/filedetails/?id=1132448900))
+- Turkish ([Türkçe Yama](http://paradoxfan.com/forum/index.php?topic=51341.0))
+- Chinese ([Current Status](http://steamcommunity.com/workshop/filedetails/discussion/699709023/1698293068432235972)) 
+- German (Integrated in the Mod, experimental stage)
+- Korean ([The Great War - Korean Translation](http://steamcommunity.com/sharedfiles/filedetails/?id=959210411))
+- Portugês do Brazil (Integrated in the Mod, experimental stage)
+- Spanish (Integrated in the Mod, experimental stage)
+
 
 /!\ Warning /!\ Old Saves may not work with newer versions of the Mod
 
@@ -91,6 +94,9 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - Shkiv
    - BaCe21
    - Felixiinho
+   - NicolasGrosjean
+   - GABRIELN13
 
 ----------
 [Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow
+[Austro-Hungarians Voices](http://steamcommunity.com/sharedfiles/filedetails/?id=946923873) made by Geodomus
