@@ -913,3 +913,50 @@ entity = {
 	}
 	#scale = 0.5
 }
+
+entity = {
+	name = "fighter_1_vs_transport_1_entity"
+	pdxmesh = "fighter_1_vs_transport_1_mesh"
+	state = { name = "pass" 	animation = "pass" 
+		event = { time = 2.2 id = d_bomb } 
+		event = { time = 2.5 id = d_idle }
+		event = { time = 1.9 id = a_fire } 
+		event = { time = 2.2 id = a_idle } 
+	}
+	state = { name = "success" 	animation = "success"
+		event = { time = 1.5 id = a_fire } 
+		event = { time = 1.8 id = a_idle }
+		
+		event = { time = 1.7 id = d_crash }
+		event = { time = 1.9 id = d_idle }
+		event = { time = 2.4 id = d_crash }
+		event = { time = 2.7 id = d_idle }
+	}
+	#scale = 0.5
+}
+
+entity = {
+	name = "transport_1_supplying_entity"
+	pdxmesh = "transport_1_supplying_mesh" #copy of bombing
+	state = { name = "default" animation = "default" 
+		event = { time = 3.7 id = a_supply }
+		event = { time = 4.0 id = a_idle }
+	}
+	#scale = 0.5
+}
+
+entity = {
+	name = "transport_3_supplying_entity"
+	pdxmesh = "transport_3_supplying_mesh" #copy of bombing
+	state = { name = "default" animation = "default" 
+		event = { time = 3.33 id = a_2_supply }
+		event = { time = 3.43 id = a_2_idle }
+		
+		event = { time = 4.0 id = a_1_supply }
+		event = { time = 4.1 id = a_1_idle }
+		
+		event = { time = 4.93 id = a_3_supply }
+		event = { time = 5.03 id = a_3_idle }
+	}
+	#scale = 0.5
+}

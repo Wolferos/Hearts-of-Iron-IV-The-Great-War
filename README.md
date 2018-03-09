@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos 
 
-**Current Version:** 0.5.1
+**Current Version:** 0.5.1a
 
 **Compatible with:** Hearts of Iron IV 1.5 "Cornflakes"(with or without Paid DLC) 
 
