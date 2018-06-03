@@ -1,356 +1,324 @@
 equipments = {
-
-	battleship = { 
+	battleship = {
 		is_archetype = yes
+		type = capital_ship group_by=archetype  interface_category=interface_category_capital_ships  upgrades={ ship_reliability_upgrade ship_engine_upgrade ship_armor_upgrade ship_gun_upgrade }
+		reliability = 0.80
+		armor_value = 26
+		ap_attack = 31
+		build_cost_ic = 9600
+		resources = { oil=1 steel=3 chromium=1 }
 		is_buildable = no
-		type = capital_ship
-		group_by = archetype
-		
-		interface_category = interface_category_capital_ships
-		
-		upgrades = {
-			ship_reliability_upgrade
-			ship_engine_upgrade
-			ship_armor_upgrade
-			ship_gun_upgrade
-		}
-
-		ap_attack = 21
+		anti_air_attack = 4
+		torpedo_attack = 0
 		attack = 18
 		fire_range = 32
-		torpedo_attack = 0
 		shore_bombardment = 10
-		
-		anti_air_attack = 4
-		
-		armor_value = 16
 		evasion = 10
-		
-		surface_detection = 15
+		surface_detection = 12
 		sub_detection = 5
 		surface_visibility = 30
-		naval_speed = 20
-		reliability = 0.80
-
-		naval_range = 3000
-		
 		max_strength = 350
+		naval_speed = 20
+		naval_range = 3000
 		port_capacity_usage = 2
-		
-		build_cost_ic = 9600
-		resources = {
-			#oil = 1
-			#steel = 3
-			#chromium = 1
-		}
-
 		manpower = 6000
-	}
-
-
-	battleship_1890 = {
-		archetype = battleship
-		priority = 60
-
-		ap_attack = 15					#1922 ap_attack = 21
-		attack = 12						#1922 attack = 18
-		fire_range = 22					#1922 fire_range = 32
-		torpedo_attack = 0				#1922 torpedo_attack = 0
-		shore_bombardment = 5			#1922 shore_bombardment = 10
-						
-		anti_air_attack = 1				#1922 anti_air_attack = 4
-						
-		armor_value = 10				#1922 armor_value = 16
-		evasion = 7						#1922 evasion = 10
-						
-		surface_detection = 12			#1922 surface_detection = 152
-		sub_detection = 2				#1922 sub_detection = 5
-		#surface_visibility = 30	
-		naval_speed = 12				#1922 naval_speed = 20
-		#reliability = 0.80			
-		
-		naval_range = 2200				#1922 naval_range = 3000
-						
-		max_strength = 250				#1922 max_strength = 350
-		manpower = 4000					#1922 manpower = 6000		
-		build_cost_ic = 7600			#1922 build_cost_ic = 9600
-
-		resources = {
-			coal = 1
-			wood = 5
-			steel = 2
 		}
-	}
-
-	battleship_1906 = {
-		archetype = battleship
-		parent = battleship_1890
-		priority = 60
-
-		ap_attack = 19					#1922 ap_attack = 21
-		attack = 16						#1922 attack = 18
-		fire_range = 28					#1922 fire_range = 32
-		torpedo_attack = 0				#1922 torpedo_attack = 0
-		shore_bombardment = 8			#1922 shore_bombardment = 10
-						
-		anti_air_attack = 2				#1922 anti_air_attack = 4
-						
-		armor_value = 14				#1922 armor_value = 16
-		evasion = 8						#1922 evasion = 10
-						
-		surface_detection = 13			#1922 surface_detection = 152
-		sub_detection = 3				#1922 sub_detection = 5
-		#surface_visibility = 30	
-		naval_speed = 18				#1922 naval_speed = 20
-		#reliability = 0.80			
-		
-		naval_range = 2800				#1922 naval_range = 3000
-						
-		max_strength = 300				#1922 max_strength = 350
-		manpower = 5500					#1922 manpower = 6000		
-		build_cost_ic = 9000			#1922 build_cost_ic = 9600
-
-		resources = {
-			oil = 1
-			wood = 5
-			steel = 2
-		}		
-	}
-
-	battleship_1914 = {
-		archetype = battleship
-		parent = battleship_1906
-		priority = 60
-
-		ap_attack = 20					#1922 ap_attack = 21
-		attack = 17						#1922 attack = 18
-		fire_range = 29.5					#1922 fire_range = 32
-		torpedo_attack = 0				#1922 torpedo_attack = 0
-		shore_bombardment = 9			#1922 shore_bombardment = 10
-						
-		anti_air_attack = 3				#1922 anti_air_attack = 4
-						
-		armor_value = 15				#1922 armor_value = 16
-		evasion = 9						#1922 evasion = 10
-						
-		surface_detection = 14			#1922 surface_detection = 152
-		sub_detection = 4				#1922 sub_detection = 5
-		#surface_visibility = 30	
-		naval_speed = 19				#1922 naval_speed = 20
-		#reliability = 0.80			
-		
-		naval_range = 2900				#1922 naval_range = 3000
-						
-		max_strength = 325				#1922 max_strength = 350
-		manpower = 5800					#1922 manpower = 6000		
-		build_cost_ic = 9300			#1922 build_cost_ic = 9600
-
-		resources = {
-			oil = 1
-			wood = 6
-			steel = 2
-		}		
-	}
-
-	battleship_1 = {
-		archetype = battleship
-		parent = battleship_1914
-		priority = 60
-
-		resources = {
-			oil = 1
-			steel = 3
-			chromium = 1
-		}
-	}
 	
-	battleship_2 = {
-		archetype = battleship
-		parent = battleship_1
-		priority = 60
-		
-		ap_attack = 26
-		attack = 22
-		fire_range = 33
-		torpedo_attack = 0
-		shore_bombardment = 12
-		
-		anti_air_attack = 10
-		
-		armor_value = 22
-		evasion = 12
-		
-		surface_detection = 15
-		sub_detection = 5
-		surface_visibility = 30
-		naval_speed = 26
-		reliability = 0.85
-
-		naval_range = 4000
-
-		max_strength = 450		
-		port_capacity_usage = 2
-
-		build_cost_ic = 10400
-		resources = {
-			oil = 2
-			steel = 4
-			chromium = 1
-		}
-		manpower = 6600
-		
-	}
-	
-	battleship_3 = {
-		archetype = battleship
-		parent = battleship_2
-		shore_bombardment = 12
-		priority = 60
-		
-		ap_attack = 30
-		attack = 26
-		fire_range = 34
-		torpedo_attack = 0
-		
-		anti_air_attack = 13
-		
-		armor_value = 27
-		evasion = 16
-		
-		surface_detection = 25
-		sub_detection = 5
-		surface_visibility = 30
-		naval_speed = 28
-		reliability = 0.90
-
-		naval_range = 5000
-		
-		max_strength = 500
-		
-		port_capacity_usage = 2
-		
-		build_cost_ic = 11200
-		resources = {
-			oil = 2
-			steel = 4
-			chromium = 2
-		}
-		manpower = 7000
-
-	}
-	
-	battleship_4 = {
-		archetype = battleship
-		parent = battleship_3
-		priority = 60
-		
-		ap_attack = 33
-		attack = 30
-		fire_range = 35
-		torpedo_attack = 0
-		shore_bombardment = 15
-
-		anti_air_attack = 22
-		
-		armor_value = 30
-		evasion = 20
-		
-		surface_detection = 40
-		sub_detection = 5
-		surface_visibility = 30
-		naval_speed = 30
-		reliability = 0.92
-
-		naval_range = 6000
-		
-		max_strength = 550
-		
-		port_capacity_usage = 2
-		
-		build_cost_ic = 12000
-		resources = {
-			oil = 2
-			steel = 5
-			chromium = 3
-		}
-		manpower = 7400
-		
+battleship_1890 = {
+	reliability = 0.8
+	armor_value = 10
+	ap_attack = 4.5
+	build_cost_ic = 1540
+	resources = { oil=1 steel=3 chromium=1 }
+	anti_air_attack = 0
+	torpedo_attack = 0
+	attack = 2.5
+	fire_range = 20
+	shore_bombardment = 2
+	evasion = 6
+	surface_detection = 2
+	sub_detection = 1
+	surface_visibility = 30
+	max_strength = 56
+	naval_speed = 12
+	naval_range = 1675
+	port_capacity_usage = 2
+	archetype = battleship
+	manpower = 1740
+	priority = 60
 	}
 
-
-	SH_battleship_1 = {
-		archetype = battleship
-		priority = 60
-
-		ap_attack = 35
-		attack = 32
-		fire_range = 38
-		torpedo_attack = 0
-		shore_bombardment = 16
-		
-		anti_air_attack = 12
-		
-		armor_value = 32
-		evasion = 12
-		
-		surface_detection = 15
-		sub_detection = 5
-		surface_visibility = 30
-		naval_speed = 26
-		reliability = 0.85
-		
-		naval_range = 4000
-		
-		max_strength = 600
-		
-		port_capacity_usage = 4
-		
-		build_cost_ic = 18500
-		resources = {
-			oil = 2
-			steel = 4
-			chromium = 1
-		}
-		manpower = 9000
-		
-	}
-	
-	SH_battleship_2 = {
-		archetype = battleship
-		parent = SH_battleship_1
-		priority = 60
-		
-		ap_attack = 41
-		attack = 36
-		fire_range = 38
-		torpedo_attack = 0
-		shore_bombardment = 20
-
-		anti_air_attack = 14
-		
-		armor_value = 38
-		evasion = 14
-		
-		surface_detection = 25
-		sub_detection = 5
-		surface_visibility = 30
-		naval_speed = 28
-		reliability = 0.90
-		
-		naval_range = 4500
-
-		max_strength = 800
-		
-		port_capacity_usage = 4
-		
-		build_cost_ic = 23000
-		resources = {
-			oil = 2
-			steel = 5
-			chromium = 3
-		}
-		manpower = 10000
-		
+battleship_1900 = {
+	reliability = 0.8
+	armor_value = 14
+	ap_attack = 6
+	build_cost_ic = 2810
+	resources = { oil=1 steel=3 chromium=1 }
+	anti_air_attack = 0
+	torpedo_attack = 0
+	attack = 3.5
+	fire_range = 21
+	shore_bombardment = 3
+	evasion = 7.5
+	surface_detection = 3.5
+	sub_detection = 1.5
+	surface_visibility = 30
+	max_strength = 103
+	naval_speed = 14.5
+	naval_range = 2575
+	port_capacity_usage = 2
+	archetype = battleship
+	parent = battleship_1890
+	manpower = 3040
+	priority = 60
 	}
 
+battleship_1906 = {
+	reliability = 0.8
+	armor_value = 21
+	ap_attack = 16.5
+	build_cost_ic = 5540
+	resources = { oil=1 steel=3 chromium=1 }
+	anti_air_attack = 0
+	torpedo_attack = 0
+	attack = 9.5
+	fire_range = 23
+	shore_bombardment = 5.5
+	evasion = 8
+	surface_detection = 7
+	sub_detection = 3
+	surface_visibility = 30
+	max_strength = 202
+	naval_speed = 16.5
+	naval_range = 2725
+	port_capacity_usage = 2
+	archetype = battleship
+	parent = battleship_1900
+	manpower = 4860
+	priority = 60
+	}
+
+battleship_1910 = {
+	reliability = 0.8
+	armor_value = 22
+	ap_attack = 18.5
+	build_cost_ic = 6430
+	resources = { oil=1 steel=3 chromium=1 }
+	anti_air_attack = 1.5
+	torpedo_attack = 0
+	attack = 11
+	fire_range = 24
+	shore_bombardment = 6
+	evasion = 8.5
+	surface_detection = 8
+	sub_detection = 3.5
+	surface_visibility = 30
+	max_strength = 234
+	naval_speed = 17
+	naval_range = 2800
+	port_capacity_usage = 2
+	archetype = battleship
+	parent = battleship_1906
+	manpower = 5400
+	priority = 60
+	}
+
+battleship_1914 = {
+	reliability = 0.8
+	armor_value = 23
+	ap_attack = 24.5
+	build_cost_ic = 7350
+	resources = { oil=1 steel=3 chromium=1 }
+	anti_air_attack = 2.5
+	torpedo_attack = 0
+	attack = 14
+	fire_range = 26.5
+	shore_bombardment = 8
+	evasion = 9
+	surface_detection = 9
+	sub_detection = 4
+	surface_visibility = 30
+	max_strength = 268
+	naval_speed = 18
+	naval_range = 2850
+	port_capacity_usage = 2
+	archetype = battleship
+	parent = battleship_1910
+	manpower = 5500
+	priority = 60
+	}
+
+battleship_1918 = {
+	reliability = 0.8
+	armor_value = 25
+	ap_attack = 28
+	build_cost_ic = 8730
+	resources = { oil=1 steel=3 chromium=1 }
+	anti_air_attack = 3.5
+	torpedo_attack = 0
+	attack = 16.5
+	fire_range = 29
+	shore_bombardment = 9
+	evasion = 9.5
+	surface_detection = 11
+	sub_detection = 4.5
+	surface_visibility = 30
+	max_strength = 318
+	naval_speed = 19
+	naval_range = 2900
+	port_capacity_usage = 2
+	archetype = battleship
+	parent = battleship_1914
+	manpower = 5750
+	priority = 60
+	}
+
+battleship_1 = {
+	reliability = 0.80
+	armor_value = 26
+	ap_attack = 31
+	build_cost_ic = 9600
+	resources = { oil=1 steel=3 chromium=1 }
+	anti_air_attack = 4
+	torpedo_attack = 0
+	attack = 18
+	fire_range = 32
+	shore_bombardment = 10
+	evasion = 10
+	surface_detection = 12
+	sub_detection = 5
+	surface_visibility = 30
+	max_strength = 350
+	naval_speed = 20
+	naval_range = 3000
+	port_capacity_usage = 2
+	archetype = battleship
+	parent = battleship_1918
+	manpower = 6000
+	priority = 60
+	}
+
+battleship_2 = {
+	reliability = 0.85
+	armor_value = 32
+	ap_attack = 36
+	build_cost_ic = 10400
+	resources = { oil=2 steel=4 chromium=1 }
+	anti_air_attack = 10
+	torpedo_attack = 0
+	attack = 22
+	fire_range = 33
+	shore_bombardment = 12
+	evasion = 12
+	surface_detection = 15
+	sub_detection = 5
+	surface_visibility = 30
+	max_strength = 450		
+	naval_speed = 26
+	naval_range = 4000
+	port_capacity_usage = 2
+	archetype = battleship
+	parent = battleship_1
+	manpower = 6600
+	priority = 60
+	}
+
+battleship_3 = {
+	reliability = 0.90
+	armor_value = 37
+	ap_attack = 40
+	build_cost_ic = 11200
+	resources = { oil=2 steel=4 chromium=2 }
+	anti_air_attack = 13
+	torpedo_attack = 0
+	attack = 26
+	fire_range = 34
+	shore_bombardment = 12
+	evasion = 16
+	surface_detection = 25
+	sub_detection = 5
+	surface_visibility = 30
+	max_strength = 500
+	naval_speed = 28
+	naval_range = 5000
+	port_capacity_usage = 2
+	archetype = battleship
+	parent = battleship_2
+	manpower = 7000
+	priority = 60
+	}
+
+battleship_4 = {
+	reliability = 0.92
+	armor_value = 40
+	ap_attack = 43
+	build_cost_ic = 12000
+	resources = { oil=2 steel=5 chromium=3 }
+	anti_air_attack = 22
+	torpedo_attack = 0
+	attack = 30
+	fire_range = 35
+	shore_bombardment = 15
+	evasion = 20
+	surface_detection = 40
+	sub_detection = 5
+	surface_visibility = 30
+	max_strength = 550
+	naval_speed = 30
+	naval_range = 6000
+	port_capacity_usage = 2
+	archetype = battleship
+	parent = battleship_3
+	manpower = 7400
+	priority = 60
+	}
+
+SH_battleship_1 = {
+	reliability = 0.85
+	armor_value = 47
+	ap_attack = 50
+	build_cost_ic = 18500
+	resources = { oil=2 steel=4 chromium=1 }
+	anti_air_attack = 12
+	torpedo_attack = 0
+	attack = 32
+	fire_range = 38
+	shore_bombardment = 16
+	evasion = 12
+	surface_detection = 15
+	sub_detection = 5
+	surface_visibility = 30
+	max_strength = 600
+	naval_speed = 26
+	naval_range = 4000
+	port_capacity_usage = 4
+	archetype = battleship
+	manpower = 9000
+	priority = 60
+	}
+
+SH_battleship_2 = {
+	reliability = 0.90
+	armor_value = 58
+	ap_attack = 61
+	build_cost_ic = 23000
+	resources = { oil=2 steel=5 chromium=3 }
+	anti_air_attack = 14
+	torpedo_attack = 0
+	attack = 36
+	fire_range = 38
+	shore_bombardment = 20
+	evasion = 14
+	surface_detection = 25
+	sub_detection = 5
+	surface_visibility = 30
+	max_strength = 800
+	naval_speed = 28
+	naval_range = 4500
+	port_capacity_usage = 4
+	archetype = battleship
+	parent = SH_battleship_1
+	manpower = 10000
+	priority = 60
+	}
 }
