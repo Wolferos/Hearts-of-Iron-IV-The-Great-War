@@ -521,16 +521,23 @@ focus = {
   mutually_exclusive = { focus=mex_ww1_fortify_city }
   cost = 10
 
-  completion_reward = {
-    random_owned_state = {
-      add_building_construction = {
-        type = coastal_bunker
-        level = 3
-        province = 12299
-        instant_build = yes
+  completion_reward = { 
+      random_owned_state = {
+        limit = {
+          #is_in_home_area = yes
+          free_building_slots = {
+            building = dockyard
+            size > 1
+            include_locked = yes
+          }
+        }
+        add_building_construction = {
+          type = coastal_bunker
+          level = 3
+          instant_build = yes
+        }
       }
     }
-  }
   ai_will_do = { factor = 10 }
 }
 
