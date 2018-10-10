@@ -46,7 +46,7 @@ country_event = {
 	option = {
 		name = ww1_italy.5.a
 		ai_chance={
-			factor = 99
+			factor = 95
 		}
 		AUH = {
 			remove_state_core = 39
@@ -57,12 +57,63 @@ country_event = {
 			transfer_state = 736
 			set_country_flag = kis_italy_accept_auh_offer
 		}
+
+		hidden_effect = {
+			AUH = { 
+				add_opinion_modifier = { 
+					target = ITA modifier = HOI4TGW_Opinion_alliance_bonus_boost 
+				}
+			}
+			ITA = { 
+				add_opinion_modifier = { 
+					target = AUH modifier = HOI4TGW_Opinion_alliance_bonus_boost 
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				AUH = {is_in_faction = no}
+			}
+			AUH = {
+				set_rule = { can_create_factions = yes }
+				create_faction = "Austrian Alliance"
+				add_to_faction = ITA
+			}
+		} else {
+			if = {
+				limit = {
+					AUH = { is_faction_leader = yes}
+				}
+				AUH = {
+					add_to_faction = ITA
+				}
+			}
+
+			else _if = {
+				limit = {
+					GER = { is_in_faction_with = AUH }
+				}
+				GER = {
+					add_to_faction = ITA
+				}
+			}
+
+			else_if = {
+				limit = {
+					FRA = {is_in_faction_with = AUH}
+				}
+				FRA = {
+					add_to_faction = ITA
+				}
+			}
+		}
 	}
 
 	option = {
 		name = ww1_italy.5.b
 		ai_chance={
-			factor = 1
+			factor = 5
 		}
 		ITA = {
 			set_country_flag = kis_italy_decline_auh_offer

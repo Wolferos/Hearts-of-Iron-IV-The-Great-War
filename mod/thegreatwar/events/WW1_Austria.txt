@@ -63,28 +63,18 @@ country_event = {
 
     fire_only_once = yes
 
+    is_triggered_only = yes
+
     trigger = {
         TAG = AUH
-        date > 1910.6.6
-        date < 1914.2.2
         NOT = {
             has_global_flag = hoi4tgw_TrialistProposal
             has_global_flag = kis_franzferdinand_murdered
         }
-
-        NOT = {
-            country_exists = BOS
-            country_exists = CRO
-            country_exists = HUN
-        }
-        AUH = {
-            is_puppet = no 
-            has_war = no
-        }
     }
     
     mean_time_to_happen = {
-        days = 20
+        days = 0
     }
 
     immediate = {
@@ -98,14 +88,14 @@ country_event = {
         name = ww1_austria.2.a
 
         ai_chance = {
-            factor = 100
+            factor = 90
             modifier = {
                 factor = 0
                 NOT = { is_historical_focus_on = yes }
             }
         }
 
-        add_political_power = -150
+        add_political_power = -50
         add_stability = -0.05
 
         hidden_effect = {
@@ -118,7 +108,7 @@ country_event = {
         name = ww1_austria.2.b
 
         ai_chance = {
-            factor = 0
+            factor = 10
             modifier = {
                 factor = 100
                 NOT = { is_historical_focus_on = yes }

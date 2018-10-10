@@ -62,21 +62,74 @@ country_event = {
 	option = {
 		name = ww1_romania.5.a
 		ai_chance={
-			factor = 100
+			factor = 90
 		}
+
+		if = {
+			limit = {
+				AUH = {is_in_faction = no}
+			}
+			AUH = {
+				set_rule = { can_create_factions = yes }
+				create_faction = "Austrian Alliance"
+				add_to_faction = ROM
+			}
+		} else {
+			if = {
+				limit = {
+					AUH = { is_faction_leader = yes}
+				}
+				AUH = {
+					add_to_faction = ROM
+				}
+			}
+
+			else _if = {
+				limit = {
+					AUH = { is_in_faction_with = GER }
+				}
+				GER = {
+					add_to_faction = ROM
+				}
+			}
+
+			else_if = {
+				limit = {
+					AUH = {is_in_faction_with = FRA}
+				}
+				FRA = {
+					add_to_faction = ROM
+				}
+			}
+		}
+
 		AUH = {
 			remove_state_core = 80
 		}
+
 		ROM = {
 			transfer_state = 80
 			set_country_flag = kis_romania_accept_auh_offer
+		}
+
+		hidden_effect = {
+			AUH = { 
+				add_opinion_modifier = { 
+					target = ROM modifier = HOI4TGW_Opinion_alliance_bonus_boost 
+				}
+			}
+			ROM = { 
+				add_opinion_modifier = { 
+					target = AUH modifier = HOI4TGW_Opinion_alliance_bonus_boost 
+				}
+			}
 		}
 	}
 
 	option = {
 		name = ww1_romania.5.b
 		ai_chance={
-			factor = 0
+			factor = 10
 		}
 		ROM = {
 			set_country_flag = kis_romania_decline_auh_offer
