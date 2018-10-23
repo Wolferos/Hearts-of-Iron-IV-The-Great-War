@@ -24,16 +24,14 @@ country_event = {
 	    }
 
 	    # The Italian contingent of 20, 000 troops was deemed sufficient to accomplish the conquest at the time.Tobruk, Derna and Khoms were easily conquered, but the same was not true for Benghazi.
-	    # We must do that otherwise IA won't be able to attack Libya
-	    TUR = {
-	        ITA = {
-	            transfer_state = 451 # Tobruk, Derna and Khoms were easily conquered
-	        }
-	    }
+	    # We must do that otherwise ITA won't be able to attack Libya
+	    #TUR = {
+	        #ITA = {
+	            #transfer_state = 451 # Tobruk, Derna and Khoms were easily conquered
+	        #}
+	    #}
 
 	    ITA = {
-	        load_oob = "ITA_Tobruk" # Italian troops on Tobruk
-
 	        declare_war_on = {
 	            type = take_claimed_state
 	            target = TUR
@@ -64,7 +62,7 @@ country_event = {
         		set_country_flag = italian_libya_war
 	        }
 		    TUR = {
-		        country_event = { id = ww1_italianturkish.2 days = 1 }
+		        #country_event = { id = ww1_italianturkish.2 days = 1 }
 		    }
 		    HAI = {
 		        country_event = { id = ww1_haiti.1 days = 600 }
@@ -168,7 +166,7 @@ country_event = {
 	option = {
 		name = ww1_italianturkish.4.a
 		ai_chance = {
-			factor = 100
+			factor = 80
 		}
 		white_peace = TUR
 		transfer_state = 164
@@ -194,43 +192,15 @@ country_event = {
 			news_event = { days = 1 id = ww1_italianturkish.9 }
 		}
 	}
-}
-#____________________________________________________________
 
-# If Ottomans join a faction, the war stops
-#____________________________________________________________
-country_event = {
-	id = ww1_italianturkish.6
-	title = ww1_italianturkish.6.t
-	desc = ww1_italianturkish.6.d
-	picture = GFX_report_event_generic_read_write
-
-	fire_only_once = yes
-
-	trigger = {
-		OR = {
-			TUR = {
-				has_war_with = ITA
-				is_in_faction = yes
-			}
-			ITA = {
-				has_war_with = TUR
-				is_in_faction = yes
-			}
-		}
-		ITA = {
-			has_country_flag = ITA_Lib_War_End_Victory
-		}	
-	}
-
+	#Keep on fighting
 	option = {
-		name = ww1_italianturkish.6.a
-		ITA = {
-			white_peace = TUR
-			set_country_flag = ITA_Lib_War_End_Victory
-		}
+		name = ww1_italianturkish.4.b
+		ai_chance = {factor = 20}
+		hidden_effect = {}
 	}
 }
+
 #____________________________________________________________
 
 # If Italy is kicked out from Libya - Overridden by ww1_haiti.1
@@ -283,8 +253,8 @@ country_event = {
 #		}		
 #	}
 #}
-#____________________________________________________________
 
+#____________________________________________________________
 # Italian invasion of Libya - Global News
 #____________________________________________________________
 news_event = {
