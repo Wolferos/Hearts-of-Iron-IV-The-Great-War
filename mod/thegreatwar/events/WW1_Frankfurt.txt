@@ -23,7 +23,7 @@ country_event = {
 			has_war_with = GER
 			has_war_with = AUH
 
-			has_global_flag = kis_brestlitovsk # Open Beta 0.1.8 - Temporary Solution
+			#has_global_flag = kis_brestlitovsk # Open Beta 0.1.8 - Temporary Solution
 			
 			NOT = {
 				has_global_flag = kis_ask_fra_surrend #
@@ -326,7 +326,12 @@ country_event = {
 					transfer_state = 160		# VENETIA
 					transfer_state = 163		# ZARA
 				}
+				ETH = {
+					transfer_state = 550		# ERITREA
+					transfer_state = 559		# SOMALILAND
+				}
 			}
+			
 
 			if = {
 				limit = {
@@ -398,6 +403,7 @@ country_event = {
 					transfer_state = 656		# KUWAIT
 					transfer_state = 658		# ABU DHABI
 					transfer_state = 659		# ADEN
+					#Maybe Puppet or free Egypt?
 				}
 			}
 
@@ -430,10 +436,7 @@ country_event = {
 						transfer_state=663		# LIBYA
 					}
 				} else = {
-					TUR = {
-						transfer_state = 550		# ERITREA
-						transfer_state = 559		# SOMALILAND
-					}
+					#What would Ottomans want?
 				}
 			}
 
@@ -483,12 +486,32 @@ country_event = {
 				limit = {
 					ITA = {
 						has_war_with = FRA
+						has_war_with = ENG
 						is_in_faction_with = GER
 					}
 				}
 
 				ITA = {
-					transfer_state = 1		# SARDINIA
+					transfer_state = 1		# CORSICA
+					transfer_state = 268	# SOMALILAND
+					transfer_state = 269	# SOMALILAND
+					transfer_state = 735	# SAVOIE
+					transfer_state = 116	# MALTA
+					transfer_state = 665	# GABES
+
+				}
+			}
+
+			if = {
+				limit = {
+					ITA = {
+						has_war_with = FRA
+						has_war_with = TUR
+					}
+				}
+
+				ITA = {
+					transfer_state = 44		# ALBANIA
 				}
 			}
 
@@ -506,8 +529,39 @@ country_event = {
 				}
 			}
 
-			#Romania is in Central Powers
-			#ADD REWARDS
+			if = {
+				limit = {
+					SWE = {
+						has_war_with = DEN
+						is_in_faction_with = GER
+					}
+				}
+
+				SWE = {
+					#Puppet Bornholm, but Bornholm is not a state or even country
+				}
+
+				ICE = {
+					end_puppet = DEN #Liberate ICELAND
+				}
+			}
+
+			#Mexico is in Central Powers
+			if = {
+				limit = {
+					MEX = {
+						has_war_with = FRA
+						has_war_with = USA
+						is_in_faction_with = GER
+					}
+				}
+
+				MEX = {
+					transfer_state = 375		# TEXAS
+					transfer_state = 376		# NEW MEXICO
+					transfer_state = 377		# ARIZONA
+				}
+			}
 
 
 
