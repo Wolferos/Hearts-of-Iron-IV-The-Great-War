@@ -583,9 +583,22 @@ focus_tree = {
 	###########################################################################################################################
 
 	focus = {
-		id = AUH_ww1_diplomatic_effort
-		icon = GFX_goal_generic_intelligence_exchange
-		completion_reward = { add_political_power=150 }
+		id = AUH_ww1_trialism
+		icon = GFX_goal_generic_alliance
+		available = {
+			AUH = {
+				is_puppet = no 
+				has_war = no
+			}
+			NOT = {
+				country_exists = CRO
+				country_exists = HUN
+				has_country_flag = emperor_franz_dead
+			}
+		}
+		completion_reward = { 
+			country_event = { id = ww1_austria.2}
+		}
 
 		ai_will_do = { factor = 180 }
 		cost = 10
@@ -598,7 +611,7 @@ focus_tree = {
 	#-----------------------------------------------------------------------
 	focus = {
 		id = AUH_ww1_triple_alliance
-		prerequisite = { focus=AUH_ww1_diplomatic_effort }
+		prerequisite = { focus = AUH_ww1_trialism }
 		icon = GFX_goal_generic_demand_territory
 
 		available = {
@@ -715,7 +728,7 @@ focus_tree = {
 	#-----------------------------------------------------------------------
 	focus = {
 		id = AUH_ww1_assert_position_east
-		prerequisite = { focus=AUH_ww1_diplomatic_effort }
+		prerequisite = { focus=AUH_ww1_trialism }
 		icon = GFX_goal_generic_army_doctrines
 		available = { }
 		completion_reward = { 
@@ -1300,7 +1313,7 @@ focus_tree = {
 
 	focus = {
 		id = AUH_ww1_balkans_policy
-		prerequisite = { focus = AUH_ww1_diplomatic_effort }
+		prerequisite = { focus = AUH_ww1_trialism }
 		icon = GFX_goal_generic_intelligence_exchange
 		completion_reward = { add_political_power=75 }
 
@@ -1311,35 +1324,8 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AUH_ww1_franz_ferdinands_proposal
-		prerequisite = {focus = AUH_ww1_balkans_policy}
-		icon = GFX_goal_generic_alliance
-		available = {
-			AUH = {
-				is_puppet = no 
-				has_war = no
-			}
-			NOT = {
-				#country_exists = BOS
-				country_exists = CRO
-				country_exists = HUN
-				has_country_flag = emperor_franz_dead
-			}
-		}
-		completion_reward = {
-			AUH = {
-				country_event = { id = ww1_austria.2}
-			}
-		}
-		ai_will_do = { factor = 100 }
-		cost = 10
-		x = 17 
-		y = 2
-	}
-
-	focus = {
 		id = AUH_ww1_Schutzkorps
-		prerequisite = { focus = AUH_ww1_franz_ferdinands_proposal }
+		prerequisite = { focus = AUH_ww1_balkans_policy }
 		icon = GFX_goal_generic_wolf_pack
 
 		available = {
@@ -1354,7 +1340,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		cost = 7
 		x = 17
-		y = 4
+		y = 2
 	}
 
 	focus = {
