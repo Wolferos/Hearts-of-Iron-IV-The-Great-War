@@ -44,7 +44,8 @@ BUGS
 -Russian CW triggers if just one of the requirements are met, not all
 -Treaty of Brest-Litovsk may trigger without player wanting it to
 -Second treaty of Frankfurt does not cede any Italian states/colonies, even if Italy was in entente.
--When WW1 ends, Asir is still fighting without existing
+-When WW1 ends, Asir is still fighting without existing (TEST IF FIXED)
+-Bosnia is in Central Powers, without existing (TEST IF FIXED)
 -Event that says "Russia declares war on Austria" triggers 8/9/1915, even if they have already lost WW1. War isn't started however
 -France declares war on Germany 19/9/1915, even if France just lost WW1
 -If Romania or Italy join CP via AUH focus tree, they leave immediatley
