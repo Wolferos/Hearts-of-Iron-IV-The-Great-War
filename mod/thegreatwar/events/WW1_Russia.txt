@@ -127,23 +127,22 @@ news_event = {
 		RUS = {
 			
 			AND = {
-				has_war = yes
-				has_stability < 0.5	
+				has_stability < 0.25	
 
 				NOT = {
 					has_country_flag = dual_power
 					has_government = communism
-					controls_state = 98
-					controls_state = 10
-					controls_state = 90
-					controls_state = 97
-					controls_state = 92
-					controls_state = 93
-					controls_state = 199
-					controls_state = 206
-					controls_state = 202
-					controls_state = 194
-					controls_state = 95
+					#controls_state = 98
+					#controls_state = 10
+					#controls_state = 90
+					#controls_state = 97
+					#controls_state = 92
+					#controls_state = 93
+					#controls_state = 199
+					#controls_state = 206
+					#controls_state = 202
+					#controls_state = 194
+					#controls_state = 95
 				}
 			}
 		}
@@ -166,10 +165,6 @@ news_event = {
 					transfer_troops = yes
 				}
 				
-				declare_war_on = {
-		            type = annex_everything
-		            target = RUS
-		        }
 		        #every_state={
 				#	limit={
 				#		# SOV will get the same core as RUS
@@ -180,10 +175,11 @@ news_event = {
 				#		add_state_claim = PREV
 				#	}
 				#}
+
 				set_stability = 0.9
-				add_political_power = 800
+				add_political_power = 300
 				add_manpower = 500000
-				
+
 				transfer_state = 195
 				transfer_state = 219
 				transfer_state = 244
@@ -210,14 +206,20 @@ news_event = {
 				
 				load_oob = SOV_Revolt_01
 				
+				declare_war_on = {
+		            type = annex_everything
+		            target = RUS
+				}
+
 				country_event = { days = 1 id = ww1_soviet.999 }
 			}
+
 			RUS = {
 				set_country_flag = dual_power
 				set_country_flag = kis_tsarnicholasabdicated
 				set_country_flag = bolsheviks
-				add_political_power = -100
-				add_stability = -0.10
+				#add_political_power = -100
+				add_stability = 0.10
 				add_timed_idea = {
 					idea = dual_power
 					days = 180
@@ -257,20 +259,38 @@ news_event = {
 
 	option = {
 		name = ww1_russia.4.a
-		trigger = { tag = RUS NOT = { tag = SOV } }
+		trigger = { 
+			tag = RUS 
+			NOT = { 
+				tag = SOV 
+			} 
+		}
 		ai_chance = { factor = 100 }
 	}
+
 	option = {
-	name = ww1_russia.4.b
-	trigger = { tag = RUS NOT = { tag = SOV } }
-	ai_chance = { factor = 0 }
+		name = ww1_russia.4.b
+		trigger = { 
+			tag = RUS 
+			NOT = { 
+				tag = SOV 
+			} 
+		}
+
+		ai_chance = { factor = 0 }
 	    SOV = {
 		    change_tag_from = RUS
 		}
 	}
+
 	option = {
 		name = ww1_russia.4.c
-		trigger = { NOT = { tag = SOV tag = RUS } }
+		trigger = { 
+			NOT = { 
+				tag = SOV 
+				tag = RUS 
+			} 
+		}
 		ai_chance = { factor = 100 }
 	}
 }
@@ -371,6 +391,7 @@ news_event = {
 	trigger = {
 
 		NOT = {
+			has_country_flag = kis_octoberrevolutioncrushed
 			has_global_flag = kis_ask_ger_surrend # Can't happened if Germany loosed the WW1
 		}
 
@@ -403,6 +424,7 @@ news_event = {
 						}
 					}
 				}
+
 				diplomatic_relation = {
 					country = GER
 					relation = non_aggression_pact
@@ -474,13 +496,31 @@ country_event = {
 
 	immediate = {
 		hidden_effect = {
-			FIN = {
-				transfer_state = 111
-				transfer_state = 149
-				transfer_state = 150
-				transfer_state = 148
-				transfer_state = 146
+			if = {
+				limit = {
+					SWE = {
+						is_in_faction_with = GER
+						#has_war_with = RUS
+						#surrender_progress < 0.5
+					}
+				}
+				SWE = {
+					transfer_state = 111
+					transfer_state = 149
+					transfer_state = 150
+					transfer_state = 148
+					transfer_state = 146
+				}
+			} else = {
+				FIN = {
+					transfer_state = 111
+					transfer_state = 149
+					transfer_state = 150
+					transfer_state = 148
+					transfer_state = 146
+				}
 			}
+
 			EST = {
 				transfer_state = 13
 				transfer_state = 191
@@ -606,6 +646,7 @@ country_event = {
 				add_state_core = 228
 				add_state_core = 259
 			}
+
 			if = {
 				limit = {
 					ROM = {
@@ -630,6 +671,19 @@ country_event = {
 				}
 			}
 
+			#RUS = {
+				#every_owned_state = {
+					#limit = {
+						#THIS = {
+							#is_controlled_by = GER
+
+						#}
+					#}
+					#SOV = {
+						#transfer_state = PREV
+					#}
+				#}
+			#}
 		}
 	}
 

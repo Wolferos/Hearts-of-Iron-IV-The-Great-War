@@ -27,7 +27,6 @@ Habbalas TODO
 -Lower PP cost for influencing foreign ideologies (ATM it costs 5PP!)
 -Add more technologies (mainly things between 1910-1914)
 -Modify trenches to be a cheaper, lesser, version of trenches (right now they have the same effect)
--Add possibility to declare war on Soviet Union when they spawn if you are at war with Russia
 -Accepting treaties needs to take into consideration all potential major nation, such as Italy, Ottomans etc.
 -Add decision tree for majors that depends on Central Powers winning WW1
 -Add food mechanic (having less food than population needs decreases stability)
@@ -36,15 +35,9 @@ Habbalas TODO
 -Remove errors
 
 BUGS
--Germany is not adding Romania or Italy to faction when AUH invites them (via focus tree) (FIXED)
--Germany doesn't loose equipment when completing focus "Arm russian communists" (FIXED)
 -German focus "Invite Sweden" will ask the player (Germany) to accept or deny (not Sweden)
 -If a democratic nation (Sweden, Mexico, Romania, Italy) joins Central Powers via focus tree, they will leave immediately
--Russian CW triggers if just one of the requirements are met, not all
--Treaty of Brest-Litovsk may trigger without player wanting it to
 -Second treaty of Frankfurt does not cede any Italian states/colonies, even if Italy was in entente.
--When WW1 ends, Asir is still fighting without existing (TEST IF FIXED)
--Bosnia is in Central Powers, without existing (TEST IF FIXED)
 -Event that says "Russia declares war on Austria" triggers 8/9/1915, even if they have already lost WW1. War isn't started however
 -France declares war on Germany 19/9/1915, even if France just lost WW1
-
+-Choosing to sign the treaty of Brest-Litovsk as Germany does not actually trigger the event

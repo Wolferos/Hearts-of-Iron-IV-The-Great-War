@@ -934,15 +934,15 @@ focus_tree = {
 
 		prerequisite = { focus=GER_ww1_send_lenin }
 
-		icon = GFX_goal_generic_military_deal
+		icon = GFX_focus_wonderweapons
 
 		completion_reward = {
 
+			RUS = {
+				country_event = ww1_russia.4
+			}
+
 			GER = {
-				#add_equipment_to_stockpile = {
-					#type = infantry_equipment_1
-					#ammount = -10000
-				#}
 
 				send_equipment = {
 					target = SOV
@@ -951,8 +951,6 @@ focus_tree = {
 				}
 				
 			}
-
-			
 			
 		}
 
@@ -961,149 +959,6 @@ focus_tree = {
 		x = 10
 		y = 8
 	}
-
-	focus = {
-		prerequisite = { focus=GER_ww1_arm_russian_communists }
-
-		icon = GFX_focus_wonderweapons
-
-		id = GER_ww1_trigger_russian_civil_war
-
-		available = {
-
-			SOV = {exists = no}
-
-			NOT = {has_global_flag = kis_treaty_of_versailles }
-
-			RUS = {
-				exists = yes
-				NOT = {
-					has_country_flag = dual_power
-					has_government = communism
-				}
-			}
-		}
-	
-		completion_reward = {
-
-			hidden_effect = {
-				SOV = {
-					create_faction = "Comintern"
-
-					annex_country = {
-						target = MON
-						transfer_troops = yes
-					}
-					
-					#every_state={
-					#	limit={
-					#		# SOV will get the same core as RUS
-					#		#is_claimed_by = RUS
-					#		is_core_of = RUS
-					#	}
-					#	SOV={
-					#		add_state_claim = PREV
-					#	}
-					#}
-					set_stability = 0.9
-					add_political_power = 800
-					add_manpower = 500000
-
-					add_equipment_to_stockpile = {
-						type = infantry_equipment_1
-						amount = 20000
-					}
-
-					
-					transfer_state = 195
-					transfer_state = 219
-					transfer_state = 244
-					transfer_state = 263
-					transfer_state = 208
-					transfer_state = 246
-					transfer_state = 247
-					transfer_state = 248
-					transfer_state = 264
-					transfer_state = 253
-					transfer_state = 254
-
-					add_state_claim = 195
-					add_state_claim = 219
-					add_state_claim = 244
-					add_state_claim = 263
-					add_state_claim = 208
-					add_state_claim = 246
-					add_state_claim = 247
-					add_state_claim = 248
-					add_state_claim = 264
-					add_state_claim = 253
-					add_state_claim = 254
-					
-					load_oob = SOV_Revolt_01
-					
-					country_event = { days = 1 id = ww1_soviet.999 }
-				}
-				RUS = {
-					set_country_flag = dual_power
-					set_country_flag = kis_tsarnicholasabdicated
-					set_country_flag = bolsheviks
-					add_political_power = -100
-					add_stability = -0.10
-					add_timed_idea = {
-						idea = dual_power
-						days = 180
-					}
-					create_faction = "White Movement"
-					kill_country_leader = yes
-					create_country_leader = { 
-						name = "Georgy Lvov" 
-						desc = RUS_georgy_lvov_DESC 
-						picture = "gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_georgy_lvov.dds" 
-						expire = "1935.1.1" 
-						ideology = conservatism 
-						traits = { } 
-					}
-					set_politics = {
-						parties = {
-							neutrality = {
-								popularity = 0
-							}
-							democratic = {
-								popularity = 70
-							}
-							fascism = {
-								popularity = 0
-								banned = yes
-							}
-							communism = {
-								popularity = 30
-							}
-						}
-						ruling_party = democratic last_election = "1912.9.1"
-						election_frequency = 60 elections_allowed = no
-					}			
-				}
-			}
-
-			SOV = {
-				declare_war_on = {
-					type = annex_everything
-					target = RUS
-				}
-			}
-
-
-		}
-
-		ai_will_do = { factor = 90 }
-		cost = 2
-		x = 10
-		y = 9
-	}
-
-
-
-
 
 	#----------------------------------------------------------------------- 
 	# Bloc 2

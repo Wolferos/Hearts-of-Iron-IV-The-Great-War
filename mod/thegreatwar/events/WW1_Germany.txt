@@ -228,7 +228,7 @@ country_event = {
 			add_opinion_modifier={ 
 				target = GER 
 				modifier = ger_tur_diplomacy_focus 
-			} 
+			}
 			
 			if = { 
 				limit = { 
@@ -297,6 +297,32 @@ country_event = {
 	option = {
 		name = ww1_germany.22.b
 		ai_chance = { factor = 90 }
+	}
+}
+#____________________________________________________________
+
+# Will we sign the treaty of Brest-Litovsk?
+#____________________________________________________________
+country_event = {
+	id =  ww1_germany.24
+	title = ww1_germany.24.t
+	desc = ww1_germany.24.d
+	picture = GFX_report_event_gathering_protest
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.24.a
+		ai_chance = { factor = 100 }
+		RUS = { 
+			country_event = ww1_russia.6 
+		}
+	}
+	option = {
+		name = ww1_germany.24.b
+		ai_chance = { factor = 0 }
+
 	}
 }
 #____________________________________________________________
