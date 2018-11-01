@@ -41,3 +41,4 @@ BUGS
 -Event that says "Russia declares war on Austria" triggers 8/9/1915, even if they have already lost WW1. War isn't started however
 -France declares war on Germany 19/9/1915, even if France just lost WW1
 -Choosing to sign the treaty of Brest-Litovsk as Germany does not actually trigger the event
+-Main menu background is from DLC?

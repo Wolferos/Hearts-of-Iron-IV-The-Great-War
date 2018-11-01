@@ -119,113 +119,233 @@ news_event = {
 	}
 
 	trigger = {
-
-		NOT = {
-			has_global_flag = kis_ask_ger_surrend # Can't happened if Germany lost the WW1
-		}
 		
 		RUS = {
-			
-			AND = {
-				has_stability < 0.25	
+	
+			has_stability < 0.5	
 
-				NOT = {
-					has_country_flag = dual_power
-					has_government = communism
-					#controls_state = 98
-					#controls_state = 10
-					#controls_state = 90
-					#controls_state = 97
-					#controls_state = 92
-					#controls_state = 93
-					#controls_state = 199
-					#controls_state = 206
-					#controls_state = 202
-					#controls_state = 194
-					#controls_state = 95
-				}
+			NOT = {
+				has_country_flag = dual_power
+				has_government = communism
 			}
 		}
 	}
 
 	immediate = {
-		hidden_effect = {	
-			ENG = {
-				remove_from_faction = RUS
-				add_opinion_modifier = { 
-					target = RUS 
-					modifier = HOI4TGW_Opinion_Russia_Leave_Entente
-				} 
-			}
-			SOV = {
-				create_faction = "Comintern"
 
-				annex_country = {
-					target = MON
-					transfer_troops = yes
-				}
-				
-		        #every_state={
-				#	limit={
-				#		# SOV will get the same core as RUS
-				#		#is_claimed_by = RUS
-				#		is_core_of = RUS
-				#	}
-				#	SOV={
-				#		add_state_claim = PREV
-				#	}
-				#}
-
-				set_stability = 0.9
-				add_political_power = 300
-				add_manpower = 500000
-
-				transfer_state = 195
-				transfer_state = 219
-				transfer_state = 244
-				transfer_state = 263
-				transfer_state = 208
-				transfer_state = 246
-				transfer_state = 247
-				transfer_state = 248
-				transfer_state = 264
-				transfer_state = 253
-				transfer_state = 254
-
-				add_state_claim = 195
-				add_state_claim = 219
-				add_state_claim = 244
-				add_state_claim = 263
-				add_state_claim = 208
-				add_state_claim = 246
-				add_state_claim = 247
-				add_state_claim = 248
-				add_state_claim = 264
-				add_state_claim = 253
-				add_state_claim = 254
-				
-				load_oob = SOV_Revolt_01
-				
-				declare_war_on = {
-		            type = annex_everything
-		            target = RUS
-				}
-
-				country_event = { days = 1 id = ww1_soviet.999 }
+		RUS = {
+			#kill_country_leader = yes
+			create_country_leader = { 
+				name = "Georgy Lvov" 
+				desc = RUS_georgy_lvov_DESC 
+				picture = "gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_georgy_lvov.dds" 
+				expire = "1935.1.1" 
+				ideology = conservatism 
+				traits = { } 
 			}
 
+			add_timed_idea = {
+				idea = dual_power
+				days = 180
+			}
+		}
+
+		hidden_effect = {
 			RUS = {
 				set_country_flag = dual_power
 				set_country_flag = kis_tsarnicholasabdicated
-				set_country_flag = bolsheviks
-				#add_political_power = -100
 				add_stability = 0.10
-				add_timed_idea = {
-					idea = dual_power
-					days = 180
+
+				set_politics = {
+					parties = {
+						neutrality = {
+							popularity = 10
+						}
+						democratic = {
+							popularity = 60
+						}
+						fascism = {
+							popularity = 0
+							banned = yes
+						}
+						communism = {
+							popularity = 30
+						}
+					}
+					ruling_party = democratic last_election = "1912.9.1"
+					election_frequency = 60 elections_allowed = yes
+				}	
+			}		
+		}
+	}
+
+	option = {
+		name = ww1_russia.4.a
+		trigger = { 
+			tag = RUS 
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+#____________________________________________________________
+
+
+#  The Russian Civil War
+#____________________________________________________________
+country_event = {
+	id = ww1_russia.20
+	title = ww1_russia.20.t
+	desc = ww1_russia.20.d
+	picture = EVENT_hoi4tgw_october_revolution
+
+	fire_only_once = yes
+
+	major = yes
+
+	mean_time_to_happen = {
+		days = 30
+	}	
+
+	trigger = {
+		tag = RUS
+
+		NOT = { 
+			has_government = communism
+			has_country_flag = kis_octoberrevolutioncrushed 
+		}
+
+		has_country_flag = kis_tsarnicholasabdicated
+		has_country_flag = dual_power
+
+		has_stability < 0.5
+		#party_popularity@neutrality < 0.55
+		#party_popularity@communism > 0.45
+	}
+
+	option = {
+		name = ww1_russia.20.a
+		ai_chance = { factor = 100 }
+		
+		start_civil_war = {
+			ruling_party = neutrality
+			ideology = communism
+			size = 0.5
+			#capital = 195
+			#states = { 195 219 244 263 264 208 246 247 248 253 254 }
+		}
+
+		hidden_effect = {
+
+			#Effects on Red Russia
+			random_other_country = {
+				limit = {
+					original_tag = RUS
+					has_government = communism
 				}
-				create_faction = "White Movement"
-				kill_country_leader = yes
+				load_oob = SOV_Revolt_01
+				set_equipment_fraction = 0.5
+				set_stability = 0.9
+				set_war_support = 0.8
+				#country_event = { id = spain.3 days = 1 }
+			}
+
+			set_country_flag = bolsheviks
+			set_global_flag = kis_whitesvsreds
+		
+			load_oob = SOV_Revolt_01
+			set_equipment_fraction = 0.5
+			set_stability = 0.7
+			set_war_support = 0.8
+
+			set_politics = {
+				parties = {
+					neutrality = {
+						popularity = 70
+					}
+					democratic = {
+						popularity = 10
+					}
+					fascism = {
+						popularity = 0
+						banned = yes
+					}
+					communism = {
+						popularity = 20
+					}
+				}
+				ruling_party = neutrality last_election = "1912.9.1"
+				election_frequency = 60 elections_allowed = yes
+			}	
+
+			#transfer_state = 137
+			#transfer_state = 213
+			#transfer_state = 214
+			#transfer_state = 215
+			#transfer_state = 216
+			#transfer_state = 234
+			#transfer_state = 235
+			#transfer_state = 236
+			#transfer_state = 237
+			#transfer_state = 249
+			#transfer_state = 250
+			#transfer_state = 251
+			#transfer_state = 256
+			#transfer_state = 238
+			#transfer_state = 351
+			#transfer_state = 400
+			#transfer_state = 401
+			#transfer_state = 406
+			#transfer_state = 407
+			#transfer_state = 652
+			#transfer_state = 722
+		}
+	}
+
+	option = {
+		name = ww1_russia.20.b
+		ai_chance = { factor = 0 }
+
+		start_civil_war = {
+			ruling_party = communism
+			ideology = neutrality
+			size = 0.5
+			#capital = 195
+			#states = { 195 219 244 263 264 208 246 247 248 253 254 }
+		}
+		
+		hidden_effect = {
+
+			#Effects on White Russia
+			random_other_country = {
+				limit = {
+					original_tag = RUS
+					has_government = neutrality
+				}
+				load_oob = SOV_Revolt_01
+				set_equipment_fraction = 0.5
+				set_stability = 0.7
+				set_war_support = 0.8
+
+				set_politics = {
+					parties = {
+						neutrality = {
+							popularity = 70
+						}
+						democratic = {
+							popularity = 10
+						}
+						fascism = {
+							popularity = 0
+							banned = yes
+						}
+						communism = {
+							popularity = 20
+						}
+					}
+					ruling_party = neutrality last_election = "1912.9.1"
+					election_frequency = 60 elections_allowed = yes
+				}	
+
 				create_country_leader = { 
 					name = "Georgy Lvov" 
 					desc = RUS_georgy_lvov_DESC 
@@ -234,144 +354,67 @@ news_event = {
 					ideology = conservatism 
 					traits = { } 
 				}
-				set_politics = {
-				    parties = {
-				        neutrality = {
-				            popularity = 0
-				        }
-				        democratic = {
-				            popularity = 70
-				        }
-				        fascism = {
-				            popularity = 0
-				            banned = yes
-				        }
-				        communism = {
-				            popularity = 30
-				        }
-				    }
-				    ruling_party = democratic last_election = "1912.9.1"
-				    election_frequency = 60 elections_allowed = no
-				}			
+				
+				#country_event = { id = spain.3 days = 1 }
 			}
-		}
-	}
 
-	option = {
-		name = ww1_russia.4.a
-		trigger = { 
-			tag = RUS 
-			NOT = { 
-				tag = SOV 
-			} 
-		}
-		ai_chance = { factor = 100 }
-	}
+			set_country_flag = bolsheviks
+			set_global_flag = kis_whitesvsreds
+		
+			load_oob = SOV_Revolt_01
+			set_equipment_fraction = 0.5
+			set_stability = 0.9
+			set_war_support = 0.8	
 
-	option = {
-		name = ww1_russia.4.b
-		trigger = { 
-			tag = RUS 
-			NOT = { 
-				tag = SOV 
-			} 
-		}
+			set_politics = {
+				parties = {
+					neutrality = {
+						popularity = 0
+					}
+					democratic = {
+						popularity = 10
+					}
+					fascism = {
+						popularity = 10
+						banned = yes
+					}
+					communism = {
+						popularity = 80
+					}
+				}
+				ruling_party = communism elections_allowed = no
+			}
 
-		ai_chance = { factor = 0 }
-	    SOV = {
-		    change_tag_from = RUS
+			#transfer_state = 137
+			#transfer_state = 213
+			#transfer_state = 214
+			#transfer_state = 215
+			#transfer_state = 216
+			#transfer_state = 234
+			#transfer_state = 235
+			#transfer_state = 236
+			#transfer_state = 237
+			#transfer_state = 249
+			#transfer_state = 250
+			#transfer_state = 251
+			#transfer_state = 256
+			#transfer_state = 238
+			#transfer_state = 351
+			#transfer_state = 400
+			#transfer_state = 401
+			#transfer_state = 406
+			#transfer_state = 407
+			#transfer_state = 652
+			#transfer_state = 722
 		}
-	}
-
-	option = {
-		name = ww1_russia.4.c
-		trigger = { 
-			NOT = { 
-				tag = SOV 
-				tag = RUS 
-			} 
-		}
-		ai_chance = { factor = 100 }
 	}
 }
+
 #____________________________________________________________
 
 # If RUS Won Against SOV
 #____________________________________________________________
-news_event = {
-	id = ww1_russia.5
-	title = ww1_russia.5.t
-	desc = ww1_russia.5.d
-	picture = GFX_news_event_generic_sign_treaty2
 
-	major = yes
-
-	mean_time_to_happen = {
-		days = 0
-	}
-
-	trigger = {
-		RUS = {
-			has_country_flag = kis_tsarnicholasabdicated
-			NOT = {
-				has_global_flag = kis_brestlitovsk
-				has_country_flag = kis_octoberrevolutioncrushed
-			}
-		}
-		OR = {
-			SOV = {
-				exists = no
-				#has_war_with = RUS
-				#surrender_progress > 0.60
-			}
-			# If AI Peace Conference Occured - SOV can become democratic, we want russia to annex the remaining SOV
-			SOV = {
-				exists = yes
-				has_government = democratic
-			}
-		}
-	}
-
-	immediate = {
-		hidden_effect = {
-			RUS = {
-				set_country_flag = kis_octoberrevolutioncrushed
-				kill_country_leader = yes
-				create_country_leader={ name = "Nikolai II" desc=RUS_nikolai_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_nikolai_ii.dds" expire="1935.1.1" ideology=autocracy traits={  } }
-				set_politics = {
-				    parties = {
-				        neutrality = {
-				            popularity = 100
-				        }
-				        democratic = {
-				            popularity = 0
-				            banned = yes
-				        }
-				        fascism = {
-				            popularity = 0
-				            banned = yes
-				        }
-				        communism = {
-				            popularity = 0
-				            banned = yes
-				        }
-				    }
-				    ruling_party = neutrality last_election = "1912.9.1"
-				    election_frequency = 60 elections_allowed = no
-				}
-				annex_country = {
-					target = SOV
-					transfer_troops = no
-				}
-			}
-		}
-	}
-
-	option = {
-		name = ww1_russia.5.a
-		ai_chance = { factor = 100 }
-	}
-}
 #____________________________________________________________
 
 # Treaty of Brest-Litovsk - Part 1
@@ -714,104 +757,7 @@ country_event = {
 		set_global_flag=imperial_dissolution
 	}
 }
-#____________________________________________________________
 
-
-#  The Russian Civil War
-#____________________________________________________________
-news_event = {
-	id = ww1_russia.20
-	title = ww1_russia.20.t
-	desc = ww1_russia.20.d
-	picture = ww1_russia_8
-
-	major = yes
-	is_triggered_only = yes
-
-	#trigger = {
-	#	date > 1918.6.1
-	#	country_exists = SOV
-	#	NOT = {
-	#		country_exists = RUS
-	#		has_global_flag = kis_whitesvsreds
-	#	}
-	#	has_global_flag = kis_brestlitovsk
-	#
-	#}
-
-	immediate = {
-		hidden_effect = {
-		    SOV = { country_event = { days = 210 id = ww1_soviet.2 }
-		    if = { limit = { NOT = { OR = { has_completed_focus = SOV_ww1_claim_victory has_completed_focus = SOV_ww1_establish_cheka } } }
-			RUS = {
-				create_faction = "White Movement"
-				set_global_flag = kis_whitesvsreds
-				kill_country_leader = yes
-				create_country_leader={ name = "Alexander Kolchak" desc=RUS_kolchak_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/navy_admirals/RUS_kolchak.dds" expire="1935.1.1" ideology=fascism_ideology traits={ } }
-				set_politics = {
-				    parties = {
-				        neutrality = {
-				            popularity = 0
-				        }
-				        democratic = {
-				            popularity = 0
-				        }
-				        fascism = {
-				            popularity = 100
-				        }
-				        communism = {
-				            popularity = 0
-				        }
-				    }
-				    ruling_party = fascism last_election = "1912.9.1"
-				    election_frequency = 60 elections_allowed = no
-				}
-
-				SOV = {
-					release = MON
-				}
-
-				declare_war_on = {
-		            type = annex_everything
-		            target = SOV
-		        }
-
-				transfer_state = 147
-
-				puppet = MON
-
-				transfer_state = 137
-				transfer_state = 213
-				transfer_state = 214
-				transfer_state = 215
-				transfer_state = 216
-				transfer_state = 234
-				transfer_state = 235
-				transfer_state = 236
-				transfer_state = 237
-				transfer_state = 249
-				transfer_state = 250
-				transfer_state = 251
-				transfer_state = 256
-				transfer_state = 238
-				transfer_state = 351
-				transfer_state = 400
-				transfer_state = 401
-				transfer_state = 406
-				transfer_state = 407
-				transfer_state = 652
-				transfer_state = 722
-				load_oob = "SOV_Civil_War"
-			}
-		    }
-		}
-	}
-	}
-	option = {
-		name = ww1_russia.20.a
-		ai_chance = { factor = 100 }				
-	}
-}
 #____________________________________________________________
 
 #  Peace treaty between Entente and Soviets
