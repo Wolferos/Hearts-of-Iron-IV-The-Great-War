@@ -21,20 +21,30 @@
 - The Union of South Africa has to be a Dominion of United Kingdom after the independence proclamation
 
 Habbalas TODO
--Improve Albanian revolts
--Add mechanic where taking/holding non core states lowers stability
--Add mechanic where war support decreases for every war participant every year (example event "Spanish flu")
--Lower PP cost for influencing foreign ideologies (ATM it costs 5PP!)
--Add more technologies (mainly things between 1910-1914)
--Modify trenches to be a cheaper, lesser, version of trenches (right now they have the same effect)
+
+-TREATIES
+--Divide scripted peace treaties so that there is one event/treaty for when a major country capitulates. For example one treaty for Ottomans to looses the war, one for France, one for Russia, etc. 
 -Accepting treaties needs to take into consideration all potential major nation, such as Italy, Ottomans etc.
--Add decision tree for majors that depends on Central Powers winning WW1
+
+POLITICAL
 -Add food mechanic (having less food than population needs decreases stability)
 -Make stability more important. (Puppets gets released/States independant/Civil Wars at 0%, Ideaology drift defense -100% under 30%, and more)
 -Make war support a major influencer on manpower
--Remove errors
+-Add mechanic where taking/holding non core states lowers stability
+-Add mechanic where war support decreases for every war participant every year (example event "Spanish flu")
+-Lower PP cost for influencing foreign ideologies (ATM it costs 5PP!)
+-Add mechanic for country specific guarantees. Such as "Russia guarantees Serbia against Austrian agression". Gives Russia the choice to intervene or not if Austria attacks Serbia. Similar to Rhineland, Memel, Danzig events in base game.
+-Make conspriction laws affect stability, production output and more. Pulling people from their job should have effects. (FIX)
+
+BUILDINGS
+-Modify trenches to be a cheaper, lesser, version of trenches (right now they have the same effect)
+
+OTHER
+-Improve Albanian revolts (Spawn Albania as nation). 
+-Make Balkan Wars more flexible (able to trigger even if Ottomans win aganinst Italy).
 
 BUGS
+-Remove errors
 -German focus "Invite Sweden" will ask the player (Germany) to accept or deny (not Sweden)
 -If a democratic nation (Sweden, Mexico, Romania, Italy) joins Central Powers via focus tree, they will leave immediately
 -Second treaty of Frankfurt does not cede any Italian states/colonies, even if Italy was in entente.
