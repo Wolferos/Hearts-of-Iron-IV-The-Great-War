@@ -160,7 +160,7 @@ country_event = {
 }
 #____________________________________________________________
 
-# Germany Surrend - Trigger to the FRA
+# France Surrenders to Central Powers - Trigger to the FRA
 #____________________________________________________________
 country_event = {
 	id = ww1_frankfurt.3
@@ -181,6 +181,7 @@ country_event = {
 
 		hidden_effect = {
 
+			#Germany is in Central Powers
 			if = {
 				limit = {
 					GER = {
@@ -295,6 +296,18 @@ country_event = {
 			if = {
 				limit = {
 					ENG = {
+						has_war_with = GER
+					}
+				}
+				GER = {
+					transfer_state = 763		# Walwis Bay
+				}
+			}
+
+			#Austria-Hungary is in Central Powers
+			if = {
+				limit = {
+					ENG = {
 						has_war_with = AUH
 					}
 				}
@@ -305,15 +318,75 @@ country_event = {
 
 			if = {
 				limit = {
-					ENG = {
-						has_war_with = GER
+					AUH = {
+						has_war_with = ITA
 					}
 				}
-				GER = {
-					transfer_state = 763		# Walwis Bay
+				AUH = {
+					transfer_state = 160		# VENETIA
+				}
+				ETH = {
+					transfer_state = 550		# ERITREA
+					transfer_state = 559		# SOMALILAND
+				}
+			}
+			
+
+			if = {
+				limit = {
+					AUH = {
+						has_war_with = MTN
+						is_in_faction_with = GER
+					}
+				}
+
+				if = {
+					limit = {
+						CRO = {
+							is_puppet_of = AUH
+						}
+					}
+					else = {
+						AUH = {
+							transfer_state = 105		# MONTENEGRO
+							transfer_state = 761		# MONTENEGRO
+						}
+					}
 				}
 			}
 
+			if = {
+				limit = {
+					AUH = {
+						has_war_with = SER
+						is_in_faction_with = GER
+					}
+				}
+				AUH = {
+				
+				# SPECIAL_DLC Together for Victory
+	        	    if = { 
+	        		    limit = { 
+	        			    has_dlc = "Together for Victory" 
+	        		    }
+					#IF-----------------------------------------
+		                set_autonomy = {
+		                    target = SER
+		                    autonomous_state = autonomy_integrated_puppet
+		                }
+		            #-------------------------------------------
+
+		            #ELSE---------------------------------------
+		                else = {
+		                    # WORK IN PROGRESS # Temporary Solution for Open Beta 0.1.9
+							puppet = SER # Default "else" even in vanilla
+		                }
+		            #-------------------------------------------
+					}
+				}
+			}
+
+			#Ottomans is in Central Powers
 			if = {
 				limit = {
 					ENG = {
@@ -329,9 +402,44 @@ country_event = {
 					transfer_state = 656		# KUWAIT
 					transfer_state = 658		# ABU DHABI
 					transfer_state = 659		# ADEN
+					#Maybe Puppet or free Egypt?
 				}
 			}
 
+			if = {
+				limit = {
+					ITA = {
+						has_war_with = TUR
+						has_war_with = GER
+					}
+					TUR = {
+						is_in_faction_with = GER
+					}
+				}
+
+				if = {
+					limit = {
+						ITA = {
+							has_country_flag = ITA_Lib_War_End_Victory
+						}
+					}
+					TUR = {
+						transfer_state=164		# DODOCANESE
+						transfer_state=273		# LIBYA
+						transfer_state=448		# LIBYA
+						transfer_state=449		# LIBYA
+						transfer_state=450		# LIBYA
+						transfer_state=451		# LIBYA
+						transfer_state=661		# LIBYA
+						transfer_state=662		# LIBYA
+						transfer_state=663		# LIBYA
+					}
+				} else = {
+					#What would Ottomans want?
+				}
+			}
+
+			#Bulgaria is in Central Powers
 			if = {
 				limit = {
 					BUL = {
@@ -372,47 +480,85 @@ country_event = {
 				}
 			}
 
+			#Italy is in Central Powers
 			if = {
 				limit = {
-					AUH = {
-						has_war_with = MTN
+					ITA = {
+						has_war_with = FRA
+						has_war_with = ENG
 						is_in_faction_with = GER
 					}
 				}
-				AUH = {
-					transfer_state = 105		# MONTENEGRO
-					transfer_state = 761		# MONTENEGRO
+
+				ITA = {
+					transfer_state = 1		# CORSICA
+					transfer_state = 268	# SOMALILAND
+					transfer_state = 269	# SOMALILAND
+					transfer_state = 735	# SAVOIE
+					transfer_state = 116	# MALTA
+					transfer_state = 665	# GABES
+
 				}
 			}
 
 			if = {
 				limit = {
-					AUH = {
-						has_war_with = SER
+					ITA = {
+						has_war_with = FRA
+						has_war_with = TUR
+					}
+				}
+
+				ITA = {
+					transfer_state = 44		# ALBANIA
+				}
+			}
+
+			#Sweden is in Central Powers
+			if = {
+				limit = {
+					SWE = {
+						has_war_with = FRA
 						is_in_faction_with = GER
 					}
 				}
-				AUH = {
-				
-				# SPECIAL_DLC Together for Victory
-	        	    if = { 
-	        		    limit = { 
-	        			    has_dlc = "Together for Victory" 
-	        		    }
-					#IF-----------------------------------------
-		                set_autonomy = {
-		                    target = SER
-		                    autonomous_state = autonomy_integrated_puppet
-		                }
-		            #-------------------------------------------
 
-		            #ELSE---------------------------------------
-		                else = {
-		                    # WORK IN PROGRESS # Temporary Solution for Open Beta 0.1.9
-							puppet = SER # Default "else" even in vanilla
-		                }
-		            #-------------------------------------------
+				SWE = {
+					transfer_state = 308		# French Caribbean
 				}
+			}
+
+			if = {
+				limit = {
+					SWE = {
+						has_war_with = DEN
+						is_in_faction_with = GER
+					}
+				}
+
+				SWE = {
+					#Puppet Bornholm, but Bornholm is not a state or even country
+				}
+
+				ICE = {
+					end_puppet = DEN #Liberate ICELAND
+				}
+			}
+
+			#Mexico is in Central Powers
+			if = {
+				limit = {
+					MEX = {
+						has_war_with = FRA
+						has_war_with = USA
+						is_in_faction_with = GER
+					}
+				}
+
+				MEX = {
+					transfer_state = 375		# TEXAS
+					transfer_state = 376		# NEW MEXICO
+					transfer_state = 377		# ARIZONA
 				}
 			}
 

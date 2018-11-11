@@ -556,3 +556,55 @@ news_event = {
 	}
 }
 #____________________________________________________________
+
+# Iraqi revolt against the British # Open Beta 0.6 (11/11/2018)
+#____________________________________________________________
+news_event = {
+	id = interwar_news.14
+	title = interwar_news.14.t
+	desc = interwar_news.14.d
+
+	picture = EVENT_hoi4tgw_albanian_revolt #
+
+	major = yes
+	is_triggered_only = yes
+
+	trigger = {
+		date > 1920.5.1
+		has_global_flag = kis_treaty_of_versailles
+		ENG = { has_war = no }
+		NOT={
+			country_exists=IRQ
+			has_global_flag = interwar_iraqi_revolt
+		}
+		ENG = { 
+			controls_state = 291 
+			controls_state = 676
+		}
+	}
+
+	immediate = {
+		set_global_flag = interwar_iraqi_revolt
+		hidden_effect = {
+			IRQ = {
+				transfer_state = 676
+			}
+			ENG = {
+				end_puppet = IRQ
+				remove_from_faction = IRQ
+				declare_war_on={
+					target=IRQ
+					type = annex_everything
+				}
+			}
+		}
+	}
+
+	option = {
+		name = interwar_news.14.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________

@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos 
 
-**Current Version:** 0.5.4
+**Current Version:** 0.6
 
 **Compatible with:** Hearts of Iron IV "Cornflakes" (with or without Paid DLC) 
 
@@ -96,6 +96,8 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - Felixiinho
    - NicolasGrosjean
    - GABRIELN13
+   - Honeymaple
+   - habbala
 
 ----------
 [Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow
