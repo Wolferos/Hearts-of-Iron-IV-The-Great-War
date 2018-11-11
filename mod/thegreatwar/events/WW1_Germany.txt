@@ -281,3 +281,39 @@ country_event = {
 	}
 }
 #____________________________________________________________
+
+# Military Access from HOL
+#____________________________________________________________
+country_event = {
+	id =  ww1_germany.24
+	title = ww1_germany.24.t
+	desc = ww1_germany.24.d
+	picture = GFX_report_event_generic_read_write
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.24.a
+		ai_chance = { factor = 50 }
+		GER = {
+			diplomatic_relation = {
+				country = DEN
+				relation = military_access
+				active = yes
+			}
+		}
+
+	}
+	option = {
+		name = ww1_germany.24.b
+		ai_chance = { factor = 50 }
+		GER = {
+			create_wargoal = {
+					type = annex_everything
+					target = DEN
+			}
+		}
+	}
+}
+#____________________________________________________________

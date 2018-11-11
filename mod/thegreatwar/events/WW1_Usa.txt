@@ -60,29 +60,72 @@ news_event = {
 	}
 }
 
+# Who is the new President of USA? (1913)
+#____________________________________________________________
+country_event = {
+	id = ww1_usa.50
+	title = ww1_usa.50.t
+	desc = ww1_usa.50.d
+
+    mean_time_to_happen = {
+        days = 0
+    }
+
+    fire_only_once = yes
+
+    trigger = {
+    	tag = USA
+        date > 1912.11.1
+        date < 1913.10.10
+        USA = {
+	        has_government = democratic
+	        not = {
+	            has_country_flag = new_1913_president_usa
+	        }
+        }
+    }
+	
+	# Woodrow Wilson will be President of USA
+	option = {
+		name = ww1_usa.50.a
+		ai_chance = { factor = 100 }
+		set_country_flag = new_1913_president_usa
+
+		hidden_effect = {
+			news_event = { days = 150 id = ww1_usa.5 }
+		}
+	}
+
+	# Theodore Roosevelt will be President of USA
+	option = {
+		name = ww1_usa.50.b
+		ai_chance = { factor = 0 }
+		set_country_flag = new_1913_president_usa
+
+		hidden_effect = {
+			news_event = { days = 150 id = ww1_usa.6 }
+		}
+	}
+
+	# Taft will stay President of USA
+	option = {
+		name = ww1_usa.50.c
+		ai_chance = { factor = 0 }
+		set_country_flag = new_1913_president_usa
+	}
+}
+#____________________________________________________________
+
 # Woodrow Wilson new President of USA
 #____________________________________________________________
 news_event = {
     id = ww1_usa.5
     title = ww1_usa.5.t
     desc = ww1_usa.5.d
-    picture = ww1_usa_6
+    picture = ww1_usa_5
 
     major = yes
-
-    mean_time_to_happen = {
-        days = 0
-    }
-
-    trigger = {
-        date > 1913.3.3
-        USA = {
-	        has_government = democratic
-	        not = {
-	            has_country_flag = new_nationalism
-	        }
-        }
-    }
+    is_triggered_only=yes
 
     immediate = {
     	hidden_effect = {
@@ -96,21 +139,56 @@ news_event = {
 		            ideology = liberalism traits = {}
 		        }
 		        add_political_power = -200
+		        set_country_flag = new_freedom
+	    	}
+    	}
+    }
+    
+    option = {
+        name = ww1_usa.5.a        
+    }
+}
+#____________________________________________________________
+
+
+# Theodore Roosevelt new President of USA
+#____________________________________________________________
+news_event = {
+    id = ww1_usa.6
+    title = ww1_usa.6.t
+    desc = ww1_usa.6.d
+    picture = ww1_usa_6
+
+    major = yes
+    is_triggered_only=yes
+
+    immediate = {
+    	hidden_effect = {
+	    	USA = {
+	    		retire_country_leader = yes
+		        create_country_leader = {
+		            name = "Theodore Roosevelt"
+		            desc = USA_theodore_roosevelt_DESC 
+		            picture = "gfx/leaders/USA_theodore_roosevelt.dds"
+		            expire = "1935.1.1"
+		            ideology = liberalism traits = {}
+		        }
+		        add_political_power = -200
 		        set_country_flag = new_nationalism
 	    	}
     	}
     }
     
     option = {
-        name = ww1_usa.5.a
-        
+        name = ww1_usa.6.a        
     }
 }
 #____________________________________________________________
 
+
 news_event = {
 	title=ww1_usa.18.t #US Declaration of Neutrality
-	desc=ww1_usa.18.d #When the war began the United States proclaimed a policy of strict neutrality—'in thought and deed', as President Woodrow Wilson put it. His goal was to broker a peace and he sent his top aide Colonel House on repeated missions to the belligerents, but they were so confident of victory that the peace was ignored.
+	desc=ww1_usa.18.d #When the war began the United States proclaimed a policy of strict neutrality—'in thought and deed', as POTUS put it. His goal was to broker a peace and he sent his top aide Colonel House on repeated missions to the belligerents, but they were so confident of victory that the peace was ignored.
 	id=ww1_usa.18
 	picture=ww1_usa_18NULL
 	fire_only_once=yes
