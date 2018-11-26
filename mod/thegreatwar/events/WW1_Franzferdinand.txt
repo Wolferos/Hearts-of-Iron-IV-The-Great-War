@@ -15,7 +15,7 @@ news_event = {
 		date < 1914.9.1
 		NOT = { has_global_flag = kis_franzferdinand_murdered }
 		NOT = { has_global_flag = kis_fra_war_ger } # Set by France
-		country_exists=SER
+		country_exists = SER
 		SER = {
         	is_puppet = no 
         	has_war = no
@@ -361,9 +361,44 @@ country_event = {
 			}
 			TUR = {
 				dismantle_faction = yes
-			}			
-			FRA = { add_to_faction = SER }
-			FRA = { add_to_faction = MTN }
+			}
+			if = { 
+				limit = { 
+					country_exists = SER 
+					FRA = {
+						is_faction_leader = yes
+					}
+				} 
+				FRA = { add_to_faction = SER }
+			}
+			if = { 
+				limit = { 
+					country_exists = MTN 
+					FRA = {
+						is_faction_leader = yes
+					}
+				} 
+				FRA = { add_to_faction = MTN }
+			}
+
+			if = { 
+				limit = { 
+					country_exists = SER 
+					ENG = {
+						is_faction_leader = yes
+					}
+				} 
+				ENG = { add_to_faction = SER }
+			}
+			if = { 
+				limit = { 
+					country_exists = MTN 
+					ENG = {
+						is_faction_leader = yes
+					}
+				} 
+				ENG = { add_to_faction = MTN }
+			}
 		}
 	}
 
