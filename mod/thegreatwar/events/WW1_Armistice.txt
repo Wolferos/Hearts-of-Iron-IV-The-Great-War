@@ -331,7 +331,6 @@ news_event = {
 				}
 			}
 
-
 			if = {
 				limit = {
 					SER = {
@@ -390,81 +389,6 @@ news_event = {
 
 			AUH = { white_peace = SER }
 			GER = { white_peace = SER }
-
-
-			#GER = { white_peace = FRA }
-			#GER = { white_peace = ENG }
-			#GER = { white_peace = RUS }
-			#GER = { white_peace = SOV }
-			#GER = { white_peace = HOL }
-			#GER = { white_peace = BEL }
-			#GER = { white_peace = ITA }
-			#GER = { white_peace = LUX }
-			#GER = { white_peace = MTN }
-			#GER = { white_peace = SER }
-			#GER = { white_peace = BUL }
-			#GER = { white_peace = TUR }
-			#GER = { white_peace = GRE }
-			#GER = { white_peace = JAP }
-			#GER = { white_peace = USA }
-			#GER = { white_peace = ROM }
-			#GER = { white_peace = CHI }
-			#GER = { white_peace = QIN }
-
-			#GER = {	diplomatic_relation = {	country = FRA relation = non_aggression_pact } }
-			#GER = {	diplomatic_relation = {	country = ENG relation = non_aggression_pact } }
-			#GER = {	diplomatic_relation = {	country = RUS relation = non_aggression_pact } }
-			#GER = {	diplomatic_relation = {	country = HOL relation = non_aggression_pact } }
-			#GER = {	diplomatic_relation = {	country = BEL relation = non_aggression_pact } }
-			#GER = {	diplomatic_relation = {	country = ITA relation = non_aggression_pact } }
-			#GER = {	diplomatic_relation = {	country = LUX relation = non_aggression_pact } }
-			#GER = {	diplomatic_relation = {	country = MTN relation = non_aggression_pact } }
-			#GER = {	diplomatic_relation = {	country = SER relation = non_aggression_pact } }
-			#GER = {	diplomatic_relation = {	country = BUL relation = non_aggression_pact } }
-			#GER = {	diplomatic_relation = {	country = TUR relation = non_aggression_pact } }
-			#GER = {	diplomatic_relation = {	country = GRE relation = non_aggression_pact } }
-			#GER = {	diplomatic_relation = {	country = JAP relation = non_aggression_pact } }
-			#GER = {	diplomatic_relation = {	country = USA relation = non_aggression_pact } }
-			#GER = {	diplomatic_relation = {	country = ROM relation = non_aggression_pact } }
-			#GER = {	diplomatic_relation = {	country = CHI relation = non_aggression_pact } }
-			#GER = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
-
-			#AUH = { white_peace = FRA }
-			#AUH = { white_peace = ENG }
-			#AUH = { white_peace = RUS }
-			#AUH = { white_peace = SOV }
-			#AUH = { white_peace = HOL }
-			#AUH = { white_peace = BEL }
-			#AUH = { white_peace = ITA }
-			#AUH = { white_peace = LUX }
-			#AUH = { white_peace = MTN }
-			#AUH = { white_peace = SER }
-			#AUH = { white_peace = BUL }
-			#AUH = { white_peace = TUR }
-			#AUH = { white_peace = GRE }
-			#AUH = { white_peace = JAP }
-			#AUH = { white_peace = USA }
-			#AUH = { white_peace = ROM }
-			#AUH = { white_peace = CHI }
-			#AUH = { white_peace = QIN }
-
-			#AUH = {	diplomatic_relation = {	country = FRA relation = non_aggression_pact } }
-			#AUH = {	diplomatic_relation = {	country = ENG relation = non_aggression_pact } }
-			#AUH = {	diplomatic_relation = {	country = RUS relation = non_aggression_pact } }
-			#AUH = {	diplomatic_relation = {	country = HOL relation = non_aggression_pact } }
-			#AUH = {	diplomatic_relation = {	country = BEL relation = non_aggression_pact } }
-			#AUH = {	diplomatic_relation = {	country = ITA relation = non_aggression_pact } }
-			#AUH = {	diplomatic_relation = {	country = LUX relation = non_aggression_pact } }
-			#AUH = {	diplomatic_relation = {	country = MTN relation = non_aggression_pact } }
-			#AUH = {	diplomatic_relation = {	country = SER relation = non_aggression_pact } }
-			#AUH = {	diplomatic_relation = {	country = BUL relation = non_aggression_pact } }
-			#AUH = {	diplomatic_relation = {	country = TUR relation = non_aggression_pact } }
-			#AUH = {	diplomatic_relation = {	country = GRE relation = non_aggression_pact } }
-			#AUH = {	diplomatic_relation = {	country = JAP relation = non_aggression_pact } }
-			#AUH = {	diplomatic_relation = {	country = USA relation = non_aggression_pact } }
-			#AUH = {	diplomatic_relation = {	country = ROM relation = non_aggression_pact } }
-			#AUH = {	diplomatic_relation = {	country = CHI relation = non_aggression_pact } }
-			#AUH = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
 			
 			#More appropriate, logical and less buggy code (MasterWaifuman)
 			# Updated by Wolferos
@@ -560,6 +484,7 @@ news_event = {
 
 			ENG = {
 				transfer_state = 770
+				transfer_state = 749
 				transfer_state = 546
 				transfer_state = 725
 			}
@@ -626,6 +551,19 @@ news_event = {
 			}
 			FRA = {
 				dismantle_faction = yes
+			}
+
+			if = {
+				limit = {
+					TUR = {
+						is_in_faction_with = FRA
+						has_war_with = GER
+					}
+				}
+				TUR = {
+					transfer_state = 546
+					transfer_state = 749
+				}
 			}
 
 			every_country = { 
