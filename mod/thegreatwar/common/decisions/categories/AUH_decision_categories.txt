@@ -1,30 +1,28 @@
-GER_schlieffen_plan = {
+AUH_franzferdinand = {
 	icon = military_operation
 
 	allowed = {
-		original_tag = GER
+		original_tag = AUH
 	}
 
 	visible = {
-		original_tag = GER
+		original_tag = AUH
 		date > 1914.6.28
+		date < 1915.1.1
 		has_global_flag = kis_franzferdinand_murdered
-		has_global_flag = dual_alliance_dec
 		#NOT = { has_global_flag = kis_fra_war_ger } # Set by France
 		any_country = {
 			original_tag = SER
 			exists = yes
 			is_puppet = no
-        	has_war_with = AUH
+        	has_war = no
 		}	
 		GER = {
-        	is_puppet = no
-			NOT = {
-				has_war_with = FRA
-			}
+        	is_puppet = no 
+        	exists = yes
         }
-		RUS = {
-			has_war_with = AUH
+		AUH = {
+			has_war = no
 		}
 	}
 }
