@@ -18,7 +18,7 @@ news_event = {
 		country_exists = SER
 		SER = {
         	is_puppet = no 
-        	has_war = no
+			has_war = no
         }		
 		GER = {
         	is_puppet = no 
@@ -33,55 +33,55 @@ news_event = {
 		days = 0
 	}
 
-	immediate = {
-		set_global_flag = kis_franzferdinand_murdered
-		hidden_effect = {
-			AUH = {
-				set_country_flag=murder_of_franz_ferdinand
-			}
-            HUN = {
-                kill_country_leader = yes
-                create_country_leader={ name = "Karl I" desc=AUH_karl_i_DESC picture="gfx/hoi4tgw_portraits/AUH/country_leaders/AUH_karl_i.dds" expire="1935.1.1" ideology=autocracy  traits={  } }
-            }
-			SER = {
-				set_country_flag=murder_of_franz_ferdinand
-				add_political_power=-5
-				add_manpower=5000
-				add_named_threat={
-					threat=5
-					name=ww1_franzferdinand.1.t
-				}
-				#remove_unit_leader=6048
-			}
-
-			if = {
-				limit = {
-					FRA = {
-						is_faction_leader = yes
-					}
-				}
-				FRA = { add_to_faction = SER }
-				FRA = { add_to_faction = MTN }
-			}
-
-			if = {
-				limit = {
-					ENG = {
-						is_faction_leader = yes
-					}
-				}
-				ENG = { add_to_faction = SER }
-				ENG = { add_to_faction = MTN }
-			}
-
-		}
-	}
-		
+#	immediate = { # all this stuff is now a hidden effect of AUH decision
+#		hidden_effect = {
+#			AUH = {
+#				set_country_flag=murder_of_franz_ferdinand
+#			}
+#           HUN = {
+#				kill_country_leader = yes
+#                create_country_leader={ name = "Karl I" desc=AUH_karl_i_DESC picture="gfx/hoi4tgw_portraits/AUH/country_leaders/AUH_karl_i.dds" expire="1935.1.1" ideology=autocracy  traits={  } }
+#            }
+#			SER = {
+#				set_country_flag=murder_of_franz_ferdinand
+#				add_political_power=-5
+#				add_manpower=5000
+#				add_named_threat={
+#					threat=5
+#					name=ww1_franzferdinand.1.t
+#				}
+#				#remove_unit_leader=6048
+#			}
+#
+#			if = {
+#				limit = {
+#					FRA = {
+#						is_faction_leader = yes
+#					}
+#				}
+#				FRA = { add_to_faction = SER }
+#				FRA = { add_to_faction = MTN }
+#			}
+#
+#			if = {
+#				limit = {
+#					ENG = {
+#						is_faction_leader = yes
+#					}
+#				}
+#				ENG = { add_to_faction = SER }
+#				ENG = { add_to_faction = MTN }
+#			}
+#
+#		}
+#	}
+#		
 	option = {
 		name = ww1_franzferdinand.1.a
+		set_global_flag = kis_franzferdinand_murdered
 	}
 }
-#____________________________________________________________
+#___________________________________________________________
 
 # Austrian Demands - Serbia Reacts
 #____________________________________________________________
@@ -91,29 +91,47 @@ country_event = {
 	desc=ww1_franzferdinand.2.d
 	picture=COUNTRY_hoi4tgw_report_austria_hungary
 	
-	mean_time_to_happen={
-		days=0
-	}
-	fire_only_once=yes
-	trigger={
-		tag = SER
-		country_exists=AUH
-		has_global_flag = kis_franzferdinand_murdered
-		has_war=no
-		date > 1914.6.28
-
-		NOT = {
-			has_global_flag = kis_ask_ger_surrend # Can't happened if Germany loosed the WW1
+	immediate = {
+		hidden_effect = {
+			SER = {
+				dismantle_faction = yes
+			}
+			MTN = {
+				dismantle_faction = yes
+			}
+			GRE = {
+				dismantle_faction = yes
+			}
+			BUL = {
+				dismantle_faction = yes
+			}
+			TUR = {
+				dismantle_faction = yes
+			}
 		}
 	}
+	
+	fire_only_once=yes
+	is_triggered_only = yes
+#	trigger={ # Fired by AUH decision
+#		tag = SER
+#		country_exists=AUH
+#		has_global_flag = kis_franzferdinand_murdered
+#		has_war=no
+#		date > 1914.6.28
+#
+#		NOT = {
+#			has_global_flag = kis_ask_ger_surrend # Can't happened if Germany loosed the WW1
+#		}
+#	}
 	option={
 		name=ww1_franzferdinand.2.a
 		ai_chance={
 			factor=100
 		}
-		AUH={
-			country_event=ww1_franzferdinand.3
-		}
+#		AUH={
+#			country_event=ww1_franzferdinand.3
+#		}
 		set_global_flag = kis_serbia_refuse
 		news_event = { days = 1 id = ww1_franzferdinand.102 }
 	}
@@ -123,9 +141,9 @@ country_event = {
 			factor=0
 		}
 		set_global_flag = kis_serbia_accept
-		RUS={
-			country_event=ww1_franzferdinand.4
-		}
+#		RUS={
+#			country_event=ww1_franzferdinand.4
+#		}
 		AUH={
 			puppet=SER
 		}
@@ -158,167 +176,167 @@ country_event = {
 
 # July Crisis
 #____________________________________________________________
-country_event = {
-	title=ww1_franzferdinand.3.t#July Crisis
-	desc=ww1_franzferdinand.3.d#This ultimatum was part of a coercive program meant to weaken the Kingdom of Serbia as a threat to Austria-Hungarys occupation of the northern Balkans which had a significant southern Slavic population, including a majority Serbian community in Bosnia. This was supposed to be achieved either through diplomacy or by a localized war if the ultimatum were rejected. Austria-Hungary preferred war, and to ensure war the terms of the ultimatum were so harsh that they were certain to be rejected. One month after the assassination of Franz Ferdinand, Austria-Hungary declared war on Serbia, thus initiating the First World War.
-	id=ww1_franzferdinand.3
-	picture=COUNTRY_hoi4tgw_report_austria_hungary
-	
-	fire_only_once=yes
-	is_triggered_only=yes
-	option={
-		name=ww1_franzferdinand.3.a
-		ai_chance={
-			factor=100
-		}
-		set_country_flag=serbian_ultamatium
-		add_named_threat={
-			threat=4
-			name=ww1_franzferdinand.3.t
-		}
-		RUS={
-			country_event=ww1_franzferdinand.4
-		}
-		AUH={
-			declare_war_on={
-				type=annex_everything
-				target=SER
-			}
-		}
-
-		HUN = {
-			add_to_war = {
-	            targeted_alliance = AUH enemy = SER
-	        }
-		}
-		CRO = {
-			add_to_war = {
-	            targeted_alliance = AUH enemy = SER
-	        }
-		}
-
-		set_global_flag = kis_war
-	}
-}
+#country_event = {
+#	title=ww1_franzferdinand.3.t#July Crisis
+#	desc=ww1_franzferdinand.3.d#This ultimatum was part of a coercive program meant to weaken the Kingdom of Serbia as a threat to Austria-Hungarys occupation of the northern Balkans which had a significant southern Slavic population, including a majority Serbian community in Bosnia. This was supposed to be achieved either through diplomacy or by a localized war if the ultimatum were rejected. Austria-Hungary preferred war, and to ensure war the terms of the ultimatum were so harsh that they were certain to be rejected. One month after the assassination of Franz Ferdinand, Austria-Hungary declared war on Serbia, thus initiating the First World War.
+#	id=ww1_franzferdinand.3
+#	picture=COUNTRY_hoi4tgw_report_austria_hungary
+#	
+#	fire_only_once=yes
+#	is_triggered_only=yes
+#	option={
+#		name=ww1_franzferdinand.3.a
+#		ai_chance={
+#			factor=100
+#		}
+#		set_country_flag=serbian_ultamatium
+#		add_named_threat={
+#			threat=4
+#			name=ww1_franzferdinand.3.t
+#		}
+#		RUS={
+#			country_event=ww1_franzferdinand.4
+#		}
+#		AUH={
+#			declare_war_on={
+#				type=annex_everything
+#				target=SER
+#			}
+#		}
+#
+#		HUN = {
+#			add_to_war = {
+#	            targeted_alliance = AUH enemy = SER
+#	        }
+#		}
+#		CRO = {
+#			add_to_war = {
+#	            targeted_alliance = AUH enemy = SER
+#	        }
+#		}
+#
+#		set_global_flag = kis_war
+#	}
+#}
 #____________________________________________________________
 
 # Mobilize against Austria Hungary
 #____________________________________________________________
-country_event = {
-	title=ww1_franzferdinand.4.t#Mobilize against Austria Hungary
-	desc=ww1_franzferdinand.4.d# On July 28 1914, Tsar Nicholas II of Russia ordered partial mobilization against Austria-Hungary only. While war with Austria-Hungary seemed inevitable, Nicholas engaged in a personal dialogue with the German Emperor in an attempt to avoid war with Germany.
-	id=ww1_franzferdinand.4
-	picture=COUNTRY_hoi4tgw_report_austria_hungary
-	fire_only_once=yes
-	is_triggered_only=yes
-	option={
-		name=ww1_franzferdinand.4.a
-		ai_chance={
-			factor=100
-		}
-		set_country_flag=russia_mobilized
-		add_manpower=50
-		remove_ideas=neutrality_idea
-		add_political_power=100
-		add_named_threat={
-			threat=2
-			name=ww1_franzferdinand.4.t
-		}
-		GER={
-			country_event=ww1_franzferdinand.5
-		}
-		RUS={
-			country_event=ww1_franzferdinand.7
-		}
-		set_global_flag = kis_russia_partial_mobilization
-	}
-	option={
-		name=ww1_franzferdinand.4.b
-		ai_chance={
-			factor=0
-		}
-		set_country_flag=russia_mobilized
-		add_manpower=-150
-		add_political_power=-100
-		AUH={
-			country_event=ww1_franzferdinand.5
-		}
-	}
-}
+#country_event = {
+#	title=ww1_franzferdinand.4.t#Mobilize against Austria Hungary
+#	desc=ww1_franzferdinand.4.d# On July 28 1914, Tsar Nicholas II of Russia ordered partial mobilization against Austria-Hungary only. While war with Austria-Hungary seemed inevitable, Nicholas engaged in a personal dialogue with the German Emperor in an attempt to avoid war with Germany.
+#	id=ww1_franzferdinand.4
+#	picture=COUNTRY_hoi4tgw_report_austria_hungary
+#	fire_only_once=yes
+#	is_triggered_only=yes
+#	option={
+#		name=ww1_franzferdinand.4.a
+#		ai_chance={
+#			factor=100
+#		}
+#		set_country_flag=russia_mobilized
+#		add_manpower=50
+#		remove_ideas=neutrality_idea
+#		add_political_power=100
+#		add_named_threat={
+#			threat=2
+#			name=ww1_franzferdinand.4.t
+#		}
+#		GER={
+#			country_event=ww1_franzferdinand.5
+#		}
+#		RUS={
+#			country_event=ww1_franzferdinand.7
+#		}
+#		set_global_flag = kis_russia_partial_mobilization
+#	}
+#	option={
+#		name=ww1_franzferdinand.4.b
+#		ai_chance={
+#			factor=0
+#		}
+#		set_country_flag=russia_mobilized
+#		add_manpower=-150
+#		add_political_power=-100
+#		AUH={
+#			country_event=ww1_franzferdinand.5
+#		}
+#	}
+#}
 #____________________________________________________________
 
 # Dual Alliance
 #____________________________________________________________
-country_event = {
-	title = ww1_franzferdinand.5.t#Dual Alliance
-	desc = ww1_franzferdinand.5.d#Russia has mobilized, Shall we honor the dual alliance?
-	id = ww1_franzferdinand.5
-	picture = COUNTRY_hoi4tgw_report_austria_hungary
-	is_triggered_only = yes
-	option = {
-		name = ww1_franzferdinand.5.a
-		ai_chance = {
-			factor = 100
-		}
-		set_country_flag = austria_axis
-		add_manpower = 100
-		remove_ideas = neutrality_idea
-		add_opinion_modifier = {
-			target = ENG
-			modifier = medium_decrease
-		}
-		add_opinion_modifier = {
-			target = FRA
-			modifier = medium_decrease
-		}
-		add_opinion_modifier = {
-			target = GER
-			modifier = large_increase
-		}
-		add_opinion_modifier = {
-			target = ITA
-			modifier = small_increase
-		}
-		add_opinion_modifier = {
-			target = TUR
-			modifier = medium_increase
-		}
-		add_stability = 0.10
-		#ITA = {
-		#	#country_event = { days = id = ww1_franzferdinand.6 }
-		#}
-		GER = {
-			set_country_flag = russia_mobilized
-			add_to_war = {
-	            targeted_alliance = AUH enemy = SER
-	        }
-		}
-	}
-}
+#country_event = {
+#	title = ww1_franzferdinand.5.t#Dual Alliance
+#	desc = ww1_franzferdinand.5.d#Russia has mobilized, Shall we honor the dual alliance?
+#	id = ww1_franzferdinand.5
+#	picture = COUNTRY_hoi4tgw_report_austria_hungary
+#	is_triggered_only = yes
+#	option = {
+#		name = ww1_franzferdinand.5.a
+#		ai_chance = {
+#			factor = 100
+#		}
+#		set_country_flag = austria_axis
+#		add_manpower = 100
+#		remove_ideas = neutrality_idea
+#		add_opinion_modifier = {
+#			target = ENG
+#			modifier = medium_decrease
+#		}
+#		add_opinion_modifier = {
+#			target = FRA
+#			modifier = medium_decrease
+#		}
+#		add_opinion_modifier = {
+#			target = GER
+#			modifier = large_increase
+#		}
+#		add_opinion_modifier = {
+#			target = ITA
+#			modifier = small_increase
+#		}
+#		add_opinion_modifier = {
+#			target = TUR
+#			modifier = medium_increase
+#		}
+#		add_stability = 0.10
+#		#ITA = {
+#		#	#country_event = { days = id = ww1_franzferdinand.6 }
+#		#}
+#		GER = {
+#			set_country_flag = russia_mobilized
+#			add_to_war = {
+#	            targeted_alliance = AUH enemy = SER
+#	        }
+#		}
+#	}
+#}
 #____________________________________________________________
 
 # Support our Ally Serbia
 #____________________________________________________________
-country_event = {
-	title=ww1_franzferdinand.7.t#Support our Ally Serbia
-	desc=ww1_franzferdinand.7.d#The Austro-Hungarian Empire has provoked war against our ally Serbia. Will we honour our alliance and declare a Limited War on Austria? Germany may of course retaliate but we have Great Britain and France also in our alliance.
-	id=ww1_franzferdinand.7
-	picture=COUNTRY_hoi4tgw_report_austria_hungary
-	fire_only_once=yes
-	is_triggered_only=yes
-	option={
-		name=ww1_franzferdinand.7.a
-		ai_chance={
-			factor=100
-		}
-		add_to_war={
-			targeted_alliance=SER
-			enemy=AUH
-		}
-		GER = {
-			country_event=ww1_franzferdinand.8
-		}
-	}
+#country_event = {
+#	title=ww1_franzferdinand.7.t#Support our Ally Serbia
+#	desc=ww1_franzferdinand.7.d#The Austro-Hungarian Empire has provoked war against our ally Serbia. Will we honour our alliance and declare a Limited War on Austria? Germany may of course retaliate but we have Great Britain and France also in our alliance.
+#	id=ww1_franzferdinand.7
+#	picture=COUNTRY_hoi4tgw_report_austria_hungary
+#	fire_only_once=yes
+#	is_triggered_only=yes
+#	option={
+#		name=ww1_franzferdinand.7.a
+#		ai_chance={
+#			factor=100
+#		}
+#		add_to_war={
+#			targeted_alliance=SER
+#			enemy=AUH
+#		}
+#		GER = {
+#			country_event=ww1_franzferdinand.8
+#		}
+#	}
 	#option={
 	#	name=ww1_franzferdinand.7.b
 	#	ai_chance={
@@ -326,200 +344,185 @@ country_event = {
 	#	}
 	#	set_global_flag = kis_russian_mobilization
 	#}
-}
+#}
 #____________________________________________________________
 
 # Schlieffen Plan
 #____________________________________________________________
-country_event = {
-	id = ww1_franzferdinand.8
-	title = ww1_franzferdinand.8.t
-	desc = ww1_franzferdinand.8.d
-	picture = ww1_franzferdinand_8
+#country_event = {
+#	id = ww1_franzferdinand.8
+#	title = ww1_franzferdinand.8.t
+#	desc = ww1_franzferdinand.8.d
+#	picture = ww1_franzferdinand_8
+#
+#	#fire_only_once = yes
+#	is_triggered_only = yes
+#	mean_time_to_happen = {
+#		days = 1
+#	}
+#
+#	immediate = {
+#		# Dirty fix
+#		hidden_effect = {
+#			set_global_flag = hoi4tgw_SchlieffenSecurity
+#			if = { 
+#				limit = { 
+#					country_exists = SER 
+#					FRA = {
+#						is_faction_leader = yes
+#					}
+#				} 
+#				FRA = { add_to_faction = SER }
+#			}
+#			if = { 
+#				limit = { 
+#					country_exists = MTN 
+#					FRA = {
+#						is_faction_leader = yes
+#					}
+#				} 
+#				FRA = { add_to_faction = MTN }
+#			}
+#
+#			if = { 
+#				limit = { 
+#					country_exists = SER 
+#					ENG = {
+#						is_faction_leader = yes
+#					}
+#				} 
+#				ENG = { add_to_faction = SER }
+#			}
+#			if = { 
+#				limit = { 
+#					country_exists = MTN 
+#					ENG = {
+#						is_faction_leader = yes
+#					}
+#				} 
+#				ENG = { add_to_faction = MTN }
+#			}
+#		}
+#	}
+#
+#	# Schlieffen Plan - War with FRA, BEL and RUS, Invasion of LUX
+#	option = {
+#		name = ww1_franzferdinand.8.a
+#		ai_chance =  { factor = 100 }
+#
+#		GER = {
+#			declare_war_on = {
+#				type = annex_everything
+#				target = BEL
+#			}
+#			add_timed_idea = {
+#				idea = schlieffen
+#				days = 180
+#			}
+#		}
+#
+#
+#		hidden_effect = {
+#			add_named_threat = {
+#				threat = 30
+#				name = "The Great War"
+#			}
+#			#GER = {
+#			#	create_wargoal = {
+#			#		type = annex_everything
+#			#		target = FRA
+#			#	}
+#			#}
+#
+#	        AUH = {
+#				add_to_war = {
+#		            targeted_alliance = GER enemy = BEL
+#		        }
+#		    }
+#		}
+#		
+#		hidden_effect = {
+#		    BEL = {
+#		        add_timed_idea = { days = 180 idea = superior_enemy }
+#		    }
+#		}
+#		
+#		
+#
+#		LUX = {
+#		    hidden_effect = {
+#		        add_timed_idea = { days = 180 idea = superior_enemy }
+#			}
+#			add_to_war = {
+#	            targeted_alliance = BEL enemy = GER
+#	        }
+#        }
+#	}
 
-	#fire_only_once = yes
-	is_triggered_only = yes
-	mean_time_to_happen = {
-		days = 1
-	}
-
-	immediate = {
-		# Dirty fix
-		hidden_effect = {
-			set_global_flag = hoi4tgw_SchlieffenSecurity
-			SER = {
-				dismantle_faction = yes
-			}
-			MTN = {
-				dismantle_faction = yes
-			}
-			GRE = {
-				dismantle_faction = yes
-			}
-			BUL = {
-				dismantle_faction = yes
-			}
-			TUR = {
-				dismantle_faction = yes
-			}
-			if = { 
-				limit = { 
-					country_exists = SER 
-					FRA = {
-						is_faction_leader = yes
-					}
-				} 
-				FRA = { add_to_faction = SER }
-			}
-			if = { 
-				limit = { 
-					country_exists = MTN 
-					FRA = {
-						is_faction_leader = yes
-					}
-				} 
-				FRA = { add_to_faction = MTN }
-			}
-
-			if = { 
-				limit = { 
-					country_exists = SER 
-					ENG = {
-						is_faction_leader = yes
-					}
-				} 
-				ENG = { add_to_faction = SER }
-			}
-			if = { 
-				limit = { 
-					country_exists = MTN 
-					ENG = {
-						is_faction_leader = yes
-					}
-				} 
-				ENG = { add_to_faction = MTN }
-			}
-		}
-	}
-
-	# Schlieffen Plan - War with FRA, BEL and RUS, Invasion of LUX
-	option = {
-		name = ww1_franzferdinand.8.a
-		ai_chance =  { factor = 100 }
-
-		GER = {
-			declare_war_on = {
-				type = annex_everything
-				target = BEL
-			}
-			add_timed_idea = {
-				idea = schlieffen
-				days = 180
-			}
-		}
-
-
-		hidden_effect = {
-			add_named_threat = {
-				threat = 30
-				name = "The Great War"
-			}
-			#GER = {
+#	# New Schlieffen Plan - War with FRA, BEL, HOL and RUS, Invasion of LUX
+#	option = {
+#		name = ww1_franzferdinand.8.b
+#		ai_chance =  { factor = 0 }
+#
+#		GER = {
+#			declare_war_on = {
+#				type = annex_everything
+#				target = BEL
+#			}
+#			add_timed_idea = {
+#				idea = schlieffen
+#				days = 180
+#			}
+#		}
+#		
+#		hidden_effect = {
+#			add_named_threat = {
+#				threat = 30
+#				name = "The Great War"
+#			}
+#			#GER = {
 			#	create_wargoal = {
 			#		type = annex_everything
 			#		target = FRA
 			#	}
 			#}
-
-	        AUH = {
-				add_to_war = {
-		            targeted_alliance = GER enemy = BEL
-		        }
-		    }
-		}
+#	        AUH = {
+#				add_to_war = {
+#		            targeted_alliance = GER enemy = BEL
+#		        }
+#		    }
+#		
+#		}
 		
-		hidden_effect = {
-		    BEL = {
-		        add_timed_idea = { days = 180 idea = superior_enemy }
-		    }
-		}
-		
-		
+#		hidden_effect = {
+#		    BEL = {
+#		        add_timed_idea = { days = 180 idea = superior_enemy }
+#			}
+#		}
 
-		LUX = {
-		    hidden_effect = {
-		        add_timed_idea = { days = 180 idea = superior_enemy }
-			}
-			add_to_war = {
-	            targeted_alliance = BEL enemy = GER
-	        }
-        }
-	}
+#		HOL = {
+#		    hidden_effect = {
+#		        add_timed_idea = { days = 180 idea = superior_enemy }
+#			}
+#			add_to_war = {
+#	            targeted_alliance = BEL enemy = GER
+#	        }
+#		}
+#		LUX = {
+#		    hidden_effect = {
+#		        add_timed_idea = { days = 180 idea = superior_enemy }
+#			}
+#			add_to_war = {
+#	            targeted_alliance = BEL enemy = GER
+#	        }
+#        }
+#	}
 
-	# New Schlieffen Plan - War with FRA, BEL, HOL and RUS, Invasion of LUX
-	option = {
-		name = ww1_franzferdinand.8.b
-		ai_chance =  { factor = 0 }
-
-		GER = {
-			declare_war_on = {
-				type = annex_everything
-				target = BEL
-			}
-			add_timed_idea = {
-				idea = schlieffen
-				days = 180
-			}
-		}
-		
-		hidden_effect = {
-			add_named_threat = {
-				threat = 30
-				name = "The Great War"
-			}
-			#GER = {
-			#	create_wargoal = {
-			#		type = annex_everything
-			#		target = FRA
-			#	}
-			#}
-	        AUH = {
-				add_to_war = {
-		            targeted_alliance = GER enemy = BEL
-		        }
-		    }
-		
-		}
-		
-		hidden_effect = {
-		    BEL = {
-		        add_timed_idea = { days = 180 idea = superior_enemy }
-			}
-		}
-
-		HOL = {
-		    hidden_effect = {
-		        add_timed_idea = { days = 180 idea = superior_enemy }
-			}
-			add_to_war = {
-	            targeted_alliance = BEL enemy = GER
-	        }
-		}
-		LUX = {
-		    hidden_effect = {
-		        add_timed_idea = { days = 180 idea = superior_enemy }
-			}
-			add_to_war = {
-	            targeted_alliance = BEL enemy = GER
-	        }
-        }
-	}
-
-	option = {
-		name = ww1_franzferdinand.8.c
-		ai_chance =  { factor = 0 }
-	}
-}
+#	option = {
+#		name = ww1_franzferdinand.8.c
+#		ai_chance =  { factor = 0 }
+#	}
+#}
 #____________________________________________________________
 
 
