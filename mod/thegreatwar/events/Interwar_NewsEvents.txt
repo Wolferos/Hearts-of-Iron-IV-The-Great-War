@@ -608,3 +608,43 @@ news_event = {
 	}
 }
 #____________________________________________________________
+
+# Mehmed VI on the throne after the death of Mehmed V # Open Beta 0.6.2
+#____________________________________________________________
+news_event = {
+	id = interwar_news.15
+	title = interwar_news.15.t
+	desc = interwar_news.15.d
+
+	picture = EVENT_hoi4tgw_interwar_mehmed_vi_succeeded_mehmed_v # hoi4tgw_mehmed_vi_succeeded_mehmed_v.dds
+
+	major = yes
+
+	trigger = {
+		date > 1919.7.2
+		has_global_flag = kis_treaty_of_versailles
+		NOT = { has_global_flag = interwar_turkish_national_movement }
+		NOT = { has_global_flag = interwar_mehmed_vi_succeeded_mehmed_v }
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	immediate = {
+		set_global_flag = interwar_mehmed_vi_succeeded_mehmed_v
+		hidden_effect = {
+			TUR = {
+				create_country_leader={ name = "Mehmed VI" desc=TUR_mehmed_vi_DESC picture="gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_mehmed_vi.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+			}
+		}
+	}
+
+	option = {
+		name = interwar_news.15.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+#____________________________________________________________
