@@ -1,0 +1,272 @@
+GER_schlieffen_plan = {
+
+	GER_dual_alliance = {
+
+		icon = GFX_decision_generic_prepare_civil_war
+
+		available = {
+			AUH = { has_country_flag = serbian_ultamatium }
+			has_global_flag = dual_alliance_dec
+			AUH = { has_war_with = SER }
+			NOT = { has_country_flag = austria_axis }
+		}
+		
+		visible = {
+			NOT = { has_country_flag = austria_axis }
+		}
+
+		cost = 10
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = austria_axis
+			}
+			add_manpower = 10000
+			if = {
+				limit = {
+					has_idea = neutrality_idea
+				}
+				remove_ideas = neutrality_idea
+			}
+			add_opinion_modifier = {
+				target = ENG
+				modifier = medium_decrease
+			}
+			add_opinion_modifier = {
+				target = FRA
+				modifier = medium_decrease
+			}
+			add_opinion_modifier = {
+				target = GER
+				modifier = large_increase
+			}
+			add_opinion_modifier = {
+				target = ITA
+				modifier = small_increase
+			}
+			add_opinion_modifier = {
+				target = TUR
+				modifier = medium_increase
+			}
+			add_stability = 0.10
+			#ITA = {
+			#	#country_event = { days = id = ww1_franzferdinand.6 }
+			#}
+			GER = {
+				add_to_war = {
+					targeted_alliance = AUH enemy = SER
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	
+	GER_schliffenmoltkeplan = {
+
+		icon = GFX_decision_generic_prepare_civil_war
+
+		available = {
+			AUH = { has_country_flag = serbian_ultamatium }
+			OR = {
+				has_war_with = SER
+				has_war_with = RUS
+			}
+			AUH = { has_war_with = SER has_war_with = RUS }
+			NOT = { has_global_flag = hoi4tgw_SchlieffenSecurity }
+		}
+
+		cost = 10
+
+		complete_effect = {
+			hidden_effect = {
+				set_global_flag = hoi4tgw_SchlieffenSecurity
+				if = { 
+					limit = { 
+						country_exists = SER 
+						FRA = {
+							is_faction_leader = yes
+						}
+					} 
+					FRA = { add_to_faction = SER }
+				}
+				if = { 
+					limit = { 
+						country_exists = MTN 
+						FRA = {
+							is_faction_leader = yes
+						}
+					} 
+					FRA = { add_to_faction = MTN }
+				}
+
+				if = { 
+					limit = { 
+						country_exists = SER 
+						ENG = {
+							is_faction_leader = yes
+						}
+					} 
+					ENG = { add_to_faction = SER }
+				}
+				if = { 
+					limit = { 
+						country_exists = MTN 
+						ENG = {
+							is_faction_leader = yes
+						}
+					} 
+					ENG = { add_to_faction = MTN }
+				}
+			}
+			GER = {
+				declare_war_on = {
+					type = annex_everything
+					target = BEL
+				}
+				add_timed_idea = {
+					idea = schlieffenmoltke
+					days = 180
+				}
+			}
+			hidden_effect = {
+				add_named_threat = {
+					threat = 30
+					name = "The Great War"
+				}
+				#GER = {
+				#	create_wargoal = {
+				#		type = annex_everything
+				#		target = FRA
+				#	}
+				#}
+
+				AUH = {
+					add_to_war = {
+						targeted_alliance = GER enemy = BEL
+					}
+				}
+				LUX = {
+					add_to_war = {
+						targeted_alliance = BEL enemy = GER
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 90
+				is_historical_focus_on = no
+			}
+		}
+	}
+	
+	GER_schliffen1905plan = {
+
+		icon = GFX_decision_generic_prepare_civil_war
+
+		available = {
+			AUH = { has_country_flag = serbian_ultamatium }
+			OR = {
+				has_war_with = SER
+				has_war_with = RUS
+			}
+			AUH = { has_war_with = SER has_war_with = RUS }
+			NOT = { has_global_flag = hoi4tgw_SchlieffenSecurity }
+		}
+
+		cost = 10
+
+		complete_effect = {
+			hidden_effect = {
+				set_global_flag = hoi4tgw_SchlieffenSecurity
+				if = { 
+					limit = { 
+						country_exists = SER 
+						FRA = {
+							is_faction_leader = yes
+						}
+					} 
+					FRA = { add_to_faction = SER }
+				}
+				if = { 
+					limit = { 
+						country_exists = MTN 
+						FRA = {
+							is_faction_leader = yes
+						}
+					} 
+					FRA = { add_to_faction = MTN }
+				}
+
+				if = { 
+					limit = { 
+						country_exists = SER 
+						ENG = {
+							is_faction_leader = yes
+						}
+					} 
+					ENG = { add_to_faction = SER }
+				}
+				if = { 
+					limit = { 
+						country_exists = MTN 
+						ENG = {
+							is_faction_leader = yes
+						}
+					} 
+					ENG = { add_to_faction = MTN }
+				}
+			}
+			GER = {
+				declare_war_on = {
+					type = annex_everything
+					target = BEL
+				}
+				add_timed_idea = {
+					idea = schlieffen1905
+					days = 180
+				}
+			}
+			hidden_effect = {
+				add_named_threat = {
+					threat = 30
+					name = "The Great War"
+				}
+				#GER = {
+				#	create_wargoal = {
+				#		type = annex_everything
+				#		target = FRA
+				#	}
+				#}
+				AUH = {
+					add_to_war = {
+						targeted_alliance = GER enemy = BEL
+					}
+				}
+				HOL = {
+					add_to_war = {
+						targeted_alliance = BEL enemy = GER
+					}
+				}
+				LUX = {
+					add_to_war = {
+						targeted_alliance = BEL enemy = GER
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 10
+				is_historical_focus_on = no
+			}
+		}
+	}
+}

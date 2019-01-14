@@ -1,0 +1,136 @@
+AUH_franzferdinand = {
+
+	AUH_ultimatum_to_SER = {
+
+		available = {
+			NOT = { has_war_with = SER }
+			has_global_flag = kis_franzferdinand_murdered
+		}
+
+		visible = {
+			
+		}
+
+		fire_only_once = yes
+
+
+		modifier = {
+		
+		}
+		
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			hidden_effect = {
+			AUH = {
+				set_country_flag=murder_of_franz_ferdinand
+			}
+            HUN = {
+				kill_country_leader = yes
+                create_country_leader={ name = "Karl I" desc=AUH_karl_i_DESC picture="gfx/hoi4tgw_portraits/AUH/country_leaders/AUH_karl_i.dds" expire="1935.1.1" ideology=autocracy  traits={  } }
+            }
+			SER = {
+				set_country_flag=murder_of_franz_ferdinand
+				add_political_power=-5
+				add_manpower=5000
+				add_named_threat={
+					threat=5
+					name=ww1_franzferdinand.1.t
+				}
+				#remove_unit_leader=6048
+			}
+
+			if = {
+				limit = {
+					FRA = {
+						is_faction_leader = yes
+					}
+				}
+				FRA = { add_to_faction = SER }
+				FRA = { add_to_faction = MTN }
+			}
+
+			if = {
+				limit = {
+					ENG = {
+						is_faction_leader = yes
+					}
+				}
+				ENG = { add_to_faction = SER }
+				ENG = { add_to_faction = MTN }
+			}
+			}
+			SER = { country_event = { id = ww1_franzferdinand.2 } }
+		}
+
+	}
+	
+	AUH_war_with_SER = { 
+
+		available = {
+			has_war = no
+			has_global_flag = kis_serbia_refuse
+		}
+
+		visible = {
+			has_global_flag = kis_serbia_refuse
+		}
+
+		fire_only_once = yes
+
+
+		modifier = {
+		
+		}
+		
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag=serbian_ultamatium
+				add_named_threat={
+					threat=4
+					name=ww1_franzferdinand.3.t
+				}
+				set_global_flag = kis_war
+			}
+			AUH={
+				declare_war_on={
+					type=annex_everything
+					target=SER
+				}
+			}
+			if = {
+				limit = {
+					country_exists = HUN
+				}
+				HUN = {
+					add_to_war = {
+						targeted_alliance = AUH
+						enemy = SER
+					}
+				}
+			}
+			if = {
+				limit = {
+					country_exists = CRO
+				}
+				CRO = {
+					add_to_war = {
+						targeted_alliance = AUH
+						enemy = SER
+					}
+				}
+			}
+		}
+
+	}
+}
