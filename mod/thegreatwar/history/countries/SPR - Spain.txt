@@ -41,6 +41,43 @@ create_navy_leader={  name = "Aznar Cabañas" id=86042 portrait_path="gfx/admira
 create_navy_leader={  name = "Miranda y Godoy" id=86049 portrait_path="gfx/admiral/SPR_miranda_y_godoy.tga" traits={ blockade_runner  } skill=2 }
 create_navy_leader={  name = "Rodriguez" id=86051 portrait_path="gfx/admiral/SPR_rodriguez.tga" traits={   } skill=1 }
 
+set_technology = {
+	# Navy
+	ww1_battleship0 = 1 #  ww1_battleship_1890 (Pre-Dreadnought I)
+	ww1_battleship1 = 1 #  ww1_battleship_1900 (Pre-Dreadnought II)
+	ww1_battleship2 = 1 #  ww1_battleship_1906 (Dreadnought I)
+	ww1_battleship3 = 1 #  ww1_battleship_1910 (Dreadnought II)
+	ww1_battleship4 = 0 #  ww1_battleship_1914 (Dreadnought III)
+
+	ww1_battlecruiser1 = 0 # ww1_battlecruiser_1906 (Battlecruiser I)
+	ww1_battlecruiser2 = 0 # ww1_battlecruiser_1910 (Battlecruiser II)
+	ww1_battlecruiser3 = 0 # ww1_battlecruiser_1910 (Battlecruiser III)
+
+	ww1_heavy_cruiser0 = 1 # heavy_cruiser_1890 (Armored Cruiser I)
+	ww1_heavy_cruiser1 = 1 # heavy_cruiser_1900 (Armored Cruiser II)
+
+	ww1_light_cruiser0 = 1 # light_cruiser_1890 (Protected Cruiser I)
+	ww1_light_cruiser1 = 1 # light_cruiser_1900 (Protected Cruiser II)
+	ww1_light_cruiser2 = 0 # light_cruiser_1906 (Light Cruiser I)
+	ww1_light_cruiser3 = 0 # light_cruiser_1910 (Light Cruiser II)
+	ww1_light_cruiser4 = 0 # light_cruiser_1914 (Light Cruiser III)
+
+	ww1_destroyer0 = 1 # destroyer_1890 (Torpedo Boat I)
+	ww1_destroyer1 = 1 # destroyer_1900 (Destroyer I)
+	ww1_destroyer2 = 0 # destroyer_1906 (Destroyer II)
+	ww1_destroyer3 = 0 # destroyer_1910 (Destroyer III)
+	ww1_destroyer4 = 0 # destroyer_1914 (Destroyer IV)	
+
+	ww1_moduleMTG_mines = 1 # Mines
+
+	ww1_submarine0 = 1 # coastal_submarine_1900 (Coastal Submarine 1900, first available Submarine)
+	ww1_submarine1 = 0 # submarine_1906 (Submarine I)
+	ww1_submarine2 = 0 # submarine_1910 (Submarine II)
+	ww1_submarine3 = 0 # submarine_1914 (Submarine III)
+
+	transport = 1 # Naval Transport
+}
+
 1910.1.1 = {
 	oob = "SPR_1910"
 
@@ -75,22 +112,6 @@ create_navy_leader={  name = "Rodriguez" id=86051 portrait_path="gfx/admiral/SPR
 		light_field_gun1 = 1
 		heavy_field_gun1 = 1
 
-		# Navy
-ww1_heavy_cruiser0 = 1
-ww1_light_cruiser0 = 1
-ww1_light_cruiser1 = 1
-ww1_submarine0 = 1
-ww1_battleship0 = 1
-ww1_battleship1 = 1
-ww1_battleship2 = 1
-ww1_battleship3 = 1
-ww1_destroyer0 = 1
-ww1_destroyer1 = 1
-
-
-
-		transport = 1
-
 		# Air
 
 		# Engineering
@@ -124,10 +145,10 @@ ww1_destroyer1 = 1
 		limited_conscription
 	}	
 	create_equipment_variant={ name="Cataluna Class" type=heavy_cruiser_1890 parent_version = 0 obsolete=no upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=5 ship_engine_upgrade=2 ship_reliability_upgrade=5           } }
-create_equipment_variant={ name="Alfonso XII Class" type=light_cruiser_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=1 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
-create_equipment_variant={ name="Reina Regente Class" type=light_cruiser_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=5 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
-create_equipment_variant={ name="Rio De La Plata Class" type=light_cruiser_1890 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=1  ship_engine_upgrade=5 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
-create_equipment_variant={ name="Reina Regente II Class" type=light_cruiser_1900 parent_version = 0 obsolete=no upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=1 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Alfonso XII Class" type=light_cruiser_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=1 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Reina Regente Class" type=light_cruiser_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=5 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Rio De La Plata Class" type=light_cruiser_1890 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=1  ship_engine_upgrade=5 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Reina Regente II Class" type=light_cruiser_1900 parent_version = 0 obsolete=no upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=1 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
 
 }
 
@@ -191,11 +212,9 @@ create_equipment_variant={ name="Reina Regente II Class" type=light_cruiser_1900
 		heavy_field_gun1 = 1
 		bonus_bertha1 = 1
 
-		# Navy
-
-ww1_destroyer2 = 1
-ww1_destroyer3 = 1
-		transport = 1
+		ww1_destroyer3 = 1
+		ww1_coastal_submarine1 = 1
+		ww1_coastal_submarine2 = 1
 
 		# Air
 		ww1_fighter1 = 1
