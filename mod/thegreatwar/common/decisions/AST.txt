@@ -1,0 +1,32 @@
+political_actions = {
+
+	AST_move_capital_to_canberra = {
+
+		available = {
+			original_tag = AST
+			owns_state = 285
+			has_full_control_of_state = 285
+		}
+
+		ai_will_do = {
+			factor = 0
+			# The Parliament moved to Canberra on 9 May 1927 # Open Beta 0.7.3 #
+			modifier = {
+				date > 1927.5.5
+				factor = 1
+			}
+		}
+
+		visible = {
+			original_tag = AST
+			has_full_control_of_state = 285
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = 0.1
+			set_capital = 285
+			#set_province_name = { id = 7859 name = "Canberra" }
+			#hidden_effect = { 285 = { set_state_name = "Canberra" } }
+		}
+	}
+}
