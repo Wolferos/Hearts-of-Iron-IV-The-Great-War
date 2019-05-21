@@ -42,29 +42,35 @@
 
 
 country_event = {
-	title=ww1_albania.6.t#Albanian insurrection!
-	desc=ww1_albania.6.d#The Albanians refused to submit to the Turks. A new Albanian uprisings began in Kosovo and the northern mountains. Ottoman government declared martial law and sent a military expedition.
-	id=ww1_albania.kis1
-	picture=ww1_albania_1
-	fire_only_once=yes
-	is_triggered_only=no
-	mean_time_to_happen=
-	{
-		days=1
+	title = ww1_albania.6.t
+	desc = ww1_albania.6.d
+	id = ww1_albania.kis1
+	picture = ww1_albania_1
+	fire_only_once = yes
+	is_triggered_only = no
+
+	mean_time_to_happen = {
+		days = 1
 	}
-	trigger=
-	{
-		tag=TUR
+
+	trigger = {
+		tag = TUR
 		controls_state = 44
-		NOT={ country_exists=ALB }
-		date>1910.6.5
+		NOT = { 
+			country_exists = ALB 
+		}
+		date > 1910.6.5
 	}
-	option={
-		name=ww1_albania.kis1.a
-		ai_chance={
-			factor=100
-			}
-		44 = { set_border_war = yes }
+
+	option = {
+		name = ww1_albania.kis1.a
+		ai_chance = {
+			factor = 100
+		}
+		
+		44 = { 
+			set_border_war = yes 
+		}
 
 		if = {
 			limit = {
@@ -72,10 +78,12 @@ country_event = {
 					controls_state = 766
 				}
 			}
-			766 = { set_border_war = yes }
-		}
+			766 = { 
+				set_border_war = yes 
+			}
 		}
 	}
+}
 
 
 
