@@ -1248,8 +1248,8 @@ focus = {
 
 		available = {
 
-			NOT={ country_exists=YEM }
-			NOT={ country_exists=ASR }
+			NOT = { country_exists = YEM }
+			NOT = { country_exists = ASR }
 			TUR = { controls_state = 293 }
 			TUR = { controls_state = 747 }
 
@@ -1330,39 +1330,52 @@ focus = {
 
 	focus = {
 		id = TUR_ww1_war_yemen
-		prerequisite = { focus=TUR_ww1_war_hejaz }
+		prerequisite = { 
+			focus = TUR_ww1_war_hejaz
+		}
 		icon = GFX_goal_generic_major_war
 
 		available = {
-			country_exists=YEM
-			country_exists=ASR
+			country_exists = YEM
+			country_exists = ASR
 
-	        YEM = { is_puppet = no }
-	        ASR = { is_puppet = no }
+	        YEM = {
+	        	is_puppet = no
+        	}
+	        ASR = {
+	        	is_puppet = no
+        	}
+		}
+
+		hidden_effect = {
+		
 		}
 
 		completion_reward = {
-			create_wargoal={
-						type=annex_everything target=YEM
+			create_wargoal = {
+				type = annex_everything
+				target = YEM
 			}
-			create_wargoal={
-						type=annex_everything target=ASR
+			create_wargoal = {
+				type = annex_everything 
+				target = ASR
 			}
-		}
-
-
-		completion_reward = {
 		    450 = {
 		        add_building_construction = {
-		            type = infrastructure level = 1 instant_build = yes
+		            type = infrastructure
+		            level = 1
+		            instant_build = yes
 		        }
 		    }
 		    451 = {
 		        add_building_construction = {
-		            type = infrastructure level = 1 instant_build = yes 
+		            type = infrastructure
+		            level = 1
+		            instant_build = yes
 		        }
 	       	}
 		}
+
 		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 16
