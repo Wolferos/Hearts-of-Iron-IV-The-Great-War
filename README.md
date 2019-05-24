@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos 
 
-**Current Version:** 0.7.3.a
+**Current Version:** 0.7.3a
 
 **Compatible with:** Hearts of Iron IV "Ironclad" (with or without Paid DLC) 
 
