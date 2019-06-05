@@ -8,4 +8,4 @@ tags={
 }
 picture="tgw_picture.png"
 remote_file_id="699709023"
-supported_version="1.6"
+supported_version="1.7"
