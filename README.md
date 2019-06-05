@@ -9,7 +9,7 @@
 
 **Current Version:** 0.7.3a
 
-**Compatible with:** Hearts of Iron IV "Ironclad" (with or without Paid DLC) 
+**Compatible with:** Hearts of Iron IV "Hydra" (with or without Paid DLC) 
 
 **Supported Languages:**
 - English
