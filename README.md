@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos 
 
-**Current Version:** 0.7.3a
+**Current Version:** 0.7.4
 
 **Compatible with:** Hearts of Iron IV "Hydra" (with or without Paid DLC) 
 
