@@ -98,7 +98,8 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - GABRIELN13
    - Honeymaple
    - habbala
-   - SandwichPhil 
+   - SandwichPhil
+   - Comrader
 
 ----------
 [Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow
