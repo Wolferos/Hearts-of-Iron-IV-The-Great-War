@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos 
 
-**Current Version:** 0.7.4
+**Current Version:** 0.7.5
 
 **Compatible with:** Hearts of Iron IV "Hydra" (with or without Paid DLC) 
 
@@ -100,6 +100,7 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - habbala
    - SandwichPhil
    - Comrader
+   - Veydem
 
 ----------
 [Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow
