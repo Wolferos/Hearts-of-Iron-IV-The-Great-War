@@ -365,10 +365,27 @@ news_event = {
 	
 	option = {
 		name = kis_news.109.a
+
 		FRA = {
 			remove_ideas = FRA_jean_jaures
-			add_political_power = -150
 		}
+
+		hidden_effect = {
+			if = {
+				limit = {
+					FRA = {
+						NOT = {
+							has_country_flag = FRA_JauresIsDead
+						}
+					}
+				}
+				FRA = {
+					set_country_flag = FRA_JauresIsDead
+					add_political_power = -150
+				}
+			}
+		}
+
 	}
 }
 #____________________________________________________________
