@@ -67,7 +67,23 @@ focus_tree = {
 		id = ITA_ww1_organize_colony
 		prerequisite = { focus=ITA_ww1_freespeech }
 		icon = GFX_goal_generic_position_armies
-		completion_reward = { }
+		available = {
+			ITA = { 
+				controls_state = 448
+			}
+		}		
+		completion_reward = {
+			add_manpower = 5000
+			448 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+		            type = arms_factory level = 1 instant_build = yes
+		        }
+				add_building_construction = {
+		            type = industrial_complex level = 1 instant_build = yes
+		        }
+			}
+		}
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 1
@@ -772,6 +788,28 @@ focus_tree = {
 		prerequisite = { focus=ITA_ww1_diplomatic_effort }
 		icon = GFX_goal_generic_construct_civilian
 		ai_will_do = { factor = 20 }
+
+		available = {
+			ITA = {
+				controls_state = 156
+				controls_state = 161
+			}
+		}
+		completion_reward = {
+			156 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+		            type = industrial_complex level = 1 instant_build = yes
+		        }
+			}
+			161 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+		            type = industrial_complex level = 1 instant_build = yes
+		        }
+			}
+		}
+
 		cost = 10
 		x = 13
 		y = 1
