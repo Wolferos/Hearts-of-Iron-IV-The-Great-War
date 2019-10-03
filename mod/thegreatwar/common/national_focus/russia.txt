@@ -42,7 +42,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = { factor = 0 }
-				
+
 	}
 
 	focus = {
@@ -194,7 +194,7 @@ focus_tree = {
 		x = 0
         y = 5
         cost = 10
-        completion_reward = {			
+        completion_reward = {
         	add_political_power = -200
         	add_stability = 0.03
         }
@@ -216,13 +216,13 @@ focus_tree = {
         y = 3
         cost = 10
         completion_reward = {
-			create_country_leader = { 
-				name = "Georgy Lvov" 
-				desc = RUS_georgy_lvov_DESC 
-				picture = "gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_georgy_lvov.dds" 
-				expire = "1935.1.1" 
-				ideology = conservatism 
-				traits = { } 
+			create_country_leader = {
+				name = "Georgy Lvov"
+				desc = RUS_georgy_lvov_DESC
+				picture = "gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_georgy_lvov.dds"
+				expire = "1935.1.1"
+				ideology = conservatism
+				traits = { }
 			}
 		}
         ai_will_do = { factor = 0 }
@@ -264,24 +264,27 @@ focus_tree = {
         id = RUS_ww1_adopt_marxist_ideas
         icon = GFX_goal_support_communism
         prerequisite = {
-				focus = RUS_ww1_reject_reforms
-				focus = RUS_ww1_adopt_reforms
+				    focus = RUS_ww1_reject_reforms
+				        focus = RUS_ww1_adopt_reforms
 		}
 		mutually_exclusive = {
 				focus = RUS_ww1_discuss_tsar_authority
 				focus = RUS_ww1_condemn_marxist_ideas
-        }
-        available = {
-        	has_country_flag = kis_tsarnicholasabdicated
-        }
-		x = 5
-        y = 2
-        cost = 10
-        completion_reward = {			
-			add_ideas = communist_influence
-        }
-        ai_will_do = { factor = 0 }
     }
+    available = {
+        OR = {
+          has_country_flag = kis_tsarnicholasabdicated
+          has_government = communism
+        }
+    }
+		x = 5
+    y = 2
+    cost = 10
+    completion_reward = {
+      add_ideas = communist_influence
+    }
+    ai_will_do = { factor = 0 }
+  }
 	focus = {
         id = RUS_ww1_legitimate_bolsheviks
         icon = GFX_goal_generic_soviet_construction
@@ -304,7 +307,7 @@ focus_tree = {
 			focus = RUS_ww1_legitimate_bolsheviks
 		}
         available = {
-        	has_government = communism        
+        	has_government = communism
         }
 		x = 6
         y = 4
@@ -321,13 +324,13 @@ focus_tree = {
 				focus = RUS_ww1_disarm_the_cossacks
 		}
         available = {
-        	has_government = communism        
+        	has_government = communism
         }
 		x = 6
         y = 5
         cost = 10
         completion_reward = {
-			
+
 			add_ideas = political_commissars_focus
         }
         ai_will_do = { factor = 0 }
@@ -356,7 +359,7 @@ focus_tree = {
 		icon = GFX_goal_generic_territory_or_war
 
 		completion_reward = { add_stability=0.05 add_political_power=100 }
-		
+
 		ai_will_do = { factor = 2000	}
 		cost = 10
 		x = 9
@@ -371,15 +374,15 @@ focus_tree = {
 
 		available = { NOT={ has_war_with=SER } }
 
-		completion_reward = { 
+		completion_reward = {
 
-			add_opinion_modifier = { 
+			add_opinion_modifier = {
 				target = SER
 				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
 			}
 
 		}
-		
+
 		ai_will_do = { factor = 2000 }
 		cost = 10
 		x = 8
@@ -421,7 +424,7 @@ focus_tree = {
 		x = 12
         y = 2
         cost = 10
-        completion_reward = { 
+        completion_reward = {
 
     	    diplomatic_relation = {
     	        country = GER
@@ -442,7 +445,7 @@ focus_tree = {
 		icon = GFX_hoi4tgw_marianne
 
 		completion_reward = {
-			add_opinion_modifier = { 
+			add_opinion_modifier = {
 				target = FRA
 				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
 			}
@@ -468,22 +471,22 @@ focus_tree = {
 
 		available = { NOT={ has_war_with=AUH } }
 
-		completion_reward = { 
+		completion_reward = {
 
-			add_opinion_modifier = { 
+			add_opinion_modifier = {
 				target = AUH
 				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
 			}
 			ENG = {
 				remove_from_faction = RUS
 			}
-			add_opinion_modifier = { 
+			add_opinion_modifier = {
 				target = ENG
 				modifier =  HOI4TGW_Opinion_Russia_Leave_Entente
 			}
 
 		}
-		
+
 		ai_will_do = { factor = 100	}
 		cost = 10
 		x = 11
@@ -752,15 +755,15 @@ focus_tree = {
 
 		available = { NOT={ has_war_with=ROM } }
 
-		completion_reward = { 
+		completion_reward = {
 
-			add_opinion_modifier = { 
+			add_opinion_modifier = {
 				target = ROM
 				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
 			}
 
 		}
-		
+
 		ai_will_do = { factor = 100	}
 		cost = 10
 		x = 9
@@ -781,7 +784,7 @@ focus_tree = {
 		completion_reward = {
 			add_opinion_modifier = { target = ENG modifier = minor_sanctions }
 			ENG = {
-				add_opinion_modifier = { 
+				add_opinion_modifier = {
 					target = RUS
 					modifier =  HOI4TGW_Opinion_Russia_Leave_Entente
 				}
@@ -827,8 +830,8 @@ focus_tree = {
         prerequisite = { focus = RUS_ww1_add_fuel_to_the_fire }
 
 		available = {
-			#BUL = { 
-			#	exists = yes 
+			#BUL = {
+			#	exists = yes
 			#	is_in_faction_with = GER
 			#}
 		}
@@ -846,7 +849,7 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {
 			factor = 1
-		}	
+		}
 	}
 	focus = {
         id = RUS_ww1_restore_russia_glory
@@ -887,7 +890,7 @@ focus_tree = {
                add_state_claim = 339
                add_state_claim = 344
                add_state_claim = 340
-               add_state_claim = 341               
+               add_state_claim = 341
                add_state_claim = 342
                add_state_claim = 343
                add_state_claim = 345
@@ -1066,7 +1069,7 @@ focus_tree = {
         ai_will_do = { factor = 200 }
     }
 
-    
+
     focus = {
         id = RUS_reinforce_vladivostok
         icon = GFX_goal_generic_build_navy
@@ -1074,7 +1077,7 @@ focus_tree = {
 		prerequisite = { focus = RUS_mongolian_protectorate }
 
         available = {
-			date > 1914.9.1        
+			date > 1914.9.1
         }
 		x = 17
         y = 5
@@ -1100,7 +1103,7 @@ focus_tree = {
                     instant_build = yes
                 }
             }
-			
+
         }
         ai_will_do = { factor = 0 }
     }
@@ -1111,9 +1114,9 @@ focus_tree = {
 
 		icon = GFX_goal_tripartite_pact
 
-		available = { 
-			NOT={ 
-				has_war_with = JAP 
+		available = {
+			NOT={
+				has_war_with = JAP
 			}
 			JAP = {
 				is_in_faction_with = FRA
@@ -1123,15 +1126,15 @@ focus_tree = {
 			}
 		}
 
-		completion_reward = { 
+		completion_reward = {
 
-			add_opinion_modifier = { 
+			add_opinion_modifier = {
 				target = JAP
 				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
 			}
 
 		}
-		
+
 		ai_will_do = { factor = 0	}
 		cost = 10
 		x = 16
@@ -1200,7 +1203,7 @@ focus_tree = {
 		x = 22
 		y = 0
 		}
-	
+
 	focus = {
 		id = RUS_ww1_equipment_effort
 		prerequisite = { focus=RUS_ww1_army_effort }
@@ -1637,7 +1640,7 @@ focus_tree = {
 			random_owned_state={ limit={ free_building_slots={ building=infrastructure size > 0 } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=infrastructure size > 0 } is_in_home_area=yes } } } } } add_building_construction={ type=infrastructure level=1 instant_build=yes } }
 
 
-			random_owned_state={ limit={ free_building_slots={ building=infrastructure size > 0 } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=infrastructure size > 0 } is_in_home_area=yes } } } } } add_building_construction={ type=infrastructure level=1 instant_build=yes } } 
+			random_owned_state={ limit={ free_building_slots={ building=infrastructure size > 0 } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=infrastructure size > 0 } is_in_home_area=yes } } } } } add_building_construction={ type=infrastructure level=1 instant_build=yes } }
 		}
 
 
@@ -1762,7 +1765,7 @@ focus_tree = {
 		completion_reward = {
 
 			random_owned_state = {
-				limit = { 
+				limit = {
 					free_building_slots = {
 						building = air_base
 						size > 1
@@ -1772,10 +1775,10 @@ focus_tree = {
 					type = air_base
 					level = 1
 					instant_build = yes
-				}							
+				}
 			}
 			random_owned_state = {
-				limit = { 
+				limit = {
 					free_building_slots = {
 						building = air_base
 						size > 1
@@ -1785,10 +1788,10 @@ focus_tree = {
 					type = air_base
 					level = 1
 					instant_build = yes
-				}							
+				}
 			}
 			random_owned_state = {
-				limit = { 
+				limit = {
 					free_building_slots = {
 						building = air_base
 						size > 1
@@ -1798,8 +1801,8 @@ focus_tree = {
 					type = air_base
 					level = 1
 					instant_build = yes
-				}							
-			}			
+				}
+			}
 		}
 	}
 
@@ -1931,7 +1934,7 @@ focus_tree = {
 		completion_reward = {
 
 			random_owned_state = {
-				limit = { 
+				limit = {
 					free_building_slots = {
 						building = air_base
 						size > 1
@@ -1941,10 +1944,10 @@ focus_tree = {
 					type = air_base
 					level = 1
 					instant_build = yes
-				}							
+				}
 			}
 			random_owned_state = {
-				limit = { 
+				limit = {
 					free_building_slots = {
 						building = air_base
 						size > 1
@@ -1954,10 +1957,10 @@ focus_tree = {
 					type = air_base
 					level = 1
 					instant_build = yes
-				}							
+				}
 			}
 			random_owned_state = {
-				limit = { 
+				limit = {
 					free_building_slots = {
 						building = air_base
 						size > 1
@@ -1967,8 +1970,8 @@ focus_tree = {
 					type = air_base
 					level = 1
 					instant_build = yes
-				}							
-			}			
+				}
+			}
 		}
 	}
 
@@ -2103,7 +2106,7 @@ focus_tree = {
 		completion_reward = {
 
 				random_owned_state = {
-					limit = { 
+					limit = {
 						free_building_slots = {
 							building = air_base
 							size > 1
@@ -2113,10 +2116,10 @@ focus_tree = {
 						type = air_base
 						level = 1
 						instant_build = yes
-					}							
+					}
 				}
 				random_owned_state = {
-					limit = { 
+					limit = {
 						free_building_slots = {
 							building = air_base
 							size > 1
@@ -2126,10 +2129,10 @@ focus_tree = {
 						type = air_base
 						level = 1
 						instant_build = yes
-					}							
+					}
 				}
 				random_owned_state = {
-					limit = { 
+					limit = {
 						free_building_slots = {
 							building = air_base
 							size > 1
@@ -2139,8 +2142,8 @@ focus_tree = {
 						type = air_base
 						level = 1
 						instant_build = yes
-					}							
-				}			
+					}
+				}
 		}
 	}
 
@@ -2216,7 +2219,7 @@ focus_tree = {
 
 	focus = {
 		id = RUS_ww1_naval_effort
-		icon = GFX_goal_generic_build_navy 
+		icon = GFX_goal_generic_build_navy
 		available = { any_state={ is_coastal=yes is_controlled_by=ROOT } }
 		completion_reward = { navy_experience=25 if={ limit={ NOT={ any_owned_state={ dockyard > 0 free_building_slots={ building=dockyard size > 2 include_locked=yes } } } any_owned_state={ is_coastal=yes } } random_owned_state={ limit={ is_coastal=yes free_building_slots={ building=dockyard size > 2 include_locked=yes } } add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } } set_country_flag=naval_effort_built } if={ limit={ NOT={ has_country_flag=naval_effort_built } any_owned_state={ dockyard > 0 free_building_slots={ building=dockyard size > 2 include_locked=yes } } } random_owned_state={ limit={ dockyard > 0 free_building_slots={ building=dockyard size > 2 include_locked=yes } } add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } } set_country_flag=naval_effort_built } if={ limit={ NOT={ has_country_flag=naval_effort_built } NOT={ any_owned_state={ free_building_slots={ building=dockyard size > 2 include_locked=yes } } } } random_state={ limit={ controller={ tag=ROOT } free_building_slots={ building=dockyard size > 2 include_locked=yes } } add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } } }			 }
 		complete_tooltip = { navy_experience=25 add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } }
@@ -2238,7 +2241,7 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = RUS_ww1_asian_seas_focus
         }
-		
+
 		completion_reward = {
 			navy_experience = 30
 			13 = {
@@ -2286,7 +2289,7 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = RUS_ww1_european_seas_focus
         }
-		
+
 		completion_reward = {
 			navy_experience = 30
 			409 = {
