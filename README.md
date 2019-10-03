@@ -3,13 +3,13 @@
 ----------
 [**Donwload on Steam**](http://steamcommunity.com/sharedfiles/filedetails/?id=699709023) or [**Donwload on Mod DB**](http://www.moddb.com/mods/hearts-of-iron-iv-the-great-war1)
 
-**Status:** Open Beta 
+**Status:** Open Beta
 
-**Project Lead:** Wolferos 
+**Project Lead:** Wolferos
 
-**Current Version:** 0.7.6a
+**Current Version:** 0.7.6b
 
-**Compatible with:** Hearts of Iron IV "Hydra" (with or without Paid DLC) 
+**Compatible with:** Hearts of Iron IV "Hydra" (with or without Paid DLC)
 
 **Supported Languages:**
 - English
@@ -18,7 +18,7 @@
 - Japanese ([+JP: The Great War](http://steamcommunity.com/sharedfiles/filedetails/?id=854550667&searchtext=%2BJP%3A+The+Great+War))
 - Polish ([The Great War: Polskie Tłumaczenie](http://steamcommunity.com/sharedfiles/filedetails/?id=1132448900))
 - Turkish ([Türkçe Yama](http://paradoxfan.com/forum/index.php?topic=51341.0))
-- Chinese ([Current Status](http://steamcommunity.com/workshop/filedetails/discussion/699709023/1698293068432235972)) 
+- Chinese ([Current Status](http://steamcommunity.com/workshop/filedetails/discussion/699709023/1698293068432235972))
 - German (Integrated in the Mod, experimental stage)
 - Korean ([The Great War - Korean Translation](http://steamcommunity.com/sharedfiles/filedetails/?id=959210411))
 - Portugês do Brazil (Integrated in the Mod, experimental stage)
@@ -27,21 +27,21 @@
 
 /!\ Warning /!\ Old Saves may not work with newer versions of the Mod
 
-**The Great War** has been created by Wolferos with the help of the Community. 
+**The Great War** has been created by Wolferos with the help of the Community.
 
 Wolferos is a small independent game development studio founded in 2015. More Information about Wolferos on [Facebook](https://www.facebook.com/WolferosProductions), [Twitter](https://twitter.com/WolferosProd) and [Youtube](https://www.youtube.com/c/WolferosProductions).
 
 ----------
 > **How to Install:**
-> 
+>
 > The folder that stores mods for the game is:
-> 
+>
 > - Windows: ...\Documents\Paradox Interactive\Hearts of Iron IV\mod\
 > - Linux: ~/.paradoxinteractive/Hearts of Iron IV/mod/ or ~/.local/share/Paradox Interactive/Hearts of Iron IV/mod/
 > - Mac: ~/Documents/Paradox Interactive/Hearts of Iron IV/mod/
 
 > Manually downloaded mods should include a .mod text file along with a folder. If so, the files can simply be dropped into the mod file. If one is downloading a newer version of a mod they already have installed, one should remove the older files first.
-> 
+>
 > **How to Debug:**
 > Launch the Game in Debug Mod with the **-debug** option.
 
