@@ -1,54 +1,63 @@
 ﻿add_namespace = ww1_xinhai
 country_event = {
-	title=ww1_xinhai.1.t#Revolutionaries Name List
-	desc=ww1_xinhai.1.d#On 9th October 1911 a leader of Gongjinhui - Sun Wu - had an accidental explosion in Wuchang when he was making explosives. Governor-General of Hubei-Hunan Rui Cheng sent some soldiers to search the city and tried to find the cause of the explosion. ,At 21:00 they arrested five revolutionaries and killed three of them the next morning. The Government also got a name list of all the revolutionaries and Rui Cheng ordered the arrest of all of them and declared martial law in Wuchang.
-	id=ww1_xinhai.1
-	picture=ww1_xinhai_1
-	is_triggered_only=no
-	mean_time_to_happen={
-		days=2
-		}
-	trigger={
-		tag=QIN
-		date>1911.8.24
-		not={
-			has_country_flag=revolutionaries_name_list
-			}
-		}
-	option={
-		name=ww1_xinhai.1.a
-		ai_chance={
-			factor=100
-			}
-		set_country_flag=revolutionaries_name_list
+	title = ww1_xinhai.1.t
+	desc = ww1_xinhai.1.d
+	id = ww1_xinhai.1
+	picture = ww1_xinhai_1
+	is_triggered_only = no
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	trigger = {
+		tag = QIN
+		date > 1911.8.24
+		not = {
+			has_global_flag = revolutionaries_name_list
 		}
 	}
+
+	option = {
+		name = ww1_xinhai.1.a
+		ai_chance = {
+			factor = 100
+		}
+		set_global_flag = revolutionaries_name_list
+	}
+}
+
 country_event = {
-	title=ww1_xinhai.2.t#Xinhai Revolution
-	desc=ww1_xinhai.2.d#The Xinhai Revolution or Hsinhai Revolution was a revolution that overthrew Chinas last imperial dynasty, the Qing, and established the Republic of China. The revolution was named Xinhai because it occurred in 1911, the year of the Xinhai stem-branch in the sexagenary cycle of the Chinese calendar. The revolution consisted of many revolts and uprisings. The turning point is the Wuchang Uprising on October 10 1911, that was a result of the mishandling of the Railway Protection Movement. The revolution ended with the abdication of the Last Emperor Puyi on February 12 1912, that marked the end of over 2000 years of Imperial China and the beginning of China's Republican era.
-	id=ww1_xinhai.2
-	picture=ww1_xinhai_2
-	is_triggered_only=no
-	mean_time_to_happen={
-		days=0
-		}
-	trigger={
-		tag=QIN
-		#date>1911.10.10
-		date>1911.9.1
-		has_country_flag=revolutionaries_name_list
-		not={
-			has_country_flag=xinhai_revolution
+	title = ww1_xinhai.2.t
+	desc = ww1_xinhai.2.d
+	id = ww1_xinhai.2
+	picture = ww1_xinhai_2
+	is_triggered_only = no
+	mean_time_to_happen = {
+		days = 0
+	}
+	trigger = {
+		tag = QIN
+		date > 1911.9.1
+		has_global_flag = revolutionaries_name_list
+		not = {
+			has_global_flag = xinhai_revolution
 		}
 	}
-	option = { # Support Qing
+	# Support Qing
+	option = {
 		name = ww1_xinhai.2.a
-		trigger = { is_ai = no }
+		trigger = {
+			is_ai = no
+		}
 		hidden_effect = {
+
+			set_global_flag = kis_xinhairenews
+			set_global_flag = xinhai_revolution
 
 			release = MON # Release Mongolia
 			release = TIB # Release Tibet
 			release = TAN # Release Tanu
+
 			RUS = {
 				puppet = TAN
 			}
@@ -58,7 +67,9 @@ country_event = {
 				ideology = democratic
 				size = 0.5
 				capital = 620
-				states = { 620 }
+				states = {
+					620
+				}
 			}
 			random_country = {
 				limit = {
@@ -74,30 +85,101 @@ country_event = {
 					days = 150
 				}
 
-				create_field_marshal={  name = "Huang Xing"  portrait_path="gfx/fieldmarshal/CHI_Huang_Xing.tga" traits={ defensive_doctrine } skill= 3 }
-				create_corps_commander={  name = "Song Jiaoren" portrait_path="gfx/generals/CHI_Song_Jiaoren.tga" traits={ fortress_buster  } skill=1 }
-				create_corps_commander={  name = "Li Yuanhong"  portrait_path="gfx/generals/CHI_Li_Yuanhong.tga" traits={   } skill=1 }
-				create_corps_commander={  name = "Xu Shichang" id=15044 portrait_path="gfx/generals/CHI_xu_shichang.tga" traits={ old_guard  } skill=1 }
-				create_corps_commander={  name = "Wang Shizen" id=15055 portrait_path="gfx/generals/CHI_wang_shizen.tga" traits={ old_guard  } skill=1 }
-				create_corps_commander={  name = "Yang Zengxin" id=15071 portrait_path="gfx/generals/CHI_yang_zengxin.tga" traits={ old_guard  } skill=1 }
-				create_corps_commander={  name = "Yin Chang" id=15072 portrait_path="gfx/generals/CHI_yin_chang.tga" traits={ old_guard  } skill=1 }
-				create_corps_commander={  name = "Zhang Huaizhi" id=15075 portrait_path="gfx/generals/CHI_zhang_huaizhi.tga" traits={ old_guard  } skill=1 }
-				create_corps_commander={  name = "Zhang Xun" id=15079 portrait_path="gfx/generals/CHI_zhang_xun.tga" traits={ old_guard  } skill=2 }
-				create_navy_leader={  name = "Cheng Biguang" id=15087 portrait_path="gfx/admiral/CHI_cheng_biguang.tga" traits={   } skill=3 }
-				create_navy_leader={  name = "Du Henchen" id=15088 portrait_path="gfx/admiral/CHI_du_henchen.tga" traits={   } skill=1 }
-				create_navy_leader={  name = "Du Xigui" id=15089 portrait_path="gfx/admiral/CHI_du_xigui.tga" traits={   } skill=2 }
+				create_field_marshal = {
+					name = "Huang Xing"
+					portrait_path = "gfx/fieldmarshal/CHI_Huang_Xing.tga"
+					traits = {
+						defensive_doctrine
+					}
+					skill = 3
+				}
+				create_corps_commander = {
+					name = "Song Jiaoren"
+					portrait_path = "gfx/generals/CHI_Song_Jiaoren.tga"
+					traits = {
+						fortress_buster
+					}
+					skill = 1
+				}
+				create_corps_commander = {
+					name = "Li Yuanhong"
+					portrait_path = "gfx/generals/CHI_Li_Yuanhong.tga"
+					traits = {}
+					skill = 1
+				}
+				create_corps_commander = {
+					name = "Xu Shichang"
+					id = 15044 portrait_path = "gfx/generals/CHI_xu_shichang.tga"
+					traits = {
+						old_guard
+					}
+					skill = 1
+				}
+				create_corps_commander = {
+					name = "Wang Shizen"
+					id = 15055 portrait_path = "gfx/generals/CHI_wang_shizen.tga"
+					traits = {
+						old_guard
+					}
+					skill = 1
+				}
+				create_corps_commander = {
+					name = "Yang Zengxin"
+					id = 15071 portrait_path = "gfx/generals/CHI_yang_zengxin.tga"
+					traits = {
+						old_guard
+					}
+					skill = 1
+				}
+				create_corps_commander = {
+					name = "Yin Chang"
+					id = 15072 portrait_path = "gfx/generals/CHI_yin_chang.tga"
+					traits = {
+						old_guard
+					}
+					skill = 1
+				}
+				create_corps_commander = {
+					name = "Zhang Huaizhi"
+					id = 15075 portrait_path = "gfx/generals/CHI_zhang_huaizhi.tga"
+					traits = {
+						old_guard
+					}
+					skill = 1
+				}
+				create_corps_commander = {
+					name = "Zhang Xun"
+					id = 15079 portrait_path = "gfx/generals/CHI_zhang_xun.tga"
+					traits = {
+						old_guard
+					}
+					skill = 2
+				}
+				create_navy_leader = {
+					name = "Cheng Biguang"
+					id = 15087 portrait_path = "gfx/admiral/CHI_cheng_biguang.tga"
+					traits = {}
+					skill = 3
+				}
+				create_navy_leader = {
+					name = "Du Henchen"
+					id = 15088 portrait_path = "gfx/admiral/CHI_du_henchen.tga"
+					traits = {}
+					skill = 1
+				}
+				create_navy_leader = {
+					name = "Du Xigui"
+					id = 15089 portrait_path = "gfx/admiral/CHI_du_xigui.tga"
+					traits = {}
+					skill = 2
+				}
 
 				add_popularity = {
 					ideology = democratic
 					popularity = 1
 				}
-				country_event=ww1_xinhai.10
+				country_event = ww1_xinhai.10
 			}
-
-			set_global_flag = kis_xinhairenews
-			set_country_flag=xinhai_revolution
-
-
 
 			set_stability = 0.9
 			load_oob = "QIN_Civil_War"
@@ -109,7 +191,8 @@ country_event = {
 		}
 		custom_effect_tooltip = qing_chosen
 	}
-	option = { # Support PRC
+	# Support PRC
+	option = {
 		name = ww1_xinhai.2.b
 		hidden_effect = {
 
@@ -126,10 +209,13 @@ country_event = {
 				ideology = neutrality
 				size = 0.99
 				capital = 613
-				states = { 283 287 322 325 328 330 591 592 593 594 595 596 597 598 599 600 601 602 603 604 605 606 607 608 609 610 611 612 613 614 615 616 617 618 619 621 622 714 715 716 717 }
-
-
-				#states = { 283 287 322 325 328 330 592 593 595 596 597 598 600 603 604 605 607 608 609 610 611 612 613 614 615 616 617 621 622 714 715 716 717 }
+				states = {
+					283 287 322 325 328 330 591 592 593 594 595 596 597 598 599 600 601 602 603 604 605 606 607 608 609 610 611 612 613 614 615 616 617 618 619 621 622 714 715 716 717
+				}
+		
+				# states = {
+				#	283 287 322 325 328 330 592 593 595 596 597 598 600 603 604 605 607 608 609 610 611 612 613 614 615 616 617 621 622 714 715 716 717
+				# }
 			}
 			random_country = {
 				limit = {
@@ -140,17 +226,78 @@ country_event = {
 				set_stability = 0.1
 				add_manpower = -2200000
 				load_oob = "QIN_Civil_War"
-				 
-				create_field_marshal={  name = "Huang Xing"  portrait_path="gfx/fieldmarshal/CHI_Huang_Xing.tga" traits={ defensive_doctrine } skill= 3 }
-				create_corps_commander={  name = "Song Jiaoren" portrait_path="gfx/generals/CHI_Song_Jiaoren.tga" traits={ fortress_buster  } skill=1 }
-				create_corps_commander={  name = "Li Yuanhong"  portrait_path="gfx/generals/CHI_Li_Yuanhong.tga" traits={   } skill=1 }
-				create_corps_commander={  name = "Xu Shichang" id=15044 portrait_path="gfx/generals/CHI_xu_shichang.tga" traits={ old_guard  } skill=1 }
-				create_corps_commander={  name = "Wang Shizen" id=15055 portrait_path="gfx/generals/CHI_wang_shizen.tga" traits={ old_guard  } skill=1 }
-				create_corps_commander={  name = "Yang Zengxin" id=15071 portrait_path="gfx/generals/CHI_yang_zengxin.tga" traits={ old_guard  } skill=1 }
-				create_corps_commander={  name = "Yin Chang" id=15072 portrait_path="gfx/generals/CHI_yin_chang.tga" traits={ old_guard  } skill=1 }
-				create_corps_commander={  name = "Zhang Huaizhi" id=15075 portrait_path="gfx/generals/CHI_zhang_huaizhi.tga" traits={ old_guard  } skill=1 }
-				create_corps_commander={  name = "Zhang Xun" id=15079 portrait_path="gfx/generals/CHI_zhang_xun.tga" traits={ old_guard  } skill=2 }
-				 set_equipment_fraction = 0.1
+
+				create_field_marshal = {
+					name = "Huang Xing"
+					portrait_path = "gfx/fieldmarshal/CHI_Huang_Xing.tga"
+					traits = {
+						defensive_doctrine
+					}
+					skill = 3
+				}
+				create_corps_commander = {
+					name = "Song Jiaoren"
+					portrait_path = "gfx/generals/CHI_Song_Jiaoren.tga"
+					traits = {
+						fortress_buster
+					}
+					skill = 1
+				}
+				create_corps_commander = {
+					name = "Li Yuanhong"
+					portrait_path = "gfx/generals/CHI_Li_Yuanhong.tga"
+					traits = {}
+					skill = 1
+				}
+				create_corps_commander = {
+					name = "Xu Shichang"
+					id = 15044 portrait_path = "gfx/generals/CHI_xu_shichang.tga"
+					traits = {
+						old_guard
+					}
+					skill = 1
+				}
+				create_corps_commander = {
+					name = "Wang Shizen"
+					id = 15055 portrait_path = "gfx/generals/CHI_wang_shizen.tga"
+					traits = {
+						old_guard
+					}
+					skill = 1
+				}
+				create_corps_commander = {
+					name = "Yang Zengxin"
+					id = 15071 portrait_path = "gfx/generals/CHI_yang_zengxin.tga"
+					traits = {
+						old_guard
+					}
+					skill = 1
+				}
+				create_corps_commander = {
+					name = "Yin Chang"
+					id = 15072 portrait_path = "gfx/generals/CHI_yin_chang.tga"
+					traits = {
+						old_guard
+					}
+					skill = 1
+				}
+				create_corps_commander = {
+					name = "Zhang Huaizhi"
+					id = 15075 portrait_path = "gfx/generals/CHI_zhang_huaizhi.tga"
+					traits = {
+						old_guard
+					}
+					skill = 1
+				}
+				create_corps_commander = {
+					name = "Zhang Xun"
+					id = 15079 portrait_path = "gfx/generals/CHI_zhang_xun.tga"
+					traits = {
+						old_guard
+					}
+					skill = 2
+				}
+				set_equipment_fraction = 0.1
 			}
 
 			set_politics = {
@@ -168,493 +315,494 @@ country_event = {
 				idea = hoi4tgw_idea_revolution
 				days = 250
 			}
-      set_equipment_fraction = 0.9
+			set_equipment_fraction = 0.9
 			add_popularity = {
 				ideology = democratic
 				popularity = 98
 			}
-			set_country_flag=xinhai_revolution
+			set_global_flag = xinhai_revolution
 			set_global_flag = kis_xinhairenews
-			country_event=ww1_xinhai.10
+			country_event = ww1_xinhai.10
 		}
 		custom_effect_tooltip = roc_chosen
 	}
 }
 country_event = {
-	title=ww1_xinhai.3.t#Qing Empire provinces rise up!
-	desc=ww1_xinhai.3.d#Yichang-Hunan-Jiujiang uprising!
-	id=ww1_xinhai.3
-	picture=ww1_xinhai_3
-	is_triggered_only=no
-	mean_time_to_happen={
-		days=2
-		}
-	trigger={
+	title = ww1_xinhai.3.t
+	desc = ww1_xinhai.3.d
+	id = ww1_xinhai.3
+	picture = ww1_xinhai_3
+	is_triggered_only = no
+	mean_time_to_happen = {
+		days = 2
+	}
+	trigger = {
 		original_tag = QIN
-		has_government = democratic
-		#date>1911.10.11
+		has_government = democratic# date > 1911.10.11
 		date > 1911.9.27
-		not={
-			has_country_flag=second_uprising
-			}
+		not = {
+			has_global_flag = second_uprising
 		}
-	option={
-		name=ww1_xinhai.3.a
-		ai_chance={
-			factor=100
-			}
+	}
+	option = {
+		name = ww1_xinhai.3.a
+		ai_chance = {
+			factor = 100
+		}
 		add_manpower = 800000
-		army_experience=75
-		transfer_state=602
-		transfer_state=612
-		transfer_state=714
-		transfer_state=717
-		transfer_state=616
-		transfer_state=716
-		transfer_state=604
-		load_oob="PRC_1911_uprising2"
-		country_event=ww1_xinhai.11
-		set_country_flag=second_uprising
+		army_experience = 75
+		transfer_state = 602
+		transfer_state = 612
+		transfer_state = 714
+		transfer_state = 717
+		transfer_state = 616
+		transfer_state = 716
+		transfer_state = 604
+		load_oob = "PRC_1911_uprising2"
+		country_event = ww1_xinhai.11
+		set_global_flag = second_uprising
 		random_country = {
 			limit = {
 				original_tag = QIN
 				has_government = neutrality
 			}
-			country_event=ww1_xinhai.20
-			set_country_flag=second_uprising
+			country_event = ww1_xinhai.20
+			set_global_flag = second_uprising
 		}
 	}
 }
 country_event = {
-	title=ww1_xinhai.4.t#Return of Yuan Shikai
-	desc=ww1_xinhai.4.d#After the Wuchang uprising our soldiers were routed and the revolutionaries are getting stronger. It is time to recall Yuan Shikai to deal with these rebels or we will lose the loyalty of our armies.
-	id=ww1_xinhai.4
-	picture=ww1_xinhai_4
-	is_triggered_only=no
-	mean_time_to_happen={
-		days=70
-		}
-	trigger={
+	title = ww1_xinhai.4.t# Return of Yuan Shikai
+	desc = ww1_xinhai.4.d# After the Wuchang uprising our soldiers were routed and the revolutionaries are getting stronger.It is time to recall Yuan Shikai to deal with these rebels or we will lose the loyalty of our armies.
+	id = ww1_xinhai.4
+	picture = ww1_xinhai_4
+	is_triggered_only = no
+	mean_time_to_happen = {
+		days = 70
+	}
+	trigger = {
 		original_tag = QIN
-		has_government = neutrality
-		#date>1911.10.14
+		has_government = neutrality# date > 1911.10.14
 		date > 1911.10.1
-		not={
-			has_country_flag=yuan_shikai
-			}
-		not={
-			controls_state=602
-			}
+		not = {
+			has_global_flag = yuan_shikai
 		}
-	option={
-		name=ww1_xinhai.4.a
-		ai_chance={
-			factor=90
-			}
-		transfer_state=715
-		transfer_state=614
-		transfer_state=598
+		not = {
+			controls_state = 602
+		}
+	}
+	option = {
+		name = ww1_xinhai.4.a
+		ai_chance = {
+			factor = 90
+		}
+		transfer_state = 715
+		transfer_state = 614
+		transfer_state = 598
 		add_manpower = 1200000
-		create_field_marshal={  name = "Yuan Shikai"  portrait_path="gfx/fieldmarshal/CHI_Yuan_Shikai.tga" traits={ defensive_doctrine  offensive_doctrine old_guard } skill=4 }
-		add_popularity={
-			ideology=neutrality
-			popularity=-0.01
+		create_field_marshal = {
+			name = "Yuan Shikai"
+			portrait_path = "gfx/fieldmarshal/CHI_Yuan_Shikai.tga"
+			traits = {
+				defensive_doctrine offensive_doctrine old_guard
 			}
-		add_stability=-0.05
-		set_country_flag=yuan_shikai
+			skill = 4
 		}
-	option={
-		name=ww1_xinhai.4.b
-		ai_chance={
-			factor=10
-			}
-		add_manpower=-100000
+		add_popularity = {
+			ideology = neutrality
+			popularity = -0.01
 		}
+		add_stability = -0.05
+		set_global_flag = yuan_shikai
 	}
-country_event = {
-	title=ww1_xinhai.5.t#Qing Empire provinces rise up!
-	desc=ww1_xinhai.5.d#Shaanxi-Shanxi-Yunnan uprising!
-	id=ww1_xinhai.5
-	picture=ww1_xinhai_5
-	is_triggered_only=no
-	mean_time_to_happen={
-		days=9
+	option = {
+		name = ww1_xinhai.4.b
+		ai_chance = {
+			factor = 10
 		}
-	trigger={
+		add_manpower = -100000
+	}
+}
+country_event = {
+	title = ww1_xinhai.5.t# Qing Empire provinces rise up!
+	desc = ww1_xinhai.5.d# Shaanxi - Shanxi - Yunnan uprising!
+	id = ww1_xinhai.5
+	picture = ww1_xinhai_5
+	is_triggered_only = no
+	mean_time_to_happen = {
+		days = 9
+	}
+	trigger = {
 		original_tag = QIN
-		has_government = democratic
-		#date>1911.10.22
+		has_government = democratic# date > 1911.10.22
 		date > 1911.11.28
-		not={
-			has_country_flag=third_uprising
-			}
+		not = {
+			has_global_flag = third_uprising
 		}
-	option={
-		name=ww1_xinhai.5.a
-		ai_chance={
-			factor=100
-			}
+	}
+	option = {
+		name = ww1_xinhai.5.a
+		ai_chance = {
+			factor = 100
+		}
 		add_manpower = 600000
-		transfer_state=622
-		transfer_state=615
-		transfer_state=287
+		transfer_state = 622
+		transfer_state = 615
+		transfer_state = 287
 
-		load_oob="PRC_1911_uprising3"
-		country_event=ww1_xinhai.12
-		set_country_flag=third_uprising
+		load_oob = "PRC_1911_uprising3"
+		country_event = ww1_xinhai.12
+		set_global_flag = third_uprising
 		random_country = {
 			limit = {
 				original_tag = QIN
 				has_government = neutrality
 			}
 
-			set_country_flag=third_uprising
+			set_global_flag = third_uprising
 		}
 	}
 }
 country_event = {
-	title=ww1_xinhai.6.t#Qing Empire provinces rise up!
-	desc=ww1_xinhai.6.d#Nanchang-Shanghai-Zhejiang-Jiangsu uprising!
-	id=ww1_xinhai.6
-	picture=ww1_xinhai_6
-	is_triggered_only=no
-	mean_time_to_happen={
-		days=25
-		}
-	trigger={
+	title = ww1_xinhai.6.t# Qing Empire provinces rise up!
+	desc = ww1_xinhai.6.d# Nanchang - Shanghai - Zhejiang - Jiangsu uprising!
+	id = ww1_xinhai.6
+	picture = ww1_xinhai_6
+	is_triggered_only = no
+	mean_time_to_happen = {
+		days = 25
+	}
+	trigger = {
 		original_tag = QIN
-		has_government = democratic
-		#date>1911.11.2
+		has_government = democratic# date > 1911.11.2
 		date > 1911.12.9
-		not={
-			has_country_flag=fourth_uprising
-			}
+		not = {
+			has_global_flag = fourth_uprising
 		}
-	option={
-		name=ww1_xinhai.6.a
-		ai_chance={
-			factor=100
-			}
-		transfer_state=600
-		transfer_state=613
-		transfer_state=596
-		transfer_state=598
-		load_oob="PRC_1911_uprising4"
-		country_event=ww1_xinhai.13
-		set_country_flag=fourth_uprising
+	}
+	option = {
+		name = ww1_xinhai.6.a
+		ai_chance = {
+			factor = 100
+		}
+		transfer_state = 600
+		transfer_state = 613
+		transfer_state = 596
+		transfer_state = 598
+		load_oob = "PRC_1911_uprising4"
+		country_event = ww1_xinhai.13
+		set_global_flag = fourth_uprising
 		random_country = {
 			limit = {
 				original_tag = QIN
 				has_government = neutrality
 			}
-			set_country_flag=fourth_uprising
+			set_global_flag = fourth_uprising
 		}
 	}
 }
 country_event = {
-	title=ww1_xinhai.7.t#Yuan Shikai as prime minister
-	desc=ww1_xinhai.7.d#The ambition of Yuan Shikai was getting stronger he threatened Manchu nobility that he wanted to be prime minister and forced Empress Dowager Longyu to appoint him as prime minister so he could negotiate with revolutionaries secretly.
-	id=ww1_xinhai.7
-	picture=ww1_xinhai_7
-	is_triggered_only=no
-	mean_time_to_happen={
-		days=10
-		}
-	trigger={
+	title = ww1_xinhai.7.t# Yuan Shikai as prime minister
+	desc = ww1_xinhai.7.d# The ambition of Yuan Shikai was getting stronger he threatened Manchu nobility that he wanted to be prime minister and forced Empress Dowager Longyu to appoint him as prime minister so he could negotiate with revolutionaries secretly.
+	id = ww1_xinhai.7
+	picture = ww1_xinhai_7
+	is_triggered_only = no
+	mean_time_to_happen = {
+		days = 10
+	}
+	trigger = {
 		original_tag = QIN
-		has_government = neutrality
-		#date>1911.11.8
+		has_government = neutrality# date > 1911.11.8
 		date > 1911.11.22
-		has_country_flag=yuan_shikai
-		not={
-			has_country_flag=prime_minister_yuan
-			}
-		}
-	option={
-		name=ww1_xinhai.7.a
-		ai_chance={
-			factor=100
-			}
-		set_country_flag=prime_minister_yuan
+		has_global_flag = yuan_shikai
+		not = {
+			has_global_flag = prime_minister_yuan
 		}
 	}
+	option = {
+		name = ww1_xinhai.7.a
+		ai_chance = {
+			factor = 100
+		}
+		set_global_flag = prime_minister_yuan
+	}
+}
 country_event = {
-	title=ww1_xinhai.8.t#Qing Empire provinces rise up!
-	desc=ww1_xinhai.8.d#Guizhou-Guangxi-Guangdong-Fujian-Sichuan uprising!
-	id=ww1_xinhai.8
-	picture=ww1_xinhai_8
-	is_triggered_only=no
-	mean_time_to_happen={
-		days=2
-		}
-	trigger={
+	title = ww1_xinhai.8.t
+	desc = ww1_xinhai.8.d
+	id = ww1_xinhai.8
+	picture = ww1_xinhai_8
+	is_triggered_only = no
+	mean_time_to_happen = {
+		days = 2
+	}
+	trigger = {
 		original_tag = QIN
-		has_government = democratic
-		#date>1911.11.4
+		has_government = democratic# date > 1911.11.4
 		date > 1911.12.28
-		not={
-			has_country_flag=fifth_uprising
-			}
+		not = {
+			has_global_flag = fifth_uprising
 		}
-	option={
-		name=ww1_xinhai.8.a
-		ai_chance={
-			factor=100
-			}
-		transfer_state=605
-		transfer_state=603
-		transfer_state=599
-		transfer_state=593
-		transfer_state=595
-		transfer_state=325
-		transfer_state=611
-		load_oob="PRC_1911_uprising5"
-		country_event=ww1_xinhai.14
-		set_country_flag=fifth_uprising
+	}
+	option = {
+		name = ww1_xinhai.8.a
+		ai_chance = {
+			factor = 100
+		}
+		transfer_state = 605
+		transfer_state = 603
+		transfer_state = 599
+		transfer_state = 593
+		transfer_state = 595
+		transfer_state = 325
+		transfer_state = 611
+		load_oob = "PRC_1911_uprising5"
+		country_event = ww1_xinhai.14
+		set_global_flag = fifth_uprising
 		random_country = {
 			limit = {
 				original_tag = QIN
 				has_government = neutrality
 			}
-			country_event=ww1_xinhai.23
-			set_country_flag=fifth_uprising
+			country_event = ww1_xinhai.23
+			set_global_flag = fifth_uprising
 		}
 	}
 }
 country_event = {
-	title=ww1_xinhai.9.t#Peace Conference of Northern-Southern
-	desc=ww1_xinhai.9.d#In the Peace Conference of Northern-Southern the Provisional Government accepted what Yuan Shikai wanted and Yuan also promised to bring peace, but saying and doing are two different things because we have the initiative.
-	id=ww1_xinhai.9
-	picture=ww1_xinhai_9
-	is_triggered_only=yes
-	option={
-		name=ww1_xinhai.9.a
-		ai_chance={
-			factor=80
-			}
+	title = ww1_xinhai.9.t
+	desc = ww1_xinhai.9.d
+	id = ww1_xinhai.9
+	picture = ww1_xinhai_9
+	is_triggered_only = yes
+	option = {
+		name = ww1_xinhai.9.a
+		ai_chance = {
+			factor = 80
+		}
 
 		random_country = {
 			limit = {
 				original_tag = QIN
 				has_government = democratic
 			}
-			country_event=ww1_xinhai.17
-		}
-		}
-	option={
-		name=ww1_xinhai.9.b
-		ai_chance={
-			factor=20
-			}
-		add_popularity={
-			ideology=neutrality
-			popularity=5
-			}
-		add_stability=0.01
-		random_country = {
-			limit = {
-				original_tag = QIN
-				has_government = democratic
-			}
-			country_event=ww1_xinhai.18
-		}
+			country_event = ww1_xinhai.17
 		}
 	}
+	option = {
+		name = ww1_xinhai.9.b
+		ai_chance = {
+			factor = 20
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = 5
+		}
+		add_stability = 0.01
+		random_country = {
+			limit = {
+				original_tag = QIN
+				has_government = democratic
+			}
+			country_event = ww1_xinhai.18
+		}
+	}
+}
 country_event = {
-	title=ww1_xinhai.10.t#Xinhai Revolution
-	desc=ww1_xinhai.10.d#The Xinhai Revolution or Hsinhai Revolution was a revolution that overthrew Chinas last imperial dynasty, the Qing, and established the Republic of China. The revolution was named Xinhai because it occurred in 1911, the year of the Xinhai stem-branch in the sexagenary cycle of the Chinese calendar. The revolution consisted of many revolts and uprisings. The turning point is the Wuchang Uprising on October 10 1911, that was a result of the mishandling of the Railway Protection Movement. The revolution ended with the abdication of the Last Emperor Puyi on February 12 1912, that marked the end of over 2000 years of Imperial China and the beginning of China's Republican era.
-	id=ww1_xinhai.10
-	picture=ww1_xinhai_10
+	title = ww1_xinhai.10.t
+	desc = ww1_xinhai.10.d
+	id = ww1_xinhai.10
+	picture = ww1_xinhai_10
 
 
-	is_triggered_only=yes
-	trigger={
+	is_triggered_only = yes
+	trigger = {
 		original_tag = QIN
 		has_government = democratic
+	}
+	option = {
+		name = ww1_xinhai.10.a
+		ai_chance = {
+			factor = 100
 		}
-	option={
-		name=ww1_xinhai.10.a
-		ai_chance={
-			factor=100
-			}
 
-		add_manpower=200000
-		transfer_state=610
-		transfer_state=609
-		transfer_state=592
-		transfer_state=595
-		transfer_state=621
-		}
+		add_manpower = 200000
+		transfer_state = 610
+		transfer_state = 609
+		transfer_state = 592
+		transfer_state = 595
+		transfer_state = 621
 	}
+}
 country_event = {
-	title=ww1_xinhai.11.t#Qing Empire provinces rise up!
-	desc=ww1_xinhai.11.d#Yichang-Hunan-Jiujiang uprising!
-	id=ww1_xinhai.11
-	picture=ww1_xinhai_11
-	is_triggered_only=yes
-	option={
-		name=ww1_xinhai.11.a
-		ai_chance={
-			factor=100
-			}
-		add_manpower=50
-		add_political_power=100
-		add_stability=0.01
+	title = ww1_xinhai.11.t
+	desc = ww1_xinhai.11.d
+	id = ww1_xinhai.11
+	picture = ww1_xinhai_11
+	is_triggered_only = yes
+	option = {
+		name = ww1_xinhai.11.a
+		ai_chance = {
+			factor = 100
 		}
+		add_manpower = 50
+		add_political_power = 100
+		add_stability = 0.01
 	}
+}
 country_event = {
-	title=ww1_xinhai.12.t#Qing Empire provinces rise up!
-	desc=ww1_xinhai.12.d#Shaanxi-Shanxi-Yunnan uprising!
-	id=ww1_xinhai.12
-	picture=ww1_xinhai_12
-	is_triggered_only=yes
-	option={
-		name=ww1_xinhai.12.a
-		ai_chance={
-			factor=100
-			}
-		add_manpower=50
-		add_political_power=100
-		add_stability=0.01
+	title = ww1_xinhai.12.t
+	desc = ww1_xinhai.12.d
+	id = ww1_xinhai.12
+	picture = ww1_xinhai_12
+	is_triggered_only = yes
+	option = {
+		name = ww1_xinhai.12.a
+		ai_chance = {
+			factor = 100
 		}
+		add_manpower = 50
+		add_political_power = 100
+		add_stability = 0.01
 	}
+}
 country_event = {
-	title=ww1_xinhai.13.t#Qing Empire provinces rise up!
-	desc=ww1_xinhai.13.d#Nanchang-Shanghai-Zhejiang-Jiangsu uprising!
-	id=ww1_xinhai.13
-	picture=ww1_xinhai_13
-	is_triggered_only=yes
-	option={
-		name=ww1_xinhai.13.a
-		ai_chance={
-			factor=100
-			}
-		add_manpower=50
-		add_political_power=100
-		add_stability=0.01
+	title = ww1_xinhai.13.t
+	desc = ww1_xinhai.13.d
+	id = ww1_xinhai.13
+	picture = ww1_xinhai_13
+	is_triggered_only = yes
+	option = {
+		name = ww1_xinhai.13.a
+		ai_chance = {
+			factor = 100
 		}
+		add_manpower = 50
+		add_political_power = 100
+		add_stability = 0.01
 	}
+}
 country_event = {
-	title=ww1_xinhai.14.t#Qing Empire provinces rise up!
-	desc=ww1_xinhai.14.d#Guizhou-Guangxi-Guangdong-Fujian-Sichuan uprising!
-	id=ww1_xinhai.14
-	picture=ww1_xinhai_14
-	is_triggered_only=yes
-	option={
-		name=ww1_xinhai.14.a
-		ai_chance={
-			factor=100
-			}
-		transfer_state=614
-		transfer_state=597
+	title = ww1_xinhai.14.t
+	desc = ww1_xinhai.14.d
+	id = ww1_xinhai.14
+	picture = ww1_xinhai_14
+	is_triggered_only = yes
+	option = {
+		name = ww1_xinhai.14.a
+		ai_chance = {
+			factor = 100
+		}
+		transfer_state = 614
+		transfer_state = 597
 
-		add_manpower=50000
-		add_political_power=100
-		add_stability=0.01
-		}
+		add_manpower = 50000
+		add_political_power = 100
+		add_stability = 0.01
 	}
+}
 
 country_event = {
-	title=ww1_xinhai.16.t#Peace Conference of Northern-Southern
-	desc=ww1_xinhai.16.d#Peace Conference of Northern-Southern tried to solve the problem peacefully and Yuan Shikai told Provisional Government what he wanted be the Provisional President. Now we have to decide what is good for our peaple peace or war.
-	id=ww1_xinhai.16
-	picture=ww1_xinhai_16
-	is_triggered_only=yes
-	option={
-		name=ww1_xinhai.16.a
-		ai_chance={
-			factor=80
-			}
+	title = ww1_xinhai.16.t
+	desc = ww1_xinhai.16.d
+	id = ww1_xinhai.16
+	picture = ww1_xinhai_16
+	is_triggered_only = yes
+	option = {
+		name = ww1_xinhai.16.a
+		ai_chance = {
+			factor = 80
+		}
 
 		random_country = {
 			limit = {
 				original_tag = QIN
 				has_government = neutrality
 			}
-			country_event=ww1_xinhai.9
-		}
-		}
-	option={
-		name=ww1_xinhai.16.b
-		ai_chance={
-			factor=20
-			}
-		add_political_power=-5
-		add_stability=-0.03
+			country_event = ww1_xinhai.9
 		}
 	}
+	option = {
+		name = ww1_xinhai.16.b
+		ai_chance = {
+			factor = 20
+		}
+		add_political_power = -5
+		add_stability = -0.03
+	}
+}
 country_event = {
-	title=ww1_xinhai.17.t#Yuan accepted
-	desc=ww1_xinhai.17.d#After a long time of negotiation Yuan Shikai had promised to bring peace to the people, so he would force Qing emperor to abdicate.
-	id=ww1_xinhai.17
-	picture=ww1_xinhai_17
-	is_triggered_only=yes
-	option={
-		name=ww1_xinhai.17.a
-		ai_chance={
-			factor=100
-			}
-		set_country_flag=yuan_accepted
+	title = ww1_xinhai.17.t
+	desc = ww1_xinhai.17.d
+	id = ww1_xinhai.17
+	picture = ww1_xinhai_17
+	is_triggered_only = yes
+	option = {
+		name = ww1_xinhai.17.a
+		ai_chance = {
+			factor = 100
 		}
+		set_global_flag = yuan_accepted
 	}
+}
 country_event = {
-	title=ww1_xinhai.18.t#Yuan rejected
-	desc=ww1_xinhai.18.d#Yuan rejected to stop the war.
-	id=ww1_xinhai.18
-	picture=ww1_xinhai_18
-	is_triggered_only=yes
-	option={
-		name=ww1_xinhai.18.a
-		ai_chance={
-			factor=100
-			}
+	title = ww1_xinhai.18.t
+	desc = ww1_xinhai.18.d
+	id = ww1_xinhai.18
+	picture = ww1_xinhai_18
+	is_triggered_only = yes
+	option = {
+		name = ww1_xinhai.18.a
+		ai_chance = {
+			factor = 100
 		}
 	}
+}
 country_event = {
-	title=ww1_xinhai.19.t#Our soldiers were routed!
-	desc=ww1_xinhai.19.d#Our useless soldiers were routed and most of them surrendered to the revolutionaries.
-	id=ww1_xinhai.19
-	picture=ww1_xinhai_19
-	is_triggered_only=yes
-	option={
-		name=ww1_xinhai.19.a
-		ai_chance={
-			factor=100
-			}
-		#remove_brigade="Di 21 Huncheng Xie"
-		#remove_unit_leader=73015
-		#remove_unit_leader=73036
-		#remove_unit_leader=73046
-		#remove_unit_leader=73072
+	title = ww1_xinhai.19.t
+	desc = ww1_xinhai.19.d
+	id = ww1_xinhai.19
+	picture = ww1_xinhai_19
+	is_triggered_only = yes
+	option = {
+		name = ww1_xinhai.19.a
+		ai_chance = {
+			factor = 100
 		}
+		# remove_brigade = "Di 21 Huncheng Xie"#
+		# remove_unit_leader = 73015
+		# remove_unit_leader = 73036
+		# remove_unit_leader = 73046
+		# remove_unit_leader = 73072
 	}
+}
 country_event = {
-	title=ww1_xinhai.20.t#Our soldiers were routed!
-	desc=ww1_xinhai.20.d#Our useless soldiers were routed and most of them surrendered to the revolutionaries.
-	id=ww1_xinhai.20
-	picture=ww1_xinhai_20
-	is_triggered_only=yes
-	option={
-		name=ww1_xinhai.20.a
-		ai_chance={
-			factor=100
-			}
-		#remove_brigade="Di 25 Huncheng Xie"
+	title = ww1_xinhai.20.t
+	desc = ww1_xinhai.20.d
+	id = ww1_xinhai.20
+	picture = ww1_xinhai_20
+	is_triggered_only = yes
+	option = {
+		name = ww1_xinhai.20.a
+		ai_chance = {
+			factor = 100
 		}
+		# remove_brigade = "Di 25 Huncheng Xie"
 	}
+}
 
 
 country_event = {
-	title=ww1_xinhai.23.t#Our soldiers were routed!
-	desc=ww1_xinhai.23.d#Our useless soldiers were routed and most of them surrendered to the revolutionaries.
-	id=ww1_xinhai.23
-	picture=ww1_xinhai_23
-	is_triggered_only=yes
-	option={
-		name=ww1_xinhai.23.a
-		ai_chance={
-			factor=100
-			}
-		#remove_brigade="Guizhou Lujun"
+	title = ww1_xinhai.23.t
+	desc = ww1_xinhai.23.d
+	id = ww1_xinhai.23
+	picture = ww1_xinhai_23
+	is_triggered_only = yes
+	option = {
+		name = ww1_xinhai.23.a
+		ai_chance = {
+			factor = 100
 		}
+		# remove_brigade = "Guizhou Lujun"
 	}
+}
