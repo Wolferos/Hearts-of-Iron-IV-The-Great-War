@@ -119,6 +119,23 @@ focus_tree = {
 		y = 6
 	}
 
+	# Open Beta 0.7.7b
+	focus = {
+		id = GER_ww1_imperialismus
+		prerequisite = { focus=GER_ww1_unitedpeople }
+		icon = GFX_focus_ger_revive_kaiserreich
+
+		completion_reward = { army_experience=40 }
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 3
+		y = 7
+	}
+
+
+
+
 	#---------- Fascist
 	focus = {
 		id = GER_ww1_military_youth
@@ -2431,11 +2448,294 @@ focus_tree = {
 
 
 
+	################ INTERWAR START (Treaty of Frankfurt)
+
+	# Open Beta 0.7.7b
+	focus = {
+		id = GER_ww1_claimholyromanempire
+		prerequisite = { focus=GER_ww1_imperialismus }
+		icon = GFX_goal_generic_territory_or_war
+
+		available = {
+			date > 1915.1.1
+		}
+		completion_reward = {
+			add_political_power = -150
+			set_global_flag = kis_holy_roman_empire_for_the_kaiser
+			custom_effect_tooltip = kis_holy_roman_empire_for_the_kaiser_effect
+		}
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 4
+		y = 8
+	}
+
+	focus = {
+		id = GER_ww1_formholyromanempire #Heiliges Römisches Reich / Form Holy Roman Empire, disband faction, form Holy Roman Empire Faction, change Flag & Name of German Empire
+		icon = GFX_focus_ger_return_of_the_kaiser
+
+		available = {
+			has_global_flag = kis_holy_roman_empire_for_the_kaiser
+			has_global_flag = kis_second_treaty_frankfort
+			date > 1919.1.1
+		}
+
+		completion_reward = {
+			create_faction = "Holy Roman Empire"
+			set_cosmetic_tag = GER_HRE
+
+			hidden_effect = {
+				GER = {
+					kill_country_leader = yes
+					create_country_leader = { 
+						name = "Kaiser Wilhelm II" 
+						desc = GER_wilhelm_ii_DESC 
+						picture = "gfx/leaders/GER_kaiser_wilhelm_ii.dds" 
+						expire = "1935.1.1" 
+						ideology = autocracy 
+						traits = {  } 
+					}
+					set_politics = {
+					    ruling_party = neutrality
+					    last_election = "1910.1.1"
+					    election_frequency = 60
+					    elections_allowed = no
+					}
+					set_popularities = {
+					    democratic = 0
+					    fascism = 0
+					    communism = 0
+					    neutrality = 100
+					}				
+				}
+			}
+		}
+
+		ai_will_do = {	factor = 0	}
+		cost = 15
+		x = 7
+		y = 7
+	}
+
+	focus = {
+		id = GER_ww1_claimBurgundy # Gives claims on Eastern Switzerland / Switzerland / Piedmont
+		icon = GFX_focus_attack_switzerland
+		prerequisite = { focus=GER_ww1_formholyromanempire }
+
+		completion_reward = {
+               add_state_claim = 3
+               add_state_claim = 151
+               add_state_claim = 158
+        }
+
+		ai_will_do = {	factor = 0	}
+		cost = 12
+		x = 6
+		y = 8
+	}
+
+	focus = {
+		id = GER_ww1_claimAustriaAndBohemia # Gives claims on Tyrol / South Tyrol / Upper Austria / Lower Austria / Sudetenland / Bohemia
+		icon = GFX_focus_renounce_the_treaty_of_trianon
+		prerequisite = { focus=GER_ww1_formholyromanempire }
+
+		completion_reward = {
+               add_state_claim = 39
+               add_state_claim = 153
+               add_state_claim = 152
+               add_state_claim = 4
+               add_state_claim = 69
+               add_state_claim = 9
+        }
+
+		ai_will_do = {	factor = 0	}
+		cost = 12
+		x = 8
+		y = 8
+	}
+
+	focus = {
+		id = GER_ww1_claimNetherlands # Gives claims on Holland / Friesland / Brabant
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		prerequisite = { focus=GER_ww1_formholyromanempire }
+
+		completion_reward = {
+               add_state_claim = 36
+               add_state_claim = 7
+               add_state_claim = 35
+        }
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 10
+		y = 8
+	}
+
+	focus = {
+		id = GER_ww1_DerKirchenstaat
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+		prerequisite = { focus=GER_ww1_claimAustriaAndBohemia }
+		prerequisite = { focus=GER_ww1_claimBurgundy }
+
+		completion_reward = {
+               add_state_claim = 159
+               add_state_claim = 160
+               add_state_claim = 161
+               add_state_claim = 162
+               add_state_claim = 157
+               add_state_claim = 2
+        }
+
+		ai_will_do = {	factor = 0	}
+		cost = 12
+		x = 7
+		y = 9
+	}
+
+	focus = {
+		id = GER_ww1_BalticStates # Old Prussia is Prussia
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		prerequisite = { focus=GER_ww1_formholyromanempire }
+
+		completion_reward = {
+               add_state_claim = 189
+               add_state_claim = 190
+               add_state_claim = 12
+               add_state_claim = 13
+               add_state_claim = 11
+               add_state_claim = 191
+        }
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 9
+		y = 9
+	}	
+
+	focus = {
+		id = GER_ww1_CrownedByThePope
+		icon = GFX_focus_generic_concessions
+		prerequisite = { focus=GER_ww1_DerKirchenstaat }
+
+		available = { 
+			GER = { 
+				controls_state = 2
+			}
+		}
+
+		completion_reward = {
+			set_global_flag = kis_kaiser_crowned_by_pope
+			custom_effect_tooltip = kis_kaiser_crowned_by_pope_effect
+		}
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 6
+		y = 10
+	}
 
 
-	# 0.1.5
+	focus = {
+		id = GER_ww1_RestoreTeutonicOrder
+		icon = GFX_focus_generic_air_defense
+		prerequisite = { focus=GER_ww1_DerKirchenstaat }
+		prerequisite = { focus=GER_ww1_BalticStates }
 
-	################ INTERWAR START
+		available = { 
+
+			has_global_flag = kis_kaiser_crowned_by_pope
+
+			GER = { 
+				controls_state = 189
+				controls_state = 190
+				controls_state = 12
+				controls_state = 13
+				controls_state = 11
+				controls_state = 191
+			}
+		}
+
+		completion_reward = {
+			army_experience=20
+			set_global_flag = kis_teutonic_order_has_been_restored
+			custom_effect_tooltip = kis_teutonic_order_has_been_restored_effect
+		}
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 8
+		y = 10
+	}
+
+
+	focus = {
+		id = GER_ww1_Constantinopolis #341
+		icon = GFX_focus_hol_war_on_pacifism
+
+		available = { 
+			has_global_flag = kis_teutonic_order_has_been_restored
+		}
+
+		completion_reward = {
+               add_state_claim = 341
+        }
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 1
+		y = 9
+	}
+
+	focus = {
+		id = GER_ww1_Hierusalem
+		icon = GFX_goal_demand_sudetenland
+
+		prerequisite = { focus=GER_ww1_imperialismus }
+
+		available = { 
+			has_global_flag = kis_teutonic_order_has_been_restored
+		}
+
+		completion_reward = {
+               add_state_claim = 454
+        }
+
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 3
+		y = 9
+	}
+
+	focus = {
+		id = GER_ww1_CrusaderKing
+		icon = GFX_focus_generic_strike_at_democracy1
+
+		prerequisite = { focus=GER_ww1_Constantinopolis }
+		prerequisite = { focus=GER_ww1_Hierusalem }
+
+		available = { 
+			GER = { 
+				controls_state = 454
+				controls_state = 341
+				controls_state = 2
+			}
+		}
+
+		completion_reward = { set_capital = 2 }
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 2
+		y = 10
+	}
+
+
+
+
+
+	################ INTERWAR START (Treaty of Versailles)
 	
 	# 0.5.1 (03/2018)
 
@@ -2510,7 +2810,7 @@ focus_tree = {
 	focus = {
 		id = GER_interwar_mein_kampf
 
-		icon = GFX_goal_support_fascism
+		icon = GFX_focus_ger_reichskommisariats
 
 		prerequisite = { focus = GER_interwar_beer_hall_putsch }
 
