@@ -1,6 +1,8 @@
 # Hearts of Iron IV: The Great War
 
 ----------
+❄❄❄❄❄❄❄❄❄❄ **We wish you Happy Holidays and a Merry Christmas!!!** ❄❄❄❄❄❄❄❄❄❄ 
+
 [**Donwload on Steam**](http://steamcommunity.com/sharedfiles/filedetails/?id=699709023) or [**Donwload on Mod DB**](http://www.moddb.com/mods/hearts-of-iron-iv-the-great-war1)
 
 **Status:** Open Beta
