@@ -9,7 +9,7 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.7.7b
+**Current Version:** 0.7.7c
 
 **Compatible with:** Hearts of Iron IV "Fork" (with or without Paid DLC)
 
