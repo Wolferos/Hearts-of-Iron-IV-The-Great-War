@@ -7,5 +7,5 @@ tags={
 	"Gameplay"
 }
 picture="tgw_picture.png"
-supported_version="1.8"
+supported_version="1.8.1"
 remote_file_id="699709023"
