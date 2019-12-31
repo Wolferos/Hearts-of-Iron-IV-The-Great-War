@@ -1,13 +1,15 @@
 # Hearts of Iron IV: The Great War
 
 ----------
+❄❄❄❄❄❄❄❄❄❄ **We wish you Happy Holidays and a Merry Christmas!!!** ❄❄❄❄❄❄❄❄❄❄ 
+
 [**Donwload on Steam**](http://steamcommunity.com/sharedfiles/filedetails/?id=699709023) or [**Donwload on Mod DB**](http://www.moddb.com/mods/hearts-of-iron-iv-the-great-war1)
 
 **Status:** Open Beta
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.7.7b
+**Current Version:** 0.7.7c
 
 **Compatible with:** Hearts of Iron IV "Fork" (with or without Paid DLC)
 

@@ -587,9 +587,152 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {factor = 100}
 		completion_reward = {
-			add_political_power = 100
+			add_political_power = 50
 		}
 	}
+
+    ################## OPEN BETA 0.7.7c ########## [START] #############
+
+
+    focus = {
+        id = RUS_ww1_Reinforce_Northern_Persia # Open Beta 0.7.7c ::: Reinforce Russia's Position in Northern Persia
+        icon = GFX_goal_generic_construction2
+
+        available = {
+            country_exists = PER
+            NOT = { has_war_with = PER }
+        }
+
+        prerequisite = { focus = RUS_asian_focus }
+
+        x = 18
+        y = 2
+        cost = 10
+
+        completion_reward = {
+            266 = {
+                add_building_construction = {
+                    type = infrastructure
+                    level = 1
+                    instant_build = yes
+                }
+            }
+        }
+        ai_will_do = {factor = 1}
+    }
+
+    focus = {
+        id = RUS_ww1_Revoke_Persia_Convention # Open Beta 0.7.7c ::: Revoke The Anglo-Russian Convention
+        icon = GFX_focus_renounce_the_treaty_of_trianon
+
+        available = {
+            country_exists = PER
+            NOT = { has_war_with = PER }
+        }
+
+        prerequisite = { focus = RUS_ww1_Reinforce_Northern_Persia }
+
+        x = 19
+        y = 3
+        cost = 10
+
+        completion_reward = {
+            add_political_power = -300
+        }
+
+        ai_will_do = {factor = 0}
+        mutually_exclusive = { focus=RUS_ww1_Support_Persia_Convention }
+    }
+
+    focus = {
+        id = RUS_ww1_Support_Persia_Convention # Open Beta 0.7.7c ::: Support The Anglo-Russian Convention
+        icon = GFX_goal_molotov_ribbentrop_pact
+
+        available = {
+            country_exists = PER
+            NOT = { has_war_with = PER }
+        }
+
+        prerequisite = { focus = RUS_ww1_Reinforce_Northern_Persia }
+
+        x = 17
+        y = 3
+        cost = 10
+
+        completion_reward = {
+            add_political_power = 120
+        }
+        ai_will_do = {factor = 1}
+        mutually_exclusive = { focus=RUS_ww1_Revoke_Persia_Convention }
+    }
+
+
+    focus = {
+        id = RUS_ww1_Persian_Cossack_Brigade # Open Beta 0.7.7c ::: Reinforce The Persian Cossack Brigade
+        icon = GFX_goal_generic_army_doctrines
+        available = {
+
+            country_exists = PER
+            NOT = { has_war_with = PER }
+
+            RUS = {
+                has_war_with = TUR
+            }        
+        }
+        prerequisite = { focus = RUS_ww1_Support_Persia_Convention }
+
+        x = 17
+        y = 5
+        cost = 10
+
+        completion_reward = {
+            add_manpower = 15000
+            army_experience = 20
+
+        }
+        ai_will_do = {factor = 1}
+    }
+
+    focus = {
+        id = RUS_ww1_Puppet_Persia # Open Beta 0.7.7c ::: Occupy Northern Persia
+        icon = GFX_focus_eng_move_to_secure_the_dominions
+        available = {
+
+            country_exists = PER
+            NOT = { has_war_with = PER }
+
+            RUS = {
+                has_war_with = GER
+                has_war_with = AUH
+                has_war_with = TUR
+            }
+            ENG = {
+                has_war_with = GER
+                has_war_with = AUH
+                has_war_with = TUR
+            }
+        }
+        prerequisite = { focus = RUS_ww1_Revoke_Persia_Convention }
+
+        x = 19
+        y = 5
+        cost = 10
+
+        completion_reward = {
+            RUS = {
+                transfer_state = 420
+                transfer_state = 266
+                transfer_state = 418
+                transfer_state = 416
+            }
+            add_political_power = -500
+        }
+        ai_will_do = {factor = 0}
+    }
+
+    ################## OPEN BETA 0.7.7c ########## [END] #############
+
+
 
     focus = {
         id = RUS_around_manchuria
@@ -597,7 +740,7 @@ focus_tree = {
         available = {}
 		prerequisite = { focus = RUS_asian_focus }
 
-		x = 17
+		x = 16
         y = 2
         cost = 10
         completion_reward = {
@@ -972,7 +1115,7 @@ focus_tree = {
         available = {
 
         }
-		x = 14
+		x = 13
         y = 5
         cost = 10
         completion_reward = {
@@ -996,7 +1139,7 @@ focus_tree = {
 
         }
         available = {}
-		x = 14
+		x = 12
         y = 6
         cost = 10
         completion_reward = {
@@ -1039,7 +1182,7 @@ focus_tree = {
 		completion_reward = { add_political_power = 100 }
 		ai_will_do = { factor = 20 }
 		cost = 10
-		x = 17
+		x = 15
 		y = 3
 	}
 	#-----------------------------------------
@@ -1049,15 +1192,16 @@ focus_tree = {
 
 	focus = {
         id = RUS_mongolian_protectorate
-        icon = GFX_goal_generic_more_territorial_claims
+        icon = GFX_goal_tfv_saf_anti_colonialist_crusade
 
 		prerequisite = { focus = RUS_ww1_Xinhai_Revolution_Opportunity }
         available = {
         	MON = {
         		exists = yes
         	}
+            NOT = { has_war_with = MON }
         }
-		x = 17
+		x = 16
         y = 4
         cost = 10
         completion_reward = {
@@ -1079,7 +1223,7 @@ focus_tree = {
         available = {
 			date > 1914.9.1
         }
-		x = 17
+		x = 15
         y = 5
         cost = 10
         completion_reward = {
@@ -1137,7 +1281,7 @@ focus_tree = {
 
 		ai_will_do = { factor = 0	}
 		cost = 10
-		x = 16
+		x = 14
 		y = 6
 		mutually_exclusive = { focus=RUS_annex_manchurian_sphere }
 	}
@@ -1151,7 +1295,7 @@ focus_tree = {
         available = {
     		is_in_faction = no
         }
-		x = 18
+		x = 16
         y = 6
         cost = 10
         completion_reward = {
@@ -1176,7 +1320,7 @@ focus_tree = {
 				is_in_faction = no
 			}
         }
-		x = 18
+		x = 16
         y = 7
         cost = 10
         completion_reward = {
