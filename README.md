@@ -22,7 +22,7 @@
 - Turkish ([Türkçe Yama](http://paradoxfan.com/forum/index.php?topic=51341.0))
 - Chinese ([Current Status](http://steamcommunity.com/workshop/filedetails/discussion/699709023/1698293068432235972))
 - German (Integrated in the Mod, experimental stage)
-- Korean ([The Great War - Korean Translation](http://steamcommunity.com/sharedfiles/filedetails/?id=959210411))
+- Korean ([The Great War - Korean Translation](https://steamcommunity.com/sharedfiles/filedetails/?id=1923476226))
 - Portugês do Brazil (Integrated in the Mod, experimental stage)
 - Spanish (Integrated in the Mod, experimental stage)
 
