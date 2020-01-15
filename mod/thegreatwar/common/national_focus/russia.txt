@@ -591,16 +591,46 @@ focus_tree = {
 		}
 	}
 
-    ################## OPEN BETA 0.7.7c ########## [START] #############
+	focus = {
+		id = RUS_ww1_Tungsten_Nerchinsk # Search Wolfram ore near Nerchinsk
+		icon = GFX_goal_generic_construction2
+		prerequisite = { focus = RUS_ww1_diplomatic_effort }
+		available = {
+			date > 1911.1.1
+			has_full_control_of_state = 563
+		}
+		x = 19
+		y = 1
+		cost = 10
+		ai_will_do = {factor = 100}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			563 = {
+				add_resource = {
+					type = tungsten
+					amount = 2
+				}
+			}
+		}
+	}
+
+    ################## OPEN BETA 0.8 Persian Campaign ########## [START] #############
 
 
     focus = {
-        id = RUS_ww1_Reinforce_Northern_Persia # Open Beta 0.7.7c ::: Reinforce Russia's Position in Northern Persia
+        id = RUS_ww1_Reinforce_Northern_Persia # Open Beta 0.8 Persian Campaign ::: Reinforce Russia's Position in Northern Persia
         icon = GFX_goal_generic_construction2
 
         available = {
             country_exists = PER
             NOT = { has_war_with = PER }
+            PER = {
+                controls_state = 266
+            }
         }
 
         prerequisite = { focus = RUS_asian_focus }
@@ -618,11 +648,11 @@ focus_tree = {
                 }
             }
         }
-        ai_will_do = {factor = 1}
+        ai_will_do = { factor = 1 }
     }
 
     focus = {
-        id = RUS_ww1_Revoke_Persia_Convention # Open Beta 0.7.7c ::: Revoke The Anglo-Russian Convention
+        id = RUS_ww1_Revoke_Persia_Convention # Open Beta 0.8 Persian Campaign ::: Revoke The Anglo-Russian Convention
         icon = GFX_focus_renounce_the_treaty_of_trianon
 
         available = {
@@ -638,14 +668,42 @@ focus_tree = {
 
         completion_reward = {
             add_political_power = -300
+            RUS = { 
+                add_opinion_modifier = { 
+                    target = ENG 
+                    modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Betrayed 
+                } 
+                add_opinion_modifier = { 
+                    target = PER 
+                    modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Betrayed 
+                } 
+            }
+            PER = {
+                add_opinion_modifier = { 
+                    target = ENG 
+                    modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Betrayed 
+                } 
+            }
+            ENG = {
+                add_opinion_modifier = { 
+                    target = RUS 
+                    modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Betrayed 
+                } 
+            }
         }
 
-        ai_will_do = {factor = 0}
-        mutually_exclusive = { focus=RUS_ww1_Support_Persia_Convention }
+        ai_will_do = {
+            factor = 0
+            modifier = { 
+                factor = 1 
+                is_historical_focus_on = no
+            }
+        }
+        mutually_exclusive = { focus = RUS_ww1_Support_Persia_Convention }
     }
 
     focus = {
-        id = RUS_ww1_Support_Persia_Convention # Open Beta 0.7.7c ::: Support The Anglo-Russian Convention
+        id = RUS_ww1_Support_Persia_Convention # Open Beta 0.8 Persian Campaign ::: Support The Anglo-Russian Convention
         icon = GFX_goal_molotov_ribbentrop_pact
 
         available = {
@@ -661,14 +719,42 @@ focus_tree = {
 
         completion_reward = {
             add_political_power = 120
+            RUS = { 
+                add_opinion_modifier = { 
+                    target = ENG 
+                    modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Respected 
+                } 
+                add_opinion_modifier = { 
+                    target = PER 
+                    modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Respected 
+                } 
+            }
+            PER = {
+                add_opinion_modifier = { 
+                    target = ENG 
+                    modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Respected 
+                } 
+            }
+            ENG = {
+                add_opinion_modifier = { 
+                    target = RUS 
+                    modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Respected 
+                } 
+            }
         }
-        ai_will_do = {factor = 1}
+        ai_will_do = {
+            factor = 1
+            modifier = { 
+                factor = 0
+                is_historical_focus_on = no
+            }
+        }
         mutually_exclusive = { focus=RUS_ww1_Revoke_Persia_Convention }
     }
 
 
     focus = {
-        id = RUS_ww1_Persian_Cossack_Brigade # Open Beta 0.7.7c ::: Reinforce The Persian Cossack Brigade
+        id = RUS_ww1_Persian_Cossack_Brigade # Open Beta 0.8 Persian Campaign ::: Reinforce The Persian Cossack Brigade
         icon = GFX_goal_generic_army_doctrines
         available = {
 
@@ -694,7 +780,33 @@ focus_tree = {
     }
 
     focus = {
-        id = RUS_ww1_Puppet_Persia # Open Beta 0.7.7c ::: Occupy Northern Persia
+        id = RUS_ww1_Russian_Influence_over_Persia # Open Beta 0.8
+        icon = GFX_goal_generic_position_armies
+        available = {
+
+            country_exists = PER
+            NOT = { has_war_with = PER }
+
+            RUS = {
+                has_war_with = TUR
+            }        
+        }
+        prerequisite = { focus = RUS_ww1_Persian_Cossack_Brigade }
+
+        x = 17
+        y = 7
+        cost = 10
+
+        completion_reward = {
+            PER = {
+                country_event = { days = 1 id = ww1_persia.3 }
+            }
+        }
+        ai_will_do = {factor = 0}
+    }
+
+    focus = {
+        id = RUS_ww1_Puppet_Persia # Open Beta 0.8 Persian Campaign ::: Occupy Northern Persia
         icon = GFX_focus_eng_move_to_secure_the_dominions
         available = {
 
@@ -719,18 +831,117 @@ focus_tree = {
         cost = 10
 
         completion_reward = {
-            RUS = {
-                transfer_state = 420
-                transfer_state = 266
-                transfer_state = 418
-                transfer_state = 416
+
+            PEN = {
+                if = {
+                    limit = {
+                        PER = {
+                            controls_state = 420
+                        }
+                    }
+                    transfer_state = 420
+                }
+                if = {
+                    limit = {
+                        PER = {
+                            controls_state = 266
+                        }
+                    }
+                    transfer_state = 266
+                }
+                if = {
+                    limit = {
+                        PER = {
+                            controls_state = 418
+                        }
+                    }
+                    transfer_state = 418
+                }
+                if = {
+                    limit = {
+                        PER = {
+                            controls_state = 416
+                        }
+                    }
+                    transfer_state = 416
+                }
+
+                hidden_effect = {
+                    kill_country_leader = yes
+                    set_politics = {
+                        ruling_party = neutrality
+                        last_election = "1910.1.1"
+                        election_frequency = 60
+                        elections_allowed = no
+                    }
+                    set_popularities = {
+                        democratic = 0
+                        fascism = 0
+                        communism = 0
+                        neutrality = 100
+                    }
+
+                    add_state_core = 420
+                    add_state_core = 266
+                    add_state_core = 418
+                    add_state_core = 416
+                }
+
+                create_country_leader = { 
+                    name = "Vladimir Liakhov" 
+                    desc = PEN_vladimir_liakhov_DESC 
+                    picture = "gfx/hoi4tgw_portraits/PEN/country_leaders/PEN_vladimir_liakhov.dds" 
+                    expire = "1935.1.1" 
+                    ideology = autocracy 
+                    traits = {  } 
+                }                
             }
-            add_political_power = -500
+            RUS = {
+                puppet = PEN
+            }
+        }
+        ai_will_do = {
+            factor = 0
+            modifier = { 
+                factor = 1 
+                date > 1916.3.3
+            }
+        }
+    }
+
+    focus = {
+        id = RUS_ww1_Militarize_NorthenPersia # Open Beta 0.7.8
+        icon = GFX_goal_generic_political_pressure
+        available = {
+
+            PEN = {
+                exists = yes
+                is_puppet_of = RUS
+            }
+        }
+        prerequisite = { focus = RUS_ww1_Puppet_Persia }
+
+        x = 19
+        y = 7
+        cost = 10
+
+        completion_reward = {
+            PEN = {
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = 9000
+                }
+            }
+            add_equipment_to_stockpile = {
+                type = infantry_equipment
+                amount = -9000
+            }
+            # custom_effect_tooltip = kis_pen_load_oob_effect
         }
         ai_will_do = {factor = 0}
     }
 
-    ################## OPEN BETA 0.7.7c ########## [END] #############
+    ################## OPEN BETA 0.8 Persian Campaign ########## [END] #############
 
 
 
@@ -1320,7 +1531,7 @@ focus_tree = {
 				is_in_faction = no
 			}
         }
-		x = 16
+		x = 15
         y = 7
         cost = 10
         completion_reward = {
