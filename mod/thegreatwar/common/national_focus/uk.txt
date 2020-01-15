@@ -677,15 +677,15 @@ focus_tree = {
 	
 	focus = {
 		id = uk_lawrence_focus
-		prerequisite = { focus=ENG_ww1_crypto_bomb_focus }
 		icon = GFX_goal_generic_cavalry
+		prerequisite = { focus=ENG_ww1_crypto_bomb_focus }
 		available = {
-		  	TUR={
-			   	has_war_with=ENG
+		  	TUR = {
+			   	has_war_with = ENG
 		   	}
-		  	not={
-			   	HJZ={
-			    	has_war_with=ENG
+		  	NOT = {
+			   	HJZ = {
+			    	has_war_with = ENG
 			    }
 		   	}
 
@@ -695,17 +695,36 @@ focus_tree = {
 				is_puppet_of = ENG
 			}
 
-
-		  	date>1917.1.1
-	   		date<1925.12.30
+		  	date > 1917.1.1
+	   		date < 1925.12.30
 	  	}
 		completion_reward = {
-			HJZ = {
-		   		# country_event = ww1_hejaz.8
-		   	}
 	  		set_global_flag = te_lawrence
+
+	  		HJZ = {
+				# create_corps_commander = {
+				# 	name = "T. E. Lawrence" 
+				# 	id = 74036
+				# 	portrait_path = "gfx/HJZ/army_generals/HJZ_Thomas_Edward_Lawrence.dds"
+				# 	traits = { }
+				# 	skill = 3
+				# 	attack_skill = 2
+				# 	defense_skill = 2
+				# 	planning_skill = 2
+				# 	logistics_skill = 2
+				# }
+				create_corps_commander = {  
+					name = "T. E. Lawrence" 
+					id = 38007 
+					portrait_path = "gfx/HJZ/army_generals/HJZ_Thomas_Edward_Lawrence.tga" 
+					traits = { 
+						trickster
+					} 
+					skill = 4
+				}
+	  		}
 		}
-		ai_will_do = { factor = 0 }
+		ai_will_do = { factor = 1 }
 		cost = 10
 		x = 8
 		y = 8
@@ -713,63 +732,346 @@ focus_tree = {
 
 	focus = {
 		id = uk_arab_focus
-		prerequisite = { focus=ENG_ww1_crypto_bomb_focus }
 		icon = GFX_goal_generic_occupy_states_ongoing_war
+		prerequisite = { focus = ENG_ww1_crypto_bomb_focus }
 		available = {
-		  	TUR={
-			   	has_war_with=ENG
-				   has_war_with=HJZ
+		  	TUR = {
+				has_war_with = ENG
+				has_war_with = HJZ
 		   	}
-		 	ENG={
-				controls_state=453
+		 	ENG = {
+				controls_state = 453
 			}
-			HJZ={
-			   	NOT={
-			    	has_war_with=ENG
+			HJZ = {
+			   	NOT = {
+			    	has_war_with = ENG
 			    }
 		   	}
-		  	date>1917.1.1
-		  	date<1925.12.30
+		  	date > 1917.1.1
+		  	date < 1925.12.30
 	  	}
 		completion_reward = {
 			HJZ = {
-				   # country_event = ww1_hejaz.7
-			   }
-			}
+		   		# country_event = ww1_hejaz.8
+
+		   		add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = 10000
+                }
+		   	}
+		   	add_equipment_to_stockpile = {
+                type = infantry_equipment
+                amount = -10000
+            }
+		}
 		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 10
 		y = 8
 	}
 
+	################## OPEN BETA 0.7.8 ########## [START] #############
+
 	focus = {
-		id = uk_iran_focus
-		prerequisite = { focus=ENG_ww1_military_training_act focus=uk_lawrence_focus focus=uk_arab_focus }
+		id = ENG_ww1_Persian_Question
+		prerequisite = { 
+			focus = ENG_ww1_military_training_act
+			focus = uk_lawrence_focus 
+			focus = uk_arab_focus
+		}
 		icon = GFX_goal_generic_forceful_treaty
 		available = {
-			  GER={
-				   has_war_with=ENG
-				   }
-			  TUR={
-				   has_war_with=ENG
-				   }
-			  not={
-				   PER={
-					    has_war_with=ENG
-					    }
-				   }
-			  RAJ={
-				   controls_state=444
-				   }
-			   country_exists=PER
-			  }
-		bypass = { PER={ exists=no } }
-		completion_reward = { give_guarantee = PER }
-		ai_will_do = { factor = 20 }
+			PER = {
+				exists = yes
+			}
+			has_war_with = TUR
+			NOT = {
+				has_war_with = PER
+			}
+		}
+		bypass = { PER = { exists=no } }
+		completion_reward = {
+			PER = {
+				add_popularity = {
+					ideology = communism
+					popularity = 0.05
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.05
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
+			}
+		}
+		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 8
 		y = 9
 	}
+
+	focus = {
+		id = ENG_ww1_Support_Persia_Convention
+		icon = GFX_focus_renounce_the_treaty_of_trianon
+
+		prerequisite = { focus = ENG_ww1_Persian_Question }
+
+		mutually_exclusive = { focus = ENG_ww1_Revoke_Persia_Convention }
+
+		available = {
+			country_exists = PER
+			NOT = { 
+				has_war_with = PER
+				RUS = {
+					has_completed_focus = RUS_ww1_Revoke_Persia_Convention
+				}
+			}
+		}
+
+		bypass = {
+			RUS = {
+				has_completed_focus = RUS_ww1_Support_Persia_Convention
+				has_completed_focus = RUS_ww1_Revoke_Persia_Convention
+			}
+		}
+
+		cancel_if_invalid = yes
+
+		completion_reward = {
+			add_political_power = 75
+
+			ENG = { 
+				add_opinion_modifier = { 
+					target = RUS 
+					modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Respected 
+				} 
+				add_opinion_modifier = { 
+					target = PER 
+					modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Respected 
+				} 
+			}
+			PER = {
+				add_opinion_modifier = { 
+					target = ENG 
+					modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Respected 
+				} 
+			}
+			RUS = {
+				add_opinion_modifier = { 
+					target = ENG 
+					modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Respected 
+				} 
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 10
+		x = 7
+		y = 10
+
+	}
+
+	focus = {
+		id = ENG_ww1_Form_AngloPersian_Oil_Company
+		icon = GFX_goal_generic_oil_refinery
+
+		prerequisite = {
+			focus = ENG_ww1_Support_Persia_Convention
+		}
+
+		available = {
+			country_exists = PER
+			NOT = { 
+				has_war_with = PER
+			}
+		}
+
+		completion_reward = {
+			add_ideas = ww1_ENG_APOC
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 10
+		x = 7
+		y = 11
+
+	}
+
+	focus = {
+		id = ENG_ww1_Persian_MilitaryAccess
+		icon = GFX_goal_generic_national_unity
+
+		prerequisite = {
+			focus = ENG_ww1_Support_Persia_Convention
+		}
+
+		available = {
+			country_exists = PER
+			NOT = { 
+				has_war_with = PER
+			}
+		}
+
+		completion_reward = {
+			PER = {
+				country_event = { days = 1 id = ww1_persia.2 }
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 10
+		x = 5
+		y = 11
+
+	}
+
+	focus = {
+		id = ENG_ww1_Revoke_Persia_Convention
+		icon = GFX_goal_molotov_ribbentrop_pact
+
+		prerequisite = { focus = ENG_ww1_Persian_Question }
+
+		mutually_exclusive = { focus = ENG_ww1_Support_Persia_Convention }
+
+		available = {
+			country_exists = PER
+			NOT = { 
+				has_war_with = PER 
+				RUS = {
+					has_completed_focus = RUS_ww1_Support_Persia_Convention
+					has_completed_focus = RUS_ww1_Revoke_Persia_Convention
+				}
+			}
+		}
+
+		bypass = {
+			RUS = {
+				has_completed_focus = RUS_ww1_Revoke_Persia_Convention
+			}
+		}
+
+		cancel_if_invalid = yes
+
+		completion_reward = {
+			add_political_power = -100
+			ENG = { 
+				add_opinion_modifier = { 
+					target = RUS 
+					modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Betrayed 
+				} 
+				add_opinion_modifier = { 
+					target = PER 
+					modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Betrayed 
+				} 
+			}
+			PER = {
+				add_opinion_modifier = { 
+					target = ENG 
+					modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Betrayed 
+				} 
+			}
+			RUS = {
+				add_opinion_modifier = { 
+					target = ENG 
+					modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Betrayed 
+				} 
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 10
+		x = 9
+		y = 10
+
+	}
+
+	focus = {
+		id = ENG_ww1_Protect_Persian_Borders
+		icon = GFX_goal_generic_construct_military
+
+		prerequisite = {
+			focus = ENG_ww1_Revoke_Persia_Convention
+		}
+
+		available = {
+			country_exists = PER
+			NOT = { 
+				has_war_with = PER
+			}
+			controls_state = 444
+		}
+
+		completion_reward = {
+			444 = {
+				add_building_construction = {
+					type = trench
+					level = 1
+					province = 5075
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 12761
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = trench
+					level = 1
+					province = 5043
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = trench
+					level = 1
+					province = 12774
+					instant_build = yes
+				}
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 10
+		x = 9
+		y = 11
+
+	}
+
+	focus = {
+		id = ENG_ww1_Protect_Persia
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+
+		prerequisite = {
+			focus = ENG_ww1_Revoke_Persia_Convention
+		}
+
+		available = {
+			country_exists = PER
+			NOT = { 
+				has_war_with = PER
+			}
+		}
+
+		completion_reward = {
+			give_guarantee = PER
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 10
+		x = 11
+		y = 11
+
+	}
+
+	################## OPEN BETA 0.7.8 ########## [END] #############
 
 	#----------------------------------------------------------------------- 
 	# Bloc 2
