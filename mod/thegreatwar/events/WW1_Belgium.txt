@@ -129,3 +129,43 @@ country_event = {
 		    name = ww1_belgium.5.b
 		}
 	}
+
+
+# Christmas Truce
+#____________________________________________________________
+country_event = {
+	id = ww1_belgium.210
+	title = ww1_kis_news_christmastruce.210.t
+	desc = ww1_kis_news_christmastruce.210.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = BEL
+		BEL = {
+			has_war_with = GER
+		}
+		date > 1914.12.24
+	}
+
+	option = {
+		name = ww1_kis_news_christmastruce.210.a
+		BEL = {
+			add_political_power = -80
+			army_experience = 60
+			add_timed_idea = { idea = ww1_Christmas_Truth_Repressed days = 30 }
+			ai_chance = { factor = 90 }
+		}
+	}
+	option = {
+		name = ww1_kis_news_christmastruce.210.b
+		BEL = {
+			add_political_power = 80
+			army_experience = -60
+			add_timed_idea = { idea = ww1_Christmas_Truth_Ignored days = 30 }
+			ai_chance = { factor = 10 }
+		}
+	}
+}
+#____________________________________________________________
