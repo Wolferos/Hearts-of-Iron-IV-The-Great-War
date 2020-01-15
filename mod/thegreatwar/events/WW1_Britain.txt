@@ -168,3 +168,42 @@ country_event = {
 	}
 }
 #____________________________________________________________
+
+# Christmas Truce
+#____________________________________________________________
+country_event = {
+	id = ww1_england.210
+	title = ww1_kis_news_christmastruce.210.t
+	desc = ww1_kis_news_christmastruce.210.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = ENG
+		ENG = {
+			has_war_with = GER
+		}
+		date > 1914.12.24
+	}
+
+	option = {
+		name = ww1_kis_news_christmastruce.210.a
+		ai_chance = { factor = 90 }
+		ENG = {
+			add_political_power = -80
+			army_experience = 60
+			add_timed_idea = { idea = ww1_Christmas_Truth_Repressed days = 30 }
+		}
+	}
+	option = {
+		name = ww1_kis_news_christmastruce.210.b
+		ai_chance = { factor = 10 }
+		ENG = {
+			add_political_power = 80
+			army_experience = -60
+			add_timed_idea = { idea = ww1_Christmas_Truth_Ignored days = 30 }
+		}
+	}
+}
+#____________________________________________________________
