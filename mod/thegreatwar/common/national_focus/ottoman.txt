@@ -1583,22 +1583,26 @@ focus = {
 		y = 5
 	}
 
+	################## OPEN BETA 0.7.8 ########## [START] #############
+
 	focus = {
 		id = TUR_ww1_anti_persia
 		prerequisite = { focus=TUR_ww1_friend_afghan }
 		icon = GFX_goal_generic_more_territorial_claims
 
 		available = {
-
-			country_exists=PER
-
+			country_exists = PER
+			OR = {
+				RUS = {
+					has_completed_focus = RUS_ww1_Support_Persia_Convention
+				}
+			}
 		}
 
 		completion_reward = {
-
 			add_opinion_modifier = { 
-			target = PER
-			modifier =  HOI4TGW_Opinion_hostile_diplomatic_relations
+				target = PER
+				modifier =  HOI4TGW_Opinion_hostile_diplomatic_relations
 			}
 		}
 
@@ -1607,8 +1611,59 @@ focus = {
 
 		mutually_exclusive = { focus=TUR_ww1_friend_persia }
 
-		x = 17
+		x = 19
 		y = 6
+	}
+
+	focus = {
+		id = TUR_ww1_claim_northenpersia
+		prerequisite = { focus = TUR_ww1_anti_persia }
+		icon = GFX_focus_hol_war_on_pacifism
+
+		available = {
+			country_exists = PEN
+		}
+
+		completion_reward = {
+			add_state_claim = 420
+			add_state_claim = 266
+			add_state_claim = 418
+			add_state_claim = 416
+		}
+
+		ai_will_do = { factor = 1 }
+		cost = 10
+
+		x = 19
+		y = 7
+	}
+
+	focus = {
+		id = TUR_ww1_claim_persia
+		prerequisite = { focus = TUR_ww1_claim_northenpersia }
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+
+		available = {
+			country_exists = PER
+		}
+
+		completion_reward = {
+			add_state_claim = 417
+			add_state_claim = 419
+			add_state_claim = 421
+			add_state_claim = 413
+			add_state_claim = 411
+			add_state_claim = 416
+			add_state_claim = 414
+			add_state_claim = 410
+			add_state_claim = 412
+		}
+
+		ai_will_do = { factor = 1 }
+		cost = 10
+
+		x = 19
+		y = 8
 	}
 
 	focus = {
@@ -1617,16 +1672,19 @@ focus = {
 		icon = GFX_goal_molotov_ribbentrop_pact
 
 		available = {
-
-			country_exists=PER
-
+			country_exists = PER
+			OR = {
+				RUS = {
+					has_completed_focus = RUS_ww1_Revoke_Persia_Convention
+				}
+			}
 		}
 
 		completion_reward = {
 
 			add_opinion_modifier = { 
-			target = PER
-			modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+				target = PER
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
 			}
 		}
 
@@ -1635,9 +1693,68 @@ focus = {
 
 		mutually_exclusive = { focus=TUR_ww1_anti_persia }
 
-		x = 19
+		x = 17
 		y = 6
 	}
+
+	focus = {
+		id = TUR_ww1_invite_persia_to_cp
+		prerequisite = { focus = TUR_ww1_friend_persia }
+		icon = GFX_goal_generic_national_unity
+
+		available = {
+			# country_exists = PER
+			is_in_faction_with = GER
+		}
+
+		completion_reward = {
+			PER = {
+				country_event = { days = 1 id = ww1_persia.1 }
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+		cost = 10
+
+		x = 17
+		y = 8
+	}
+
+	focus = {
+		id = TUR_ww1_militarize_persia
+		prerequisite = { focus = TUR_ww1_invite_persia_to_cp }
+		icon = GFX_goal_generic_military_sphere
+
+		available = {
+			# country_exists = PER
+		}
+
+		completion_reward = {
+			hidden_effect = {
+                PER = {
+                    add_equipment_to_stockpile = {
+                        type = infantry_equipment
+                        amount = 20000
+                    }
+                }
+                TUR = {
+                    add_equipment_to_stockpile = {
+                        type = infantry_equipment
+                        amount = -20000
+                    }
+                }
+            }
+            # custom_effect_tooltip = kis_per_load_oob_effect
+		}
+
+		ai_will_do = { factor = 1 }
+		cost = 10
+
+		x = 17
+		y = 9
+	}
+
+	################## OPEN BETA 0.7.8 ########## [END] #############
 
 
 
