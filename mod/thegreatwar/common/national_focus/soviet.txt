@@ -543,6 +543,73 @@ focus_tree = {
 		x = 8
 		y = 12
 	}
+
+	focus = {
+		id = SOV_ww1_persia_revolution
+		icon = GFX_goal_generic_war_with_comintern
+		prerequisite = { focus = SOV_ww1_americas_revolution }
+		available = {
+			PER = {
+				exists = yes
+			}
+		}
+		completion_reward = { 
+			PER = {
+				add_popularity = {
+					ideology = communism
+					popularity = 0.1
+				}
+			}
+		}
+		ai_will_do = { factor = 0 modifier = { factor = 1 is_historical_focus_on = yes} }
+		cost = 10
+		x = 8
+		y = 13
+	}
+
+	focus = {
+		id = SOV_ww1_support_jangali
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = SOV_ww1_persia_revolution }
+		available = {
+			PER = {
+				controls_state = 266
+				controls_state = 420
+			}
+		}
+		completion_reward = { 
+			PER = {
+				start_civil_war = {
+					ruling_party = communism
+					ideology = communism
+					size = 0.5
+					states = { 420 }
+					capital = 420
+				}
+
+				hidden_effect = {
+					set_politics = {
+					    ruling_party = neutrality
+					    last_election = "1910.1.1"
+					    election_frequency = 48
+					    elections_allowed = no
+					}
+					set_popularities = {
+					    democratic = 0
+					    fascism = 0
+					    communism = 0
+					    neutrality = 100
+					}				
+				}
+			}
+		}
+		ai_will_do = { factor = 0 modifier = { factor = 1 is_historical_focus_on = yes} }
+		cost = 10
+		x = 8
+		y = 14
+	}
+
+
 	
 	focus = {
 		id = SOV_ww1_contact_french
