@@ -997,6 +997,49 @@ focus_tree = {
 		y = 3
 	}
 
+
+	# Mission Berthelot -> Send Henri Berthelot in Romania
+	focus = {
+		id = FRA_ww1_HenriBerthelotRomania
+		prerequisite = { focus = FRA_ww1_support_romania }
+		icon = GFX_focus_generic_military_mission
+
+		available = {
+			ROM = {
+				is_in_faction_with = FRA
+				controls_state = 46
+				has_war_with = GER
+				has_war_with = AUH
+			}			
+		}
+
+		completion_reward = { 
+
+			remove_unit_leader = 78000
+
+	  		ROM = {
+				create_corps_commander = {  
+					name = "Henri Berthelot" 
+					id = 78001
+					portrait_path = "gfx/hoi4tgw_portraits/FRA/army_generals/FRA_henri_berthelot.dds" 
+					traits = { 
+						trickster
+					} 
+					skill = 5
+					attack_skill = 2
+					defense_skill = 1
+					planning_skill = 3
+					logistics_skill = 2
+				}
+	  		}			
+		}
+
+		ai_will_do = { factor = 1 }
+		cost = 10
+		x = 13
+		y = 6
+	}
+
 	focus = {
 		id = FRA_ww1_help_serbia
 		prerequisite = { focus = FRA_ww1_support_romania }
