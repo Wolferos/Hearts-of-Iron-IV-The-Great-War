@@ -2732,6 +2732,19 @@ focus_tree = {
 		y = 1
 	}
 
+	focus = {
+		id = ENG_ww1_TwoForOne # Open Beta 0.8.1 Two For One
+		prerequisite = { focus=ENG_ww1_newnavalcanons_1 }
+		available = { }
+		icon = GFX_focus_ger_accept_british_naval_dominance
+
+		completion_reward = { add_tech_bonus={ name=newnavalcanons_1_bonus bonus=0.25 uses=1 category=naval_doctrine } }
+
+		ai_will_do = { factor = 10 }
+		cost = 10
+		x = 42
+		y = 2
+	}
 
 	focus = {
 		id = ENG_ww1_dreadnought_effort
@@ -2743,16 +2756,17 @@ focus_tree = {
 		ai_will_do = { factor=1 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		ai_will_do = { factor = 10 }
 		cost = 10
-		x = 43
+		x = 44
 		y = 2
 	}
 
 	focus = {
 		id = ENG_ww1_newnavalcanons_2
+		prerequisite = { focus=ENG_ww1_TwoForOne }
 		prerequisite = { focus=ENG_ww1_dreadnought_effort }
 		available = { date > 1912.1.1 }
 		icon = GFX_goal_generic_army_artillery
-		completion_reward = { navy_experience=15 add_tech_bonus={ name=newnavalcanons_2_bonus bonus=0.15 uses=1 category=naval_doctrine } }
+		completion_reward = { navy_experience=15 }
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 43
