@@ -1204,6 +1204,119 @@ focus_tree = {
 			factor = 1
 		}
 	}
+
+
+    focus = {
+        id = RUS_ww1_CaucasusFocus # Caucasus Focus # Open Beta 0.8.1
+        prerequisite = { focus=RUS_ww1_diplomatic_effort }
+        icon = GFX_goal_generic_occupy_states_ongoing_war
+
+        completion_reward = { add_political_power = 50 }
+
+        ai_will_do = { factor = 1 }
+        cost = 10
+        x = 7
+        y = 1
+    }
+
+    focus = {
+        id = RUS_ww1_BakuInvest # Invest in Baku # Open Beta 0.8.1
+        icon = GFX_goal_generic_oil_refinery
+        prerequisite = {
+            focus = RUS_ww1_CaucasusFocus
+        }
+        available = {
+            controls_state = 229
+        }
+        x = 7
+        y = 6
+
+        ai_will_do = { factor = 1 }
+        cost = 10
+
+        completion_reward = {
+            229 = {
+                add_resource = {
+                    type = oil
+                    amount = 38
+                }
+            }
+        }
+    }
+
+    focus = {
+        id = RUS_ww1_RussoTurkishBorder # Strengthen Russo-Turkish Border # Open Beta 0.8.1
+        icon = GFX_goal_generic_construct_military
+        prerequisite = {
+            focus = RUS_ww1_BakuInvest
+        }
+
+        ai_will_do = { factor = 0 }
+        available = {
+            controls_state = 230
+            controls_state = 231
+        }
+        x = 8
+        y = 7
+        cost = 10
+
+        completion_reward = {
+            230 = {
+                add_building_construction = {
+                    type = trench
+                    level = 1
+                    province = 10472
+                    instant_build = yes
+                }
+                add_building_construction = {
+                    type = trench
+                    level = 1
+                    province = 3564
+                    instant_build = yes
+                }
+                add_building_construction = {
+                    type = trench
+                    level = 1
+                    province = 12320
+                    instant_build = yes
+                }
+            }
+            231 = {
+                add_building_construction = {
+                    type = trench
+                    level = 1
+                    province = 7454
+                    instant_build = yes
+                }
+                add_building_construction = {
+                    type = trench
+                    level = 1
+                    province = 10403
+                    instant_build = yes
+                }
+            }
+        }
+    }
+
+    focus = {
+        id = RUS_ww1_AzerbaijanisRights # Recognize Azerbaijanis Rights # Open Beta 0.8.1
+        icon = GFX_focus_generic_treaty
+        prerequisite = { focus=RUS_ww1_BakuInvest }
+        prerequisite = { focus=RUS_ww1_right_of_the_people }
+        available = {
+            controls_state = 229
+        }
+        x = 6
+        y = 7
+        ai_will_do = { factor = 0 }
+        cost = 10
+
+        completion_reward = {
+            add_manpower = 15000
+            229 = { add_core_of = AZR }
+        }
+    }
+
 	focus = {
         id = RUS_ww1_restore_russia_glory
         icon = GFX_hoi4tgw_greattsar
@@ -1214,20 +1327,22 @@ focus_tree = {
 			has_war_with = GER
             controls_state = 188
 		}
-		x = 8
+		x = 9
         y = 6
         cost = 10
+        ai_will_do = { factor = 0 }
         completion_reward = {
-            add_political_power = 200
+            add_political_power = 170
         }
     }
 
 	focus = {
         id = RUS_ww1_avenge_fall_constantinople
         icon = GFX_hoi4tgw_orthodoxy_triumphant
-        prerequisite = {
-            focus = RUS_ww1_restore_russia_glory
-        }
+
+        prerequisite = { focus=RUS_ww1_restore_russia_glory }
+        prerequisite = { focus=RUS_ww1_RussoTurkishBorder }
+
         available = {
 			RUS = { controls_state = 341 }
 			any_country = {
@@ -1235,9 +1350,10 @@ focus_tree = {
 				controls_state = 341
 			}
 		}
-		x = 8
-        y = 7
+		x = 9
+        y = 8
         cost = 10
+        ai_will_do = { factor = 0 }
 		completion_reward = {
                add_state_claim = 49
                add_state_claim = 339
