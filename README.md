@@ -1,15 +1,13 @@
 # Hearts of Iron IV: The Great War
 
 ----------
-**We wish you a Happy New Year!!!**
-
 [**Donwload on Steam**](http://steamcommunity.com/sharedfiles/filedetails/?id=699709023) or [**Donwload on Mod DB**](http://www.moddb.com/mods/hearts-of-iron-iv-the-great-war1)
 
 **Status:** Open Beta
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.8 "Persian Campaign"
+**Current Version:** 0.9
 
 **Compatible with:** Hearts of Iron IV "Fork" (with or without Paid DLC)
 
