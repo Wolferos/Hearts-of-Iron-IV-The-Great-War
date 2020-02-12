@@ -15,7 +15,7 @@
 - English
 - French (Integrated in the Mod)
 - Russian (Already in the Mod thanks to the [Community of Strategium.ru](https://www.strategium.ru))
-- Japanese ([+JP: The Great War](http://steamcommunity.com/sharedfiles/filedetails/?id=854550667&searchtext=%2BJP%3A+The+Great+War))
+- Japanese ([+JP: The Great War](https://steamcommunity.com/sharedfiles/filedetails/?id=854550667) | [+JP: The Great War NEW](https://steamcommunity.com/sharedfiles/filedetails/?id=1886322088))
 - Polish ([The Great War: Polskie Tłumaczenie](http://steamcommunity.com/sharedfiles/filedetails/?id=1132448900))
 - Turkish ([Türkçe Yama](http://paradoxfan.com/forum/index.php?topic=51341.0))
 - Chinese ([Current Status](http://steamcommunity.com/workshop/filedetails/discussion/699709023/1698293068432235972))
