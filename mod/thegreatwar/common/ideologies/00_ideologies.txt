@@ -12,8 +12,6 @@ ideologies = {
 		
 			socialism = {
 			}
-			moderatism = {
-			}
 		}
 		
 		dynamic_faction_names = {
@@ -28,6 +26,7 @@ ideologies = {
 		color = { 0 0 255 }
 		
 		rules = {
+			can_create_collaboration_government = no
 			can_declare_war_on_same_ideology = no
 			can_force_government = yes
 			can_send_volunteers = no
@@ -35,11 +34,12 @@ ideologies = {
 			can_lower_tension = yes
 			can_only_justify_war_on_threat_country = yes
 			can_guarantee_other_ideologies = yes
-			can_occupy_non_war = no
 		}
 		
-		war_impact_on_world_tension = -1.0
-		faction_impact_on_world_tension = -0.1
+		can_host_government_in_exile = yes
+		
+		war_impact_on_world_tension = 0.25		# no major danger, remember this this the 40s!
+		faction_impact_on_world_tension = 0.1
 		
 		modifiers = {
 
@@ -51,8 +51,11 @@ ideologies = {
 			lend_lease_tension = 0.50
 			send_volunteers_tension = 0.50
 			guarantee_tension = 0.25
-			take_states_cost_factor = 0.25
 			annex_cost_factor = 0.5
+			civilian_intel_to_others = 20.0
+			army_intel_to_others = 5.0
+			navy_intel_to_others = 20.0
+			airforce_intel_to_others = 5
 		}
 		
 		faction_modifiers = {
@@ -101,11 +104,17 @@ ideologies = {
 			can_force_government = no
 			can_send_volunteers = yes
 			can_puppet = yes
-			can_occupy_non_war = yes
 		}
+		
+		can_collaborate = yes
 		
 		modifiers = {
 			puppet_cost_factor = -0.3
+			civilian_intel_to_others = 10.0
+			army_intel_to_others = 7.5
+			navy_intel_to_others = 12.5
+			airforce_intel_to_others = 7.5
+			hidden_modifier = { join_faction_tension = -0.1 }
 		}
 		
 		faction_modifiers = {
@@ -148,11 +157,17 @@ ideologies = {
 			can_force_government = no
 			can_send_volunteers = yes
 			can_puppet = yes
-			can_occupy_non_war = no
 		}
+		
+		can_collaborate = yes
 		
 		modifiers = {
 			justify_war_goal_when_in_major_war_time = -0.80
+			civilian_intel_to_others = 15.0
+			army_intel_to_others = 10.0
+			navy_intel_to_others = 10.0
+			airforce_intel_to_others = 10.0
+			hidden_modifier = { join_faction_tension = -0.1 }
 		}
 
 		ai_fascist = yes # uses the fascist AI behaviour
@@ -168,7 +183,14 @@ ideologies = {
 			oligarchism  = {
 			}
 			
+			moderatism = {
+			}
+			
 			centrism = {
+			}
+			
+			anarchism = {
+			
 			}
 			
 			autocracy = {
@@ -206,12 +228,14 @@ ideologies = {
 			guarantee_tension = 0.4
 			drift_defence_factor = -0.3	
 			send_volunteers_tension = 0.15
+			civilian_intel_to_others = 20.0
+			army_intel_to_others = 10.0
+			navy_intel_to_others = 20.0
+			airforce_intel_to_others = 10.0
 		}
 		
 		faction_modifiers = {
 		}
-
-		can_be_boosted = yes
 
 		ai_neutral = yes # 
 	}

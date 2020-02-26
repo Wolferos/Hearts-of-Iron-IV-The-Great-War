@@ -9,17 +9,36 @@ ideas={
 	army_chief={
 			SWI_theophil_sprecher_von_bernegg={ allowed={ tag=SWI } traits={ army_chief_defensive_1 } ai_will_do={ factor=1 } }
 			}
-	air_chief={
-			SWI_marc_schleppy={ allowed={ tag=SWI } traits={ air_chief_night_operations_1 } ai_will_do={ factor=1 } }
-			}
-	high_command={
-			SWI_albert_muller={ allowed={ tag=SWI } traits={ air_strategic_bombing_1 } ai_will_do={ factor=1 } }
-			SWI_arnold_isler={ allowed={ tag=SWI } traits={ air_tactical_bombing_1 } ai_will_do={ factor=1 } }
-			SWI_theodor_real={ allowed={ tag=SWI } traits={ air_close_air_support_1 } ai_will_do={ factor=1 } }
-			SWI_walter_scherrer={ allowed={ tag=SWI } traits={ air_air_superiority_1 } ai_will_do={ factor=1 } }
-			SWI_alfred_audeoud={ allowed={ tag=SWI } traits={ army_entrenchment_1 } ai_will_do={ factor=1 } }
-			SWI_louis_henri_bornand={ allowed={ tag=SWI } traits={ army_logistics_1 } ai_will_do={ factor=1 } }
-			}
+	air_chief = {
+		SWI_marc_schleppy={ allowed={ tag=SWI } traits={ air_chief_night_operations_1 } ai_will_do={ factor=1 } }
+	}
+
+	high_command = {
+		SWI_albert_muller = {
+			ledger = air
+			allowed = { tag = SWI } traits={ air_strategic_bombing_1 } ai_will_do={ factor=1 }
+		}
+		SWI_arnold_isler = {
+			ledger = air
+			allowed = { tag = SWI } traits={ air_tactical_bombing_1 } ai_will_do={ factor=1 }
+		}
+		SWI_theodor_real = {
+			ledger = air
+			allowed = { tag = SWI } traits={ air_close_air_support_1 } ai_will_do={ factor=1 }
+		}
+		SWI_walter_scherrer = {
+			ledger = air
+			allowed = { tag = SWI } traits={ air_air_superiority_1 } ai_will_do={ factor=1 }
+		}
+		SWI_alfred_audeoud = {
+			ledger = army
+			allowed = { tag = SWI } traits={ army_entrenchment_1 } ai_will_do={ factor=1 }
+		}
+		SWI_louis_henri_bornand = {
+			ledger = army
+			allowed = { tag = SWI } traits={ army_logistics_1 } ai_will_do={ factor=1 }
+		}
+	}
 	aircraft_manufacturer={
 			designer = yes 
 			naval_aircraft_manufacturer={ allowed={ TAG=SWI } research_bonus={ air_equipment=0.10 } traits={ naval_aircraft_manufacturer } }

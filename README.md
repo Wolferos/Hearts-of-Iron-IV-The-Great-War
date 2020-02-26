@@ -7,9 +7,9 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.9
+**Current Version:** 0.9.1
 
-**Compatible with:** Hearts of Iron IV "Fork" (with or without Paid DLC)
+**Compatible with:** Hearts of Iron IV "Husky" (with or without Paid DLC)
 
 **Supported Languages:**
 - English
