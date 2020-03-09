@@ -1415,7 +1415,20 @@ focus_tree = {
 		prerequisite = { focus = HUN_ww1_flexible_navy focus = HUN_ww1_large_navy }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_navy_submarine
-		completion_reward = { add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1 technology=ww1_submarine2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1_mtg technology=ww1_submarine2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1 technology=ww1_submarine2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 34
@@ -1427,7 +1440,20 @@ focus_tree = {
 		prerequisite = { focus = HUN_ww1_flexible_navy focus = HUN_ww1_large_navy }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_navy_cruiser
-		completion_reward = { add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0 technology=ww1_light_cruiser1 technology=ww1_light_cruiser2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0_mtg technology=ww1_light_cruiser1_mtg technology=ww1_light_cruiser2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0 technology=ww1_light_cruiser1 technology=ww1_light_cruiser2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 36
@@ -1439,7 +1465,20 @@ focus_tree = {
 		prerequisite = { focus = HUN_ww1_submarine_effort }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_wolf_pack
-		completion_reward = { add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0 technology=ww1_destroyer1 technology=ww1_destroyer2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0_mtg technology=ww1_destroyer1_mtg technology=ww1_destroyer2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0 technology=ww1_destroyer1 technology=ww1_destroyer2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 34
@@ -1451,7 +1490,20 @@ focus_tree = {
 		prerequisite = { focus = HUN_ww1_cruiser_effort }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_navy_battleship
-		completion_reward = { navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0 technology=ww1_battlecruiser1 technology=ww1_battlecruiser2 technology=early_battleship technology=seaplane_carrier }  }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				 navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0_mtg technology=ww1_battlecruiser1_mtg technology=ww1_battlecruiser2_mtg technology=early_battleship_mtg technology=seaplane_carrier_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				 navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0 technology=ww1_battlecruiser1 technology=ww1_battlecruiser2 technology=early_battleship technology=seaplane_carrier }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 36
