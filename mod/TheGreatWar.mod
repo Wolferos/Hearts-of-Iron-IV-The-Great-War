@@ -1,5 +1,6 @@
 name="Hearts of Iron IV: The Great War"
 path="/home/romain/.local/share/Paradox Interactive/Hearts of Iron IV/mod/thegreatwar"
+replace_path="history/states"
 tags={
 	"National Focuses"
 	"Map"
