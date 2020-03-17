@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.9.1
+**Current Version:** 0.9.2
 
 **Compatible with:** Hearts of Iron IV "Husky" (with or without Paid DLC)
 
@@ -102,6 +102,7 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - Comrader
    - Veydem
    - Sgerhardt
+   - Von Thoma
 
 ----------
 [Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow
