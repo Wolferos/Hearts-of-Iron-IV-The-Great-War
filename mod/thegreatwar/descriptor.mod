@@ -1,5 +1,4 @@
 name="Hearts of Iron IV: The Great War"
-path="/home/romain/.local/share/Paradox Interactive/Hearts of Iron IV/mod/thegreatwar"
 replace_path="history/states"
 tags={
 	"National Focuses"
@@ -14,6 +13,7 @@ tags={
 	"Technologies"
 }
 picture="tgw_picture.png"
-version="0.9.1"
+version="0.9.2a"
 supported_version="1.9.*"
+path="/home/romain/.local/share/Paradox Interactive/Hearts of Iron IV/mod/thegreatwar"
 remote_file_id="699709023"
