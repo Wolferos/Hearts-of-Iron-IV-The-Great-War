@@ -9,10 +9,14 @@ set_stability = 0.7
 set_war_support = 0.80
 set_convoys = 300
 
-create_faction = entente # France is now Leader of the Entente | Since Beta 0.2
-
-add_to_faction = FRA
-add_to_faction = RUS
+if = {
+	limit = {
+		has_start_date < 1919.01.01
+	}
+	create_faction = entente # France is the Leader of the Entente
+	add_to_faction = FRA
+	add_to_faction = RUS
+}
 
 puppet = MOR
 puppet = TUN
