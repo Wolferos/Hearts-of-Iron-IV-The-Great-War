@@ -9,10 +9,14 @@ set_stability = 0.7
 set_war_support = 0.80
 set_convoys = 300
 
-create_faction = entente # France is now Leader of the Entente | Since Beta 0.2
-
-add_to_faction = FRA
-add_to_faction = RUS
+if = {
+	limit = {
+		has_start_date < 1919.01.01
+	}
+	create_faction = entente # France is the Leader of the Entente
+	add_to_faction = FRA
+	add_to_faction = RUS
+}
 
 puppet = MOR
 puppet = TUN
@@ -625,10 +629,23 @@ create_equipment_variant={ name="Aventurier Class" type=destroyer_1910 parent_ve
 	set_global_flag = kis_secondbalkanwar_victory
 	set_global_flag = kis_roland_garros
 	set_global_flag = kis_xinhaire_end
-
 	set_global_flag = kingdom_montenegro_proclaimed
 	set_global_flag = kis_start_1914
+}
 
+1919.1.1 = {
 
+	# Global Flags for 1919 Start Up
 
+	set_global_flag = kis_panamacanal
+	set_global_flag = kis_treaty_of_versailles
+	set_global_flag = kis_spanishflu
+
+	ROM = {
+		set_country_flag = carol_dead
+	}
+
+    AUH = {
+		set_country_flag = emperor_franz_dead
+	}
 }
