@@ -16,7 +16,7 @@ set_popularities = {
     neutrality = 60
 }
 
-add_ideas=neutrality_idea 
+# add_ideas=neutrality_idea 
 
 set_stability=0.75
 
@@ -27,3 +27,32 @@ create_corps_commander={  name = "Usubbekov" id=8004 portrait_path="gfx/generals
 create_corps_commander={  name = "Vekilov" id=8005 portrait_path="gfx/generals/AZB_vekilov.tga" traits={   } skill=2 }
 create_corps_commander={  name = "Novruzov" id=8006 portrait_path="gfx/generals/AZB_novruzov.tga" traits={   } skill=2 }
 create_corps_commander={  name = "Selimov" id=8007 portrait_path="gfx/generals/AZB_selimov.tga" traits={   } skill=3 }
+
+
+if = {
+	limit = {
+		has_start_date > 1919.01.01
+	}
+
+	# Azerbaijan Democratic Republic
+	create_country_leader = {
+		name = "Nasib Yusifbeyli" 
+		desc = AZB_nasib_yusifbeyli_DESC 
+		picture = "gfx/hoi4tgw_portraits/AZB/country_leaders/AZB_nasib_yusifbeyli.dds"
+		expire = "1935.1.1" 
+		ideology = conservatism
+		traits = { }
+
+	}
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1918.5.28"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 80
+	    communism = 10
+	    neutrality = 10
+	}
+}

@@ -52,7 +52,7 @@ set_popularities = {
     neutrality = 60
 }
 
-add_ideas=neutrality_idea 
+# add_ideas=neutrality_idea 
 set_stability=0.75
 set_convoys=10
 1914.1.1 = { oob="ARM_1914" }
@@ -137,7 +137,45 @@ set_convoys=10
 		tech_logistics_company=1
 		#KiS #tech_signal_company=1
 		} }
+
+
 create_country_leader={  name="Avetis Aharonyan" desc=ARM_avetis_aharonyan_DESC picture="gfx/leaders/ARM_avetis_aharonyan.dds" expire="1935.1.1" ideology=despotism traits={  } }
+
+
+if = {
+	limit = {
+		has_start_date > 1919.01.01
+	}
+	# https://en.wikipedia.org/wiki/Alexander_Khatisian
+	create_country_leader = {
+		name = "Alexander Khatisian" 
+		desc = ARM_alexander_khatisian_DESC 
+		picture = "gfx/hoi4tgw_portraits/ARM/country_leaders/ARM_alexander_khatisian.dds" 
+		expire = "1935.1.1" 
+		ideology = conservatism 
+		traits = { }
+	}
+
+
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1919.4.27"
+	    election_frequency = 24
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 84
+	    communism = 2
+	    neutrality = 14
+	}
+}
+
+
+
+
+
+
+
 create_corps_commander={  name = "Nazarpekian" id=4002 portrait_path="gfx/generals/ARM_nazarpekian.tga" traits={   } skill=3 }
 create_corps_commander={  name = "Tro" id=4003 portrait_path="gfx/generals/ARM_tro.tga" traits={   } skill=3 }
 create_corps_commander={  name = "Siligian" id=4004 portrait_path="gfx/generals/ARM_siligian.tga" traits={   } skill=2 }
