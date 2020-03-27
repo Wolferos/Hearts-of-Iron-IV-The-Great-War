@@ -169,5 +169,33 @@ create_country_leader={ name="Alfred Klahr" desc="POLITICS_ALFRED_KLAHR_DESC" pi
 create_corps_commander={ name="Karl Eglseer" portrait_path="gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds" traits={ trait_mountaineer trickster } skill=3 }
 
 }
-#
-#
+
+
+
+if = {
+	limit = {
+		has_start_date > 1919.01.01
+	}
+	# https://en.wikipedia.org/wiki/Alexander_Khatisian
+	create_country_leader = {
+		name = "Karl Renner" 
+		desc = POLITICS_KARL_RENNER_DESC 
+		picture = "gfx/hoi4tgw_portraits/AUS/country_leaders/AUS_karl_renner.dds" 
+		expire = "1935.1.1" 
+		ideology = conservatism 
+		traits = { }
+	}
+
+
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1918.10.30"
+	    election_frequency = 36
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 84
+	    communism = 2
+	    neutrality = 14
+	}
+}
