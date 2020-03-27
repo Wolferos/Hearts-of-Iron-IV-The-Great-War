@@ -484,7 +484,7 @@
 	focus = {
 		id = POL_interwar_ger_friend
 		prerequisite = { focus = POL_interwar_WesternPolicy }
-		icon = GFX_goal_rhineland
+		icon = GFX_hoi4tgw_ironcross
 
 		completion_reward = {
 
@@ -525,7 +525,7 @@
 		id = POL_interwar_ger_ennemy
 		prerequisite = { focus = POL_interwar_InvadeBalticStates }
 		mutually_exclusive = { focus = POL_interwar_ger_friend2 }
-		icon = GFX_goal_rhineland
+		icon = GFX_focus_renounce_the_treaty_of_trianon
 
 		completion_reward = {
 
@@ -564,7 +564,7 @@
 		id = POL_interwar_Support_Fascism_in_Germany
 		prerequisite = { focus = POL_interwar_Sudetenland_Question }
 		prerequisite = { focus = POL_interwar_ProFascism }
-		icon = GFX_focus_generic_polish_deal
+		icon = GFX_focus_ger_reichskommisariats
 
 		completion_reward = {
 
@@ -601,7 +601,7 @@
 
 	focus = {
 		id = POL_interwar_War_with_CzechoslovakiaWAR # Cieszyn Silesia is not Czech
-		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+		icon = GFX_goal_generic_demand_territory
 		prerequisite = { focus = POL_interwar_War_with_Czechoslovakia }
 		x = 6
 		y = 4
@@ -833,7 +833,7 @@
 
 	focus = {
 		id = POL_interwar_Polish_Lithuanian_Commonwealth_Offensive
-		icon = GFX_hoi4tgw_poland
+		icon = GFX_goal_demand_sudetenland
 		prerequisite = { focus = POL_interwar_Polish_Lithuanian_Commonwealth_Legacy }
 		x = 15
 		y = 8
@@ -928,7 +928,7 @@
 
 	focus = {
 		id = POL_interwar_InvadeBalticStates
-		icon = GFX_focus_generic_strike_at_democracy1
+		icon = GFX_focus_eng_move_to_secure_the_dominions
 		prerequisite = { focus = POL_interwar_Miedzymorze }
 		x = 11
 		y = 5
@@ -945,7 +945,7 @@
 
 	focus = {
 		id = POL_interwar_Balkans
-		icon = GFX_focus_generic_strike_at_democracy1
+		icon = GFX_goal_generic_defence
 		prerequisite = { focus = POL_interwar_Miedzymorze }
 		x = 13
 		y = 5
@@ -962,7 +962,7 @@
 
 	focus = {
 		id = POL_interwar_defy_romania
-		icon = GFX_focus_hun_elect_a_king
+		icon = GFX_focus_generic_manpower
 		prerequisite = { focus = POL_interwar_Balkans }
 
 		completion_reward = {
@@ -978,7 +978,7 @@
 
 	focus = {
 		id = POL_interwar_yug_friend
-		icon = GFX_focus_hun_elect_a_king
+		icon = GFX_focus_invite_yugoslavia
 		prerequisite = { focus = POL_interwar_defy_romania }
 
 		completion_reward = {
@@ -994,7 +994,7 @@
 
 	focus = {
 		id = POL_interwar_greece
-		icon = GFX_focus_hun_elect_a_king
+		icon = GFX_goal_molotov_ribbentrop_pact
 		prerequisite = { focus = POL_interwar_Balkans }
 
 		completion_reward = {
@@ -1008,16 +1008,26 @@
 		y = 8
 	}
 
+
 	focus = {
 		id = POL_interwar_hun
-		icon = GFX_focus_hun_elect_a_king
+		icon = GFX_goal_generic_fortify_city
 		prerequisite = { focus = POL_interwar_Balkans }
 
 		completion_reward = {
-
-			add_opinion_modifier = { 
-				target = HUN
-				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			664 = {
+				add_building_construction = {
+					type = bunker
+					province = 6573
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 11679
+					level = 1
+					instant_build = yes
+				}
 			}
 		}
 
@@ -1026,7 +1036,6 @@
 		x = 11
 		y = 6
 	}
-
 
 
 	focus = {
@@ -1047,8 +1056,28 @@
 	}
 
 	focus = {
+		id = POL_interwar_hun_ennemy
+		icon = GFX_hoi4tgw_knifeintheback
+		prerequisite = { focus = POL_interwar_hun }
+		mutually_exclusive = { focus = POL_interwar_hun_friend }
+
+		completion_reward = {
+
+			add_opinion_modifier = { 
+				target = HUN
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 12
+		y = 7
+	}
+
+	focus = {
 		id = POL_interwar_Vienna1683
-		icon = GFX_focus_hun_elect_a_king
+		icon = GFX_focus_generic_strike_at_democracy1
 		prerequisite = { focus = POL_interwar_hun_friend }
 		prerequisite = { focus = POL_interwar_ger_friend2 }
 
@@ -1068,7 +1097,7 @@
 
 	focus = {
 		id = POL_interwar_Constantinople
-		icon = GFX_focus_hun_elect_a_king
+		icon = GFX_goal_generic_secret_weapon
 		prerequisite = { focus = POL_interwar_Vienna1683 focus = POL_interwar_greece focus = POL_interwar_Polish_Lithuanian_Commonwealth_Offensive }
 
 		completion_reward = {
@@ -1092,25 +1121,6 @@
 		y = 9
 	}
 
-	focus = {
-		id = POL_interwar_hun_ennemy
-		icon = GFX_focus_hun_elect_a_king
-		prerequisite = { focus = POL_interwar_hun }
-		mutually_exclusive = { focus = POL_interwar_hun_friend }
-
-		completion_reward = {
-
-			add_opinion_modifier = { 
-				target = HUN
-				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
-			}
-		}
-
-		ai_will_do = { factor = 0 }
-		cost = 10
-		x = 12
-		y = 7
-	}
 
 
 
@@ -1431,7 +1441,7 @@
 		id = POL_interwar_PolishArmy
 		icon = GFX_goal_generic_army_doctrines
 		prerequisite = { focus = POL_interwar_Small_Constitution_of_1919 }
-		x = 25
+		x = 24
 		y = 1
 		cost = 10
 
@@ -1443,11 +1453,117 @@
 	}
 
 	focus = {
+		id = POL_interwar_trenchwarfare
+		prerequisite = { focus = POL_interwar_PolishArmy }
+		icon = GFX_goal_generic_military_sphere
+
+		completion_reward = { add_tech_bonus={ name=trenchwarfare_bonus bonus=0.15 uses=1 technology=support_weapons technology=support_weapons2 technology=support_weapons3 } }
+		ai_will_do = { factor = 1 }
+		cost = 10
+		x = 23
+		y = 2
+	}
+
+	focus = {
+		id = POL_interwar_gasmask_focus
+		prerequisite = { focus = POL_interwar_trenchwarfare }
+
+		icon = GFX_hoi4tgw_gasmask
+		completion_reward = { add_tech_bonus={ name=gasmask_bonus bonus=0.15 uses=1 technology=infantry_gasmask technology=chemical_research2 technology=chemical_research3 } }
+		ai_will_do = { factor = 1 }
+		cost = 10
+		x = 22
+		y = 3
+	}
+
+
+
+	focus = {
+		id = POL_interwar_Polish_Artilley
+		icon = GFX_goal_generic_army_artillery2
+		prerequisite = { focus = POL_interwar_gasmask_focus }
+		
+		x = 22
+		y = 6
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+
+		completion_reward = {
+
+		}
+	}
+
+	focus = {
+		id = POL_interwar_Cavalry
+		icon = GFX_goal_generic_cavalry
+		prerequisite = { focus = POL_interwar_Polish_Artilley }
+		
+		x = 21
+		y = 7
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = POL_interwar_modernising_the_cavalry
+				bonus = 1.5
+				uses = 1
+				category = motorized_equipment
+			}
+		}
+	}
+
+	focus = {
+		id = POL_interwar_motorization_focus
+
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = POL_interwar_Cavalry }
+		x = 21
+		y = 8
+		cost = 10
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = pol_mech_army_bonus
+				bonus = 0.2
+				uses = 1
+				technology = early_motorised
+				technology = ww1_ambulance2
+			}
+		}
+	}
+
+	focus = {
+		id = POL_interwar_Polish_Tank
+		icon = GFX_hoi4tgw_renaultft
+		prerequisite = { focus = POL_interwar_Polish_Artilley }
+		x = 23
+		y = 8
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		completion_reward = { add_tech_bonus={ name=armor_bonus bonus=0.15 uses=2 category=armor } }
+	}
+
+	focus = {
 		id = POL_interwar_Polish_GroundArmy # The New Polish Legions
 		icon = GFX_goal_generic_special_forces
-		prerequisite = { focus = POL_interwar_PolishArmy }
+		prerequisite = { focus = POL_interwar_Polish_Artilley }
 		x = 24
-		y = 2
+		y = 7
 		cost = 10
 
 		ai_will_do = {
@@ -1460,27 +1576,10 @@
 	}
 
 	focus = {
-		id = POL_interwar_Restore_The_Polish_Navy # Restore The Polish Navy
-		icon = GFX_goal_generic_build_navy
-		prerequisite = { focus = POL_interwar_PolishArmy }
-		x = 26
-		y = 2
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		completion_reward = {
-			navy_experience = 25
-		}
-	}
-
-	focus = {
 		id = POL_interwar_PolishAirForce # Polish Air Force
 		icon = GFX_goal_generic_build_airforce
 		prerequisite = { focus = POL_interwar_PolishArmy }
-		x = 25
+		x = 24
 		y = 3
 		cost = 10
 
@@ -1494,11 +1593,41 @@
 	}
 
 	focus = {
+		id = POL_interwar_AirBase
+		icon = GFX_goal_generic_air_production
+		prerequisite = { focus = POL_interwar_PolishAirForce }
+		x = 24
+		y = 4
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				prioritize = { 10 }
+				limit = {
+					free_building_slots = {
+						building = air_base
+						size > 1
+					}
+				}
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}			
+		}
+	}
+
+	focus = {
 		id = POL_interwar_FormEskadra # Form Eskadra
 		icon = GFX_goal_generic_air_doctrine
-		prerequisite = { focus = POL_interwar_PolishAirForce }
+		prerequisite = { focus = POL_interwar_AirBase }
 		x = 25
-		y = 4
+		y = 5
 		cost = 10
 
 		ai_will_do = {
@@ -1512,8 +1641,8 @@
 		id = POL_interwar_KosciuszkoSquadron # Kościuszko Squadron
 		icon = GFX_goal_generic_air_fighter2
 		prerequisite = { focus = POL_interwar_FormEskadra }
-		x = 24
-		y = 5
+		x = 25
+		y = 6
 		cost = 10
 
 		ai_will_do = {
@@ -1526,14 +1655,14 @@
 	}
 
 	focus = {
-		id = POL_ww1_bomber_focus
+		id = POL_interwar_bomber_focus
 		icon = GFX_goal_generic_air_bomber
 
-		prerequisite = { focus = POL_interwar_FormEskadra }
+		prerequisite = { focus = POL_interwar_AirBase }
 		completion_reward = { add_tech_bonus={ name=bomber_bonus bonus=0.15 uses=1 category=tactical_bomber } }
 		ai_will_do = { factor = 1 }
 		cost = 10
-		x = 26
+		x = 23
 		y = 5
 		cost = 10
 	}
@@ -1543,9 +1672,138 @@
 
 
 
+	focus = {
+		id = POL_interwar_Restore_The_Polish_Navy # Restore The Polish Navy
+		icon = GFX_goal_generic_build_navy
+		prerequisite = { focus = POL_interwar_PolishArmy }
+		x = 25
+		y = 2
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		completion_reward = {
+			navy_experience = 25
+		}
+	}
+
+	focus = {
+		id = POL_interwar_Shipyard
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus = POL_interwar_Restore_The_Polish_Navy }
+		
+		x = 26
+		y = 3
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		complete_tooltip = {
+			random_state = {
+				limit = { has_state_flag = POL_interwar_shipyard }
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				prioritize = { 85 }
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+				set_state_flag = POL_interwar_shipyard_1
+			}
+			#Add 3 Dockyards at Gdansk			
+		}
+	}
 
 
 
+	focus = {
+		id = POL_interwar_improved_screen_ships
+		icon = GFX_goal_generic_navy_cruiser
+	 	prerequisite = { focus = POL_interwar_Shipyard }
+		x = 26
+		y = 7
+		cost = 10
+
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		completion_reward = {
+			navy_experience = 25
+			add_tech_bonus = {
+				name = POL_interwar_improved_screen_ships
+				bonus = 0.5
+				uses = 2
+				category= dd_tech
+				category= cl_tech
+			}
+		}
+	}
+
+
+	focus = {
+		id = POL_interwar_submarine_effort
+		prerequisite = { focus = POL_interwar_Shipyard }
+		icon = GFX_goal_generic_navy_submarine
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1_mtg technology=ww1_submarine2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1 technology=ww1_submarine2 }
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = 27
+		y = 4
+	}
+
+
+	focus = {
+		id = POL_interwar_Marines
+		prerequisite = { focus = POL_interwar_improved_screen_ships focus = POL_interwar_Polish_GroundArmy }
+
+		icon = GFX_goal_generic_amphibious_assault
+
+		completion_reward = { navy_experience=25 }
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 25
+		y = 8
+	}
 
 
 
@@ -3289,7 +3547,7 @@
 	}
 
 	focus = {
-		id = POL_the_between_the_seas_concept
+		id = POL_the_between_the_seas_concept_2
 		icon = GFX_goal_anschluss
 		available = {
 			is_puppet = no
@@ -3320,7 +3578,7 @@
 	focus = {
 		id = POL_treaty_with_lithuania
 		icon = GFX_goal_generic_major_alliance
-		prerequisite = { focus = POL_the_between_the_seas_concept }
+		prerequisite = { focus = POL_the_between_the_seas_concept_2 }
 
 		available = {
 			is_faction_leader = yes
@@ -3348,7 +3606,7 @@
 
 		x = 0
 		y = 1
-		relative_position_id = POL_the_between_the_seas_concept
+		relative_position_id = POL_the_between_the_seas_concept_2
 		cost = 10
 
 		ai_will_do = {
