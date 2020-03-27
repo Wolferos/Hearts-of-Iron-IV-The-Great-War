@@ -31,10 +31,8 @@
 			factor = 10
 		}
 
-		available_if_capitulated = yes
-
 		completion_reward = {
-			add_political_power = 15
+			add_stability = 0.1
 		}
 	}
 
@@ -67,7 +65,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 1
 		}
 
 		available_if_capitulated = yes
@@ -83,7 +81,7 @@
 		prerequisite = { focus = POL_interwar_ProPilsudski }
 		x = 2
 		y = 5
-		cost = 10
+		cost = 1
 
 		ai_will_do = {
 			factor = 10
@@ -105,7 +103,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 1
 		}
 
 		completion_reward = {
@@ -123,7 +121,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 1
 		}
 
 		available_if_capitulated = yes
@@ -142,7 +140,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 1
 		}
 
 		available_if_capitulated = yes
@@ -161,7 +159,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 1
 		}
 
 		available_if_capitulated = yes
@@ -181,7 +179,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		available_if_capitulated = yes
@@ -200,7 +198,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		available_if_capitulated = yes
@@ -220,7 +218,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		available_if_capitulated = yes
@@ -248,7 +246,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		available_if_capitulated = yes
@@ -267,7 +265,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		available_if_capitulated = yes
@@ -302,7 +300,7 @@
 		prerequisite = { focus = POL_interwar_RespectPluralism }
 		x = 0
 		y = 7
-		cost = 10
+		cost = 0
 
 		ai_will_do = {
 			factor = 10
@@ -324,7 +322,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 1
 		}
 
 		available_if_capitulated = yes
@@ -362,7 +360,49 @@
 	}
 
 
+	focus = {
+		id = POL_interwar_BoostInfra
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = POL_interwar_InvestCivilianStructure }
+		x = 1
+		y = 4
+		cost = 10
 
+		ai_will_do = {
+			factor = 1
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = infrastructure
+										size > 0
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = POL_fill_the_railways_gaps_1
+			}
+		}
+	}
 
 
 
@@ -464,6 +504,7 @@
 		id = POL_interwar_ger_friend2
 		prerequisite = { focus = POL_interwar_ger_friend }
 		prerequisite = { focus = POL_interwar_War_with_Czechoslovakia }
+		mutually_exclusive = { focus = POL_interwar_ger_ennemy }
 		icon = GFX_goal_rhineland
 
 		completion_reward = {
@@ -477,7 +518,27 @@
 		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 7
-		y = 5
+		y = 6
+	}
+
+	focus = {
+		id = POL_interwar_ger_ennemy
+		prerequisite = { focus = POL_interwar_InvadeBalticStates }
+		mutually_exclusive = { focus = POL_interwar_ger_friend2 }
+		icon = GFX_goal_rhineland
+
+		completion_reward = {
+
+			add_opinion_modifier = { 
+				target = GER
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 9
+		y = 6
 	}
 
 	focus = {
@@ -530,7 +591,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -547,7 +608,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -633,11 +694,12 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
-			add_political_power = 50
+			add_war_support = -0.05
+			add_manpower = 12000
 		}
 	}
 
@@ -706,7 +768,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -724,19 +786,19 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
-			add_political_power = 50
+			add_war_support = 0.1
 		}
 	}
 
 	focus = {
 		id = POL_interwar_SupportLatvianWarofLiberation # Help Latvia vs. Sov
 		icon = GFX_focus_secret_rearmament_shine
-		prerequisite = { focus = POL_interwar_Never_Trust_a_Russian }
-		x = 16
+		prerequisite = { focus = POL_interwar_EasternPolicy }
+		x = 21
 		y = 4
 		cost = 10
 
@@ -745,7 +807,7 @@
 		}
 
 		completion_reward = {
-			add_political_power = 50
+			add_war_support = 0.1
 		}
 	}
 
@@ -753,13 +815,14 @@
 	focus = {
 		id = POL_interwar_Polish_Lithuanian_Commonwealth_Legacy
 		icon = GFX_hoi4tgw_poland
+		mutually_exclusive = { focus = POL_interwar_FreeMarxistIdeas }
 		prerequisite = { focus = POL_interwar_Freedom_Struggles }
-		x = 15
+		x = 16
 		y = 5
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -777,7 +840,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -801,7 +864,11 @@
 		}
 
 		completion_reward = {
-			add_political_power = 50
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LIT
+				expire = 0
+			} 
 		}
 	}
 
@@ -827,7 +894,26 @@
 		icon = GFX_focus_generic_strike_at_democracy1
 		prerequisite = { focus = POL_interwar_LithuaniaCoup }
 		prerequisite = { focus = POL_interwar_War_with_Ukraine }
+		mutually_exclusive = { focus = POL_interwar_CeasefireWithLithuania }
 		x = 12
+		y = 4
+		cost = 10
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_interwar_CeasefireWithLithuania # IRL 29 November 1920
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = POL_interwar_LithuaniaCoup }
+		mutually_exclusive = { focus = POL_interwar_Miedzymorze }
+		x = 14
 		y = 4
 		cost = 10
 
@@ -849,7 +935,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -866,7 +952,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -875,20 +961,17 @@
 	}
 
 	focus = {
-		id = POL_interwar_yug
+		id = POL_interwar_defy_romania
 		icon = GFX_focus_hun_elect_a_king
 		prerequisite = { focus = POL_interwar_Balkans }
 
 		completion_reward = {
-
-			add_opinion_modifier = { 
-				target = HUN
-				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
-			}
+			POL = { add_opinion_modifier = { target = ROM modifier = balkan_strategy_bad } }
+			ROM = { add_opinion_modifier = { target = POL modifier = balkan_strategy_bad } }
 		}
 
 		ai_will_do = { factor = 0 }
-		cost = 10
+		cost = 0
 		x = 14
 		y = 6
 	}
@@ -896,14 +979,11 @@
 	focus = {
 		id = POL_interwar_yug_friend
 		icon = GFX_focus_hun_elect_a_king
-		prerequisite = { focus = POL_interwar_yug }
+		prerequisite = { focus = POL_interwar_defy_romania }
 
 		completion_reward = {
-
-			add_opinion_modifier = { 
-				target = HUN
-				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
-			}
+			POL = { add_opinion_modifier = { target = YUG modifier = balkan_strategy_good } }
+			YUG = { add_opinion_modifier = { target = POL modifier = balkan_strategy_good } }
 		}
 
 		ai_will_do = { factor = 0 }
@@ -918,11 +998,8 @@
 		prerequisite = { focus = POL_interwar_Balkans }
 
 		completion_reward = {
-
-			add_opinion_modifier = { 
-				target = HUN
-				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
-			}
+			POL = { add_opinion_modifier = { target = GRE modifier = balkan_strategy_good } }
+			GRE = { add_opinion_modifier = { target = POL modifier = balkan_strategy_good } }
 		}
 
 		ai_will_do = { factor = 0 }
@@ -959,11 +1036,8 @@
 		mutually_exclusive = { focus = POL_interwar_hun_ennemy }
 
 		completion_reward = {
-
-			add_opinion_modifier = { 
-				target = HUN
-				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
-			}
+			POL = { add_opinion_modifier = { target = HUN modifier = balkan_strategy_good } }
+			HUN = { add_opinion_modifier = { target = POL modifier = balkan_strategy_good } }
 		}
 
 		ai_will_do = { factor = 0 }
@@ -998,10 +1072,17 @@
 		prerequisite = { focus = POL_interwar_Vienna1683 focus = POL_interwar_greece focus = POL_interwar_Polish_Lithuanian_Commonwealth_Offensive }
 
 		completion_reward = {
-
-			add_opinion_modifier = { 
-				target = HUN
-				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			create_wargoal = {
+				type = take_state_focus
+				target = TUR
+				generator = { 341 }
+				expire = 0
+			}
+			create_wargoal = {
+				type = take_state_focus
+				target = TUK
+				generator = { 341 }
+				expire = 0
 			}
 		}
 
@@ -1047,7 +1128,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -1110,13 +1191,14 @@
 	focus = {
 		id = POL_interwar_FreeMarxistIdeas
 		icon = GFX_focus_eng_liberate_the_home_of_marx
+		mutually_exclusive = { focus = POL_interwar_Polish_Lithuanian_Commonwealth_Legacy }
 		prerequisite = { focus = POL_interwar_ThePeaceofRiga }
 		x = 18
 		y = 5
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -1133,7 +1215,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -1150,7 +1232,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -1167,7 +1249,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -1184,7 +1266,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -1202,7 +1284,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -1219,7 +1301,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -1236,7 +1318,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -1282,7 +1364,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -1299,7 +1381,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -1312,11 +1394,11 @@
 		icon = GFX_goal_tfv_strengthen_commonwealth_ties
 		prerequisite = { focus = POL_interwar_CeaseFireWhiteRussia }
 		x = 20
-		y = 4
+		y = 5
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -1330,11 +1412,11 @@
 		icon = GFX_focus_ger_great_red_menace
 		prerequisite = { focus = POL_interwar_CongressPoland }
 		x = 20
-		y = 5
+		y = 6
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 
 		completion_reward = {
@@ -1354,7 +1436,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 1
 		}
 
 		completion_reward = { add_tech_bonus = { name = land_doc_bonus bonus = 0.2 uses = 1 category = land_doctrine } }
@@ -1369,7 +1451,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 1
 		}
 
 		completion_reward = {
@@ -1386,7 +1468,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 1
 		}
 
 		completion_reward = {
@@ -1403,7 +1485,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 1
 		}
 
 		completion_reward = {
@@ -1420,7 +1502,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 1
 		}
 
 		completion_reward = { add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
@@ -1435,7 +1517,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 10
+			factor = 1
 		}
 
 		completion_reward = {
@@ -1449,12 +1531,32 @@
 
 		prerequisite = { focus = POL_interwar_FormEskadra }
 		completion_reward = { add_tech_bonus={ name=bomber_bonus bonus=0.15 uses=1 category=tactical_bomber } }
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 1 }
 		cost = 10
 		x = 26
 		y = 5
 		cost = 10
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	focus = {
