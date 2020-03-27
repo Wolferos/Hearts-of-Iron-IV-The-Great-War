@@ -23,7 +23,7 @@
 	focus = {
 		id = POL_ww1_Small_Constitution_of_1919 # Small Constitution of 1919 adopted and published in February 1919 # https://en.wikipedia.org/wiki/Small_Constitution_of_1919
 		icon = GFX_focus_generic_treaty
-		x = 13
+		x = 11
 		y = 0
 		cost = 10
 
@@ -39,8 +39,8 @@
 	}
 
 	focus = {
-		id = POL_ww1_PolitiqueInterne # Disband the Supreme People's Council
-		icon = GFX_focus_generic_military_mission
+		id = POL_ww1_DisbandCouncil # Disband the Supreme People's Council
+		icon = GFX_goal_generic_cavalry
 		prerequisite = { focus = POL_ww1_Small_Constitution_of_1919 }
 		x = 1
 		y = 1
@@ -58,11 +58,12 @@
 	}
 
 	focus = {
-		id = POL_ww1_PolitiqueExternePRINCIPALE #
-		icon = GFX_focus_generic_military_mission
-		prerequisite = { focus = POL_ww1_Small_Constitution_of_1919 }
-		x = 8
-		y = 1
+		id = POL_ww1_ProPilsudski
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = POL_ww1_DisbandCouncil }
+		mutually_exclusive = { focus = POL_ww1_AntiPilsudski }
+		x = 0
+		y = 2
 		cost = 10
 
 		ai_will_do = {
@@ -77,10 +78,931 @@
 	}
 
 	focus = {
+		id = POL_ww1_RestoreStateAuthority
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = POL_ww1_ProPilsudski }
+		x = 0
+		y = 4
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 15
+		}
+	}
+
+	focus = {
+		id = POL_ww1_TeachMilitaryValues
+		icon = GFX_focus_generic_little_entente
+		prerequisite = { focus = POL_ww1_RestoreStateAuthority }
+		x = 0
+		y = 5
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 15
+		}
+	}
+
+	focus = {
+		id = POL_ww1_Let_Poland_be_Poland
+		icon = GFX_focus_generic_support_the_left_right
+		prerequisite = { focus = POL_ww1_RestoreStateAuthority }
+		x = 1
+		y = 7
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 15
+		}
+	}
+
+	focus = {
+		id = POL_ww1_Cult_of_Personality
+		icon = GFX_focus_generic_military_academy
+		prerequisite = { focus = POL_ww1_Let_Poland_be_Poland }
+		x = 0
+		y = 8
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 15
+		}
+	}
+
+	focus = {
+		id = POL_ww1_ProFascism
+		icon = GFX_focus_ger_assassinate_mussolini
+		prerequisite = { focus = POL_ww1_Cult_of_Personality }
+		mutually_exclusive = { focus = POL_ww1_RefuseFascism }
+		x = 0
+		y = 9
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 15
+		}
+	}
+
+	focus = {
+		id = POL_ww1_RefuseFascism
+		icon = GFX_focus_focus_fra_fascist_threat
+		prerequisite = { focus = POL_ww1_Let_Poland_be_Poland }
+		mutually_exclusive = { focus = POL_ww1_ProFascism }
+		x = 2
+		y = 9
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 15
+		}
+	}
+
+
+
+
+
+
+
+
+
+	focus = {
+		id = POL_ww1_AntiPilsudski
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = POL_ww1_DisbandCouncil }
+		mutually_exclusive = { focus = POL_ww1_ProPilsudski }
+		x = 2
+		y = 2
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 15
+		}
+	}
+
+	focus = {
+		id = POL_ww1_ProDemocracy
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = POL_ww1_AntiPilsudski }
+		x = 2
+		y = 5
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 15
+		}
+	}
+
+	focus = {
+		id = POL_ww1_RespectPluralism
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = POL_ww1_ProDemocracy }
+		x = 2
+		y = 6
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 15
+		}
+	}
+
+	focus = {
+		id = POL_ww1_FriendUSA
+		icon = GFX_focus_chi_mission_to_the_us
+		prerequisite = { focus = POL_ww1_RespectPluralism }
+		x = 3
+		y = 7
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 15
+		}
+	}
+
+	focus = {
+		id = POL_ww1_InvestCivilianStructure
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = POL_ww1_AntiPilsudski focus = POL_ww1_ProPilsudski }
+		x = 1
+		y = 3
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 15
+		}
+	}
+
+
+
+
+
+
+	focus = {
+		id = POL_ww1_WesternPolicy
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = { focus = POL_ww1_Small_Constitution_of_1919 }
+		x = 4
+		y = 1
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_france_friend
+		prerequisite = { focus = POL_ww1_WesternPolicy }
+		icon = GFX_focus_chi_reach_out_to_france
+
+		completion_reward = {
+
+			add_opinion_modifier = { 
+				target = FRA
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 3
+		y = 4
+	}
+
+	focus = {
+		id = POL_ww1_AskFrenchSupport
+		prerequisite = { focus = POL_ww1_france_friend }
+		prerequisite = { focus = POL_ww1_Spa_Conference }
+		icon = GFX_hoi4tgw_marianne
+
+		completion_reward = {
+
+			add_opinion_modifier = { 
+				target = FRA
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 4
+		y = 5
+	}
+
+	focus = {
+		id = POL_ww1_british_friend
+		prerequisite = { focus = POL_ww1_WesternPolicy }
+		icon = GFX_focus_chi_british_cooperation
+
+		completion_reward = {
+
+			add_opinion_modifier = { 
+				target = ENG
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 5
+		y = 2
+	}
+
+	focus = {
+		id = POL_ww1_ger_friend
+		prerequisite = { focus = POL_ww1_WesternPolicy }
+		icon = GFX_goal_rhineland
+
+		completion_reward = {
+
+			add_opinion_modifier = { 
+				target = GER
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 7
+		y = 2
+	}
+
+	# About Polish-Czechoslovak War
+	focus = {
+		id = POL_ww1_War_with_Czechoslovakia # Cieszyn Silesia is not Czech
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+		prerequisite = { focus = POL_ww1_WesternPolicy }
+		mutually_exclusive = { focus = POL_ww1_Spa_Conference }
+		x = 6
+		y = 3
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_hun_friend
+		prerequisite = { focus = POL_ww1_War_with_Czechoslovakia }
+		icon = GFX_focus_hun_elect_a_king
+
+		completion_reward = {
+
+			add_opinion_modifier = { 
+				target = HUN
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 6
+		y = 5
+	}
+
+	focus = {
+		id = POL_ww1_Sudetenland_Question
+		prerequisite = { focus = POL_ww1_War_with_Czechoslovakia }
+		prerequisite = { focus = POL_ww1_ger_friend }
+		icon = GFX_focus_generic_polish_deal
+
+		completion_reward = {
+
+			add_opinion_modifier = { 
+				target = GER
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 7
+		y = 4
+	}
+
+
+
+
+	# About Polish-Czechoslovak War
+	focus = {
+		id = POL_ww1_Spa_Conference # Approve the Spa Conference (1920)
+		icon = GFX_goal_generic_neutrality_focus
+		prerequisite = { focus = POL_ww1_british_friend }
+		mutually_exclusive = { focus = POL_ww1_War_with_Czechoslovakia }
+		x = 4
+		y = 3
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	focus = {
+		id = POL_ww1_EasternPolicy
+		icon = GFX_goal_generic_more_territorial_claims
+		prerequisite = { focus = POL_ww1_Small_Constitution_of_1919 }
+		x = 13
+		y = 1
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_Ukraine
+		icon = GFX_goal_generic_position_armies
+		prerequisite = { focus = POL_ww1_EasternPolicy }
+		x = 10
+		y = 2
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+
+	# About Polish-Ukrainian War
+	focus = {
+		id = POL_ww1_War_with_Ukraine
+		icon = GFX_goal_generic_territory_or_war
+		prerequisite = { focus = POL_ww1_Ukraine }
+		mutually_exclusive = { focus = POL_ww1_Deal_with_Petliura }
+		x = 11
+		y = 3
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_Deal_with_Petliura # Symon Petliura, President of the Ukrainian People's Republic
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = POL_ww1_Ukraine }
+		mutually_exclusive = { focus = POL_ww1_War_with_Ukraine }
+		x = 9
+		y = 3
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_Kiev_Offensive
+		icon = GFX_focus_generic_air_defense
+		prerequisite = { focus = POL_ww1_Deal_with_Petliura }
+		x = 9
+		y = 4
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_Treaty_of_Warsaw # End War with Ukraine
+		icon = GFX_goal_anschluss
+		prerequisite = { focus = POL_ww1_Kiev_Offensive }
+		x = 9
+		y = 5
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+
+
+	focus = {
+		id = POL_ww1_LithuaniaFriend
+		icon = GFX_focus_generic_diplomatic_treaty
+		prerequisite = { focus = POL_ww1_EasternPolicy }
+		mutually_exclusive = { focus = POL_ww1_LithuaniaEnnemy }
+		x = 14
+		y = 2
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_Freedom_Struggles # Help Lithuania vs. Sov
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		prerequisite = { focus = POL_ww1_LithuaniaFriend }
+		prerequisite = { focus = POL_ww1_Never_Trust_a_Russian }
+		x = 15
+		y = 3
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_SupportLatvianWarofLiberation # Help Latvia vs. Sov
+		icon = GFX_focus_secret_rearmament_shine
+		prerequisite = { focus = POL_ww1_Never_Trust_a_Russian }
+		x = 16
+		y = 4
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+
+	focus = {
+		id = POL_ww1_Polish_Lithuanian_Commonwealth_Legacy # Form Faction Polish-Lithuanian Commonwealth
+		icon = GFX_hoi4tgw_poland
+		prerequisite = { focus = POL_ww1_Freedom_Struggles }
+		x = 15
+		y = 5
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			set_rule = { can_create_factions = yes }
+			create_faction = polishlithuaniancommonwealth_faction
+		}
+	}
+
+
+	focus = {
+		id = POL_ww1_LithuaniaEnnemy
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		prerequisite = { focus = POL_ww1_EasternPolicy }
+		mutually_exclusive = { focus = POL_ww1_LithuaniaFriend }
+		x = 12
+		y = 2
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_LithuaniaCoup # Polish coup d'état attempt in Lithuania
+		icon = GFX_focus_hol_war_on_pacifism
+		prerequisite = { focus = POL_ww1_LithuaniaEnnemy }
+		x = 13
+		y = 3
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_Miedzymorze
+		icon = GFX_focus_generic_strike_at_democracy1
+		prerequisite = { focus = POL_ww1_LithuaniaCoup }
+		prerequisite = { focus = POL_ww1_War_with_Ukraine }
+		x = 12
+		y = 4
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	focus = {
+		id = POL_ww1_Never_Trust_a_Russian
+		icon = GFX_focus_eng_expose_the_belly_of_the_bear
+		prerequisite = { focus = POL_ww1_EasternPolicy }
+		mutually_exclusive = { focus = POL_ww1_Negotiate_with_Denikin focus = POL_ww1_Negotiate_with_Trotsky }
+		x = 16
+		y = 2
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_Negotiate_with_Trotsky
+		icon = GFX_focus_fra_loyalty_trotzky
+		prerequisite = { focus = POL_ww1_EasternPolicy }
+		mutually_exclusive = { focus = POL_ww1_Never_Trust_a_Russian focus = POL_ww1_Negotiate_with_Denikin }
+		x = 18
+		y = 2
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_CeaseFireSoviet
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = POL_ww1_EasternPolicy }
+		x = 18
+		y = 3
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_FreeMarxistIdeas
+		icon = GFX_focus_eng_liberate_the_home_of_marx
+		prerequisite = { focus = POL_ww1_CeaseFireSoviet }
+		x = 18
+		y = 4
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_AntiCapitalist
+		icon = GFX_focus_spr_class_war
+		prerequisite = { focus = POL_ww1_FreeMarxistIdeas }
+		x = 18
+		y = 5
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_AdoptSocialism
+		icon = GFX_focus_YUG_pan_slavic_congress
+		prerequisite = { focus = POL_ww1_AntiCapitalist }
+		x = 18
+		y = 6
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_Collectivization
+		icon = GFX_focus_prc_agrarian_socialism
+		prerequisite = { focus = POL_ww1_AdoptSocialism }
+		x = 17
+		y = 7
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_SovietPropaganda
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = POL_ww1_AdoptSocialism }
+		x = 19
+		y = 7
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_AllianceWithSoviet
+		icon = GFX_focus_generic_join_comintern
+		prerequisite = { focus = POL_ww1_SovietPropaganda }
+		prerequisite = { focus = POL_ww1_Collectivization }
+		x = 18
+		y = 8
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_SovietEquipment # Send Equipment
+		icon = GFX_goal_generic_positive_trade_relations
+		prerequisite = { focus = POL_ww1_AllianceWithSoviet }
+		x = 17
+		y = 9
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_SovietAssistance # Free Factory
+		icon = GFX_goal_generic_soviet_construction
+		prerequisite = { focus = POL_ww1_AllianceWithSoviet }
+		x = 19
+		y = 9
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+
+	focus = {
+		id = POL_ww1_Negotiate_with_Denikin
+		icon = GFX_hoi4tgw_wggrus
+		prerequisite = { focus = POL_ww1_EasternPolicy }
+		mutually_exclusive = { focus = POL_ww1_Never_Trust_a_Russian focus = POL_ww1_Negotiate_with_Trotsky }
+		x = 20
+		y = 2
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_CeaseFireWhiteRussia
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = POL_ww1_Negotiate_with_Denikin }
+		x = 20
+		y = 3
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = POL_ww1_CongressPoland
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+		prerequisite = { focus = POL_ww1_CeaseFireWhiteRussia }
+		x = 20
+		y = 4
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+
+	focus = {
+		id = POL_ww1_RedMenace
+		icon = GFX_focus_ger_great_red_menace
+		prerequisite = { focus = POL_ww1_CongressPoland }
+		x = 20
+		y = 5
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+
+
+
+
+	focus = {
 		id = POL_ww1_PolitiqueMILITAIRE #
 		icon = GFX_focus_generic_military_mission
 		prerequisite = { focus = POL_ww1_Small_Constitution_of_1919 }
-		x = 19
+		x = 23
 		y = 1
 		cost = 10
 
@@ -99,7 +1021,7 @@
 		id = POL_ww1_Polish_GroundArmy
 		icon = GFX_focus_generic_military_mission
 		prerequisite = { focus = POL_ww1_PolitiqueMILITAIRE }
-		x = 14
+		x = 24
 		y = 2
 		cost = 10
 
@@ -119,7 +1041,7 @@
 		id = POL_ww1_Restore_The_Polish_Navy # Restore The Polish Navy
 		icon = GFX_focus_generic_military_mission
 		prerequisite = { focus = POL_ww1_PolitiqueMILITAIRE }
-		x = 19
+		x = 22
 		y = 2
 		cost = 10
 
@@ -139,8 +1061,8 @@
 		id = POL_ww1_Pilsudski_Funeral_Ceremony # Funeral Ceremony for Józef Piłsudski # This NF is the Link between Interwar and Vanilla WW2
 		icon = GFX_focus_generic_military_mission
 		x = 13
-		y = 5
-		cost = 5
+		y = 10
+		cost = 10
 
 		ai_will_do = {
 			factor = 10
@@ -152,6 +1074,33 @@
 			add_political_power = 15
 		}
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	############################	############################	########################### 	############################	############################
 	############################	############################   #                           #	############################	############################
@@ -168,7 +1117,7 @@
 		icon = GFX_goal_generic_construction
 		prerequisite = { focus = POL_ww1_Pilsudski_Funeral_Ceremony }
 		x = 1
-		y = 6
+		y = 11
 		cost = 10
 
 		ai_will_do = {
@@ -438,7 +1387,7 @@
 		icon = GFX_goal_generic_construct_civilian
 		prerequisite = { focus = POL_ww1_Pilsudski_Funeral_Ceremony }
 		x = 5
-		y = 6
+		y = 11
 		cost = 10
 
 		ai_will_do = {
@@ -781,7 +1730,7 @@
 		prerequisite = { focus = POL_ww1_Pilsudski_Funeral_Ceremony }
 		
 		x = 10
-		y = 6
+		y = 11
 		cost = 10
 
 		ai_will_do = {
@@ -1157,7 +2106,7 @@
 		prerequisite = { focus = POL_ww1_Pilsudski_Funeral_Ceremony }
 		
 		x = 16
-		y = 6
+		y = 11
 		cost = 10
 
 		ai_will_do = {
@@ -1432,7 +2381,7 @@
 		prerequisite = { focus = POL_ww1_Pilsudski_Funeral_Ceremony }
 		
 		x = 21
-		y = 6
+		y = 11
 		cost = 10
 
 		ai_will_do = {
@@ -1711,7 +2660,7 @@
 		prerequisite = { focus = POL_ww1_Pilsudski_Funeral_Ceremony }
 		
 		x = 29
-		y = 6
+		y = 11		
 		cost = 10
 
 		ai_will_do = {
