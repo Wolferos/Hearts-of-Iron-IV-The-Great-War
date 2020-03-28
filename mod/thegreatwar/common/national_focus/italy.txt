@@ -618,6 +618,7 @@ focus_tree = {
 
 	focus = {
 		id = ITA_ww1_central_power
+		mutually_exclusive = { focus = ITA_ww1_triple_entente }
 		available = {
 
 			NOT = { has_global_flag = kis_treaty_of_versailles }
@@ -655,6 +656,7 @@ focus_tree = {
 
 	focus = {
 		id = ITA_ww1_triple_entente
+		mutually_exclusive = { focus = ITA_ww1_central_power }
 		available = {
 
 			NOT = { has_global_flag = kis_treaty_of_versailles }
@@ -675,7 +677,6 @@ focus_tree = {
 		prerequisite = { focus=ITA_ww1_the_great_war_started }
 		prerequisite = { focus=ITA_ww1_german_africa }
 		prerequisite = { focus=ITA_ww1_trieste_tyrol }
-		prerequisite = { focus=ITA_ww1_ready_country }
 		icon = GFX_goal_tripartite_pact
 		bypass = {
 			ITA = {
@@ -713,13 +714,13 @@ focus_tree = {
 		ai_will_do = { factor = 30 }
 		cost = 10
 		x = 13
-		y = 7
+		y = 6
 	}
 
 
 	focus = {
 		id = ITA_ww1_diaz
-		prerequisite = { focus=ITA_ww1_ready_country }
+		prerequisite = { focus = ITA_ww1_ready_country focus = ITA_ww1_the_great_war_started }
 		icon = GFX_goal_generic_special_forces
 		completion_reward = {
 		  	add_political_power=100
@@ -774,7 +775,7 @@ focus_tree = {
 
 		ai_will_do = { factor = 10 }
 		x = 14
-		y = 8
+		y = 7
 		cost = 10		
 	}
 
@@ -1328,7 +1329,7 @@ focus_tree = {
 	#----------
 	focus = {
 		id = ITA_ww1_italian_askari
-		prerequisite = { focus=ITA_ww1_italian_civil_tripoli focus=ITA_ww1_italian_civil_cyrenaica}
+		prerequisite = { focus=ITA_ww1_italian_civil_tripoli focus=ITA_ww1_italian_civil_cyrenaica focus=ITA_ww1_ready_country}
 		icon = GFX_goal_generic_military_sphere
 		available = {
 			ITA = { 
