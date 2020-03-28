@@ -87,10 +87,8 @@
 			factor = 10
 		}
 
-		available_if_capitulated = yes
-
 		completion_reward = {
-			add_political_power = 100
+			add_political_power = 150
 		}
 	}
 
@@ -124,10 +122,8 @@
 			factor = 1
 		}
 
-		available_if_capitulated = yes
-
 		completion_reward = {
-			add_political_power = 150
+			add_ideas = why_we_fight_focus
 		}
 	}
 
@@ -143,10 +139,8 @@
 			factor = 1
 		}
 
-		available_if_capitulated = yes
-
 		completion_reward = {
-			add_political_power = 15
+			add_ideas = indoctrination_focus
 		}
 	}
 
@@ -165,7 +159,33 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_political_power = 15
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = arms_factory
+										size > 0
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 
@@ -182,10 +202,19 @@
 			factor = 0
 		}
 
-		available_if_capitulated = yes
+		available = {
+			ITA = {
+				has_government = fascism
+				is_puppet = no
+			}
+		}
+
 
 		completion_reward = {
-			add_political_power = 15
+			add_popularity = { ideology = fascism popularity = 0.20 }
+			start_civil_war = {
+				ideology = fascism
+			}
 		}
 	}
 
@@ -193,18 +222,27 @@
 		id = POL_interwar_AllianceWithItaly
 		icon = GFX_hoi4tgw_italy
 		prerequisite = { focus = POL_interwar_ProFascism }
-		x = 1
+		x = 0
 		y = 9
 		cost = 10
 
-		ai_will_do = {
-			factor = 0
+		available = {
+			has_government = fascism
+
+			ITA = {
+				has_government = fascism
+				is_puppet = no
+			}
 		}
 
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_political_power = 15
+			add_popularity = { ideology = fascism popularity = 0.15 }
+			add_opinion_modifier = { 
+				target = ITA
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
 		}
 	}
 
@@ -224,7 +262,11 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_political_power = 15
+			if = {
+				limit = { NOT = { has_idea = neutrality_idea } }
+				add_ideas = neutrality_idea
+			}
+			add_popularity = { ideology = fascism popularity = -0.10 }
 		}
 	}
 
@@ -252,7 +294,8 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_political_power = -100
+			add_political_power = -80
+			add_stability = -0.05
 		}
 	}
 
@@ -290,7 +333,10 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_political_power = 15
+			add_popularity = { ideology = communism popularity = 0.03 }
+			add_popularity = { ideology = democratic popularity = 0.03 }
+			add_popularity = { ideology = fascism popularity = 0.03 }
+			add_political_power = 30
 		}
 	}
 
@@ -306,10 +352,18 @@
 			factor = 10
 		}
 
-		available_if_capitulated = yes
+		available = {			
+			USA = {
+				has_government = democratic
+				is_puppet = no
+			}
+		}
 
 		completion_reward = {
-			add_political_power = 15
+			add_opinion_modifier = { 
+				target = USA
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
 		}
 	}
 
@@ -354,7 +408,6 @@
 					level = 1
 					instant_build = yes
 				}
-				set_state_flag = POL_fill_the_railways_gaps_1
 			}
 		}
 	}
@@ -412,14 +465,14 @@
 		prerequisite = { focus = POL_interwar_Small_Constitution_of_1919 }
 		x = 4
 		y = 1
-		cost = 10
+		cost = 3
 
 		ai_will_do = {
 			factor = 10
 		}
 
 		completion_reward = {
-			add_political_power = 50
+			add_political_power = 25
 		}
 	}
 
@@ -427,6 +480,10 @@
 		id = POL_interwar_france_friend
 		prerequisite = { focus = POL_interwar_WesternPolicy }
 		icon = GFX_focus_chi_reach_out_to_france
+
+		available = { 
+			country_exists = FRA
+		}
 
 		completion_reward = {
 
@@ -448,11 +505,14 @@
 		prerequisite = { focus = POL_interwar_Spa_Conference }
 		icon = GFX_hoi4tgw_marianne
 
-		completion_reward = {
+		available = { 
+			country_exists = FRA
+		}
 
-			add_opinion_modifier = { 
-				target = FRA
-				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+		completion_reward = {
+			add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 5000
 			}
 		}
 
@@ -466,6 +526,10 @@
 		id = POL_interwar_british_friend
 		prerequisite = { focus = POL_interwar_WesternPolicy }
 		icon = GFX_focus_chi_british_cooperation
+
+		available = { 
+			country_exists = ENG
+		}
 
 		completion_reward = {
 
@@ -486,6 +550,11 @@
 		prerequisite = { focus = POL_interwar_WesternPolicy }
 		icon = GFX_hoi4tgw_ironcross
 
+		available = {
+			country_exists = GER
+			NOT = { has_war_with = GER }
+		}
+
 		completion_reward = {
 
 			add_opinion_modifier = { 
@@ -503,15 +572,20 @@
 	focus = {
 		id = POL_interwar_ger_friend2
 		prerequisite = { focus = POL_interwar_ger_friend }
-		prerequisite = { focus = POL_interwar_War_with_Czechoslovakia }
+		prerequisite = { focus = POL_interwar_War_with_CzechoslovakiaWAR }
 		mutually_exclusive = { focus = POL_interwar_ger_ennemy }
 		icon = GFX_goal_rhineland
 
-		completion_reward = {
+		available = {
+			POL = { controls_state = 69 }
+			country_exists = GER
+			NOT = { has_war_with = GER }
+		}
 
-			add_opinion_modifier = { 
-				target = GER
-				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+		completion_reward = {
+			add_named_threat = { threat = 2 name = GER_demand_sudetenland_threat2 }
+			69 = {
+				add_claim_by = GER
 			}
 		}
 
@@ -527,11 +601,17 @@
 		mutually_exclusive = { focus = POL_interwar_ger_friend2 }
 		icon = GFX_focus_renounce_the_treaty_of_trianon
 
+		available = {
+			GER = { controls_state = 5 }
+			GER = { controls_state = 763 }
+		}
+
 		completion_reward = {
 
-			add_opinion_modifier = { 
+			create_wargoal = {
 				target = GER
-				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+				type = take_state
+				generator = { 5 763 } # PRUSSIA
 			}
 		}
 
@@ -546,11 +626,21 @@
 		prerequisite = { focus = POL_interwar_ger_friend2 }
 		icon = GFX_focus_generic_polish_deal
 
+		available = {
+			POL = { controls_state = 69 }
+			NOT = { has_war_with = GER }
+		}
+
 		completion_reward = {
 
-			add_opinion_modifier = { 
-				target = GER
-				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			GER = {
+				transfer_state = 69
+			}
+
+			add_opinion_modifier = { target = GER modifier = ger_pol_diplomacy_focus }
+
+			GER = {
+				add_opinion_modifier = { target = POL modifier = ger_pol_diplomacy_focus }
 			}
 		}
 
@@ -566,11 +656,15 @@
 		prerequisite = { focus = POL_interwar_ProFascism }
 		icon = GFX_focus_ger_reichskommisariats
 
-		completion_reward = {
 
-			add_opinion_modifier = { 
-				target = GER
-				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+		available = {
+			has_global_flag = interwar_hitler_putsch_fail
+		}
+
+
+		completion_reward = {
+			GER = {
+				add_popularity = { ideology = fascism popularity = 0.10 }
 			}
 		}
 
@@ -594,8 +688,23 @@
 			factor = 0
 		}
 
+		available = {
+			country_exists = CZE
+			CZE = {
+				is_puppet = no
+			}
+		}
+
 		completion_reward = {
-			add_political_power = 50
+
+
+			add_named_threat = { threat = 1 name = POL_Cieszyn_Silesia }
+			73 = {
+				add_claim_by = POL
+			}
+			71 = {
+				add_claim_by = POL
+			}
 		}
 	}
 
@@ -611,12 +720,22 @@
 			factor = 0
 		}
 
+		available = {
+			country_exists = CZE
+			CZE = {
+				is_puppet = no
+			}
+		}
+
 		completion_reward = {
-			add_political_power = 50
+			create_wargoal = {
+				type = annex_everything
+				target = CZE
+			}
 		}
 	}
 
-	# About Polish-Czechoslovak War
+
 	focus = {
 		id = POL_interwar_Spa_Conference # Approve the Spa Conference (1920)
 		icon = GFX_goal_generic_neutrality_focus
@@ -631,8 +750,15 @@
 			factor = 10
 		}
 
+		available = {
+			country_exists = CZE
+			CZE = {
+				is_puppet = no
+			}
+		}
+
 		completion_reward = {
-			add_political_power = 50
+			add_named_threat = { threat = -5 name = threat_Spa_Conference }
 		}
 	}
 
@@ -654,14 +780,14 @@
 		prerequisite = { focus = POL_interwar_Small_Constitution_of_1919 }
 		x = 13
 		y = 1
-		cost = 10
+		cost = 3
 
 		ai_will_do = {
 			factor = 10
 		}
 
 		completion_reward = {
-			add_political_power = 50
+			add_political_power = 25
 		}
 	}
 
@@ -671,15 +797,34 @@
 		prerequisite = { focus = POL_interwar_EasternPolicy }
 		x = 10
 		y = 2
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
-			factor = 10
+			factor = 20
 		}
 
-		completion_reward = {
-			add_political_power = 50
+		available = {
+			POL = { controls_state = 91 }
+			POL = { controls_state = 89 }
+			is_puppet = no
+			has_war_with = UKR
+			has_army_manpower = { size > 24999 }
 		}
+
+
+		completion_reward = {
+
+			UKR = {
+				remove_state_claim = 91
+			}
+
+			UKR = {
+				remove_state_claim = 89
+			}
+		}
+
+
+
 	}
 
 
@@ -697,6 +842,10 @@
 			factor = 0
 		}
 
+		available = {
+			has_war_with = UKR
+		}
+
 		completion_reward = {
 			add_war_support = -0.05
 			add_manpower = 12000
@@ -710,15 +859,21 @@
 		mutually_exclusive = { focus = POL_interwar_War_with_Ukraine }
 		x = 9
 		y = 3
-		cost = 10
+		cost = 14
 
 		ai_will_do = {
 			factor = 10
 		}
 
-		completion_reward = {
-			add_political_power = 50
+		available = {
+			has_war_with = UKR
 		}
+
+	    completion_reward = {
+	    	UKR = {
+				country_event = interwar_poland_events.4
+	    	}
+	    }
 	}
 
 	focus = {
@@ -727,14 +882,23 @@
 		prerequisite = { focus = POL_interwar_Deal_with_Petliura }
 		x = 9
 		y = 4
-		cost = 10
+		cost = 12
 
 		ai_will_do = {
 			factor = 10
 		}
 
+		available = {
+			country_exists = UKR
+			NOT = { has_war_with = UKR }
+		}
+
 		completion_reward = {
-			add_political_power = 50
+
+			add_opinion_modifier = { 
+				target = UKR
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
 		}
 	}
 
@@ -746,12 +910,23 @@
 		y = 5
 		cost = 10
 
+		available = {
+			is_puppet = no
+			NOT = { has_war_with = UKR }
+			has_war_with = SOV
+
+			UKR = {
+				is_puppet = no
+				has_war_with = SOV
+			}
+		}
+
 		ai_will_do = {
 			factor = 10
 		}
 
 		completion_reward = {
-			add_political_power = 50
+			add_manpower = 12000
 		}
 	}
 
@@ -765,14 +940,22 @@
 		mutually_exclusive = { focus = POL_interwar_LithuaniaEnnemy }
 		x = 14
 		y = 2
-		cost = 10
+		cost = 6
 
 		ai_will_do = {
 			factor = 0
 		}
 
+		available = {
+			country_exists = LIT
+		}
+
 		completion_reward = {
-			add_political_power = 50
+
+			add_opinion_modifier = { 
+				target = LIT
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
 		}
 	}
 
@@ -785,12 +968,32 @@
 		y = 3
 		cost = 10
 
+		available = {
+			country_exists = LIT
+
+			LIT = {
+				is_puppet = no
+				has_war_with = SOV
+			}
+
+		}
+
 		ai_will_do = {
 			factor = 0
 		}
 
 		completion_reward = {
 			add_war_support = 0.1
+			add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -1000
+			}
+			LIT = {
+				add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 1000
+				}
+			}
 		}
 	}
 
@@ -806,8 +1009,44 @@
 			factor = 10
 		}
 
+		available = {
+			country_exists = LAT
+
+			LAT = {
+				is_puppet = no
+				has_war_with = SOV
+			}
+
+		}
+
 		completion_reward = {
-			add_war_support = 0.1
+			add_war_support = 0.05
+
+			add_opinion_modifier = { 
+				target = LAT
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+	}
+	focus = {
+		id = POL_interwar_RegainOurPastGlory
+		icon = GFX_goal_demand_sudetenland
+		mutually_exclusive = { focus = POL_interwar_FreeMarxistIdeas }
+		prerequisite = { focus = POL_interwar_Freedom_Struggles }
+
+		x = 16
+		y = 5
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		completion_reward = {
+			add_popularity = { ideology = communism popularity = -0.05 }
+			add_political_power = 30
+			add_stability = 0.05
 		}
 	}
 
@@ -815,28 +1054,15 @@
 	focus = {
 		id = POL_interwar_Polish_Lithuanian_Commonwealth_Legacy
 		icon = GFX_hoi4tgw_poland
-		mutually_exclusive = { focus = POL_interwar_FreeMarxistIdeas }
-		prerequisite = { focus = POL_interwar_Freedom_Struggles }
-		x = 16
-		y = 5
-		cost = 10
+		prerequisite = { focus = POL_interwar_RegainOurPastGlory }
 
-		ai_will_do = {
-			factor = 0
-		}
-
-		completion_reward = {
-			set_rule = { can_create_factions = yes }
-			create_faction = polishlithuaniancommonwealth_faction
-		}
-	}
-
-	focus = {
-		id = POL_interwar_Polish_Lithuanian_Commonwealth_Offensive
-		icon = GFX_goal_demand_sudetenland
-		prerequisite = { focus = POL_interwar_Polish_Lithuanian_Commonwealth_Legacy }
 		x = 15
 		y = 8
+
+		available = {
+			country_exists = LIT
+		}
+
 		cost = 10
 
 		ai_will_do = {
@@ -848,6 +1074,7 @@
 			create_faction = polishlithuaniancommonwealth_faction
 		}
 	}
+
 
 
 	focus = {
@@ -857,10 +1084,18 @@
 		mutually_exclusive = { focus = POL_interwar_LithuaniaFriend }
 		x = 12
 		y = 2
-		cost = 10
+		cost = 6
 
 		ai_will_do = {
 			factor = 10
+		}
+
+		available = {
+			country_exists = LIT
+
+			LIT = {
+				is_puppet = no
+			}
 		}
 
 		completion_reward = {
@@ -884,9 +1119,15 @@
 			factor = 10
 		}
 
-		completion_reward = {
-			add_political_power = 50
+		available = {
+			country_exists = LIT
 		}
+
+	    completion_reward = {
+	    	POL = {
+				country_event = interwar_poland_events.2
+	    	}
+	    }
 	}
 
 	focus = {
@@ -904,7 +1145,17 @@
 		}
 
 		completion_reward = {
-			add_political_power = 50
+			199 = { add_claim_by = POL }
+			11 = { add_claim_by = POL }
+			189 = { add_claim_by = POL }
+			190 = { add_claim_by = POL }
+			12 = { add_claim_by = POL }
+			13 = { add_claim_by = POL }
+			191 = { add_claim_by = POL }
+			201 = { add_claim_by = POL }
+			194 = { add_claim_by = POL }
+			204 = { add_claim_by = POL }
+			206 = { add_claim_by = POL }
 		}
 	}
 
@@ -917,13 +1168,21 @@
 		y = 4
 		cost = 10
 
+		available = {
+			country_exists = LIT
+			has_war_with = LIT
+		}
+
 		ai_will_do = {
 			factor = 10
 		}
 
-		completion_reward = {
-			add_political_power = 50
-		}
+
+	    completion_reward = {
+	    	LIT = {
+				country_event = interwar_poland_events.1
+	    	}
+	    }
 	}
 
 	focus = {
@@ -939,7 +1198,18 @@
 		}
 
 		completion_reward = {
-			add_political_power = 50
+			create_wargoal = {
+				type = annex_everything
+				target = LIT
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = LAT
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = EST
+			}
 		}
 	}
 
@@ -956,6 +1226,7 @@
 		}
 
 		completion_reward = {
+			add_stability = 0.05
 			add_political_power = 50
 		}
 	}
@@ -965,9 +1236,22 @@
 		icon = GFX_focus_generic_manpower
 		prerequisite = { focus = POL_interwar_Balkans }
 
+		available = {
+			country_exists = ROM
+			ROM = { controls_state = 80 }
+		}
+
+
 		completion_reward = {
+
+			add_opinion_modifier = { target = ROM modifier = minor_sanctions }
+
 			POL = { add_opinion_modifier = { target = ROM modifier = balkan_strategy_bad } }
 			ROM = { add_opinion_modifier = { target = POL modifier = balkan_strategy_bad } }
+
+			80 = {
+				add_claim_by = POL
+			}
 		}
 
 		ai_will_do = { factor = 0 }
@@ -980,6 +1264,10 @@
 		id = POL_interwar_yug_friend
 		icon = GFX_focus_invite_yugoslavia
 		prerequisite = { focus = POL_interwar_defy_romania }
+
+		available = {
+			country_exists = YUG
+		}
 
 		completion_reward = {
 			POL = { add_opinion_modifier = { target = YUG modifier = balkan_strategy_good } }
@@ -996,6 +1284,21 @@
 		id = POL_interwar_greece
 		icon = GFX_goal_molotov_ribbentrop_pact
 		prerequisite = { focus = POL_interwar_Balkans }
+
+
+		available = {
+			has_army_manpower = { size > 29999 }
+
+			country_exists = GRE
+			GRE = {
+				is_puppet = no
+				OR = {
+					has_war_with = TUR
+					has_war_with = TUK
+				}
+			}
+		}
+
 
 		completion_reward = {
 			POL = { add_opinion_modifier = { target = GRE modifier = balkan_strategy_good } }
@@ -1044,6 +1347,10 @@
 		prerequisite = { focus = POL_interwar_hun }
 		mutually_exclusive = { focus = POL_interwar_hun_ennemy }
 
+		available = {
+			country_exists = HUN
+		}
+
 		completion_reward = {
 			POL = { add_opinion_modifier = { target = HUN modifier = balkan_strategy_good } }
 			HUN = { add_opinion_modifier = { target = POL modifier = balkan_strategy_good } }
@@ -1061,11 +1368,16 @@
 		prerequisite = { focus = POL_interwar_hun }
 		mutually_exclusive = { focus = POL_interwar_hun_friend }
 
+		available = {
+			country_exists = HUN
+		}
+
 		completion_reward = {
 
-			add_opinion_modifier = { 
+			create_wargoal = {
 				target = HUN
-				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+				type = take_state
+				generator = { 43 154 }
 			}
 		}
 
@@ -1081,12 +1393,20 @@
 		prerequisite = { focus = POL_interwar_hun_friend }
 		prerequisite = { focus = POL_interwar_ger_friend2 }
 
-		completion_reward = {
 
-			add_opinion_modifier = { 
-				target = HUN
-				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+		available = {
+			country_exists = HUN
+			country_exists = GER
+			country_exists = AUS
+			OR = {
+				country_exists = TUR			
+				country_exists = TUK			
 			}
+		}
+
+
+		completion_reward = {
+			add_manpower = 25000
 		}
 
 		ai_will_do = { factor = 0 }
@@ -1098,7 +1418,14 @@
 	focus = {
 		id = POL_interwar_Constantinople
 		icon = GFX_goal_generic_secret_weapon
-		prerequisite = { focus = POL_interwar_Vienna1683 focus = POL_interwar_greece focus = POL_interwar_Polish_Lithuanian_Commonwealth_Offensive }
+		prerequisite = { focus = POL_interwar_Vienna1683 focus = POL_interwar_greece focus = POL_interwar_Polish_Lithuanian_Commonwealth_Legacy }
+
+		available = {
+			OR = {
+				country_exists = TUR			
+				country_exists = TUK			
+			}
+		}
 
 		completion_reward = {
 			create_wargoal = {
@@ -1142,7 +1469,10 @@
 		}
 
 		completion_reward = {
-			add_political_power = 50
+			add_timed_idea = {
+				idea = nationalism
+				days = 365
+			}
 		}
 	}
 
@@ -1159,8 +1489,15 @@
 			factor = 10
 		}
 
+		available = {
+			is_puppet = no
+			has_war_with = SOV
+			has_army_manpower = { size > 29999 }
+		}
+
 		completion_reward = {
-			add_political_power = 50
+			add_political_power = -75
+			add_stability = -0.05
 		}
 	}
 
@@ -1176,9 +1513,16 @@
 			factor = 10
 		}
 
-		completion_reward = {
-			add_political_power = 50
+		available = {
+			country_exists = SOV
+			has_war_with = SOV
 		}
+
+	    completion_reward = {
+	    	SOV = {
+				country_event = interwar_poland_events.3
+	    	}
+	    }
 	}
 
 	focus = {
@@ -1193,15 +1537,26 @@
 			factor = 10
 		}
 
+		available = {
+			country_exists = SOV
+			NOT = {
+				has_war_with = SOV
+			}
+		}
+
 		completion_reward = {
-			add_political_power = 50
+
+			add_opinion_modifier = { 
+				target = SOV
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
 		}
 	}
 
 	focus = {
 		id = POL_interwar_FreeMarxistIdeas
 		icon = GFX_focus_eng_liberate_the_home_of_marx
-		mutually_exclusive = { focus = POL_interwar_Polish_Lithuanian_Commonwealth_Legacy }
+		mutually_exclusive = { focus = POL_interwar_RegainOurPastGlory }
 		prerequisite = { focus = POL_interwar_ThePeaceofRiga }
 		x = 18
 		y = 5
@@ -1212,7 +1567,9 @@
 		}
 
 		completion_reward = {
-			add_political_power = 50
+			add_popularity = { ideology = communism popularity = 0.05 }
+			add_political_power = -30
+			add_stability = -0.10
 		}
 	}
 
@@ -1229,7 +1586,9 @@
 		}
 
 		completion_reward = {
-			add_political_power = 50
+			add_popularity = { ideology = communism popularity = 0.15 }
+			add_political_power = -50
+			add_stability = -0.05
 		}
 	}
 
@@ -1246,7 +1605,10 @@
 		}
 
 		completion_reward = {
-			add_political_power = 50
+			add_political_power = -200
+			start_civil_war = {
+				ideology = communism
+			}
 		}
 	}
 
@@ -1262,8 +1624,19 @@
 			factor = 0
 		}
 
+		available = {
+			has_government = communism
+			has_civil_war = no
+		}
+
 		completion_reward = {
-			add_political_power = 50
+			add_political_power = -50
+			92 = {
+				add_resource = {
+					type = wood
+					amount = 1
+				}
+			}
 		}
 	}
 
@@ -1279,8 +1652,14 @@
 			factor = 0
 		}
 
+		available = {
+			has_government = communism
+			has_civil_war = no
+		}
+
 		completion_reward = {
-			add_political_power = 50
+			add_ideas = SOV_collectivist_propaganda
+			add_popularity = { ideology = communism popularity = 0.05 }
 		}
 	}
 
@@ -1297,8 +1676,20 @@
 			factor = 0
 		}
 
+		available = {
+			has_government = communism
+			has_civil_war = no
+
+	 		SOV = {
+	 			exists = yes
+ 				is_faction_leader = yes
+	 		}
+		}
+
 		completion_reward = {
-			add_political_power = 50
+			SOV = {
+				add_to_faction = ROOT
+			}
 		}
 	}
 
@@ -1314,8 +1705,17 @@
 			factor = 0
 		}
 
+		available = { 
+			has_government = communism
+
+			country_exists = SOV
+		}
+
 		completion_reward = {
-			add_political_power = 50
+			add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 3000
+			}
 		}
 	}
 
@@ -1329,6 +1729,12 @@
 
 		ai_will_do = {
 			factor = 0
+		}
+
+		available = { 
+			has_government = communism
+		
+			country_exists = SOV
 		}
 
 		completion_reward = {
@@ -1377,8 +1783,19 @@
 			factor = 0
 		}
 
+		available = {
+			is_puppet = no
+			has_war_with = RUS
+			has_war_with = SOV
+		}
+
 		completion_reward = {
-			add_political_power = 50
+
+	    	RUS = {
+				country_event = interwar_poland_events.5
+	    	}
+
+			SOV = { add_opinion_modifier = { target = POL modifier = pact_against_us } }
 		}
 	}
 
@@ -1390,12 +1807,25 @@
 		y = 3
 		cost = 10
 
+		available = {
+			NOT = {
+				has_war_with = RUS
+				country_exists = SOV
+			}
+			NOT = { has_government = communism }
+		}
+
 		ai_will_do = {
 			factor = 0
 		}
 
 		completion_reward = {
-			add_political_power = 50
+			add_political_power = -350
+
+			add_opinion_modifier = { 
+				target = RUS
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
 		}
 	}
 
@@ -1407,12 +1837,20 @@
 		y = 5
 		cost = 10
 
+		available = {
+			NOT = {
+				has_war_with = RUS
+				country_exists = SOV
+			}
+			NOT = { has_government = communism }
+		}
+
 		ai_will_do = {
 			factor = 0
 		}
 
-		completion_reward = {
-			add_political_power = 50
+		completion_reward = { 
+			set_cosmetic_tag = POL_CONGRESSPOLAND
 		}
 	}
 
@@ -1425,17 +1863,33 @@
 		y = 6
 		cost = 10
 
+		available = {
+			NOT = { has_government = communism }
+		}
+
 		ai_will_do = {
 			factor = 0
 		}
 
 		completion_reward = {
-			add_political_power = 50
+			add_popularity = { ideology = communism popularity = -0.20 }
+			add_stability = 0.05
 		}
 	}
 
 
 
+	focus = {
+		id = POL_interwar_trenchwarfare
+		prerequisite = { focus = POL_interwar_PolishArmy }
+		icon = GFX_goal_generic_military_sphere
+
+		completion_reward = { add_tech_bonus={ name=trenchwarfare_bonus bonus=0.15 uses=1 technology=support_weapons technology=support_weapons2 technology=support_weapons3 } }
+		ai_will_do = { factor = 1 }
+		cost = 10
+		x = 23
+		y = 2
+	}
 
 	focus = {
 		id = POL_interwar_PolishArmy
@@ -1452,17 +1906,6 @@
 		completion_reward = { add_tech_bonus = { name = land_doc_bonus bonus = 0.2 uses = 1 category = land_doctrine } }
 	}
 
-	focus = {
-		id = POL_interwar_trenchwarfare
-		prerequisite = { focus = POL_interwar_PolishArmy }
-		icon = GFX_goal_generic_military_sphere
-
-		completion_reward = { add_tech_bonus={ name=trenchwarfare_bonus bonus=0.15 uses=1 technology=support_weapons technology=support_weapons2 technology=support_weapons3 } }
-		ai_will_do = { factor = 1 }
-		cost = 10
-		x = 23
-		y = 2
-	}
 
 	focus = {
 		id = POL_interwar_gasmask_focus
@@ -1798,7 +2241,20 @@
 
 		icon = GFX_goal_generic_amphibious_assault
 
-		completion_reward = { navy_experience=25 }
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			navy_experience = 25
+			add_tech_bonus = {
+				name = POL_Marines
+				bonus = 1.0
+				uses = 1
+				technology = marines2
+				technology = marines3
+				technology = marines4
+			}
+		}
+
+
 		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 25
