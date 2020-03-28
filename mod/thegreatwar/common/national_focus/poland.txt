@@ -803,6 +803,12 @@
 			factor = 500
 		}
 
+		bypass = {
+			NOT = {
+				country_exists = UKR
+			}
+		}
+
 		available = {
 			POL = { controls_state = 91 }
 			POL = { controls_state = 89 }
@@ -837,6 +843,12 @@
 		x = 11
 		y = 3
 		cost = 10
+
+		bypass = {
+			NOT = {
+				country_exists = UKR
+			}
+		}
 
 		ai_will_do = {
 			factor = 0
@@ -931,8 +943,6 @@
 	}
 
 
-
-
 	focus = {
 		id = POL_interwar_LithuaniaFriend
 		icon = GFX_focus_generic_diplomatic_treaty
@@ -944,6 +954,12 @@
 
 		ai_will_do = {
 			factor = 0
+		}
+
+		bypass = {
+			NOT = {
+				country_exists = LIT
+			}
 		}
 
 		available = {
@@ -967,6 +983,12 @@
 		x = 15
 		y = 3
 		cost = 10
+
+		bypass = {
+			NOT = {
+				country_exists = LIT
+			}
+		}
 
 		available = {
 			country_exists = LIT
@@ -1090,6 +1112,12 @@
 			factor = 100
 		}
 
+		bypass = {
+			NOT = {
+				country_exists = LIT
+			}
+		}
+
 		available = {
 			country_exists = LIT
 
@@ -1113,7 +1141,13 @@
 		prerequisite = { focus = POL_interwar_LithuaniaEnnemy }
 		x = 13
 		y = 3
-		cost = 10
+		cost = 3
+
+		bypass = {
+			NOT = {
+				country_exists = LIT
+			}
+		}
 
 		ai_will_do = {
 			factor = 150
@@ -1241,6 +1275,12 @@
 			ROM = { controls_state = 80 }
 		}
 
+		bypass = {
+			NOT = {
+				country_exists = ROM
+			}
+		}
+
 
 		completion_reward = {
 
@@ -1285,6 +1325,11 @@
 		icon = GFX_goal_molotov_ribbentrop_pact
 		prerequisite = { focus = POL_interwar_Balkans }
 
+		bypass = {
+			NOT = {
+				country_exists = GRE
+			}
+		}
 
 		available = {
 			has_army_manpower = { size > 29999 }
@@ -2278,16 +2323,21 @@
 		icon = GFX_focus_generic_military_mission
 		x = 13
 		y = 10
-		cost = 10
+		cost = 3
 
 		ai_will_do = {
 			factor = 10
 		}
 
+		available = {
+			has_global_flag = EVENT_hoi4tgw_interwar_jozef_pilsudski_death
+		}
+
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_political_power = 15
+			add_stability = 0.10
+			add_political_power = 30
 		}
 	}
 

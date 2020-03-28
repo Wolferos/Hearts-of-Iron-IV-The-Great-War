@@ -2575,24 +2575,232 @@ focus_tree = {
 
 
 
-	# 0.1.5
-
 	################ INTERWAR START
+
+
+
+	# Interwar
+	focus = {
+		id = ITA_interwar_postwar_refuse
+
+		mutually_exclusive = { focus = ITA_interwar_postwar_accept }
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+
+		available = {
+			has_global_flag = kis_treaty_of_versailles
+		}
+
+		x = 16
+		y = 8
+
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1	
+		}
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = ITA_interwar_postwar_war_albania
+		prerequisite = { focus = ITA_interwar_postwar_refuse }
+
+		mutually_exclusive = { focus = ITA_interwar_postwar_accept }
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+
+		available = {
+			country_exists = ALB
+		}
+
+		x = 15
+		y = 9
+
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1	
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = ALB
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_interwar_postwar_interventionTURKEY
+		prerequisite = { focus = ITA_interwar_postwar_refuse }
+
+		mutually_exclusive = { focus = ITA_interwar_postwar_accept }
+		icon = GFX_goal_generic_territory_or_war
+
+		x = 11
+		y = 9
+
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+
+		available = {
+			OR = {
+				country_exists = TUR			
+				country_exists = TUK			
+			}
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				type = take_state_focus
+				target = TUR
+				generator = { 341 }
+				expire = 0
+			}
+			create_wargoal = {
+				type = take_state_focus
+				target = TUK
+				generator = { 341 }
+				expire = 0
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_interwar_postwar_interventionSOVIET
+		prerequisite = { focus = ITA_interwar_postwar_refuse }
+
+		mutually_exclusive = { focus = ITA_interwar_postwar_accept }
+		icon = GFX_goal_generic_political_pressure
+
+		available = {
+			country_exists = SOV
+		}
+
+		x = 13
+		y = 9
+
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+		completion_reward = {
+			add_popularity = { ideology = communism popularity = -0.05 }
+			add_stability = -0.10
+
+			add_opinion_modifier = { target = SOV modifier = minor_sanctions }
+			add_opinion_modifier = { target = SOV modifier = minor_sanctions_relations } 
+		}
+	}
+
+
+
+
+
+
+	focus = {
+		id = ITA_interwar_postwar_accept
+
+		mutually_exclusive = { focus = ITA_interwar_postwar_refuse }
+		icon = GFX_goal_generic_national_unity
+
+		available = {
+			has_global_flag = kis_treaty_of_versailles
+		}
+
+		x = 18
+		y = 8
+
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+		completion_reward = {
+			add_political_power = -50
+		}
+	}
+
+	focus = {
+		id = ITA_interwar_france_friend
+		prerequisite = { focus = ITA_interwar_postwar_accept }
+		icon = GFX_focus_chi_reach_out_to_france
+
+		available = { 
+			country_exists = FRA
+		}
+
+		completion_reward = {
+
+			add_opinion_modifier = { 
+				target = FRA
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 19
+		y = 9
+	}
+
+
+
+	focus = {
+		id = ITA_interwar_FascistManifesto # Fascist Manifesto
+
+		icon = GFX_focus_generic_italy_first
+		prerequisite = { focus = ITA_interwar_postwar_refuse }
+
+		x = 17
+		y = 9
+
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 200	
+		}
+
+		completion_reward = {
+			completion_reward = { add_ideas=nationalism }
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+		}
+	}
+
+
+
+
+
 
 	# March on Rome
 	focus = {
 		id = ITA_interwar_march_on_rome
 
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_focus_ger_assassinate_mussolini
+		prerequisite = { focus = ITA_interwar_FascistManifesto }
 
 		available = {
-			date > 1921.10.10
+			date > 1920.6.1
 			has_war = no
 			is_puppet = no
 		}
 
-		x = 8
-		y = 9
+		x = 17
+		y = 10
 
 
 		cost = 10
@@ -2621,10 +2829,8 @@ focus_tree = {
 
 		icon = GFX_goal_generic_occupy_states_ongoing_war
 
-		prerequisite = { focus = ITA_interwar_march_on_rome }
-
 		available = {
-			date > 1934.1.1		
+			date > 1921.1.1		
 			has_government = fascism
 			is_puppet = no	
 		}
@@ -2632,15 +2838,11 @@ focus_tree = {
 		bypass = {
 
 			AND {
-
 				date > 1934.1.1
-
 				OR={
-
 					is_in_faction_with=ETH
 					has_war_with=ETH
 					NOT={ country_exists=ETH }
-
 				}
 			}
 		}

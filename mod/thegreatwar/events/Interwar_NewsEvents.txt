@@ -638,3 +638,36 @@ news_event = {
 	}
 }
 #____________________________________________________________
+
+# Józef Piłsudski is dead
+#____________________________________________________________
+news_event = {
+	id = interwar_news.16
+	title = interwar_news.16.t
+	desc = interwar_news.16.d
+
+	picture = EVENT_hoi4tgw_interwar_jozef_pilsudski_death
+
+	major = yes
+
+	trigger = {
+		date > 1935.5.11
+		NOT = { has_global_flag = EVENT_hoi4tgw_interwar_jozef_pilsudski_death }
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	immediate = {
+		set_global_flag = EVENT_hoi4tgw_interwar_jozef_pilsudski_death
+	}
+
+	option = {
+		name = interwar_news.16.a
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+#____________________________________________________________
