@@ -27,6 +27,67 @@ focus_tree = {
 	}
 	#-----------------------------------------
 
+	#-----------------------------------------
+	focus = {
+		id = USA_interwar_LeaveDominicanRepublic # Leave the Dominican Republic
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = USA_interwar_PostWarPolicy }
+		mutually_exclusive = { focus = USA_interwar_AnnexDominicanRepublic }
+
+		available = {
+			date > 1920.1.1
+			country_exists = DOM
+			DOM = {
+				is_puppet = yes
+			}
+		}
+
+		completion_reward = {
+			end_puppet = DOM
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 8
+		x = 8
+		y = 10
+	}
+	#-----------------------------------------
+
+	#-----------------------------------------
+	focus = {
+		id = USA_interwar_AnnexDominicanRepublic # Dominican Republic Pacification
+		icon = GFX_focus_hol_war_on_pacifism
+		prerequisite = { focus = USA_interwar_PostWarPolicy }
+		mutually_exclusive = { focus = USA_interwar_LeaveDominicanRepublic }
+
+		available = {
+			date > 1920.1.1
+			country_exists = DOM
+			DOM = {
+				is_puppet = yes
+			}
+		}
+
+		completion_reward = {
+			hidden_effect =
+			{
+				end_puppet = DOM
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = DOM
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 8
+		x = 10
+		y = 10
+	}
+	#-----------------------------------------
+
 
 	#-----------------------------------------
 	focus = {
