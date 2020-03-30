@@ -2587,11 +2587,14 @@ focus_tree = {
 		icon = GFX_goal_generic_territory_or_war
 
 		available = {
-			date>1921.1.1
+			date > 1920.1.1
 			has_global_flag = interwar_greco_turkish_war
-			not = { has_global_flag = interwar_treaty_of_lausanne }
+			NOT = { has_global_flag = interwar_treaty_of_lausanne }
 
-			GRE = { has_war_with = TUR }
+			OR = {
+				GRE = { has_war_with = TUR }
+				GRE = { has_war_with = TUK }
+			}
 		}
 
 		x = 16
@@ -2609,11 +2612,12 @@ focus_tree = {
 	            type = annex_everything
 	            target = TUR
 	        }
+	        declare_war_on = {
+	            type = annex_everything
+	            target = TUK
+	        }
 		}
 	}
-
-
-
 
 
 
@@ -2637,10 +2641,6 @@ focus_tree = {
 		x = 7
 		y = 8
 	}
-
-
-
-
 
 
 	focus = {

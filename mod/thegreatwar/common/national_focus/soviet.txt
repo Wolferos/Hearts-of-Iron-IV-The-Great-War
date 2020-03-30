@@ -638,11 +638,12 @@ focus_tree = {
 		icon = GFX_focus_generic_soviet_politics
 		available = { NOT = { has_completed_focus = SOV_ww1_end_revolution } NOT = { country_exists = RUS has_war_with = RUS } }
 		prerequisite = { focus = SOV_ww1_political_effort }
-		completion_reward = { add_political_power = 20
-		    swap_ideas = {
-				add_idea = home_of_revolution_defended
-				remove_idea = home_of_revolution
-			} }
+
+		completion_reward = {
+			add_political_power = 20
+			add_idea = home_of_revolution_defended
+		}
+		
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 2
@@ -666,7 +667,10 @@ focus_tree = {
 		available = { NOT = { country_exists = RUS has_war_with = RUS } }
 		prerequisite = { focus = SOV_ww1_volunteers }
 		prerequisite = { focus = SOV_ww1_support_bolsheviks }
-		completion_reward = { add_stability = 0.02 add_opinion_modifier = { target = ENG modifier = romanovs_executed } add_opinion_modifier = { target = DEN modifier = romanovs_executed } }
+		completion_reward = {
+			add_stability = 0.02 add_opinion_modifier = { target = ENG modifier = romanovs_executed } add_opinion_modifier = { target = DEN modifier = romanovs_executed }
+			set_global_flag = global_RomanovFamilyExecuted
+		}
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 1

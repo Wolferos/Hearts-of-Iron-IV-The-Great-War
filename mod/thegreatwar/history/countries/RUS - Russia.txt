@@ -20,7 +20,9 @@ create_country_leader={ name = "Georgy Lvov" desc=RUS_georgy_lvov_DESC picture="
 create_country_leader={ name = "Nikolay II" desc=RUS_nikolai_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_nikolai_2.dds" expire="1935.1.1" ideology=liberalism traits={  } }
 create_country_leader={ name = "Nikolay II" desc=RUS_nikolai_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_nikolai_ii.dds" expire="1935.1.1" ideology=autocracy traits={  } }
 create_country_leader={ name = "Nikolay II" desc=RUS_nikolai_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_tsar_nikolai_ii.dds" expire="1935.1.1" ideology=fascism_ideology traits={  } }
-create_country_leader={ name = "Aleksandr Kolchak" desc=WHR_aleksandr_kolchak_DESC picture="gfx/hoi4tgw_portraits/RUS/navy_admirals/RUS_kolchak.dds" expire="1935.1.1" ideology=fascism_ideology  traits={  } }
+create_country_leader = {
+	name = "Aleksandr Kolchak" desc=WHR_aleksandr_kolchak_DESC picture="gfx/hoi4tgw_portraits/RUS/navy_admirals/RUS_kolchak.dds" expire="1935.1.1" ideology=fascism_ideology  traits={  }
+}
 
 #ARMY
 create_field_marshal={  name = "Mikhail Alexeyev" id=76321 portrait_path="gfx/hoi4tgw_portraits/RUS/army_generals/RUS_alekseyev.dds" traits={ thorough_planner } skill=2 
@@ -489,6 +491,17 @@ create_navy_leader={  name = "Aleksandr Rusin" id=77235 portrait_path="gfx/hoi4t
 1919.1.1 = {
 	set_cosmetic_tag = RUS_WHITERUSSIA
 
+	set_politics = {
+	    ruling_party = neutrality
+	    last_election = "1919.5.26"
+	    election_frequency = 60
+	    elections_allowed = no
+	}
+
+	create_country_leader = {
+		name = "Aleksandr Kolchak" desc=WHR_aleksandr_kolchak_DESC picture="gfx/hoi4tgw_portraits/RUS/navy_admirals/RUS_kolchak.dds" expire="1935.1.1" ideology = autocracy traits = {}
+	}
+
 	oob = "RUS_1919"
 
 	declare_war_on = {
@@ -539,6 +552,11 @@ create_navy_leader={  name = "Aleksandr Rusin" id=77235 portrait_path="gfx/hoi4t
 	complete_national_focus = RUS_ww1_diplomatic_effort
 	complete_national_focus = RUS_ww1_BalkansPolitics
 	complete_national_focus = RUS_ww1_support_serbia
+	unlock_national_focus = RUS_ww1_add_fuel_to_the_fire
+	unlock_national_focus = RUS_ww1_support_serbia_weapons
+	unlock_national_focus = RUS_ww1_defy_germany
+	unlock_national_focus = RUS_ww1_polish_corps
+	unlock_national_focus = RUS_ww1_interwar_refuse_PolandIndependence
 	complete_national_focus = RUS_european_focus
 	complete_national_focus = RUS_ww1_pro_fra
 	complete_national_focus = RUS_ww1_reinforce_western_forts
@@ -548,6 +566,13 @@ create_navy_leader={  name = "Aleksandr Rusin" id=77235 portrait_path="gfx/hoi4t
 	complete_national_focus = RUS_mongolian_protectorate
 	complete_national_focus = RUS_asian_focus
 	complete_national_focus = RUS_ww1_Tungsten_Nerchinsk
+
+	unlock_national_focus = RUS_ww1_CaucasusFocus
+	complete_national_focus = RUS_ww1_BakuInvest
+
+	unlock_national_focus = RUS_ww1_Reinforce_Northern_Persia
+	unlock_national_focus = RUS_ww1_Support_Persia_Convention
+	unlock_national_focus = RUS_ww1_Persian_Cossack_Brigade
 	#-------------------------------------------------------
 
 	set_technology = {
@@ -661,22 +686,9 @@ create_navy_leader={  name = "Aleksandr Rusin" id=77235 portrait_path="gfx/hoi4t
 
 	}
 
-	set_politics = {
-	    ruling_party = fascism
-	    last_election = "1912.9.1"
-	    election_frequency = 60
-	    elections_allowed = no
-	}
-	set_popularities = {
-	    democratic = 6
-	    fascism = 78
-	    communism = 0
-	    neutrality = 16
-	}
-
 	add_ideas = {
-		limited_conscription
-		partial_economic_mobilisation
+		#limited_conscription
+		#partial_economic_mobilisation
 		RUS_ww1_orthodox_church
 		# RUS_ww1_tsushima_humiliation
 		# RUS_ww1_mixed_railways
