@@ -24,7 +24,7 @@ focus_tree = {
 		x = 12
 		y = 8
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 0	
@@ -101,10 +101,10 @@ focus_tree = {
 		y = 8
 
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
-			factor = 1
+			factor = 100
 		}
 
 		completion_reward = {
@@ -155,14 +155,23 @@ focus_tree = {
 		y = 10
 
 
-		cost = 10
+		cost = 4
 
 		ai_will_do = {
-			factor = 1
+			factor = 100
 		}
 
 		completion_reward = {
 			add_opinion_modifier = { target = FRA modifier = minor_sanctions }
+
+			hidden_effect = {
+				if = {
+					limit = {
+						SOV = { controls_state = 219 }
+					}
+					load_oob = "SOV_1919_renf"
+				}
+			}
 		}
 	}
 
@@ -641,7 +650,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_political_power = 20
-			add_idea = home_of_revolution_defended
+			add_ideas = home_of_revolution_defended
 		}
 		
 		ai_will_do = { factor = 10 }
@@ -1099,6 +1108,35 @@ focus_tree = {
 		cost = 10
 		x = 6
 		y = 12
+	}
+
+	focus = {
+		id = SOV_interwar_caucasusstates
+
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		prerequisite = { focus = SOV_ww1_poland_war }
+		x = 4
+		y = 14
+		cost = 10
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = ARM
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = GEO
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = AZR
+			}
+		}
 	}
 
 	focus = {
