@@ -647,19 +647,8 @@ create_equipment_variant={ name="Aventurier Class" type=destroyer_1910 parent_ve
 
 	SOV = {
 		set_country_flag = kis_secondrevoltsov
-		
-		add_named_threat = {
-			threat = 5
-			name = "Russian Civil War"
-		}
 	}
 
-	POL = {
-		add_named_threat = {
-			threat = 5
-			name = "Polish-Soviet War"
-		}
-	}
 	ROM = {
 		set_country_flag = carol_dead
 	}
@@ -671,6 +660,60 @@ create_equipment_variant={ name="Aventurier Class" type=destroyer_1910 parent_ve
 	GRE = {
 		set_country_flag = george_died
 	}
+
+	# Wars and Threats
+	SOV = {
+		declare_war_on = {
+			target = POL
+			type = annex_everything
+		}
+		add_named_threat = {
+			threat = 7
+			name = ww1_interwar_SovietPolish_war_threat
+		}
+	}
+	UKR = {
+		declare_war_on = {
+			target = SOV
+			type = annex_everything
+		}
+		add_named_threat = {
+			threat = 4
+			name = "ww1_interwar_UkrainianSoviet_war_threat"
+		}
+	}
+	POL = {
+		declare_war_on = {
+			target = UKR
+			type = annex_everything
+		}
+		add_named_threat = {
+			threat = 3
+			name = ww1_interwar_PolishUkrainian_war_threat
+		}
+	}
+	RUS = {
+		declare_war_on = {
+			target = SOV
+			type = annex_everything
+		}
+		add_named_threat = {
+			threat = 9
+			name = ww1_interwar_RussianCivil_war_threat
+		}
+
+		declare_war_on = {
+			target = POL
+			type = annex_everything
+		}
+
+		declare_war_on = {
+			target = UKR
+			type = annex_everything
+		}
+	}
+
+
 
 
 	# NF COMPLETED

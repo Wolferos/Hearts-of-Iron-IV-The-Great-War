@@ -2895,11 +2895,16 @@ focus_tree = {
 			42 = { set_demilitarized_zone = yes }
 			51 = { set_demilitarized_zone = yes }
 
-			add_political_power=250
+			add_political_power = 250
 
-			add_named_threat = {
-				threat = -25
-				name = "Allied Occupation of the Rhineland"
+			if = {
+				limit = {
+					has_start_date < 1919.1.1
+				}
+				add_named_threat = {
+					threat = -25
+					name = ww1_Allied_Occupation_Rhineland_war_threat
+				}
 			}
 		}
 	}
