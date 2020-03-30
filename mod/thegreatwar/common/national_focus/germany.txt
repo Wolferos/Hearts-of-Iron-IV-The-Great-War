@@ -2832,6 +2832,131 @@ focus_tree = {
 
 
 
+
+
+	# Communist Germany
+	focus = {
+		id = GER_interwar_beer_ProSpartacists # Liebknecht and Luxemburg are German Martyrs
+
+		icon = GFX_focus_YUG_pan_slavic_congress
+		mutually_exclusive = { focus = GER_interwar_beer_AntiSpartacists }
+
+		available = {
+			has_war = no
+			is_puppet = no
+			NOT = { has_government = communism }
+			has_global_flag = kis_treaty_of_versailles
+		}
+
+		x = 15
+		y = 8
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+		completion_reward = {
+			start_civil_war = {
+				ideology = communism
+			}
+		}
+	}
+
+	focus = {
+		id = GER_interwar_beer_ContactTrotsky
+
+		icon = GFX_focus_fra_loyalty_trotzky
+		prerequisite = { focus = GER_interwar_beer_ProSpartacists }
+
+		available = {
+			country_exists = SOV
+			has_government = communism
+		}
+
+		x = 15
+		y = 9
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+
+		completion_reward = {
+			add_political_power = 80
+		}
+	}
+
+	focus = {
+		id = GER_interwar_beer_HelpSovietAgainstPoland
+
+		icon = GFX_focus_generic_join_comintern
+		prerequisite = { focus = GER_interwar_beer_ContactTrotsky }
+
+		available = {
+			has_government = communism
+			country_exists = SOV
+			country_exists = POL
+
+			SOV = {
+				has_war_with = POL
+			}
+		}
+
+		x = 15
+		y = 10
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+
+		completion_reward = {
+			add_to_war = { targeted_alliance = SOV enemy = POL hostility_reason = asked_to_join }
+		}
+	}
+
+	focus = {
+		id = GER_interwar_beer_AntiSpartacists # Crush the Spartacists
+
+		icon = GFX_goal_generic_secret_weapon
+		mutually_exclusive = { focus = GER_interwar_beer_ProSpartacists }
+
+		available = {
+			has_war = no
+			is_puppet = no		
+			NOT = { has_government = fascism }
+			NOT = { has_government = communism }
+			has_global_flag = kis_treaty_of_versailles
+		}
+
+		x = 17
+		y = 8
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+
+		completion_reward = {
+			add_popularity = { ideology = communism popularity = 0.10 }
+			add_political_power = -30
+			add_stability = -0.15
+		}
+	}
+
+
+
+
+
+
+
+
+
+
 	# Beer Hall Putsch
 	focus = {
 		id = GER_interwar_beer_hall_putsch
@@ -2919,7 +3044,7 @@ focus_tree = {
 
 			add_popularity = {
 				ideology = fascism
-				popularity = 0.72
+				popularity = 0.42
 			}
 			set_politics = {
 				ruling_party = fascism
@@ -2941,6 +3066,42 @@ focus_tree = {
 		}
 	}
 
+
+	# Mein Kampf
+	focus = {
+		id = GER_interwar_Reichstag_Fire_Decree # Reichstag Fire Decree
+
+		icon = GFX_focus_ger_reichskommisariats
+
+		prerequisite = { focus = GER_interwar_hitler_chancellor }
+
+		available = {
+
+		}
+
+		x = 11
+		y = 10
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1	
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.10
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = -0.20
+			}
+		}
+	}
+
+
+
+
 	# Night of the Long Knives (IRL: June 30 – July 2, 1934)
 	focus = {
 		id = GER_interwar_night_long_knives
@@ -2955,7 +3116,7 @@ focus_tree = {
 			has_government = fascism
 		}
 
-		x = 12
+		x = 13
 		y = 10
 
 		cost = 10

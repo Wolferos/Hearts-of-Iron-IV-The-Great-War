@@ -3173,4 +3173,127 @@ focus_tree = {
 
 
 
+    focus = {
+        id = RUS_ww1_interwar_InvadeBalticStates
+
+        icon = GFX_focus_eng_move_to_secure_the_dominions
+        prerequisite = { focus = RUS_ww1_interwar_AlexanderIV }
+        x = 1
+        y = 10
+        cost = 10
+
+        ai_will_do = {
+            factor = 0
+        }
+
+        completion_reward = {
+            create_wargoal = {
+                type = annex_everything
+                target = LIT
+            }
+            create_wargoal = {
+                type = annex_everything
+                target = LAT
+            }
+            create_wargoal = {
+                type = annex_everything
+                target = EST
+            }
+        }
+    }
+
+    focus = {
+        id = RUS_ww1_interwar_RetakeCaucasus
+
+        icon = GFX_focus_eng_move_to_secure_the_dominions
+        prerequisite = { focus = RUS_ww1_interwar_AlexanderIV }
+        x = 7
+        y = 10
+        cost = 10
+
+        ai_will_do = {
+            factor = 0
+        }
+
+        completion_reward = {
+            create_wargoal = {
+                type = annex_everything
+                target = GEO
+            }
+            create_wargoal = {
+                type = annex_everything
+                target = AZR
+            }
+            create_wargoal = {
+                type = annex_everything
+                target = RM
+            }
+        }
+    }
+
+
+    focus = {
+        id = RUS_ww1_interwar_FinlandFriend
+
+        icon = GFX_focus_invite_finland
+        mutually_exclusive = { focus = RUS_ww1_interwar_ClaimTheGrandPrincipalityofFinland }
+        prerequisite = { focus = RUS_ww1_interwar_AlexanderIV }
+        x = 3
+        y = 10
+        cost = 10
+
+        ai_will_do = {
+            factor = 0
+        }
+
+        completion_reward = {
+            add_opinion_modifier = {
+                target = FIN
+                modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+            }
+        }
+    }
+
+    focus = {
+        id = RUS_ww1_interwar_AllTheRussias
+
+        icon = GFX_goal_tfv_strengthen_commonwealth_ties
+
+        prerequisite = { focus = RUS_ww1_interwar_FinlandFriend }
+        x = 3
+        y = 11
+        cost = 10
+
+        ai_will_do = {
+            factor = 0
+        }
+
+        completion_reward = {
+            set_cosmetic_tag = RUS_EMPIRE
+        }
+    }
+
+    focus = {
+        id = RUS_ww1_interwar_ClaimTheGrandPrincipalityofFinland
+
+        icon = GFX_goal_generic_occupy_states_ongoing_war
+        mutually_exclusive = { focus = RUS_ww1_interwar_FinlandFriend }
+        prerequisite = { focus = RUS_ww1_interwar_AlexanderIV }
+        x = 5
+        y = 10
+        cost = 10
+
+        ai_will_do = {
+            factor = 0
+        }
+
+        completion_reward = {
+            create_wargoal = {
+                type = annex_everything
+                target = FIN
+            }
+        }
+    }
+
+
 }
