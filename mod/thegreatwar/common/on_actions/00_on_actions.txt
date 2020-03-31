@@ -782,6 +782,26 @@ on_actions = {
 	
 	on_puppet = {
 		effect = {
+
+			# TGW IA - Annex HSR instead of Puppet
+			if = {
+				limit ={
+					has_start_date > 1919.1.1
+					ROOT = { 
+						tag = HSR
+					}
+					FROM = {
+						tag = HUN
+					}
+				}
+				HUN = {
+					annex_country = {
+						target = HSR
+						transfer_troops = no
+					}
+				}
+			}
+
 			if = {
 				limit = {
 					OR = {
