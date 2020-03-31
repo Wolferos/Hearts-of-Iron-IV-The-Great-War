@@ -1172,7 +1172,21 @@ focus_tree = {
 		id = SOV_ww1_europe_revolution
 		icon = GFX_goal_generic_war_with_comintern
 		prerequisite = { focus = SOV_ww1_third_international }
-		completion_reward = { every_other_country = { limit = { any_owned_state = { is_on_continent = europe } } add_timed_idea = { idea = comintern_influence days = 7 } } }
+		completion_reward = {
+		    every_other_country = {
+		        limit = {
+		            any_owned_state = {
+		                is_on_continent = europe
+		            }
+		        }
+		        add_timed_idea = {
+		            idea = comintern_influence days = 7
+		        }
+		        set_rule = {
+		        	can_create_factions = yes
+		        }
+		    }
+		}
 		ai_will_do = { factor = 0 modifier = { factor = 1 is_historical_focus_on = yes} }
 		cost = 10
 		x = 8
