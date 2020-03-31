@@ -103,11 +103,11 @@ focus_tree = {
 
 	focus = {
 		id = GER_ww1_unitedpeople
-		prerequisite = { focus=GER_ww1_reorganization_act }
+		prerequisite = { focus = GER_ww1_reorganization_act }
 		icon = GFX_goal_generic_demand_territory
 
 		completion_reward = {
-			add_political_power=50
+			add_political_power = 50
 			add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=land_doctrine }
 			add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=naval_doctrine }
 			add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=air_doctrine }
@@ -125,6 +125,10 @@ focus_tree = {
 		prerequisite = { focus=GER_ww1_unitedpeople }
 		icon = GFX_focus_ger_revive_kaiserreich
 
+		available = {
+			has_global_flag = kis_treaty_of_versailles
+		}
+
 		completion_reward = { army_experience=40 }
 
 		ai_will_do = {	factor = 0	}
@@ -139,7 +143,7 @@ focus_tree = {
 	#---------- Fascist
 	focus = {
 		id = GER_ww1_military_youth
-		prerequisite = { focus=GER_ww1_militarism }
+		prerequisite = { focus = GER_ww1_militarism }
 		icon = GFX_goal_generic_more_territorial_claims
 		completion_reward = { add_ideas=military_youth_focus if={ limit={ has_government=fascism } add_popularity={ ideology=fascism popularity=0.2 } } if={ limit={ has_government=communism } add_popularity={ ideology=communism popularity=0.2 } } }
 		ai_will_do = { factor = 0 }

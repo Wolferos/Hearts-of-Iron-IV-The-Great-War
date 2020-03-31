@@ -4,6 +4,292 @@ focus_tree = {
 	country={ factor=0 modifier={ add=10 tag=USA } modifier={ add=10 original_tag=USA } }
 
 
+
+	#-----------------------------------------
+	focus = {
+		id = USA_interwar_PostWarPolicy # PostWarPolicy
+		icon = GFX_goal_generic_intelligence_exchange
+
+		available = {
+			has_global_flag = kis_treaty_of_versailles
+		}
+
+		completion_reward = {
+			add_political_power = 75
+			add_war_support = -0.2
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 8
+		x = 5
+		y = 9
+	}
+	#-----------------------------------------
+
+	#-----------------------------------------
+	focus = {
+		id = USA_interwar_LeaveDominicanRepublic # Leave the Dominican Republic
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = USA_interwar_PostWarPolicy }
+		mutually_exclusive = { focus = USA_interwar_AnnexDominicanRepublic }
+
+		available = {
+			date > 1920.1.1
+			country_exists = DOM
+			DOM = {
+				is_puppet = yes
+			}
+		}
+
+		completion_reward = {
+			end_puppet = DOM
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 8
+		x = 8
+		y = 10
+	}
+	#-----------------------------------------
+
+	#-----------------------------------------
+	focus = {
+		id = USA_interwar_AnnexDominicanRepublic # Dominican Republic Pacification
+		icon = GFX_focus_hol_war_on_pacifism
+		prerequisite = { focus = USA_interwar_PostWarPolicy }
+		mutually_exclusive = { focus = USA_interwar_LeaveDominicanRepublic }
+
+		available = {
+			date > 1920.1.1
+			country_exists = DOM
+			DOM = {
+				is_puppet = yes
+			}
+		}
+
+		completion_reward = {
+			hidden_effect =
+			{
+				end_puppet = DOM
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = DOM
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 8
+		x = 10
+		y = 10
+	}
+	#-----------------------------------------
+
+
+	#-----------------------------------------
+	focus = {
+		id = USA_interwar_IndianCitizenshipAct # Indian Citizenship Act
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = USA_interwar_PostWarPolicy }
+
+		available = {
+			date > 1915.9.1
+		}
+
+		completion_reward = {
+			add_manpower = 25000
+			add_stability = 0.05
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 10
+		x = 2
+		y = 10
+	}
+	#-----------------------------------------
+
+
+	#-----------------------------------------
+	focus = {
+		id = USA_interwar_RecreationalActivities # Recreational activities such as traveling, going to movies, and professional sports became major businesses after The Great War.
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = USA_interwar_PostWarPolicy }
+
+		available = {
+
+		}
+
+		completion_reward = { add_stability = 0.25 }
+
+		ai_will_do = { factor = 1 }
+
+		cost = 10
+		x = 4
+		y = 10
+	}
+	#-----------------------------------------
+
+
+	#-----------------------------------------
+	focus = {
+		id = USA_interwar_TranscontinentalAirMail # Transcontinental Air Mail
+		icon = GFX_goal_generic_air_bomber
+		prerequisite = { focus = USA_interwar_PostWarPolicy }
+
+		available = {
+			date > 1920.1.1
+		}
+
+		completion_reward = {
+			add_tech_bonus = { name = TranscontinentalAirMail_bonus bonus = 0.15 uses = 1 technology = ww1_transport_plane }
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 10
+		x = 3
+		y = 11
+	}
+	#-----------------------------------------
+
+
+	#-----------------------------------------
+	focus = {
+		id = USA_interwar_EasternLincolnHighway # Eastern Section of the Lincoln Highway
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = USA_interwar_PostWarPolicy }
+
+		available = {
+
+		}
+
+		completion_reward = {
+			359 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			360 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			261 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			396 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			395 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			392 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 6
+		y = 10
+	}
+	#-----------------------------------------
+
+
+	#-----------------------------------------
+	focus = {
+		id = USA_interwar_WesternLincolnHighway # Western Section of the Lincoln Highway
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = USA_interwar_EasternLincolnHighway }
+
+		available = {
+
+		}
+
+		completion_reward = {
+			384 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			382 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			381 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			380 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			379 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			378 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 6
+		y = 11
+	}
+	#-----------------------------------------
+
+
+
+
+
+
+
 	###########################################################################################################################
 	# POLITICAL
 	###########################################################################################################################
@@ -571,7 +857,7 @@ focus_tree = {
 		cost = 10
 		x = 8
 		y = 3
-		mutually_exclusive = { focus=USA_ww1_SupportMexicanRevolution }
+		mutually_exclusive = { focus = USA_ww1_SupportMexicanRevolution }
 	}
 	focus = {
 		id = USA_ww1_ColumbusRaid
@@ -713,6 +999,7 @@ focus_tree = {
 	focus = {
 		id = USA_ww1_TakePosition
 		prerequisite = { focus = USA_ww1_War_in_Europe }
+		mutually_exclusive = { focus = USA_ww1_Pacifism }
 		icon = GFX_goal_molotov_ribbentrop_pact
 
 	 	available = {	 		
@@ -1026,6 +1313,7 @@ focus_tree = {
 		id = USA_ww1_Pacifism
 		prerequisite = { focus = USA_ww1_War_in_Europe }
 		icon = GFX_goal_anschluss
+		mutually_exclusive = { focus = USA_ww1_TakePosition }
 
 	 	available = {	 		
 
@@ -1468,7 +1756,7 @@ focus_tree = {
 
 	focus = {
 		id = USA_ww1_bomber_focus
-		prerequisite = { focus=USA_ww1_aviation_effort_2 }
+		prerequisite = { focus = USA_ww1_aviation_effort_2 }
 		available = { date > 1911.1.1 }
 		icon = GFX_goal_generic_air_bomber
 		completion_reward = { add_tech_bonus={ name=bomber_bonus bonus=0.15 uses=1 category=tactical_bomber } }
