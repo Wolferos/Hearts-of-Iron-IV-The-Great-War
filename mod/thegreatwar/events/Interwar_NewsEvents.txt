@@ -336,10 +336,6 @@ news_event = {
 		set_global_flag = interwar_turkish_national_movement
 		hidden_effect = {
 
-			GRE = {
-				country_event = { days = 13 id = ww1_greece.6 }
-			}
-
 			# Previous code before the Aftermath of Versailles
 			# TUR = {
 			# 	start_civil_war = {
@@ -359,12 +355,37 @@ news_event = {
 			# 	}
 			# }
 
-			# New code for the Aftermath of Versailles
-			TUK = {
-				declare_war_on={
-					target = TUR
-					type = annex_everything
+			# Started in 1910 or 1914 
+			if = {
+				limit = {
+					has_start_date < 1919.1.1
 				}
+
+				# Territorial changes
+				if = { limit = { TUR = { controls_state = 49  }	} TUK = { transfer_state = 49  } }
+				if = { limit = { TUR = { controls_state = 348 }	} TUK = { transfer_state = 348 } }
+				if = { limit = { TUR = { controls_state = 349 }	} TUK = { transfer_state = 349 } }
+
+				# Loading OOB for TUK
+				TUK = {
+					load_oob = "TUK_1919"
+				}
+
+				# Start of the War
+				TUK = {
+					declare_war_on={
+						target = TUR
+						type = annex_everything
+					}
+				}
+
+				# For the Greco-Turkish War
+				GRE = {
+					country_event = { days = 13 id = ww1_greece.6 }
+				}
+			}
+			else {
+				news_event = { days = 4 id = interwar_news.9 }
 			}
 
 		}
