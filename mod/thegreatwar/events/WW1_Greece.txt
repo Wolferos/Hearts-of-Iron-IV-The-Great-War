@@ -69,30 +69,48 @@ country_event = {
 		name = ww1_greece.6.a
 		ai_chance = { factor = 100 }
 
-	    GRE = {
-
-	        # declare_war_on = {
-	        # 	type = annex_everything
-	        #     target = TUR
-	        # }
-
-			declare_war_on = {
-				target = TUR
-				type = take_state
-				generator = { 340 341 342 347 }
+        if = {
+        	limit = {
+				TUR = {
+					exists = yes
+				}
+        	}
+        	GRE = {
+				declare_war_on = {
+					target = TUR
+					type = take_state
+					generator = { 340 341 342 347 }
+				}
 			}
-			declare_war_on = {
-				target = TUK
-				type = take_state
-				generator = { 340 341 342 347 }
-			}
+        }
 
+		if = {
+			limit = {
+				TUK = {
+					exists = yes
+				}
+			}
+			GRE = {
+				declare_war_on = {
+					target = TUK
+					type = take_state
+					generator = { 340 341 342 347 }
+				}				
+			}
+		}
+
+		if = {
+			limit = {
+				OR = {
+					country_exists = TUR
+					country_exists = TUK
+				}
+			}
 			add_named_threat = {
 				threat = 7
 				name = ww1_greece.6.t
 			}
-
-	    }
+		}
 
 		hidden_effect = {
 			news_event = { days = 4 id = interwar_news.9 }
