@@ -38,7 +38,7 @@ focus_tree = {
 		id = ENG_ww1_democracy
 		prerequisite = { focus=ENG_ww1_support_republic }
 		icon = GFX_goal_support_democracy
-		completion_reward = { add_ideas=liberty_ethos_focus }
+		completion_reward = { add_ideas = liberty_ethos_focus }
 
 		ai_will_do = { factor = 20 }
 		cost = 10
@@ -1309,8 +1309,291 @@ focus_tree = {
 
 		cost = 15
 		x = 17
+		y = 7
+	}
+
+	focus = {
+		id = ENG_interwar_Allied_Intervention_in_Russia # Allied intervention in the Russian Civil War
+		icon = GFX_focus_eng_global_defense
+		prerequisite = { focus=ENG_interwar_aftermath_of_world_war_i }
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 20
 		y = 8
 	}
+
+	focus = {
+		id = ENG_interwar_Czechoslovak_Legion # Czechoslovak Legion
+		icon = GFX_focus_secret_rearmament_shine
+		prerequisite = { focus = ENG_interwar_Allied_Intervention_in_Russia }
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 18
+		y = 9
+	}
+
+	focus = {
+		id = ENG_interwar_Czechoslovakia
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = { focus = ENG_interwar_Czechoslovak_Legion }
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 17
+		y = 10
+	}
+
+	focus = {
+		id = ENG_interwar_Mussolini # Consequences of the March on Rome
+		icon = GFX_focus_ger_assassinate_mussolini
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 15
+		y = 11
+	}
+
+	focus = {
+		id = ENG_interwar_Allied_Forces_Withdrew # Allied_Forces_Withdrew
+		icon = GFX_hoi4tgw_knifeintheback
+		prerequisite = { focus = ENG_interwar_Allied_Intervention_in_Russia }
+		mutually_exclusive = { focus = ENG_interwar_Support_Kolchak_s_Armies }
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 20
+		y = 10
+	}
+
+	focus = {
+		id = ENG_interwar_ImperialGoldReserve # Imperial Gold Reserve
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		prerequisite = { focus = ENG_interwar_Czechoslovak_Legion }
+		prerequisite = { focus = ENG_interwar_Allied_Forces_Withdrew }
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 19
+		y = 11
+	}
+
+	focus = {
+		id = ENG_interwar_AntiFascism # Anti-Fascism
+		icon = GFX_focus_focus_fra_fascist_threat
+		prerequisite = { focus = ENG_interwar_Mussolini }
+		mutually_exclusive = { focus = ENG_interwar_BritishFirst }
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 14
+		y = 12
+	}
+
+	focus = {
+		id = ENG_interwar_WarOnFascism # WarOnFascism
+		icon = GFX_focus_rom_parties_end
+		prerequisite = { focus = ENG_interwar_AntiFascism }
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 14
+		y = 13
+	}
+
+	focus = {
+		id = ENG_interwar_BritishFirst # British First
+		icon = GFX_focus_befriend_italy
+		prerequisite = { focus = ENG_interwar_Mussolini }
+		mutually_exclusive = { focus = ENG_interwar_Keep_Calm_and_Stay_the_Course }
+		mutually_exclusive = { focus = ENG_interwar_DealWithTrotsky }
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 16
+		y = 12
+	}
+
+	focus = {
+		id = ENG_interwar_Keep_Calm_and_Stay_the_Course # Keep Calm and Stay the Course
+		icon = GFX_focus_eng_imperial_federation
+		prerequisite = { focus = ENG_interwar_ImperialGoldReserve }
+		mutually_exclusive = { focus = ENG_interwar_BritishFirst }
+		mutually_exclusive = { focus = ENG_interwar_DealWithTrotsky }
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 18
+		y = 12
+	}
+
+	focus = {
+		id = ENG_interwar_Favorise_Home_Ownership # Favorise Home Ownership
+		icon = GFX_focus_usa_guarantee_the_american_dream
+		prerequisite = { focus = ENG_interwar_Keep_Calm_and_Stay_the_Course }
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 18
+		y = 13
+	}
+
+	focus = {
+		id = ENG_interwar_DealWithTrotsky # Deal with Trotsky
+		icon = GFX_focus_fra_loyalty_trotzky
+		prerequisite = { focus = ENG_interwar_ImperialGoldReserve }
+		mutually_exclusive = { focus = ENG_interwar_Keep_Calm_and_Stay_the_Course }
+		mutually_exclusive = { focus = ENG_interwar_BritishFirst }
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 20
+		y = 12
+	}
+
+	focus = {
+		id = ENG_interwar_PromoteSocialism # PromoteSocialism
+		icon = GFX_focus_por_workers_of_iberia
+		prerequisite = { focus = ENG_interwar_DealWithTrotsky }
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 20
+		y = 13
+	}
+
+	focus = {
+		id = ENG_interwar_ASovietKing # A Soviet King
+		icon = GFX_goal_tfv_burn_the_royal_portraits
+		prerequisite = { focus = ENG_interwar_PromoteSocialism }
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 10
+		x = 20
+		y = 14
+	}
+
+
+	focus = {
+		id = ENG_interwar_Support_Kolchak_s_Armies # Kolchak's Armies
+		icon = GFX_hoi4tgw_wggrus
+		prerequisite = { focus = ENG_interwar_Allied_Intervention_in_Russia }
+		mutually_exclusive = { focus = ENG_interwar_Allied_Forces_Withdrew }
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 22
+		y = 10
+	}
+
+	focus = {
+		id = ENG_interwar_AntiBolshevik
+		icon = GFX_focus_hol_united_netherlands
+		prerequisite = { focus = ENG_interwar_Support_Kolchak_s_Armies }
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 22
+		y = 11
+	}
+
+	focus = {
+		id = ENG_interwar_OperationThinkable # Ref. to https://en.wikipedia.org/wiki/Operation_Unthinkable
+		icon = GFX_focus_eng_expose_the_belly_of_the_bear
+		prerequisite = { focus = ENG_interwar_AntiBolshevik }
+
+		completion_reward = {
+
+		}
+
+		ai_will_do = { factor = 200 }
+
+		cost = 15
+		x = 22
+		y = 12
+	}
+
 
 	#Irish Free State
 	focus = {
@@ -1326,7 +1609,7 @@ focus_tree = {
 			ENG = { has_war_with = IRE }
 		}
 
-		x = 17
+		x = 15
 		y = 9
 
 		cost = 5
@@ -1381,7 +1664,7 @@ focus_tree = {
 		}
 
 		x = 16
-		y = 10
+		y = 8
 
 		cost = 10
 
@@ -1423,7 +1706,7 @@ focus_tree = {
 		}
 
 		x = 18
-		y = 10
+		y = 8
 
 		cost = 10
 
