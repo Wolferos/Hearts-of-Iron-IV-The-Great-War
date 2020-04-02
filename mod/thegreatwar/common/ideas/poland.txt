@@ -1,12 +1,198 @@
-ideas={
+ideas = {
+
+    political_advisor = {
+
+		# Roman Dmowski
+        POL_roman_dmowski = {
+            allowed = {
+                tag = POL
+            }
+            traits = {
+            	democratic_reformer
+            }
+            ai_will_do = {
+                factor = 1
+            }
+        }
+
+		# Adolf Warski
+        POL_adolf_warski = {
+            allowed = {
+                tag = POL
+            }
+            traits = {
+            	communist_revolutionary
+            }
+            ai_will_do = {
+                factor = 1
+            }
+        }
+
+		# Henryk Rossman
+        POL_henryk_rossman = {
+            allowed = {
+                tag = POL
+            }
+            traits = {
+            	fascist_demagogue
+            }
+            ai_will_do = {
+                factor = 1
+            }
+        }
+
+        # Wincenty Witos
+        POL_wincenty_witos = {
+            allowed = {
+                tag = POL
+            }
+            traits = {
+            	popular_figurehead
+            }
+            ai_will_do = {
+                factor = 1
+            }
+        }
+
+        # Ignacy Mościcki
+        POL_ignacy_moscicki = {
+            allowed = {
+                tag = POL
+            }
+            traits = {
+            	captain_of_industry
+            }
+            ai_will_do = {
+                factor = 1
+            }
+        }
+
+        # Józef Beck
+        POL_jozef_beck = {
+            allowed = {
+                tag = POL
+            }
+            traits = {
+                armaments_organizer
+            }
+            ai_will_do = {
+                factor = 1
+            }
+        }
+    }
+    theorist = {
+
+    	# Józef Haller
+        POL_jozef_haller = {
+            ledger = army
+            allowed = {
+                tag = POL
+            }
+            traits = {
+                military_theorist
+            }
+            ai_will_do = {
+                factor = 1
+            }
+        }
+    }
+    army_chief = {
+    	# Edward Rydz-Śmigły
+        POL_rydz_smigly = {
+            allowed = {
+                tag = POL
+            }
+            traits = {
+                army_logistics_1
+            }
+            ai_will_do = {
+                factor = 1
+            }
+        }
+    }
+    navy_chief = {
+
+    	# Jerzy Świrski
+        POL_jerzy_swirski = {
+            allowed = {
+                tag = POL
+            }
+            traits = {
+                navy_chief_decisive_battle_1
+            }
+            ai_will_do = {
+                factor = 1
+            }
+        }
+    }
+    air_chief = {
+
+    	# Stefan Bastyr
+        POL_stefan_bastyr = {
+            allowed = {
+                tag = POL
+            }
+            traits = {
+                air_air_superiority_1
+            }
+            ai_will_do = {
+                factor = 1
+            }
+        }
+    }
+
+    high_command = {
+    	# Kazimierz Stamirowski
+        POL_kazimierz_stamirowski = {
+        	ledger = army
+            allowed = {
+                tag = POL
+            }
+            traits = {
+                army_chief_organizational_1
+            }
+            ai_will_do = {
+                factor = 1
+            }
+        }
+
+        # Marian Żebrowski
+        POL_marian_zebrowski = {
+        	ledger = army
+            allowed = {
+                tag = POL
+            }
+            traits = {
+                army_chief_offensive_1
+            }
+            ai_will_do = {
+                factor = 1
+            }
+        }
+
+        # Gustaw Orlicz-Dreszer
+        POL_orlicz_dreszer = {
+            ledger = army
+            allowed = {
+                tag = POL
+            }
+            traits = {
+                army_artillery_1
+            }
+            ai_will_do = {
+                factor = 1
+            }
+        }
+    }
+
 	naval_manufacturer={
 			designer = yes 
-			stocznia_gdynia={ allowed={ TAG=POL } research_bonus={ naval_equipment=0.10 } traits={ naval_manufacturer } }
+			stocznia_gdynia={ allowed={ TAG=POL } research_bonus={ naval_equipment=0.10 } traits={ naval_manufacturer } picture = generic_naval_manufacturer_1 }
 			}
 	aircraft_manufacturer={
 			designer = yes 
-			pws={ allowed={ TAG=POL } research_bonus={ air_equipment=0.10 } traits={ light_aircraft_manufacturer } }
-			pzl={ allowed={ TAG=POL } research_bonus={ air_equipment=0.10 } traits={ medium_aircraft_manufacturer } }
+			pws={ allowed={ TAG=POL } research_bonus={ air_equipment=0.10 } traits={ light_aircraft_manufacturer } picture = generic_air_manufacturer_2 }
+			pzl={ allowed={ TAG=POL } research_bonus={ air_equipment=0.10 } traits={ medium_aircraft_manufacturer } picture = generic_air_manufacturer_1 }
 			}
 	materiel_manufacturer={
 			designer = yes 
@@ -22,6 +208,23 @@ ideas={
 							    
 							   } traits={ industrial_concern } picture=generic_tank_manufacturer_2 }
 			}
+
+    tank_manufacturer = {
+        designer = yes
+        POL_idea_PanstwoweZakladyInzynierii = { # Panstwowe Zaklady Inzynierii
+            allowed = {
+                TAG = POL
+            }
+            research_bonus = {
+                armor = 0.10
+            }
+            traits = {
+                tank_manufacturer
+            }
+            picture = generic_tank_manufacturer_2
+        }
+    }
+
 	country={
 			POL_ideological_fanaticism={ allowed={ always=no } allowed_civil_war={ has_government=neutrality } removal_cost=-1 picture=generic_pp_unity_bonus	 modifier={ stability_factor =0.05 } }
 			# POL_militarism_focus={ allowed={ original_tag=POL always=no } allowed_civil_war={ always=yes } removal_cost=-1 picture=generic_manpower_bonus modifier={ conscription=0.025 enemy_partisan_effect=-0.1 } }
@@ -29,5 +232,18 @@ ideas={
 			POL_authoritarianism_focus={ allowed={ original_tag=POL always=no } allowed_civil_war={ NOT={ has_government=democratic } } removal_cost=-1 picture=generic_intel_bonus modifier={ democratic_drift=-0.1 democratic_acceptance=-100 } }
 			POL_polish_revanchism_focus={ allowed={ original_tag=POL always=no } allowed_civil_war={ always=yes } removal_cost=-1 picture=generic_intel_bonus modifier={		 justify_war_goal_time=-0.25 generate_wargoal_tension=-0.4 } }
 			POL_internationalism_focus={ allowed={ original_tag=POL always=no } allowed_civil_war={ always=yes } removal_cost=-1 picture=generic_goods_red_bonus modifier={		 trade_opinion_factor=0.2 } }
+
+		POL_interwar_spirit_WielkopolskaUprising = {
+			allowed={ always = no }
+			allowed_civil_war={ always = no }
+			removal_cost=-1
+			modifier = {
+				conscription_factor = 0.03
+				army_morale_factor = 0.05
 			}
+		}
 	}
+
+
+
+}

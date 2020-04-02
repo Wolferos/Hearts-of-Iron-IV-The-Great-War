@@ -9,10 +9,14 @@ set_stability = 0.7
 set_war_support = 0.80
 set_convoys = 300
 
-create_faction = entente # France is now Leader of the Entente | Since Beta 0.2
-
-add_to_faction = FRA
-add_to_faction = RUS
+if = {
+	limit = {
+		has_start_date < 1919.01.01
+	}
+	create_faction = entente # France is the Leader of the Entente
+	add_to_faction = FRA
+	add_to_faction = RUS
+}
 
 puppet = MOR
 puppet = TUN
@@ -34,7 +38,12 @@ if = { limit = { has_dlc = "Together for Victory" }
 	#-------------------------------------------
 }
 
-give_guarantee = BEL # France guaranteed the independence of Belgium - Treaty of London (1839)
+if = {
+	limit = {
+		has_start_date < 1919.1.1
+	}
+	give_guarantee = BEL # United Kingdom guaranteed the independence of Belgium - Treaty of London (1839)
+}
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
@@ -279,6 +288,7 @@ create_navy_leader={
 		ww1_zeppelin1 = 1
 
 		# Engineering
+		tank_unlocker1 = 1
 		electronic_mechanical_engineering = 1
 		mechanical_computing = 1
 		chemical_research = 1
@@ -287,6 +297,7 @@ create_navy_leader={
 		supertech1 = 1
 		tankaircraft1 = 1
 		torpedotech1 = 1
+		chemical_research2 = 1
 
 		# Industry
 		ww1_tools1 = 1
@@ -625,10 +636,370 @@ create_equipment_variant={ name="Aventurier Class" type=destroyer_1910 parent_ve
 	set_global_flag = kis_secondbalkanwar_victory
 	set_global_flag = kis_roland_garros
 	set_global_flag = kis_xinhaire_end
-
 	set_global_flag = kingdom_montenegro_proclaimed
 	set_global_flag = kis_start_1914
+}
+
+1919.1.1 = {
+
+	add_ideas = {
+		interwar_spirit_TheGreatWar_Winner
+	}
+
+	remove_ideas = {
+		FRA_ww1_Revanchism
+		ww1_Scramble_for_Africa
+	}
+
+	oob = "FRA_1919"
+
+	# Global Flags for 1919 Start Up
+
+	set_global_flag = global_RomanovFamilyExecuted
+	set_global_flag = kis_panamacanal
+	set_global_flag = kis_treaty_of_versailles
+	set_global_flag = kis_spanishflu
+	set_global_flag = kis_brestlitovsk
+	set_global_flag = kis_whitesvsreds
+	set_global_flag = kis_ask_ger_surrend
+	set_global_flag = kis_player_decided_ger_surrend
+	set_global_flag = kis_Rasputin_Murdered
+
+	SOV = {
+		set_country_flag = kis_secondrevoltsov
+	}
+
+	ROM = {
+		set_country_flag = carol_dead
+	}
+
+    AUH = {
+		set_country_flag = emperor_franz_dead
+	}
+
+	GRE = {
+		set_country_flag = george_died
+	}
+
+	GER = {
+		set_truce = { 
+			target = GER 
+			days = 90
+		}
+	}
+
+	# Wars and Threats
+	SOV = {
+		declare_war_on = {
+			target = POL
+			type = annex_everything
+		}
+		add_named_threat = {
+			threat = 7
+			name = ww1_interwar_SovietPolish_war_threat
+		}
+
+		activate_decision = SOV_move_capital_to_moscow
+	}
+	UKR = {
+		declare_war_on = {
+			target = SOV
+			type = annex_everything
+		}
+		add_named_threat = {
+			threat = 4
+			name = "ww1_interwar_UkrainianSoviet_war_threat"
+		}
+	}
+	POL = {
+		declare_war_on = {
+			target = UKR
+			type = annex_everything
+		}
+		add_named_threat = {
+			threat = 3
+			name = ww1_interwar_PolishUkrainian_war_threat
+		}
+	}
+
+	# Greco-Turkish War
+	GRE = {
+		declare_war_on = {
+			target = TUR
+			type = take_state
+			generator = { 340 341 342 347 }
+		}
+		declare_war_on = {
+			target = TUK
+			type = take_state
+			generator = { 340 341 342 347 }
+		}
+	}
+	TUK = {
+		declare_war_on={
+			target = TUR
+			type = annex_everything
+		}
+	}
 
 
+	# The Hungarian Republic supported by Romania is taking back the control over Hungarian Soviet Republic
+	HUN = {
+		declare_war_on = {
+			target = HSR
+			type = annex_everything
+		}
+	}
+
+	RUS = {
+		declare_war_on = {
+			target = SOV
+			type = annex_everything
+		}
+		add_named_threat = {
+			threat = 9
+			name = ww1_interwar_RussianCivil_war_threat
+		}
+
+		declare_war_on = {
+			target = POL
+			type = annex_everything
+		}
+
+		declare_war_on = {
+			target = UKR
+			type = annex_everything
+		}
+	}
+	LIT = {
+		declare_war_on = {
+			target = SOV
+			type = take_state_focus
+			generator = { 189 11 }
+		}
+	}
+	LAT = {
+		declare_war_on = {
+			target = SOV
+			type = take_state_focus
+			generator = { 190 12 }
+		}
+	}
+	EST = {
+		declare_war_on = {
+			target = SOV
+			type = take_state_focus
+			generator = { 13 191 }
+		}
+	}
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+	unlock_national_focus = FRA_ww1_centralizedpower
+	complete_national_focus = FRA_ww1_unitedpeople
+	
+	unlock_national_focus = FRA_ww1_send_diplomats
+	unlock_national_focus = FRA_ww1_inviteUK
+	unlock_national_focus = FRA_ww1_armeeorient
+	unlock_national_focus = FRA_ww1_greece_friend
+	unlock_national_focus = FRA_ww1_allied_bases
+	unlock_national_focus = FRA_ww1_ready_country
+	unlock_national_focus = FRA_ww1_alsaceloreaine_propaganda
+	unlock_national_focus = FRA_ww1_alsaceloreaine_war
+	unlock_national_focus = FRA_ww1_HenriBerthelotRomania
+
+	complete_national_focus = FRA_ww1_french_algeria_infra
+
+	complete_national_focus = FRA_ww1_gasmask_focus
+	complete_national_focus = FRA_ww1_fighter_focus
+	complete_national_focus = FRA_ww1_newnavalcanons_2
+
+	complete_national_focus = FRA_interwar_PeaceAfterVersailles
+	complete_national_focus = FRA_interwar_allied_occupation_rhineland
+	#-------------------------------------------------------
+
+	set_technology = {
+		# Infantry
+		support_weapons2 = 1
+		support_weapons3 = 1
+		ww1infantry_weapons2 = 1
+		ww1_infantry_equip1 = 1
+		ww1_infantry2_equip = 1
+		infantry_gasmask = 1
+		infantry_ww1_mortar1 = 1
+		infantry_flamethrower1 = 1
+		infantry_ww1_machinegun1 = 1
+		early_motorised = 1
+		ww1_ambulance2 = 1
+		tech_mountaineers = 1
+		tech_mountaineers2 = 1
+		marines = 1
+		marines = 2
+
+		# Support
+		tech_signal_company = 1
+
+		tech_engineers2 = 1
+		tech_recon2 = 1
+		tech_military_police2 = 1
+		tech_maintenance_company2 = 1
+		tech_field_hospital2 = 1
+		tech_logistics_company2 = 1
+		tech_signal_company2 = 1
+
+		tech_engineers3 = 1
+		tech_recon3 = 1
+		tech_military_police3 = 1
+		tech_maintenance_company3 = 1
+		tech_field_hospital3 = 1
+		tech_logistics_company3 = 1
+		tech_signal_company3 = 1
+
+
+		# Armor
+		ww1_armored_car_2 = 1
+		ww1_armored_car_3 = 1
+		ww1_light_tank = 1
+		ww1_heavy_tank = 1
+		ww1_heavy_tank2 = 1
+
+		# Artillery
+		light_field_gun2 = 1
+		heavy_field_gun2 = 1
+		bonus_artillery1 = 1
+		bonus_artillery4 = 1
+		bonus_bertha1 = 1
+		bonus_bertha4 = 1
+		bonus_artillery2 = 1
+		bonus_bertha2 = 1
+
+		# Land Doctrine
+		ww1_landdoctrine = 1
+		ww1_directfire = 1
+		ww1_rifle_ammo = 1
+		ww1_long_march = 1
+		ww1_battlefield = 1
+		ww1_target = 1
+		ww1_night = 1
+		ww1_armored_car = 1
+
+		# Navy
+		ww1_battleship4 = 1
+		ww1_battleship4_mtg = 1
+		ww1_battleship5 = 1
+		ww1_battleship5_mtg = 1
+		ww1_battlecruiser1 = 1
+		ww1_battlecruiser1_mtg = 1
+		ww1_battlecruiser1 = 1
+		ww1_battlecruiser1_mtg = 1
+		ww1_battlecruiser2 = 1
+		ww1_battlecruiser2_mtg = 1
+		ww1_battlecruiser3 = 1
+		ww1_battlecruiser3_mtg = 1
+		ww1_light_cruiser1 = 1
+		ww1_light_cruiser1_mtg = 1
+		ww1_light_cruiser3 = 1
+		ww1_light_cruiser3_mtg = 1
+		ww1_light_cruiser4 = 1
+		ww1_light_cruiser4_mtg = 1
+		ww1_light_cruiser5 = 1
+		ww1_light_cruiser5_mtg = 1
+		ww1_destroyer3 = 1
+		ww1_destroyer3_mtg = 1
+		ww1_destroyer4 = 1
+		ww1_destroyer4_mtg = 1
+		ww1_destroyer5 = 1
+		ww1_destroyer5_mtg = 1
+		ww1_submarine2 = 1
+		ww1_submarine2_mtg = 1
+		ww1_submarine3 = 1
+		ww1_submarine3_mtg = 1
+		ww1_submarine4 = 1
+		ww1_submarine4_mtg = 1
+		ww1_coastal_submarine2 = 1
+		ww1_coastal_submarine2_mtg = 1
+		ww1_coastal_submarine3 = 1
+		ww1_coastal_submarine3_mtg = 1
+		ww1_coastal_submarine4 = 1
+		ww1_coastal_submarine4_mtg = 1
+		ww1_cruiser_submarine1 = 1
+		ww1_cruiser_submarine1_mtg = 1
+		ww1_cruiser_submarine2 = 1
+		ww1_cruiser_submarine2_mtg = 1
+		ww1_smoke_generator = 1
+		ww1_smoke_generator_mtg = 1
+		seaplane_carrier = 1
+		seaplane_carrier_mtg = 1
+
+		# Naval Doctrine
+		ww1_navaldoctrine = 1
+		ww1_navaldoctrine_2 = 1
+		ww1_navaldoctrine_3 = 1
+		ww1_navaldoctrine_4 = 1
+		ww1_navaldoctrine_5b = 1
+		ww1_navaldoctrine_6b = 1
+
+		# Air
+		ww1_fighter2 = 1
+		ww1_fighter2b = 1
+		ww1_fighter3 = 1
+		ww1_fighter4 = 1
+		ww1_seaplane1 = 1
+		ww1_seaplane2 = 1
+		ww1_bomber1 = 1
+		ww1_bomber2 = 1
+		ww1_bomber3 = 1
+		ww1_zeppelin2 = 1
+
+		# Air Doctrine
+		ww1_airdoctrine = 1
+		ww1_airdoctrine_2 = 1
+		ww1_airdoctrine_3 = 1
+		ww1_airdoctrine_4 = 1
+		ww1_airdoctrine_5 = 1
+		ww1_airdoctrine_6 = 1
+		ww1_airdoctrine_7 = 1
+		ww1_airdoctrine_8 = 1
+		ww1_airdoctrine_9 = 1
+
+		# Engineering
+		supertech1 = 1
+		torpedotech1 = 1
+		tankaircraft1 = 1
+		radio = 1
+		radio2 = 1
+		hoi4tgw_encryption = 1
+		hoi4tgw_decryption = 1
+		dingfelder_engine1 = 1
+		tanktrack1 = 1
+		subhulltech1 = 1
+		mechanical_computing = 1
+		mechanical_computing2 = 1
+		chemical_research2 = 1
+		tank_unlocker2 = 1
+
+		# Industry
+		ww1_tools1 = 1
+		ww1_tools2 = 1
+		ww1_tools3 = 1
+		ww1_camera1 = 1
+		ww1_camera2 = 1
+		ww1_industry1 = 1
+		ww1_industry2 = 1
+		ww1_medicine1 = 1
+		ww1_medicine2 = 1
+		ww1_medicine3 = 1
+		ww1_construction1 = 1
+		ww1_construction2 = 1
+		ww1_mining1 = 1
+		ww1_mining2 = 1
+		ww1_oil1 = 1
+		ww1_oil2 = 1
+		ww1_bergiusprocess = 1
+		ww1_fortification2 = 1
+		ww1_fortification3 = 1
+		ww1_fortification3b = 1
+	}
 
 }

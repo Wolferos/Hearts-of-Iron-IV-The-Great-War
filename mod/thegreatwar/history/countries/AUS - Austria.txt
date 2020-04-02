@@ -15,18 +15,14 @@ set_technology={
 	ww1_destroyer0_mtg = 1
 	ww1_destroyer1 = 1
 	ww1_destroyer1_mtg = 1
-	#KiS=1
-	#KiS=1
 	 
 	#KiS early_protected_cruiser=1
 	ww1_light_cruiser1 = 1
 	ww1_light_cruiser1_mtg = 1
 	ww1_light_cruiser0 = 1
 	ww1_light_cruiser0_mtg = 1
-	 
-	 
-	 
-	#KiS=1
+
+
 	ww1_battleship0 = 1
 	ww1_battleship0_mtg = 1
 	ww1_battleship1 = 1
@@ -67,7 +63,8 @@ set_stability=0.50
 
 1914.1.1 = { set_technology={ 
 		#KiS #Scout1=1
-		naval_bomber1=1
+		#naval_bomber1=1
+
 		#KiS #airship1=1
 		light_field_gun1=1
 		light_field_gun2=1
@@ -144,15 +141,15 @@ set_stability=0.50
 		#KiS #tech_signal_company=1
 		} }
 create_country_leader={ name="Karl Seitz" desc=AUS_karl_seitz_DESC picture="gfx/leaders/AUS_karl_seitz.dds" expire="1935.1.1" ideology=despotism traits={  } }
-create_corps_commander={  name = "Jaeger" id=7002 portrait_path="gfx/generals/AUS_jaeger.tga" traits={   } skill=2 }
-create_corps_commander={  name = "von Schilawsky J." id=7003 portrait_path="gfx/generals/AUS_von_schilawsky_j.tga" traits={   } skill=3 }
-create_corps_commander={  name = "von Janecka" id=7004 portrait_path="gfx/generals/AUS_von_janecka.tga" traits={   } skill=2 }
-create_corps_commander={  name = "von Preanfeld" id=7005 portrait_path="gfx/generals/AUS_von_preanfeld.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Valentini" id=7007 portrait_path="gfx/generals/AUS_valentini.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Verderber" id=7008 portrait_path="gfx/generals/AUS_verderber.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Windisch" id=7009 portrait_path="gfx/generals/AUS_windisch.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Eismannsberger" id=7010 portrait_path="gfx/generals/AUS_eismannsberger.tga" traits={   } skill=3 }
-create_corps_commander={  name = "von Brudermann A." id=7011 portrait_path="gfx/generals/AUS_von_brudermann_a.tga" traits={   } skill=1 }
+create_corps_commander={  name = "Jaeger" id=7002 portrait_path="gfx/generals/AUS_jaeger.dds" traits={   } skill=2 }
+create_corps_commander={  name = "von Schilawsky J." id=7003 portrait_path="gfx/generals/AUS_von_schilawsky_j.dds" traits={   } skill=3 }
+create_corps_commander={  name = "von Janecka" id=7004 portrait_path="gfx/generals/AUS_von_janecka.dds" traits={   } skill=2 }
+create_corps_commander={  name = "von Preanfeld" id=7005 portrait_path="gfx/generals/AUS_von_preanfeld.dds" traits={   } skill=3 }
+create_corps_commander={  name = "Valentini" id=7007 portrait_path="gfx/generals/AUS_valentini.dds" traits={   } skill=2 }
+create_corps_commander={  name = "Verderber" id=7008 portrait_path="gfx/generals/AUS_verderber.dds" traits={   } skill=2 }
+create_corps_commander={  name = "Windisch" id=7009 portrait_path="gfx/generals/AUS_windisch.dds" traits={   } skill=3 }
+create_corps_commander={  name = "Eismannsberger" id=7010 portrait_path="gfx/generals/AUS_eismannsberger.dds" traits={   } skill=3 }
+create_corps_commander={  name = "von Brudermann A." id=7011 portrait_path="gfx/generals/AUS_von_brudermann_a.dds" traits={   } skill=1 }
 
 1936.1.1={ 
 capital=4
@@ -169,5 +166,41 @@ create_country_leader={ name="Alfred Klahr" desc="POLITICS_ALFRED_KLAHR_DESC" pi
 create_corps_commander={ name="Karl Eglseer" portrait_path="gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds" traits={ trait_mountaineer trickster } skill=3 }
 
 }
-#
-#
+
+
+
+if = {
+	limit = {
+		has_start_date > 1919.01.01
+	}
+	# https://en.wikipedia.org/wiki/Alexander_Khatisian
+	create_country_leader = {
+		name = "Karl Renner" 
+		desc = POLITICS_KARL_RENNER_DESC 
+		picture = "gfx/hoi4tgw_portraits/AUS/country_leaders/AUS_karl_renner.dds" 
+		expire = "1935.1.1" 
+		ideology = conservatism 
+		traits = { }
+	}
+
+
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1918.10.30"
+	    election_frequency = 36
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 84
+	    communism = 2
+	    neutrality = 14
+	}
+}
+
+
+1919.1.1 = {
+	create_country_leader={ name="Karl Seitz" expire="1965.1.1" picture="gfx/hoi4tgw_portraits/AUS/country_leaders/AUS_Karl_Seitz.dds" ideology=socialism traits={} }
+	set_cosmetic_tag = AUS_GermanAustria_neutrality
+
+	oob = "AUS_1919"
+}

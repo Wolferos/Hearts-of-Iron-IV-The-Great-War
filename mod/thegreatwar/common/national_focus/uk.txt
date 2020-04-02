@@ -38,7 +38,7 @@ focus_tree = {
 		id = ENG_ww1_democracy
 		prerequisite = { focus=ENG_ww1_support_republic }
 		icon = GFX_goal_support_democracy
-		completion_reward = { add_ideas=liberty_ethos_focus }
+		completion_reward = { add_ideas = liberty_ethos_focus }
 
 		ai_will_do = { factor = 20 }
 		cost = 10
@@ -716,7 +716,7 @@ focus_tree = {
 				create_corps_commander = {  
 					name = "T. E. Lawrence" 
 					id = 38007 
-					portrait_path = "gfx/HJZ/army_generals/HJZ_Thomas_Edward_Lawrence.tga" 
+					portrait_path = "gfx/HJZ/army_generals/HJZ_Thomas_Edward_Lawrence.dds" 
 					traits = { 
 						trickster
 					} 
@@ -1294,23 +1294,484 @@ focus_tree = {
 
 		completion_reward = {
 			add_stability = 0.1
-			army_experience=-500
-			navy_experience=-500
-			air_experience=-500
+			army_experience = -500
+			navy_experience = -500
+			air_experience = -500
 
+			add_war_support = -0.15
 
 			hidden_effect = {
-				news_event = { id = interwar_news.11 days = 30 } #Irish War of Independence
+				news_event = { id = interwar_news.11 days = 30 } # Irish War of Independence
 			}
 
 		}
 
-		ai_will_do = { factor = 200 }
+		ai_will_do = { factor = 1 }
 
 		cost = 15
 		x = 17
+		y = 7
+	}
+
+	focus = {
+		id = ENG_interwar_Allied_Intervention_in_Russia # Allied intervention in the Russian Civil War
+		icon = GFX_focus_eng_global_defense
+		prerequisite = { focus = ENG_interwar_aftermath_of_world_war_i }
+
+		completion_reward = {
+			213 = {  set_border_war = yes }
+			214 = {  set_border_war = yes }
+			215 = {  set_border_war = yes }
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 20
 		y = 8
 	}
+
+	focus = {
+		id = ENG_interwar_Czechoslovak_Legion # Czechoslovak Legion
+		icon = GFX_focus_secret_rearmament_shine
+		prerequisite = { focus = ENG_interwar_Allied_Intervention_in_Russia }
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -1500
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 18
+		y = 9
+	}
+
+	focus = {
+		id = ENG_interwar_Czechoslovakia
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = { focus = ENG_interwar_Czechoslovak_Legion }
+
+		available = {
+			country_exists = CZE
+		}
+
+		completion_reward = {
+			add_opinion_modifier = { 
+				target = CZE
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 17
+		y = 10
+	}
+
+	focus = {
+		id = ENG_interwar_Mussolini # Consequences of the March on Rome
+		icon = GFX_focus_ger_assassinate_mussolini
+
+		available = {
+			date > 1920.1.1
+			country_exists = ITA	
+			ITA = { has_government = fascism }
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 15
+		y = 11
+	}
+
+	focus = {
+		id = ENG_interwar_Allied_Forces_Withdrew # Allied Forces Withdrew
+		icon = GFX_hoi4tgw_knifeintheback
+		prerequisite = { focus = ENG_interwar_Allied_Intervention_in_Russia }
+		mutually_exclusive = { focus = ENG_interwar_Support_Kolchak_s_Armies }
+
+		available = {
+			date > 1920.1.1
+		}
+
+		completion_reward = {
+
+			213 = { set_border_war = no }
+			214 = { set_border_war = no }
+			215 = { set_border_war = no }
+
+			add_opinion_modifier = { 
+				target = RUS
+				modifier =  HOI4TGW_Opinion_diplomats_malus
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 20
+		y = 10
+	}
+
+	focus = {
+		id = ENG_interwar_ImperialGoldReserve # Imperial Gold Reserve
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		prerequisite = { focus = ENG_interwar_Czechoslovak_Legion }
+		prerequisite = { focus = ENG_interwar_Allied_Forces_Withdrew }
+
+		available = {
+			date > 1920.1.1
+			country_exists = SOV
+			SOV = {
+				has_government = communism
+			}
+		}
+
+		completion_reward = {
+			add_opinion_modifier = { 
+				target = SOV
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 19
+		y = 11
+	}
+
+	focus = {
+		id = ENG_interwar_AntiFascism # Anti-Fascism
+		icon = GFX_focus_focus_fra_fascist_threat
+		prerequisite = { focus = ENG_interwar_Mussolini }
+		mutually_exclusive = { focus = ENG_interwar_DealWithMussolini }
+
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.15
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 14
+		y = 12
+	}
+
+	focus = {
+		id = ENG_interwar_WarOnFascism # WarOnFascism
+		icon = GFX_focus_rom_parties_end
+		prerequisite = { focus = ENG_interwar_AntiFascism }
+
+		available = {
+			country_exists = ITA
+			ITA = { has_government = fascism }
+			ITA = {
+				is_puppet = no
+			}
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = ITA
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 14
+		y = 13
+	}
+
+	focus = {
+		id = ENG_interwar_DealWithMussolini # Deal with Mussolini
+		icon = GFX_focus_befriend_italy
+		prerequisite = { focus = ENG_interwar_Mussolini }
+		mutually_exclusive = { focus = ENG_interwar_AntiFascism }
+		mutually_exclusive = { focus = ENG_interwar_Keep_Calm_and_Stay_the_Course }
+		mutually_exclusive = { focus = ENG_interwar_DealWithTrotsky }
+
+		available = {
+			country_exists = ITA
+			ITA = { has_government = fascism }
+		}
+
+		completion_reward = {
+			add_opinion_modifier = { target = ITA modifier = ita_diplomacy_focus }
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.15
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 16
+		y = 12
+	}
+
+	focus = {
+		id = ENG_interwar_BritishFirst # British First
+		icon = GFX_hoi4tgw_britania
+		prerequisite = { focus = ENG_interwar_DealWithMussolini }
+
+		completion_reward = {
+			add_timed_idea = { idea = reign_of_terror days = 730 }
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.65
+			}
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = no
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 16
+		y = 13
+	}
+
+	focus = {
+		id = ENG_interwar_Keep_Calm_and_Stay_the_Course # Keep Calm and Stay the Course
+		icon = GFX_focus_eng_imperial_federation
+		prerequisite = { focus = ENG_interwar_ImperialGoldReserve }
+		mutually_exclusive = { focus = ENG_interwar_DealWithMussolini }
+		mutually_exclusive = { focus = ENG_interwar_DealWithTrotsky }
+
+		available = {
+			has_war = no
+		}
+
+		completion_reward = {
+			add_war_support = -0.05
+			add_political_power = 100
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 18
+		y = 12
+	}
+
+	focus = {
+		id = ENG_interwar_Favorise_Home_Ownership # Favorise Home Ownership
+		icon = GFX_focus_usa_guarantee_the_american_dream
+		prerequisite = { focus = ENG_interwar_Keep_Calm_and_Stay_the_Course }
+
+		available = {
+			has_war = no
+		}
+
+		completion_reward = {
+			add_stability = 0.1
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 18
+		y = 13
+	}
+
+	focus = {
+		id = ENG_interwar_DealWithTrotsky # Deal with Trotsky
+		icon = GFX_focus_fra_loyalty_trotzky
+		prerequisite = { focus = ENG_interwar_ImperialGoldReserve }
+		mutually_exclusive = { focus = ENG_interwar_Keep_Calm_and_Stay_the_Course }
+		mutually_exclusive = { focus = ENG_interwar_DealWithMussolini }
+
+
+		available = {
+			country_exists = SOV
+			NOT = { country_exists = RUS }
+			SOV = {
+				has_war = no
+				has_government = communism
+			}
+		}
+
+		completion_reward = {
+
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 20
+		y = 12
+	}
+
+	focus = {
+		id = ENG_interwar_PromoteSocialism # PromoteSocialism
+		icon = GFX_focus_por_workers_of_iberia
+		prerequisite = { focus = ENG_interwar_DealWithTrotsky }
+
+		available = {
+			country_exists = SOV
+			SOV = { has_government = communism }
+		}
+
+		completion_reward = {
+			add_stability = -0.15
+			
+			add_popularity = {
+				ideology = communism
+				popularity = 0.25
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 20
+		y = 13
+	}
+
+	focus = {
+		id = ENG_interwar_ASovietKing # A Soviet King
+		icon = GFX_goal_tfv_burn_the_royal_portraits
+		prerequisite = { focus = ENG_interwar_PromoteSocialism }
+
+		completion_reward = {
+			create_country_leader={ name = "George V" picture="gfx/leaders/ENG_george_v.dds" expire="1935.1.1" ideology=marxism traits={  } }
+			add_popularity = {
+				ideology = communism
+				popularity = 0.65
+			}
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 10
+		x = 20
+		y = 14
+	}
+
+
+	focus = {
+		id = ENG_interwar_Support_Kolchak_s_Armies # Kolchak's Armies
+		icon = GFX_hoi4tgw_wggrus
+		prerequisite = { focus = ENG_interwar_Allied_Intervention_in_Russia }
+		mutually_exclusive = { focus = ENG_interwar_Allied_Forces_Withdrew }
+
+		bypass = {
+			NOT = {
+				country_exists = RUS
+			}
+		}
+
+		available = {
+			country_exists = RUS
+
+			RUS = {
+				is_puppet = no
+				has_war_with = SOV
+			}
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		completion_reward = {
+			add_war_support = 0.1
+			add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -5000
+			}
+			RUS = {
+				add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 5000
+				}
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 22
+		y = 10
+	}
+
+	focus = {
+		id = ENG_interwar_AntiBolshevik
+		icon = GFX_focus_hol_united_netherlands
+		prerequisite = { focus = ENG_interwar_Support_Kolchak_s_Armies }
+
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = -0.20
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 22
+		y = 11
+	}
+
+	focus = {
+		id = ENG_interwar_OperationThinkable # Ref. to https://en.wikipedia.org/wiki/Operation_Unthinkable
+		icon = GFX_focus_eng_expose_the_belly_of_the_bear
+		prerequisite = { focus = ENG_interwar_AntiBolshevik }
+
+		available = {
+			country_exists = SOV
+			SOV = { has_government = communism }
+			SOV = {
+				is_puppet = no
+			}
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = SOV
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 22
+		y = 12
+	}
+
 
 	#Irish Free State
 	focus = {
@@ -1321,12 +1782,15 @@ focus_tree = {
 
 		available = {
 
-			has_global_flag = interwar_irish_war_of_independence
+			date > 1921.1.1
 
-			ENG = { has_war_with = IRE }
+			OR = {
+				has_global_flag = interwar_irish_war_of_independence
+				ENG = { has_war_with = IRE }
+			}
 		}
 
-		x = 17
+		x = 15
 		y = 9
 
 		cost = 5
@@ -1365,7 +1829,7 @@ focus_tree = {
 	#Treaty of Lausanne
 	focus = {
 		id = ENG_interwar_treaty_of_lausanne
-		prerequisite = { focus=ENG_interwar_aftermath_of_world_war_i }
+		prerequisite = { focus = ENG_interwar_aftermath_of_world_war_i }
 		mutually_exclusive = { focus = ENG_interwar_invade_constantinople }
 		
 		icon = GFX_goal_generic_forceful_treaty
@@ -1381,7 +1845,7 @@ focus_tree = {
 		}
 
 		x = 16
-		y = 10
+		y = 8
 
 		cost = 10
 
@@ -1423,7 +1887,7 @@ focus_tree = {
 		}
 
 		x = 18
-		y = 10
+		y = 8
 
 		cost = 10
 

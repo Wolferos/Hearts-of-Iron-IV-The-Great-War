@@ -782,6 +782,76 @@ on_actions = {
 	
 	on_puppet = {
 		effect = {
+
+			# Interwar TGW IA - Annex HSR instead of Puppet
+			if = {
+				limit ={
+					has_start_date > 1919.1.1
+					ROOT = { 
+						tag = HSR
+						is_ai = yes
+					}
+					FROM = {
+						tag = HUN
+						is_ai = yes
+					}
+				}
+				HUN = {
+					annex_country = {
+						target = HSR
+						transfer_troops = no
+					}
+				}
+			}
+			# Interwar TGWA IA - SOV tries to puppet White Russia
+			if = {
+				limit = {
+					has_start_date > 1919.1.1
+					ROOT = {
+						tag = RUS
+						is_ai = yes
+					}
+					FROM = {
+						tag = SOV
+						is_ai = yes
+					}
+					NOT = {
+						has_global_flag = kis_start_1919_russian_civil_war
+					}
+				}
+				SOV = {
+					annex_country = {
+						target = RUS
+						transfer_troops = no
+					}
+				}
+				set_global_flag = kis_start_1919_russian_civil_war
+			}
+			# Interwar TGWA IA - SOV tries to puppet White Russia
+			if = {
+				limit = {
+					has_start_date > 1919.1.1
+					ROOT = {
+						tag = UKR
+						is_ai = yes
+					}
+					FROM = {
+						tag = SOV
+						is_ai = yes
+					}
+					NOT = {
+						has_global_flag = kis_start_1919_ukrainian_soviet_war
+					}
+				}
+				SOV = {
+					annex_country = {
+						target = UKR
+						transfer_troops = no
+					}
+				}
+				set_global_flag = kis_start_1919_ukrainian_soviet_war
+			}
+
 			if = {
 				limit = {
 					OR = {

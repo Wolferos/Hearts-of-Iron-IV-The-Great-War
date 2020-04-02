@@ -336,21 +336,56 @@ news_event = {
 		set_global_flag = interwar_turkish_national_movement
 		hidden_effect = {
 
-			GRE = {
-				country_event = { id = ww1_greece.6 }
-			}
+			# Previous code before the Aftermath of Versailles
+			# TUR = {
+			# 	start_civil_war = {
+			# 		ruling_party = democratic
+			# 		ideology = neutrality
+			# 		size = 0.5
+			# 		capital = 49
+			# 		states = { 49 348 346 345 355}
+			# 	}
 
-			TUR = {
-				start_civil_war = {
-					ruling_party = democratic
-					ideology = neutrality
-					size = 0.5
-					capital = 49
-					states = { 49 348 346 345 355}
+			# 	#load_oob = "TUR_1919"
+			# 	create_country_leader = {
+			# 		name = "Mustafa Kemal"
+			# 		desc = TUR_mustafa_kemal_DESC picture = "gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_mustafa_kemal.dds"
+			# 		expire = "1935.1.1"
+			# 		ideology = liberalism traits = {}
+			# 	}
+			# }
+
+			# Started in 1910 or 1914 
+			if = {
+				limit = {
+					has_start_date < 1919.1.1
 				}
 
-				#load_oob = "TUR_1919"
-				create_country_leader={ name = "Mustafa Kemal" desc=TUR_mustafa_kemal_DESC picture="gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_mustafa_kemal.dds" expire="1935.1.1" ideology=liberalism  traits={  } }
+				# Territorial changes
+				if = { limit = { TUR = { controls_state = 49  }	} TUK = { transfer_state = 49  } }
+				if = { limit = { TUR = { controls_state = 348 }	} TUK = { transfer_state = 348 } }
+				if = { limit = { TUR = { controls_state = 349 }	} TUK = { transfer_state = 349 } }
+
+				# Loading OOB for TUK
+				TUK = {
+					load_oob = "TUK_1919"
+				}
+
+				# Start of the War
+				TUK = {
+					declare_war_on={
+						target = TUR
+						type = annex_everything
+					}
+				}
+
+				# For the Greco-Turkish War
+				GRE = {
+					country_event = { days = 13 id = ww1_greece.6 }
+				}
+			}
+			else {
+				news_event = { days = 4 id = interwar_news.9 }
 			}
 
 		}
@@ -550,7 +585,7 @@ news_event = {
 		has_global_flag = kis_treaty_of_versailles
 		ENG = { has_war = no }
 		NOT={
-			country_exists=IRQ
+			country_exists = IRQ
 			has_global_flag = interwar_iraqi_revolt
 		}
 		ENG = { 
@@ -568,8 +603,8 @@ news_event = {
 			ENG = {
 				end_puppet = IRQ
 				remove_from_faction = IRQ
-				declare_war_on={
-					target=IRQ
+				declare_war_on = {
+					target = IRQ
 					type = annex_everything
 				}
 			}
@@ -620,6 +655,105 @@ news_event = {
 		name = interwar_news.15.a
 		ai_chance = {
 			factor = 100
+		}
+	}
+}
+#____________________________________________________________
+
+# Józef Piłsudski is dead
+#____________________________________________________________
+news_event = {
+	id = interwar_news.16
+	title = interwar_news.16.t
+	desc = interwar_news.16.d
+
+	picture = EVENT_hoi4tgw_interwar_jozef_pilsudski_death
+
+	major = yes
+
+	trigger = {
+		date > 1935.5.11
+		NOT = { has_global_flag = interwar_jozef_pilsudski_death }
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	immediate = {
+		set_global_flag = interwar_jozef_pilsudski_death
+	}
+
+	option = {
+		name = interwar_news.16.a
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+#____________________________________________________________
+
+# Wall Street Bombing # https://en.wikipedia.org/wiki/Wall_Street_bombing
+#____________________________________________________________
+news_event = {
+	id = interwar_news.17
+	title = interwar_news.17.t
+	desc = interwar_news.17.d
+
+	picture = EVENT_hoi4tgw_interwar_wall_street_bombing
+
+	major = yes
+
+	trigger = {
+		date > 1920.9.16
+		NOT = { has_global_flag = interwar_wall_street_bombing }
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	immediate = {
+		set_global_flag = interwar_wall_street_bombing
+	}
+
+	option = {
+		name = interwar_news.17.a
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+#____________________________________________________________
+
+# Earthquake in China # https://en.wikipedia.org/wiki/1920_Haiyuan_earthquake
+#____________________________________________________________
+news_event = {
+	id = interwar_news.18
+	title = interwar_news.18.t
+	desc = interwar_news.18.d
+
+	picture = EVENT_hoi4tgw_interwar_haiyuan_earthquake
+
+	major = yes
+
+	trigger = {
+		date > 1920.12.16
+		NOT = { has_global_flag = interwar_haiyuan_earthquake }
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	immediate = {
+		set_global_flag = interwar_haiyuan_earthquake
+	}
+
+	option = {
+		name = interwar_news.18.a
+		ai_chance = {
+			factor = 1
 		}
 	}
 }

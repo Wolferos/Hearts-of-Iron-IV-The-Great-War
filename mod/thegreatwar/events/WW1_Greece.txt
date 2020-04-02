@@ -1,40 +1,44 @@
 ﻿add_namespace = ww1_greece
+
+# George I Assasinated!
+#____________________________________________________________
 country_event = {
-	title=ww1_greece.1.t#George I Assasinated!
-	desc=ww1_greece.1.d#While out on an afternoon walk near the White Tower on 18 March 1913, he was shot at close range in the back by Alexandros Schinas, who was said to belong to a Socialist organization. Constantine I is now King
-	id=ww1_greece.1
-	picture=ww1_greece_1
-	fire_only_once=yes
-	is_triggered_only=no
-	mean_time_to_happen={
-		days=1
-		}
-	trigger={
-		tag=GRE
-		has_government=neutrality
-		not={
-			has_country_flag=george_died
-			}
-		date>1913.3.13
-		}
-	option={
-		name=ww1_greece.1.a
-		ai_chance={
-			factor=100
-			}
-		set_country_flag=george_died
-		kill_country_leader=yes
-		create_country_leader={
-			name="Constantine I"
-			desc=GRE_constantine_i_DESC
-			picture="gfx/leaders/GRE_constantine_i.dds"
-			expire="1935.1.1"
-			ideology=despotism
-			traits={
-				}
-			}
-		}
-	}
+    title = ww1_greece.1.t # George I Assasinated!
+    desc = ww1_greece.1.d # While out on an afternoon walk near the White Tower on 18 March 1913, he was shot at close range in the back by Alexandros Schinas, who was said to belong to a Socialist organization.Constantine I is now King
+    id = ww1_greece.1
+    picture = ww1_greece_1
+    fire_only_once = yes
+    is_triggered_only = no
+    mean_time_to_happen = {
+        days = 1
+    }
+    trigger = {
+        tag = GRE
+        has_government = neutrality
+        not = {
+            has_country_flag = george_died
+        }
+        date > 1913.3.13
+    }
+    option = {
+        name = ww1_greece.1.a
+        ai_chance = {
+            factor = 100
+        }
+        set_country_flag = george_died
+        kill_country_leader = yes
+        create_country_leader = {
+            name = "Constantine I"
+            desc = GRE_constantine_i_DESC
+            picture = "gfx/leaders/GRE_constantine_i.dds"
+            expire = "1935.1.1"
+            ideology = despotism
+            traits = {}
+        }
+    }
+}
+#____________________________________________________________
+
 # France Sends Troops - Armée d'Orient
 #____________________________________________________________
 country_event = {
@@ -42,7 +46,7 @@ country_event = {
 	title = ww1_greece.5.t
 	desc = ww1_greece.5.d
 
-	is_triggered_only=yes
+	is_triggered_only = yes
 
 	option = {
 		name = ww1_greece.5.a
@@ -65,19 +69,52 @@ country_event = {
 		name = ww1_greece.6.a
 		ai_chance = { factor = 100 }
 
-	    GRE = {
+        if = {
+        	limit = {
+				TUR = {
+					exists = yes
+				}
+        	}
+        	GRE = {
+				declare_war_on = {
+					target = TUR
+					type = take_state
+					generator = { 340 341 342 347 }
+				}
+			}
+        }
 
-	        declare_war_on = {
-	            type = annex_everything
-	            target = TUR
-	        }
-	    }
-
-		hidden_effect = {
-			news_event = { days = 15 id = interwar_news.9 }
+		if = {
+			limit = {
+				TUK = {
+					exists = yes
+				}
+			}
+			GRE = {
+				declare_war_on = {
+					target = TUK
+					type = take_state
+					generator = { 340 341 342 347 }
+				}				
+			}
 		}
 
+		if = {
+			limit = {
+				OR = {
+					country_exists = TUR
+					country_exists = TUK
+				}
+			}
+			add_named_threat = {
+				threat = 7
+				name = ww1_greece.6.t
+			}
+		}
 
+		hidden_effect = {
+			news_event = { days = 4 id = interwar_news.9 }
+		}
 	}
 
 	# GRE No
@@ -85,6 +122,5 @@ country_event = {
 		name = ww1_greece.6.b
 		ai_chance = { factor = 0 }
 	}
-
 }
 #____________________________________________________________

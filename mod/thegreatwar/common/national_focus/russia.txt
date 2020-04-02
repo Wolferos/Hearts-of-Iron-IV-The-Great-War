@@ -14,7 +14,7 @@ focus_tree = {
 	focus = {
 		id = RUS_ww1_political_effort
 		icon = GFX_goal_generic_demand_territory
-		completion_reward = { add_political_power=120 }
+		completion_reward = { add_political_power = 80 }
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 3
@@ -2965,17 +2965,335 @@ focus_tree = {
 		y = 9
 	}
 
+    focus = {
+        id = RUS_ww1_antisubmarine
+        icon = GFX_goal_generic_navy_anti_submarine
+        prerequisite = { focus = RUS_ww1_navyreform }
+        available = {
+            date > 1918.1.1
+        }
+        completion_reward = {
+            navy_experience = 15
+            add_tech_bonus = { name = newnavalcanons_3_bonus bonus=0.3 uses=1 category = naval_doctrine }
+        }
+        ai_will_do = { factor = 1 }
+        cost = 10
+        x = 41
+        y = 9
+    }
+
+
+
+
+    ###########################################################################################################################
+    # INTERWAR
+    ###########################################################################################################################
+
+
+
+
 	focus = {
-		id = RUS_ww1_antisubmarine
-		prerequisite = { focus=RUS_ww1_navyreform }
-		available = { date > 1918.1.1 }
-		icon = GFX_goal_generic_navy_anti_submarine
-		completion_reward = { navy_experience=15 add_tech_bonus={ name=newnavalcanons_3_bonus bonus=0.3 uses=1 category=naval_doctrine } }
-		ai_will_do = { factor = 10 }
+		id = RUS_ww1_interwar_accept_PolandIndependence # Accept Poland's Independence
+		icon = GFX_focus_generic_polish_deal
+        prerequisite = { focus = RUS_ww1_polish_corps }
+        mutually_exclusive = { focus = RUS_ww1_interwar_refuse_PolandIndependence }
+        available = {
+            country_exists = POL
+            date > 1918.1.1
+            has_global_flag = kis_treaty_of_versailles
+        }
+		completion_reward = {
+            add_opinion_modifier = { 
+                target = POL
+                modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+            }
+        }
+		ai_will_do = { factor = 0 }
 		cost = 10
-		x = 41
-		y = 9
+        x = 13
+        y = 7
 	}
+
+    focus = {
+        id = RUS_ww1_interwar_refuse_PolandIndependence # Refuse Poland's Independence
+        icon = GFX_goal_generic_political_pressure
+        prerequisite = { focus = RUS_ww1_polish_corps }
+        mutually_exclusive = { focus = RUS_ww1_interwar_accept_PolandIndependence }
+        available = {
+            country_exists = POL
+            date > 1918.1.1
+            has_global_flag = kis_treaty_of_versailles
+        }
+        completion_reward = {
+
+            declare_war_on = {
+                type = annex_everything
+                target = POL
+            }
+        }
+        ai_will_do = { factor = 0 }
+        cost = 10
+        x = 11
+        y = 7
+    }
+
+
+
+
+    focus = {
+        id = RUS_ww1_interwar_HonorRussianImperialFamily # Honor Russian Imperial Family
+        icon = GFX_hoi4tgw_greattsar
+
+        available = {
+            has_global_flag = global_RomanovFamilyExecuted
+        }
+
+        completion_reward = {
+            add_stability = 0.1
+        }
+
+        ai_will_do = { factor = 1 }
+        cost = 10
+        x = 3
+        y = 6
+    }
+
+
+
+    focus = {
+        id = RUS_ww1_interwar_TsarVladimirovich # Recognize Kirill Vladimirovich as the Tsar
+        icon = GFX_hoi4tgw_russianempire
+        prerequisite = { focus = RUS_ww1_interwar_HonorRussianImperialFamily }
+        mutually_exclusive = { focus = RUS_ww1_interwar_TraitorVladimirovich }
+
+        available = {
+            date > 1918.1.1
+        }
+
+        completion_reward = {
+            create_country_leader = {
+                name = "Kirill I" picture="gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_Tsar_Kirill_I.dds" expire="1935.1.1" ideology = autocracy traits = {}
+            }
+            add_stability = -0.25
+            add_political_power = -300
+        }
+
+        ai_will_do = { factor = 0 }
+        cost = 10
+        x = 2
+        y = 7
+    }
+
+
+    focus = {
+        id = RUS_ww1_interwar_DealWithSOV # Deal with Trotsky
+        icon = GFX_goal_generic_alliance
+        prerequisite = { focus = RUS_ww1_interwar_TsarVladimirovich }
+
+        available = {
+
+        }
+
+        completion_reward = {
+            add_opinion_modifier = { 
+                target = SOV
+                modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+            }
+        }
+
+        ai_will_do = { factor = 0 }
+        cost = 10
+        x = 2
+        y = 8
+    }
+
+
+    focus = {
+        id = RUS_ww1_interwar_TraitorVladimirovich # Vladimirovich is still a Red Traitor
+        icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+        prerequisite = { focus = RUS_ww1_interwar_HonorRussianImperialFamily }
+        mutually_exclusive = { focus = RUS_ww1_interwar_TsarVladimirovich }
+
+        available = {
+            date > 1918.1.1
+        }
+
+        completion_reward = {
+            add_political_power = -50
+        }
+
+        ai_will_do = { factor = 0 }
+        cost = 10
+        x = 4
+        y = 7
+    }
+
+    focus = {
+        id = RUS_ww1_interwar_ZemskySobor # Reestablish the Zemsky Sobor
+        icon = GFX_focus_generic_self_management
+        prerequisite = { focus = RUS_ww1_interwar_TraitorVladimirovich }
+
+        available = {
+
+        }
+
+        completion_reward = {
+            add_stability = -0.15
+        }
+
+        ai_will_do = { factor = 0 }
+        cost = 10
+        x = 4
+        y = 8
+    }
+
+
+    focus = {
+        id = RUS_ww1_interwar_AlexanderIV # Alexander IV, Emperor of all the Russias
+        icon = GFX_hoi4tgw_wggrus
+        prerequisite = { focus = RUS_ww1_interwar_ZemskySobor }
+
+        available = {
+
+        }
+
+        completion_reward = {
+            create_country_leader = {
+                name = "Alexander IV" desc=WHR_aleksandr_kolchak_DESC picture="gfx/hoi4tgw_portraits/RUS/navy_admirals/RUS_kolchak.dds" expire="1935.1.1" ideology = autocracy traits = {}
+            }
+            add_stability = -0.25
+            add_political_power = -300
+        }
+
+        ai_will_do = { factor = 0 }
+        cost = 10
+        x = 4
+        y = 9
+    }
+
+
+
+    focus = {
+        id = RUS_ww1_interwar_InvadeBalticStates
+
+        icon = GFX_focus_eng_move_to_secure_the_dominions
+        prerequisite = { focus = RUS_ww1_interwar_AlexanderIV }
+        x = 1
+        y = 10
+        cost = 10
+
+        ai_will_do = {
+            factor = 0
+        }
+
+        completion_reward = {
+            create_wargoal = {
+                type = annex_everything
+                target = LIT
+            }
+            create_wargoal = {
+                type = annex_everything
+                target = LAT
+            }
+            create_wargoal = {
+                type = annex_everything
+                target = EST
+            }
+        }
+    }
+
+    focus = {
+        id = RUS_ww1_interwar_RetakeCaucasus
+
+        icon = GFX_focus_eng_move_to_secure_the_dominions
+        prerequisite = { focus = RUS_ww1_interwar_AlexanderIV }
+        x = 7
+        y = 10
+        cost = 10
+
+        ai_will_do = {
+            factor = 0
+        }
+
+        completion_reward = {
+            create_wargoal = {
+                type = annex_everything
+                target = GEO
+            }
+            create_wargoal = {
+                type = annex_everything
+                target = AZR
+            }
+            create_wargoal = {
+                type = annex_everything
+                target = RM
+            }
+        }
+    }
+
+
+    focus = {
+        id = RUS_ww1_interwar_FinlandFriend
+
+        icon = GFX_focus_invite_finland
+        mutually_exclusive = { focus = RUS_ww1_interwar_ClaimTheGrandPrincipalityofFinland }
+        prerequisite = { focus = RUS_ww1_interwar_AlexanderIV }
+        x = 3
+        y = 10
+        cost = 10
+
+        ai_will_do = {
+            factor = 0
+        }
+
+        completion_reward = {
+            add_opinion_modifier = {
+                target = FIN
+                modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+            }
+        }
+    }
+
+    focus = {
+        id = RUS_ww1_interwar_AllTheRussias
+
+        icon = GFX_goal_tfv_strengthen_commonwealth_ties
+
+        prerequisite = { focus = RUS_ww1_interwar_FinlandFriend }
+        x = 3
+        y = 11
+        cost = 10
+
+        ai_will_do = {
+            factor = 0
+        }
+
+        completion_reward = {
+            set_cosmetic_tag = RUS_EMPIRE
+        }
+    }
+
+    focus = {
+        id = RUS_ww1_interwar_ClaimTheGrandPrincipalityofFinland
+
+        icon = GFX_goal_generic_occupy_states_ongoing_war
+        mutually_exclusive = { focus = RUS_ww1_interwar_FinlandFriend }
+        prerequisite = { focus = RUS_ww1_interwar_AlexanderIV }
+        x = 5
+        y = 10
+        cost = 10
+
+        ai_will_do = {
+            factor = 0
+        }
+
+        completion_reward = {
+            create_wargoal = {
+                type = annex_everything
+                target = FIN
+            }
+        }
+    }
 
 
 }

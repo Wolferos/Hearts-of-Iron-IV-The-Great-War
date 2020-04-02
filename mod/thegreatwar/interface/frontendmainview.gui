@@ -18,17 +18,16 @@ guiTypes = {
 			name = "Background"		
 			quadTextureSprite ="GFX_frontend_bg"
 			alwaystransparent = yes
-		}
-		
+		}		
 	}
 
 	### MAIN MENU PANEL (upperleft)
 	containerWindowType = {
 		name  ="mainmenu_panel_upperleft"
-		position = { x=0 y =-200 }
+		position = { x=0 y =-270 }
 		show_position = { x=0 y =-1 }
 		animation_type = decelerated
-		animation_time = 1000
+		animation_time = 1024
 		size = { width = 256 height = 768}
 
 		# Open Beta VERSION
@@ -38,8 +37,7 @@ guiTypes = {
 			quadTextureSprite ="GFX_frontend_game_logo"		
 			clicksound = no_sound
 			pdx_tooltip = "MENU_WOLFEROS_INFO"
-		}
-		
+		}		
 	}
 
 	#containerWindowType = {
@@ -68,6 +66,13 @@ guiTypes = {
 		size = { width = 256 height = 768}
 		Orientation = upper_right
 
+		ButtonType = {
+			name = "achievements_button"
+			position = { x = -50 y = 25 }
+			quadTextureSprite ="achievements"
+			pdx_tooltip = "MENU_ACHIEVEMENTS"
+		}
+
 		# FoH
 		ButtonType = {
 			name = "foh_logo"
@@ -77,9 +82,7 @@ guiTypes = {
 			pdx_tooltip = "MENU_FOH_WOLFEROS"
 			web_link = "https://www.patreon.com/FieldsofHistory?utm_source=tgw&utm_medium=mainmenu"
 		}
-
-	}		
-
+	}
 
 	### SINGLE PLAYER MENU
 	containerWindowType = {
@@ -223,8 +226,7 @@ guiTypes = {
 			format = centre
 			maxWidth = 250
 			maxHeight = 20	
-		}
-		
+		}		
 		
 		ButtonType = {
 			name = "settings_button"
@@ -234,8 +236,7 @@ guiTypes = {
 			buttonFont = "hoi_24header"
 			clicksound = click_default
 			oversound = ui_menu_over
-		}
-		
+		}		
 
 		ButtonType = {
 			name = "credits_button"
@@ -263,8 +264,7 @@ guiTypes = {
 			font = "hoi_24header"			
 			text = "FE_EXIT"			
 			clicksound = click_default
-			oversound = ui_menu_over
-			
+			oversound = ui_menu_over			
 		}
 	}
 	
@@ -333,6 +333,7 @@ guiTypes = {
 			pdx_tooltip = "MENU_HOMEPAGE_WOLFEROS"
 			web_link = "http://www.wolferos.com"
 		}
+
 		ButtonType = {
 			name = "forum_button"
 			position = { x=50 y=0 }
@@ -341,6 +342,7 @@ guiTypes = {
 			pdx_tooltip = "MENU_FORUM"
 			web_link = "http://forum.paradoxplaza.com/forum/forumdisplay.php?844-Hearts-of-Iron-IV"
 		}
+
 		ButtonType = {
 			name = "facebook_button"
 			position = { x=100 y=0 }
@@ -366,21 +368,5 @@ guiTypes = {
 			#clicksound = click_default
 			pdx_tooltip = "MENU_PRIVACY_POLICY"
 		}
-	}
-
-	## This position needs updated
-	containerWindowType = {
-		name = "mainmenu_achievement_button"
-		position = { x = -500 y = 20 }	
-		size = { width = 100 height = 100 }
-		Orientation = upper_right
-		clipping = no
-		
-		ButtonType = {
-			name = "achievements_button"
-			position = { x = 0 y = 0 }
-			quadTextureSprite ="achievements"
-			pdx_tooltip = "MENU_ACHIEVEMENTS"
-		}		
 	}
 }

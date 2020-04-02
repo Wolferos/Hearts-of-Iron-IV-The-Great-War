@@ -20,7 +20,9 @@ create_country_leader={ name = "Georgy Lvov" desc=RUS_georgy_lvov_DESC picture="
 create_country_leader={ name = "Nikolay II" desc=RUS_nikolai_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_nikolai_2.dds" expire="1935.1.1" ideology=liberalism traits={  } }
 create_country_leader={ name = "Nikolay II" desc=RUS_nikolai_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_nikolai_ii.dds" expire="1935.1.1" ideology=autocracy traits={  } }
 create_country_leader={ name = "Nikolay II" desc=RUS_nikolai_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_tsar_nikolai_ii.dds" expire="1935.1.1" ideology=fascism_ideology traits={  } }
-create_country_leader={ name = "Aleksandr Kolchak" desc=WHR_aleksandr_kolchak_DESC picture="gfx/hoi4tgw_portraits/RUS/navy_admirals/RUS_kolchak.dds" expire="1935.1.1" ideology=fascism_ideology  traits={  } }
+create_country_leader = {
+	name = "Aleksandr Kolchak" desc=WHR_aleksandr_kolchak_DESC picture="gfx/hoi4tgw_portraits/RUS/navy_admirals/RUS_kolchak.dds" expire="1935.1.1" ideology=fascism_ideology  traits={  }
+}
 
 #ARMY
 create_field_marshal={  name = "Mikhail Alexeyev" id=76321 portrait_path="gfx/hoi4tgw_portraits/RUS/army_generals/RUS_alekseyev.dds" traits={ thorough_planner } skill=2 
@@ -48,7 +50,7 @@ create_corps_commander={ name = "Nikolay Baratov" id=77711 portrait_path="gfx/ho
 	planning_skill = 1
 	logistics_skill = 2
 }	
-create_corps_commander={ name = "Alexeï Broussilov" id=76187 portrait_path="gfx/hoi4tgw_portraits/RUS/army_generals/RUS_brusilov.dds" traits={  trickster } skill=3 
+create_corps_commander={ name = "Aleksei Brusilov" id=76187 portrait_path="gfx/hoi4tgw_portraits/RUS/army_generals/RUS_brusilov.dds" traits={  trickster } skill=3 
 	attack_skill = 1
 	defense_skill = 2
 	planning_skill = 3
@@ -293,7 +295,14 @@ create_navy_leader={  name = "Aleksandr Rusin" id=77235 portrait_path="gfx/hoi4t
 
 
 1914.1.1 = {
-	oob = "RUS_1914"
+
+	if = {
+		limit = {
+			date > 1914.01.01
+			date < 1915.01.01
+		}
+	}
+	oob = "RUS_1914"		
 
 	#-------------------------------------------------------
 	#							NF
@@ -336,7 +345,7 @@ create_navy_leader={  name = "Aleksandr Rusin" id=77235 portrait_path="gfx/hoi4t
 	complete_national_focus = RUS_ww1_scandinavia_focus
 	complete_national_focus = RUS_around_manchuria
 	complete_national_focus = RUS_ww1_Xinhai_Revolution_Opportunity
-	complete_national_focus = RUS_mongolian_protectorate
+	unlock_national_focus = RUS_mongolian_protectorate
 	complete_national_focus = RUS_asian_focus
 	complete_national_focus = RUS_ww1_Tungsten_Nerchinsk
 	#-------------------------------------------------------
@@ -473,6 +482,205 @@ create_navy_leader={  name = "Aleksandr Rusin" id=77235 portrait_path="gfx/hoi4t
 		RUS_ww1_mixed_railways
 		limited_exports 
 	}
+	create_equipment_variant={ name="Leitenant Ilin Class" type=destroyer_1910 parent_version = 0 obsolete=no upgrades={     ship_anti_air_upgrade=5    ship_ASW_upgrade=0 destroyer_engine_upgrade=1    ship_torpedo_upgrade=5 } }
+	create_equipment_variant={ name="Morzh Class" type=submarine_1906 parent_version = 0 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=4 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant={ name="Narval Class" type=submarine_1906 parent_version = 1 obsolete=yes upgrades={    ship_reliability_upgrade=5       sub_torpedo_upgrade=5 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant={ name="Bars Class" type=submarine_1906 parent_version = 2 obsolete=no upgrades={    ship_reliability_upgrade=5       sub_torpedo_upgrade=5 sub_stealth_upgrade=5 sub_engine_upgrade=5  } }	
+}
+
+1919.1.1 = {
+	set_cosmetic_tag = RUS_WHITERUSSIA
+
+	remove_unit_leader = 76187 # Aleksei Brusilov (because he joined the Red Army)
+
+	set_politics = {
+	    ruling_party = neutrality
+	    last_election = "1919.5.26"
+	    election_frequency = 60
+	    elections_allowed = no
+	}
+
+	create_country_leader = {
+		name = "Aleksandr Kolchak" desc=WHR_aleksandr_kolchak_DESC picture="gfx/hoi4tgw_portraits/RUS/navy_admirals/RUS_kolchak.dds" expire="1935.1.1" ideology = autocracy traits = {}
+	}
+
+	oob = "RUS_1919"
+
+	# Omsk as Capital
+	capital = 571
+
+
+	set_political_power = 384
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+	#Army
+	complete_national_focus = RUS_ww1_army_effort
+	complete_national_focus = RUS_ww1_equipment_effort
+	complete_national_focus = RUS_ww1_artillery_effort_1
+	complete_national_focus = RUS_ww1_doctrine_effort
+	complete_national_focus = RUS_ww1_trenchwarfare
+	
+	# Air
+	complete_national_focus = RUS_ww1_aviation_effort
+	complete_national_focus = RUS_ww1_aviation_effort_2
+	
+	# Industry
+	complete_national_focus = RUS_ww1_industrial_effort
+	complete_national_focus = RUS_ww1_infrastructure_effort
+	complete_national_focus = RUS_ww1_airfield_expansion_1
+	complete_national_focus = RUS_ww1_construction_effort
+	complete_national_focus = RUS_ww1_production_effort
+	complete_national_focus = RUS_ww1_dockyard_effort_1
+	
+	# Naval
+	complete_national_focus = RUS_ww1_naval_effort
+	complete_national_focus = RUS_ww1_european_seas_focus
+
+	#Political
+	complete_national_focus = RUS_ww1_political_effort
+	complete_national_focus = RUS_ww1_adopt_reforms
+	complete_national_focus = RUS_ww1_discuss_tsar_authority
+
+	#Diplomatic
+	complete_national_focus = RUS_ww1_diplomatic_effort
+	complete_national_focus = RUS_ww1_BalkansPolitics
+	complete_national_focus = RUS_ww1_support_serbia
+	unlock_national_focus = RUS_ww1_add_fuel_to_the_fire
+	unlock_national_focus = RUS_ww1_support_serbia_weapons
+	unlock_national_focus = RUS_ww1_defy_germany
+	unlock_national_focus = RUS_ww1_polish_corps
+	unlock_national_focus = RUS_ww1_interwar_refuse_PolandIndependence
+	complete_national_focus = RUS_european_focus
+	complete_national_focus = RUS_ww1_pro_fra
+	complete_national_focus = RUS_ww1_reinforce_western_forts
+	complete_national_focus = RUS_ww1_scandinavia_focus
+	complete_national_focus = RUS_around_manchuria
+	complete_national_focus = RUS_ww1_Xinhai_Revolution_Opportunity
+	complete_national_focus = RUS_mongolian_protectorate
+	complete_national_focus = RUS_asian_focus
+	complete_national_focus = RUS_ww1_Tungsten_Nerchinsk
+
+	unlock_national_focus = RUS_ww1_CaucasusFocus
+	complete_national_focus = RUS_ww1_BakuInvest
+
+	unlock_national_focus = RUS_ww1_Reinforce_Northern_Persia
+	unlock_national_focus = RUS_ww1_Support_Persia_Convention
+	unlock_national_focus = RUS_ww1_Persian_Cossack_Brigade
+	#-------------------------------------------------------
+
+	set_technology = {
+		# Infantry
+		ww1infantry_weapons2 = 1
+		ww1_infantry2_equip = 1
+		infantry_gasmask = 1
+		infantry_ww1_mortar1 = 1
+		infantry_ww1_machinegun1 = 1
+		early_motorised = 1
+		ww1_ambulance2 = 1
+		tech_mountaineers2 = 1
+
+		# Support
+		tech_signal_company = 1
+
+		tech_engineers2 = 1
+		tech_recon2 = 1
+		tech_military_police2 = 1
+		tech_maintenance_company2 = 1
+		tech_field_hospital2 = 1
+		tech_logistics_company2 = 1
+		tech_signal_company2 = 1
+
+		# Armor
+		ww1_armored_car_3 = 1
+		ww1_light_tank = 1
+		ww1_heavy_tank = 1
+
+		# Artillery
+		light_field_gun2 = 1
+		heavy_field_gun2 = 1
+		bonus_artillery4 = 1
+		bonus_bertha4 = 1
+
+		# Land Doctrine
+		ww1_rifle_ammo = 1
+		ww1_long_march = 1
+		ww1_battlefield = 1
+		ww1_target = 1
+		ww1_night = 1
+		ww1_super_heavy_tank = 1
+
+		# Navy
+		ww1_battleship4 = 1
+		ww1_battleship4_mtg = 1
+		ww1_battlecruiser0 = 1
+		ww1_battlecruiser0_mtg = 1
+		ww1_battlecruiser1 = 1
+		ww1_battlecruiser1_mtg = 1
+		ww1_battlecruiser2 = 1
+		ww1_battlecruiser2_mtg = 1
+		ww1_light_cruiser4 = 1
+		ww1_light_cruiser4_mtg = 1
+		ww1_destroyer3 = 1
+		ww1_destroyer3_mtg = 1
+		ww1_destroyer4 = 1
+		ww1_destroyer4_mtg = 1
+		ww1_submarine2 = 1
+		ww1_submarine2_mtg = 1
+		ww1_submarine3 = 1
+		ww1_submarine3_mtg = 1
+		ww1_coastal_submarine2 = 1
+		ww1_coastal_submarine2_mtg = 1
+		ww1_smoke_generator = 1
+		ww1_smoke_generator_mtg = 1
+
+		# Naval Doctrine
+
+		# Air
+		ww1_fighter2 = 1
+		ww1_fighter2b = 1
+		ww1_seaplane1 = 1
+		ww1_bomber1 = 1
+		ww1_bomber2 = 1
+
+		# Air Doctrine
+		ww1_airdoctrine_4 = 1
+		ww1_airdoctrine_5 = 1
+		ww1_airdoctrine_6 = 1
+		ww1_airdoctrine_7 = 1
+
+		# Engineering
+		hoi4tgw_encryption = 1
+		hoi4tgw_decryption = 1
+		dingfelder_engine1 = 1
+		tanktrack1 = 1
+		tank_unlocker2 = 1
+
+		# Industry
+		ww1_tools2 = 1
+		ww1_tools3 = 1
+		ww1_camera1 = 1
+		ww1_industry1 = 1
+		ww1_industry2 = 1
+		ww1_medicine2 = 1
+		ww1_construction1 = 1
+		ww1_construction2 = 1
+		ww1_mining1 = 1
+		ww1_oil1 = 1
+		ww1_oil2 = 1
+		ww1_fortification3 = 1
+		ww1_fortification3b = 1
+	}
+
+	add_ideas = {
+		RUS_ww1_orthodox_church
+		limited_exports
+	}
+	
+	remove_ideas = RUS_ww1_tsushima_humiliation
+	remove_ideas = RUS_ww1_mixed_railways
+
 	create_equipment_variant={ name="Leitenant Ilin Class" type=destroyer_1910 parent_version = 0 obsolete=no upgrades={     ship_anti_air_upgrade=5    ship_ASW_upgrade=0 destroyer_engine_upgrade=1    ship_torpedo_upgrade=5 } }
 	create_equipment_variant={ name="Morzh Class" type=submarine_1906 parent_version = 0 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=4 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
 	create_equipment_variant={ name="Narval Class" type=submarine_1906 parent_version = 1 obsolete=yes upgrades={    ship_reliability_upgrade=5       sub_torpedo_upgrade=5 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
