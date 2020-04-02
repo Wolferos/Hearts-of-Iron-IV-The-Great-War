@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.9.2a
+**Current Version:** 0.10
 
 **Compatible with:** Hearts of Iron IV "Husky" (with or without Paid DLC)
 
