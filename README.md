@@ -1,13 +1,13 @@
 # Hearts of Iron IV: The Great War
 
 ----------
-[**Donwload on Steam**](http://steamcommunity.com/sharedfiles/filedetails/?id=699709023) or [**Donwload on Mod DB**](http://www.moddb.com/mods/hearts-of-iron-iv-the-great-war1)
+[**Donwload on Steam**](http://steamcommunity.com/sharedfiles/filedetails/?id=699709023) | [**Donwload on Mod DB**](http://www.moddb.com/mods/hearts-of-iron-iv-the-great-war1) | [**Donwload on NexusMods**](https://www.nexusmods.com/heartsofironiv/mods/4?tab=description)
 
 **Status:** Open Beta
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.10
+**Current Version:** 0.10 "The Aftermath of Versailles"
 
 **Compatible with:** Hearts of Iron IV "Husky" (with or without Paid DLC)
 
