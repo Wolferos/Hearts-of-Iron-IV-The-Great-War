@@ -1,7 +1,7 @@
 # Hearts of Iron IV: The Great War
 
 ----------
-[**Donwload on Steam**](http://steamcommunity.com/sharedfiles/filedetails/?id=699709023) | [**Donwload on Mod DB**](http://www.moddb.com/mods/hearts-of-iron-iv-the-great-war1) | [**Donwload on NexusMods**](https://www.nexusmods.com/heartsofironiv/mods/4?tab=description)
+[**Donwload on Steam**](http://steamcommunity.com/sharedfiles/filedetails/?id=699709023) | [**Donwload on Mod DB**](http://www.moddb.com/mods/hearts-of-iron-iv-the-great-war1) | [**Donwload on Nexus Mods**](https://www.nexusmods.com/heartsofironiv/mods/4?tab=description)
 
 **Status:** Open Beta
 
