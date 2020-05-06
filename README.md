@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.10.1 "The Aftermath of Versailles"
+**Current Version:** 0.10.2 "The Aftermath of Versailles"
 
 **Compatible with:** Hearts of Iron IV "Husky" (with or without Paid DLC)
 
