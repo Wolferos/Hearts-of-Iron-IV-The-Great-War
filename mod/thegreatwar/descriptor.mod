@@ -13,7 +13,7 @@ tags={
 	"Technologies"
 }
 picture="tgw_picture.png"
-version="0.10.1"
+version="0.10.2"
 supported_version="1.9.*"
 path="/home/romain/.local/share/Paradox Interactive/Hearts of Iron IV/mod/thegreatwar"
 remote_file_id="699709023"
