@@ -39,6 +39,50 @@ focus_tree = {
 	}
 
 	focus = {
+		id = GER_ww1_imperial_research_department
+		icon = GFX_goal_tfv_generic_tech_sharing
+		cost = 10
+		prerequisite = {
+			focus = GER_ww1_support_kaiser
+		}
+		x = 0
+		y = 2
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		available = {
+		}
+		bypass = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = GER_albert_einstein
+			add_tech_bonus = {
+				name = GER_imperial_research_department
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
+			add_tech_bonus = {
+				name = GER_imperial_research_department
+				bonus = 1.0
+				uses = 1
+				category = electronics
+			}
+			add_tech_bonus = {
+				name = GER_imperial_research_department
+				bonus = 1.0
+				uses = 1
+				category = support_tech
+				category = infantry_weapons
+			}
+		}	
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	focus = {
 		id = GER_ww1_militarism
 		prerequisite = { focus=GER_ww1_support_kaiser }
 		icon = GFX_goal_generic_political_pressure
@@ -1065,6 +1109,43 @@ focus_tree = {
 		x = 15
 		y = 2
 	}
+
+	focus = {
+		id = GER_ww1_claim_mittleafrika
+		icon = GFX_goal_mittelafrika
+		cost = 10
+		prerequisite = {
+			focus = GER_ww1_train_ostafrika
+		}
+		x = 15
+		y = 3
+		available = {
+			is_puppet = no
+			NOT = { has_global_flag = kis_treaty_of_versailles }
+		}
+		completion_reward = {
+			add_named_threat = {
+				threat = 2
+				name = GER_ww1_claim_mittleafrika
+			}
+			add_state_claim = 752
+			add_state_claim = 772
+			add_state_claim = 295
+			add_state_claim = 538
+			add_state_claim = 718
+			add_state_claim = 771
+			add_state_claim = 770
+			add_state_claim = 789
+			add_state_claim = 548
+			add_state_claim = 558
+			add_state_claim = 776
+			add_state_claim = 274
+			add_state_claim = 297
+		}	
+		ai_will_do = {
+			factor = 0
+		}
+	}
 	#-----------------------------------------------------------------------	
 
 	#-----------------------------------------------------------------------
@@ -1526,6 +1607,21 @@ focus_tree = {
 		y = 0
 	}
 
+	focus = {
+		id = GER_ww1_fokker_aeroplanbau
+		icon = GFX_focus_hol_fokker
+		cost = 10
+		prerequisite = {
+			focus = GER_ww1_aviation_effort
+		}
+		x = 24
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = available_designer
+			show_ideas_tooltip = fokker
+		}
+	}
+
 
 	focus = {
 		id = GER_ww1_aviation_effort_2
@@ -1679,20 +1775,19 @@ focus_tree = {
 		prerequisite = { focus=GER_ww1_pilotformation_2 focus=GER_ww1_aircraftprod_2  focus=GER_ww1_airbomb_2 }
 		available = { date > 1916.1.1 }
 		icon = GFX_goal_generic_air_doctrine
-		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
+		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.10 uses=1 category=air_doctrine } }
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 26
 		y = 7
 	}
 
-
 	focus = {
 		id = GER_ww1_air_innovation
 		prerequisite = { focus=GER_ww1_aviation_effort_5 }
 		available = { date > 1917.1.1 }
 		icon = GFX_goal_generic_air_fighter2
-		completion_reward = { air_experience=20 add_tech_bonus={ name=ww1_air_innovation_bonus bonus=0.2 uses=1 technology=ww1_fighter3 technology=ww1_fighter4 technology=early_fighter } }
+		completion_reward = { air_experience=20 add_tech_bonus={ name=ww1_air_innovation_bonus bonus=0.2 uses=1 technology=ww1_fighter3 technology=ww1_fighter4 technology=ww1_fighter5 } }
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 25
@@ -1709,6 +1804,42 @@ focus_tree = {
 		cost = 10
 		x = 27
 		y = 8
+	}
+
+	focus = {
+		id = GER_ww1_aviation_effort_6
+		prerequisite = { focus=GER_ww1_navalair focus=GER_ww1_air_innovation }
+		available = { date > 1918.1.1 }
+		icon = GFX_goal_generic_air_doctrine
+		completion_reward = { air_experience=8 add_tech_bonus={ name=air_doc_bonus bonus=0.08 uses=1 category=air_doctrine } }
+		ai_will_do = { factor = 10 }
+		cost = 10
+		x = 26
+		y = 9
+	}
+
+	focus = {
+		id = GER_interwar_fighter
+		prerequisite = { focus=GER_ww1_aviation_effort_6 }
+		available = { date > 1919.1.1 }
+		icon = GFX_hoi4tgw_ww2_air_fighter
+		completion_reward = { air_experience=12 add_tech_bonus={ name=interwar_air_fighter_bonus bonus=0.2 uses=1 technology=ww1_fighter6 technology=early_fighter } }
+		ai_will_do = { factor = 10 }
+		cost = 10
+		x = 25
+		y = 10
+	}
+
+	focus = {
+		id = GER_interwar_bomber
+		prerequisite = { focus=GER_ww1_aviation_effort_6 }
+		available = { date > 1919.1.1 }
+		icon = GFX_hoi4tgw_ww2_air_bomber
+		completion_reward = { air_experience=12 add_tech_bonus={ name=interwar_air_bomber_bonus bonus=0.3 uses=1 technology=ww1_bomber3 technology=ww1_bomber4 } }
+		ai_will_do = { factor = 10 }
+		cost = 10
+		x = 27
+		y = 10
 	}
 
 	###########################################################################################################################
