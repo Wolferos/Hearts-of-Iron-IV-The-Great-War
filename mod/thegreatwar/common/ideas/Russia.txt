@@ -139,16 +139,36 @@ ideas = {
             }
         }
         RUS_vasily_shulgin = {
-            allowed = {
-                tag = RUS
-            }
-            traits = {
-                captain_of_industry
-            }
-            ai_will_do = {
-                factor = 1
-            }
+            allowed = { tag = RUS }
+            traits = { staunch_monarchist }
+            cost = 0
+            ai_will_do = { factor = 10 }
         }
+
+        RUS_alexei_putilov = {
+            allowed = { tag = RUS }
+            traits = { captain_of_industry }
+            picture = generic_political_advisor_europe_3
+            ai_will_do = { factor = 1 }
+        }
+        RUS_pyotr_struve = {
+            allowed = { tag = RUS }
+            picture = generic_political_advisor_europe_2
+            traits = { editor }
+            ai_will_do = { factor = 1 }
+        }
+        RUS_grigori_rasputin = {
+            allowed = { tag = RUS }
+            picture = generic_political_advisor_europe_3
+            available = {
+                NOT = { has_country_flag = kis_Rasputin_Murdered }
+                has_country_leader = { name = "Nikolay II" ruling_only = yes } 
+            }
+            cost = 100
+            traits = { silent_workhorse }
+            ai_will_do = { factor = 10 }
+        }
+
         RUS_konstantin_v_rodzaevsky = {
             allowed = {
                 tag = RUS
@@ -374,46 +394,33 @@ ideas = {
         }
     }
     naval_manufacturer = {
-        designer = yes
+        designer = yes 
         central_research_institute_of_shipbuilding_technology = {
-            allowed = {
-                TAG = RUS
-            }
-            research_bonus = {
-                naval_equipment = 0.10
-            }
-            traits = {
-                naval_manufacturer
-            }
-            picture = generic_naval_manufacturer_2
+            allowed = { tag = RUS }
+            picture = leningrad_polytechnical_institute
+            research_bonus = { naval_equipment = 0.10 }
+            traits = { naval_manufacturer }
         }
         rubin_marine_engineering = {
-            allowed = {
-                TAG = RUS
-            }
-            research_bonus = {
-                naval_equipment = 0.10
-            }
-            traits = {
-                raiding_fleet_naval_manufacturer
-            }
-            picture = generic_naval_manufacturer_3
+            allowed = { tag = RUS }
+            picture = generic_naval_manufacturer_1
+            research_bonus = { naval_equipment = 0.10 }
+            traits = { raiding_fleet_naval_manufacturer }
         }
         baltic_shipyard = {
-            allowed = {
-                TAG = RUS
-            }
-            research_bonus = {
-                naval_equipment = 0.10
-            }
-            traits = {
-                coastal_defence_naval_manufacturer
-            }
-            picture = generic_naval_manufacturer_1
+            allowed = { tag = RUS }
+            picture = generic_naval_manufacturer_2
+            research_bonus = { naval_equipment = 0.10 }
+            traits = { coastal_defence_naval_manufacturer }
         }
     }
     aircraft_manufacturer = {
         designer = yes
+        dux_plant = {
+            allowed = { tag = RUS }
+            picture = dux_plant
+            research_bonus = { air_equipment = 0.1 }
+        }
         igor_sikorsky = {
             allowed = {
                 TAG = RUS
@@ -520,5 +527,20 @@ ideas = {
             }
             picture = generic_tank_manufacturer_2
         }
+
+        MMTD_bureau = {
+            picture = MMTD_bureau
+            allowed = { tag = RUS } 
+            cost = 50
+            research_bonus = { armor = 0.05 }
+        }
+
+        putilov_design_bureau = {
+            allowed = { tag = RUS }
+            research_bonus = { armor = 0.1 }
+            available = { has_completed_focus = RUS_ww1_extension_of_the_putilov_factory }
+            traits = { tank_manufacturer }
+        }
+
     }
 }
