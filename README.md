@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.10.2 "The Aftermath of Versailles"
+**Current Version:** 0.10.3 "The Aftermath of Versailles"
 
 **Compatible with:** Hearts of Iron IV "Husky" (with or without Paid DLC)
 
@@ -99,7 +99,7 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - Honeymaple
    - habbala
    - SandwichPhil
-   - Comrader
+   - Comrader J-12
    - Veydem
    - Sgerhardt
    - Von Thoma
