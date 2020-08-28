@@ -20,16 +20,15 @@ focus_tree = {
 	focus = { 
 		id = SPR_ww1_alfonsoxiii 
 		icon = GFX_focus_AST_rats_tobruk 
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 10 } 
 		x = 7
 		y = 0
-
-		prerequisite = { } 
+		prerequisite = { }
 		cost = 2  
 		available_if_capitulated = yes  
 		completion_reward = { 
-			add_political_power = 150 
-			set_stability = 0.55 
+			add_political_power = 50 
+			set_stability = 0.85 
 		} 
 	}
  
@@ -38,9 +37,8 @@ focus_tree = {
 		id = SPR_ww1_idea_tiempososcuros 
 		icon = GFX_focus_generic_anti_fascist_diplomacy
 		ai_will_do = { factor = 10 } 
-		x = 0 
-		y = 1 
-
+		x = 0
+		y = 1
 		prerequisite = { focus = SPR_ww1_alfonsoxiii }
 		cost = 10  
 		available_if_capitulated = yes  
@@ -818,11 +816,8 @@ focus = {
 		icon = GFX_hoi4tgw_ironcross
 
 		 	available = {
-		 		NOT = { has_war_with = GER }
-		 		
-		 		GER = {
-		 			exists = yes
-		 		}
+		 		NOT = { has_war_with = GER }		 		
+		 		GER = { exists = yes }
 			}
 
 			completion_reward = {
@@ -1913,13 +1908,17 @@ focus = {
 
 	#Focus for Portugal Inicial
 	focus = { 
-		id = portugalstart
+		id = SPR_ww1_portugalstart
 		icon = GFX_focus_generic_home_defense
 		ai_will_do = { factor = 10} 
 		x = 26
 		y = 10 
-		available = { country_exists = POR }
-		prerequisite = { focus = SPR_why_we_fight focus = SPR_interwar_Victory} 
+		available = {
+			country_exists = POR
+			date > 1917.1.1
+		}
+		#prerequisite = { focus = SPR_why_we_fight focus = SPR_interwar_Victory}
+		prerequisite = { focus = SPR_why_we_fight }
 		cost = 10
 		available_if_capitulated = yes  
 		completion_reward = {
@@ -1964,7 +1963,7 @@ focus = {
 			}
 		}
 
-		prerequisite = { focus = portugalstart} 
+		prerequisite = { focus = SPR_ww1_portugalstart} 
 		cost = 10
 		available_if_capitulated = yes 
 		completion_reward = {
@@ -2022,7 +2021,7 @@ focus = {
 		x = 27
 		y = 11
 		mutually_exclusive = { focus = iberian1} 
-		prerequisite = { focus = portugalstart} 
+		prerequisite = { focus = SPR_ww1_portugalstart} 
 		available = {
 			OR = {
 				SPR = { has_government = fascism }
@@ -2129,16 +2128,18 @@ focus = {
  
 	#Focus for El desastre del 98
 	focus = { 
-		id = eldesastredel98 
+		id = SPR_ww1_eldesastredel98 
 		icon = GFX_focus_generic_home_defense
-		ai_will_do = { factor = 10} 
+		ai_will_do = { factor = 10 }
 		x = 20
 		y = 10
 		available = {
-			date > 1914.1.1
+			date > 1917.1.1
 			has_completed_focus = SPR_ww1_imperio
+			USA = { exists = yes }
 		}
-		prerequisite = { focus = SPR_why_we_fight  focus = SPR_interwar_Victory} 
+		prerequisite = { focus = SPR_why_we_fight }
+		#prerequisite = { focus = SPR_why_we_fight  focus = SPR_interwar_Victory}
 		cost = 1
 		available_if_capitulated = yes  
 		completion_reward = { add_stability = 0.15 }
@@ -2146,13 +2147,13 @@ focus = {
  
 	#Focus for Venganza 
 	focus = { 
-		id = venganza98
+		id = SPR_ww1_venganza98
 		icon = GFX_focus_rom_royal_dictatorship
 		ai_will_do = { factor = 5 } 
 		x = 22
 		y = 11
 		mutually_exclusive = { focus = perdon98 }
-		prerequisite = { focus = eldesastredel98 }
+		prerequisite = { focus = SPR_ww1_eldesastredel98 }
 		cost = 5
 		available_if_capitulated = yes
 		will_lead_to_war_with = USA  
@@ -2183,12 +2184,12 @@ focus = {
 
 	#Focus for Venganza A
 	focus = {
-		id = venganza98ii 
+		id = SPR_ww1_venganza98ii 
 		icon = GFX_goal_generic_major_war
 		ai_will_do = { factor = 5} 
 		x = 21
 		y = 12
-		prerequisite = { focus = venganza98 } 
+		prerequisite = { focus = SPR_ww1_venganza98 } 
 		cost = 5
 		available_if_capitulated = yes
 		completion_reward = {
@@ -2219,13 +2220,13 @@ focus = {
 
 	#Focus for Venganza B
 	focus = { 
-		id = venganza98iii 
+		id = SPR_ww1_venganza98iii 
 		icon = GFX_goal_generic_territory_or_war
 		ai_will_do = { factor = 5 } 
 		x = 23
 		y = 12
 
-		prerequisite = { focus = venganza98 } 
+		prerequisite = { focus = SPR_ww1_venganza98 } 
 		cost = 20
 		available_if_capitulated = yes  
 		completion_reward = {
@@ -2242,12 +2243,12 @@ focus = {
       
 	#Focus for Venganza C
 	focus = {
-		id = venganza98iv 
+		id = SPR_ww1_venganza98iv 
 		icon = GFX_goal_generic_military_deal
 		ai_will_do = { factor = 5} 
 		x = 22
 		y = 13
-		prerequisite = { focus = venganza98ii focus = venganza98iii }
+		prerequisite = { focus = SPR_ww1_venganza98ii focus = SPR_ww1_venganza98iii }
 		cost = 10
 		available_if_capitulated = yes  
 		completion_reward = {
@@ -2257,13 +2258,13 @@ focus = {
 
 	#Focus for Venganza D
 	focus = {
-		id = venganza98v 
+		id = SPR_ww1_venganza98v 
 		icon = GFX_focus_generic_strike_at_democracy3
 		ai_will_do = { factor = 5} 
 		x = 22
 		y = 14
 
-		prerequisite = { focus = venganza98iv } 
+		prerequisite = { focus = SPR_ww1_venganza98iv } 
 		available_if_capitulated = yes
 		cost = 20
 		available = {
@@ -2281,15 +2282,16 @@ focus = {
 
 	#NEW focus for Venganza E
 	focus = { 
-		id = venganza98vi
+		id = SPR_ww1_venganza98vi
 		icon = GFX_focus_generic_strike_at_democracy3
 		ai_will_do = { factor = 5} 
 		x = 22
 		y = 14
-		prerequisite = { focus = venganza98iv } 
+		prerequisite = { focus = SPR_ww1_venganza98iv } 
 		available_if_capitulated = yes  
 		cost = 20
 		available = {
+			USA = { exists = yes }
 			USA = { has_completed_focus = USA_ww1_FreePhilippine }
 		}
 
@@ -2309,8 +2311,8 @@ focus = {
 		ai_will_do = { factor = 10} 
 		x = 18 
 		y = 11
-		mutually_exclusive = { focus = venganza98} 
-		prerequisite = { focus = eldesastredel98} 
+		mutually_exclusive = { focus = SPR_ww1_venganza98} 
+		prerequisite = { focus = SPR_ww1_eldesastredel98} 
 		cost = 20
 		available_if_capitulated = yes  
 		completion_reward = { 
@@ -2560,7 +2562,7 @@ focus = {
 		icon = GFX_goal_generic_allies_build_infantry
 		completion_reward = { army_experience=15 add_tech_bonus={ name=land_doc_bonus bonus=0.2 uses=1 category=land_doctrine } }
 		cost = 10
-		x = 151
+		x = 31
 		y = 1
 		ai_will_do = { factor = 30 }
 	}
@@ -3168,7 +3170,7 @@ focus = {
 		id = SPR_ww1_nuevas_companias
 		icon = GFX_goal_generic_intelligence_exchange
 
-		prerequisite = { focus = SPR_ww1_imperio focus = perdon98v focus = venganza98v}
+		prerequisite = { focus = SPR_ww1_imperio focus = perdon98v focus = SPR_ww1_venganza98v}
 
 		completion_reward = {		
 			add_political_power = 20
