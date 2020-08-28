@@ -54,19 +54,21 @@ ideas={
 			ai_will_do={ factor=1 } }
 			}
 			
-	theorist={
-		# Luis Aizpuru y Mondéjar
-		SPR_luis_aizpuru = {
-			ledger = army
-			allowed={ tag=SPR } traits={ military_theorist } ai_will_do={ factor=1 }
+		theorist={
+			SPR_marina_vega={ 
+			picture = SPR_marina_vega.dds
+			allowed={ tag=SPR } 
+			traits={ military_theorist } 
+			ai_will_do={ factor=1 } 
+			}
 		}
-	}
 
 	air_chief={
-			SPR_alfredo_kindelan={
-			allowed={ tag=SPR } 
-			traits={ air_air_superiority_1 } 
-			ai_will_do={ factor=1 } 
+			SPR_vives_vich={
+			picture = SPR_vives_vich.dds
+			allowed={ tag=SPR }
+			traits={ air_air_superiority_1 }
+			ai_will_do={ factor=1}
 			}
 	}
 	army_chief={
@@ -141,6 +143,11 @@ ideas={
 			ai_will_do={ factor=1 } 
 			}
 			SPR_jose_olaguer={ 
+			allowed={ tag=SPR } 
+			traits={ army_chief_defensive_1 } 
+			ai_will_do={ factor=1 } 
+			}
+			SPR_luis_aizpuru={ 
 			allowed={ tag=SPR } 
 			traits={ army_chief_defensive_1 } 
 			ai_will_do={ factor=1 } 
@@ -229,6 +236,12 @@ ideas={
 			ledger = air
 			allowed={ tag=SPR } 
 			traits={ air_bomber_interception_1 } 
+			ai_will_do={ factor=1 } 
+			}
+			SPR_alfredo_kindelan={
+			ledger = air
+			allowed={ tag=SPR } 
+			traits={ air_air_superiority_1 } 
 			ai_will_do={ factor=1 } 
 			}
 			SPR_ramon_franco={ 
@@ -379,6 +392,7 @@ ideas={
 			echevarrieta_y_larrinaga={
 			allowed={ TAG=SPR } 
 			equipment_bonus = {capital_ship = {build_cost_ic = -0.05 instant = yes}}
+			equipment_bonus = {convoy_1 = {build_cost_ic = -0.2 instant = yes}}
 			research_bonus={ naval_equipment=0.10 }
 			traits={ naval_manufacturer }
 			picture=generic_naval_manufacturer_3 }
@@ -524,7 +538,7 @@ ideas={
 				}
 				modifier = {
 				stability_weekly = -0.005
-				# enemy_partisan_effect = 0.2 
+				neutrality_drift = -0.1
 				non_core_manpower = -0.10
 				}
 		}
@@ -653,10 +667,11 @@ ideas={
 				always = no 
 				}
 				modifier = {
-					stability_weekly = -0.002
+				MONTHLY_POPULATION = -0.01
+				stability_weekly = -0.002
 				}
 		}
-
+				
 		SPR_ww1_idea_flota = {
 				picture = idea_generic_the_london_naval_treaty
 				allowed = { 
@@ -714,7 +729,7 @@ ideas={
 				always = no 
 				}
 				modifier = {
-				MONTHLY_POPULATION = 0.15
+				MONTHLY_POPULATION = 0.01
 				min_export = -0.05
 					}
 			}	
@@ -949,7 +964,7 @@ ideas={
 				stability_weekly = -0.01	
 					}
 			}
-					SPR_ww1_idea_inversion = {
+			SPR_ww1_idea_inversion = {
 				picture = idea_cze_planning_bonus
 				allowed = { 
 				original_tag = SPR 
@@ -963,7 +978,7 @@ ideas={
 				production_speed_buildings_factor = -0.05
 					}
 			}
-					SPR_ww1_idea_expedientepicaso = {
+			SPR_ww1_idea_expedientepicaso = {
 				picture = idea_partisans
 				allowed = { 
 				original_tag = SPR 
@@ -977,7 +992,7 @@ ideas={
 				experience_gain_army = 0.01
 					}
 			}
-					SPR_ww1_idea_gateway = {
+			SPR_ww1_idea_gateway = {
 				picture = idea_cze_planning_bonus
 				allowed = { 
 				original_tag = SPR 
@@ -991,7 +1006,7 @@ ideas={
 				trade_opinion_factor = 0.2
 					}
 			}
-		SPR_ww1_idea_semanatragica2 = {
+			SPR_ww1_idea_semanatragica2 = {
 				picture = idea_generic_army_problems
 				allowed = { 
 				original_tag = SPR 
@@ -1004,8 +1019,8 @@ ideas={
 				war_support_weekly = -0.005
 				conscription = -0.02
 				}
-		}
-		SPR_ww1_idea_semanatragica3 = {
+			}
+			SPR_ww1_idea_semanatragica3 = {
 				picture = idea_generic_army_problems
 				allowed = { 
 				original_tag = SPR 
@@ -1018,6 +1033,6 @@ ideas={
 				conscription = -0.02
 				}
 			}		
-	}
+		}
 
 }
