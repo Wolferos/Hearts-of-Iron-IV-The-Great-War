@@ -56,15 +56,15 @@ focus = {
 		completion_reward = { add_political_power=100
 		add_popularity={ ideology=communism popularity=0.10 }   }
 		cost = 10
-		x = 1
-		y = 2
+		x = 0
+		y = 4
 		ai_will_do = { factor = 10 }
 	}
 
 	focus = {
 		id = HOL_Settle_religious_conflict
 		icon = GFX_goal_generic_improve_relations
-		prerequisite = { focus=HOL_Reform_2 }
+		prerequisite = { focus=HOL_Reform }
 
 		completion_reward = {
 		add_popularity={ ideology=communism popularity=0.10 }
@@ -79,15 +79,15 @@ focus = {
 	focus = {
 		id = HOL_End_census_kies
 		icon = GFX_goal_generic_national_unity
-		prerequisite = { focus=HOL_Settle_religious_conflict }
+		prerequisite = { focus = HOL_Settle_religious_conflict focus = HOL_neutrality_focus1 }
 
 		completion_reward = {
-		add_stability = 0.20
-		add_manpower = 80000
-		add_ideas=internationalism  }
+			add_stability = 0.20
+			add_manpower = 50000
+		}
 
 		cost = 10
-		x = 1
+		x = 2
 		y = 4
 		ai_will_do = { factor = 10 }
 	}
@@ -96,6 +96,7 @@ focus = {
 		id = HOL_Let_them_eat_potatoes
 		icon = GFX_goal_molotov_ribbentrop_pact
 		prerequisite = { focus=HOL_End_census_kies }
+		prerequisite = { focus=HOL_Reform_2 }
     available = { date > 1917.1.1 }
 
 		completion_reward = {
@@ -217,7 +218,7 @@ focus = {
 		focus = {
 			id = HOL_Fate_of_Siam
 			icon = GFX_goal_generic_more_territorial_claims
-			prerequisite = { focus=HOL_Claim_our_colies_america focus=HOL_Faction_LUX_Com }
+			prerequisite = { focus=HOL_Claim_our_colies_america focus=HOL_Troelstra_reforms }
 			available = {
 			has_government=communism
 			SIA = {
@@ -234,70 +235,6 @@ focus = {
 			cost = 10
 			x = 1
 			y = 9
-			ai_will_do = { factor = 10 }
-		}
-
-		focus = {
-			id = HOL_Faction_Bel_COM
-			icon = GFX_goal_generic_major_alliance
-
-		 prerequisite = { focus=HOL_Troelstra_reforms }
-		 completion_reward = {
-		 set_rule = { can_create_factions = yes }
-		 create_faction = "new_groot_nederland"
-
-		 if = {
-				limit = {
-					BEL = {
-						is_ai = yes
-						is_puppet = no
-					}
-				}
-				add_to_faction = BEL
-				BEL = {
-					add_ai_strategy = {
-						type = alliance
-						id = "HOL"
-						value = 200
-					}
-				}
-			}
-
-		 }
-			cost = 10
-			x = 0
-			y = 7
-			ai_will_do = { factor = 10 }
-		}
-
-		focus = {
-			id = HOL_Faction_LUX_Com
-			icon = GFX_goal_generic_major_alliance
-
-		 prerequisite = { focus=HOL_Faction_Bel_COM }
-		 completion_reward = {
-
-		 if = {
-				limit = {
-					LUX = {
-						is_ai = yes
-						is_puppet = no
-					}
-				}
-				add_to_faction = LUX
-				LUX = {
-					add_ai_strategy = {
-						type = alliance
-						id = "HOL"
-						value = 200
-					}
-				}
-			}
-
-		 }
-			cost = 10
-			x = 0
-			y = 8
 			ai_will_do = { factor = 10 }
 		}
 
@@ -340,25 +277,10 @@ if={ limit={ NOT={ has_idea=neutrality_idea } } add_ideas=neutrality_idea }
 }
 
 focus = {
-	id = HOL_End_census_neu
-	icon = GFX_goal_generic_national_unity
-
- prerequisite = { focus=HOL_neutrality_focus1 }
- completion_reward = { add_political_power = 50
-add_stability = 0.20
-add_manpower = 50000
-   }
-	cost = 10
-	x = 4
-	y = 4
-	ai_will_do = { factor = 10 }
-}
-
-focus = {
 	id = HOL_Reinforce_border
 	icon = GFX_goal_generic_construction2
 
- prerequisite = { focus=HOL_End_census_neu }
+ prerequisite = { focus=HOL_End_census_kies }
  available = {
 	 HOL = {
 		 controls_state = 35
@@ -456,7 +378,7 @@ focus = {
 	id = HOL_Colony_effort
 	icon = GFX_goal_generic_position_armies
 
- prerequisite = { focus=HOL_End_census_neu }
+ prerequisite = { focus=HOL_End_census_kies }
  completion_reward = {
  335 = {
 	 add_building_construction = {
@@ -844,7 +766,7 @@ focus = {
     add_political_power=120
   }
   cost = 10
-  x = 12
+  x = 11
   y = 8
   ai_will_do = { factor = 2000 }
 }
