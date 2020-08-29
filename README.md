@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.10.3 "The Aftermath of Versailles"
+**Current Version:** 0.11 "España"
 
 **Compatible with:** Hearts of Iron IV "Husky" (with or without Paid DLC)
 
@@ -103,6 +103,8 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - Veydem
    - Sgerhardt
    - Von Thoma
+   - Lord Butxot
+   - Canadian Lemur
 
 ----------
 [Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow
