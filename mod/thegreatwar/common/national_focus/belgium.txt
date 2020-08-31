@@ -675,16 +675,40 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			add_political_power = 20
+			add_political_power = 15
 		}
 
 		cost = 10
 		x = 12
 		y = 5
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 0 }
 	}
 
+	focus = {
+		id = BEL_ww1_congo_infra # Congo's Infrastructure Financing
+		prerequisite = { focus = BEL_ww1_congo }
+		icon = GFX_focus_generic_africa_infrastructure
 
+		available = { 
+			BEL = { controls_state = 538 }
+		}
+
+		completion_reward = {
+			add_political_power = -30
+			538 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		cost = 15
+		x = 12
+		y = 6
+		ai_will_do = { factor = 0 }
+	}
 
 
 	##### Generic #####
