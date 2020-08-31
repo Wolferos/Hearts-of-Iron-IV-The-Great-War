@@ -420,12 +420,30 @@ focus_tree = {
 		y = 2
 		ai_will_do = { factor = 10 }
 	}
+
+	focus = {
+		id = BEL_adios_1839_agreement # The Treaty of London is too Restrictive
+		icon = GFX_focus_renounce_the_treaty_of_trianon
+		available = { is_ai = no }
+		prerequisite = { focus = BEL_ww1_diplomatic_effort }
+
+		completion_reward = {
+			remove_ideas = { ww1_idea_1839_agreement }
+			BEL = { add_opinion_modifier={ target=ENG modifier=HOI4TGW_Opinion_anti_uk_policy_malus } }
+		}
+
+		cost = 10
+		x = 13
+		y = 1
+
+		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes } }
+	}
 	
 	focus = {
 		id = BEL_ww1_germany_focus
 		icon = GFX_hoi4tgw_ironcross
 		available = { is_ai = no }
-		prerequisite = { focus = BEL_ww1_diplomatic_effort }
+		prerequisite = { focus = BEL_adios_1839_agreement }
 		mutually_exclusive = { focus = BEL_ww1_entente_focus focus = BEL_ww1_neutrality_focus }
 		completion_reward = {
 		    every_country = {
@@ -513,7 +531,9 @@ focus_tree = {
 		id = BEL_ww1_fortify_borders
 		icon = GFX_goal_generic_fortify_city
 		available = { is_ai = no }
+
 		prerequisite = { focus = BEL_ww1_neutrality_focus }
+
 		completion_reward = {
 		    custom_effect_tooltip = fortify_belgium
 			34 = {
