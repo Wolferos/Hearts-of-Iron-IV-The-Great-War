@@ -358,7 +358,7 @@ focus_tree = {
 	##### Diplomatic #####
 	
 	focus = {
-		id = BEL_diplomatic_effort
+		id = BEL_ww1_diplomatic_effort
 		icon = GFX_goal_generic_intelligence_exchange
 		completion_reward = { add_political_power=120 }
 		cost = 10
@@ -368,9 +368,9 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = BEL_benilux_focus
+		id = BEL_ww1_benilux_focus
 		icon = GFX_goal_generic_improve_relations
-		prerequisite = { focus = BEL_diplomatic_effort }
+		prerequisite = { focus = BEL_ww1_diplomatic_effort }
 		completion_reward = {
 		    add_opinion_modifier = {
 			    target = HOL modifier = benilux_friendship
@@ -391,15 +391,15 @@ focus_tree = {
 		}
 		cost = 10
 		x = 9
-		y = 1
+		y = 2
 		ai_will_do = { factor = 10 }
 	}
 	
 	focus = {
-		id = BEL_entente_focus
+		id = BEL_ww1_entente_focus
 		icon = GFX_hoi4tgw_marianne
-		prerequisite = { focus = BEL_diplomatic_effort }
-		mutually_exclusive = { focus = BEL_germany_focus focus = BEL_neutrality_focus }
+		prerequisite = { focus = BEL_ww1_diplomatic_effort }
+		mutually_exclusive = { focus = BEL_ww1_germany_focus focus = BEL_ww1_neutrality_focus }
 		completion_reward = {
 		    every_country = {
 		        limit {
@@ -417,16 +417,16 @@ focus_tree = {
 		
 		cost = 10
 		x = 11
-		y = 1
+		y = 2
 		ai_will_do = { factor = 10 }
 	}
 	
 	focus = {
-		id = BEL_germany_focus
+		id = BEL_ww1_germany_focus
 		icon = GFX_hoi4tgw_ironcross
 		available = { is_ai = no }
-		prerequisite = { focus = BEL_diplomatic_effort }
-		mutually_exclusive = { focus = BEL_entente_focus focus = BEL_neutrality_focus }
+		prerequisite = { focus = BEL_ww1_diplomatic_effort }
+		mutually_exclusive = { focus = BEL_ww1_entente_focus focus = BEL_ww1_neutrality_focus }
 		completion_reward = {
 		    every_country = {
 			    limit = {
@@ -440,15 +440,15 @@ focus_tree = {
 		}
 		cost = 10
 		x = 13
-		y = 1
+		y = 2
 		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes } }
 	}
 	
 	focus = {
-		id = BEL_neutrality_focus
+		id = BEL_ww1_neutrality_focus
 		icon = GFX_goal_generic_neutrality_focus
-		prerequisite = { focus = BEL_diplomatic_effort }
-		mutually_exclusive = { focus = BEL_germany_focus focus = BEL_entente_focus }
+		prerequisite = { focus = BEL_ww1_diplomatic_effort }
+		mutually_exclusive = { focus = BEL_ww1_germany_focus focus = BEL_ww1_entente_focus }
 		completion_reward = {
 		    add_political_power = 50
 			add_manpower = 10000
@@ -456,16 +456,16 @@ focus_tree = {
 		}
 		cost = 10
 		x = 15
-		y = 1
+		y = 2
 		ai_will_do = { factor = 10 }
 	}
 	
 	focus = {
-		id = BEL_ally_benilux
+		id = BEL_ww1_ally_benilux
 		icon = GFX_goal_generic_alliance
 		available = { is_ai = no }
-		prerequisite = { focus = BEL_benilux_focus }
-		mutually_exclusive = { focus = BEL_conquer_benilux focus = BEL_major_alliance }
+		prerequisite = { focus = BEL_ww1_benilux_focus }
+		mutually_exclusive = { focus = BEL_ww1_conquer_benilux focus = BEL_ww1_major_alliance }
 		completion_reward = {
 		    create_faction = greater_benilux
 			if = { limit = { country_exists = HOL } HOL = { country_event = { days = 1 id = ww1_belgium.2 } } }
@@ -473,47 +473,47 @@ focus_tree = {
 		}
 		cost = 10
 		x = 8
-		y = 2
+		y = 3
 		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes } }
 	}
 	
 	focus = {
-		id = BEL_conquer_benilux
+		id = BEL_ww1_conquer_benilux
 		icon = GFX_goal_generic_attack_allies
 		available = { is_ai = no }
-		prerequisite = { focus = BEL_benilux_focus }
-		mutually_exclusive = { focus = BEL_ally_benilux focus = BEL_major_alliance }
+		prerequisite = { focus = BEL_ww1_benilux_focus }
+		mutually_exclusive = { focus = BEL_ww1_ally_benilux focus = BEL_ww1_major_alliance }
 		completion_reward = {
 			if = { limit = { country_exists = HOL } HOL = { country_event = { days = 1 id = ww1_belgium.3 } } }
 			if = { limit = { country_exists = LUX } LUX = { country_event = { days = 1 id = ww1_belgium.3 } } }
 		}
 		cost = 10
 		x = 10
-		y = 2
+		y = 3
 		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes } }
 	}
 	
 	focus = {
-		id = BEL_major_alliance
+		id = BEL_ww1_major_alliance
 		icon = GFX_goal_generic_major_alliance
-		prerequisite = { focus = BEL_entente_focus focus = BEL_germany_focus }
-		mutually_exclusive = { focus = BEL_ally_benilux focus = BEL_conquer_benilux }
+		prerequisite = { focus = BEL_ww1_entente_focus focus = BEL_ww1_germany_focus }
+		mutually_exclusive = { focus = BEL_ww1_ally_benilux focus = BEL_ww1_conquer_benilux }
 		completion_reward = {
-			if = { limit = { has_completed_focus = BEL_entente_focus } FRA = { add_to_faction = ROOT } }
-			if = { limit = { has_completed_focus = BEL_germany_focus } GER = { add_to_faction = ROOT } }
-			if = { limit = { NOT = { OR = { has_completed_focus = BEL_entente_focus has_completed_focus = BEL_germany_focus } } } custom_effect_tooltip = alliance_choice }
+			if = { limit = { has_completed_focus = BEL_ww1_entente_focus } FRA = { add_to_faction = ROOT } }
+			if = { limit = { has_completed_focus = BEL_ww1_germany_focus } GER = { add_to_faction = ROOT } }
+			if = { limit = { NOT = { OR = { has_completed_focus = BEL_ww1_entente_focus has_completed_focus = BEL_ww1_germany_focus } } } custom_effect_tooltip = alliance_choice }
 		}
 		cost = 10
 		x = 12
-		y = 2
+		y = 3
 		ai_will_do = { factor = 10 }
 	}
 	
 	focus = {
-		id = BEL_fortify_borders
+		id = BEL_ww1_fortify_borders
 		icon = GFX_goal_generic_fortify_city
 		available = { is_ai = no }
-		prerequisite = { focus = BEL_neutrality_focus }
+		prerequisite = { focus = BEL_ww1_neutrality_focus }
 		completion_reward = {
 		    custom_effect_tooltip = fortify_belgium
 			34 = {
@@ -611,34 +611,34 @@ focus_tree = {
 		}
 		cost = 10
 		x = 15
-		y = 2
+		y = 3
 		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes } }
 	}
 	
 	focus = {
-		id = BEL_demand_eupen
+		id = BEL_ww1_demand_eupen
 		icon = GFX_goal_demand_sudetenland
-		prerequisite = { focus = BEL_ally_benilux focus = BEL_conquer_benilux focus = BEL_major_alliance }
+		prerequisite = { focus = BEL_ww1_ally_benilux focus = BEL_ww1_conquer_benilux focus = BEL_ww1_major_alliance }
 		completion_reward = {
 			if = { limit = { 768 = { is_controlled_by = GER } } GER = { country_event = { days = 1 id = ww1_belgium.4 } } }
 		}
 		cost = 10
 		x = 11
-		y = 3
+		y = 4
 		ai_will_do = { factor = 10 }
 	}
 	
 	focus = {
-		id = BEL_unite_benilux
+		id = BEL_ww1_unite_benilux
 		icon = GFX_goal_anschluss
 		available = { is_ai = no }
-		prerequisite = { focus = BEL_ally_benilux focus = BEL_conquer_benilux focus = BEL_major_alliance }
+		prerequisite = { focus = BEL_ww1_ally_benilux focus = BEL_ww1_conquer_benilux focus = BEL_ww1_major_alliance }
 		completion_reward = {
 			country_event = { days = 1 id = ww1_belgium.5 }
 		}
 		cost = 10
 		x = 9
-		y = 3
+		y = 4
 		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes } }
 	}
 	
