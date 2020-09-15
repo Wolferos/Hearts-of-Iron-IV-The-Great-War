@@ -301,7 +301,71 @@ focus_tree = {
 		cost = 10
 		x = 3
 		y = 0
+	}
+
+	focus = {
+		id = USA_ww1_john_rockefeller_conglomerate
+		icon = GFX_focus_generic_industry_2
+		cost = 5
+		prerequisite = { focus = USA_ww1_political_effort }
+		x = 0
+		y = 2
+		completion_reward = {
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = USA_john_rockefeller
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = fuel_silo
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = USA_john_rockefeller_conglomerate
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = USA_john_rockefeller_conglomerate
+			}
 		}
+	}
+
+	focus = {
+		id = USA_ww1_expand_standard_oil_influence
+		icon = GFX_goal_generic_oil_refinery
+		cost = 5
+		prerequisite = {
+			focus = USA_ww1_john_rockefeller_conglomerate
+		}
+		x = 0
+		y = 3
+		completion_reward = {
+			custom_effect_tooltip = available_industrial_concern
+			show_ideas_tooltip = standard_oil_california
+		}
+	}
+
+
 
 	focus = {
 		id = USA_ww1_UnderwoodTariffAct
@@ -312,7 +376,7 @@ focus_tree = {
 
 		ai_will_do = { factor = 2000 }
 		cost = 10
-		x = 3
+		x = 1
 		y = 1
 	}
 
@@ -2473,7 +2537,7 @@ focus_tree = {
 
 	focus = {
 		search_filters = {FOCUS_FILTER_RESEARCH}
-		id = USA_ww1_naval_effort # Great White Fleet
+		id = USA_ww1_naval_effort # The Great White Fleet
 		icon = GFX_hoi4tgw_usa_great_white_fleet
 		cost = 10
 		x = 36
