@@ -686,15 +686,14 @@ focus_tree = {
 
 	focus = {
 		id = BEL_ww1_congo_infra # Congo's Infrastructure Financing Plan
-		prerequisite = { focus = BEL_ww1_congo }
 		icon = GFX_focus_generic_africa_infrastructure
+		prerequisite = { focus = BEL_ww1_congo }
 
 		available = { 
 			BEL = { controls_state = 538 }
 		}
 
 		completion_reward = {
-			add_political_power = -30
 			538 = {
 				add_building_construction = {
 					type = infrastructure
@@ -705,11 +704,206 @@ focus_tree = {
 		}
 
 		cost = 12
-		x = 13
+		x = 8
 		y = 6
 		ai_will_do = { factor = 0 }
 	}
 
+
+	focus = { 
+		id = BEL_ww1_ReorganizeForcePublique # Reorganize La Force Publique
+		icon = GFX_goal_generic_military_sphere
+		prerequisite = { focus = BEL_ww1_congo }
+
+		mutually_exclusive = { focus = BEL_ww1_ClaimingHumanRightsAfrica }
+
+		available = { 
+			BEL = { controls_state = 295 controls_state = 538 controls_state = 718 }
+		}
+
+		completion_reward = { 
+			add_manpower = 5000
+		}
+
+		cost = 12
+		x = 14
+		y = 7
+		ai_will_do = { factor = 0 }
+	}
+
+	focus = { 
+		id = BEL_ww1_congo_RubberMonocultureExpansion # Rubber Monoculture Expansion
+		icon = GFX_focus_generic_rubber
+		prerequisite = { focus = BEL_ww1_congo_infra }
+
+		available = { 
+			BEL = { controls_state = 295 controls_state = 538 controls_state = 718 }
+		}
+
+		completion_reward = { 
+			add_resource = { type = rubber amount = 4 state = 538 }
+		}
+
+		cost = 12
+		x = 8
+		y = 7
+		ai_will_do = { factor = 0 }
+	}
+
+
+	focus = {
+		id = BEL_ww1_ApproveLeopoldLegacyCongo # Defend the Colonial Legacy of Leopold II
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = BEL_ww1_congo }
+		mutually_exclusive = { focus = BEL_ww1_DenyLeopoldLegacyCongo }
+
+		available = { 
+			BEL = { controls_state = 295 controls_state = 538 controls_state = 718 }
+		}
+
+		completion_reward = { add_political_power = -50 }
+
+		cost = 10
+		x = 10
+		y = 6
+		ai_will_do = { factor = 0 }
+	}
+
+	focus = {
+		id = BEL_ww1_CongoFreeState # Reestablish the Congo Free State
+		icon = GFX_goal_generic_territory_or_war
+		prerequisite = { focus = BEL_ww1_congo }
+
+		available = { 
+			BEL = { controls_state = 295 controls_state = 538 controls_state = 718 }
+		}
+
+		completion_reward = { 
+			add_resource = { type = rubber amount = 1 state = 295 }
+			add_resource = { type = rubber amount = 1 state = 538 }
+			add_resource = { type = rubber amount = 1 state = 718 }
+		}
+
+		cost = 10
+		x = 10
+		y = 8
+		ai_will_do = { factor = 0 }
+	}
+
+	focus = {
+		id = BEL_ww1_ColonialRepression # Colonial Repression
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = BEL_ww1_CongoFreeState }
+		prerequisite = { focus = BEL_ww1_ReorganizeForcePublique }
+
+		available = { 
+			BEL = { controls_state = 295 controls_state = 538 controls_state = 718 }
+		}
+
+		completion_reward = {
+			add_stability = -0.05
+		}
+
+		cost = 10
+		x = 13
+		y = 9
+		ai_will_do = { factor = 0 }
+	}
+
+
+	focus = {
+		id = BEL_ww1_InviteEuropeanSettlers # Invite European Settlers
+		icon = GFX_goal_generic_construction
+		prerequisite = { focus = BEL_ww1_congo_RubberMonocultureExpansion }
+		prerequisite = { focus = BEL_ww1_ColonialRepression }
+
+		available = { 
+			BEL = { controls_state = 295 controls_state = 538 controls_state = 718 }
+		}
+
+		completion_reward = {
+			295 = {
+				add_extra_state_shared_building_slots=1
+				add_building_construction={ type=industrial_complex level=1 instant_build=yes }
+			}
+
+			295 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+
+		}
+		complete_tooltip = { add_extra_state_shared_building_slots=1 add_building_construction={ type=industrial_complex level=1 instant_build=yes }			 }
+
+		cost = 15
+		x = 9
+		y = 10
+		ai_will_do = { factor = 0 }
+	}
+
+	focus = {
+		id = BEL_ww1_DenyLeopoldLegacyCongo # Deny King Leopold's Legacy in Africa
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = BEL_ww1_congo }
+		mutually_exclusive = { focus = BEL_ww1_ApproveLeopoldLegacyCongo }
+
+		completion_reward = { add_political_power = 50 }
+
+		cost = 10
+		x = 12
+		y = 6
+		ai_will_do = { factor = 0 }
+	}
+
+	focus = {
+		id = BEL_ww1_ClaimingHumanRightsAfrica # Claiming Human Rights in Africa
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = BEL_ww1_DenyLeopoldLegacyCongo }
+		mutually_exclusive = { focus = BEL_ww1_ReorganizeForcePublique }
+
+		completion_reward = {
+			BEL={ add_opinion_modifier={ target=LIB modifier=HOI4TGW_Opinion_diplomats_bonus } }
+			BEL={ add_opinion_modifier={ target=ETH modifier=HOI4TGW_Opinion_diplomats_bonus } }
+
+			COG = {
+				add_state_claim = 295
+				add_state_claim = 538
+				add_state_claim = 718
+			}
+		}
+
+		cost = 10
+		x = 12
+		y = 7
+		ai_will_do = { factor = 0 }
+	}
+
+	focus = {
+		id = BEL_ww1_FreeCongo # Free Congo
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = BEL_ww1_ClaimingHumanRightsAfrica }
+
+		available = { 
+			BEL = { controls_state = 295 controls_state = 538 controls_state = 718 }
+		}
+
+		completion_reward = {
+			add_stability = 0.1
+			COG = {
+				transfer_state = 295
+				transfer_state = 538
+				transfer_state = 718
+			}
+		}
+
+		cost = 10
+		x = 12
+		y = 8
+		ai_will_do = { factor = 0 }
+	}
 
 	##### Generic #####
 	
