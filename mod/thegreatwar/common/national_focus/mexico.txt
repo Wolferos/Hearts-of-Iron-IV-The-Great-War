@@ -3,46 +3,46 @@ focus_tree = {
 	default=no
 	country={ factor=0  modifier={ add=10 tag=MEX }  modifier={ add=10 original_tag=MEX } }
 
-######Support Porfirio Diaz & Victoria Huerta####
-focus = {
-  id = mex_political_effort
-  icon = GFX_goal_generic_demand_territory
-  completion_reward = { add_political_power=150 }
-  cost = 10
-  x = 2
-  y = 0
-  ai_will_do = { factor = 2000 }
-}
+  ######Support Porfirio Diaz & Victoria Huerta####
+  focus = {
+    id = mex_political_effort
+    icon = GFX_goal_generic_demand_territory
+    completion_reward = { add_political_power=150 }
+    cost = 10
+    x = 2
+    y = 0
+    ai_will_do = { factor = 2000 }
+  }
 
   focus = {
-  id = MEX_ww1_support_diaz
-  icon = GFX_hoi4tgw_mex_support_diaz
-  prerequisite = { focus=mex_political_effort }
-  available = {
-    MEX = {
-      exists = yes
-      NOT = { has_war_with = USA }
-      has_civil_war = no
-			date < 1910.11.20
-		 has_government= neutrality
+    id = MEX_ww1_support_diaz
+    icon = GFX_hoi4tgw_mex_support_diaz
+    prerequisite = { focus=mex_political_effort }
+    mutually_exclusive = { focus=mex_support_revolucionary_forces }
+    available = {
+      MEX = {
+        exists = yes
+        NOT = { has_war_with = USA }
+        has_civil_war = no
+        date < 1910.11.20
+       has_government= neutrality
+      }
+      NOT = { has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910 }
+      NOT = { has_government= democratic}
     }
-    NOT = { has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910 }
-		NOT = { has_government= democratic}
-  }
-  mutually_exclusive = { focus=mex_support_revolucionary_forces }
-  completion_reward = {
-  add_political_power = -100
-  add_stability = 0.10
-	hidden_effect = {
-	create_corps_commander={  name = "Bernardo Reyes"  portrait_path="gfx/generals/MEX_Reyes.dds" traits={   } skill=3}
-	create_corps_commander={  name = "Felix Diaz"  portrait_path="gfx/generals/MEX_Felix_Diaz.dds" traits={ old_guard desert_fox trickster } skill=4 }
-	create_field_marshal={  name = "Porfirio Diaz"  portrait_path="gfx/fieldmarshal/MEX_Diaz.dds" traits={ defensive_doctrine  offensive_doctrine old_guard } skill=5 }
-	}
-   }
-  cost = 4
-  x = 0
-  y = 1
-  ai_will_do = { factor = 0 }
+    completion_reward = {
+      add_political_power = -100
+      add_stability = 0.10
+      hidden_effect = {
+        create_corps_commander={  name = "Bernardo Reyes"  portrait_path="gfx/generals/MEX_Reyes.dds" traits={   } skill=3}
+        create_corps_commander={  name = "Felix Diaz"  portrait_path="gfx/generals/MEX_Felix_Diaz.dds" traits={ old_guard desert_fox trickster } skill=4 }
+        create_field_marshal={  name = "Porfirio Diaz"  portrait_path="gfx/fieldmarshal/MEX_Diaz.dds" traits={ defensive_doctrine  offensive_doctrine old_guard }  skill=5 }
+      }
+    }
+    cost = 4
+    x = 0
+    y = 1
+    ai_will_do = { factor = 0 }
   }
 
   ##Prevent the mexican revolution
