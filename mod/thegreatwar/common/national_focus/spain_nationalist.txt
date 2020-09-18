@@ -1182,13 +1182,58 @@ focus = {
 		completion_reward = { if={ limit={ NOT={ has_idea=neutrality_idea } } set_rule={ can_create_factions=yes } } add_ideas=why_we_fight_focus }
 		cost = 10
 		x = 25
-		y = 8
+		y = 9
 		ai_will_do = { factor = 0 }
 	}
 
+
+
+	focus = {
+		id = SPR_ww1_anti_uk # Defy the British Empire
+		prerequisite = { focus = SPR_supportaustria  }
+		available = {
+			NOT = { 
+				is_in_faction_with = ENG 
+			}
+		}
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			SPR = {
+				add_opinion_modifier = {
+					target = ENG
+					modifier = HOI4TGW_Opinion_anti_uk_policy_malus
+				}
+			}
+		}
+		cost = 4
+		x = 21
+		y = 6
+	}
+
+	focus = {
+		id = SPR_ww1_Retake_Gibraltar # Retake Gibraltar
+		prerequisite = { focus = SPR_ww1_anti_uk  }
+		icon = GFX_focus_generic_provoke_border_clashes
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			create_wargoal = {
+				target = ENG
+				type = take_state_focus
+				generator = {
+					118
+				}
+			}
+		}
+		cost = 4
+		x = 20
+		y = 8
+	}
+
+
 	focus = {
 		id = SPR_joingermany
-		prerequisite = { focus = SPR_supportaustria  }
+		prerequisite = { focus = SPR_ww1_anti_uk  }
 		prerequisite = { focus = SPR_foreign_expeditions }
 		icon = GFX_goal_generic_territory_or_war
 
@@ -1214,7 +1259,7 @@ focus = {
 		ai_will_do = { factor = 0 }
 		cost = 4
 		x = 21
-		y = 8
+		y = 9
 	}
 
 	focus = {
