@@ -7,9 +7,9 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.11.1 "España"
+**Current Version:** 0.11.2 "España"
 
-**Compatible with:** Hearts of Iron IV "Husky" (with or without Paid DLC)
+**Compatible with:** Hearts of Iron IV "Collie" (with or without Paid DLC)
 
 **Supported Languages:**
 - English
