@@ -162,24 +162,9 @@ set_technology = {
     #-------------------------------------------------------
     #                           NF
     #-------------------------------------------------------
-    #Army
-    complete_national_focus = army_effort
-    complete_national_focus = equipment_effort
-    complete_national_focus = ww1_artillery_effort_1
-    complete_national_focus = doctrine_effort
-    complete_national_focus = ww1_trenchwarfare
-
-    #Industrial
-    complete_national_focus = industrial_effort
-    complete_national_focus = infrastructure_effort
-
-    #Political
-    complete_national_focus = political_effort
-
-    #Diplomatic
-    complete_national_focus = ww1_diplomatic_effort
-    complete_national_focus = neutrality_focus
-    complete_national_focus = ww1_military_reserve
+    complete_national_focus = TUK_interwar_DenyAlliedDemands
+    complete_national_focus = TUK_interwar_AmasyaCircular
+    complete_national_focus = TUK_interwar_Battle_of_Aydin
 
     #-------------------------------------------------------
 
@@ -288,7 +273,6 @@ set_technology = {
         ww1_oil2 = 1
         ww1_fortification3 = 1
         ww1_fortification3b = 1
-
     }
 
     set_war_support = 0.8
@@ -297,10 +281,21 @@ set_technology = {
 
     oob = "TUK_1919"
 
+    TUK = {
+        diplomatic_relation = {
+            country = TUR
+            relation = military_access
+            active = yes
+        }
+    }
+
     add_ideas = {
         limited_conscription
         TUK_interwar_spirit_TurkishNationalMovement
+        ww1_Faith_Allah
+        interwar_spirit_TheGreatWar_Loser
     }
+
 
     create_country_leader = { 
     	name = "Mustafa Kemal" 
@@ -311,11 +306,18 @@ set_technology = {
     	traits = { }
     }
 
-    create_field_marshal = {  name = "Mustafa Kemal" portrait_path="gfx/hoi4tgw_portraits/TUK/army_generals/TUK_Mustafa_Kemal.dds" traits = { fast_planner defensive_doctrine } skill = 4 
+    create_field_marshal = {  name = "Mustafa Kemal" portrait_path="gfx/hoi4tgw_portraits/TUK/army_generals/TUK_Mustafa_Kemal.dds" traits = { fast_planner defensive_doctrine } skill = 5 
+        attack_skill = 2
+        defense_skill = 2
+        planning_skill = 3
+        logistics_skill = 2
+    }
+
+    create_field_marshal = {  name = "Mustafa İsmet" portrait_path="gfx/hoi4tgw_portraits/TUK/army_generals/TUK_Mustafa_Ismet.dds" traits = { fast_planner } skill = 4 
         attack_skill = 2
         defense_skill = 2
         planning_skill = 2
-        logistics_skill = 1
+        logistics_skill = 2
     }
 
     create_field_marshal={  name = "Fevzi Çakmak" portrait_path="gfx/hoi4tgw_portraits/TUR/army_generals/TUR_Fevzi.dds" traits={   } skill = 2 
@@ -332,12 +334,27 @@ set_technology = {
         logistics_skill = 1
     }
 
-    create_corps_commander = {  name = "Ali Fuat Cebesoy" portrait_path="gfx/hoi4tgw_portraits/TUK/army_generals/TUK_Ali_Fuat_Cebesoy.dds" traits = { } skill = 2
+    create_corps_commander = {  name = "Asım Gündüz" portrait_path="gfx/hoi4tgw_portraits/TUK/army_generals/TUK_Asim_Gunduz.dds" traits = { } skill = 3
         attack_skill = 2
         defense_skill = 2
         planning_skill = 1
         logistics_skill = 1
     }
+
+    create_corps_commander = {  name = "Cafer Tayyar Eğilmez" portrait_path="gfx/hoi4tgw_portraits/TUK/army_generals/TUK_Cafer_Tayyar_Egilmez.dds" traits = { } skill = 2
+        attack_skill = 1
+        defense_skill = 1
+        planning_skill = 2
+        logistics_skill = 2
+    }
+
+    create_corps_commander = {  name = "Reşat Çiğiltepe" portrait_path="gfx/hoi4tgw_portraits/TUK/army_generals/TUK_Resat_Cigiltepe.dds" traits = { } skill = 2
+        attack_skill = 2
+        defense_skill = 1
+        planning_skill = 2
+        logistics_skill = 1
+    }
+
 
     set_politics = {
         ruling_party = neutrality

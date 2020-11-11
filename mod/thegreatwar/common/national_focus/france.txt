@@ -388,22 +388,22 @@ focus_tree = {
 		completion_reward = { 
 			ENG = { 
 				add_opinion_modifier = { 
-					target = FRA modifier=HOI4TGW_Opinion_fra_diplomats_bonus 
+					target = FRA modifier=HOI4TGW_Opinion_SendDiplomats_bonus 
 				} 
 			}
 			FRA = { 
 				add_opinion_modifier = { 
-					target = ENG modifier=HOI4TGW_Opinion_fra_diplomats_bonus 
+					target = ENG modifier=HOI4TGW_Opinion_SendDiplomats_bonus 
 				} 
 			} 
 			RUS = { 
 				add_opinion_modifier = { 
-					target = FRA modifier=HOI4TGW_Opinion_fra_diplomats_bonus
+					target = FRA modifier=HOI4TGW_Opinion_SendDiplomats_bonus
 				} 
 			} 
 			FRA = { 
 				add_opinion_modifier = { 
-					target = RUS modifier=HOI4TGW_Opinion_fra_diplomats_bonus
+					target = RUS modifier=HOI4TGW_Opinion_SendDiplomats_bonus
 				} 
 			}
 		}
@@ -992,9 +992,8 @@ focus_tree = {
 		id = FRA_ww1_anti_ottoman
 		prerequisite = { focus = FRA_ww1_assert_position_east }
 		icon = GFX_goal_generic_political_pressure
-		ai_will_do = { factor=1 }
+		ai_will_do = { factor = 1 }
 		completion_reward = { FRA={ add_opinion_modifier={ target=TUR modifier=HOI4TGW_Opinion_anti_ottoman_policy_malus } } }
-		ai_will_do = { factor = 1000 }
 		cost = 10
 		x = 12
 		y = 2
@@ -1004,9 +1003,8 @@ focus_tree = {
 		id = FRA_ww1_support_romania
 		prerequisite = { focus = FRA_ww1_anti_ottoman }
 		icon = GFX_goal_generic_intelligence_exchange
-		ai_will_do = { factor=1 }
+		ai_will_do = { factor = 1 }
 		completion_reward = { FRA={ add_opinion_modifier={ target=ROM modifier=HOI4TGW_Opinion_diplomats_bonus } } }
-		ai_will_do = { factor = 1000 }
 		cost = 10
 		x = 12
 		y = 3
@@ -2536,8 +2534,6 @@ focus_tree = {
 
 	################ INTERWAR START
 
-	# Open Beta 0.5
-
 	#Treaty of Lausanne
 	focus = {
 		id = FRA_interwar_treaty_of_lausanne
@@ -2546,22 +2542,25 @@ focus_tree = {
 		icon = GFX_goal_generic_forceful_treaty
 
 		available = {
-			date>1922.1.1
+			date>1923.7.7
 			has_global_flag = interwar_greco_turkish_war
 			not = { has_global_flag = interwar_treaty_of_lausanne }
 
 			ENG = { has_war = no }
 			FRA = { has_war = no }
-			GRE = { has_war_with = TUR }
+			OR = {
+				GRE = { has_war_with = TUR }
+				GRE = { has_war_with = TUK }			
+			}
 		}
 
 		x = 14
 		y = 7
 
-		cost = 10
+		cost = 3
 
 		ai_will_do = {
-			factor = 100	
+			factor = 0
 		}
 
 		completion_reward = {
@@ -2573,6 +2572,12 @@ focus_tree = {
 					white_peace = TUR
 				}
 				TUR = { 
+					white_peace = GRE
+				}
+				GRE = { 
+					white_peace = TUK
+				}
+				TUK = { 
 					white_peace = GRE
 				}
 			}
