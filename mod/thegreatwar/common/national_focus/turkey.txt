@@ -1237,7 +1237,7 @@ focus_tree = {
 		mutually_exclusive = { focus = TUK_interwar_IranFriend }
 		prerequisite = { focus = TUK_interwar_RaiseTensions }
 		x = 19
-		y = 7
+		y = 8
 		cost = 10
 
 		ai_will_do = {
@@ -1262,7 +1262,7 @@ focus_tree = {
 		mutually_exclusive = { focus = TUK_interwar_IranEnnemy }
 		prerequisite = { focus = TUK_interwar_MiddleEastRelations }
 		x = 21
-		y = 7
+		y = 8
 		cost = 10
 
 		ai_will_do = {
@@ -1505,6 +1505,71 @@ focus_tree = {
 		}
 	}
 
+
+	focus = {
+		id = TUK_interwar_Azerbaijan # Recognize Azerbaijan
+		icon = GFX_goal_generic_position_armies
+		prerequisite = { focus = TUK_interwar_TheCaucasusQuestion }
+		x = 20
+		y = 6
+		cost = 10
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		available = {
+			country_exists = AZR
+		}
+
+		completion_reward = {
+			TUK = {
+				add_opinion_modifier = {
+					target = AZR modifier = HOI4TGW_Opinion_diplomats_bonus
+				} 
+			}
+		}
+	}
+
+
+	focus = {
+		id = TUK_interwar_ProtectAzerbaijan # Offer Our Protection to Azerbaijan
+		icon = GFX_focus_generic_support_the_left_right
+		prerequisite = { focus = TUK_interwar_Azerbaijan }
+		x = 20
+		y = 7
+		cost = 10
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		available_if_capitulated = yes
+
+		available = {
+			country_exists = AZR
+			AZR = {
+				is_puppet = NO
+				has_war_with = SOV
+			}
+		}
+
+		completion_reward = {
+			TUK = {
+				puppet = AZR
+			}
+			TUK = {
+				declare_war_on = {
+					target = SOV
+					type = take_state
+					generator = { 229 }
+				}
+			}
+		}
+	}
+
+
+
 	focus = {
 		id = TUK_interwar_RaiseTensions
 		icon = GFX_goal_generic_attack_allies
@@ -1525,6 +1590,7 @@ focus_tree = {
 			add_named_threat = { threat = 5 }
 		}
 	}
+
 
 
 
