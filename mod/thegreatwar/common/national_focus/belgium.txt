@@ -358,7 +358,7 @@ focus_tree = {
 	##### Diplomatic #####
 	
 	focus = {
-		id = BEL_diplomatic_effort
+		id = BEL_ww1_diplomatic_effort
 		icon = GFX_goal_generic_intelligence_exchange
 		completion_reward = { add_political_power=120 }
 		cost = 10
@@ -368,9 +368,9 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = BEL_benilux_focus
+		id = BEL_ww1_benilux_focus
 		icon = GFX_goal_generic_improve_relations
-		prerequisite = { focus = BEL_diplomatic_effort }
+		prerequisite = { focus = BEL_ww1_diplomatic_effort }
 		completion_reward = {
 		    add_opinion_modifier = {
 			    target = HOL modifier = benilux_friendship
@@ -391,15 +391,15 @@ focus_tree = {
 		}
 		cost = 10
 		x = 9
-		y = 1
+		y = 2
 		ai_will_do = { factor = 10 }
 	}
 	
 	focus = {
-		id = BEL_entente_focus
+		id = BEL_ww1_entente_focus
 		icon = GFX_hoi4tgw_marianne
-		prerequisite = { focus = BEL_diplomatic_effort }
-		mutually_exclusive = { focus = BEL_germany_focus focus = BEL_neutrality_focus }
+		prerequisite = { focus = BEL_ww1_diplomatic_effort }
+		mutually_exclusive = { focus = BEL_ww1_germany_focus focus = BEL_ww1_neutrality_focus }
 		completion_reward = {
 		    every_country = {
 		        limit {
@@ -417,16 +417,34 @@ focus_tree = {
 		
 		cost = 10
 		x = 11
-		y = 1
+		y = 2
 		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = BEL_adios_1839_agreement # The Treaty of London is too Restrictive
+		icon = GFX_focus_renounce_the_treaty_of_trianon
+		available = { is_ai = no }
+		prerequisite = { focus = BEL_ww1_diplomatic_effort }
+
+		completion_reward = {
+			remove_ideas = { ww1_idea_1839_agreement }
+			BEL = { add_opinion_modifier={ target=ENG modifier=HOI4TGW_Opinion_anti_uk_policy_malus } }
+		}
+
+		cost = 10
+		x = 13
+		y = 1
+
+		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes } }
 	}
 	
 	focus = {
-		id = BEL_germany_focus
+		id = BEL_ww1_germany_focus
 		icon = GFX_hoi4tgw_ironcross
 		available = { is_ai = no }
-		prerequisite = { focus = BEL_diplomatic_effort }
-		mutually_exclusive = { focus = BEL_entente_focus focus = BEL_neutrality_focus }
+		prerequisite = { focus = BEL_adios_1839_agreement }
+		mutually_exclusive = { focus = BEL_ww1_entente_focus focus = BEL_ww1_neutrality_focus }
 		completion_reward = {
 		    every_country = {
 			    limit = {
@@ -440,15 +458,15 @@ focus_tree = {
 		}
 		cost = 10
 		x = 13
-		y = 1
+		y = 2
 		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes } }
 	}
 	
 	focus = {
-		id = BEL_neutrality_focus
+		id = BEL_ww1_neutrality_focus
 		icon = GFX_goal_generic_neutrality_focus
-		prerequisite = { focus = BEL_diplomatic_effort }
-		mutually_exclusive = { focus = BEL_germany_focus focus = BEL_entente_focus }
+		prerequisite = { focus = BEL_ww1_diplomatic_effort }
+		mutually_exclusive = { focus = BEL_ww1_germany_focus focus = BEL_ww1_entente_focus }
 		completion_reward = {
 		    add_political_power = 50
 			add_manpower = 10000
@@ -456,16 +474,16 @@ focus_tree = {
 		}
 		cost = 10
 		x = 15
-		y = 1
+		y = 2
 		ai_will_do = { factor = 10 }
 	}
 	
 	focus = {
-		id = BEL_ally_benilux
+		id = BEL_ww1_ally_benilux
 		icon = GFX_goal_generic_alliance
 		available = { is_ai = no }
-		prerequisite = { focus = BEL_benilux_focus }
-		mutually_exclusive = { focus = BEL_conquer_benilux focus = BEL_major_alliance }
+		prerequisite = { focus = BEL_ww1_benilux_focus }
+		mutually_exclusive = { focus = BEL_ww1_conquer_benilux focus = BEL_ww1_major_alliance }
 		completion_reward = {
 		    create_faction = greater_benilux
 			if = { limit = { country_exists = HOL } HOL = { country_event = { days = 1 id = ww1_belgium.2 } } }
@@ -473,47 +491,49 @@ focus_tree = {
 		}
 		cost = 10
 		x = 8
-		y = 2
+		y = 3
 		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes } }
 	}
 	
 	focus = {
-		id = BEL_conquer_benilux
+		id = BEL_ww1_conquer_benilux
 		icon = GFX_goal_generic_attack_allies
 		available = { is_ai = no }
-		prerequisite = { focus = BEL_benilux_focus }
-		mutually_exclusive = { focus = BEL_ally_benilux focus = BEL_major_alliance }
+		prerequisite = { focus = BEL_ww1_benilux_focus }
+		mutually_exclusive = { focus = BEL_ww1_ally_benilux focus = BEL_ww1_major_alliance }
 		completion_reward = {
 			if = { limit = { country_exists = HOL } HOL = { country_event = { days = 1 id = ww1_belgium.3 } } }
 			if = { limit = { country_exists = LUX } LUX = { country_event = { days = 1 id = ww1_belgium.3 } } }
 		}
 		cost = 10
 		x = 10
-		y = 2
+		y = 3
 		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes } }
 	}
 	
 	focus = {
-		id = BEL_major_alliance
+		id = BEL_ww1_major_alliance
 		icon = GFX_goal_generic_major_alliance
-		prerequisite = { focus = BEL_entente_focus focus = BEL_germany_focus }
-		mutually_exclusive = { focus = BEL_ally_benilux focus = BEL_conquer_benilux }
+		prerequisite = { focus = BEL_ww1_entente_focus focus = BEL_ww1_germany_focus }
+		mutually_exclusive = { focus = BEL_ww1_ally_benilux focus = BEL_ww1_conquer_benilux }
 		completion_reward = {
-			if = { limit = { has_completed_focus = BEL_entente_focus } FRA = { add_to_faction = ROOT } }
-			if = { limit = { has_completed_focus = BEL_germany_focus } GER = { add_to_faction = ROOT } }
-			if = { limit = { NOT = { OR = { has_completed_focus = BEL_entente_focus has_completed_focus = BEL_germany_focus } } } custom_effect_tooltip = alliance_choice }
+			if = { limit = { has_completed_focus = BEL_ww1_entente_focus } FRA = { add_to_faction = ROOT } }
+			if = { limit = { has_completed_focus = BEL_ww1_germany_focus } GER = { add_to_faction = ROOT } }
+			if = { limit = { NOT = { OR = { has_completed_focus = BEL_ww1_entente_focus has_completed_focus = BEL_ww1_germany_focus } } } custom_effect_tooltip = alliance_choice }
 		}
 		cost = 10
 		x = 12
-		y = 2
+		y = 3
 		ai_will_do = { factor = 10 }
 	}
 	
 	focus = {
-		id = BEL_fortify_borders
+		id = BEL_ww1_fortify_borders
 		icon = GFX_goal_generic_fortify_city
 		available = { is_ai = no }
-		prerequisite = { focus = BEL_neutrality_focus }
+
+		prerequisite = { focus = BEL_ww1_neutrality_focus }
+
 		completion_reward = {
 		    custom_effect_tooltip = fortify_belgium
 			34 = {
@@ -611,37 +631,280 @@ focus_tree = {
 		}
 		cost = 10
 		x = 15
-		y = 2
+		y = 3
 		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes } }
 	}
 	
 	focus = {
-		id = BEL_demand_eupen
+		id = BEL_ww1_demand_eupen
 		icon = GFX_goal_demand_sudetenland
-		prerequisite = { focus = BEL_ally_benilux focus = BEL_conquer_benilux focus = BEL_major_alliance }
+		prerequisite = { focus = BEL_ww1_ally_benilux focus = BEL_ww1_conquer_benilux focus = BEL_ww1_major_alliance }
 		completion_reward = {
 			if = { limit = { 768 = { is_controlled_by = GER } } GER = { country_event = { days = 1 id = ww1_belgium.4 } } }
 		}
 		cost = 10
 		x = 11
-		y = 3
+		y = 4
 		ai_will_do = { factor = 10 }
 	}
 	
 	focus = {
-		id = BEL_unite_benilux
+		id = BEL_ww1_unite_benilux
 		icon = GFX_goal_anschluss
 		available = { is_ai = no }
-		prerequisite = { focus = BEL_ally_benilux focus = BEL_conquer_benilux focus = BEL_major_alliance }
+		prerequisite = { focus = BEL_ww1_ally_benilux focus = BEL_ww1_conquer_benilux focus = BEL_ww1_major_alliance }
 		completion_reward = {
 			country_event = { days = 1 id = ww1_belgium.5 }
 		}
 		cost = 10
 		x = 9
-		y = 3
+		y = 4
 		ai_will_do = { factor = 10 modifier = { factor = 0 is_historical_focus_on = yes } }
 	}
 	
+
+
+	##### Congo #####
+
+	focus = {
+		id = BEL_ww1_congo # Belgian Policy in the Congo
+		icon = GFX_goal_generic_position_armies
+
+		available = { 
+			BEL = { controls_state = 295 controls_state = 538 controls_state = 718 }
+		}
+
+		completion_reward = {
+			add_political_power = 15
+		}
+
+		cost = 3
+		x = 13
+		y = 5
+		ai_will_do = { factor = 0 }
+	}
+
+	focus = {
+		id = BEL_ww1_congo_infra # Congo's Infrastructure Financing Plan
+		icon = GFX_focus_generic_africa_infrastructure
+		prerequisite = { focus = BEL_ww1_congo }
+
+		available = { 
+			BEL = { controls_state = 538 }
+		}
+
+		completion_reward = {
+			538 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		cost = 12
+		x = 8
+		y = 6
+		ai_will_do = { factor = 0 }
+	}
+
+
+	focus = { 
+		id = BEL_ww1_ReorganizeForcePublique # Reorganize La Force Publique
+		icon = GFX_goal_generic_military_sphere
+		prerequisite = { focus = BEL_ww1_congo }
+
+		mutually_exclusive = { focus = BEL_ww1_ClaimingHumanRightsAfrica }
+
+		available = { 
+			BEL = { controls_state = 295 controls_state = 538 controls_state = 718 }
+		}
+
+		completion_reward = { 
+			add_manpower = 5000
+		}
+
+		cost = 12
+		x = 14
+		y = 7
+		ai_will_do = { factor = 0 }
+	}
+
+	focus = { 
+		id = BEL_ww1_congo_RubberMonocultureExpansion # Rubber Monoculture Expansion
+		icon = GFX_focus_generic_rubber
+		prerequisite = { focus = BEL_ww1_congo_infra }
+
+		available = { 
+			BEL = { controls_state = 295 controls_state = 538 controls_state = 718 }
+		}
+
+		completion_reward = { 
+			add_resource = { type = rubber amount = 4 state = 538 }
+		}
+
+		cost = 12
+		x = 8
+		y = 7
+		ai_will_do = { factor = 0 }
+	}
+
+
+	focus = {
+		id = BEL_ww1_ApproveLeopoldLegacyCongo # Defend the Colonial Legacy of Leopold II
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = BEL_ww1_congo }
+		mutually_exclusive = { focus = BEL_ww1_DenyLeopoldLegacyCongo }
+
+		available = { 
+			BEL = { controls_state = 295 controls_state = 538 controls_state = 718 }
+		}
+
+		completion_reward = { add_political_power = -50 }
+
+		cost = 10
+		x = 10
+		y = 6
+		ai_will_do = { factor = 0 }
+	}
+
+	focus = {
+		id = BEL_ww1_CongoFreeState # Reestablish the Congo Free State
+		icon = GFX_goal_generic_territory_or_war
+		prerequisite = { focus = BEL_ww1_congo }
+
+		available = { 
+			BEL = { controls_state = 295 controls_state = 538 controls_state = 718 }
+		}
+
+		completion_reward = { 
+			add_resource = { type = rubber amount = 1 state = 295 }
+			add_resource = { type = rubber amount = 1 state = 538 }
+			add_resource = { type = rubber amount = 1 state = 718 }
+		}
+
+		cost = 10
+		x = 10
+		y = 8
+		ai_will_do = { factor = 0 }
+	}
+
+	focus = {
+		id = BEL_ww1_ColonialRepression # Colonial Repression
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = BEL_ww1_CongoFreeState }
+		prerequisite = { focus = BEL_ww1_ReorganizeForcePublique }
+
+		available = { 
+			BEL = { controls_state = 295 controls_state = 538 controls_state = 718 }
+		}
+
+		completion_reward = {
+			add_stability = -0.05
+		}
+
+		cost = 10
+		x = 13
+		y = 9
+		ai_will_do = { factor = 0 }
+	}
+
+
+	focus = {
+		id = BEL_ww1_InviteEuropeanSettlers # Invite European Settlers
+		icon = GFX_goal_generic_construction
+		prerequisite = { focus = BEL_ww1_congo_RubberMonocultureExpansion }
+		prerequisite = { focus = BEL_ww1_ColonialRepression }
+
+		available = { 
+			BEL = { controls_state = 295 controls_state = 538 controls_state = 718 }
+		}
+
+		completion_reward = {
+			295 = {
+				add_extra_state_shared_building_slots=1
+				add_building_construction={ type=industrial_complex level=1 instant_build=yes }
+			}
+
+			295 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+
+		}
+		complete_tooltip = { add_extra_state_shared_building_slots=1 add_building_construction={ type=industrial_complex level=1 instant_build=yes }			 }
+
+		cost = 15
+		x = 9
+		y = 10
+		ai_will_do = { factor = 0 }
+	}
+
+	focus = {
+		id = BEL_ww1_DenyLeopoldLegacyCongo # Deny King Leopold's Legacy in Africa
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = BEL_ww1_congo }
+		mutually_exclusive = { focus = BEL_ww1_ApproveLeopoldLegacyCongo }
+
+		completion_reward = { add_political_power = 50 }
+
+		cost = 10
+		x = 12
+		y = 6
+		ai_will_do = { factor = 0 }
+	}
+
+	focus = {
+		id = BEL_ww1_ClaimingHumanRightsAfrica # Claiming Human Rights in Africa
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = BEL_ww1_DenyLeopoldLegacyCongo }
+		mutually_exclusive = { focus = BEL_ww1_ReorganizeForcePublique }
+
+		completion_reward = {
+			BEL={ add_opinion_modifier={ target=LIB modifier=HOI4TGW_Opinion_diplomats_bonus } }
+			BEL={ add_opinion_modifier={ target=ETH modifier=HOI4TGW_Opinion_diplomats_bonus } }
+
+			COG = {
+				add_state_claim = 295
+				add_state_claim = 538
+				add_state_claim = 718
+			}
+		}
+
+		cost = 10
+		x = 12
+		y = 7
+		ai_will_do = { factor = 0 }
+	}
+
+	focus = {
+		id = BEL_ww1_FreeCongo # Free Congo
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = BEL_ww1_ClaimingHumanRightsAfrica }
+
+		available = { 
+			BEL = { controls_state = 295 controls_state = 538 controls_state = 718 }
+		}
+
+		completion_reward = {
+			add_stability = 0.1
+			COG = {
+				transfer_state = 295
+				transfer_state = 538
+				transfer_state = 718
+			}
+		}
+
+		cost = 10
+		x = 12
+		y = 8
+		ai_will_do = { factor = 0 }
+	}
+
 	##### Generic #####
 	
 	focus = {

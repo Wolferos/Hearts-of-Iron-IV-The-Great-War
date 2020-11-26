@@ -1,0 +1,102 @@
+﻿add_namespace = interwar_turkey
+
+
+news_event = {
+    id = interwar_turkey.1
+    title = interwar_turkey.1.t
+    desc = interwar_turkey.1.d
+    picture = EVENT_hoi4tgw_interwar_turkish_accusations
+
+    major = yes
+    is_triggered_only = yes
+
+    option = {
+        name = interwar_turkey.1.a
+        ai_chance = {
+            factor = 100
+        }
+    }
+}
+
+news_event = {
+    id = interwar_turkey.2
+    title = interwar_turkey.2
+    desc = interwar_turkey.2
+    picture = EVENT_hoi4tgw_interwar_turkish_shameful_compromise
+
+    major = yes
+    is_triggered_only = yes
+
+    option = {
+        name = interwar_turkey.2
+        ai_chance = {
+            factor = 100
+        }
+    }
+}
+
+
+# Turkey Offer Peace to Gree
+#____________________________________________________________
+country_event = {
+	id = interwar_turkey.3
+	title = interwar_turkey.3.t
+	desc = interwar_turkey.3.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	# Accept Peace
+	option = {
+		name = interwar_turkey.3.a
+		ai_chance = { factor = 100 }
+
+		TUK = { white_peace = GRE }
+
+		GRE = {
+			transfer_state = 339
+			transfer_state = 341
+			transfer_state = 340
+
+			add_state_core = 339
+			add_state_core = 341
+			add_state_core = 340
+
+			diplomatic_relation = {
+				country = TUK
+				relation = non_aggression_pact
+			}
+		}
+
+		hidden_effect = {
+			news_event = { days = 1 id = interwar_turkey.2 }
+		}
+	}
+
+	# Say No
+	option = {
+		name = interwar_turkey.3.b
+		ai_chance = { factor = 0 }
+	}
+}
+#____________________________________________________________
+
+# Turkey is a Republic
+#____________________________________________________________
+news_event = {
+	id = interwar_turkey.4
+	title = interwar_turkey.4.t
+	desc = interwar_turkey.4.d
+    picture = EVENT_hoi4tgw_interwar_turkish_republic
+
+    major = yes
+    is_triggered_only = yes
+
+    option = {
+        name = interwar_turkey.4.a
+        ai_chance = {
+            factor = 100
+        }
+    }
+}
+#____________________________________________________________

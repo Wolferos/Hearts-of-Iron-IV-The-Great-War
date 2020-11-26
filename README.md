@@ -7,9 +7,9 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.10 "The Aftermath of Versailles"
+**Current Version:** 0.12a "Kurtuluş Savaşı"
 
-**Compatible with:** Hearts of Iron IV "Husky" (with or without Paid DLC)
+**Compatible with:** Hearts of Iron IV "Collie" (with or without Paid DLC)
 
 **Supported Languages:**
 - English
@@ -99,10 +99,12 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - Honeymaple
    - habbala
    - SandwichPhil
-   - Comrader
+   - Comrader J-12
    - Veydem
    - Sgerhardt
    - Von Thoma
+   - Lord Butxot
+   - Canadian Lemur
 
 ----------
 [Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow

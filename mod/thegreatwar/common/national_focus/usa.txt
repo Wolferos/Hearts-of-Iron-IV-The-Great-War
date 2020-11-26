@@ -3,8 +3,6 @@ focus_tree = {
 	default=no
 	country={ factor=0 modifier={ add=10 tag=USA } modifier={ add=10 original_tag=USA } }
 
-
-
 	#-----------------------------------------
 	focus = {
 		id = USA_interwar_PostWarPolicy # PostWarPolicy
@@ -303,7 +301,71 @@ focus_tree = {
 		cost = 10
 		x = 3
 		y = 0
+	}
+
+	focus = {
+		id = USA_ww1_john_rockefeller_conglomerate
+		icon = GFX_focus_generic_industry_2
+		cost = 5
+		prerequisite = { focus = USA_ww1_political_effort }
+		x = 0
+		y = 2
+		completion_reward = {
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = USA_john_rockefeller
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = fuel_silo
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = USA_john_rockefeller_conglomerate
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = USA_john_rockefeller_conglomerate
+			}
 		}
+	}
+
+	focus = {
+		id = USA_ww1_expand_standard_oil_influence
+		icon = GFX_goal_generic_oil_refinery
+		cost = 5
+		prerequisite = {
+			focus = USA_ww1_john_rockefeller_conglomerate
+		}
+		x = 0
+		y = 3
+		completion_reward = {
+			custom_effect_tooltip = available_industrial_concern
+			show_ideas_tooltip = standard_oil_california
+		}
+	}
+
+
 
 	focus = {
 		id = USA_ww1_UnderwoodTariffAct
@@ -314,7 +376,7 @@ focus_tree = {
 
 		ai_will_do = { factor = 2000 }
 		cost = 10
-		x = 3
+		x = 1
 		y = 1
 	}
 
@@ -2472,33 +2534,47 @@ focus_tree = {
 
 	###########################################################################################################################
 
+
 	focus = {
-		id = USA_ww1_naval_effort
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		id = USA_ww1_naval_effort # The Great White Fleet
+		icon = GFX_hoi4tgw_usa_great_white_fleet
+		cost = 10
+		x = 36
+		y = 0
+		completion_reward = { navy_experience = 20 }
+	}
+
+	focus = {
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		id = USA_ww1_Reinforce_United_States_Navy
+		prerequisite = { focus=USA_ww1_naval_effort }
 		icon = GFX_goal_generic_build_navy 
 		available = { any_state={ is_coastal=yes is_controlled_by=ROOT } }
 		completion_reward = { navy_experience=25 if={ limit={ NOT={ any_owned_state={ dockyard > 0 free_building_slots={ building=dockyard size > 2 include_locked=yes } } } any_owned_state={ is_coastal=yes } } random_owned_state={ limit={ is_coastal=yes free_building_slots={ building=dockyard size > 2 include_locked=yes } } add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } } set_country_flag=naval_effort_built } if={ limit={ NOT={ has_country_flag=naval_effort_built } any_owned_state={ dockyard > 0 free_building_slots={ building=dockyard size > 2 include_locked=yes } } } random_owned_state={ limit={ dockyard > 0 free_building_slots={ building=dockyard size > 2 include_locked=yes } } add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } } set_country_flag=naval_effort_built } if={ limit={ NOT={ has_country_flag=naval_effort_built } NOT={ any_owned_state={ free_building_slots={ building=dockyard size > 2 include_locked=yes } } } } random_state={ limit={ controller={ tag=ROOT } free_building_slots={ building=dockyard size > 2 include_locked=yes } } add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } } }			 }
 		complete_tooltip = { navy_experience=25 add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } }
 		ai_will_do = { factor = 10 }
 		cost = 10
-		x = 36
-		y = 0
+		x = 37
+		y = 1
 	}
 
 	focus = {
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		id = USA_ww1_newnavalcanons_1
 		prerequisite = { focus=USA_ww1_naval_effort }
 		icon = GFX_hoi4tgw_navalcanons
 		completion_reward = { navy_experience=15 add_tech_bonus={ name=newnavalcanons_1_bonus bonus=0.15 uses=1 category=naval_doctrine } }
 		ai_will_do = { factor = 10 }
 		cost = 10
-		x = 36
+		x = 35
 		y = 1
 	}
 
 
 	focus = {
 		id = USA_ww1_dreadnought_effort
-		prerequisite = { focus=USA_ww1_newnavalcanons_1 }
+		prerequisite = { focus = USA_ww1_newnavalcanons_1 focus = USA_ww1_Reinforce_United_States_Navy }
 		available = { date > 1911.1.1 }
 		icon = GFX_goal_generic_navy_battleship
 		completion_reward = { add_tech_bonus={ name=cr_bonus bonus=0.15 uses=1 technology=ww1_battleship0 technology=ww1_battleship1 technology=ww1_battleship2 } }

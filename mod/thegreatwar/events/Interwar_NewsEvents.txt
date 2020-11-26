@@ -485,6 +485,9 @@ news_event = {
 
 			IRE = {
 				transfer_state = 113
+				transfer_state = 134
+				transfer_state = 135
+				load_oob = "IRE_WoI"
 			}
 
 			ENG = {
@@ -493,6 +496,7 @@ news_event = {
 				    target = IRE
 				}
 			}
+
 		}
 
 	}
@@ -505,7 +509,6 @@ news_event = {
 	}
 }
 #____________________________________________________________
-
 
 
 
@@ -539,7 +542,7 @@ news_event = {
 #____________________________________________________________
 
 
-# The Locarno_Treaties # Open Beta 0.5.1 (03/2018)
+# The Locarno Treaties # Open Beta 0.5.1 (03/2018)
 #____________________________________________________________
 news_event = {
 	id = interwar_news.13
@@ -660,7 +663,7 @@ news_event = {
 }
 #____________________________________________________________
 
-# Józef Piłsudski is dead
+# Józef Piłsudski is dead # Fixed in Open Beta 0.10.2
 #____________________________________________________________
 news_event = {
 	id = interwar_news.16
@@ -673,7 +676,7 @@ news_event = {
 
 	trigger = {
 		date > 1935.5.11
-		NOT = { has_global_flag = interwar_jozef_pilsudski_death }
+		NOT = { has_global_flag = EVENT_hoi4tgw_interwar_jozef_pilsudski_death }
 	}
 	
 	mean_time_to_happen = {
@@ -681,7 +684,22 @@ news_event = {
 	}
 
 	immediate = {
-		set_global_flag = interwar_jozef_pilsudski_death
+		hidden_effect = {
+			POL = {
+				kill_country_leader = yes
+
+				create_country_leader = {
+					name = "Ignacy Mościcki"
+					desc = "POLITICS_IGNACY_MOSCICKI_DESC"
+					picture = "Portrait_Poland_Ignacy_Moscicki.dds"
+					expire = "1965.1.1"
+					ideology = oligarchism
+					traits = {}
+				}
+			}
+		}
+
+		set_global_flag = EVENT_hoi4tgw_interwar_jozef_pilsudski_death
 	}
 
 	option = {
@@ -692,6 +710,7 @@ news_event = {
 	}
 }
 #____________________________________________________________
+
 
 # Wall Street Bombing # https://en.wikipedia.org/wiki/Wall_Street_bombing
 #____________________________________________________________

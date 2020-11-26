@@ -1,0 +1,3247 @@
+# Original WW1 Spain National Focus Tree made by Lord Butxot as a submod for The Great War Mod: https://steamcommunity.com/sharedfiles/filedetails/?id=2163733114
+# Translated to English by Anony1200
+# Edited by Anony1200, Canadian Lemur and Wolferos
+
+focus_tree = {
+	id = 'spainfocus'
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = SPR
+		}
+	}
+
+	default = no
+	#Custom focuses start here
+	continuous_focus_position = { x = 4500 y = 10 }
+
+	########################################################################################################################################
+
+	#### STARTING FOCUS AND INTERNAL ####
+
+	#Focus for Alfonso XIII 
+	focus = { 
+		id = SPR_ww1_alfonsoxiii 
+		icon = GFX_focus_AST_rats_tobruk 
+		ai_will_do = { factor = 10 }
+		x = 9
+		y = 0
+		prerequisite = { }
+		cost = 2  
+		available_if_capitulated = yes  
+		completion_reward = { 
+			add_political_power = 50 
+			set_stability = 0.85 
+		} 
+	}
+ 
+ 	# Focus for Tiempos oscuros
+	focus = { 
+		id = SPR_ww1_idea_tiempososcuros 
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		ai_will_do = { factor = 10 }
+		x = 0
+		y = 1
+		prerequisite = { focus = SPR_ww1_alfonsoxiii }
+		cost = 10  
+		available_if_capitulated = yes  
+		completion_reward = { remove_ideas = SPR_ww1_idea_tiempos }
+	}
+ 
+ 	#Focus for Industria en el norte
+	focus = { 
+		id = SPR_ww1_industriaenelnorte
+		icon = GFX_goal_continuous_repairments
+		ai_will_do = { factor = 10 }
+		x = 2
+		y = 1
+		prerequisite = { focus = SPR_ww1_alfonsoxiii }
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+
+			172 = {
+				add_extra_state_shared_building_slots = 6
+				add_building_construction = { type = industrial_complex level = 3 instant_build = yes  }
+			} 
+
+			add_resource = {
+				type = steel
+				amount = 12
+				state = 172
+			}
+		}
+	}
+ 
+ 	#Focus for Caciquismo
+	focus = { 
+		id = SPR_ww1_caciquismofocus
+		icon = GFX_focus_rom_handle_king
+		ai_will_do = { factor = 10 }
+		x = 4
+		y = 1
+		prerequisite = { focus = SPR_ww1_alfonsoxiii }
+		cost = 10
+		available_if_capitulated = yes  
+		completion_reward = { 
+			add_political_power = -100 
+			remove_ideas = SPR_ww1_idea_caciquismo
+		}
+	}
+ 
+	#Focus for Africanismo 
+	focus = { 
+		id = SPR_ww1_africanismo
+		icon = GFX_goal_generic_forceful_treaty 
+		ai_will_do = { factor = 10 } 
+		x = 7 
+		y = 1 
+
+		prerequisite = { focus = SPR_ww1_alfonsoxiii }
+		cost = 10
+		available_if_capitulated = yes 
+		completion_reward = {
+			remove_ideas = ww1_Scramble_for_Africa
+			add_ideas = SPR_ww1_idea_africanismo
+			add_war_support = 0.25
+			add_popularity = {
+				ideology = neutrality  
+				popularity = 0.05
+			}  
+		}  
+	}
+ 
+	#Focus for Una nueva flota
+	focus = {
+		id = SPR_ww1_unanuevaflota
+		icon = GFX_goal_generic_construct_naval_dockyard
+		ai_will_do = { factor = 4 }
+		x = 11
+		y = 1
+		prerequisite = { focus = SPR_ww1_alfonsoxiii }
+		cost = 20
+		available_if_capitulated = yes
+		completion_reward = {
+			add_ideas = SPR_ww1_idea_flota 
+			168 = { add_extra_state_shared_building_slots = 3 add_building_construction = { type = dockyard level = 3 instant_build = yes  } }
+			add_ideas = SPR_ww1_idea_ferrol
+		}
+	}
+
+	focus = {
+		id = SPR_ww1_ReorgArmada
+		prerequisite = { focus = SPR_ww1_unanuevaflota }
+		available = { date > 1911.1.1 }
+		icon = GFX_goal_generic_army_artillery
+		completion_reward = { navy_experience=15 add_tech_bonus={ name=newnavalcanons_2_bonus bonus=0.15 uses=1 category=naval_doctrine } }
+		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
+		cost = 10
+		x = 12
+		y = 2
+	}
+
+	focus = { 
+		id = SPR_ww1_dreadnought_effort
+		available = { date > 1912.1.1 }
+		icon = GFX_goal_generic_navy_battleship
+		x = 11
+		y = 3
+		prerequisite = { focus = SPR_ww1_ReorgArmada }
+		cost = 20
+		available_if_capitulated = yes
+		completion_reward = { add_tech_bonus={ name=cr_bonus bonus=0.15 uses=1 technology=ww1_battleship3 } }
+		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
+	}
+
+	#Focus for Plan agricola 
+	focus = { 
+		id = SPR_ww1_planagricola 
+		icon = GFX_goal_continuous_non_factory_construct 
+		ai_will_do = { factor = 10 } 
+		x = 0
+		y = 2
+		prerequisite = { focus = SPR_ww1_idea_tiempososcuros } 
+		cost = 10
+		available_if_capitulated = yes  
+		completion_reward = { add_ideas = SPR_ww1_idea_planagricola } 
+	}
+ 
+	#Focus for Las Uniones 
+	focus = { 
+		id = SPR_ww1_lasuniones 
+		icon = GFX_goal_generic_dangerous_deal 
+		ai_will_do = { factor = 10 } 
+		x = 2
+		y = 2
+		prerequisite = { focus = SPR_ww1_industriaenelnorte }
+		cost = 10
+		available_if_capitulated = yes  
+		completion_reward = {
+			add_ideas = SPR_ww1_idea_pistolerismo 
+			remove_ideas = SPR_ww1_idea_uniones
+			add_stability = -0.3 
+			add_popularity = {  
+				ideology = communism  
+				popularity = 0.15 
+			} 
+		} 
+	}
+ 
+	#Focus for Turnismo 
+	focus = {
+		id = SPR_ww1_turnismofocus
+		icon = GFX_goal_anschluss 
+		ai_will_do = { factor = 10 } 
+		x = 4 
+		y = 2 
+
+		prerequisite = { focus = SPR_ww1_caciquismofocus }
+		cost = 10
+		available_if_capitulated = yes  
+		completion_reward = {
+			add_stability = -0.15 
+			remove_ideas = SPR_ww1_idea_turnismo
+		}
+	}
+ 
+	#Focus for La semana tragica 
+	focus = {
+		id = SPR_ww1_lasemanatragica 
+		icon = GFX_goal_generic_attack_allies 
+		ai_will_do = { factor = 10 } 
+		x = 6
+		y = 2
+		prerequisite = { focus = SPR_ww1_africanismo } 
+		cost = 5
+		available_if_capitulated = yes  
+		completion_reward = { 
+			remove_ideas = SPR_ww1_idea_semanatragica
+			add_ideas = SPR_ww1_idea_semanatragica2
+			add_stability = -0.25
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.15
+			}
+			add_popularity = {  
+				ideology = communism
+				popularity = 0.05
+			} 
+		} 
+	}
+ 
+	#Focus for Expediente Picaso
+	focus = {
+		id = SPR_ww1_expedientepicasofocus
+		icon = GFX_goal_continuous_suppression 
+		ai_will_do = { factor = 10 }
+		x = 8
+		y = 2
+		prerequisite = { focus = SPR_ww1_africanismo } 
+		cost = 5
+		available_if_capitulated = yes  
+		completion_reward = {   
+			add_ideas = SPR_ww1_idea_expedientepicaso
+		} 
+	}
+ 
+	#Focus for La experiencia de Africa 
+	focus = { 
+		id = SPR_ww1_laexperienciadeafrica 
+		icon = GFX_focus_secret_rearmament
+		ai_will_do = { factor = 10 }
+		x = 10
+		y = 2
+		prerequisite = { focus = SPR_ww1_unanuevaflota }
+		prerequisite = { focus = SPR_ww1_africanismo }
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = { army_experience = 35 }
+	}
+ 
+	#Focus for La burguesia catalana
+	focus = {
+		id = SPR_ww1_laburguesiacatalana 
+		icon = GFX_focus_rom_parties_end
+		ai_will_do = { factor = 10 } 
+		x = 0
+		y = 3
+		prerequisite = { focus = SPR_ww1_planagricola}
+		cost = 10
+		available_if_capitulated = yes  
+		completion_reward = { 
+			165 = { add_extra_state_shared_building_slots = 3 add_building_construction = { type = industrial_complex level = 3 instant_build = yes  } } 
+			add_ideas = SPR_ww1_idea_burguesia
+		}
+	}
+ 
+	#Focus for Instituto Nacional Prevision 
+	focus = { 
+		id = SPR_ww1_institutonacionalprevision 
+		icon = GFX_goal_generic_positive_trade_relations 
+		ai_will_do = { factor = 10 } 
+		x = 2 
+		y = 3 
+
+		prerequisite = { focus = SPR_ww1_lasuniones }
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_stability = 0.2
+			add_ideas = SPR_ww1_idea_instituto
+		}
+	}
+ 
+	#Focus for Estabilizando el pais
+	focus = { 
+		id = SPR_ww1_estabilizandoelpais 
+		icon = GFX_goal_generic_neutrality_focus 
+		ai_will_do = { factor = 10 }
+		x = 4
+		y = 3
+		prerequisite = { focus = SPR_ww1_turnismofocus }
+		cost = 5
+		available_if_capitulated = yes  
+		completion_reward = { 
+			add_timed_idea = { idea = SPR_ww1_idea_estabilizando days = 720 }
+			add_political_power = 50 
+			add_stability = 0.15 
+		} 
+	}
+ 
+	#Focus for Tratado de Fez 
+	focus = { 
+		id = SPR_ww1_tratadodefez 
+		icon = GFX_focus_rom_royal_dictatorship 
+		ai_will_do = { factor = 10 } 
+		x = 7
+		y = 3
+		available = { owns_state = 290 }
+		prerequisite = { focus = SPR_ww1_expedientepicasofocus }
+		prerequisite = { focus = SPR_ww1_lasemanatragica } 
+ 		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_opinion_modifier = { target = GER modifier =  tratadofez.1}
+			add_opinion_modifier = { target = ENG modifier =  tratadofez.1}
+			add_opinion_modifier = { target = FRA modifier =  tratadofez.1}
+			290 = { add_extra_state_shared_building_slots = 2 add_building_construction = { type = industrial_complex level = 1 instant_build = yes  } } 
+			add_ideas = SPR_ww1_idea_gateway
+		}  
+	}
+ 
+	#Focus for Reformando el ejercito 
+	focus = { 
+		id = SPR_ww1_reformandoelejercito
+		icon = GFX_focus_generic_military_mission
+		ai_will_do = { factor = 10 } 
+		x = 9
+ 		y = 3
+ 		prerequisite = { focus = SPR_ww1_expedientepicasofocus } 
+ 		prerequisite = { focus = SPR_ww1_laexperienciadeafrica }
+ 		available = { 
+			has_completed_focus = SPR_ww1_armor_effort_2 
+		}
+
+		cost = 10
+		available_if_capitulated = yes  
+		completion_reward = {
+			remove_ideas = SPR_ww1_idea_quintas
+			remove_ideas = SPR_ww1_idea_semanatragica2
+			add_ideas = SPR_ww1_idea_semanatragica3
+		}
+	}
+ 
+	#Focus for Junta Ampliacion Estudios 
+	focus = { 
+		id = SPR_ww1_juntaampliacionestudios
+		icon = GFX_focus_research
+		ai_will_do = { factor = 10 } 
+		x = 0
+		y = 4
+		prerequisite = { focus = SPR_ww1_laburguesiacatalana } 
+		cost = 15
+		available_if_capitulated = yes  
+		completion_reward = {
+			add_research_slot = 1 add_ideas = SPR_ww1_idea_juntaampliacion
+		}
+	}
+ 
+	#Focus for Industria armamentistica 
+	focus = { 
+		id = SPR_ww1_idea_industriaarmamentistica
+		cost = 10
+		icon = GFX_goal_generic_construct_military
+		ai_will_do = { factor = 10 } 
+		x = 0
+		y = 5
+		prerequisite = { focus = SPR_ww1_juntaampliacionestudios }
+		available_if_capitulated = yes  
+		completion_reward = {
+			172 = { add_extra_state_shared_building_slots = 6 add_building_construction = { type = arms_factory level = 3 instant_build = yes  } } 
+			add_ideas = SPR_ww1_idea_armascaseras
+		}
+	} 
+ 
+	#Focus for ILE 
+	focus = { 
+		id = SPR_ww1_InstitucionLibreEnsenanza 
+		icon = GFX_focus_research
+		ai_will_do = { factor = 10 } 
+		x = 2
+		y = 4
+		prerequisite = { focus = SPR_ww1_institutonacionalprevision }
+		cost = 15
+		completion_reward = {
+			add_research_slot = 1
+			add_ideas = SPR_ww1_idea_ile
+		}
+		available_if_capitulated = yes
+	}
+ 
+	#Focus for SPR_ww1_ferrocarriles
+	focus = { 
+		id = SPR_ww1_ferrocarriles
+		icon = GFX_goal_generic_construct_infrastructure
+		ai_will_do = { factor = 10 } 
+		x = 2
+		y = 5
+
+		prerequisite = { focus = SPR_ww1_InstitucionLibreEnsenanza } 
+		cost = 10
+		completion_reward = { 
+			165 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes  } }
+			166 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes  } }
+			167 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes  } }
+			169 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes  } }
+			172 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes  } }
+			808 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes  } }
+			810 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes  } }
+		}
+		available_if_capitulated = yes  
+	}
+
+ 	#Focus for Las reformas de Canalejas 
+	focus = {
+		id = SPR_ww1_lasreformasdecanalejas
+		icon = GFX_goal_generic_national_unity
+		ai_will_do = { factor = 10 }
+		x = 4
+		y = 4
+		prerequisite = { focus = SPR_ww1_estabilizandoelpais }
+		cost = 10
+		available_if_capitulated = yes 
+		completion_reward = {
+			add_stability = 0.30
+			add_political_power = 80
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.1
+			}
+		}
+	}
+ 
+	#Focus for avance cientifico
+	focus = { 
+		id = SPR_ww1_AvanceFocus
+		icon = GFX_goal_generic_consumer_goods
+		ai_will_do = { factor = 10 } 
+		x = 4
+		y = 5
+		prerequisite = { focus = SPR_ww1_lasreformasdecanalejas }
+		cost = 10
+		available_if_capitulated = yes 
+		completion_reward = { 
+			add_tech_bonus = { bonus = 0.6 uses = 1 category = support_tech }
+			add_tech_bonus = { bonus = 0.6 uses = 1 category = industry }
+			add_tech_bonus = { bonus = 0.3 uses = 2 category = naval_equipment }
+			add_tech_bonus = { bonus = 0.3 uses = 2 category = electronics }
+		} 
+	}
+ 
+ 	#Focus for Asegurando el Protectorado 
+	focus = { 
+		id = SPR_ww1_asegurandoelprotectorado 
+		icon = GFX_goal_generic_military_sphere 
+		ai_will_do = { factor = 10 } 
+		x = 6
+		y = 4
+		prerequisite = { focus = SPR_ww1_tratadodefez } 
+		cost = 15
+		available_if_capitulated = yes  
+		completion_reward = {
+			add_resource = { type = steel amount = 24 state = 290 }
+			743 = { add_building_construction = { type = infrastructure  level = 3 instant_build = yes } }
+			290 = { add_building_construction = { type = infrastructure  level = 3 instant_build = yes } }
+		}
+	} 
+
+	#Focus for bases aereas 
+	focus = { 
+		id = SPR_ww1_basesaereas 
+		icon = GFX_goal_generic_air_fighter
+		ai_will_do = { factor = 10 } 
+		x = 7
+		y = 5
+		available = {has_tech = ww1_fighter1}
+		prerequisite = { focus = SPR_ww1_asegurandoelprotectorado}
+		prerequisite = { focus = SPR_ww1_reformandolatropa}
+		cost = 20
+		available_if_capitulated = yes  
+		completion_reward = {  
+			166 = { add_building_construction = { type = air_base level = 1 instant_build = yes } }
+			169 = { add_building_construction = { type = air_base level = 1 instant_build = yes } }
+			41 = { add_building_construction = { type = air_base level = 2 instant_build = yes } }
+			add_equipment_to_stockpile = { type =  ww1_fighter_equipment_1 amount = 50 producer = SPR }
+		}
+	}
+
+	#Focus for El futuro del pais 
+	focus = { 
+		id = SPR_ww1_elfuturodelpais 
+		icon = GFX_goal_generic_intelligence_exchange 
+		ai_will_do = { factor = 10 } 
+		x = 3
+		y = 6
+		prerequisite = { focus = SPR_ww1_idea_industriaarmamentistica}
+		prerequisite = { focus = SPR_ww1_ferrocarriles}
+		prerequisite = { focus = SPR_ww1_AvanceFocus}
+		prerequisite = { focus = SPR_ww1_basesaereas}
+		cost = 10
+		available_if_capitulated = yes  
+		completion_reward = { 
+			add_political_power = 100 
+			add_stability = 0.15
+			add_war_support = 0.1
+			remove_ideas = SPR_ww1_idea_generacion98
+			remove_ideas = SPR_ww1_idea_industria
+			remove_ideas = neutrality_idea
+			remove_ideas = SPR_ww1_idea_semanatragica3
+		}
+	}
+
+	# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	###NOTE: focuses past this point unreworked
+
+	#Focus for Reformando la tropa 
+	focus = { 
+		id = SPR_ww1_reformandolatropa
+		icon = GFX_focus_RAJ_lions_of_the_great_war
+		ai_will_do = { factor = 10 }
+		x = 8 
+		y = 4 
+
+		prerequisite = { focus = SPR_ww1_reformandoelejercito} 
+		cost = 20
+		available_if_capitulated = yes  
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.3 uses = 2 category = land_doctrine }
+			add_tech_bonus = { bonus = 0.7 uses = 2 category = air_doctrine }
+			air_experience = 10
+		}
+	}
+ 
+	#Focus for Reformando los mandos 
+	focus = { 
+		id = SPR_ww1_reformandolosmandos
+		icon = GFX_focus_generic_strike_at_democracy1
+		ai_will_do = { factor = 10 }
+		x = 11
+		y = 5
+		prerequisite = { focus = SPR_ww1_reformandoelejercito }
+		prerequisite = { focus = SPR_militarism }
+		cost = 15
+		available_if_capitulated = yes  
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.4 uses = 2 category = land_doctrine }
+			add_tech_bonus = { bonus = 0.6 uses = 2 category = naval_doctrine }
+			navy_experience = 10
+		}
+	}
+ 
+	#Focus for Mando Central
+	focus = {
+		id = SPR_ww1_FocusMandoCentral
+		icon = GFX_goal_generic_propaganda
+		ai_will_do = { factor = 10 }
+		x = 9
+		y = 6
+		prerequisite = { focus = SPR_ww1_reformandolosmandos focus = SPR_ww1_reformandolatropa } 
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = { 
+			navy_experience = 25
+			army_experience = 25
+			air_experience = 25
+		}
+	}
+
+ 
+	#La Legion + Annual
+	focus = { 
+		id = SPR_ww1_fuerzasarmadas20
+		icon = GFX_goal_generic_special_forces
+		ai_will_do = { factor = 10 }
+		x = 9
+		y = 7
+		available = { date > 1920.1.28 }
+		prerequisite = { focus = SPR_ww1_FocusMandoCentral }
+		cost = 40
+		available_if_capitulated = yes
+		completion_reward = {
+			add_ideas = SPR_ww1_idea_legion
+			remove_ideas = SPR_ww1_idea_expedientepicaso
+			add_war_support = 0.12
+		}
+	}
+
+#######################################################################################
+############################### EL FUTORO ESPN TREE  ##################################
+#######################################################################################
+
+	#Focus branch for RIF 
+	focus = { 
+		id = SPR_ww1_guerrarif
+		icon = GFX_focus_generic_provoke_border_clashes
+		ai_will_do = { factor = 0 }
+		x = 0
+		y = 7 
+		prerequisite = { focus = SPR_ww1_elfuturodelpais}  
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = { 
+			add_political_power = -50
+			#RIF = { transfer_state = 290 } #NEED A RIF TAG
+			#add_state_claim = 290	
+			#SPR = {declare_war_on = { target = RIF type = take_claimed_state }} #NEED A RIF TAG, French DoW moved to event
+			#event rif.1 will be rif OoB
+			#event rif.2 will be french decision to join- declining or letting the rif win adds independence value to morocco, makes them inclined to rebel
+		}
+	}
+
+	focus = { 
+		id = SPR_ww1_guerrarif2
+		icon = GFX_focus_generic_support_the_left_right
+		ai_will_do = { factor = 10 } 
+		x = 0
+		y = 8
+		prerequisite = { focus = SPR_ww1_guerrarif}  
+		cost = 15
+		available_if_capitulated = yes  
+		completion_reward = { 
+			add_war_support = -0.25 
+			add_stability = -0.05
+			add_ideas = SPR_ww1_idea_annual
+		}
+	}
+ 
+	focus = { 
+		id = SPR_ww1_guerrarif3
+		icon = GFX_focus_generic_treaty
+		ai_will_do = { factor = 10 } 
+		x = 0
+		y = 9
+		prerequisite = { focus = SPR_ww1_guerrarif2}
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_stability = -0.1
+		}
+	}
+
+	#Focus branch for La Dictadura
+	focus = { 
+		id = SPR_ww1_Dictadura
+		icon = GFX_goal_generic_army_doctrines
+		ai_will_do = { factor = 10 } 
+		x = 2
+		y = 7
+		prerequisite = { focus = SPR_ww1_elfuturodelpais}
+		mutually_exclusive = { focus = SPR_ww1_Amenazas }
+		cost = 5
+		available_if_capitulated = yes  
+		completion_reward = { 
+			add_ideas = SPR_ww1_idea_dictadura
+		}
+	}
+
+	focus = { 
+		id = SPR_ww1_Dictadura2
+		icon = GFX_goal_generic_forceful_treaty
+		ai_will_do = { factor = 10 }
+		x = 2
+		y = 8
+
+		prerequisite = { focus = SPR_ww1_Dictadura }
+		cost = 20
+		available_if_capitulated = yes  
+		completion_reward = { 
+			add_ideas = SPR_ww1_idea_SNI
+		}
+	}
+
+	focus = { 
+		id = SPR_ww1_Dictadura3
+		icon = GFX_goal_anti_comintern_pact
+		ai_will_do = { factor = 10 }
+		x = 2
+		y = 9
+
+		prerequisite = { focus = SPR_ww1_Dictadura2 }
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_stability = -0.1
+			add_ideas = SPR_ww1_idea_represion
+		}
+	}
+ 
+	#Focus branch for  Nuevas Amenazas
+	focus = { 
+		id = SPR_ww1_Amenazas
+		icon = GFX_goal_generic_neutrality_focus
+		ai_will_do = { factor = 10 } 
+		x = 4
+		y = 7
+		prerequisite = { focus = SPR_ww1_elfuturodelpais }
+		mutually_exclusive = { focus = SPR_ww1_Dictadura }
+		cost = 15
+		available_if_capitulated = yes  
+		completion_reward = { 
+			add_ideas = SPR_ww1_idea_CNT
+		}
+	}
+
+	focus = { 
+		id = SPR_ww1_Amenazas2
+		icon = GFX_goal_generic_propaganda
+		ai_will_do = { factor = 10 } 
+		x = 4
+		y = 8
+		prerequisite = { focus = SPR_ww1_Amenazas}
+		cost = 15
+		available_if_capitulated = yes  
+		completion_reward = { 
+			add_ideas = SPR_ww1_idea_antipistolerismo
+		}
+	}
+
+	focus = { 
+		id = SPR_ww1_Amenazas3
+		icon = GFX_goal_generic_small_arms
+		ai_will_do = { factor = 10 } 
+		x = 4
+		y = 9
+		prerequisite = { focus = SPR_ww1_Amenazas2}
+		cost = 15
+		available_if_capitulated = yes  
+		completion_reward = { 
+			add_ideas = SPR_ww1_idea_anarcoterroristas
+		}
+	}
+ 
+	#Focus branch for Recursos
+	focus = { 
+		id = SPR_ww1_recursos
+		icon = GFX_focus_generic_steel
+		ai_will_do = { factor = 10 } 
+		x = 6
+		y = 7
+
+		prerequisite = { focus = SPR_ww1_elfuturodelpais }  
+		cost = 15
+		available_if_capitulated = yes  
+		completion_reward = { 
+			add_resource = { type = wood amount = 48 state = 166 }
+			add_resource = { type = coal amount = 24 state = 172 }
+			# add_timed_idea = { idea = SPR_ww1_+ days = 90 } #ToDo: Anony1200
+		}
+	}
+
+
+	focus = { 
+		id = SPR_ww1_recursos2
+		icon = GFX_goal_generic_oil_refinery
+		ai_will_do = { factor = 10 } 
+		x = 6
+		y = 8
+
+		prerequisite = { focus = SPR_ww1_recursos}  
+		cost = 15
+		available_if_capitulated = yes  
+		completion_reward = { 
+			add_resource = { type = oil amount = 8 state = 178 }
+			add_timed_idea = { idea = SPR_ww1_idea_inversion days = 90 }
+		}
+	}
+
+	focus = { 
+		id = SPR_ww1_recursos3
+		icon = GFX_focus_generic_aluminum
+		ai_will_do = { factor = 10 } 
+		x = 6
+		y = 9
+
+		prerequisite = { focus = SPR_ww1_recursos2}  
+		cost = 15
+		available_if_capitulated = yes  
+		completion_reward = { 
+			add_resource = { type = aluminium amount = 16 state = 168 }
+			add_timed_idea = { idea = SPR_ww1_idea_inversion days = 90 }
+		}
+	}
+ 
+	focus = { 
+		id = SPR_ww1_Pasofuturo
+		icon = GFX_goal_generic_demand_territory
+		ai_will_do = { factor = 10 } 
+		x = 3
+		y = 10
+
+		available = { date > 1933.1.1 }
+  		prerequisite = { focus = SPR_ww1_recursos3 focus = SPR_ww1_Dictadura3 focus = SPR_ww1_Amenazas3 focus = SPR_ww1_guerrarif3 }
+
+		cost = 15
+		available_if_capitulated = yes
+		completion_reward = { 
+			add_political_power = 250
+			remove_ideas = SPR_ww1_idea_pistolerismo
+			remove_ideas = SPR_ww1_idea_anarcoterroristas
+			remove_ideas = SPR_ww1_idea_annual
+			remove_ideas = SPR_ww1_idea_represion
+			swap_ideas = {
+			    add_idea = SPR_ww1_idea_armasmodernas
+			    remove_idea = SPR_ww1_idea_armascaseras
+			}
+		}
+	} 
+ 
+#############################
+#### WWI AND WWII SIDING #### 
+#############################
+
+
+focus = {
+		id = SPR_diplomatic_effort
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = { focus = SPR_ww1_alfonsoxiii }
+		completion_reward = {
+			add_political_power = 120
+		}
+		cost = 10
+		x = 23
+		y = 1
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_takeposition
+		prerequisite = { focus = SPR_diplomatic_effort }
+		icon = GFX_goal_generic_propaganda
+		completion_reward = { add_political_power = 20 }
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 22
+		y = 2
+		mutually_exclusive = { focus = SPR_neutrality_focus }
+	}
+
+	focus = {
+		id = SPR_supportgermany
+		prerequisite = { focus = SPR_takeposition }
+		icon = GFX_hoi4tgw_ironcross
+
+		 	available = {
+		 		NOT = { has_war_with = GER }		 		
+		 		GER = { exists = yes }
+			}
+
+			completion_reward = {
+
+					add_opinion_modifier = { 
+						target = GER 
+						modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+					}
+					add_opinion_modifier = { 
+						target = FRA
+						modifier =  HOI4TGW_Opinion_hostile_diplomatic_relations
+					}
+			}
+
+		ai_will_do = { factor=0 }
+		cost = 10
+		x = 21
+		y = 3
+		mutually_exclusive = { focus = SPR_supportfrance }
+	}
+
+	focus = {
+		id = SPR_supportfrance
+		prerequisite = { focus = SPR_takeposition }
+		icon = GFX_hoi4tgw_marianne
+
+		 	available = {
+		 		NOT = { has_war_with = FRA }
+		 		
+		 		FRA = {
+		 			exists = yes
+		 		}
+			}
+
+			completion_reward = {
+
+					add_opinion_modifier = { 
+						target = FRA
+						modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+					}
+					add_opinion_modifier = { 
+						target = GER
+						modifier =  HOI4TGW_Opinion_hostile_diplomatic_relations
+					}
+			}
+
+		ai_will_do = { factor=0 }
+
+		cost = 10
+		x = 23
+		y = 3
+		mutually_exclusive = { focus = SPR_supportgermany }
+	}
+
+	focus = {
+		id = SPR_supportaustria
+		prerequisite = { focus = SPR_supportgermany }
+		icon = GFX_hoi4tgw_austriahungary
+
+		 	available = {
+		 		NOT = { has_war_with = AUH }
+		 		
+		 		AUH = {
+		 			exists = yes
+		 		}
+			}
+
+			completion_reward = {
+
+					add_opinion_modifier = { 
+						target = AUH
+						modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+					}
+					add_opinion_modifier = { 
+						target = RUS
+						modifier =  HOI4TGW_Opinion_hostile_diplomatic_relations
+					}
+			}
+
+		ai_will_do = { factor=0 }
+
+		cost = 10
+		x = 21
+		y = 4
+	}
+
+	focus = {
+		id = SPR_supportrussia
+		prerequisite = { focus = SPR_supportfrance }
+		icon = GFX_hoi4tgw_russianempire
+
+		 	available = {
+		 		NOT = { has_war_with = RUS }
+		 		
+		 		RUS = {
+		 			exists = yes
+		 		}
+			}
+
+			completion_reward = {
+
+					add_opinion_modifier = { 
+						target = RUS
+						modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+					}
+					add_opinion_modifier = { 
+						target = AUH
+						modifier =  HOI4TGW_Opinion_hostile_diplomatic_relations
+					}
+			}
+
+		ai_will_do = { factor=0 }
+
+		cost = 10
+		x = 23
+		y = 4
+	}
+
+	focus = {
+		id = SPR_neutrality_focus
+		prerequisite = { focus = SPR_diplomatic_effort }
+		icon = GFX_goal_generic_neutrality_focus
+		completion_reward = {
+		SPR={ destroy_ships = { type=convoy_1 count=40 } }	
+		
+		if={ limit={ NOT={ has_idea=neutrality_idea } } add_ideas=neutrality_idea } add_political_power=150 }
+		cost = 10
+		x = 24
+		y = 2
+
+		ai_will_do = { factor = 10 }
+
+		mutually_exclusive = { focus = SPR_takeposition }
+	}
+
+	focus = {
+		id = SPR_military_reserve
+		prerequisite = { focus = SPR_neutrality_focus }
+		icon = GFX_goal_generic_military_sphere
+
+		completion_reward = {
+			army_experience=10
+			add_tech_bonus={ name=land_doc_bonus bonus=0.25 uses=1 category=land_doctrine }
+		}
+
+		cost = 10
+		x = 25
+		y = 3
+		ai_will_do = { factor = 10 }
+	}
+
+
+	focus = {
+		id = SPR_deterrence
+		prerequisite = { focus = SPR_military_reserve }
+		icon = GFX_goal_generic_defence
+		completion_reward = { add_ideas=deterrence }
+		cost = 10
+		x = 25
+		y = 4
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_volunteer_corps
+		prerequisite = { focus = SPR_supportrussia focus = SPR_supportaustria }
+		icon = GFX_goal_generic_allies_build_infantry
+		completion_reward = { add_ideas=volunteer_corps_focus }
+		cost = 10
+		x = 22
+		y = 5
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_foreign_expeditions
+		prerequisite = { focus = SPR_volunteer_corps }
+		icon = GFX_goal_generic_more_territorial_claims
+		completion_reward = { add_ideas=foreign_expeditions_focus }
+		cost = 10
+		x = 22
+		y = 7
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_embargo_germany
+		prerequisite = { focus = SPR_deterrence }
+		available = {
+			GER = {
+				exists = yes
+			}			
+		} 
+		icon = GFX_goal_generic_trade
+		x = 24
+		y = 5
+		cost = 10
+		completion_reward = {
+			add_opinion_modifier = { target = GER modifier = minor_sanctions }
+			add_opinion_modifier = { target = GER modifier = minor_sanctions_relations } 
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	focus = {
+		id = SPR_embargo_france
+		prerequisite = { focus = SPR_deterrence }
+		available = {
+			FRA = {
+				exists = yes
+			}			
+		} 
+		icon = GFX_goal_generic_trade
+		x = 26
+		y = 5
+		cost = 10
+		completion_reward = {
+				add_opinion_modifier = { target = FRA modifier = minor_sanctions }
+				add_opinion_modifier = { target = FRA modifier = minor_sanctions_relations } 
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	focus = {
+		id = SPR_sellweapons
+		prerequisite = { focus = SPR_deterrence }
+		icon = GFX_goal_generic_small_arms
+		available = { threat > 0.50 }
+
+		completion_reward = { 
+			random_owned_state={ limit={ free_building_slots={ building=arms_factory size > 0 include_locked=yes } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=arms_factory size > 0 include_locked=yes } is_in_home_area=yes } } } } } add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_factory level=1 instant_build=yes } } }
+			complete_tooltip = { add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_factory level=1 instant_build=yes }
+
+			add_political_power=15
+
+		}
+
+		ai_will_do = { factor = 10 }
+
+		cost = 10
+		x = 25
+		y = 6
+	}
+
+
+	focus = {
+		id = SPR_appeasement
+		prerequisite = { focus = SPR_sellweapons }
+		icon = GFX_goal_generic_national_unity
+
+		completion_reward = { 
+			add_opinion_modifier = { 
+				target = FRA
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+			add_opinion_modifier = { 
+				target = RUS
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+
+			add_opinion_modifier = { 
+				target = ENG
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+
+			add_opinion_modifier = { 
+				target = GER
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+			add_opinion_modifier = { 
+				target = AUH
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+
+ 		}
+		cost = 10
+		x = 24
+		y = 7
+
+		mutually_exclusive = { focus = SPR_aggressive_foreign_policy }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_aggressive_foreign_policy
+		prerequisite = { focus = SPR_sellweapons }
+		icon = GFX_goal_anti_comintern_pact
+
+		completion_reward = {
+			add_opinion_modifier = { 
+				target = FRA
+				modifier =  HOI4TGW_Opinion_hostile_diplomatic_relations
+			}
+			add_opinion_modifier = { 
+				target = RUS
+				modifier =  HOI4TGW_Opinion_hostile_diplomatic_relations
+			}
+
+			add_opinion_modifier = { 
+				target = ENG
+				modifier =  HOI4TGW_Opinion_hostile_diplomatic_relations
+			}
+
+			add_opinion_modifier = { 
+				target = GER
+				modifier =  HOI4TGW_Opinion_hostile_diplomatic_relations
+			}
+			add_opinion_modifier = { 
+				target = AUH
+				modifier =  HOI4TGW_Opinion_hostile_diplomatic_relations
+			}
+		}
+		cost = 10
+		x = 26
+		y = 7
+		mutually_exclusive = { focus = SPR_appeasement }
+		ai_will_do = { factor = 0 }
+	}
+
+
+	focus = {
+		id = SPR_why_we_fight
+		prerequisite = { focus = SPR_aggressive_foreign_policy }
+		icon = GFX_goal_generic_propaganda
+		available = { threat > 0.75 }
+		completion_reward = { if={ limit={ NOT={ has_idea=neutrality_idea } } set_rule={ can_create_factions=yes } } add_ideas=why_we_fight_focus }
+		cost = 10
+		x = 25
+		y = 9
+		ai_will_do = { factor = 0 }
+	}
+
+
+
+	focus = {
+		id = SPR_ww1_anti_uk # Defy the British Empire
+		prerequisite = { focus = SPR_supportaustria  }
+		available = {
+			NOT = { 
+				is_in_faction_with = ENG 
+			}
+		}
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			SPR = {
+				add_opinion_modifier = {
+					target = ENG
+					modifier = HOI4TGW_Opinion_anti_uk_policy_malus
+				}
+			}
+		}
+		cost = 4
+		x = 21
+		y = 6
+	}
+
+	focus = {
+		id = SPR_ww1_Retake_Gibraltar # Retake Gibraltar
+		prerequisite = { focus = SPR_ww1_anti_uk  }
+		icon = GFX_focus_generic_provoke_border_clashes
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			create_wargoal = {
+				target = ENG
+				type = take_state_focus
+				generator = {
+					118
+				}
+			}
+		}
+		cost = 4
+		x = 20
+		y = 8
+	}
+
+
+	focus = {
+		id = SPR_joingermany
+		prerequisite = { focus = SPR_ww1_anti_uk  }
+		prerequisite = { focus = SPR_foreign_expeditions }
+		icon = GFX_goal_generic_territory_or_war
+
+	 	available = {
+	 		date > 1915.1.1
+	 		is_puppet = no
+	 		NOT = { has_war_with = GER }
+			is_in_faction = no
+	 		
+	 		GER = {
+	 			exists = yes
+ 				is_faction_leader = yes
+	 		}
+	 		NOT = { has_global_flag = kis_treaty_of_versailles }
+		}
+
+		completion_reward = {
+				GER={
+					add_to_faction=ROOT
+				}
+		}
+
+		ai_will_do = { factor = 0 }
+		cost = 4
+		x = 21
+		y = 9
+	}
+
+	focus = {
+		id = SPR_joinfrance
+		prerequisite = { focus = SPR_supportrussia }
+		prerequisite = { focus = SPR_foreign_expeditions }
+		icon = GFX_goal_support_democracy
+	 	available = {
+	 		date > 1915.1.1
+	 		is_puppet = no
+	 		NOT = { has_war_with = FRA }
+	 		NOT = { has_war_with = RUS }
+			is_in_faction = no
+	 		
+	 		FRA = {
+	 			exists = yes
+ 				is_faction_leader = yes
+	 		}
+	 		NOT = { has_global_flag = kis_treaty_of_versailles }
+		}
+		completion_reward = {
+			add_state_claim = 646
+			add_state_claim = 648
+			add_state_claim = 633
+			add_state_claim = 546
+			add_state_claim = 647
+			add_state_claim = 725
+			add_state_claim = 727
+			FRA = {
+				add_to_faction=ROOT
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+		cost = 4
+		x = 23
+		y = 8
+	}
+
+	#############################
+	#### Interwar #### 
+	############################# 
+
+#	focus = {
+#		id = SPR_interwar_Aftermath
+#		icon = GFX_focus_generic_treaty
+#
+#		available = { has_global_flag = kis_treaty_of_versailles }
+#
+#		completion_reward = { add_stability = 0.1 }
+#
+#		cost = 3
+#		x = 10
+#		y = 7
+#		ai_will_do = { factor = 0 }
+#	}
+
+#	focus = {
+#		id = SPR_interwar_Aftermath_Frankfurt
+#		icon = GFX_focus_generic_treaty
+#
+#		available = { has_global_flag = kis_second_treaty_frankfort }
+#
+#		completion_reward = { add_stability = 0.1 }
+#
+#		cost = 3
+#		x = 8
+#		y = 7
+#		ai_will_do = { factor = 1 }
+#	}
+
+#	focus = {
+#		id = SPR_interwar_Victory
+#		icon = GFX_focus_generic_treaty
+#
+#		available = {
+#			OR ={
+#				AND = {
+#					has_global_flag = kis_second_treaty_frankfort
+#					has_completed_focus	= SPR_joingermany
+#				}
+#				AND = {
+#					has_global_flag = kis_treaty_of_versailles
+#					has_completed_focus	= SPR_joinfrance
+#				}			
+#			}
+#		}
+
+#		completion_reward = { add_stability = 0.1 }
+#		cost = 3
+#		x = 23
+#		y = 9
+#		ai_will_do = { factor = 0 }
+#	}
+
+#	focus = {
+#		id = SPR_interwar_Position_RussianCivilWar
+#		icon = GFX_goal_generic_army_doctrines
+#
+#		prerequisite = { focus = SPR_interwar_Aftermath focus = SPR_interwar_Aftermath_Frankfurt }
+#
+#		completion_reward = { add_political_power = 50 }
+#
+#		cost = 3
+#		x = 7
+#		y = 10
+#		ai_will_do = { factor = 0 }
+#	}
+
+#	focus = {
+#		id = SPR_interwar_Position_RussianCivilWar_SupportWhite
+#		icon = GFX_focus_eng_expose_the_belly_of_the_bear
+#		mutually_exclusive = { focus = SPR_interwar_Position_RussianCivilWar_SupportRed }
+#
+#		prerequisite = { focus = SPR_interwar_Position_RussianCivilWar }
+#
+#		available = {
+#			NOT = {
+#				has_government = communism
+#				has_war_with = RUS
+#			}
+#			country_exists = SOV
+#			country_exists = RUS
+#			RUS = {
+#				is_puppet = no
+#				has_war_with = SOV
+#			}
+#		}
+#		completion_reward = {
+#			create_wargoal = {
+#				type = annex_everything
+#				target = SOV
+#			}
+#		}
+#
+#		cost = 3
+#		x = 6
+#		y = 11
+#		ai_will_do = { factor = 0 }
+#	}
+
+#	focus = {
+#		id = SPR_interwar_Position_RussianCivilWar_SupportRed
+#		icon = GFX_focus_ger_great_red_menace
+#		mutually_exclusive = { focus = SPR_interwar_Position_RussianCivilWar_SupportWhite }
+#
+#		available = {
+#			has_government = communism
+#			NOT = {
+#				has_war_with = SOV
+#			}
+#			country_exists = RUS
+#			country_exists = SOV
+#			SOV = {
+#				is_puppet = no
+#				has_war_with = RUS
+#			}
+#		}
+#		completion_reward = {
+#			create_wargoal = {
+#				type = annex_everything
+#				target = RUS
+#			}
+#		}
+#
+#		prerequisite = { focus = SPR_interwar_Position_RussianCivilWar }
+#		cost = 3
+#		x = 4
+#		y = 11
+#		ai_will_do = { factor = 0 }
+#	}
+
+#	focus = {
+#		id = SPR_interwar_Position_TurkeyCivilWar
+#		icon = GFX_goal_generic_position_armies
+#
+#		prerequisite = { focus = SPR_interwar_Aftermath }
+#
+#		# Interwar, disabled for Greece, Ottoman Empire and Turkish Republic
+#		allow_branch = { 
+#			NOT = {
+#				OR = {
+#					TAG = TUR 
+#					TAG = TUK 
+#					TAG = GRE 
+#				}
+#			} 
+#		}
+#
+#		completion_reward = {
+#			add_political_power = 50
+#		}
+#
+#		cost = 3
+#		x = 9
+#		y = 10
+#		ai_will_do = { factor = 0 }
+#	}
+
+#	focus = {
+#		id = SPR_interwar_Position_TurkeyCivilWar_AntiGREECE
+#		icon = GFX_focus_renounce_the_treaty_of_trianon
+#		mutually_exclusive = { focus = SPR_interwar_Position_TurkeyCivilWar_ProGREECE }
+#
+#		prerequisite = { focus = SPR_interwar_Position_TurkeyCivilWar }
+#
+#		available = {
+#			country_exists = GRE
+#			GRE = {
+#				is_puppet = no
+#			}
+#		}
+#
+#		completion_reward = {
+#			create_wargoal = {
+#				type = annex_everything
+#				target = GRE
+#			}
+#		}
+#
+#		cost = 3
+#		x = 10
+#		y = 11
+#		ai_will_do = { factor = 0 }
+#	}
+
+#	focus = {
+#		id = SPR_interwar_Position_TurkeyCivilWar_ProGREECE
+#		icon = GFX_goal_molotov_ribbentrop_pact
+#		mutually_exclusive = { focus = SPR_interwar_Position_TurkeyCivilWar_AntiGREECE }
+#
+#		prerequisite = { focus = SPR_interwar_Position_TurkeyCivilWar }
+#
+#
+#		available = {
+#
+#			NOT = { has_war_with = GRE }
+#
+#			country_exists = GRE
+#			GRE = {
+#				is_puppet = no
+#				OR = {
+#					has_war_with = TUR
+#					has_war_with = TUK
+#				}
+#			}
+#		}
+#
+#		completion_reward = {
+#			ROOT = { add_opinion_modifier = { target = GRE modifier = balkan_strategy_good } }
+#			GRE = { add_opinion_modifier = { target = ROOT modifier = balkan_strategy_good } }
+#		}
+#
+#		cost = 3
+#		x = 8
+#		y = 11
+#		ai_will_do = { factor = 0 }
+#	}
+
+#	focus = {
+#		id = SPR_interwar_Position_Constantinople
+#		icon = GFX_goal_generic_cavalry
+#
+#		prerequisite = { focus = SPR_interwar_Position_TurkeyCivilWar_ProGREECE }
+#
+#		available = {
+#			OR = {
+#				country_exists = TUR			
+#				country_exists = TUK			
+#			}
+#		}
+#
+#		completion_reward = {
+#			create_wargoal = {
+#				type = take_state_focus
+#				target = TUR
+#				generator = { 341 }
+#				expire = 0
+#			}
+#			create_wargoal = {
+#				type = take_state_focus
+#				target = TUK
+#				generator = { 341 }
+#				expire = 0
+#			}
+#		}
+#		cost = 3
+#		x = 8
+#		y = 13
+#		ai_will_do = { factor = 0 }
+#	}
+
+#	focus = {
+#		id = SPR_interwar_Position_TurkeyCivilWar_ProTUR
+#		icon = GFX_focus_generic_little_entente
+#		mutually_exclusive = { focus = SPR_interwar_Position_TurkeyCivilWar_ProTUK }
+#
+#		prerequisite = { focus = SPR_interwar_Position_TurkeyCivilWar_AntiGREECE }
+#
+#		available = {
+#			NOT = { has_war_with = TUR }
+#			country_exists = TUK
+#			TUR = { has_war_with = TUK }
+#		}
+#
+#		completion_reward = {
+#			create_wargoal = {
+#				type = annex_everything
+#				target = TUK
+#			}
+#		}
+#
+#		cost = 3
+#		x = 9
+#		y = 12
+#		ai_will_do = { factor = 0 }
+#	}
+
+#	focus = {
+#		id = SPR_interwar_Position_TurkeyCivilWar_ProTUK
+#		icon = GFX_goal_generic_major_alliance
+#		mutually_exclusive = { focus = SPR_interwar_Position_TurkeyCivilWar_ProTUR }
+#
+#		available = {
+#			NOT = { has_war_with = TUK }
+#			country_exists = TUR
+#			TUK = { has_war_with = TUR }
+#		}
+#
+#		completion_reward = {
+#			create_wargoal = {
+#				type = annex_everything
+#				target = TUR
+#			}
+#		}
+#
+#		prerequisite = { focus = SPR_interwar_Position_TurkeyCivilWar_AntiGREECE }
+#		completion_reward = { add_political_power = 50 }
+#
+#		cost = 3
+#		x = 11
+#		y = 12
+#		ai_will_do = { factor = 0 }
+#	}
+
+#	focus = {
+#		id = SPR_interwar_Position_Poland
+#		icon = GFX_focus_generic_polish_deal
+#
+#		prerequisite = { focus = SPR_interwar_Aftermath }
+#
+#		available = {
+#	 		is_puppet = no
+#			NOT = {
+#				has_war_with = POL
+#				has_government = communism
+#			}
+#
+#			country_exists = POL
+#			country_exists = SOV
+#
+#			POL = { has_war_with = SOV }
+#		}
+#
+#		completion_reward = {
+#			send_equipment = {
+#					type = infantry_equipment
+#					amount = 1000
+#					target = POL
+#			}
+#		}
+#
+#		cost = 3
+#		x = 12
+#		y = 10
+#		ai_will_do = { factor = 0 }
+#	}
+
+	#############################
+	#### IDEOLOGY TREE - GEN #### 
+	############################# 
+ 	focus = {
+		id = SPR_ww1_PoliticalEffort
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = SPR_ww1_alfonsoxiii }
+		completion_reward = { add_political_power=120 }
+		cost = 10
+		x = 16
+		y = 1
+		ai_will_do = { factor = 10 }
+	}
+	
+	focus = {
+		id = SPR_collectivist_ethos
+		prerequisite = { focus = SPR_ww1_PoliticalEffort }
+		icon = GFX_goal_generic_alliance
+		available = { }
+
+		completion_reward = { add_political_power=100 }
+
+		cost = 10
+		x = 15
+		y = 2
+		mutually_exclusive = { focus = SPR_sovereignist_ethos }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_nationalism_focus
+		prerequisite = { focus = SPR_collectivist_ethos }
+		icon = GFX_goal_support_fascism
+		available = { }
+
+		completion_reward = { add_ideas = nationalism }
+		ai_will_do = { factor = 10 }
+
+		cost = 10
+		x = 13
+		y = 3
+		mutually_exclusive = { focus = SPR_internationalism_focus }
+	}
+
+	focus = {
+		id = SPR_internationalism_focus
+		prerequisite = { focus = SPR_collectivist_ethos }
+		icon = GFX_goal_support_communism
+		available = { 
+			OR={
+	 			SOV = {
+	 				exists = yes
+					has_government=communism
+	 			}
+
+	 			RUS = {
+	 				exists = yes
+					has_government=communism
+	 			}
+			}
+		}
+		completion_reward = { add_ideas = internationalism }
+		#ai_will_do = { factor=5 modifier={ factor=2 any_neighbor_country={ is_major=yes has_government=communism } } }
+		ai_will_do = { factor = 10 }
+		cost = 10
+		x = 15
+		y = 3
+		mutually_exclusive = { focus = SPR_nationalism_focus }
+	}
+
+
+	focus = {
+		id = SPR_militarism
+		prerequisite = { focus = SPR_nationalism_focus }
+		icon = GFX_goal_generic_political_pressure
+		completion_reward = { if={ limit={ has_idea=neutrality_idea } remove_ideas=neutrality_idea }			 
+		add_ideas = militarism_focus 
+		army_experience=20 
+		set_rule={ can_send_volunteers=yes } }
+		cost = 10
+		x = 12
+		y = 4
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_political_correctness
+		prerequisite = { focus = SPR_internationalism_focus }
+		icon = GFX_goal_generic_dangerous_deal
+		completion_reward = { if={
+				limit={ has_idea=neutrality_idea } remove_ideas=neutrality_idea }
+				add_political_power=200 add_ideas=idea_political_correctness }
+		cost = 10
+		x = 15
+		y = 4
+		ai_will_do = { factor = 10 }
+	}
+	
+	focus = {
+		id = SPR_sovereignist_ethos
+		prerequisite = { focus = SPR_ww1_PoliticalEffort }
+		icon = GFX_goal_anschluss
+		completion_reward = { add_political_power=100 }
+		cost = 10
+		x = 17
+		y = 2
+		mutually_exclusive = { focus = SPR_collectivist_ethos }
+		ai_will_do = { factor = 10 }
+	}
+	
+	focus = {
+		id = SPR_monarchy
+		prerequisite = { focus = SPR_sovereignist_ethos }
+		icon = GFX_goal_generic_territory_or_war
+		completion_reward = { 
+			add_political_power=150 
+			add_ideas = authoritarianism
+		}
+		cost = 10
+		x = 17
+		y = 3
+		mutually_exclusive = { focus = SPR_democracy }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_democracy
+		prerequisite = { focus = SPR_sovereignist_ethos }
+		icon = GFX_goal_support_democracy
+		completion_reward = { 
+			add_ideas = democratic_influence 
+		}
+
+		cost = 10
+		x = 19
+		y = 3
+		mutually_exclusive = { focus = SPR_monarchy }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_military_youth
+		prerequisite = { focus = SPR_militarism }
+		icon = GFX_goal_generic_more_territorial_claims
+		completion_reward = { add_ideas=military_youth_focus if={ limit={ has_government=fascism } add_popularity={ ideology=fascism popularity=0.2 } } if={ limit={ has_government=communism } add_popularity={ ideology=communism popularity=0.2 } } }
+		cost = 10
+		x = 13
+		y = 5
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_centralizedpower
+		prerequisite = { focus = SPR_monarchy }
+		icon = GFX_goal_molotov_ribbentrop_pact
+		completion_reward = {
+		 	random_owned_state={ limit={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } is_in_home_area=yes } } } } } add_extra_state_shared_building_slots=1 add_building_construction={ type=industrial_complex level=1 instant_build=yes } } 
+			add_political_power=30
+		}
+		complete_tooltip = { add_extra_state_shared_building_slots=1 add_building_construction={ type=industrial_complex level=1 instant_build=yes }}
+
+		cost = 10
+		x = 17
+		y = 4
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_freespeech
+		prerequisite = { focus = SPR_democracy }
+		icon = GFX_goal_generic_propaganda
+		completion_reward = { add_tech_bonus={ name=industrial_bonus bonus=0.15 uses=1 category=industry } add_political_power=50 }
+		cost = 10
+		x = 19
+		y = 4
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_reorganization_act
+		prerequisite = { focus = SPR_centralizedpower focus = SPR_freespeech }
+		icon = GFX_goal_generic_production2
+		x = 18
+		y = 5
+		cost = 10
+		ai_will_do = { factor = 10 }	
+		completion_reward = { random_owned_state={ limit={ free_building_slots={ building=arms_factory size > 0 include_locked=yes } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=arms_factory size > 0 include_locked=yes } is_in_home_area=yes } } } } } add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_factory level=1 instant_build=yes } } add_political_power=50 }
+		complete_tooltip = { add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_factory level=1 instant_build=yes } }
+
+
+	}
+
+	focus = {
+		id = SPR_limited_rearmament
+		prerequisite = { focus = SPR_reorganization_act }
+		icon = GFX_goal_generic_consumer_goods
+		completion_reward = { army_experience=10 add_political_power=100 }
+		cost = 10
+		x = 17
+		y = 6
+		mutually_exclusive = { focus = SPR_full_rearmament }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_full_rearmament
+		prerequisite = { focus = SPR_reorganization_act }
+		icon = GFX_goal_generic_build_tank
+
+		completion_reward = { army_experience=20 add_political_power=50 }
+
+		cost = 10
+		x = 19
+		y = 6
+		mutually_exclusive = { focus = SPR_limited_rearmament }
+		ai_will_do = { factor = 10 }
+	}
+
+
+	focus = {
+		id = SPR_paramilitarism
+		prerequisite = { focus = SPR_military_youth }
+		icon = GFX_goal_generic_military_sphere
+		completion_reward = { add_ideas = paramilitarism_focus }
+		cost = 10
+		x = 13
+		y = 6
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_indoctrination_focus
+		prerequisite = { focus = SPR_political_correctness }
+		icon = GFX_goal_generic_propaganda
+		completion_reward = { add_ideas = indoctrination_focus add_political_power=150 }
+		cost = 10
+		x = 15
+		y = 5
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_political_commissars
+		prerequisite = { focus = SPR_indoctrination_focus }
+		icon = GFX_goal_generic_forceful_treaty
+		available = { }
+		completion_reward = { add_ideas = political_commissars_focus if={ limit={ has_government=fascism } add_popularity={ ideology=fascism popularity=0.2 } } if={ limit={ has_government=communism } add_popularity={ ideology=communism popularity=0.2 } } add_political_power=200 }
+		cost = 10
+		x = 15
+		y = 6
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_unitedpeople
+		prerequisite = { focus = SPR_limited_rearmament focus = SPR_full_rearmament focus = SPR_paramilitarism focus = SPR_political_commissars }
+		icon = GFX_goal_generic_demand_territory
+		completion_reward = {
+			add_political_power=50
+			add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=land_doctrine }
+			add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=naval_doctrine }
+			add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=air_doctrine }
+		}
+		cost = 10
+		x = 16
+		y = 7
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_massive_effort
+		prerequisite = { focus = SPR_unitedpeople }
+		icon = GFX_goal_generic_construction
+
+		completion_reward = {
+			random_owned_state={ limit={ free_building_slots={ building=infrastructure size > 0 } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=infrastructure size > 0 } is_in_home_area=yes } } } } } add_building_construction={ type=infrastructure level=1 instant_build=yes } }
+
+			army_experience=20
+			add_political_power=30 
+			random_owned_state = {
+				limit = { 
+					free_building_slots = {
+						building = air_base
+						size > 1
+					}
+				}
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}							
+			}
+
+		}
+		cost = 10
+		x = 16
+		y = 8
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_fortify_city
+		prerequisite = { focus = SPR_massive_effort }
+		icon = GFX_goal_generic_fortify_city
+		x = 15
+		y = 9
+		mutually_exclusive = { focus = SPR_fortify_coast }
+		cost = 10
+
+		completion_reward = { 
+			random_owned_state = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					province = 12299
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_fortify_coast
+		prerequisite = { focus = SPR_massive_effort }
+		icon = GFX_goal_generic_construct_military
+		x = 17
+		y = 9
+		mutually_exclusive = { focus = SPR_fortify_city }
+		cost = 10
+
+		completion_reward = { 
+			random_owned_state = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					province = 12299
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = { factor = 10 }
+	}
+
+	#############################
+	#### PORTUGAL DESTINY NF #### 
+	#############################
+
+	#Focus for Portugal Inicial
+	focus = { 
+		id = SPR_ww1_portugalstart
+		icon = GFX_focus_generic_home_defense
+		ai_will_do = { factor = 10 } 
+		x = 26
+		y = 10 
+		available = {
+			country_exists = POR
+			date > 1917.1.1
+		}
+		#prerequisite = { focus = SPR_why_we_fight focus = SPR_interwar_Victory}
+		prerequisite = { focus = SPR_why_we_fight }
+		cost = 10
+		available_if_capitulated = yes  
+		completion_reward = {
+			add_political_power = 50
+			add_war_support = 0.15
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.01
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+ 
+ 
+	#Focus for Iberian I
+	focus = { 
+		id = SPR_ww1_iberian1
+		icon = GFX_goal_generic_trade
+		ai_will_do = { factor = 5} 
+		x = 25
+		y = 11
+		mutually_exclusive = {focus = SPR_ww1_opresion1 } 
+		available = { 
+			OR= {
+				AND = {
+					SPR = {has_government = neutrality }
+					POR = {has_government = neutrality}
+				}
+				AND = {
+					SPR = {has_government = democratic }
+					POR = {has_government = democratic}
+				}
+				AND = {
+					SPR = {has_government = fascism }
+					POR = {has_government = fascism}
+				}
+				AND = {
+					SPR = {has_government = communism }
+					POR = {has_government = communism}
+				}			
+			}
+		}
+
+		prerequisite = { focus = SPR_ww1_portugalstart} 
+		cost = 10
+		available_if_capitulated = yes 
+		completion_reward = {
+			POR = {
+				add_opinion_modifier = { target = SPR modifier = iberianfriendship.1 }
+			}
+			SPR = {
+				add_opinion_modifier = { target = POR modifier = iberianfriendship.1 }
+			}
+		} 
+	}
+ 
+ 
+    #Focus for Iberian 2
+	focus = { 
+		id = SPR_ww1_iberian2
+		icon = GFX_goal_generic_alliance
+		ai_will_do = { factor = 0 }
+		x = 25
+		y = 12
+		prerequisite = { focus = SPR_ww1_iberian1} 
+		cost = 10
+		available_if_capitulated = yes  
+		completion_reward = {
+			SPR = {
+				create_faction = "Iberian_Enclave"
+				add_to_faction = POR
+			}
+		} 
+	}
+ 
+ 
+	#Focus for Iberian 3
+	focus = { 
+		id = SPR_ww1_iberian3
+		icon = GFX_focus_generic_self_management
+		ai_will_do = { factor = 5} 
+		x = 25
+		y = 12
+		prerequisite = { focus = SPR_ww1_iberian2 }
+		cost = 20
+		available_if_capitulated = yes  
+		completion_reward = {
+			set_autonomy = { target = POR autonomy_state = autonomy_colony }
+			add_timed_idea = { idea = SPR_ww1_idea_integracion days = 360 }
+		} 
+	}
+ 
+ 
+	#Focus for Opression 1
+	focus = { 
+		id = SPR_ww1_opresion1
+		icon = GFX_focus_rom_royal_dictatorship
+		ai_will_do = { factor = 10 } 
+		x = 27
+		y = 11
+		mutually_exclusive = { focus = SPR_ww1_iberian1 }
+		prerequisite = { focus = SPR_ww1_portugalstart }
+		available = {
+			OR = {
+				SPR = { has_government = fascism }
+				has_war_support > 0.75
+			}
+			if = { 
+				limit = {
+					AND = {	
+					country_exists=POR
+					NOT = {POR = {	is_puppet = yes }}
+					}
+				}
+			}
+		}
+		cost = 10
+		available_if_capitulated = yes  
+		completion_reward = {
+			POR = {
+				add_opinion_modifier = { target = SPR modifier = spanishambitions.1 }
+			}
+		} 
+	}
+ 
+
+	#Focus for Opression 2
+	focus = { 
+		id = SPR_ww1_opresion2
+		icon = GFX_goal_generic_major_war
+		ai_will_do = { factor = 0 } 
+		x = 27
+		y = 12
+		prerequisite = { focus = SPR_ww1_opresion1} 
+		cost = 5
+		available_if_capitulated = yes  
+		completion_reward = { 
+			create_wargoal = { type = puppet_wargoal_focus target = POR }
+			add_state_claim = 321
+			add_state_claim = 540
+			add_state_claim = 544
+			add_state_claim = 721
+			add_state_claim = 729
+			add_state_claim = 697
+			add_state_claim = 698
+			add_state_claim = 705
+		}
+	}
+
+    
+	#Focus for Opression 3
+	focus = { 
+		id = SPR_ww1_opresion3
+		icon = GFX_goal_generic_territory_or_war
+		ai_will_do = { factor = 10 } 
+		x = 27
+		y = 13
+		prerequisite = { focus = SPR_ww1_opresion2} 
+		cost = 10
+		available_if_capitulated = yes  
+		completion_reward = {
+			add_timed_idea = { idea = SPR_ww1_idea_planibero days = 90 }	
+		}	
+	}
+ 
+ 	#Focus for The Empire
+	focus = { 
+		id = SPR_ww1_imperio
+		icon = GFX_focus_generic_diplomatic_treaty
+		ai_will_do = { factor = 10 } 
+		x = 26
+		y = 14
+		prerequisite = { focus = SPR_ww1_iberian3 focus = SPR_ww1_opresion3}
+		available = {POR={ is_puppet_of = SPR}}
+		cost = 20
+		available_if_capitulated = yes  
+  
+		completion_reward = {
+
+			if = { limit = {
+				AND = {	
+					country_exists=POR
+					POR = {	is_puppet = yes }
+				}
+			}	
+
+			###What IF
+				set_autonomy = { target = POR autonomy_state = autonomy_integrated_puppet }
+				POR = { transfer_state = 697 }
+				POR = { transfer_state = 698 }
+				POR = { transfer_state = 705 }
+			
+			####What ELSE
+				else = {
+				add_timed_idea = { idea = SPR_ww1_idea_integracion days = 180 }
+				}	
+			}
+		}
+	}
+
+ 
+ 
+#############################
+#### World War Criollo I #### 
+#############################
+ 
+	#Focus for El desastre del 98
+	focus = { 
+		id = SPR_ww1_eldesastredel98 
+		icon = GFX_focus_generic_home_defense
+		ai_will_do = { factor = 10 }
+		x = 20
+		y = 10
+		available = {
+			date > 1917.1.1
+			has_completed_focus = SPR_ww1_imperio
+			USA = { exists = yes }
+		}
+		prerequisite = { focus = SPR_why_we_fight }
+		#prerequisite = { focus = SPR_why_we_fight  focus = SPR_interwar_Victory}
+		cost = 1
+		available_if_capitulated = yes  
+		completion_reward = { add_stability = 0.15 }
+	}
+ 
+	#Focus for Venganza 
+	focus = { 
+		id = SPR_ww1_venganza98
+		icon = GFX_focus_rom_royal_dictatorship
+		ai_will_do = { factor = 5 } 
+		x = 22
+		y = 11
+		mutually_exclusive = { focus = SPR_ww1_perdon98 }
+		prerequisite = { focus = SPR_ww1_eldesastredel98 }
+		cost = 5
+		available_if_capitulated = yes
+		will_lead_to_war_with = USA  
+		will_lead_to_war_with = CUB
+		will_lead_to_war_with = DOM
+		completion_reward = {
+			add_named_threat = { threat = 25 name = "Spanish Ambitions" }
+			add_popularity = { ideology = fascism popularity = 0.1 }
+			SPR = {
+				add_opinion_modifier = { target = DOM modifier = reconquista.1 }
+				add_opinion_modifier = { target = USA modifier = reconquista.1 }
+				add_opinion_modifier = { target = CUB modifier = reconquista.1 }
+			}
+	
+			DOM = {
+				add_opinion_modifier = { target = SPR modifier = reconquista.1 }
+			}
+
+			USA = {
+				add_opinion_modifier = { target = SPR modifier = reconquista.1 }
+			}
+
+			CUB = {
+				add_opinion_modifier = { target = SPR modifier = reconquista.1 }
+			}
+		}
+	}
+
+	#Focus for Venganza A
+	focus = {
+		id = SPR_ww1_venganza98ii 
+		icon = GFX_goal_generic_major_war
+		ai_will_do = { factor = 5} 
+		x = 21
+		y = 12
+		prerequisite = { focus = SPR_ww1_venganza98 } 
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+				
+			SPR = {
+				remove_opinion_modifier = { target = USA modifier = reconquista.1 }
+				remove_opinion_modifier = { target = CUB modifier = reconquista.1 }
+				remove_opinion_modifier = { target = DOM modifier = reconquista.1 }
+			
+				add_opinion_modifier = { target = USA modifier = reconquista.2 }
+				add_opinion_modifier = { target = CUB modifier = reconquista.2 }
+				add_opinion_modifier = { target = DOM modifier = reconquista.2 }
+			}
+			
+			USA = {
+				add_opinion_modifier = { target = SPR modifier = reconquista.2 }
+			}
+
+			CUB = {
+				add_opinion_modifier = { target = SPR modifier = reconquista.2 }
+			}
+
+			DOM = {
+				add_opinion_modifier = { target = SPR modifier = reconquista.2 }
+			}
+		}
+	}
+
+	#Focus for Venganza B
+	focus = { 
+		id = SPR_ww1_venganza98iii 
+		icon = GFX_goal_generic_territory_or_war
+		ai_will_do = { factor = 0 }
+		x = 23
+		y = 12
+
+		prerequisite = { focus = SPR_ww1_venganza98 } 
+		cost = 20
+		available_if_capitulated = yes  
+		completion_reward = {
+		
+			DOM = {
+				country_event = { id = 2saw.1 }
+			}
+
+			SPR = {
+				create_wargoal = { type = puppet_wargoal_focus target = MEX }
+			}
+		} 
+	}
+      
+	#Focus for Venganza C
+	focus = {
+		id = SPR_ww1_venganza98iv 
+		icon = GFX_goal_generic_military_deal
+		ai_will_do = { factor = 5} 
+		x = 22
+		y = 13
+		prerequisite = { focus = SPR_ww1_venganza98ii focus = SPR_ww1_venganza98iii }
+		cost = 10
+		available_if_capitulated = yes  
+		completion_reward = {
+			POR = { country_event = { id = 2saw.4 } }
+		} 
+	}
+
+	#Focus for Venganza D
+	focus = {
+		id = SPR_ww1_venganza98v 
+		icon = GFX_focus_generic_strike_at_democracy3
+		ai_will_do = { factor = 0 }
+		x = 22
+		y = 14
+
+		prerequisite = { focus = SPR_ww1_venganza98iv } 
+		available_if_capitulated = yes
+		cost = 20
+		available = {
+			USA = { has_completed_focus = USA_ww1_FreePhilippine }
+		}
+
+		completion_reward = {
+			SPR = {create_wargoal = { type = annex_everything target = CUB }}
+			SPR = {create_wargoal = { type = annex_everything target = PHI }}
+			CUB = { add_opinion_modifier = { target = SPR modifier = reconquista.2 }}
+			PHI = { add_opinion_modifier = { target = SPR modifier = reconquista.2 }}
+			USA = { add_opinion_modifier = { target = SPR modifier = reconquista.1 }}
+		}
+	}
+
+	#NEW focus for Venganza E
+	focus = { 
+		id = SPR_ww1_venganza98vi
+		icon = GFX_focus_generic_strike_at_democracy3
+		ai_will_do = { factor = 0 }
+		x = 22
+		y = 14
+		prerequisite = { focus = SPR_ww1_venganza98iv } 
+		available_if_capitulated = yes  
+		cost = 20
+		available = {
+			USA = { exists = yes }
+			USA = { has_completed_focus = USA_ww1_FreePhilippine }
+		}
+
+		completion_reward = {
+			SPR = {create_wargoal = { type = annex_everything target = CUB }}
+			SPR = {create_wargoal = { type = annex_everything target = PHI }}
+			CUB = { add_opinion_modifier = { target = SPR modifier = reconquista.2 }}
+			PHI = { add_opinion_modifier = { target = SPR modifier = reconquista.2 }}
+			USA = { add_opinion_modifier = { target = SPR modifier = reconquista.1 }}
+		} 
+	}
+
+   #Focus for Perdon 
+	focus = { 
+		id = SPR_ww1_perdon98 
+		icon = GFX_focus_rom_abdicate
+		ai_will_do = { factor = 10 } 
+		x = 18 
+		y = 11
+		mutually_exclusive = { focus = SPR_ww1_venganza98} 
+		prerequisite = { focus = SPR_ww1_eldesastredel98} 
+		cost = 20
+		available_if_capitulated = yes  
+		completion_reward = { 
+			add_named_threat = { threat = -15 name = "Spanish Example" }
+			add_popularity = { ideology = democratic popularity = 0.1 }
+
+			SPR = {
+				add_opinion_modifier = { target = MEX modifier = lider.1 }
+				add_opinion_modifier = { target = VEN modifier = lider.1 }
+				add_opinion_modifier = { target = HAI modifier = lider.1 }
+				add_opinion_modifier = { target = DOM modifier = lider.1 }
+				add_opinion_modifier = { target = HON modifier = lider.1 }
+				add_opinion_modifier = { target = GUA modifier = lider.1 }
+				add_opinion_modifier = { target = ELS modifier = lider.1 }
+				add_opinion_modifier = { target = NIC modifier = lider.1 }
+				add_opinion_modifier = { target = COS modifier = lider.1 }
+				add_opinion_modifier = { target = PAN modifier = lider.1 }
+				add_opinion_modifier = { target = COL modifier = lider.1 }
+				add_opinion_modifier = { target = PRU modifier = lider.1 }
+				add_opinion_modifier = { target = ECU modifier = lider.1 }
+				add_opinion_modifier = { target = URG modifier = lider.1 }
+				add_opinion_modifier = { target = PAR modifier = lider.1 }
+				add_opinion_modifier = { target = CHL modifier = lider.1 }
+				add_opinion_modifier = { target = BOL modifier = lider.1 }
+				add_opinion_modifier = { target = ARG modifier = lider.1 }
+			}
+			
+			MEX = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			VEN = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			HAI = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			DOM = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			HON = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			GUA = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			ELS = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			NIC = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			COS = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			PAN = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			COL = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			PRU = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			ECU = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			URG = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			PAR = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			CHL = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			BOL = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+			ARG = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+   
+			SPR = {
+				diplomatic_relation = { country = MEX relation = non_aggression_pact }
+				diplomatic_relation = { country = VEN relation = non_aggression_pact }
+				diplomatic_relation = { country = HAI relation = non_aggression_pact }
+				diplomatic_relation = { country = DOM relation = non_aggression_pact }
+				diplomatic_relation = { country = HON relation = non_aggression_pact }
+				diplomatic_relation = { country = GUA relation = non_aggression_pact }
+				diplomatic_relation = { country = ELS relation = non_aggression_pact }
+				diplomatic_relation = { country = NIC relation = non_aggression_pact }
+				diplomatic_relation = { country = COS relation = non_aggression_pact }
+				diplomatic_relation = { country = PAN relation = non_aggression_pact }
+				diplomatic_relation = { country = COL relation = non_aggression_pact }
+				diplomatic_relation = { country = PRU relation = non_aggression_pact }
+				diplomatic_relation = { country = ECU relation = non_aggression_pact }
+				diplomatic_relation = { country = URG relation = non_aggression_pact }
+				diplomatic_relation = { country = PAR relation = non_aggression_pact }
+				diplomatic_relation = { country = CHL relation = non_aggression_pact }
+				diplomatic_relation = { country = BOL relation = non_aggression_pact }
+				diplomatic_relation = { country = ARG relation = non_aggression_pact }
+			}
+		} 
+	}
+
+ 
+    #Focus for Perdon A
+	focus = { 
+		id = SPR_ww1_perdon98ii 
+		icon = GFX_goal_generic_trade
+		ai_will_do = { factor = 10 } 
+		x = 17
+		y = 12
+		prerequisite = { focus = SPR_ww1_perdon98} 
+		cost = 20
+		available_if_capitulated = yes  
+		complete_tooltip = {
+			add_opinion_modifier = { target = MEX modifier = lider.1 }
+		}
+		completion_reward = { 
+	   
+			#OLD
+			SPR = { remove_opinion_modifier = { target = MEX modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = VEN modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = HAI modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = DOM modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = HON modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = GUA modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = ELS modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = NIC modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = COS modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = PAN modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = COL modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = PRU modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = ECU modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = URG modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = PAR modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = CHL modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = BOL modifier = lider.1 }}
+			SPR = { remove_opinion_modifier = { target = ARG modifier = lider.1 }}
+	
+			#NEW
+			
+			SPR = { add_opinion_modifier = { target = MEX modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = VEN modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = HAI modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = DOM modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = HON modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = GUA modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = ELS modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = NIC modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = COS modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = PAN modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = COL modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = PRU modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = ECU modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = URG modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = PAR modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = CHL modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = BOL modifier = lider.2 }}
+			SPR = { add_opinion_modifier = { target = ARG modifier = lider.2 }}
+	
+	
+			MEX = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			VEN = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			HAI = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			DOM = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			HON = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			GUA = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			ELS = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			NIC = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			COS = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			PAN = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			COL = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			PRU = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			ECU = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			URG = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			PAR = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			CHL = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			BOL = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+			ARG = { add_opinion_modifier = { target = SPR modifier = lider.2 }}
+	   
+		} 
+	}
+ 
+    
+	#Focus for Perdon B
+	focus = { 
+		id = SPR_ww1_perdon98iii 
+		icon = GFX_goal_generic_alliance
+		ai_will_do = { factor = 10 } 
+		x = 19
+		y = 12
+		prerequisite = { focus = SPR_ww1_perdon98} 
+		cost = 20
+		available_if_capitulated = yes  
+		completion_reward = {
+	   
+			SPR = {
+				give_guarantee = MEX
+				give_guarantee = VEN
+				give_guarantee = HAI
+				give_guarantee = DOM
+				give_guarantee = HON
+				give_guarantee = GUA
+				give_guarantee = ELS
+				give_guarantee = NIC
+				give_guarantee = COS
+				give_guarantee = PAN
+				give_guarantee = COL
+				give_guarantee = PRU
+				give_guarantee = ECU
+				give_guarantee = URG
+				give_guarantee = PAR
+				give_guarantee = CHL
+				give_guarantee = BOL
+				give_guarantee = ARG
+			}
+		}
+	}
+ 
+	#Focus for Perdon C
+	focus = { 
+		id = SPR_ww1_perdon98iv 
+		icon = GFX_focus_generic_diplomatic_treaty
+		ai_will_do = { factor = 10 } 
+		x = 18
+		y = 13
+		prerequisite = { focus = SPR_ww1_perdon98ii}
+		prerequisite = { focus = SPR_ww1_perdon98iii} 
+		cost = 10
+		available_if_capitulated = yes  
+		completion_reward = {
+			SPR = { give_guarantee = CUB }
+			CUB = { add_opinion_modifier = { target = SPR modifier = lider.1 }}	
+			USA = { add_opinion_modifier = { target = SPR modifier = lider.1 }}
+		}
+	}
+ 
+	#Focus for Perdon D
+	focus = { 
+		id = SPR_ww1_perdon98v 
+		icon = GFX_focus_generic_concessions
+		ai_will_do = { factor = 0 }
+		x = 18
+		y = 14
+		prerequisite = { focus = SPR_ww1_perdon98iv} 
+		cost = 40
+		available_if_capitulated = yes  
+		completion_reward = {
+
+			SPR = { diplomatic_relation = { country = USA relation = non_aggression_pact }}
+			SPR = { create_faction = "latin_league"}
+			SPR = { add_to_faction = MEX }
+			SPR = { add_to_faction = VEN }
+			SPR = { add_to_faction = HAI }
+			SPR = { add_to_faction = DOM }
+			SPR = { add_to_faction = HON }
+			SPR = { add_to_faction = GUA }
+			SPR = { add_to_faction = ELS }
+			SPR = { add_to_faction = NIC }
+			SPR = { add_to_faction = COS }
+			SPR = { add_to_faction = PAN }
+			SPR = { add_to_faction = COL }
+			SPR = { add_to_faction = PRU }
+			SPR = { add_to_faction = ECU }
+			SPR = { add_to_faction = URG }
+			SPR = { add_to_faction = PAR }
+			SPR = { add_to_faction = CHL }
+			SPR = { add_to_faction = BOL }
+			SPR = { add_to_faction = ARG }
+			SPR = { add_to_faction = CUB }
+		}	
+	}	
+	
+#######################################################################################
+############################### ARMY EXPANSION TREE  ##################################
+#######################################################################################
+
+ 	focus = {
+		id = SPR_ww1_ArmyEffort
+		prerequisite = { focus = SPR_ww1_alfonsoxiii }		
+		icon = GFX_goal_generic_allies_build_infantry
+		completion_reward = { army_experience=15 add_tech_bonus={ name=land_doc_bonus bonus=0.2 uses=1 category=land_doctrine } }
+		cost = 10
+		x = 31
+		y = 1
+		ai_will_do = { factor = 30 }
+	}
+	
+	focus = {
+		id = SPR_ww1_EquipmentEffort
+		prerequisite = { focus = SPR_ww1_ArmyEffort }
+		icon = GFX_goal_generic_small_arms
+		completion_reward = { army_experience=10 add_tech_bonus={ name=infantry_weapons_bonus bonus=0.15 uses=1 category=infantry_weapons} }
+		cost = 10
+		x = 30
+		y = 2
+		ai_will_do = { factor = 30 }
+	}
+	
+	focus = {
+		id = SPR_ww1_EquipmentEffort_2
+		prerequisite = { focus = SPR_ww1_EquipmentEffort }
+		available = { date > 1912.1.1 }
+		icon = GFX_goal_generic_small_arms
+		completion_reward = { army_experience=10 add_tech_bonus={ name=infantry_artillery_bonus bonus=0.15 uses=1 category=infantry_weapons } }
+		cost = 10
+		x = 30
+		y = 4
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_equipment_effort_3
+		prerequisite = { focus = SPR_ww1_EquipmentEffort_2 }
+		available = { date > 1914.1.1 }
+		icon = GFX_goal_generic_small_arms
+		completion_reward = { army_experience=10 add_tech_bonus={ name=infantry_artillery_bonus bonus=0.15 uses=1 category=infantry_weapons } }
+		cost = 10
+		x = 30
+		y = 6
+		ai_will_do = { factor = 10 }
+	}
+	
+	
+	focus = {
+		id = SPR_ww1_equipment_effort_4
+		prerequisite = { focus = SPR_ww1_equipment_effort_3 }
+		available = { date > 1916.1.1 }
+		icon = GFX_goal_generic_small_arms
+		completion_reward = { army_experience=20 add_tech_bonus={ name=infantry_artillery_bonus bonus=0.2 uses=1 category=infantry_weapons } }
+		cost = 10
+		x = 30
+		y = 8
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_artillery_effort_1
+		prerequisite = { focus = SPR_ww1_ArmyEffort }
+		icon = GFX_goal_generic_army_artillery2
+		completion_reward = { army_experience=10 add_tech_bonus={ name=infantry_weapons_bonus bonus=0.15 uses=1 category=artillery } }
+		cost = 10
+		x = 32
+		y = 2
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_artillery_effort_2
+		prerequisite = { focus = SPR_ww1_artillery_effort_1 }
+		available = { date > 1912.1.1 }
+		icon = GFX_goal_generic_army_artillery2
+		completion_reward = { army_experience=10 add_tech_bonus={ name=infantry_weapons_bonus bonus=0.15 uses=1 category=artillery } }
+		cost = 10
+		x = 32
+		y = 4
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_artillery_effort_3
+		prerequisite = { focus = SPR_ww1_artillery_effort_2 }
+		available = { date > 1914.1.1 }
+		icon = GFX_goal_generic_army_artillery2
+		completion_reward = { army_experience=10 add_tech_bonus={ name=infantry_weapons_bonus bonus=0.15 uses=1 category=artillery } }
+		cost = 10
+		x = 32
+		y = 6
+		ai_will_do = { factor = 10 }
+	}
+		focus = {
+		id = SPR_ww1_artillery_effort_4
+		prerequisite = { focus = SPR_ww1_artillery_effort_3 }
+		available = { date > 1916.1.1 }
+		icon = GFX_goal_generic_army_artillery2
+		completion_reward = { army_experience=20 add_tech_bonus={ name=infantry_artillery_bonus bonus=0.2 uses=1 category=artillery } }
+		cost = 10
+		x = 32
+		y = 8
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_doctrine_effort_1
+		prerequisite = { focus = SPR_ww1_ArmyEffort }
+		available = { date > 1911.1.1 }
+		icon = GFX_goal_generic_army_doctrines
+		completion_reward = { army_experience=15 add_tech_bonus={ name=land_doc_bonus bonus=0.2 uses=1 category=land_doctrine } }
+		cost = 10
+		x = 31
+		y = 3
+		ai_will_do = { factor = 10 }
+	}
+	
+		focus = {
+		id = SPR_ww1_doctrine_effort_2
+		prerequisite = { focus = SPR_ww1_doctrine_effort_1 }
+		available = { date > 1913.1.1 }
+		icon = GFX_goal_generic_army_doctrines
+		completion_reward = { army_experience=15 add_tech_bonus={ name=land_doc_bonus bonus=0.2 uses=1 category=land_doctrine } }
+		cost = 10
+		x = 31
+		y = 5
+		ai_will_do = { factor = 10 }
+	}
+
+
+	focus = {
+		id = SPR_ww1_doctrine_effort_3
+		prerequisite = { focus = SPR_ww1_doctrine_effort_2 }
+		available = { date > 1915.1.1 }
+		icon = GFX_goal_generic_army_doctrines
+		completion_reward = { army_experience=15 add_tech_bonus={ name=land_doc_bonus bonus=0.2 uses=1 category=land_doctrine } }
+		cost = 10
+		x = 31
+		y = 7
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_trenchwarfare
+		prerequisite = { focus = SPR_ww1_EquipmentEffort }
+		available = { date > 1911.1.1 }
+		icon = GFX_goal_generic_military_sphere
+		completion_reward = { army_experience=10 add_tech_bonus={ name=trenchwarfare_bonus bonus=0.15 uses=1 technology=support_weapons technology=support_weapons2 technology=support_weapons3 } }
+		cost = 10
+		x = 29
+		y = 3
+		ai_will_do = { factor = 10 }
+	}
+
+
+	focus = {
+		id = SPR_ww1_gasmask_focus
+		prerequisite = { focus = SPR_ww1_trenchwarfare }
+		available = { date > 1913.1.1 }
+		icon = GFX_hoi4tgw_gasmask
+		completion_reward = { army_experience=15 add_tech_bonus={ name=gasmask_bonus bonus=0.15 uses=1 technology=infantry_gasmask technology=chemical_research2 technology=chemical_research3 } }
+		cost = 10
+		x = 29
+		y = 5
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_special_forces
+		prerequisite = { focus = SPR_ww1_gasmask_focus }
+		available = { date > 1915.1.1 }
+		icon = GFX_goal_generic_special_forces
+		completion_reward = { army_experience=15 add_tech_bonus={ name=special_forces_bonus bonus=0.15 uses=1 technology=marines technology=marines2 technology=tech_mountaineers technology=tech_mountaineers2 } }
+		cost = 10
+		x = 29
+		y = 7
+		ai_will_do = { factor = 10 }
+	}
+
+
+	focus = {
+		id = SPR_ww1_army_motorization_focus
+		available = { date > 1917.1.1 }
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = SPR_ww1_special_forces }
+		x = 29
+		y = 9
+		cost = 10
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = mech_army_bonus
+				bonus = 0.2
+				uses = 1
+				technology = early_motorised
+				technology = ww1_ambulance2
+			}
+		}
+	}
+
+	focus = {
+		id = SPR_ww1_armor_effort_1
+		prerequisite = { focus = SPR_ww1_equipment_effort_4 }
+		prerequisite = { focus = SPR_ww1_doctrine_effort_3 }
+		prerequisite = { focus = SPR_ww1_artillery_effort_4 }
+		available = { date > 1917.1.1 }
+		icon = GFX_hoi4tgw_renaultft
+		completion_reward = { army_experience=50 add_tech_bonus={ name=armor_bonus bonus=0.15 uses=2 category=armor } }
+		cost = 10
+		x = 31
+		y = 9
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_armor_effort_2
+		prerequisite = { focus = SPR_ww1_armor_effort_1 }
+		prerequisite = { focus = SPR_ww1_army_motorization_focus }
+		available = { date > 1918.1.1 }
+		icon = GFX_goal_generic_army_tanks
+		completion_reward = {
+			army_experience = 75
+			add_tech_bonus = { name=armor_bonus bonus=0.1 uses=2 category=armor }
+		}
+		cost = 10
+		x = 30
+		y = 10
+		ai_will_do = { factor = 10 }
+	}
+
+#######################################################################################
+################################ AIR EXPANSION TREE  ##################################
+#######################################################################################
+
+	focus = {
+		id = SPR_ww1_aviation_effort
+		prerequisite = { focus = SPR_ww1_alfonsoxiii }
+		available = { has_completed_focus = SPR_ww1_basesaereas }
+		icon = GFX_goal_generic_build_airforce
+		completion_reward = { air_experience=25 if={ limit={ capital_scope={ NOT={ free_building_slots={ building=air_base size > 1 } } } } random_owned_state={ limit={ free_building_slots={ building=air_base size > 1 } } add_building_construction={ type=air_base level=2 instant_build=yes } ROOT={ set_country_flag=aviation_effort_AB } } } if={ limit={ capital_scope={ free_building_slots={ building=air_base size > 1 } } } capital_scope={ add_building_construction={ type=air_base level=2 instant_build=yes } ROOT={ set_country_flag=aviation_effort_AB } } } add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
+		complete_tooltip = { air_experience=25 if={ limit={ has_country_flag=aviation_effort_AB } add_building_construction={ type=air_base level=2 instant_build=yes } }			 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine }			 }
+		cost = 10
+		x = 40
+		y = 1
+		ai_will_do = { factor = 30 }
+	}
+
+	focus = {
+		id = SPR_ww1_aviation_effort_2
+		prerequisite = { focus = SPR_ww1_aviation_effort }
+		icon = GFX_goal_generic_air_doctrine
+		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
+		cost = 10
+		x = 40
+		y = 2
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_airship_focus
+		prerequisite = { focus = SPR_ww1_aviation_effort_2 }
+		available = { date > 1911.1.1 }
+		icon = GFX_hoi4tgw_zeppelin
+		completion_reward = { add_tech_bonus={ name=fighter_bonus bonus=0.15 uses=1 technology=ww1_zeppelin1 technology=ww1_zeppelin2 } }
+		cost = 10
+		x = 42
+		y = 3
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_fighter_focus
+		prerequisite = { focus = SPR_ww1_aviation_effort_2 }
+		available = { date > 1911.1.1 }
+		icon = GFX_goal_generic_air_fighter
+		completion_reward = { add_tech_bonus={ name=fighter_bonus bonus=0.15 uses=1 technology=ww1_fighter1 technology=ww1_fighter1b technology=ww1_fighter2 technology=ww1_fighter2b } }
+		cost = 10
+		x = 38
+		y = 3
+		mutually_exclusive = { focus = SPR_bomber_focus }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_bomber_focus
+		prerequisite = { focus = SPR_ww1_aviation_effort_2 }
+		available = { date > 1911.1.1 }
+		icon = GFX_goal_generic_air_bomber
+		completion_reward = { add_tech_bonus={ name=bomber_bonus bonus=0.15 uses=1 category=tactical_bomber } }
+		cost = 10
+		x = 40
+		y = 3
+		mutually_exclusive = { focus = SPR_fighter_focus }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_aviation_effort_3
+		prerequisite = { focus = SPR_bomber_focus focus = SPR_fighter_focus focus = SPR_ww1_airship_focus }
+		available = { date > 1912.1.1 }
+		icon = GFX_goal_generic_air_doctrine
+		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
+		cost = 10
+		x = 40
+		y = 4
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_pilotformation_1
+		prerequisite = { focus = SPR_ww1_aviation_effort_3 }
+		available = { date > 1913.1.1 }
+		icon = GFX_goal_generic_CAS
+		completion_reward = { add_tech_bonus={ name=pilotformation1_bonus bonus=0.15 uses=1 technology=dogfighting_experience technology=fighter_ace_initiative technology=dispersed_fighting } }
+		cost = 10
+		x = 38
+		y = 5
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_aircraftprod_1
+		prerequisite = { focus = SPR_ww1_aviation_effort_3 }
+		available = { date > 1913.1.1 }
+		icon = GFX_goal_generic_air_production
+		completion_reward = { add_tech_bonus={ name=aircraftprod_1_bonus bonus=0.15 uses=1 category=air_equipment } }
+		cost = 10
+		x = 40
+		y = 5
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_airbomb_1
+		prerequisite = { focus = SPR_ww1_aviation_effort_3 }
+		available = { date > 1913.1.1 }
+		icon = GFX_goal_poland_goal
+		completion_reward = { add_tech_bonus={ name=pilotformation2_bonus bonus=0.15 uses=1 technology=infrastructure_destruction technology=dive_bombing technology=operational_destruction } }
+		cost = 10
+		x = 42
+		y = 5
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_aviation_effort_4
+		prerequisite = { focus = SPR_ww1_pilotformation_1 focus = SPR_ww1_aircraftprod_1 focus = SPR_ww1_airbomb_1 }
+		available = { date > 1914.1.1 }
+		icon = GFX_goal_generic_air_doctrine
+		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
+		cost = 10
+		x = 40
+		y = 6
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_pilotformation_2
+		prerequisite = { focus = SPR_ww1_aviation_effort_4 }
+		available = { date > 1915.1.1 }
+		icon = GFX_goal_generic_CAS
+		completion_reward = { add_tech_bonus = { name=pilotformation2_bonus bonus=0.15 uses=1 technology=multialtitude_flying technology=hunt_and_destroy technology=fighter_veteran_initiative } }
+		cost = 10
+		x = 38
+		y = 7
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_aircraftprod_2
+		prerequisite = { focus = SPR_ww1_aviation_effort_4 }
+		available = { date > 1915.1.1 }
+		icon = GFX_goal_generic_air_production
+		completion_reward = { add_tech_bonus = { name = aircraftprod_2_bonus bonus=0.2 uses=1 category=air_equipment } }
+		cost = 10
+		x = 40
+		y = 7
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_airbomb_2
+		prerequisite = { focus = SPR_ww1_aviation_effort_4 }
+		available = { date > 1915.1.1 }
+		icon = GFX_goal_generic_occupy_start_war
+		completion_reward = { add_tech_bonus={ name=pilotformation2_bonus bonus=0.2 uses=1 technology = logistical_bombing technology=strategic_destruction technology = infiltration_bombing } }
+		cost = 10
+		x = 42
+		y = 7
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_aviation_effort_5
+		prerequisite = { focus = SPR_ww1_pilotformation_2 focus = SPR_ww1_aircraftprod_2  focus = SPR_ww1_airbomb_2 }
+		available = { date > 1916.1.1 }
+		icon = GFX_goal_generic_air_doctrine
+		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
+		cost = 10
+		x = 40
+		y = 8
+		ai_will_do = { factor = 10 }
+	}
+
+
+	focus = {
+		id = SPR_ww1_air_innovation
+		prerequisite = { focus = SPR_ww1_aviation_effort_5 }
+		available = { date > 1917.1.1 }
+		icon = GFX_goal_generic_air_fighter2
+		completion_reward = { air_experience=20 add_tech_bonus={ name=ww1_air_innovation_bonus bonus=0.2 uses=1 technology=ww1_fighter3 technology=ww1_fighter4 technology=early_fighter } }
+		ai_will_do = { factor=1 }
+		cost = 10
+		x = 39
+		y = 9
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = SPR_ww1_navalair
+		prerequisite = { focus = SPR_ww1_aviation_effort_5 }
+		available = { date > 1917.1.1 }
+		icon = GFX_goal_generic_air_naval_bomber
+		completion_reward = { add_tech_bonus={ name=nav_bomber_bonus bonus=0.15 ahead_reduction=1 uses=1 category=naval_bomber } }
+		cost = 10
+		x = 41
+		y = 9
+		ai_will_do = { factor = 10 }
+	}
+	
+	#######################################################################################
+	############################### NAVY EXPANSION TREE  ##################################
+	#######################################################################################
+	
+ 	focus = {
+		id = SPR_ww1_NavalEffort
+		icon = GFX_goal_generic_build_navy
+		prerequisite = { focus = SPR_ww1_alfonsoxiii }		
+		available = { has_completed_focus = SPR_ww1_unanuevaflota }
+		completion_reward = { navy_experience=25 if={ limit={ NOT={ any_owned_state={ dockyard > 0 free_building_slots={ building=dockyard size > 2 include_locked=yes } } } any_owned_state={ is_coastal=yes } } random_owned_state={ limit={ is_coastal=yes free_building_slots={ building=dockyard size > 2 include_locked=yes } } add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } } set_country_flag=naval_effort_built } if={ limit={ NOT={ has_country_flag=naval_effort_built } any_owned_state={ dockyard > 0 free_building_slots={ building=dockyard size > 2 include_locked=yes } } } random_owned_state={ limit={ dockyard > 0 free_building_slots={ building=dockyard size > 2 include_locked=yes } } add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } } set_country_flag=naval_effort_built } if={ limit={ NOT={ has_country_flag=naval_effort_built } NOT={ any_owned_state={ free_building_slots={ building=dockyard size > 2 include_locked=yes } } } } random_state={ limit={ controller={ tag=ROOT } free_building_slots={ building=dockyard size > 2 include_locked=yes } } add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } } }			 }
+		complete_tooltip = { navy_experience=25 add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } }
+		cost = 10
+		x = 35
+		y = 1
+		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
+	}
+
+	focus = {
+		id = SPR_ww1_EscuelaNavalMilitar
+		prerequisite = { focus = SPR_ww1_NavalEffort }
+		icon = GFX_hoi4tgw_navalcanons
+		completion_reward = { navy_experience=15 add_tech_bonus={ name=newnavalcanons_1_bonus bonus=0.15 uses=1 category=naval_doctrine } }
+		cost = 10
+		x = 35
+		y = 3
+		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
+	}
+
+	focus = {
+		id = SPR_flexible_navy
+		prerequisite = { focus = SPR_ww1_EscuelaNavalMilitar }
+		available = { date > 1913.1.1 }
+		icon = GFX_goal_generic_occupy_states_coastal
+		completion_reward = { add_tech_bonus={ name=sub_op_bonus bonus=0.2 uses=1 technology=convoy_interdiction_ti technology=unrestricted_submarine_warfare technology=wolfpacks technology=advanced_submarine_warfare } }
+		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
+		cost = 10
+		x = 34
+		y = 4
+		mutually_exclusive = { focus = SPR_ww1_large_navy }
+	}
+
+	focus = {
+		id = SPR_ww1_large_navy
+		prerequisite = { focus = SPR_ww1_EscuelaNavalMilitar }
+		available = { date > 1913.1.1 }
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		completion_reward = { add_tech_bonus={ name=fleet_in_being_bonus bonus=0.2 uses=1 category=fleet_in_being_tree } }
+		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
+		cost = 10
+		x = 36
+		y = 4
+		mutually_exclusive = { focus = SPR_flexible_navy }
+	}
+
+	focus = {
+		id = SPR_submarine_effort
+		prerequisite = { focus = SPR_flexible_navy focus = SPR_ww1_large_navy }
+		available = { date > 1914.1.1 }
+		icon = GFX_goal_generic_navy_submarine
+		completion_reward = { add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1 technology=ww1_submarine2 } }
+		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
+		cost = 10
+		x = 34
+		y = 6
+	}
+
+	focus = {
+		id = SPR_cruiser_effort
+		prerequisite = { focus = SPR_flexible_navy focus = SPR_ww1_large_navy }
+		available = { date > 1914.1.1 }
+		icon = GFX_goal_generic_navy_cruiser
+		completion_reward = { add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0 technology=ww1_light_cruiser1 technology=ww1_light_cruiser2 } }
+		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
+		cost = 10
+		x = 36
+		y = 6
+	}
+
+	focus = {
+		id = SPR_ww1_destroyer_effort
+		prerequisite = { focus = SPR_submarine_effort }
+		available = { date > 1915.1.1 }
+		icon = GFX_goal_generic_wolf_pack
+		completion_reward = { add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0 technology=ww1_destroyer1 technology=ww1_destroyer2 } }
+		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
+		cost = 10
+		x = 34
+		y = 7
+	}
+
+	focus = {
+		id = SPR_capital_ships_effort
+		prerequisite = { focus = SPR_cruiser_effort }
+		available = { date > 1915.1.1 }
+		icon = GFX_goal_generic_navy_battleship
+		completion_reward = { navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0 technology=ww1_battlecruiser1 technology=ww1_battlecruiser2 technology=early_battleship technology=seaplane_carrier }  }
+		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
+		cost = 10
+		x = 36
+		y = 7
+	}
+
+	focus = {
+		id = SPR_ww1_EntrenarFuturosOficiales
+		prerequisite = { focus = SPR_capital_ships_effort focus = SPR_ww1_destroyer_effort }
+		available = { date > 1916.1.1 }
+		icon = GFX_goal_generic_army_artillery
+		completion_reward = { navy_experience=15 add_tech_bonus={ name=newnavalcanons_3_bonus bonus=0.2 uses=1 category=naval_doctrine } }
+		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
+		cost = 10
+		x = 35
+		y = 8
+	}
+
+	focus = {
+		id = SPR_ww1_navyreform
+		prerequisite = { focus = SPR_ww1_EntrenarFuturosOficiales }
+		available = { date > 1917.1.1 }
+		icon = GFX_goal_generic_amphibious_assault
+		completion_reward = { navy_experience=25 }
+		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
+		cost = 10
+		x = 35
+		y = 9
+	}
+
+	focus = {
+		id = SPR_ww1_carrier_focus
+		prerequisite = { focus = SPR_ww1_navyreform }
+		available = { date > 1918.1.1 }
+		icon = GFX_goal_generic_navy_carrier
+		completion_reward = { navy_experience=25 add_tech_bonus={ name=uk_carrier_focus bonus=0.3 uses=2 category=cv_tech } }
+		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
+		cost = 10
+		x = 34
+		y = 10
+	}
+
+	focus = {
+		id = SPR_ww1_antisubmarine
+		prerequisite = { focus = SPR_ww1_navyreform }
+		available = { date > 1918.1.1 }
+		icon = GFX_goal_generic_navy_anti_submarine
+		completion_reward = { navy_experience=15 add_tech_bonus={ name=newnavalcanons_3_bonus bonus=0.3 uses=1 category=naval_doctrine } }
+		cost = 10
+		x = 36
+		y = 10
+	}
+
+	#######################################################################################
+	############################### CONTESTED SEAS TREE  ##################################
+	#######################################################################################
+ 
+	focus = {
+		id = SPR_ww1_nuevas_companias
+		icon = GFX_goal_generic_intelligence_exchange
+
+		prerequisite = { focus = SPR_ww1_imperio focus = SPR_ww1_perdon98v focus = SPR_ww1_venganza98v}
+
+		completion_reward = {		
+			add_political_power = 20
+			SPR = { add_opinion_modifier = { target = ITA modifier = companias.1 }}
+			SPR = { add_opinion_modifier = { target = JAP modifier = companias.1 }}
+			ITA = { add_opinion_modifier = { target = SPR modifier = companias.1 }}
+			JAP = { add_opinion_modifier = { target = SPR modifier = companias.1 }}
+			ITA = { add_opinion_modifier = { target = JAP modifier = companias.1 }}
+			JAP = { add_opinion_modifier = { target = ITA modifier = companias.1 }}
+		}
+
+		cost = 10
+		x = 22
+		y = 15
+		ai_will_do = { factor = 100 }
+	}
+ 
+	#############################################################################
+
+} # END OF SPAIN NATIONAL FOCUS

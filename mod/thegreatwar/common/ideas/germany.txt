@@ -14,31 +14,105 @@ ideas = {
 			allowed = { tag=GER } traits={ smooth_talking_charmer } ai_will_do={ factor=1 }
 		}
 		GER_karl_von_einem = {
-			allowed = { tag=GER } traits={ fortification_engineer } ai_will_do={ factor=1 }
+			allowed = { tag = GER } 
+			available = { has_government = neutrality }
+			traits = { fortification_engineer }
+			ai_will_do = { factor = 1 } 
+		}
+		GER_erich_ludendorff = {
+			allowed = { tag = GER }
+			available = {
+				NOT = { 
+					has_country_leader = { name = "Erich Ludendorff" ruling_only = yes } 
+				}
+			}
+			picture = generic_political_advisor_europe_1
+			traits = { quartermaster_general } 
+			ai_will_do = { factor = 1 } 
+		}
+		GER_august_thyssen = {
+			allowed = { tag = GER }
+			available = {
+				NOT = { has_government = fascism }
+				NOT = { has_government = communism }
+			}
+			traits = { captain_of_industry }
+			ai_will_do = { factor = 1 }
 		}
 		GER_reinhold_von_sydow = {
-			allowed = { tag=GER } traits={ quartermaster_general } ai_will_do={ factor=1 }
+			allowed = { tag = GER }
+			traits = { quartermaster_general }
+			ai_will_do = { factor = 1 }
 		}
 		GER_clemens_von_delbruck = {
-			allowed = { tag=GER } traits={ popular_figurehead } ai_will_do={ factor=1 }
+			allowed = { tag = GER }
+			traits = { economist }
+			ai_will_do = { factor = 1 }
 		}
 		GER_karl_trimborn = {
 			allowed = { tag=GER } traits={ silent_workhorse } ai_will_do={ factor=1 }
 		}
 
 		GER_wolfgang_kapp={
-			allowed={ tag=GER }
-
-			available = {
-				OR = {
-					has_completed_focus = GER_ww1_fascist_coup
-					has_completed_focus = GER_interwar_beer_hall_putsch
-				}
-			}
-
-			traits={ fascist_demagogue }
+			allowed = { tag = GER }
+			traits = { staunch_monarchist }
 			ai_will_do={ factor=1 }
 		}
+
+		GER_anton_drexler = {
+			allowed = { tag = GER }
+			available = { 
+				has_global_flag = kis_treaty_of_versailles
+			}
+			traits = { fascist_demagogue }
+			ai_will_do = { factor = 0 }
+		}
+
+		GER_albert_einstein = {
+			allowed = { tag = GER }
+			cost = 250
+			research_bonus = {
+				electronics = 0.1
+			}
+			traits = { nuclear_scientist }
+			available = {
+				NOT = { has_government = fascism } 
+				has_completed_focus = GER_ww1_imperial_research_department
+			}
+			ai_will_do = { factor = 10 }
+		}
+
+		GER_hermann_muller = {
+			allowed = { tag = GER } 
+			picture = generic_political_advisor_europe_3
+			available = { NOT = { has_government = neutrality } }
+			traits = { democratic_reformer }
+			ai_will_do = { factor = 1 } 
+		}
+		GER_franz_von_papen = {
+			allowed = { tag = GER } 
+			available = { NOT = { has_government = neutrality } }
+			traits = { silent_workhorse }
+			ai_will_do = { factor = 10 } 
+		}
+		GER_rosa_luxemburg = {
+			allowed = { tag = GER }
+			available = { country_exists = SOV }
+			traits = { communist_revolutionary }
+			ai_will_do = { factor = 1 } 
+		}
+		GER_random_head_of_intelligence = {	
+			picture = generic_political_advisor_europe_3
+			available = {
+				has_intelligence_agency = yes
+			}			
+			allowed = {
+				original_tag = GER
+				has_dlc = "La Resistance" 
+			}			
+			traits = { head_of_intelligence }
+		}
+
 		#GER_georg_von_hertling={ allowed={ tag=GER } traits={ backroom_backstabber } ai_will_do={ factor=1 } }
 		#GER_hermann_kuhn={ allowed={ tag=GER } traits={ armaments_organizer } ai_will_do={ factor=1 } }
 		#GER_gustav_bauer={ allowed={ tag=GER } traits={ democratic_reformer } ai_will_do={ factor=1 } }
@@ -59,6 +133,21 @@ ideas = {
 		GER_hermann_von_stein = {
 			ledger = army
 			allowed = { tag=GER } traits = { mobile_warfare_expert } ai_will_do={ factor=1 }
+		}
+
+		GER_erich_von_falkenhayn = {
+			ledger = army
+			allowed = { tag = GER }
+			cost = 250
+			available = { 
+				NOT = { has_idea = GER_erich_von_falkenhayn_chief } 
+				has_government = neutrality  
+			}
+			research_bonus = {
+				cat_mobile_warfare = 0.15
+			}
+			traits = { mobile_warfare_expert }
+			ai_will_do = { factor = 10 }
 		}
 
 		#GER_heinrich_scheuch={ allowed={ tag=GER } traits={ mobile_warfare_expert } ai_will_do={ factor=1 } }
@@ -104,7 +193,7 @@ ideas = {
 	high_command={
 
 		# Erich von Falkenhayn
-		GER_erich_von_falkenhayn = {
+		GER_erich_von_falkenhayn_chief = {
 			ledger = army
 			allowed = { tag = GER } traits = { army_entrenchment_1 } ai_will_do={ factor=1 }
 		}
@@ -171,19 +260,24 @@ ideas = {
 
 	naval_manufacturer = {
 		designer = yes
-		blohm_und_voss={ allowed={ TAG=GER } research_bonus={ naval_equipment=0.10 } traits={ raiding_fleet_naval_manufacturer } }
-		kaiserliche_werft_wilhelmshaven={ allowed={ TAG=GER } research_bonus={ naval_equipment=0.10 } traits={ atlantic_fleet_naval_manufacturer } picture=generic_naval_manufacturer_3 }
-		#vulcan_werke_ag={ allowed={ TAG=GER } research_bonus={ naval_equipment=0.10 } traits={ convoy_escort_naval_manufacturer } picture=generic_naval_manufacturer_1 }
+		blohm_und_voss={ allowed={ TAG = GER } research_bonus={ naval_equipment=0.10 } traits={ raiding_fleet_naval_manufacturer } }
+		kaiserliche_werft_wilhelmshaven={ allowed={ TAG = GER } research_bonus={ naval_equipment=0.10 } traits={ atlantic_fleet_naval_manufacturer } picture=generic_naval_manufacturer_3 }
+		#vulcan_werke_ag={ allowed={ TAG = GER } research_bonus={ naval_equipment=0.10 } traits={ convoy_escort_naval_manufacturer } picture=generic_naval_manufacturer_1 }
 	}
 
 	aircraft_manufacturer = {
 			designer = yes
-			#junkers={ allowed={ TAG=GER } research_bonus={ air_equipment=0.10 } traits={ CAS_manufacturer } }
-			#messerschmitt={ allowed={ TAG=GER } research_bonus={ air_equipment=0.10 } traits={ light_aircraft_manufacturer } }
-			#focke_wulf={ allowed={ TAG=GER } research_bonus={ air_equipment=0.10 } traits={ medium_aircraft_manufacturer } }
+			#junkers={ allowed={ TAG = GER } research_bonus={ air_equipment=0.10 } traits={ CAS_manufacturer } }
+			#messerschmitt={ allowed={ TAG = GER } research_bonus={ air_equipment=0.10 } traits={ light_aircraft_manufacturer } }
+			#focke_wulf={ allowed={ TAG = GER } research_bonus={ air_equipment=0.10 } traits={ medium_aircraft_manufacturer } }
 
 			#Fokker Aeroplanbau
-			fokker={ allowed={ TAG=GER } research_bonus={ air_equipment=0.10 } traits={ light_aircraft_manufacturer } }
+			fokker = {
+				allowed = { tag = GER }
+				available = { has_completed_focus = GER_ww1_fokker_aeroplanbau }
+				research_bonus = { air_equipment = 0.10 }
+				traits = { light_aircraft_manufacturer }
+			}
 
 			#Luftschiffbau Zeppelin
 			luftschiffbau_zeppelin={ allowed={ TAG=GER } research_bonus={ air_equipment=0.10 } traits={ heavy_aircraft_manufacturer } }
@@ -191,19 +285,24 @@ ideas = {
 			#Allgemeine Elektricitäts-Gesellschaft
 			allgemeine_elektricitats_gesellschaft={ allowed={ TAG=GER } research_bonus={ air_equipment=0.10 } traits={ medium_aircraft_manufacturer } }
 
-			#Albatros is for AUH
-			#albatros_flugzeugwerke_gmbh={ allowed={ TAG=GER } research_bonus={ air_equipment=0.10 } traits={ naval_aircraft_manufacturer } }
-
-			#Gothaer Waggonfabrik
-			gothaer_waggonfabrik={ allowed={ TAG=GER } research_bonus={ air_equipment=0.20 } traits={ medium_aircraft_manufacturer } }
+			#Albatros Flugzeugwerke GmbH
+			albatros_flugzeugwerke_gmbh_ger = {
+				allowed = { tag = GER }
+				picture = generic_industrial_concern_2
+				research_bonus = { air_equipment = 0.08 }
+				traits = { naval_aircraft_manufacturer }
 			}
 
-	materiel_manufacturer={
+			#Gothaer Waggonfabrik
+			gothaer_waggonfabrik={ allowed={ TAG=GER } research_bonus={ air_equipment=0.15 } traits={ medium_aircraft_manufacturer } }
+			}
+
+	materiel_manufacturer = {
 			designer = yes
 			mauser={ allowed={ TAG=GER } research_bonus={ infantry_weapons=0.10 } traits={ infantry_equipment_manufacturer } }
 			rheinmetall={ allowed={ TAG=GER } research_bonus={ artillery=0.10 } traits={ artillery_manufacturer } }
 			}
-	industrial_concern={
+	industrial_concern = {
 			designer = yes
 			krupp={ allowed={ TAG=GER }    research_bonus = {
 							    industry = 0.10
@@ -224,17 +323,85 @@ ideas = {
 			daimler_motoren_gesellschaft={ allowed={ TAG=GER } research_bonus={ armor=0.10 } traits={ medium_tank_manufacturer } }
 			}
 
-	country={
-			sour_loser={ allowed={ always=no } allowed_civil_war={ always=yes } removal_cost=-1 modifier={ drift_defence_factor=0.5 } rule={ can_create_factions=yes } }
-			general_staff={ allowed={ original_tag=GER } allowed_civil_war={ always=yes } removal_cost=-1 modifier={ army_org_Factor=0.05 planning_speed=0.25 } }
-			triumphant_will={ allowed={ always=no } removal_cost=-1 allowed_civil_war={ has_government=fascism } modifier={ political_power_gain=1 drift_defence_factor=0.5 } rule={ can_create_factions=yes } }
-			GER_air_innovations_2_idea={ removal_cost=-1 allowed={ always=no } allowed_civil_war={ always=yes } picture=generic_air_bonus research_bonus={ battlefield_support_tree=0.10 jet_technology=0.10 } }
-			GER_rocketry_idea={ removal_cost=-1 allowed={ always=no } allowed_civil_war={ always=yes } research_bonus={ rocketry=0.10 } picture=generic_research_bonus modifier={ production_speed_rocket_site_factor=0.15 } }
-			rhineland_challenge_met={ allowed={ always=no } allowed_civil_war={ has_government=fascism } removal_cost=-1 picture=generic_democratic_drift_bonus modifier={ stability_factor =-0.10 } }
+	country = {
+	        sour_loser = {
+	            allowed = {
+	                always = no
+	            }
+	            allowed_civil_war = {
+	                always = yes
+	            }
+	            removal_cost = -1 modifier = {
+	                drift_defence_factor = 0.5
+	            }
+	            rule = {
+	                can_create_factions = yes
+	            }
+	        }
+	        general_staff = {
+	            allowed = {
+	                original_tag = GER
+	            }
+	            allowed_civil_war = {
+	                always = yes
+	            }
+	            removal_cost = -1 modifier = {
+	                army_org_Factor = 0.05 planning_speed = 0.25
+	            }
+	        }
+	        triumphant_will = {
+	            allowed = {
+	                always = no
+	            }
+	            removal_cost = -1 allowed_civil_war = {
+	                has_government = fascism
+	            }
+	            modifier = {
+	                political_power_gain = 1 drift_defence_factor = 0.5
+	            }
+	            rule = {
+	                can_create_factions = yes
+	            }
+	        }
+	        GER_air_innovations_2_idea = {
+	            removal_cost = -1 allowed = {
+	                always = no
+	            }
+	            allowed_civil_war = {
+	                always = yes
+	            }
+	            picture = generic_air_bonus research_bonus = {
+	                battlefield_support_tree = 0.10 jet_technology = 0.10
+	            }
+	        }
+	        GER_rocketry_idea = {
+	            removal_cost = -1 allowed = {
+	                always = no
+	            }
+	            allowed_civil_war = {
+	                always = yes
+	            }
+	            research_bonus = {
+	                rocketry = 0.10
+	            }
+	            picture = generic_research_bonus modifier = {
+	                production_speed_rocket_site_factor = 0.15
+	            }
+	        }
+	        rhineland_challenge_met = {
+	            allowed = {
+	                always = no
+	            }
+	            allowed_civil_war = {
+	                has_government = fascism
+	            }
+	            removal_cost = -1 picture = generic_democratic_drift_bonus modifier = {
+	                stability_factor = -0.10
+	            }
+	        }
 
 
-		#KiS ======================================================
-
+		# ======================================================
 
 		GER_ww1_North_German_Confederation = {
 
@@ -258,7 +425,7 @@ ideas = {
 
 					removal_cost = -1
 
-         picture=GFX_idea_German_staff_ww1
+         picture = GFX_idea_German_staff_ww1
 
 					modifier = {
 						conscription_factor = 0.45
@@ -286,10 +453,9 @@ ideas = {
 				army_org_factor = -0.25
 			}
 		}
-		#KiS ======================================================
+		#======================================================
 
 
-		# 0.5.1
 		GER_mefo_bills_1 = {
 			name = GER_mefo_bills
 			allowed = {
