@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.12a "Kurtuluş Savaşı"
+**Current Version:** 0.12b "Kurtuluş Savaşı"
 
 **Compatible with:** Hearts of Iron IV "Collie" (with or without Paid DLC)
 
@@ -105,7 +105,7 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - Von Thoma
    - Lord Butxot
    - Canadian Lemur
-
+   - asemiashkin
 ----------
 [Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow
 [Austro-Hungarians Voices](http://steamcommunity.com/sharedfiles/filedetails/?id=946923873) made by Geodomus
