@@ -14,6 +14,6 @@ tags={
 	"Technologies"
 }
 picture="tgw_picture.png"
-version="0.12a"
-supported_version="1.10.*"
+version="0.12b"
+supported_version="1.10.3"
 remote_file_id="699709023"
