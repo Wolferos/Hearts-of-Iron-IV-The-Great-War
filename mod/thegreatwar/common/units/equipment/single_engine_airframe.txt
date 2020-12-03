@@ -37,7 +37,7 @@ equipments = {
 		build_cost_ic = 22
 		resources = {
 			#oil = 1
-			aluminium = 2
+			#aluminium = 0
 			rubber = 1
 		}
 		
@@ -84,13 +84,66 @@ equipments = {
 		build_cost_ic = 22
 		resources = {
 			#oil = 1
-			aluminium = 2
+			#aluminium = 0
 			rubber = 1
 		}
 		
 		manpower = 20
 		fuel_consumption = 0.21
 	}
+
+	# Open Beta 0.12.1
+	seaplane_equipment = {
+		year = 1915
+
+		is_archetype = yes
+		is_convertable = yes
+		picture = archetype_fighter_equipment
+		is_buildable = no
+		type = { cas fighter }
+		group_by = archetype
+		sprite = light_plane
+		carrier_capable = yes
+		default_carrier_composition_weight = 1
+		air_map_icon_frame = 1
+		
+		interface_category = interface_category_air
+		
+		# Fighter
+		interface_overview_category_index = 0
+
+		upgrades = {
+			cv_plane_gun_upgrade
+			cv_plane_range_upgrade
+			plane_engine_upgrade
+			plane_reliability_upgrade
+		}
+
+		air_superiority = 1
+		reliability = 0.8
+
+		# Air vs Navy - low damage / high hit chance / easy to hurt
+		naval_strike_attack = 2
+		naval_strike_targetting = 10
+
+		#Space taken in convoy
+		lend_lease_cost = 8
+		
+		build_cost_ic = 22
+		resources = {
+			#oil = 1
+			#aluminium = 0
+			rubber = 1
+		}
+		
+		manpower = 20
+		fuel_consumption = 0.21
+	}
+	
+
+
+
+
 	
 	CAS_equipment = {
 		year = 1933
@@ -342,7 +395,7 @@ equipments = {
 		naval_strike_targetting = 0
 		
 		resources = {			
-			aluminium = 2
+			#aluminium = 2
 			rubber = 1
 		}
 		
@@ -371,7 +424,7 @@ equipments = {
 
 		build_cost_ic = 13.5
 		resources = {
-			aluminium = 2
+			#aluminium = 2
 			rubber = 1
 			wood = 2
 		}
@@ -546,6 +599,13 @@ equipments = {
 		air_attack = 10.5
 		air_defence = 7.6
 
+		resources = {
+			#wood = 0
+			#oil = 1
+			rubber = 1
+			aluminium = 1
+		}
+
 		naval_strike_attack = 1
 		naval_strike_targetting = 10
 
@@ -670,7 +730,7 @@ equipments = {
 	# Seaplane
 
 	ww1_seaplane_equipment_1 = {
-		archetype = cv_fighter_equipment
+		archetype = seaplane_equipment
 		carrier_capable = yes
 		priority = 30
 		
@@ -685,11 +745,12 @@ equipments = {
 			wood = 2
 			#oil = 1
 		}
-
+		naval_strike_attack = 2
+		naval_strike_targetting = 10
 	}
 
 	ww1_seaplane_equipment_2 = {
-		archetype = cv_fighter_equipment
+		archetype = seaplane_equipment
 		parent = ww1_seaplane_equipment_1
 		carrier_capable = yes
 		priority = 30
@@ -705,6 +766,9 @@ equipments = {
 			wood = 3
 			#oil = 1
 		}
+
+		naval_strike_attack = 2
+		naval_strike_targetting = 10
 	}
 	
 	# Early Carrier Fighter
@@ -1019,6 +1083,12 @@ equipments = {
 		air_agility = 30
 		air_attack = 6
 		air_defence = 13
+
+		resources = {
+			#oil = 1
+			aluminium = 2
+			rubber = 1
+		}
 		
 		build_cost_ic = 31.2 # cv_version costs 20% more of base archetype
 	}
