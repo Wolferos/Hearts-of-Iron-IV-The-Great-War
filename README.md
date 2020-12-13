@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.12b "Kurtuluş Savaşı"
+**Current Version:** 0.12.1
 
 **Compatible with:** Hearts of Iron IV "Collie" (with or without Paid DLC)
 
