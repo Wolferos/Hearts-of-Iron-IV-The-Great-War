@@ -287,6 +287,7 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 		mutually_exclusive = { focus=BUL_ww1_CommunistMenace }
 
 	}
+
 	focus = {
 		id = BUL_ww1_SovietBulgaria
 		prerequisite = { focus= BUL_ww1_MarxistIdeas }
@@ -296,20 +297,62 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 		completion_reward = {
 
 			set_politics = {
-					ruling_party = communism
-					elections_allowed = yes
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.50
-				}
+				ruling_party = communism
+				elections_allowed = yes
+			}
+
+			add_popularity = {
+				ideology = communism
+				popularity = 0.50
+			}
 		}
 
 		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 0
 		y = 7
+	}
 
+	focus = {
+		id = BUL_ww1_SpreadRevolutionBosphorus # Spread Revolution beyond the Bosphorus
+		prerequisite = { focus= BUL_ww1_SovietBulgaria }
+		icon = GFX_focus_BUL_supremacy_on_the_bosporus
+
+		available = {
+			has_government = communism
+			country_exists = TUR
+
+			TUR = {
+				NOT = { has_government = communism }
+			}
+		}
+
+		completion_reward = {
+
+			create_wargoal = {
+				type = annex_everything
+				target = TUR
+			}
+
+			TUR = {
+				add_popularity = {
+					ideology = communism
+					popularity = 0.03
+				}
+			}
+
+			BUL = {
+				add_popularity = {
+					ideology = communism
+					popularity = 0.20
+				}
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 0
+		y = 8
 	}
 
 ##########################################
