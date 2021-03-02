@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.13
+**Current Version:** 0.13 "Portraits"
 
 **Compatible with:** Hearts of Iron IV "Collie" (with or without Paid DLC)
 
