@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.12.3
+**Current Version:** 0.13
 
 **Compatible with:** Hearts of Iron IV "Collie" (with or without Paid DLC)
 
@@ -99,7 +99,7 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - Honeymaple
    - habbala
    - SandwichPhil
-   - Comrader J-12
+   - ComradeR J-12
    - Veydem
    - Sgerhardt
    - Von Thoma
