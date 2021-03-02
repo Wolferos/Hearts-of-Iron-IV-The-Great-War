@@ -1,6 +1,6 @@
 technologies = {
 
-	ww1_destroyer0 = { # Torpedo Boat I
+	ww1_destroyer0 = { # Torpedo Boat (1890)
 
 		enable_equipments = {
 			destroyer_1890
@@ -412,6 +412,11 @@ technologies = {
 			leads_to_tech = ww1_light_cruiser1
 			research_cost_coeff = 1
 		}
+
+		path = {
+			leads_to_tech = light_navalmodule_1890
+			research_cost_coeff = 1
+		}
 			
 		research_cost = 1.0
 
@@ -475,6 +480,11 @@ technologies = {
 		
 		path = {
 			leads_to_tech = ww1_light_cruiser3
+			research_cost_coeff = 1
+		}
+
+		path = {
+			leads_to_tech = light_navalmodule_1906
 			research_cost_coeff = 1
 		}
 		
@@ -762,6 +772,11 @@ technologies = {
 			leads_to_tech = ww1_heavy_cruiser1 
 			research_cost_coeff = 1
 		}
+
+		path = {
+			leads_to_tech = medium_navalmodule_1890
+			research_cost_coeff = 1
+		}
 		
 		research_cost = 1.5
 		
@@ -769,7 +784,7 @@ technologies = {
 		
 		folder = {
 			name = naval_folder
-			position = { x = 0 y = 1 }
+			position = { x = 0 y = -2 }
 		}
 
 
@@ -806,7 +821,7 @@ technologies = {
 		
 		folder = {
 			name = naval_folder
-			position = { x = 2 y = 1 }
+			position = { x = 2 y = -2 }
 		}
 
 
@@ -1179,6 +1194,11 @@ technologies = {
 			leads_to_tech = ww1_battleship1
 			research_cost_coeff = 1
 		}
+
+		path = {
+			leads_to_tech = heavy_navalmodule_1890
+			research_cost_coeff = 1
+		}
 		
 		
 		research_cost = 1
@@ -1200,6 +1220,532 @@ technologies = {
 			bb_tech
 		}
 	}
+
+
+
+
+	# -------------------------------------------------------------------------------------------
+
+	# Early Heavy Naval Guns
+	heavy_navalmodule_1890 = {
+		research_cost = 0.5
+		start_year = 1890
+
+		navy_capital_ship_attack_factor = 0.01
+
+		battleship = {
+			lg_attack = 0.01
+			lg_armor_piercing = 0.01
+			hg_attack = 0.01
+			hg_armor_piercing = 0.01
+		}
+		battle_cruiser = {
+			lg_attack = 0.01
+			lg_armor_piercing = 0.01
+			hg_attack = 0.01
+			hg_armor_piercing = 0.01
+		}
+		
+		folder = {
+			name = naval_folder
+			position = { x = 0 y = 4 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			bb_tech
+		}
+
+		path = {
+			leads_to_tech = heavy_navalmodule_1900
+			research_cost_coeff = 1
+		}
+	}
+
+	# Krupp Armour
+	heavy_navalmodule_1900 = {
+		research_cost = 0.5
+		start_year = 1900
+
+		navy_capital_ship_defence_factor = 0.02
+		
+		folder = {
+			name = naval_folder
+			position = { x = 2 y = 4 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			bb_tech
+		}
+	}
+
+	# Improved Heavy Naval Guns
+	heavy_navalmodule_1910 = {
+		research_cost = 0.5
+		start_year = 1910
+
+		navy_capital_ship_attack_factor = 0.02
+
+		battleship = {
+			lg_attack = 0.02
+			lg_armor_piercing = 0.02
+			hg_attack = 0.02
+			hg_armor_piercing = 0.02
+		}
+		battle_cruiser = {
+			lg_attack = 0.02
+			lg_armor_piercing = 0.02
+			hg_attack = 0.02
+			hg_armor_piercing = 0.02
+		}
+		
+		folder = {
+			name = naval_folder
+			position = { x = 6 y = 4 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			bb_tech
+		}
+
+		path = {
+			leads_to_tech = heavy_navalmodule_1914
+			research_cost_coeff = 1
+		}
+	}
+
+	# Krupp Cemented Armour
+	heavy_navalmodule_1914 = {
+		research_cost = 0.5
+		start_year = 1914
+
+		navy_capital_ship_defence_factor = 0.03
+		
+		folder = {
+			name = naval_folder
+			position = { x = 8 y = 4 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			bb_tech
+		}
+
+	}
+
+	# Experimental Seaplane Catapult
+	heavy_navalmodule_1918 = {
+		research_cost = 0.5
+		start_year = 1918
+
+		battleship = {
+			surface_detection = 0.1
+		}
+		battle_cruiser = {
+			surface_detection = 0.1
+		}
+		
+		folder = {
+			name = naval_folder
+			position = { x = 10 y = 4 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			bb_tech
+		}
+
+		path = {
+			leads_to_tech = heavy_navalmodule_1922
+			research_cost_coeff = 1
+		}
+	}
+
+	# Interwar Heavy Naval Guns
+	heavy_navalmodule_1922 = {
+		research_cost = 0.5
+		start_year = 1922
+
+		navy_capital_ship_attack_factor = 0.03
+
+		battleship = {
+			lg_attack = 0.03
+			lg_armor_piercing = 0.03
+			hg_attack = 0.03
+			hg_armor_piercing = 0.03
+		}
+		battle_cruiser = {
+			lg_attack = 0.03
+			lg_armor_piercing = 0.03
+			hg_attack = 0.03
+			hg_armor_piercing = 0.03
+		}
+		
+		folder = {
+			name = naval_folder
+			position = { x = 12 y = 4 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			bb_tech
+		}
+	}
+
+	# -------------------------------------------------------------------------------------------
+
+	# Early Medium Armour
+	medium_navalmodule_1890 = {
+		research_cost = 0.5
+		start_year = 1890
+
+		heavy_cruiser = {
+			max_organisation = 3
+		}
+		
+		folder = {
+			name = naval_folder
+			position = { x = 0 y = 1 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			ca_tech
+		}
+
+		path = {
+			leads_to_tech = medium_navalmodule_1900
+			research_cost_coeff = 1
+		}
+	}
+
+	# Early Medium Naval Guns
+	medium_navalmodule_1900 = {
+		research_cost = 0.75
+		start_year = 1900
+		
+		heavy_cruiser = {
+			lg_attack = 0.01
+			lg_armor_piercing = 0.01
+			hg_attack = 0.01
+			hg_armor_piercing = 0.01
+		}
+
+		folder = {
+			name = naval_folder
+			position = { x = 2 y = 1 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			ca_tech
+		}
+
+		path = {
+			leads_to_tech = medium_navalmodule_1906
+			research_cost_coeff = 1
+		}
+	}
+
+	# Improved Medium Armour
+	medium_navalmodule_1906 = {
+		research_cost = 0.5
+		start_year = 1906
+
+		heavy_cruiser = {
+			max_organisation = 5
+		}
+		
+		folder = {
+			name = naval_folder
+			position = { x = 4 y = 1 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			ca_tech
+		}
+
+		path = {
+			leads_to_tech = medium_navalmodule_1910
+			research_cost_coeff = 1
+		}
+	}
+
+	# Separated Engine-Rooms
+	medium_navalmodule_1910 = {
+		research_cost = 0.5
+		start_year = 1910
+
+		light_cruiser = {
+			convoy_raiding_coordination = 0.15
+		}
+		heavy_cruiser = {
+			convoy_raiding_coordination = 0.15
+		}
+		
+		folder = {
+			name = naval_folder
+			position = { x = 6 y = 1 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			ca_tech
+		}
+
+		path = {
+			leads_to_tech = medium_navalmodule_1914
+			research_cost_coeff = 1
+		}
+	}
+
+	# Advanced Medium Armour
+	medium_navalmodule_1914 = {
+		research_cost = 0.5
+		start_year = 1914
+
+		heavy_cruiser = {
+			max_organisation = 7
+		}
+		
+		folder = {
+			name = naval_folder
+			position = { x = 8 y = 1 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			ca_tech
+		}
+
+		path = {
+			leads_to_tech = medium_navalmodule_1918
+			research_cost_coeff = 1
+		}
+	}
+
+	# Improved Medium Naval Guns
+	medium_navalmodule_1918 = {
+		research_cost = 0.75
+		start_year = 1918
+
+		heavy_cruiser = {
+			lg_attack = 0.02
+			lg_armor_piercing = 0.02
+			hg_attack = 0.02
+			hg_armor_piercing = 0.02
+		}
+		
+		folder = {
+			name = naval_folder
+			position = { x = 10 y = 1 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			ca_tech
+		}
+	}
+
+	# -------------------------------------------------------------------------------------------
+
+
+
+
+	# -------------------------------------------------------------------------------------------
+
+	# Early Light Naval Guns
+	light_navalmodule_1890 = {
+		research_cost = 0.5
+		start_year = 1890
+
+		destroyer = {
+			lg_attack = 0.01
+			lg_armor_piercing = 0.01
+		}
+		light_cruiser = {
+			lg_attack = 0.01
+			lg_armor_piercing = 0.01
+		}
+		
+		folder = {
+			name = naval_folder
+			position = { x = 0 y = -2 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			cl_tech
+		}
+
+		path = {
+			leads_to_tech = light_navalmodule_1900
+			research_cost_coeff = 1
+		}
+	}
+
+	# Early Light Armour
+	light_navalmodule_1900 = {
+		research_cost = 0.5
+		start_year = 1900
+
+		destroyer = {
+			max_organisation = 3
+		}
+		light_cruiser = {
+			max_organisation = 3
+		}
+		navy_submarine_defence_factor = 0.03
+		
+		folder = {
+			name = naval_folder
+			position = { x = 2 y = -2 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			cl_tech
+		}
+	}
+
+	# Improved Light Naval Guns
+	light_navalmodule_1906 = {
+		research_cost = 0.5
+		start_year = 1906
+
+		destroyer = {
+			lg_attack = 0.02
+			lg_armor_piercing = 0.02
+		}
+		light_cruiser = {
+			lg_attack = 0.02
+			lg_armor_piercing = 0.02
+		}
+		
+		folder = {
+			name = naval_folder
+			position = { x = 4 y = -2 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			cl_tech
+		}
+
+		path = {
+			leads_to_tech = light_navalmodule_1910
+			research_cost_coeff = 1
+		}
+	}
+
+	# Improved Light Armour
+	light_navalmodule_1910 = {
+		research_cost = 0.5
+		start_year = 1910
+
+		destroyer = {
+			max_organisation = 5
+		}
+		light_cruiser = {
+			max_organisation = 5
+		}
+		navy_submarine_defence_factor = 0.05
+		
+		folder = {
+			name = naval_folder
+			position = { x = 6 y = -2 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			cl_tech
+		}
+
+		path = {
+			leads_to_tech = light_navalmodule_1914
+			research_cost_coeff = 1
+		}
+	}
+
+	# Pom-Pom Gun
+	light_navalmodule_1914 = {
+		research_cost = 0.5
+		start_year = 1914
+
+		navy_anti_air_attack_factor = 0.10
+		
+		folder = {
+			name = naval_folder
+			position = { x = 8 y = -2 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			cl_tech
+		}
+
+		path = {
+			leads_to_tech = light_navalmodule_1918
+			research_cost_coeff = 1
+		}
+	}
+
+	# Advanced Light Naval Guns
+	light_navalmodule_1918 = {
+		research_cost = 0.5
+		start_year = 1918
+
+		destroyer = {
+			lg_attack = 0.03
+			lg_armor_piercing = 0.03
+		}
+		light_cruiser = {
+			lg_attack = 0.03
+			lg_armor_piercing = 0.03
+		}
+		
+		folder = {
+			name = naval_folder
+			position = { x = 10 y = -2 }
+		}
+
+		ai_will_do = { factor = 1 }
+		categories = {
+			naval_equipment
+			cl_tech
+		}
+	}
+
+	# -------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
 
 	ww1_battleship1 = {
 
@@ -1277,6 +1823,11 @@ technologies = {
 		
 		path = {
 			leads_to_tech = ww1_battleship4
+			research_cost_coeff = 1
+		}
+
+		path = {
+			leads_to_tech = heavy_navalmodule_1910
 			research_cost_coeff = 1
 		}
 		
