@@ -33,6 +33,100 @@
 #	}
 #}
 
+# British offer Anglo-Ottoman Convention of 1913
+#____________________________________________________________
+country_event = {
+	id = ww1_ottoman.22
+	title = ww1_ottoman.22.t
+	desc = ww1_ottoman.22.d
+	picture = ww1_ottoman_100
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_ottoman.22.a
+		ai_chance = { factor = 100 }
+
+		TUR = {
+			add_opinion_modifier = {
+				target = ENG 
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+		
+		ENG = {
+			puppet = KUW
+			give_guarantee = KUW
+
+			puppet = QAT
+			give_guarantee = QAT
+		}
+
+		hidden_effect = {
+			KUW = {
+				add_popularity = {
+					ideology = neutrality
+					popularity = 1.0
+				}
+				set_politics = {
+					ruling_party = neutrality
+					elections_allowed = no
+				}
+			}
+
+			QAT = {
+				add_popularity = {
+					ideology = neutrality
+					popularity = 1.0
+				}
+				set_politics = {
+					ruling_party = neutrality
+					elections_allowed = no
+				}
+			}
+		}
+
+
+	}
+	option = {
+		name = ww1_ottoman.22.b
+		ai_chance = { factor = 0 }
+
+		hidden_effect = {
+			TUR = {
+				end_puppet = KUW
+				end_puppet = QAT
+			}
+			KUW = {
+				load_oob = "KUW_19XX"
+			}
+			QAT = {
+				load_oob = "QAT_19XX"
+			}
+		}
+
+		TUR = {
+			add_opinion_modifier = {
+				target = ENG 
+				modifier =  HOI4TGW_Opinion_hostile_diplomatic_relations
+			}
+		}
+
+		TUR = {
+	        declare_war_on = {
+	            type = annex_everything
+	            target = KUW
+	        }
+	        declare_war_on = {
+	            type = annex_everything
+	            target = QAT
+	        }
+		}
+
+	}
+#____________________________________________________________
+
 # When Ottoman is asked to join the Central Powers 
 #____________________________________________________________
 country_event = {

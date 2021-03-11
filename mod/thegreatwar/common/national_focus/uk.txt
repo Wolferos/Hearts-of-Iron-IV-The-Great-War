@@ -1921,6 +1921,36 @@ focus_tree = {
 
 
 
+	#-----------------------------------------------------------------------
+	# Anglo-Ottoman Convention of 1913
+	#-----------------------------------------------------------------------
+	focus = {
+		id = ENG_ww1_AngloOttomanConvention
+		prerequisite = { focus = ENG_ww1_diplomatic_effort }
+		icon = GFX_goal_generic_forceful_treaty
+
+		available = {
+			has_global_flag = ITA_Lib_War_End_Victory
+			country_exists = ENG
+			country_exists = KUW
+			country_exists = QAT
+			NOT = { has_war_with = ENG }
+			NOT = { has_war_with = KUW }
+			NOT = { has_war_with = QAT }
+		}
+
+		completion_reward = {
+			TUR = {
+				country_event = ww1_ottoman.22
+			}
+		}
+
+		ai_will_do = { factor = 50 }
+		cost = 10
+		x = 16
+		y = 1
+	}
+
 
 
 
@@ -1936,7 +1966,7 @@ focus_tree = {
 		completion_reward = { add_political_power=75 }
 		ai_will_do = { factor = 20 }
 		cost = 10
-		x = 15
+		x = 14
 		y = 1
 	}
 
