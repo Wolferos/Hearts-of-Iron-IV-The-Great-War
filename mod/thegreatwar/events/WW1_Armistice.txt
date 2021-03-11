@@ -2,8 +2,6 @@
 
 add_namespace = ww1_armistice
 
-
-
 # Let the Player choose for the Treaty of Versailles or the Peace Conference Mechanism
 #____________________________________________________________
 country_event = {
@@ -279,6 +277,27 @@ news_event = {
 					add_state_core = 680
 					add_state_core = 677
 				}
+				SAU = {
+					transfer_state = 747
+
+					add_state_core = 747
+				}
+			}
+
+			if = {
+				limit = {
+					TUR = {
+						is_in_faction_with = GER
+						has_war_with = ENG
+					}
+				}
+				QAT = {
+					transfer_state = 765
+				}
+				KUW = {
+					transfer_state = 656
+				}
+
 				ENG = {
 					transfer_state = 675
 					transfer_state = 291
@@ -289,11 +308,33 @@ news_event = {
 					add_state_core = 291
 					add_state_core = 455
 					add_state_core = 454
-				}
-				SAU = {
-					transfer_state = 747
 
-					add_state_core = 747
+
+					if = { 
+						limit = { 
+							has_dlc = "Together for Victory" 
+						}
+						set_autonomy = {
+							target = QAT
+							autonomous_state = autonomy_colony
+						}
+						else = {
+							puppet = QAT
+						}
+					}
+
+					if = { 
+						limit = { 
+							has_dlc = "Together for Victory" 
+						}
+						set_autonomy = {
+							target = KUW
+							autonomous_state = autonomy_colony
+						}
+						else = {
+							puppet = KUW
+						}
+					}
 				}
 			}
 
