@@ -45,6 +45,20 @@ create_navy_leader={  name = "Ellis" id=39011 portrait_path="gfx/admiral/HOL_ell
 create_navy_leader={  name = "Tydeman" id=39014 portrait_path="gfx/admiral/HOL_tydeman.dds" traits={   } skill=2 }
 create_navy_leader={  name = "Conrad E. L. Helfrich" id=39031 portrait_path="gfx/admiral/HOL_conrad_e_l_helfrich.dds" traits={   } skill=1 }
 
+if = {
+	limit = {
+		has_dlc = "Together for Victory"
+	}
+	set_autonomy = {
+		target = INS
+		autonomous_state = autonomy_integrated_puppet
+		freedom_level = 0.2
+	}
+	else = {
+		puppet = INS
+	}
+}
+
 set_technology = {
 	# Navy
 	ww1_battleship0 = 1
