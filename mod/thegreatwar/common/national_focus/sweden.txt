@@ -432,7 +432,9 @@ focus_tree = {
 	focus = {
 		id = SWE_ww1_diplomatic_effort
 		icon = GFX_goal_generic_intelligence_exchange
-		completion_reward = { add_political_power=10 }
+		completion_reward = {
+			set_country_flag = sweden_liberal_government
+		}
 		cost = 10
 		x = 12
 		y = 0
@@ -678,9 +680,10 @@ focus_tree = {
 		cancel_if_invalid = yes
 		
 		available = {
-			threat < 0.3
-			
+			threat < 0.4
+			SWE={ has_country_flag = sweden_liberal_government }
 		}
+
 		completion_reward = {
 			add_political_power = 50
 			add_stability=-0.05
@@ -707,6 +710,10 @@ focus_tree = {
 		available = {
 			threat > 0.1
 		}
+		bypass  = {
+				hidden_trigger = { SWE={ has_country_flag = courtyard_crisis } }
+		}
+		
 		completion_reward = {
 			army_experience = 20
 			add_stability=-0.1
@@ -742,54 +749,6 @@ focus_tree = {
 		y = 2
 		ai_will_do = { factor = 10 modifier = { factor = 1000 is_historical_focus_on = yes } }
 	}
-
-	
-	############### scandinavian Focus ###############
-	focus = {
-		# Historical (https://sv.wikipedia.org/wiki/Trekungam%C3%B6tet_1914)
-		id = SWE_ww1_scandinavian_talks
-		icon = GFX_goal_generic_national_unity
-		prerequisite = { focus = SWE_ww1_neutrality_focus 	}
-		#mutually_exclusive = { 	focus = SWE_ww1_germany_focus  }
-		available = {
-					NOR = {
-						has_war = no
-						is_in_faction = no
-						has_opinion = {
-							target = SWE
-							value > 4
-						}
-					}
-					DEN = {
-						has_war = no
-						is_in_faction = no
-						has_opinion = {
-							target = SWE
-							value > 4
-							# Denmark is still angry on Sweden since 1864
-						}
-					}
-		}
-		completion_reward = { 
-			add_stability = 0.05
-			NOR = { 
-				add_opinion_modifier = {
-				    target = ROOT modifier = medium_increase
-				}
-				add_stability = 0.05
-			}
-			DEN = { 
-				add_opinion_modifier = {
-				    target = ROOT modifier = medium_increase
-				}
-				add_stability = 0.05
-			}
-		}
-		cost = 10
-		x = 13
-		y = 3
-		ai_will_do = { factor = 10 modifier = { factor = 100 is_historical_focus_on = yes } }
-	}	
 	
 	############### UK  ###############
 	
