@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.13 "Portraits"
+**Current Version:** 0.14 "Lys Offensive"
 
 **Compatible with:** Hearts of Iron IV "Collie" (with or without Paid DLC)
 
