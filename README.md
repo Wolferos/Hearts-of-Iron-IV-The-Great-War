@@ -19,8 +19,8 @@
 - Polish ([The Great War: Polskie Tłumaczenie](http://steamcommunity.com/sharedfiles/filedetails/?id=1132448900))
 - Turkish ([Türkçe Yama](http://paradoxfan.com/forum/index.php?topic=51341.0))
 - Chinese ([Chinese Translation](https://steamcommunity.com/sharedfiles/filedetails/?id=1898664110) or [Old Chinese Translation](https://steamcommunity.com/sharedfiles/filedetails/?id=1447670167))
+- Korean ([The Great War - Korean Translation](https://steamcommunity.com/sharedfiles/filedetails/?id=1923476226) | [Mirror](https://hearts-of-iron-4.smods.ru/archives/4568))
 - German (Integrated in the Mod, experimental stage)
-- Korean ([The Great War - Korean Translation](https://steamcommunity.com/sharedfiles/filedetails/?id=1923476226))
 - Portugês do Brazil (Integrated in the Mod, experimental stage)
 - Spanish (Integrated in the Mod, experimental stage)
 
