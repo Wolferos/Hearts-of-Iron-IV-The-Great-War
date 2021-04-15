@@ -1,0 +1,58 @@
+GER_CustomDecision = {
+	GER_lys_offensive = { # https://en.wikipedia.org/wiki/Battle_of_the_Lys_(1918) # Open Beta 0.14
+		available = {
+
+			date > 1918.1.1
+
+			original_tag = GER
+			has_war = yes
+
+			NOT = { has_global_flag = kis_treaty_of_versailles }
+
+			NOT = {
+				GER = { controls_state = 6 }
+			}
+
+			OR = {
+				FRA = {
+					controls_state = 6
+					has_war_with = GER
+				}
+				ENG = {
+					controls_state = 6
+					has_war_with = GER
+				}
+				BEL = {
+					controls_state = 6
+					has_war_with = GER
+				}
+				LUX = {
+					controls_state = 6
+					has_war_with = GER
+				}
+				HOL = {
+					controls_state = 6
+					has_war_with = GER
+				}
+			}
+
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			GER = {
+				army_experience = 18
+
+				add_timed_idea = {
+					idea = hoi4tgw_idea_lys_offensive
+					days = 35
+				}
+			}
+		}
+	}
+}
