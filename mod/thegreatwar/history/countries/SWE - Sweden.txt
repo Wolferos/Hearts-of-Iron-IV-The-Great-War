@@ -11,9 +11,12 @@ set_convoys = 25
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Oscar II" desc=SWE_oscar_ii_DESC picture="gfx/leaders/SWE_oscar_ii.dds" expire="1935.1.1" ideology=conservatism traits={  } }
+# The King is still the King (unless communism)
+create_country_leader={ name = "Gustaf V" desc=SWE_gustaf_v_DESC picture="gfx/hoi4tgw_portraits/SWE/country_leaders/SWE_gustaf_v.dds" expire="1935.1.1" ideology=moderatism traits={ eager_collaborator } } 	# neutrality
+create_country_leader={ name = "Gustaf V" desc=SWE_gustaf_v_DESC picture="gfx/hoi4tgw_portraits/SWE/country_leaders/SWE_gustaf_v.dds" expire="1935.1.1" ideology=liberalism traits={ constitutional_monarch } }	# democratic
 create_country_leader={ name = "Zeth Höglund" desc=SWE_zeth_hoglund_DESC picture="gfx/leaders/SWE_zeth_hoglund.dds" expire="1935.1.1" ideology=stalinism traits={  } }
-create_country_leader={ name = "Gustaf V" desc=SWE_gustaf_v_DESC picture="gfx/hoi4tgw_portraits/SWE/country_leaders/SWE_gustaf_v.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+
+
 create_corps_commander={  name = "von Matern" id=87002 portrait_path="gfx/generals/SWE_von_matern.dds" traits={ winter_specialist  } skill=2 }
 create_corps_commander={  name = "Fallenius" id=87003 portrait_path="gfx/generals/SWE_fallenius.dds" traits={   } skill=3 }
 create_corps_commander={  name = "Mörcke" id=87004 portrait_path="gfx/generals/SWE_morcke.dds" traits={   } skill=3 }
@@ -140,28 +143,29 @@ set_technology = {
 	}
 
 	set_politics = {
-	    ruling_party = democratic
+	    ruling_party = democratic # "democratic" goverment, but "neutrality" got the power in reality
 	    last_election = "1908.9.1"
 	    election_frequency = 36
 	    elections_allowed = yes
 	}
+	# https://en.wikipedia.org/wiki/1911_Swedish_general_election
 	set_popularities = {
-	    democratic = 75
-	    fascism = 3
-	    communism = 8
-	    neutrality = 14
+	    democratic = 72 # Liberals 44% + Social Democrats 28%
+	    fascism = 0
+	    communism = 0
+	    neutrality = 28 # General Electoral League 28 %
 	}
 
 	add_ideas = {
 	}
 	
 	create_equipment_variant={ name="Oden Class" type=battleship_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=3 ship_reliability_upgrade=3           } }
-create_equipment_variant={ name="Dristigheten Class" type=battleship_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=3 ship_reliability_upgrade=3           } }
-create_equipment_variant={ name="Oscar II Class" type=battleship_1900 parent_version = 0 obsolete=no upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
-create_equipment_variant={ name="Magne Class" type=destroyer_1900 parent_version = 0 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=2 } }
-create_equipment_variant={ name="Wale Class" type=destroyer_1900 parent_version = 1 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=2 } }
-create_equipment_variant={ name="Hugin Class" type=destroyer_1906 parent_version = 0 obsolete=no upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=0 } }
-create_equipment_variant={ name="U2 Class" type=coastal_submarine_1906 parent_version = 0 obsolete=no upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant={ name="Dristigheten Class" type=battleship_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=3 ship_reliability_upgrade=3           } }
+	create_equipment_variant={ name="Oscar II Class" type=battleship_1900 parent_version = 0 obsolete=no upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
+	create_equipment_variant={ name="Magne Class" type=destroyer_1900 parent_version = 0 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=2 } }
+	create_equipment_variant={ name="Wale Class" type=destroyer_1900 parent_version = 1 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=2 } }
+	create_equipment_variant={ name="Hugin Class" type=destroyer_1906 parent_version = 0 obsolete=no upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=0 } }
+	create_equipment_variant={ name="U2 Class" type=coastal_submarine_1906 parent_version = 0 obsolete=no upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
 
 	
 }
@@ -192,8 +196,8 @@ create_equipment_variant={ name="U2 Class" type=coastal_submarine_1906 parent_ve
 	complete_national_focus = SWE_ww1_diplomatic_effort
 	complete_national_focus = SWE_ww1_anti_ru
 	complete_national_focus = SWE_ww1_boden_fortress
+	complete_national_focus = SWE_ww1_disarmament
 	complete_national_focus = SWE_ww1_neutrality_focus
-	# complete_national_focus = SWE_ww1_military_reserve # Unkown focus
 	
 
 	#-------------------------------------------------------
@@ -244,10 +248,10 @@ create_equipment_variant={ name="U2 Class" type=coastal_submarine_1906 parent_ve
 	    elections_allowed = yes
 	}
 	set_popularities = {
-	    democratic = 75
-	    fascism = 3
-	    communism = 8
-	    neutrality = 14
+	    democratic = 72
+	    fascism = 0
+	    communism = 0
+	    neutrality = 28
 	}
 
 	add_ideas = {

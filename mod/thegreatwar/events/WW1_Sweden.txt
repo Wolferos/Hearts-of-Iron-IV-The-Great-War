@@ -1,0 +1,154 @@
+add_namespace = ww1_sweden
+
+# https://en.wikipedia.org/wiki/Peasant_armament_support_march
+news_event = {
+	id=ww1_sweden.1
+	title=ww1_sweden.1.t
+	desc=ww1_sweden.1.d
+	picture=ww1_sweden_1
+	fire_only_once = yes
+	major = no
+	timeout_days = 2
+	
+	immediate = {
+		
+	}
+
+	 trigger = {
+		tag=SWE 
+		threat>0.20
+		date>1914.02.02
+		has_idea = disarmed_nation
+		has_country_flag=sweden_liberal_government
+		NOT={
+			has_country_flag=courtyard_crisis
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		# Let the king speak to the protesters (historical)
+		name = ww1_sweden.1.a
+		ai_chance = { factor = 100 }
+		hidden_effect = {
+				set_country_flag=courtyard_crisis
+				country_event = { days = 1 id = ww1_sweden.2 }
+		}
+	}
+	option = {
+		# Let the police disperse the protesters
+		name = ww1_sweden.1.b
+		ai_chance = { factor = 0 }
+		add_stability = -0.10
+		add_political_power = -10
+	}
+}
+
+# https://en.wikipedia.org/wiki/Courtyard_Speech
+news_event = {
+	id = ww1_sweden.2
+	title = ww1_sweden.2.t
+	desc = ww1_sweden.2.d
+	picture = ww1_sweden_2
+	is_triggered_only = yes
+	major = no
+	timeout_days = 5
+
+	option = {
+		# Do nothing
+		name = ww1_sweden.2.a
+		ai_chance = { factor = 0 }
+		add_stability = -0.20
+		add_political_power = -50
+	}
+	
+	option = {
+		# Resign (historical)
+		# https://en.wikipedia.org/wiki/Courtyard_Crisis
+
+		
+		name = ww1_sweden.2.b
+		ai_chance = { factor = 100 }
+		add_political_power = -100
+		if = {
+			limit = { has_idea = disarmed_nation }
+			remove_ideas = disarmed_nation
+			add_ideas = volunteer_only
+		}
+		if = {
+			limit = { has_idea = civilian_economy }
+			remove_ideas = civilian_economy
+			add_ideas = low_economic_mobilisation
+		}
+		
+		clr_country_flag=sweden_liberal_government
+		set_party_name = { 
+			ideology = democratic 
+			long_name = SWE_courtyard_government_long 
+			name = SWE_courtyard_government
+		}
+	}
+}	
+
+
+news_event = {
+	# Historical (https://sv.wikipedia.org/wiki/Trekungam%C3%B6tet_1914)
+	id = ww1_sweden.3
+	title = ww1_sweden.3.t
+	desc = ww1_sweden.3.d
+	picture = ww1_sweden_3
+	is_triggered_only = no
+	fire_only_once = yes
+	major = yes  # ? 
+	# show_major  for DEN & NOR ?
+	mean_time_to_happen={
+		months=2
+	}
+	
+	immediate = {
+	}
+	trigger = {
+		tag=SWE
+		SWE = { 
+			has_country_leader = {
+				name = "Gustaf V"
+				ruling_only = yes
+			}
+			has_idea=neutrality_idea
+		}
+		DEN = {
+			has_country_leader = {
+				name = "Christian X"  # >1912.5.14
+				ruling_only = yes
+			}
+			has_idea=neutrality_idea
+		}
+		NOR = {
+			has_country_leader = {
+				name = "Haakon VII"
+				ruling_only = yes
+			}
+			has_idea=neutrality_idea
+		}
+	}
+	
+	option = {
+		name = ww1_sweden.3.a
+		add_stability = 0.05
+		NOR = { 
+			add_opinion_modifier = {
+			    target = ROOT modifier = medium_increase
+			}
+			add_stability = 0.05
+		}
+		DEN = { 
+			add_opinion_modifier = {
+			    target = ROOT modifier = medium_increase
+			}
+			add_stability = 0.05
+		}
+		ai_chance = { factor = 100 }
+	}
+}
