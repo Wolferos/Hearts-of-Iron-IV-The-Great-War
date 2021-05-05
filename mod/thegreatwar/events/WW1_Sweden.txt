@@ -92,9 +92,8 @@ news_event = {
 	}
 }	
 
-
 news_event = {
-	# Historical (https://sv.wikipedia.org/wiki/Trekungam%C3%B6tet_1914)
+	# Historical (http://www.centenaryww1orange.com.au/events/18-december-1914/)
 	id = ww1_sweden.3
 	title = ww1_sweden.3.t
 	desc = ww1_sweden.3.d
@@ -116,7 +115,11 @@ news_event = {
 				name = "Gustaf V"
 				ruling_only = yes
 			}
-			has_idea=neutrality_idea
+			# has_idea=neutrality_idea
+			# changed behavior since 0.14 RC
+			# (commit 4e6ded14d7f0a3ede86ed44bc4a68ec26f5c15ef)
+			# this event is caused by active actions
+			has_completed_focus = SWE_ww1_neutrality_focus
 		}
 		DEN = {
 			has_country_leader = {
@@ -152,3 +155,38 @@ news_event = {
 		ai_chance = { factor = 100 }
 	}
 }
+
+country_event = {
+	id = ww1_sweden.4
+	title = ww1_sweden.4.t
+	desc = ww1_sweden.4.d
+	# Better pict
+	picture = GFX_report_event_worker_protests
+	is_triggered_only = yes
+	option = {
+		name = ww1_sweden.4.a
+		ai_chance = { factor = 100 }
+		set_politics = {
+			ruling_party = neutrality 
+			elections_allowed = no
+		}
+	}
+
+#	option = {
+#		name = ww1_sweden.4.b
+#		ai_chance = { factor = 50 }
+#
+#		start_civil_war = {
+#			ideology = neutrality
+#			ruling_party = democratic
+#
+#			size = 0.5
+#			only_own_territory = no
+#			states = { 
+#				138 139 
+#			}
+#			keep_political_leader = yes
+#		}
+#	}
+}
+

@@ -22,7 +22,21 @@ puppet = MOR
 puppet = TUN
 
 # SPECIAL_DLC Together for Victory
-#Tunis is protectorate, like Algeria and others (of course, can be released as puppet)
+if = { limit = { has_dlc = "Together for Victory" }
+
+	#IF-----------------------------------------
+	set_autonomy = {
+		target = TUN
+		autonomous_state = autonomy_integrated_puppet
+	}
+	#-------------------------------------------
+
+	#ELSE---------------------------------------
+	else = {
+		# WORK IN PROGRESS #
+	}
+	#-------------------------------------------
+}
 
 if = {
 	limit = {
