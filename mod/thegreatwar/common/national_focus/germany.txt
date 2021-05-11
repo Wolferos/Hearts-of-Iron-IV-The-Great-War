@@ -305,7 +305,14 @@ focus_tree = {
 		}
 		prerequisite = { focus=GER_ww1_contest_kaiser }
 		icon = GFX_goal_support_communism
-		available = { OR={ has_government=communism has_government=neutrality } }
+
+		available = {
+			OR = {
+				has_government = communism
+				has_government = neutrality
+			}
+		}
+
 		completion_reward = { add_ideas=internationalism }
 
 		ai_will_do = { factor = 0 }
@@ -2672,8 +2679,12 @@ focus_tree = {
 
 		available = {
 			has_global_flag = kis_holy_roman_empire_for_the_kaiser
-			has_global_flag = kis_second_treaty_frankfort
 			date > 1919.1.1
+
+			OR = {
+				has_global_flag = kis_second_treaty_frankfort
+				date > 1922.1.1
+			}
 		}
 
 		completion_reward = {
