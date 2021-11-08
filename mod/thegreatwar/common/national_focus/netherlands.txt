@@ -3,7 +3,6 @@ focus_tree = {
 	default = no
 	country = { factor=0  modifier={ add=10 tag=HOL }  modifier={ add=10 original_tag=HOL } }
 
-#####Political####
 	focus = {
 	  id = HOL_political_effort
 	  icon = GFX_goal_generic_demand_territory
@@ -14,26 +13,26 @@ focus_tree = {
 	  ai_will_do = { factor = 2000 }
 	}
 
-###Ethos###
-focus = {
-	id = HOL_Reform
-	icon = GFX_goal_generic_forceful_treaty
-	prerequisite = { focus=HOL_political_effort }
-	completion_reward = { add_political_power=120 }
-	cost = 10
-	x = 1
-	y = 1
-	mutually_exclusive = { focus=HOL_Preserve }
-	ai_will_do = { factor = 10 }
-}
+	focus = {
+		id = HOL_Reform
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus=HOL_political_effort }
+		completion_reward = { add_political_power=120 }
+		cost = 10
+		x = 1
+		y = 1
+		mutually_exclusive = { focus=HOL_Preserve }
+		ai_will_do = { factor = 10 }
+	}
 
 	focus = {
-	  id = HOL_Preserve
-	  icon = GFX_goal_tripartite_pact
+		id = HOL_Preserve
+		icon = GFX_goal_tripartite_pact
 		available = {
-	    has_government=democratic
+			has_government=democratic
 	    }
-	 prerequisite = { focus=HOL_political_effort }
+		prerequisite = { focus = HOL_political_effort }
+
 	 bypass = { custom_trigger_tooltip={ tooltip=construction_effort_tt all_owned_state={ free_building_slots={ building=industrial_complex size < 1 include_locked=yes }					 } } }
 	 completion_reward = { add_political_power = 50 random_owned_state={ limit={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } is_in_home_area=yes } } } } } add_extra_state_shared_building_slots=1 add_building_construction={ type=industrial_complex level=1 instant_build=yes } } }
 	 complete_tooltip = { add_extra_state_shared_building_slots=1 add_building_construction={ type=industrial_complex level=1 instant_build=yes }			 }
@@ -238,26 +237,25 @@ focus = {
 			ai_will_do = { factor = 10 }
 		}
 
-
 	###Comunistas Fin###
 
-###Ai Historico###
-focus = {
-	id = HOL_Capitalist_ideas
-	icon = GFX_goal_generic_propaganda
-	available = {
-		has_government=democratic
+	###Ai Historico###
+	focus = {
+		id = HOL_Capitalist_ideas
+		icon = GFX_hoi4tgw_hol_netherlands_map
+		available = {
+			has_government=democratic
 		}
- prerequisite = { focus=HOL_Preserve }
- completion_reward = { add_political_power = 20
- random_owned_state={ limit={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } is_in_home_area=yes } } } } } add_extra_state_shared_building_slots=2 add_building_construction={ type=industrial_complex level=3 instant_build=yes } }
-
-   }
-	cost = 10
-	x = 5
-	y = 2
-	ai_will_do = { factor = 1000 }
-}
+		prerequisite = { focus = HOL_Preserve }
+		completion_reward = {
+			add_political_power = 20
+			random_owned_state={ limit={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } is_in_home_area=yes } } } } } add_extra_state_shared_building_slots=2 add_building_construction={ type=industrial_complex level=3 instant_build=yes } }
+		}
+		cost = 10
+		x = 5
+		y = 2
+		ai_will_do = { factor = 1000 }
+	}
 
 focus = {
 	id = HOL_neutrality_focus1
@@ -413,7 +411,7 @@ focus = {
 
 focus = {
 	id = HOL_God_save_the_queen
-	icon = GFX_goal_generic_alliance
+	icon = GFX_hoi4tgw_hol_queen
 
  prerequisite = { focus=HOL_Reinforce_border }
  completion_reward = {
@@ -428,7 +426,7 @@ focus = {
 
 focus = {
 	id = HOL_Netherland_first
-	icon = GFX_goal_generic_alliance
+	icon = GFX_hoi4tgw_hol_netherlands_first
 
  prerequisite = { focus=HOL_God_save_the_queen  focus= HOL_Eupen }
  completion_reward = {
