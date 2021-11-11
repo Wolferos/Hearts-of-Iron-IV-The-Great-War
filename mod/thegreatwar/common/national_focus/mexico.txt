@@ -1,7 +1,7 @@
 focus_tree = {
 	id = MEX_ww1_MEX_ww1_focus
 	default = no
-	country = { factor=0  modifier={ add=10 tag=MEX }  modifier={ add=10 original_tag=MEX } }
+	country = { factor = 0  modifier = { add = 10 tag = MEX }  modifier = { add = 10 original_tag = MEX } }
 
   ######Support Porfirio Diaz & Victoria Huerta####
   focus = {
@@ -47,63 +47,63 @@ focus_tree = {
 
   ##Prevent the mexican revolution
   focus = {
-  id = MEX_ww1_supress_the_rebels
-  icon = GFX_goal_generic_position_armies
-  prerequisite = { focus=MEX_ww1_support_diaz }
-	available = {
-		MEX = {
-			exists = yes
-			NOT = { has_war_with = USA }
-			has_civil_war = no
-			date < 1910.11.20
-		 has_government= neutrality
-		}
-		NOT = { has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910 }
-		NOT = { has_government= democratic}
-	}
-  completion_reward = {
-  add_political_power = -100
-  add_stability = 0.10
-  }
-  cost = 5
-  x = 0
-  y = 2
-  ai_will_do = { factor = 0 }
-  }
-
-  focus = {
-  id = MEX_ww1_Renew_the_republic
-  icon = GFX_goal_anschluss
-  prerequisite = { focus=MEX_ww1_supress_the_rebels }
-  available = {
-    date > 1912.3.1
-    has_government=neutrality
+    id = MEX_ww1_supress_the_rebels
+    icon = GFX_goal_generic_position_armies
+    prerequisite = { focus=MEX_ww1_support_diaz }
+  	available = {
+  		MEX = {
+  			exists = yes
+  			NOT = { has_war_with = USA }
+  			has_civil_war = no
+  			date < 1910.11.20
+  		 has_government= neutrality
+  		}
+  		NOT = { has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910 }
+  		NOT = { has_government= democratic}
+  	}
+    completion_reward = {
+    add_political_power = -100
+    add_stability = 0.10
     }
-  completion_reward = {
-     add_political_power=150
-     add_ideas = authoritarianism
-  }
-  cost = 10
-  x = 0
-  y = 3
-  ai_will_do = { factor = 50 }
+    cost = 5
+    x = 0
+    y = 2
+    ai_will_do = { factor = 0 }
   }
 
   focus = {
-  id = MEX_ww1_Rebuild_Mexico
-  icon = GFX_goal_generic_construction
-  prerequisite = { focus=MEX_ww1_Renew_the_republic }
-available = {
-has_civil_war = no
-}
-  completion_reward = {
-  random_owned_state={ limit={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } is_in_home_area=yes } } } } } add_extra_state_shared_building_slots=4 add_building_construction={ type=industrial_complex level=4 instant_build=yes } }
-  add_political_power=-100
+    id = MEX_ww1_Renew_the_republic
+    icon = GFX_goal_anschluss
+    prerequisite = { focus=MEX_ww1_supress_the_rebels }
+    available = {
+      date > 1912.3.1
+      has_government=neutrality
+      }
+    completion_reward = {
+       add_political_power=150
+       add_ideas = authoritarianism
+    }
+    cost = 10
+    x = 0
+    y = 3
+    ai_will_do = { factor = 50 }
   }
-  cost = 10
-  x = 0
-  y = 4
-  ai_will_do = { factor = 50 }
+
+  focus = {
+    id = MEX_ww1_Rebuild_Mexico
+    icon = GFX_goal_generic_construction
+    prerequisite = { focus=MEX_ww1_Renew_the_republic }
+    available = {
+    has_civil_war = no
+    }
+    completion_reward = {
+    random_owned_state={ limit={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } is_in_home_area=yes } } } } } add_extra_state_shared_building_slots=4 add_building_construction={ type=industrial_complex level=4 instant_build=yes } }
+    add_political_power=-100
+    }
+    cost = 10
+    x = 0
+    y = 4
+    ai_will_do = { factor = 50 }
   }
 
   focus = {
