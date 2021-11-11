@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.15.3 "Impassable"
+**Current Version:** 0.16 "Armistice"
 
 **Compatible with:** Hearts of Iron IV "Collie" (with or without Paid DLC)
 
