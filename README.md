@@ -7,9 +7,9 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.16.1 "Armistice"
+**Current Version:** 0.17 "Railways"
 
-**Compatible with:** Hearts of Iron IV "Barbarossa" (with or without Paid DLC)
+**Compatible with:** Hearts of Iron IV "Barbarossa" 1.11.3 (with or without Paid DLC)
 
 **Supported Languages:**
 - English
