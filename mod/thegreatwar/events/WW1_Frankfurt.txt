@@ -553,7 +553,43 @@ country_event = {
 					transfer_state = 44		# ALBANIA
 				}
 			}
+			#Portugal is in Central Powers (By Canadian Lemur)
+			if = {
+				limit = {					
+					POR = {
+						has_war_with = ENG
+						is_in_faction_with = GER
+					}
+				}
+				POR = {
+					transfer_state = 770
+					transfer_state = 771
+					transfer_state = 545
+				}
+			}
+			## Siam is in central powers (By Canadian Lemur)
+			if = {
+				limit = {
+					SIA= {
+						
+							has_war_with = FRA
+	
 
+							670 = { is_owned_by = FRA }
+							741 = { is_owned_by = FRA }		
+	
+						is_in_faction_with = GER
+						NOT = {
+							SIA = { owns_state = 670 }
+							SIA = { owns_state = 741 }
+						}
+					}
+				}
+				SIA= {
+					transfer_state = 670 				# Laos
+					transfer_state = 741				# Cambodia
+				}
+			}
 			#Sweden is in Central Powers
 			if = {
 				limit = {
@@ -562,12 +598,24 @@ country_event = {
 						is_in_faction_with = GER
 					}
 				}
-
+				
 				SWE = {
 					transfer_state = 308		# French Caribbean
+					complete_national_focus = SWE_ww1_interwar_victory
 				}
 			}
+			if = {
+				limit = {
+					SWE = {
+						has_war_with = ENG
+						is_in_faction_with = GER
+					}
+				}
 
+				SWE = {
+					transfer_state = 274		# Ghana (Added by Ecrfour)
+				}
+			}
 			if = {
 				limit = {
 					SWE = {
@@ -603,6 +651,136 @@ country_event = {
 					add_state_core = 375
 					add_state_core = 376
 					add_state_core = 377
+				}
+			}
+			#Japan is in Central Powers (by Khanor)
+			if = {
+				limit = {
+					JAP = {
+						has_war_with = ENG
+						is_in_faction_with = GER
+						NOT = {
+							JAP = { owns_state = 746 }
+						}
+					}
+				}
+				JAP = {
+					transfer_state = 746		# Weihaiwei
+				}
+			}
+			
+			if = {
+				limit = {
+					JAP = {
+						has_war_with = ENG
+						is_in_faction_with = GER
+						NOT = {
+							OR = {
+								JAP = { owns_state = 336 }
+								JAP = { owns_state = 326 }
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						AND = {
+							JAP = { has_completed_focus = JAP_ww1_Invade_Singapore }
+							any_state = {
+								AND = {
+									OR = {
+										is_owned_by = ENG
+										is_owned_by = AST
+										is_owned_by = FRA
+									}
+									is_controlled_by = JAP
+								}
+							}
+						}
+					}
+					JAP = {
+						transfer_state = 336	# Singapore
+					}
+					else = { JAP = { transfer_state = 326 } }	# Hong Kong
+				}
+			}
+			
+			if = {
+				limit = {
+					JAP = {
+						has_war_with = USA
+						is_in_faction_with = GER
+						NOT = {
+							JAP = { owns_state = 638 }
+						}
+					}
+				}
+				JAP = {
+					transfer_state = 638		# Guam
+				}
+			}
+			
+			if = {
+				limit = {
+					JAP = {
+						has_war_with = USA
+						is_in_faction_with = GER
+						NOT = {
+							JAP = { owns_state = 632 }
+						}
+					}
+				}
+				JAP = {
+					transfer_state = 632		# Wake Island
+				}
+			}
+			
+			if = {
+				limit = {
+					JAP = {
+						OR = {
+							has_war_with = RUS
+							has_war_with = SOV
+							has_global_flag = kis_brestlitovsk
+						}
+						OR = {
+							655 = { is_owned_by = RUS }
+							655 = { is_owned_by = SOV }
+						}
+						is_in_faction_with = GER
+						NOT = {
+							JAP = { owns_state = 655 }
+						}
+					}
+				}
+				JAP = {
+					transfer_state = 655		# North Sakhalin
+				}
+				if = {
+					limit = { 655 = { is_core_of = RUS } }
+					655 = { remove_core_of = RUS }
+				}
+				if = {
+					limit = { 655 = { is_core_of = SOV } }
+					655 = { remove_core_of = SOV }
+				}
+			}
+			
+			if = {
+				limit = {
+					JAP = {
+						has_war_with = ENG
+						is_in_faction_with = GER
+					}
+				}
+				every_state = {
+					limit = {
+						AND = {
+							is_owned_by = GER
+							is_claimed_by = JAP
+						}
+					}
+					remove_claim_by = JAP	### Got paid (that's why this outcome is tied to the UK with the actual possible gains), remove claims on allies (by Khanor)
 				}
 			}
 
