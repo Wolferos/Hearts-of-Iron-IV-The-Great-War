@@ -627,6 +627,7 @@ focus_tree = {
 		y = 2
 		mutually_exclusive = { focus=AUH_ww1_back_italy }
 	}
+
 	focus = {
 		id = AUH_ww1_military_advisors
 		prerequisite = { focus=AUH_ww1_back_ger }
@@ -646,18 +647,31 @@ focus_tree = {
 
 	focus = {
 		id = AUH_ww1_back_italy
-		prerequisite = { focus=AUH_ww1_triple_alliance }
+		mutually_exclusive = { focus = AUH_ww1_back_ger }
+		prerequisite = { focus = AUH_ww1_triple_alliance }
 		icon = GFX_hoi4tgw_italy
-		available = { NOT={ has_war_with = ITA } }
-		completion_reward = { 
-			ITA={ add_opinion_modifier={ target=AUH modifier=ger_auh_alliance_focus } } GER={ add_opinion_modifier={ target=AUH modifier=HOI4TGW_Opinion_ger_ita_alliance_focus_malus } }
+
+		available = {
+			NOT = { has_war_with = ITA }
 		}
-		ai_will_do = { factor = 0	}
+
+		completion_reward = {
+
+			ITA = {
+				add_opinion_modifier = { target=AUH modifier=ger_auh_alliance_focus }
+			}
+
+			GER = {
+				add_opinion_modifier = { target=AUH modifier=HOI4TGW_Opinion_ger_ita_alliance_focus_malus }
+			}
+		}
+
+		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 9
 		y = 2
-		mutually_exclusive = { focus=AUH_ww1_back_ger }
 	}
+
 	focus = {
 		id = AUH_ww1_give_italy_territories
 		prerequisite = { focus=AUH_ww1_back_italy }

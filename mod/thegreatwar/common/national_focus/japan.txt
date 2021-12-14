@@ -3245,6 +3245,7 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+
 			hidden_effect = {
 				if = {
 					limit = {
@@ -3253,8 +3254,11 @@ focus_tree = {
 					remove_country_leader_trait = imperial_sanction
 				}
 			}
+
 			remove_ideas = JAP_the_unthinkable_option
-			set_capital = 532
+
+			set_capital = { state = 532 }
+
 			start_civil_war = {
 				ruling_party = communism
 				ideology = ROOT
@@ -3265,6 +3269,7 @@ focus_tree = {
 					750 751 752
 				}
 			}
+
 			custom_effect_tooltip = cast_the_die_TT
 			if = {
 				limit = {
@@ -6762,20 +6767,24 @@ focus_tree = {
 			NOT = { has_government = communism }
 		}
 
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-
 		completion_reward = {
-			SOV = { add_opinion_modifier = { target = ROOT modifier = JAP_anti_communist_bulwark } }
-			PRC = { add_opinion_modifier = { target = ROOT modifier = JAP_anti_communist_bulwark } }
-			add_opinion_modifier = { target = SOV modifier = JAP_anti_communist_bulwark }
-			add_opinion_modifier = { target = PRC modifier = JAP_anti_communist_bulwark }
+
+			add_popularity = { ideology=communism popularity = 0.1 }
+
+			#SOV = {
+			#	add_opinion_modifier = { target = JAP modifier = JAP_anti_communist_bulwark }
+			#}
+
+			#PRC = {
+			#	add_opinion_modifier = { target = JAP modifier = JAP_anti_communist_bulwark }
+			#}
+
+			#add_opinion_modifier = { target = SOV modifier = JAP_anti_communist_bulwark }
+			#add_opinion_modifier = { target = PRC modifier = JAP_anti_communist_bulwark }
 		}
 	}
 
@@ -6802,10 +6811,6 @@ focus_tree = {
 
 		available = {
 			NOT = { has_government = communism }
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
