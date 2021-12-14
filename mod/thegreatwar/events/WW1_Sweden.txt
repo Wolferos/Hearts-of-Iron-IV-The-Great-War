@@ -189,4 +189,150 @@ country_event = {
 #		}
 #	}
 }
+country_event = {
+	id = ww1_sweden.5
+	title = ww1_sweden.5.t
+	desc = ww1_sweden.5.d
+	fire_only_once=yes
+	trigger = {
+		OR = {
+			has_global_flag = swedenincp
+			has_completed_focus = SWE_ww1_central_power
+		}
+		has_global_flag = kis_brestlitovsk
+		tag = SWE
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
 
+	option = {
+		name = ww1_sweden.5.a #subjugate finland
+		transfer_state = 145
+		add_state_core = 145
+		puppet = FIN
+		FIN = {
+			create_country_leader={ 
+				name = "Gustaf V" desc=SWE_gustaf_v_DESC 
+				picture="gfx/hoi4tgw_portraits/SWE/country_leaders/SWE_gustaf_v.dds" 
+				expire="1935.1.1" 
+				ideology=liberalism traits={  } 
+			}
+			set_cosmetic_tag = FINSWE
+		}
+		set_cosmetic_tag = SWEFIN	
+	}
+	option = {
+		name = ww1_sweden.5.b # annex finland
+		add_state_core = 145
+		set_country_flag = annexed_finland
+		annex_country = {
+			target = FIN
+				transfer_troops = yes
+			}
+		}
+	option = {
+		name = ww1_sweden.5.c # leave finland free
+		give_guarantee = FIN
+		FIN = {
+			give_guarantee = SWE
+		}
+	}
+}
+country_event = {
+	id = ww1_sweden.6
+	title = ww1_sweden.6.t
+	desc = ww1_sweden.6.d
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_sweden.6.a #Accept closer ties
+		SWE = { 
+			puppet = ROOT 
+			country_event = {id = ww1_sweden.7 }
+		}
+		ai_chance = {
+			base = 400
+		}
+		
+	}
+	option = {
+		name = ww1_sweden.6.b #Deny closer ties
+		SWE = {
+			country_event = { id = ww1_sweden.8 }
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+country_event = {
+	id = ww1_sweden.7
+	title = ww1_sweden.7.t
+	desc = ww1_sweden.7.d
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_sweden.7.a #Accepted closer ties
+	}
+}
+country_event = {
+	id = ww1_sweden.8
+	title = ww1_sweden.8.t
+	desc = ww1_sweden.8.d
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_sweden.8.a #Denied closer ties
+	}
+}
+country_event = {
+	id = ww1_sweden.9
+	title = ww1_sweden.9.t
+	desc = ww1_sweden.9.d
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_sweden.9.a #Swedish Ingria
+		SWE = {
+			transfer_state = 195
+			transfer_state = 208
+		}
+	}
+	option = {
+		name = ww1_sweden.9.b #Finnish Ingria
+		FIN = {
+			transfer_state = 195
+			transfer_state = 208
+		}
+	}
+}
+
+#Scandinavia move capital
+country_event = {
+	id = ww1_sweden.10
+	title = ww1_sweden.10.t
+	desc = ww1_sweden.10.d
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_sweden.10.a #Keep capital in Stokholm
+		
+	}
+	option = {
+		name = ww1_sweden.10.b #Move capital to Goteborg
+		set_capital = 140
+	}
+	option = {
+		name = ww1_sweden.10.c #Move capital to Kristiania
+		set_capital = 110
+	}
+	option = {
+		name = ww1_sweden.10.f #Move capital to Copenhagen
+		set_capital = 37
+	}
+	option = {
+		name = ww1_sweden.10.e #Move capital to Helsingfors
+		set_capital = 111
+	}
+}
