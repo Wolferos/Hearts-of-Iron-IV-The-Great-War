@@ -469,13 +469,19 @@ country_event = {
 				transfer_state = 150
 				transfer_state = 148
 				transfer_state = 146
+				transfer_state = 145	### Åland added (by Khanor)
+				transfer_state = 147	### Salla added (By Canadian Lemur)
+				transfer_state = 722 	### Petsamo added (Unhistorical but easier than integrating historical route for now)
 			}
 			EST = {
 				transfer_state = 13
 				transfer_state = 191
 				transfer_state = 12
 				transfer_state = 190
+				add_state_core = 12
+				add_state_core = 190
 				set_cosmetic_tag = UBD
+				set_capital = 12		### Riga added (by Ecrfour)
 				create_country_leader = {
 				    name = "Adolf Friedrich, Duke of Mecklenburg-Schwerin"
 				    picture = "gfx/leaders/hoi4tgw/Adolf_Friedrich.dds"			
@@ -484,7 +490,7 @@ country_event = {
 				    traits = {}
 				}
 				set_politics = { ruling_party = neutrality elections_allowed = no }
-				load_oob = EST_army
+					load_oob = EST_army
 			}
 			GER = { puppet = EST }
 			SOV = {
@@ -513,6 +519,35 @@ country_event = {
 
 	immediate = {
 		hidden_effect = {
+		###Persian And Afghanistan demands (by Canadian Lemur)
+		if = {
+				limit = {
+					AFG = {
+						has_war_with = ENG
+						is_in_faction_with = GER
+					}
+				}
+				AFG = {transfer_state = 742 
+					   add_state_core = 742
+				}
+				
+				
+				}
+		if = {
+				limit = {
+					PER = {
+						has_war_with = ENG
+						is_in_faction_with = GER
+					}
+				}
+				PER = {transfer_state = 584
+					   transfer_state = 229
+					   add_state_core = 229
+					   add_state_core = 584
+				}
+				
+				
+				}
 			GER = {
 				transfer_state = 10
 				transfer_state = 11
@@ -531,6 +566,57 @@ country_event = {
 			    transfer_state = 11
 				transfer_state = 189
 				load_oob = LIT_army
+			}
+			#Japanese Demands (By Canadian Lemur)
+			if = {
+				limit = {
+					JAP = {
+						has_war_with = FRA
+						is_in_faction_with = GER
+					}
+				}
+				FER = {
+					transfer_state = 408 #Vladivostok
+					add_state_core = 408
+					transfer_state = 409 #Khabarovsk
+					add_state_core = 409
+					transfer_state = 657 #Birobidzhan
+					add_state_core = 657
+					transfer_state = 560 #Nikolayevsk
+					add_state_core = 560
+					transfer_state = 562 #Okhotsk
+					add_state_core = 562
+					transfer_state = 637 #Kamchatka
+					add_state_core = 637
+					transfer_state = 644 #Northeast Siberia
+					add_state_core = 644
+					transfer_state = 574 #Yahtusk
+					add_state_core = 574
+					transfer_state = 575 #Kirensk
+					add_state_core = 375
+					transfer_state = 565 #Bodaybo
+					add_state_core = 565
+					transfer_state = 563 #Chita
+					add_state_core = 563
+					transfer_state = 561 #Amur
+					add_state_core = 561
+					transfer_state = 564 #Ulan Ude
+					add_state_core = 564
+					transfer_state = 566 #Irkutsk
+					add_state_core = 566
+					transfer_state = 567 #Bratsk
+					add_state_core = 567
+					
+
+				}
+				JAP = {unlock_national_focus = JAP_ww1_form_siberia}
+				if = {limit = {SOV = {owns_state=329} } MON= {transfer_state=329 add_state_core=329}}
+				JAP = {
+					transfer_state = 655		# North Sakhalin
+					add_state_core = 655
+					puppet = FER
+					puppet = MON
+				}
 			}
 			GER = { puppet = LIT }
 			SOV = {

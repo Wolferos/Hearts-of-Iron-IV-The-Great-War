@@ -1,0 +1,125 @@
+	
+ingria_integration = {
+	integrate_ingria = {
+		icon = generic_form_nation
+		cost = 25
+	
+		fire_only_once = yes
+		allowed = {
+			original_tag = SWE
+		}
+		available = {
+			IF = {
+				limit = {country_exists = FIN }
+				OR = {
+					FROM = {is_controlled_by = SWE}
+					FROM = {is_controlled_by = FIN}
+				}
+			}
+			IF = {
+				limit = {NOT = { country_exists = FIN } }
+				FROM = {is_controlled_by = SWE
+				compliance > 70
+				}
+			}
+		}
+		visible = {
+			original_tag = SWE
+			OR = {
+				FROM = {is_controlled_by = SWE}
+				FROM = {is_controlled_by = FIN}
+			}
+		}
+		state_target = yes
+		targets = { 208 195 }
+		complete_effect = {
+			IF = {
+				limit = { 
+					FROM = {
+						is_controlled_by = FIN
+					}
+				}
+				FROM = {
+					add_core_of = FIN
+					add_core_of = SWE
+				}
+			}
+			IF = {
+				limit = { FROM = {is_controlled_by = SWE} }
+				FROM = {
+					add_core_of = SWE
+				}
+			}
+		}
+	}
+	invite_white_russian_emigres = {
+		icon = generic_form_nation
+		cost = 100
+		fire_only_once = yes
+		allowed = {
+			original_tag = SWE
+		}
+		available = {
+			IF = {
+				limit = {country_exists = FIN }
+				OR = {
+					FROM = {is_controlled_by = SWE}
+					FROM = {is_controlled_by = FIN}
+				}
+			}
+			IF = {
+				limit = {NOT = { country_exists = FIN } }
+				FROM = {is_controlled_by = SWE
+ 				}
+			}
+		}
+		visible = {
+			original_tag = SWE
+			OR = {
+				FROM = {is_controlled_by = SWE}
+				FROM = {is_controlled_by = FIN}
+			}
+		}
+		state_target = yes
+		targets = { 208 195 }
+		complete_effect = {
+		FROM = {
+		add_building_construction = {
+		type = industrial_complex
+		level = 1
+		instant_build = yes
+		}
+		add_extra_state_shared_building_slots = 1
+		add_manpower = 1500 
+		add_compliance = 1.5
+		}
+		}
+	}
+rename_st_petersburg = {
+		icon = generic_form_nation
+	
+		fire_only_once = yes
+		allowed = {
+			original_tag = SWE
+		}
+		available = {
+			owns_state = 195
+		}
+		visible = {
+			original_tag = SWE
+			OR = {
+				FROM = {is_controlled_by = SWE}
+				FROM = {is_controlled_by = FIN}
+			}
+		}
+		state_target = yes
+		targets = { 195 }
+		complete_effect = {
+		set_province_name = {
+		id = 3151
+		name = "Nyen"
+		}
+		add_political_power = 15
+		}
+	}	
+}
