@@ -1438,7 +1438,7 @@ focus_tree = {
 
 	#-----------------------------------------
 	focus = {
-		id = JAP_ww1_Fukoku_Kyohei # Open Beta 0.5
+		id = JAP_ww1_Fukoku_Kyohei
 		prerequisite = { focus =  JAP_ww1_Leave_Entente focus = JAP_ww1_Leave_Central_Power}
 		icon = GFX_goal_support_fascism
 
@@ -1473,7 +1473,63 @@ focus_tree = {
 
 	#-----------------------------------------
 	focus = {
-		id = JAP_ww1_Invasion_of_Manchuria # Open Beta 0.5
+		id = JAP_ww1_ReestablishGermanyJapanRelations # Reestablish Germany-Japan Relations
+		prerequisite = { focus =  JAP_ww1_Fukoku_Kyohei }
+		icon = GFX_focus_ger_reichskommisariats
+
+	 	available = {
+			JAP = { has_government = fascism }
+			GER = {
+				exists = yes
+				has_government = fascism
+			}
+		}
+
+		completion_reward = {
+			add_opinion_modifier = { 
+				target = GER
+				modifier =  HOI4TGW_Opinion_JAP_ambassador_Hitler
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+		cost = 10
+		x = 12
+		y = 9
+	}
+	#-----------------------------------------------------------------------
+
+	#-----------------------------------------
+	focus = {
+		id = JAP_ww1_GettingCloserToMussolini # Getting Closer to Mussolini
+		prerequisite = { focus =  JAP_ww1_Fukoku_Kyohei }
+		icon = GFX_focus_ger_assassinate_mussolini
+
+	 	available = {
+			JAP = { has_government = fascism }
+			ITA = {
+				exists = yes
+				has_government = fascism
+			}
+		}
+
+		completion_reward = {
+			add_opinion_modifier = { 
+				target = ITA
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+		cost = 10
+		x = 10
+		y = 9
+	}
+	#-----------------------------------------------------------------------
+
+	#-----------------------------------------
+	focus = {
+		id = JAP_ww1_Invasion_of_Manchuria
 		prerequisite = { focus =  JAP_ww1_Fukoku_Kyohei }
 		icon = GFX_goal_demand_sudetenland
 
@@ -1497,7 +1553,7 @@ focus_tree = {
 
 		ai_will_do = { factor = 100 }
 		cost = 10
-		x = 13
+		x = 14
 		y = 9
 	}
 	#-----------------------------------------------------------------------
@@ -1505,7 +1561,7 @@ focus_tree = {
 
 	#-----------------------------------------
 	focus = {
-		id = JAP_ww1_Form_Manchukuo # Open Beta 0.5
+		id = JAP_ww1_Form_Manchukuo
 		prerequisite = { focus =  JAP_ww1_Invasion_of_Manchuria }
 		icon = GFX_goal_generic_army_doctrines
 
@@ -1545,6 +1601,7 @@ focus_tree = {
             	puppet = MAN
             }
 
+			hidden_effect = {
 
 				716 = { add_core_of = MAN }
 				328 = { add_core_of = MAN }
@@ -1558,16 +1615,19 @@ focus_tree = {
 					white_peace = CHI
 					white_peace = QIN
 				}
-			
+			}
 
 
 		}
 
 		ai_will_do = { factor = 100 }
 		cost = 1
-		x = 13
+		x = 14
 		y = 10
 	}
+	#-----------------------------------------------------------------------
+
+
 	focus = {
 		id = JAP_ww1_form_siberia # Added by Canadian Lemur
 		prerequisite = { focus = JAP_ww1_siberian_intervention focus = JAP_ww1_Join_Central_Power }
@@ -1642,6 +1702,7 @@ focus_tree = {
 		x = 18
 		y = 8
 	}
+
 	focus = {
 		id = JAP_ww1_siberian_settlement # Added by Canadian Lemur
 		prerequisite = { focus = JAP_ww1_form_siberia }
@@ -4533,10 +4594,7 @@ focus_tree = {
 						limit = {
 							INS = { is_subject_of = HOL }
 						}
-						OR = {
-							has_country_flag = HOL_declare_war_indies_allowed
-							HOL = { NOT = { has_completed_focus = HOL_placate_the_japanese } }
-						}
+						has_country_flag = HOL_declare_war_indies_allowed
 					}
 				}
 				create_wargoal = {

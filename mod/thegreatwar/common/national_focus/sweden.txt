@@ -49,6 +49,42 @@ focus_tree = {
 		ai_will_do = { factor = 0 }
 	}
 
+
+	focus = {
+		id = SWE_ww1_interwar_Position_RussianCivilWar_SupportRed
+		icon = GFX_focus_ger_great_red_menace
+		mutually_exclusive = { focus = SWE_ww1_interwar_Position_RussianCivilWar_SupportWhite }
+		
+
+		available = {
+			has_government = communism
+			NOT = {
+				has_war_with = SOV
+			}
+			country_exists = RUS
+			country_exists = SOV
+			SOV = {
+				is_puppet = no
+				has_war_with = RUS
+			}
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = RUS
+			}
+		}
+
+		prerequisite = { focus = SWE_ww1_interwar_Position_RussianCivilWar }
+		relative_position_id = SWE_ww1_interwar_Position_RussianCivilWar
+
+		cost = 3
+		x = -1
+		y = 1
+		ai_will_do = { factor = 0 }
+	}
+
 	focus = {
 		id = SWE_ww1_interwar_Position_RussianCivilWar_SupportWhite
 		icon = GFX_focus_eng_expose_the_belly_of_the_bear
@@ -83,48 +119,6 @@ focus_tree = {
 		y = 1
 		ai_will_do = { factor = 0 }
 	}
-
-	focus = {
-		id = SWE_ww1_interwar_Position_RussianCivilWar_SupportRed
-		icon = GFX_focus_ger_great_red_menace
-		mutually_exclusive = { focus = SWE_ww1_interwar_Position_RussianCivilWar_SupportWhite }
-		
-
-		available = {
-			has_government = communism
-			NOT = {
-				has_war_with = SOV
-			}
-			country_exists = RUS
-			country_exists = SOV
-			SOV = {
-				is_puppet = no
-				has_war_with = RUS
-			}
-		}
-
-
-		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = RUS
-			}
-		}
-
-		prerequisite = { focus = SWE_ww1_SovietFriend }
-		prerequisite = { focus = SWE_ww1_interwar_Position_RussianCivilWar }
-		relative_position_id = SWE_ww1_interwar_Position_RussianCivilWar
-
-
-		cost = 3
-		x = -1
-		y = 1
-		ai_will_do = { factor = 0 }
-	}
-
-
-
-
 
 	focus = {
 		id = SWE_ww1_interwar_Position_TurkeyCivilWar
@@ -480,7 +474,6 @@ focus_tree = {
 			DEN = { give_guarantee = NOR }
 			FIN = { give_guarantee = NOR }
 			give_guarantee = NOR
-			
 		}
 
 		cost = 10
@@ -1787,44 +1780,7 @@ focus_tree = {
 		icon = GFX_goal_generic_fortify_city
 
 		completion_reward = {
-			666 = {
-				add_building_construction = {
-					type = bunker
-					level = 1
-					#province = 9186
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = bunker
-					level = 1
-					#province = 3104
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = bunker
-					level = 1
-					#province = 6165
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = bunker
-					level = 1
-					#province = 9108
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = bunker
-					level = 1
-					#province = 3054
-					instant_build = yes
-				}
-				add_building_construction={ 
-					type = infrastructure 
-					level = 1
-					province = 9108
-					instant_build = yes
-				}
-			}
+			army_experience = 15
 		}
 
 		x = 6
@@ -1845,6 +1801,12 @@ focus_tree = {
 		    #custom_effect_tooltip = SWE_ww1_boden_fortressII
 			set_technology = { ww1_fortification2 = 1 }
 			666 = {
+				add_building_construction={ 
+					type = infrastructure 
+					level = 1
+					instant_build = yes
+				}
+
 				add_building_construction = {
 					type = trench
 					level = 1
@@ -1890,10 +1852,43 @@ focus_tree = {
 		icon = GFX_goal_generic_fortify_city
 
 		prerequisite = { focus = SWE_ww1_boden_fortressII }
-		
+
 		completion_reward = {
-			# production_speed_bunker_factor
-			army_experience=12
+
+			army_experience = 20
+
+			666 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 9186
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 3104
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 6165
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 9108
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 3054
+					instant_build = yes
+				}
+			}
 		}
 		
 		cost = 10
