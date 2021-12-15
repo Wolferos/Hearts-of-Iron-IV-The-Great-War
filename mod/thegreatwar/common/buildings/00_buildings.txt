@@ -4,16 +4,18 @@ buildings = {
 	#    if provincial = yes, then show_on_map = X is amount per each province
 	#    if provincial = no, then show_on_map = X is amount per state
 
-
 	infrastructure = {
-		base_cost = 3000
+		base_cost = 6000
 		icon_frame = 3
 		infrastructure = yes
-		max_level = 10
+		max_level = 5
 		value = 1
 
 		show_modifier = yes
-		max_fuel_building = 0.75 #k
+		max_fuel_building = 1.5 #k
+		allied_build = yes
+
+		infrastructure_construction_effect = yes
 	}
 
 	arms_factory = {
@@ -48,6 +50,8 @@ buildings = {
 		max_level = 10
 		value = 1
 		damage_factor = 0.5
+		allied_build = yes
+		infrastructure_construction_effect = yes
 	}
 
 	supply_node = {
@@ -62,8 +66,9 @@ buildings = {
 		damage_factor = 0.1
 		allied_build = yes
 		always_shown = yes
-	}
-
+		infrastructure_construction_effect = yes
+	}	
+	
 	rail_way = {
 		base_cost = 170
 		per_level_extra_cost = 130
@@ -71,19 +76,23 @@ buildings = {
 		disabled_in_dmz = yes
 		icon_frame = 16
 		max_level = 1
+		infrastructure_construction_effect = yes
 	}
-
+	
 	naval_base = {
 		show_on_map = 1
 		show_on_map_meshes = 3
 		always_shown = yes
-		base_cost = 3000
+		base_cost = 5000
+		per_level_extra_cost = 1000
 		provincial = yes
 		only_costal = yes
 		is_port = yes
 		icon_frame = 6
 		max_level = 10
 		value = 1
+		allied_build = yes
+		infrastructure_construction_effect = yes
 	}
 
 	bunker = {
@@ -97,6 +106,7 @@ buildings = {
 		land_fort = 1
 		max_level = 10
 		value = 1
+		infrastructure_construction_effect = yes
 	}
 
 	trench = {
@@ -110,6 +120,7 @@ buildings = {
 		land_fort = 1
 		max_level = 10
 		value = 1
+		infrastructure_construction_effect = yes
 	}
 
 	coastal_bunker = {
@@ -124,6 +135,7 @@ buildings = {
 		naval_fort = 1
 		max_level = 10
 		value = 1
+		infrastructure_construction_effect = yes
 	}
 
 	dockyard = {
@@ -151,6 +163,7 @@ buildings = {
 		max_level = 5 # This is the max unlock level
 		damage_factor = 0.1
 		value = 1
+		infrastructure_construction_effect = yes
 	}
 
 	synthetic_refinery = {
@@ -166,7 +179,7 @@ buildings = {
 		infrastructure_construction_effect = yes
 		
 		show_modifier = yes
-		fuel_gain_from_states = 3.0 #per hour
+		fuel_gain_from_states = 2.0 #per hour
 	}
 
 	fuel_silo = {
@@ -180,7 +193,7 @@ buildings = {
 		fuel_silo = yes
 		
 		show_modifier = yes
-		max_fuel_building = 190.0 #k
+		max_fuel_building = 100.0 #k
 	}
 
 	radar_station = {
@@ -192,6 +205,9 @@ buildings = {
 		max_level = 6 # This is the max unlock level
 		damage_factor = 0.5
 		value = 4
+		centered = yes
+		allied_build = yes
+		infrastructure_construction_effect = yes
 	}
 
 	rocket_site = {

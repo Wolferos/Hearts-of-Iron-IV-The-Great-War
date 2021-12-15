@@ -1,6 +1,6 @@
 name="Hearts of Iron IV: The Great War"
 path="mod/thegreatwar"
-replace_path="history/states"
+
 tags={
 	"National Focuses"
 	"Map"

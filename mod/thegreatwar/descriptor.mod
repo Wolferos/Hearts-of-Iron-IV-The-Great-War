@@ -1,5 +1,5 @@
 name="Hearts of Iron IV: The Great War"
-replace_path="history/states"
+
 tags={
 	"National Focuses"
 	"Map"

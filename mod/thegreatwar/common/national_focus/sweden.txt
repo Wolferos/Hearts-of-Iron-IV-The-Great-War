@@ -1550,7 +1550,7 @@ focus_tree = {
 		icon = GFX_goal_generic_more_territorial_claims
 		
 		available = { fascism > 0.1  }	
-		completion_reward = { add_ideas=military_youth_focus
+		completion_reward = { add_ideas = military_youth_focus
 							  add_popularity={ ideology=fascism popularity=0.05 }
 							}
 		cost = 10
@@ -1750,15 +1750,18 @@ focus_tree = {
 
 	focus = {
 		id = SWE_ww1_freespeech
-		prerequisite = { focus=SWE_ww1_democracy }
+		prerequisite = { focus = SWE_ww1_democracy }
 		icon = GFX_goal_generic_propaganda
 
-		completion_reward = { add_tech_bonus={ name=industrial_bonus bonus=0.15 uses=1 category=industry } add_political_power=30 }
+		completion_reward = {
+			add_tech_bonus = { name = industrial_bonus bonus = 0.15 uses = 1 category = industry }
+			add_political_power = 30
+		}
 
 		cost = 10
 		x = 4
 		y = 3
-		ai_will_do = { factor = 100 }
+		ai_will_do = { factor = 80 }
 	}
 	
 	
@@ -1774,7 +1777,7 @@ focus_tree = {
 		cost = 10
 		x = 8
 		y = 0
-		ai_will_do = { factor = 100 }
+		ai_will_do = { factor = 80 }
 	}
 	
 	# https://en.wikipedia.org/wiki/Boden_Fortress
@@ -1785,47 +1788,49 @@ focus_tree = {
 
 		completion_reward = {
 			666 = {
-					add_building_construction = {
-						type = bunker
-						level = 1
-						province = 9186
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = bunker
-						level = 1
-						province = 3104
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = bunker
-						level = 1
-						province = 6165
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = bunker
-						level = 1
-						province = 9108
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = bunker
-						level = 1
-						province = 3054
-						instant_build = yes
-					}
-					add_building_construction={ 
-						type=infrastructure 
-						level=1
-						instant_build=yes
-					}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					#province = 9186
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					#province = 3104
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					#province = 6165
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					#province = 9108
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					#province = 3054
+					instant_build = yes
+				}
+				add_building_construction={ 
+					type = infrastructure 
+					level = 1
+					province = 9108
+					instant_build = yes
+				}
 			}
 		}
+
 		x = 6
 		y = 1
 		cost = 10
-		ai_will_do = { factor = 100 }
+		ai_will_do = { factor = 80 }
 	}
 	
 	focus = {
@@ -1840,39 +1845,39 @@ focus_tree = {
 		    #custom_effect_tooltip = SWE_ww1_boden_fortressII
 			set_technology = { ww1_fortification2 = 1 }
 			666 = {
-					add_building_construction = {
-						type = trench
-						level = 1
-						province = 9186
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = trench
-						level = 1
-						province = 3104
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = trench
-						level = 1
-						province = 6165
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = trench
-						level = 1
-						province = 9108
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = trench
-						level = 1
-						province = 3054
-						instant_build = yes
-					}
+				add_building_construction = {
+					type = trench
+					level = 1
+					province = 9186
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = trench
+					level = 1
+					province = 3104
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = trench
+					level = 1
+					province = 6165
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = trench
+					level = 1
+					province = 9108
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = trench
+					level = 1
+					province = 3054
+					instant_build = yes
+				}
 			}
-			
 		}
+
 		cost = 10
 		x = 6
 		y = 2
@@ -1918,8 +1923,7 @@ focus_tree = {
 		y = 4
 		ai_will_do = { factor = 5 modifier = { factor = 0 is_historical_focus_on = yes } }
 	}
-	
-	
+
 	############### Germany Focus ###############
 
 	focus = {
@@ -1936,13 +1940,16 @@ focus_tree = {
 			    add_opinion_modifier = {
 				    target = ROOT modifier = germany_friendship
 				}
-			} 
+			}
+
 			add_popularity = {  
 				ideology = democratic  
 				popularity = -0.05				
 			}
+
 			add_political_power = -20	
 		}
+
 		cost = 10
 		x = 8
 		y = 1
@@ -1962,11 +1969,13 @@ focus_tree = {
 				has_war_with = FRA
 			}
 		}
+
 		bypass = {
 			SWE = {
 				is_in_faction_with = GER
 			}
-		}		
+		}
+
 		completion_reward = {
 			if={ limit={ has_idea=neutrality_idea } remove_ideas=neutrality_idea }
 			set_rule={ can_send_volunteers=yes }		
@@ -1977,6 +1986,7 @@ focus_tree = {
 			add_war_support = 0.2
 			custom_effect_tooltip = choose_wisely
 		}
+
 		cost = 3
 		x = 8
 		y = 2	
@@ -1985,21 +1995,22 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_ww1_german_support
-		#icon = GFX_goal_generic_axis_build_infantry
 		icon = GFX_focus_chi_army_reform
 		prerequisite = { focus = SWE_ww1_central_power }
+
 		completion_reward = { 
 			add_tech_bonus={ name=SWE_ww1_germany_focus bonus=0.15 uses=2 category=land_doctrine }
 			GER = { add_equipment_to_stockpile = { type = infantry_equipment amount = -1000 } }
 			add_equipment_to_stockpile = { type = infantry_equipment amount = 1000 } 
 			army_experience=20
 		}
+
 		cost = 3
 		x = 8
 		y = 3
-		ai_will_do = { factor = 100 }
+		ai_will_do = { factor = 80 }
 	}
-	
+
 	############### Neutrality Focus ###############
 	
 	focus = {
@@ -2025,6 +2036,7 @@ focus_tree = {
 			}
 			add_ideas = disarmed_nation
 		}
+
 		cost = 15
 		x = 10
 		y = 1
@@ -2042,7 +2054,7 @@ focus_tree = {
 			threat > 0.1
 		}
 		bypass  = {
-				hidden_trigger = { SWE={ has_country_flag = courtyard_crisis } }
+			hidden_trigger = { SWE={ has_country_flag = courtyard_crisis } }
 		}
 		
 		completion_reward = {
@@ -2409,7 +2421,6 @@ focus_tree = {
 		ai_will_do = { factor = 30 }
 	}
 
-
 	focus = {
 		id = SWE_ww1_aviation_effort_2
 		prerequisite = { focus=SWE_ww1_aviation_effort }
@@ -2420,7 +2431,6 @@ focus_tree = {
 		y = 1
 		ai_will_do = { factor = 10 }
 	}
-
 
 	focus = {
 		id = SWE_ww1_airship_focus
@@ -2508,7 +2518,6 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 	}
 
-
 	focus = {
 		id = SWE_ww1_aviation_effort_4
 		prerequisite = { focus=SWE_ww1_pilotformation_1 focus=SWE_ww1_aircraftprod_1 focus=SWE_ww1_airbomb_1 }
@@ -2530,7 +2539,7 @@ focus_tree = {
 		cost = 10
 		x = 20
 		y = 6
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 8 }
 	}
 
 	focus = {
@@ -2566,7 +2575,7 @@ focus_tree = {
 		cost = 10
 		x = 22
 		y = 7
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 8 }
 	}
 
 
@@ -2592,7 +2601,7 @@ focus_tree = {
 		cost = 10
 		x = 23
 		y = 8
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 5 }
 	}
 
 	###########################################################################################################################
