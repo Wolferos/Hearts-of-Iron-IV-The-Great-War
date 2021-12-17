@@ -25,7 +25,7 @@
 - Spanish (Integrated in the Mod, experimental stage)
 
 
-/!\ Warning /!\ Old Saves may not work with newer versions of the Mod
+⚠️ Warning ⚠️ Old Saves may not work with newer versions of the Mod
 
 **The Great War** has been created by Wolferos with the help of the Community.
 
