@@ -688,13 +688,6 @@ demobilization = {
 		visible = {
 			has_unsupported_manpower_law = yes
 			has_war = no
-			if = {
-				limit = { original_tag = GRE }
-				NOT = {
-					has_completed_focus = GRE_request_communist_support
-				}
-			}
-
 		}
 		complete_effect = {
 			if = {
@@ -719,10 +712,8 @@ demobilization = {
 				add_ideas = service_by_requirement
 			}
 		}
-
-		
-
 	}
+
 	demob_manpower_mission = {
 
 		icon = revolt
@@ -737,25 +728,8 @@ demobilization = {
 		activation = {
 			has_unsupported_manpower_law = yes
 			has_war = no
-			if = {
-				limit = {
-					original_tag = GRE
-				}
-				NOT = {
-					has_completed_focus = GRE_request_communist_support
-				}
-			}
 		}
-		visible = {
-			if = {
-				limit = {
-					original_tag = GRE
-				}
-				NOT = {
-					has_completed_focus = GRE_request_communist_support #put here in lieu of a cancel trigger
-				}
-			}		
-		}
+
 		cancel_if_not_visible = yes
 		timeout_effect = {
 			if = {
