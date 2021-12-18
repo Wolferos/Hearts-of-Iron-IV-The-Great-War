@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.17.2 "Railways"
+**Current Version:** 0.17.2 "Railways" (on Steam/Paradox/Mod DB/NexusMods) / 0.17.3 WIP "Railways" (on GitHub)
 
 **Compatible with:** Hearts of Iron IV "Barbarossa" 1.11.4 (with or without Paid DLC)
 
