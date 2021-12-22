@@ -725,20 +725,16 @@ focus_tree = {
 		y = 6
 	}
 
-
 	focus = {
 		id = ITA_ww1_diaz
 		prerequisite = { focus = ITA_ww1_ready_country focus = ITA_ww1_the_great_war_started }
 		icon = GFX_goal_generic_special_forces
+
 		completion_reward = {
-		  	add_political_power=100
-		  	custom_effect_tooltip=remove_military_high_command
-		  	hidden_effect={
-			   	remove_ideas=ITA_luigi_cadorna
-		   	}
-			  remove_unit_leader=46028
-			  add_ideas=ITA_armando_diaz
-			  }
+		  	army_experience = 50
+		  	add_political_power = 80
+		}
+
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 12
@@ -1359,7 +1355,12 @@ focus_tree = {
 	focus = {
 		id = ITA_ww1_army_effort
 		icon = GFX_goal_generic_allies_build_infantry
-		completion_reward = { army_experience=15 add_tech_bonus={ name=land_doc_bonus bonus=0.2 uses=1 category=land_doctrine } }
+
+		completion_reward = {
+			army_experience = 15
+			add_tech_bonus = { name = land_doc_bonus bonus = 0.2 uses = 1 category = land_doctrine }
+		}
+
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 22
