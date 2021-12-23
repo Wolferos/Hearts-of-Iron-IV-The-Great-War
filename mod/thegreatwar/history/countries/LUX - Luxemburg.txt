@@ -3,17 +3,16 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.80
+set_stability = 0.80
 set_convoys = 0
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Marie-Adélaïde" desc=LUX_marie_adelaide_DESC picture="gfx/leaders/LUX_marie_adelaide.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Aloys Kaiser" desc=LUX_aloys_kaiser_DESC picture="gfx/leaders/LUX_aloys_kaiser.dds" expire="1935.1.1" ideology=stalinism traits={  } }
-create_country_leader={ name = "William IV" desc=LUX_william_iv_DESC picture="gfx/leaders/LUX_william_iv.dds" expire="1935.1.1" ideology=conservatism traits={  } }
-
+recruit_character = LUX_william_iv
+recruit_character = LUX_aloys_kaiser
 
 1910.1.1 = {
 	oob = "LUX_1910"
@@ -25,6 +24,9 @@ create_country_leader={ name = "William IV" desc=LUX_william_iv_DESC picture="gf
 	#-------------------------------------------------------
 
 	set_technology = {
+
+		# Train
+		ww1_train = 1
 
 		# Infantry
 		infantry_weapons = 1
@@ -50,15 +52,8 @@ create_country_leader={ name = "William IV" desc=LUX_william_iv_DESC picture="gf
 		heavy_field_gun1 = 1
 
 		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 
@@ -68,19 +63,31 @@ create_country_leader={ name = "William IV" desc=LUX_william_iv_DESC picture="gf
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=92 }  fascism={ popularity=3 }  communism={ popularity=5 } }  ruling_party=democratic last_election="1909.12.23" election_frequency=36 elections_allowed=yes }
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1909.12.23"
+	    election_frequency = 36
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 92
+	    fascism = 3
+	    communism = 5
+	    neutrality = 0
+	}
 
 	add_ideas = {
 		disarmed_nation
 	}	
 }
+
 1912.2.25 = {
-	create_country_leader={ name = "Marie-Adélaïde" desc=LUX_marie_adelaide_DESC picture="gfx/leaders/LUX_marie_adelaide.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+	recruit_character = LUX_marie_adelaide
 	set_country_flag=william_dead
 }
+
 1914.1.1 = {
 	oob = "LUX_1914"
-
 
 	#-------------------------------------------------------
 	#							NF
@@ -104,7 +111,6 @@ create_country_leader={ name = "William IV" desc=LUX_william_iv_DESC picture="gf
 	complete_national_focus = ww1_diplomatic_effort
 	complete_national_focus = neutrality_focus
 	complete_national_focus = ww1_military_reserve
-	
 
 	#-------------------------------------------------------
 
@@ -139,15 +145,8 @@ create_country_leader={ name = "William IV" desc=LUX_william_iv_DESC picture="gf
 		bonus_bertha1 = 1
 
 		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -158,9 +157,31 @@ create_country_leader={ name = "William IV" desc=LUX_william_iv_DESC picture="gf
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=92 }  fascism={ popularity=3 }  communism={ popularity=5 } }  ruling_party=democratic last_election="1912.12.23" election_frequency=36 elections_allowed=yes }
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1912.12.23"
+	    election_frequency = 36
+	    elections_allowed = yes
+	}
+
+	set_popularities = {
+	    democratic = 92
+	    fascism = 3
+	    communism = 5
+	    neutrality = 0
+	}
 
 	add_ideas = {
 		disarmed_nation
 	}
+}
+
+1919.1.1 = {
+	create_country_leader = { 
+		name = "Charlotte" 
+		picture = "gfx/hoi4tgw_portraits/LUX/country_leaders/LUX_charlotte.dds" 
+		expire = "1935.1.1" 
+		ideology = liberalism 
+		traits = {}
+	}	
 }

@@ -3,34 +3,57 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.60
 set_research_slots = 4
-set_national_unity = 0.80
-set_convoys = 100
+set_stability = 0.70
+set_war_support = 0.70
+set_convoys = 200
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
 #LEADERS
-create_country_leader={ name = "Viktor Adler" desc=AUH_viktor_adler_DESC picture="gfx/hoi4tgw_portraits/AUH/country_leaders/AUH_viktor_adler.dds" expire="1935.1.1" ideology=marxism traits={  } }
-create_country_leader={ name = "Franz Ferdinand" desc=AUH_franz_ferdinand_DESC picture="gfx/hoi4tgw_portraits/AUH/country_leaders/AUH_franz_ferdinand.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-#create_country_leader={ name = "Karl I" desc=AUH_karl_i_DESC picture="gfx/hoi4tgw_portraits/AUH/country_leaders/AUH_karl_i.dds" expire="1935.1.1" ideology=autocracy  traits={  } }
-create_country_leader={ name = "Franz Joseph I" desc=AUH_franz_joseph_i_DESC picture="gfx/hoi4tgw_portraits/AUH/country_leaders/AUH_franz_joseph_i.dds" expire="1935.1.1" ideology=autocracy traits={  } }
+recruit_character = AUH_franz_joseph_i
+recruit_character = AUH_viktor_adler
+recruit_character = AUH_franz_ferdinand
+#create_country_leader={ name = "Karl I" picture="gfx/hoi4tgw_portraits/AUH/country_leaders/AUH_karl_i.dds" expire="1935.1.1" ideology=autocracy traits={} }
 
 #ARMY
-create_field_marshal={  name = "Conrad von Hötzendorf" id=6137 portrait_path="gfx/hoi4tgw_portraits/AUH/army_generals/AUH_von_Hotzendorf.dds" traits={ offensive_doctrine  } skill=3 }
-create_field_marshal={  name = "Arthur von Bolfras" id=6386 portrait_path="gfx/hoi4tgw_portraits/AUH/army_generals/AUH_von_Bolfras.dds" traits={   } skill=3 }
-
-create_corps_commander={  name = "Stöger-Steiner von Steinstätten" id=6401 portrait_path="gfx/hoi4tgw_portraits/AUH/army_generals/AUH_von_Steinstatten.dds" traits={   } skill=3 }
-create_corps_commander={  name = "Svetozar Borojević von Bojna" id=6010 portrait_path="gfx/hoi4tgw_portraits/AUH/army_generals/AUH_von_Bojna.dds" traits={   } skill=3 }
-create_corps_commander={  name = "Karl von Pflanzer-Baltin" id=6111 portrait_path="gfx/hoi4tgw_portraits/AUH/army_generals/AUH_von_Pflanzer_Baltin.dds" traits={   } skill=3 }
-create_corps_commander={  name = "Viktor Dankl von Krasnik" id=6139 portrait_path="gfx/hoi4tgw_portraits/AUH/army_generals/AUH_Dankl_von_Krasnik.dds" traits={   } skill=3 }
-create_corps_commander={  name = "Hermann Kövess von Kövessháza" id=6396 portrait_path="gfx/hoi4tgw_portraits/AUH/army_generals/AUH_von_Kovesshaza.dds" traits={  fortress_buster } skill=3 }
+recruit_character = AUH_conrad_von_hotzendorf
+recruit_character = AUH_arthur_von_bolfras
+recruit_character = AUH_stogersteiner_von_steinstatten
+recruit_character = AUH_svetozar_borojevic_von_bojna
+recruit_character = AUH_karl_von_pflanzerbaltin
+recruit_character = AUH_viktor_dankl_von_krasnik
+recruit_character = AUH_hermann_kovess_von_kovesshaza
 
 #NAVY
-create_navy_leader={  name = "Anton Haus" id=6162 portrait_path="gfx/hoi4tgw_portraits/AUH/navy_admirals/AUH_haus.dds" traits={ superior_tactician  } skill=3 }
-create_navy_leader={  name = "Hermann von Spaun" id=6234 portrait_path="gfx/hoi4tgw_portraits/AUH/navy_admirals/AUH_von_Spaun.dds" traits={   } skill=3 }
-create_navy_leader={  name = "Miklós Horthy" id=6394 portrait_path="gfx/hoi4tgw_portraits/AUH/navy_admirals/AUH_horthy.dds" traits={ superior_tactician  } skill=3 }
+recruit_character = AUH_hermann_von_spaun
+recruit_character = AUH_anton_haus
+recruit_character = AUH_miklos_horthy
 
+# Advisors
+recruit_character = AUH_alois_lexa_von_aehrenthal
+recruit_character = AUH_gyula_andrassy
+recruit_character = AUH_ottokar_czernin
+recruit_character = AUH_agenor_goluchowski
+recruit_character = AUH_eugen_hordliczka
+recruit_character = AUH_oskar_von_hranilovic_czvetassin
+recruit_character = AUH_leon_von_bilinski
+recruit_character = AUH_gabor_ugron
+recruit_character = AUH_august_urbanski
+# AUH_conrad_von_hotzendorf --- is also a General
+recruit_character = AUH_artur_arz_von_straussenberg
+recruit_character = AUH_franz_von_holub
+# AUH_hermann_von_spaun --- is also a General
+recruit_character = AUH_emil_uzelac
+recruit_character = AUH_blasius_schemua
+recruit_character = AUH_friedrich_von_beck_rzikowsky
+recruit_character = AUH_rudolf_montecuccoli
+# recruit_character = AUH_anton_haus --- is also a General
+recruit_character = AUH_karl_kailer_von_kagenfels
+recruit_character = AUH_maximilian_njegovan
+recruit_character = AUH_maximilian_daublebsky_von_sterneck
 
 1910.1.1 = {
 
@@ -39,20 +62,11 @@ create_navy_leader={  name = "Miklós Horthy" id=6394 portrait_path="gfx/hoi4tgw
 	# SPECIAL_DLC Together for Victory
 	if = { limit = { has_dlc = "Together for Victory" }
 
-		#IF-----------------------------------------
 		set_autonomy = {
 			target = BOS
 			autonomous_state = autonomy_integrated_puppet
 		}
-		#-------------------------------------------
-
-		#ELSE---------------------------------------
-		else = {
-			# WORK IN PROGRESS #
-		}
-		#-------------------------------------------
 	}
-
 
 	oob = "AUH_1910"
 
@@ -62,13 +76,16 @@ create_navy_leader={  name = "Miklós Horthy" id=6394 portrait_path="gfx/hoi4tgw
 	#Army
 	complete_national_focus = AUH_ww1_army_effort
 	complete_national_focus = AUH_ww1_industrial_effort
-	complete_national_focus = AUH_ww1_naval_effort
+	unlock_national_focus = AUH_ww1_naval_effort
 
 	#Diplomatic
 	complete_national_focus = AUH_ww1_diplomatic_effort
 	#-------------------------------------------------------
 
 	set_technology = {
+
+		# Train
+		ww1_train = 1
 
 		# Infantry
 		infantry_weapons = 1
@@ -84,31 +101,68 @@ create_navy_leader={  name = "Miklós Horthy" id=6394 portrait_path="gfx/hoi4tgw
 		tech_support = 1
 		tech_engineers = 1
 		tech_recon = 1
-		#tech_military_police = 1
-		#tech_maintenance_company = 1
-		#tech_field_hospital = 1
-		#tech_logistics_company = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
 
 		# Armor
-		gwtank=1 # 1910 Armored Car
+		gwtank = 1 # 1910 Armored Car
+		gwtank__nostepback = 1
 
 		# Artillery
 		light_field_gun1 = 1
 		heavy_field_gun1 = 1
 
 		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
+		ww1_heavy_cruiser0 = 1
+	ww1_heavy_cruiser0_mtg = 1
+		ww1_heavy_cruiser1 = 1
+	ww1_heavy_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_light_cruiser1 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battlecruiser0b = 1
-		ww1_battlecruiser1 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
+	ww1_light_cruiser1_mtg = 1
+		ww1_light_cruiser2 = 1
+	ww1_light_cruiser2_mtg = 1
+		ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
+		ww1_submarine2 = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
+		ww1_coastal_submarine2 = 1
+		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
+		ww1_battleship2 = 1
+	ww1_battleship2_mtg = 1
+		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
+		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
+		ww1_destroyer2 = 1
+	ww1_destroyer2_mtg = 1
+		ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
 		transport = 1
+	transport_mtg = 1
+
+		# Naval Modules Techs
+		heavy_navalmodule_1890 = 1
+	heavy_navalmodule_1890_mtg = 1
+		heavy_navalmodule_1900 = 1
+	heavy_navalmodule_1900_mtg = 1
+		medium_navalmodule_1890 = 1
+	medium_navalmodule_1890_mtg = 1
+		medium_navalmodule_1900 = 1
+	medium_navalmodule_1900_mtg = 1
+		light_navalmodule_1890 = 1
+	light_navalmodule_1890_mtg = 1
+		light_navalmodule_1900 = 1
+	light_navalmodule_1900_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -124,29 +178,35 @@ create_navy_leader={  name = "Miklós Horthy" id=6394 portrait_path="gfx/hoi4tgw
 	}
 
 	set_politics = {
-	    parties = {
-	        neutrality = {
-	            popularity = 85
-	        }
-	        fascism = {
-	            popularity = 5
-	        }
-	        democratic = {
-	            popularity = 5
-	        }
-	        communism = {
-	            popularity = 5
-	        }
-	    }
-	    ruling_party = neutrality last_election = "1907.5.23"
-	    election_frequency = 48 elections_allowed = yes
+	    ruling_party = neutrality
+	    last_election = "1907.5.23"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 5
+	    fascism = 5
+	    communism = 5
+	    neutrality = 85
 	}
 
 	add_ideas = {
 		AUH_ww1_House_Habsburg_Lorraine
 		AUH_ww1_Multinational_State
 		limited_conscription
+		partial_economic_mobilisation
 	}
+	
+	create_equipment_variant={ name="Kronprinz Erzherzogin Rudolf Class" type=battleship_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=2 ship_engine_upgrade=1 ship_reliability_upgrade=3           } }
+	create_equipment_variant={ name="Monarch Class" type=battleship_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=1 ship_engine_upgrade=4 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Habsburg Class" type=battleship_1890 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=5 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Radetzky Class" type=battleship_1900 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=2 ship_engine_upgrade=3 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Sankt Georg Class" type=heavy_cruiser_1900 parent_version = 0 obsolete=no upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=1 ship_reliability_upgrade=1           } }
+	create_equipment_variant={ name="Panther Class" type=light_cruiser_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=3 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Tiger Class" type=light_cruiser_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=3 ship_reliability_upgrade=3 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Kaiser Franz Joseph I Class" type=light_cruiser_1890 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=4 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Blitz Class" type=destroyer_1890 parent_version = 0 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=3 } }
+	create_equipment_variant={ name="U3 Class" type=coastal_submarine_1906 parent_version = 0 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
 }
 
 
@@ -157,26 +217,23 @@ create_navy_leader={  name = "Miklós Horthy" id=6394 portrait_path="gfx/hoi4tgw
 	#							NF
 	#-------------------------------------------------------
 	#Army
-	complete_national_focus = AUH_ww1_army_effort
 	complete_national_focus = AUH_ww1_equipment_effort
 	complete_national_focus = AUH_ww1_artillery_effort_1
 	complete_national_focus = AUH_ww1_doctrine_effort
 	complete_national_focus = AUH_ww1_trenchwarfare
-	
+
 	# Air
 	complete_national_focus = AUH_ww1_aviation_effort
 	complete_national_focus = AUH_ww1_aviation_effort_2
-	
+
 	# Industry
-	complete_national_focus = AUH_ww1_industrial_effort
 	complete_national_focus = AUH_ww1_infrastructure_effort
 	complete_national_focus = AUH_ww1_airfield_expansion_1
 	complete_national_focus = AUH_ww1_construction_effort
 	complete_national_focus = AUH_ww1_production_effort
 	complete_national_focus = AUH_ww1_dockyard_effort_1
-	
+
 	# Naval
-	complete_national_focus = AUH_ww1_naval_effort
 	complete_national_focus = AUH_ww1_newnavalcanons_1
 	complete_national_focus = AUH_ww1_dreadnought_effort
 
@@ -242,19 +299,44 @@ create_navy_leader={  name = "Miklós Horthy" id=6394 portrait_path="gfx/hoi4tgw
 		ww1_directfire = 1
 
 		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_destroyer2 = 1
+		ww1_heavy_cruiser0 = 1
+	ww1_heavy_cruiser0_mtg = 1
+		ww1_heavy_cruiser1 = 1
+	ww1_heavy_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_light_cruiser1 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battlecruiser0b = 1
-		ww1_battlecruiser1 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
+	ww1_light_cruiser1_mtg = 1
+		ww1_light_cruiser2 = 1
+	ww1_light_cruiser2_mtg = 1
+		ww1_light_cruiser3 = 1
+	ww1_light_cruiser3_mtg = 1
+		ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
+		ww1_submarine2 = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
+		ww1_coastal_submarine2 = 1
+		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
+		ww1_battleship2 = 1
+	ww1_battleship2_mtg = 1
+		ww1_battleship3 = 1
+	ww1_battleship3_mtg = 1
+		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
+		ww1_destroyer2 = 1
+	ww1_destroyer2_mtg = 1
+		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
+		ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -265,6 +347,9 @@ create_navy_leader={  name = "Miklós Horthy" id=6394 portrait_path="gfx/hoi4tgw
 		ww1_airdoctrine = 1
 		ww1_airdoctrine_2 = 1
 		ww1_airdoctrine_3 = 1
+
+		ww1_destroyer3 = 1
+	ww1_destroyer3_mtg = 1 # destroyer_1910 (Destroyer III)
 
 		# Navy Doctrine
 		ww1_navaldoctrine = 1
@@ -290,27 +375,25 @@ create_navy_leader={  name = "Miklós Horthy" id=6394 portrait_path="gfx/hoi4tgw
 	}
 
 	set_politics = {
-	    parties = {
-	        neutrality = {
-	            popularity = 85
-	        }
-	        fascism = {
-	            popularity = 5
-	        }
-	        democratic = {
-	            popularity = 5
-	        }
-	        communism = {
-	            popularity = 5
-	        }
-	    }
-	    ruling_party = neutrality last_election = "1911.7.1"
-	    election_frequency = 48 elections_allowed = yes
+	    ruling_party = neutrality
+	    last_election = "1911.7.1"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 8
+	    fascism = 5
+	    communism = 5
+	    neutrality = 82
 	}
 
 	add_ideas = {
 		AUH_ww1_House_Habsburg_Lorraine
 		AUH_ww1_Multinational_State
 		limited_conscription
+		#Austrian_staff
 	}
+	
+	create_equipment_variant={ name="U10 Class" type=coastal_submarine_1910 parent_version = 0 obsolete=no upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+
 }

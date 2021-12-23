@@ -1,5 +1,5 @@
 technologies = {
-	### GERMAN TANK NAMES IN COMMENTS SO YOU CAN FIND STUFF MORE EASILY
+
 	gwtank = { # First Armored Car
 
 		enable_equipments = { ww1_armored_car_equipment_1 }
@@ -49,9 +49,8 @@ technologies = {
 		}
 	}	
 
-
-# hoi4tgw
-######################################
+	# hoi4tgw
+	######################################
 
 	ww1_armored_car_2 =
 	{
@@ -114,34 +113,21 @@ technologies = {
 		start_year = 1934
 	}
 
-	#ww1_prototype_tank =
-	#{
-	#	#enable_equipments = { ww1_tank_prototype_equipment } // You can't build That Type of Tank
-	#	path =
-	#	{
-	#		leads_to_tech = ww1_light_tank
-	#		research_cost_coeff = 1
-	#	}
-	#	path =
-	#	{
-	#		leads_to_tech = ww1_heavy_tank
-	#		research_cost_coeff = 1
-	#	}
-	#	research_cost = 2
-	#	folder =
-	#	{
-	#		name = armour_folder
-	#		position = { x = 0 y = 2 }
-	#	}
-	#	categories = { armor }
-	#	ai_will_do = { factor=1 }
-	#	start_year = 1913
-	#}
+
+
+
 
 	ww1_light_tank =
 	{
+		enable_subunits = {
+			light_armor
+		}
 
-		enable_equipments = { ww1_light_tank_equipment_1 }
+		enable_equipments = {
+			ww1_light_tank_equipment_1
+		}
+
+
 
 		on_research_complete = {
 
@@ -186,7 +172,6 @@ technologies = {
 	}
 
 
-
 	ww1_light_tank_b = {
 
 		enable_equipments = {
@@ -204,7 +189,15 @@ technologies = {
 
 	ww1_heavy_tank =
 	{
-		enable_equipments = { ww1_heavy_tank_equipment_1 }
+		enable_subunits = {
+			heavy_armor
+		}
+
+
+		enable_equipments = {
+			ww1_heavy_tank_equipment_1
+		}
+
 
 		on_research_complete = {
 
@@ -274,7 +267,7 @@ technologies = {
 		start_year = 1917
 	}
 
-	ww1_super_heavy_tank = { #K-Wagen
+	ww1_super_heavy_tank = { # K-Wagen
 
 		enable_equipments = {
 			ww1_super_heavy_tank_equipment
@@ -509,6 +502,7 @@ technologies = {
 
 	improved_light_tank = { #Panzer II
 
+
 		enable_equipments = {
 			light_tank_equipment_2 
 		}
@@ -717,8 +711,12 @@ technologies = {
 	
 	basic_medium_tank = { #Panzer III
 
+		enable_subunits = {
+			medium_armor
+		}
+
 		enable_equipments = {
-			medium_tank_equipment_1 
+			medium_tank_equipment_1
 		}
 		
 		path = {

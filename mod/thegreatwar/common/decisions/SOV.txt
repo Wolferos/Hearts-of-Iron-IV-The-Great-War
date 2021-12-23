@@ -1,0 +1,29 @@
+SOV_CustomDecision = {
+	SOV_move_capital_to_moscow = {
+		available = {
+			original_tag = SOV
+			owns_state = 219
+			has_full_control_of_state = 219
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				has_government = communism
+				NOT = {
+					owns_state = 219
+					has_full_control_of_state = 219
+				}
+				factor = 1
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			SOV = {
+				set_capital = { state = 219 }
+			}
+		}
+	}
+}

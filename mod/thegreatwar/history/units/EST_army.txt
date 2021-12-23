@@ -1,0 +1,130 @@
+division_template = {
+	name = "Jalaväediviisi"			# Infantry Division
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+	}
+	support = {
+		recon = { x = 0 y = 0 }  
+	}
+}
+
+set_technology = {
+	ww1_submarine1 = 0 # submarine_1906 (Submarine I)
+	ww1_submarine2 = 0 # submarine_1910 (Submarine II)
+	ww1_submarine3 = 0 # submarine_1914 (Submarine III)
+}
+
+
+units = {
+
+fleet = {
+	name = "I Eesti Sojalaevastik Fleet"
+	naval_base = 3152
+	task_force = {
+		name = "I Eesti Sojalaevastik"
+		location = 3152
+		ship = { name = "EML Kalev" definition = submarine equipment = { submarine_1914 = { amount = 1 owner = EST } } }
+		ship = { name = "EML Lembit" definition = submarine equipment = { submarine_1914 = { amount = 1 owner = EST } } }
+	}
+}
+
+fleet = {
+	name = "II Eesti Sojalaevastik Fleet"
+	naval_base = 9340
+	task_force = {
+		name = "II Eesti Sojalaevastik"
+		location = 9340
+		ship = { name = "EML Tasuja" definition = submarine equipment = { submarine_1914 = { amount = 1 owner = EST } } }
+		ship = { name = "EML Ilmatar" definition = submarine equipment = { submarine_1914 = { amount = 1 owner = EST } } }
+	}
+}
+
+	######## LAND OOB ########
+	##### Eesti Ülemjuhatus #####
+	division = {
+		name = "I Jalaväediviisi"
+		location = 3152
+		division_template = "Jalaväediviisi"
+		force_equipment_variants = { infantry_equipment_1 = { owner = "EST" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.7
+
+	}
+	division = {
+		name = "II Jalaväediviisi"
+		location = 4640
+		division_template = "Jalaväediviisi"
+		force_equipment_variants = { infantry_equipment_1 = { owner = "EST" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.7
+
+	}
+	division = {
+		name = "III Jalaväediviisi"
+		location = 6099
+		division_template = "Jalaväediviisi"
+		force_equipment_variants = { infantry_equipment_1 = { owner = "EST" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.7
+
+	}
+	division = {
+		name = "IV Jalaväediviisi"
+		location = 9340
+		division_template = "Jalaväediviisi"
+		force_equipment_variants = { infantry_equipment_1 = { owner = "LAT" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.7
+
+	}
+	division = {
+		name = "V Jalaväediviisi"
+		location = 9340
+		division_template = "Jalaväediviisi"
+		force_equipment_variants = { infantry_equipment_1 = { owner = "LAT" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.7
+
+	}
+	division = {
+		name = "VI Jalaväediviisi"
+		location = 310
+		division_template = "Jalaväediviisi"
+		force_equipment_variants = { infantry_equipment_1 = { owner = "LAT" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.7
+
+	}
+	division = {
+		name = "VII Jalaväediviisi"
+		location = 265
+		division_template = "Jalaväediviisi"
+		force_equipment_variants = { infantry_equipment_1 = { owner = "LAT" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.7
+
+	}
+
+	##### NAVAL OOB #####
+	
+	
+}
+
+### Starting Production ###
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "EST"
+		}
+		requested_factories = 1
+		progress = 0.36
+		efficiency = 100
+	}
+}

@@ -3,136 +3,114 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.44
 set_research_slots = 4
-set_national_unity = 0.7
+set_stability = 0.7
+set_war_support = 0.80
 set_convoys = 300
+starting_train_buffer = 2
+
+if = {
+	limit = {
+		has_start_date < 1919.01.01
+	}
+	create_faction = entente # France is the Leader of the Entente
+	add_to_faction = FRA
+	add_to_faction = RUS
+}
+
 puppet = MOR
 puppet = TUN
 
 # SPECIAL_DLC Together for Victory
-if = { limit = { has_dlc = "Together for Victory" }
+#Tunis is protectorate, like Algeria and others (of course, can be released as puppet)
 
-	#IF-----------------------------------------
-	set_autonomy = {
-		target = TUN
-		autonomous_state = autonomy_integrated_puppet
+if = {
+	limit = {
+		has_start_date < 1919.1.1
 	}
-	#-------------------------------------------
-
-	#ELSE---------------------------------------
-	else = {
-		# WORK IN PROGRESS #
-	}
-	#-------------------------------------------
+	give_guarantee = BEL # United Kingdom guaranteed the independence of Belgium - Treaty of London (1839)
 }
 
-give_guarantee = BEL # France guaranteed the independence of Belgium - Treaty of London (1839)
+#-------------------------------------------------------
+#					ADVISORS
+#-------------------------------------------------------
+
+# ======================================================================
+### Political Advisor ###
+
+recruit_character = FRA_louis_franchet_d_esperey
+recruit_character = FRA_rene_viviani
+recruit_character = FRA_charles_dumont
+recruit_character = FRA_joseph_thierry
+recruit_character = FRA_jean_jaures
+
+# ======================================================================
+### Theorist ###
+
+recruit_character = FRA_joseph_gallieni
+
+# ======================================================================
+### Army Chief ###
+
+recruit_character = FRA_joseph_joffre
+recruit_character = FRA_robert_nivelle
+
+# ======================================================================
+### Navy Chief ###
+
+recruit_character = FRA_marie_merveilleux_du_vignaux
+
+# ======================================================================
+### Air Chief ###
+
+recruit_character = FRA_auguste_edouard_hirschauer
+
+# ======================================================================
+### High Command ###
+
+recruit_character = FRA_ferdinand_foch
+recruit_character = FRA_maurice_sarrail
+recruit_character = FRA_jean_graziani
+recruit_character = FRA_louis_pivet
+
+############################################################################################################
+
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Charles Jonnart" desc=FRA_charles_jonnart_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_charles_jonnart.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Gaston Doumergue" desc=FRA_gaston_doumergue_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_gaston_doumergue.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Louis Frossard" desc=FRA_louis_frossard_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_louis_frossard.dds" expire="1935.1.1" ideology=stalinism traits={  } }
-create_country_leader={ name = "Alexandre Millerand" desc=FRA_alexandre_millerand_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_alexandre_millerand.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Georges Clemenceau" desc=FRA_georges_clemenceau_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_georges_clemenceau.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Paul Painlevé" desc=FRA_paul_painleve_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_paul_painleve.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Jules Méline" desc=FRA_jules_meline_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_jules_meline.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Jules Pams" desc=FRA_jules_pams_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_jules_pams.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Paul Doumer" desc=FRA_paul_doumer_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_paul_doumer.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Philippe VIII" desc=FRA_philippe_viii_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_philippe_viii.dds" expire="1935.1.1" ideology=conservatism traits={  } }
-create_country_leader={ name = "Armand Fallières" desc=FRA_armand_fallieres_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_armand_fallieres.dds" expire="1935.1.1" ideology=liberalism traits={  } }
 
-create_field_marshal={
-	name = "Joseph Joffre" id=32007
-	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_joseph_joffre.dds"
-	traits={ offensive_doctrine old_guard }
-	skill=4
-}
+# LEADERS
+# ===========================================
+recruit_character = FRA_armand_fallieres
+recruit_character = FRA_charles_jonnart
+recruit_character = FRA_gaston_doumergue
+recruit_character = FRA_louis_frossard
+recruit_character = FRA_alexandre_millerand
+recruit_character = FRA_georges_clemenceau
+recruit_character = FRA_paul_painleve
+recruit_character = FRA_jules_meline
+recruit_character = FRA_jules_pams
+recruit_character = FRA_paul_doumer
+recruit_character = FRA_philippe_viii
 
-create_field_marshal={
-	name = "Joseph Gallieni" id=32019
-	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_joseph_gallieni.dds"
-	traits={ defensive_doctrine old_guard }
-	skill=4
-}
-
-create_field_marshal={
-	name = "Ferdinand Foch" id=32006
-	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_ferdinand_foch.dds"
-	traits={ offensive_doctrine }
-	skill=4
-}
-
-create_corps_commander={
-	name = "Philippe Pétain" id=32009
-	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_philippe_petain.dds"
-	traits={ trickster }
-	skill=3
-}
-
-create_corps_commander={
-	name = "Robert Nivelle" id=32031
-	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_robert_nivelle.dds"
-	traits={ }
-	skill=2
-}
-
-create_corps_commander={
-	name = "Louis Franchet d'Espèrey" id=32003
-	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_louis_franchet_d_esperey.dds"
-	traits={ }
-	skill=3
-}
-
-create_corps_commander={
-	name = "Émile Fayolle" id=32293
-	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_emile_fayolle.dds"
-	traits={ }
-	skill=2
-}
-
-create_corps_commander={
-	name = "Hubert Lyautey" id=32004
-	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_hubert_lyautey.dds"
-	traits={ }
-	skill=2
-}
-
-create_corps_commander={
-	name = "Michel Maunoury" id=32033
-	portrait_path="gfx/hoi4tgw_portraits/FRA/army_generals/FRA_michel_maunoury.dds"
-	traits={ }
-	skill=3
-}
-
-create_navy_leader={ 
-	name = "Auguste Boué de Lapeyrère" id=32302
-	portrait_path="gfx/hoi4tgw_portraits/FRA/navy_admirals/FRA_de_lapeyrere.dds"
-	traits={ }
-	skill=3
-}
-
-create_navy_leader={ 
-	name = "Jean Merveilleux du Vignaux" id=32306
-	portrait_path="gfx/hoi4tgw_portraits/FRA/navy_admirals/FRA_du_vignaux.dds"
-	traits={ old_guard }
-	skill=2
-}
-
-create_navy_leader={ 
-	name = "Lucien Lacaze" id=32329
-	portrait_path="gfx/hoi4tgw_portraits/FRA/navy_admirals/FRA_lucien_lacaze.dds"
-	traits={ }
-	skill=3
-}
-
-create_navy_leader={
-	name = "Pierre-Alexis Ronarc'h" id=32341
-	portrait_path="gfx/hoi4tgw_portraits/FRA/navy_admirals/FRA_ronarc_h.dds"
-	traits={ }
-	skill=3
-}
+# GENERALS
+# ===========================================
+# recruit_character = FRA_joseph_joffre --- it's an Advisor-General
+# recruit_character = FRA_ferdinand_foch --- it's an Advisor-General
+# recruit_character = FRA_robert_nivelle --- it's an Advisor-General
+# recruit_character = FRA_joseph_gallieni --- it's an Advisor-General
+# recruit_character = FRA_louis_franchet_d_esperey --- it's an Advisor-General
+recruit_character = FRA_philippe_petain
+recruit_character = FRA_henri_berthelot
+recruit_character = FRA_emile_fayolle
+recruit_character = FRA_hubert_lyautey
+recruit_character = FRA_michel_maunoury
+recruit_character = FRA_de_lapeyrere
+recruit_character = FRA_du_vignaux
+recruit_character = FRA_lucien_lacaze
+recruit_character = FRA_ronarc_h
 
 1910.1.1 = {
 	oob = "FRA_1910"
@@ -143,13 +121,16 @@ create_navy_leader={
 	#Army
 	complete_national_focus = FRA_ww1_army_effort
 	complete_national_focus = FRA_ww1_industrial_effort
-	complete_national_focus = FRA_ww1_naval_effort
+	unlock_national_focus = FRA_ww1_naval_effort
 
 	#Diplomatic
 	complete_national_focus = FRA_ww1_diplomatic_effort
 	#-------------------------------------------------------
 
 	set_technology = {
+
+		# Train
+		ww1_train = 1
 
 		# Infantry
 		infantry_weapons = 1
@@ -165,31 +146,63 @@ create_navy_leader={
 		tech_support = 1
 		tech_engineers = 1
 		tech_recon = 1
-		#tech_military_police = 1
-		#tech_maintenance_company = 1
-		#tech_field_hospital = 1
-		#tech_logistics_company = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
 
 		# Armor
 		gwtank=1 # 1910 Armored Car
+		gwtank__nostepback=1
 
 		# Artillery
 		light_field_gun1 = 1
 		heavy_field_gun1 = 1
 
 		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
+		ww1_heavy_cruiser0 = 1
+	ww1_heavy_cruiser0_mtg = 1
+		ww1_heavy_cruiser1 = 1
+	ww1_heavy_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_light_cruiser1 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battlecruiser0b = 1
-		ww1_battlecruiser1 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
+		ww1_submarine2 = 1
+		ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
+		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
+		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
+		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
+		ww1_destroyer2 = 1
+	ww1_destroyer2_mtg = 1
+		ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
 		transport = 1
+	transport_mtg = 1
+
+		# Naval Modules Techs
+		heavy_navalmodule_1890 = 1
+	heavy_navalmodule_1890_mtg = 1
+		heavy_navalmodule_1900 = 1
+	heavy_navalmodule_1900_mtg = 1
+		medium_navalmodule_1890 = 1
+	medium_navalmodule_1890_mtg = 1
+		medium_navalmodule_1900 = 1
+	medium_navalmodule_1900_mtg = 1
+		light_navalmodule_1890 = 1
+	light_navalmodule_1890_mtg = 1
+		light_navalmodule_1900 = 1
+	light_navalmodule_1900_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -197,14 +210,15 @@ create_navy_leader={
 		ww1_zeppelin1 = 1
 
 		# Engineering
+		tank_unlocker1 = 1
 		electronic_mechanical_engineering = 1
 		mechanical_computing = 1
 		chemical_research = 1
-		tank_unlocker1 = 1
 		radio = 1
 		supertech1 = 1
 		tankaircraft1 = 1
 		torpedotech1 = 1
+		chemical_research2 = 1
 
 		# Industry
 		ww1_tools1 = 1
@@ -213,65 +227,150 @@ create_navy_leader={
 	}
 
 	set_politics = {
-	    parties = {
-	        democratic = {
-	            popularity = 85
-	        }
-	        fascism = {
-	            popularity = 2
-	        }
-	        communism = {
-	            popularity = 13
-	        }
-	    }
-	    ruling_party = democratic last_election = "1910.4.30"
-	    election_frequency = 48 elections_allowed = yes
+	    ruling_party = democratic
+	    last_election = "1910.4.30"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+
+	set_popularities = {
+	    democratic = 85
+	    fascism = 2
+	    communism = 12
+	    neutrality = 1
 	}
 
 	add_ideas = {
-		FRA_ww1_Revanchism 
+		FRA_ww1_Revanchism
 		ww1_Scramble_for_Africa
-		FRA_disjointed_government 
+		FRA_disjointed_government
 		limited_conscription
 	}
 
-	
+	create_equipment_variant={ name="Tempête Class" type=battleship_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=2 ship_engine_upgrade=0 ship_reliability_upgrade=2           } }
+	create_equipment_variant={ name="Furieux Class" type=battleship_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=5 ship_engine_upgrade=0 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Fusée Class" type=battleship_1890 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
+	create_equipment_variant={ name="Achéron Class" type=battleship_1890 parent_version = 3 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=2 ship_engine_upgrade=0 ship_reliability_upgrade=2           } }
+	create_equipment_variant={ name="Jemmapes Class" type=battleship_1890 parent_version = 4 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=5 ship_engine_upgrade=3 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Bouvines Class" type=battleship_1890 parent_version = 5 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=5 ship_engine_upgrade=3 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Redoutable Class" type=battleship_1890 parent_version = 6 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=3 ship_engine_upgrade=0 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Courbet Class" type=battleship_1890 parent_version = 7 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=4 ship_engine_upgrade=1 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Amiral Duperré Class" type=battleship_1890 parent_version = 8 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=5 ship_engine_upgrade=0 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Terrible Class" type=battleship_1890 parent_version = 9 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=5 ship_engine_upgrade=0 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Amiral Baudin Class" type=battleship_1890 parent_version = 10 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=5 ship_engine_upgrade=1 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Hoche Class" type=battleship_1890 parent_version = 11 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=5 ship_engine_upgrade=3 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Marceau Class" type=battleship_1890 parent_version = 12 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=5 ship_engine_upgrade=2 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Brennus Class" type=battleship_1890 parent_version = 13 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=5 ship_engine_upgrade=4 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Charles Martel Class" type=battleship_1890 parent_version = 14 obsolete=yes upgrades={ ship_gun_upgrade=4 ship_armor_upgrade=5 ship_engine_upgrade=5 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Carnot Class" type=battleship_1890 parent_version = 15 obsolete=yes upgrades={ ship_gun_upgrade=4 ship_armor_upgrade=5 ship_engine_upgrade=5 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Jauréguiberry Class" type=battleship_1890 parent_version = 16 obsolete=yes upgrades={ ship_gun_upgrade=4 ship_armor_upgrade=5 ship_engine_upgrade=5 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Masséna Class" type=battleship_1890 parent_version = 17 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=5 ship_engine_upgrade=4 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Bouvet Class" type=battleship_1890 parent_version = 18 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=5 ship_engine_upgrade=5 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Charlemagne Class" type=battleship_1890 parent_version = 19 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=5 ship_engine_upgrade=5 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Iéna Class" type=battleship_1900 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=3 ship_armor_upgrade=3 ship_engine_upgrade=0 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Suffren Class" type=battleship_1900 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=3 ship_armor_upgrade=2 ship_engine_upgrade=0 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="République Class" type=battleship_1900 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=5 ship_engine_upgrade=1 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Liberté Class" type=battleship_1900 parent_version = 3 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=5 ship_engine_upgrade=1 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Danton Class" type=battleship_1900 parent_version = 4 obsolete=no upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=5 ship_engine_upgrade=1 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Amiral Charner Class" type=heavy_cruiser_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=1 ship_reliability_upgrade=1           } }
+	create_equipment_variant={ name="Pothuau Class" type=heavy_cruiser_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=1 ship_reliability_upgrade=1           } }
+	create_equipment_variant={ name="Jeanne D'Arc Class" type=heavy_cruiser_1890 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=5 ship_engine_upgrade=5 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Gueydon Class" type=heavy_cruiser_1890 parent_version = 3 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=5 ship_engine_upgrade=4 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Gloire Class" type=heavy_cruiser_1900 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
+	create_equipment_variant={ name="Léon Gambetta Class" type=heavy_cruiser_1900 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=1 ship_armor_upgrade=4 ship_engine_upgrade=1 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Jules Michelet Class" type=heavy_cruiser_1900 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=4 ship_engine_upgrade=1 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Ernest Renan Class" type=heavy_cruiser_1900 parent_version = 3 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=4 ship_engine_upgrade=2 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Edgar Quinet Class" type=heavy_cruiser_1900 parent_version = 4 obsolete=no upgrades={ ship_gun_upgrade=2 ship_armor_upgrade=4 ship_engine_upgrade=2 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Wattignies Class" type=light_cruiser_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=3 ship_reliability_upgrade=3 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Bombe Class" type=light_cruiser_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=3 ship_reliability_upgrade=3 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Lévrier Class" type=light_cruiser_1890 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=4 ship_reliability_upgrade=4 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Dunois Class" type=light_cruiser_1900 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=2 ship_reliability_upgrade=2 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Foudre Class" type=light_cruiser_1900 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=0 ship_reliability_upgrade=0 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Sfax Class" type=light_cruiser_1900 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Tage Class" type=light_cruiser_1900 parent_version = 3 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Amiral Cécille Class" type=light_cruiser_1900 parent_version = 4 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Davout Class" type=light_cruiser_1900 parent_version = 5 obsolete=yes upgrades={ ship_gun_upgrade=4  ship_engine_upgrade=1 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Suchet Class" type=light_cruiser_1900 parent_version = 6 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=1 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Forbin Class" type=light_cruiser_1900 parent_version = 7 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=1 ship_reliability_upgrade=1 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Troude Class" type=light_cruiser_1900 parent_version = 8 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=1 ship_reliability_upgrade=1 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Linois Class" type=light_cruiser_1900 parent_version = 9 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=1 ship_reliability_upgrade=1 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Alger Class" type=light_cruiser_1900 parent_version = 10 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Friant Class" type=light_cruiser_1900 parent_version = 11 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Descartes Class" type=light_cruiser_1900 parent_version = 12 obsolete=yes upgrades={ ship_gun_upgrade=4  ship_engine_upgrade=0 ship_reliability_upgrade=4 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="D'Assas Class" type=light_cruiser_1900 parent_version = 13 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=1 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Catinat Class" type=light_cruiser_1900 parent_version = 14 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=1 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="D'Entrecasteaux Class" type=light_cruiser_1900 parent_version = 15 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Guichen Class" type=light_cruiser_1900 parent_version = 16 obsolete=yes upgrades={ ship_gun_upgrade=4  ship_engine_upgrade=4 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Châteaurenault Class" type=light_cruiser_1900 parent_version = 17 obsolete=yes upgrades={ ship_gun_upgrade=4  ship_engine_upgrade=5 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="D'Estrées Class" type=light_cruiser_1900 parent_version = 18 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=1 ship_reliability_upgrade=1 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Jurien De La Gravière Class" type=light_cruiser_1900 parent_version = 19 obsolete=no upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=4 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Framee Class" type=destroyer_1890 parent_version = 0 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=0 } }
+	create_equipment_variant={ name="Pertuisane Class" type=destroyer_1890 parent_version = 1 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=0 } }
+	create_equipment_variant={ name="Claymore Class" type=destroyer_1900 parent_version = 0 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=1    ship_torpedo_upgrade=1 } }
+	create_equipment_variant={ name="Branlebas Class" type=destroyer_1900 parent_version = 1 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=1 } }
+	create_equipment_variant={ name="Voltigeur Class" type=destroyer_1906 parent_version = 0 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=1 } }
+	create_equipment_variant={ name="Chasseur Class" type=destroyer_1906 parent_version = 1 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=1 } }
+	create_equipment_variant={ name="Bouclier Class" type=destroyer_1906 parent_version = 2 obsolete=no upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=4 } }
+	create_equipment_variant={ name="Gymnote  Class" type=coastal_submarine_1900 parent_version = 0 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=3 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant={ name="Gustave Zede Class" type=coastal_submarine_1900 parent_version = 1 obsolete=yes upgrades={    ship_reliability_upgrade=4       sub_torpedo_upgrade=0 sub_stealth_upgrade=4 sub_engine_upgrade=4  } }
+	create_equipment_variant={ name="Morse Class" type=coastal_submarine_1900 parent_version = 2 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant={ name="Narvel Class" type=coastal_submarine_1900 parent_version = 3 obsolete=yes upgrades={    ship_reliability_upgrade=5       sub_torpedo_upgrade=5 sub_stealth_upgrade=5 sub_engine_upgrade=5  } }
+	create_equipment_variant={ name="Sirene Class" type=coastal_submarine_1900 parent_version = 4 obsolete=yes upgrades={    ship_reliability_upgrade=5       sub_torpedo_upgrade=5 sub_stealth_upgrade=5 sub_engine_upgrade=5  } }
+	create_equipment_variant={ name="Farfadet Class" type=coastal_submarine_1900 parent_version = 5 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=5 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant={ name="Morse Class" type=coastal_submarine_1900 parent_version = 6 obsolete=yes upgrades={    ship_reliability_upgrade=5       sub_torpedo_upgrade=5 sub_stealth_upgrade=5 sub_engine_upgrade=5  } }
+	create_equipment_variant={ name="Naiade Class" type=coastal_submarine_1900 parent_version = 7 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=5 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant={ name="X Class" type=coastal_submarine_1900 parent_version = 8 obsolete=yes upgrades={    ship_reliability_upgrade=1       sub_torpedo_upgrade=5 sub_stealth_upgrade=1 sub_engine_upgrade=1  } }
+	create_equipment_variant={ name="Z Class" type=coastal_submarine_1900 parent_version = 9 obsolete=yes upgrades={    ship_reliability_upgrade=4       sub_torpedo_upgrade=5 sub_stealth_upgrade=4 sub_engine_upgrade=4  } }
+	create_equipment_variant={ name="Omega Class" type=submarine_1910 parent_version = 0 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant={ name="Emeraude Class" type=submarine_1910 parent_version = 1 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=2 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant={ name="Circe Class" type=submarine_1910 parent_version = 2 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=2 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant={ name="Pluviose Class" type=submarine_1910 parent_version = 3 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant={ name="Mariotte Class" type=submarine_1906 parent_version = 0 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=3 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant={ name="Mariotte Class" type=submarine_1906 parent_version = 0 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=3 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant={ name="Amiral Bourgois Class" type=submarine_1906 parent_version = 1 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=3 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant={ name="Charles Brun Class" type=submarine_1906 parent_version = 2 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+
 }
 
 # Raymond Poincaré
 1913.2.18 = {
-	create_country_leader={ name = "Raymond Poincaré" desc=FRA_raymond_poincare_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_raymond_poincare.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+	create_country_leader={ name = "Raymond Poincaré" desc=FRA_raymond_poincare_DESC picture="gfx/hoi4tgw_portraits/FRA/country_leaders/FRA_raymond_poincare.dds" expire="1935.1.1" ideology=liberalism traits = { } }
 }
-
 
 1914.1.1 = {
 	oob = "FRA_1914"
 
+	add_to_faction = ENG # In 1914, United Kingdom and its Puppets are in the Entente
+	add_to_faction = CAN
+	add_to_faction = AST
+	add_to_faction = NZL
+	add_to_faction = OMA
+	add_to_faction = BHU
+	add_to_faction = NEP
+	add_to_faction = RAJ
+	add_to_faction = SAF
 
 	#-------------------------------------------------------
 	#							NF
 	#-------------------------------------------------------
 	#Army
-	complete_national_focus = FRA_ww1_army_effort
 	complete_national_focus = FRA_ww1_equipment_effort
 	complete_national_focus = FRA_ww1_artillery_effort_1
 	complete_national_focus = FRA_ww1_doctrine_effort
 	complete_national_focus = FRA_ww1_trenchwarfare
-	
+
 	# Air
 	complete_national_focus = FRA_ww1_aviation_effort
 	complete_national_focus = FRA_ww1_aviation_effort_2
-	
+
 	# Industry
-	complete_national_focus = FRA_ww1_industrial_effort
 	complete_national_focus = FRA_ww1_infrastructure_effort
 	complete_national_focus = FRA_ww1_airfield_expansion_1
 	complete_national_focus = FRA_ww1_construction_effort
 	complete_national_focus = FRA_ww1_production_effort
 	complete_national_focus = FRA_ww1_dockyard_effort_1
-	
+
 	# Naval
-	complete_national_focus = FRA_ww1_naval_effort
 	complete_national_focus = FRA_ww1_newnavalcanons_1
 	complete_national_focus = FRA_ww1_dreadnought_effort
 
@@ -335,24 +434,50 @@ create_navy_leader={
 		ww1_directfire = 1
 
 		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_destroyer2 = 1
+		ww1_battleship2 = 1
+	ww1_battleship2_mtg = 1
+		ww1_battleship3 = 1
+	ww1_battleship3_mtg = 1
+		ww1_battleship4 = 1
+		ww1_destroyer3 = 1
+	ww1_destroyer3_mtg = 1
+		seaplane_carrier = 1 # The first seaplane carrier, the French Foudre in 1912, with plane hangar and cranes.
+
+		ww1_heavy_cruiser0 = 1
+	ww1_heavy_cruiser0_mtg = 1
+		ww1_heavy_cruiser1 = 1
+	ww1_heavy_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_light_cruiser1 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battlecruiser0b = 1
-		ww1_battlecruiser1 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
+		ww1_submarine2 = 1
+		ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
+		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
+		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
+		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
+		ww1_destroyer2 = 1
+	ww1_destroyer2_mtg = 1
+		ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
 		ww1_fighter1b = 1
 		ww1_zeppelin1 = 1
+		ww1_seaplane1 = 1
 
 		# Air Doctrine
 		ww1_airdoctrine = 1
@@ -369,8 +494,13 @@ create_navy_leader={
 		mechanical_computing = 1
 		chemical_research = 1
 		tank_unlocker1 = 1
+		radio = 1
+		supertech1 = 1
+		tankaircraft1 = 1
+		torpedotech1 = 1
 
 		# Industry
+		ww1_tools1 = 1
 		ww1_medicine1 = 1
 		ww1_fortification1 = 1
 		ww1_fortification2 = 1
@@ -378,28 +508,36 @@ create_navy_leader={
 	}
 
 	set_politics = {
-	    parties = {
-	        democratic = {
-	            popularity = 85
-	        }
-	        fascism = {
-	            popularity = 2
-	        }
-	        communism = {
-	            popularity = 13
-	        }
-	    }
-	    ruling_party = democratic last_election = "1910.4.30"
-	    election_frequency = 48 elections_allowed = yes
+	    ruling_party = democratic
+	    last_election = "1910.4.30"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 85
+	    fascism = 2
+	    communism = 12
+	    neutrality = 1
 	}
 
 	add_ideas = {
-		FRA_ww1_Revanchism 
+		FRA_ww1_Revanchism
 		ww1_Scramble_for_Africa
-		#FRA_disjointed_government 
+		#FRA_disjointed_government
 		limited_conscription
+		#Franch_Staff 
 	}
 
+create_equipment_variant = { name="Brumaire Class" type=submarine_1910 parent_version = 4 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+create_equipment_variant = { name="Clorinde Class" type=submarine_1906 parent_version = 3 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+create_equipment_variant = { name="Gustave Zede Class" type=submarine_1906 parent_version = 4 obsolete=yes upgrades={    ship_reliability_upgrade=5       sub_torpedo_upgrade=5 sub_stealth_upgrade=5 sub_engine_upgrade=5  } }
+create_equipment_variant = { name="Amphitrite Class" type=submarine_1906 parent_version = 5 obsolete=yes upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+create_equipment_variant = { name="Bellone Class" type=submarine_1906 parent_version = 6 obsolete=yes upgrades={    ship_reliability_upgrade=5       sub_torpedo_upgrade=5 sub_stealth_upgrade=1 sub_engine_upgrade=1  } }
+create_equipment_variant = { name="Enseigne Roux Class" type=destroyer_1910 parent_version = 0 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=0 } }
+create_equipment_variant = { name="Ensiegne Gabolde Class" type=destroyer_1910 parent_version = 1 obsolete=yes upgrades={     ship_anti_air_upgrade=5    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+create_equipment_variant = { name="Aventurier Class" type=destroyer_1910 parent_version = 2 obsolete=no upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=1    ship_torpedo_upgrade=3 } }
+
+	
 	# Global Flags for 1914 Start Up
 
 	set_global_flag = albanian_revolt_1910
@@ -418,7 +556,368 @@ create_navy_leader={
 	set_global_flag = kis_secondbalkanwar_victory
 	set_global_flag = kis_roland_garros
 	set_global_flag = kis_xinhaire_end
-
+	set_global_flag = kingdom_montenegro_proclaimed
 	set_global_flag = kis_start_1914
+}
 
+1919.1.1 = {
+
+	add_ideas = {
+		interwar_spirit_TheGreatWar_Winner
+	}
+
+	remove_ideas = {
+		FRA_ww1_Revanchism
+		ww1_Scramble_for_Africa
+	}
+
+	oob = "FRA_1919"
+
+	# Global Flags for 1919 Start Up
+
+	set_global_flag = global_RomanovFamilyExecuted
+	set_global_flag = kis_panamacanal
+	set_global_flag = kis_treaty_of_versailles
+	set_global_flag = kis_spanishflu
+	set_global_flag = kis_brestlitovsk
+	set_global_flag = kis_whitesvsreds
+	set_global_flag = kis_ask_ger_surrend
+	set_global_flag = kis_player_decided_ger_surrend
+	set_global_flag = kis_Rasputin_Murdered
+
+	SOV = {
+		set_country_flag = kis_secondrevoltsov
+	}
+
+	ROM = {
+		set_country_flag = carol_dead
+	}
+
+    AUH = {
+		set_country_flag = emperor_franz_dead
+	}
+
+	GRE = {
+		set_country_flag = george_died
+	}
+
+	GER = {
+		set_truce = { 
+			target = GER 
+			days = 90
+		}
+	}
+
+	# Wars and Threats
+	SOV = {
+		declare_war_on = {
+			target = POL
+			type = annex_everything
+		}
+		add_named_threat = {
+			threat = 7
+			name = ww1_interwar_SovietPolish_war_threat
+		}
+
+		activate_decision = SOV_move_capital_to_moscow
+	}
+	UKR = {
+		declare_war_on = {
+			target = SOV
+			type = annex_everything
+		}
+		add_named_threat = {
+			threat = 4
+			name = "ww1_interwar_UkrainianSoviet_war_threat"
+		}
+	}
+	POL = {
+		declare_war_on = {
+			target = UKR
+			type = annex_everything
+		}
+		add_named_threat = {
+			threat = 3
+			name = ww1_interwar_PolishUkrainian_war_threat
+		}
+	}
+
+	# Greco-Turkish War
+	GRE = {
+		declare_war_on = {
+			target = TUR
+			type = take_state
+			generator = { 340 341 342 347 }
+		}
+		declare_war_on = {
+			target = TUK
+			type = take_state
+			generator = { 340 341 342 347 }
+		}
+	}
+
+
+	# The Hungarian Republic supported by Romania is taking back the control over Hungarian Soviet Republic
+	HUN = {
+		declare_war_on = {
+			target = HSR
+			type = annex_everything
+		}
+	}
+
+	RUS = {
+		declare_war_on = {
+			target = SOV
+			type = annex_everything
+		}
+		add_named_threat = {
+			threat = 9
+			name = ww1_interwar_RussianCivil_war_threat
+		}
+
+		declare_war_on = {
+			target = POL
+			type = annex_everything
+		}
+
+		declare_war_on = {
+			target = UKR
+			type = annex_everything
+		}
+	}
+	LIT = {
+		declare_war_on = {
+			target = SOV
+			type = take_state_focus
+			generator = { 189 11 }
+		}
+	}
+	LAT = {
+		declare_war_on = {
+			target = SOV
+			type = take_state_focus
+			generator = { 190 12 }
+		}
+	}
+	EST = {
+		declare_war_on = {
+			target = SOV
+			type = take_state_focus
+			generator = { 13 191 }
+		}
+	}
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+	unlock_national_focus = FRA_ww1_centralizedpower
+	complete_national_focus = FRA_ww1_unitedpeople
+	
+	unlock_national_focus = FRA_ww1_send_diplomats
+	unlock_national_focus = FRA_ww1_inviteUK
+	unlock_national_focus = FRA_ww1_armeeorient
+	unlock_national_focus = FRA_ww1_greece_friend
+	unlock_national_focus = FRA_ww1_allied_bases
+	unlock_national_focus = FRA_ww1_ready_country
+	unlock_national_focus = FRA_ww1_alsaceloreaine_propaganda
+	unlock_national_focus = FRA_ww1_alsaceloreaine_war
+	unlock_national_focus = FRA_ww1_HenriBerthelotRomania
+
+	complete_national_focus = FRA_ww1_french_algeria_infra
+
+	complete_national_focus = FRA_ww1_gasmask_focus
+	complete_national_focus = FRA_ww1_fighter_focus
+	complete_national_focus = FRA_ww1_newnavalcanons_2
+
+	complete_national_focus = FRA_interwar_PeaceAfterVersailles
+	complete_national_focus = FRA_interwar_allied_occupation_rhineland
+	#-------------------------------------------------------
+
+	set_technology = {
+		# Infantry
+		support_weapons2 = 1
+		support_weapons3 = 1
+		ww1infantry_weapons2 = 1
+		ww1_infantry_equip1 = 1
+		ww1_infantry2_equip = 1
+		infantry_gasmask = 1
+		infantry_ww1_mortar1 = 1
+		infantry_flamethrower1 = 1
+		infantry_ww1_machinegun1 = 1
+		early_motorised = 1
+		ww1_ambulance2 = 1
+		tech_mountaineers = 1
+		tech_mountaineers2 = 1
+		marines = 1
+		marines = 2
+
+		# Support
+		tech_signal_company = 1
+
+		tech_engineers2 = 1
+		tech_recon2 = 1
+		tech_military_police2 = 1
+		tech_maintenance_company2 = 1
+		tech_field_hospital2 = 1
+		tech_logistics_company2 = 1
+		tech_signal_company2 = 1
+
+		tech_engineers3 = 1
+		tech_recon3 = 1
+		tech_military_police3 = 1
+		tech_maintenance_company3 = 1
+		tech_field_hospital3 = 1
+		tech_logistics_company3 = 1
+		tech_signal_company3 = 1
+
+		# Armor
+		ww1_armored_car_2 = 1
+			ww1_armored_car_2__nostepback = 1
+		ww1_armored_car_3 = 1
+			ww1_armored_car_3__nostepback = 1
+		ww1_light_tank = 1
+			ww1_light_tank__nostepback = 1
+		ww1_heavy_tank = 1
+			ww1_heavy_tank__nostepback = 1
+		ww1_heavy_tank2 = 1
+			ww1_heavy_tank2__nostepback = 1
+
+		# Artillery
+		light_field_gun2 = 1
+		heavy_field_gun2 = 1
+		bonus_artillery1 = 1
+		bonus_artillery4 = 1
+		bonus_bertha1 = 1
+		bonus_bertha4 = 1
+		bonus_artillery2 = 1
+		bonus_bertha2 = 1
+
+		# Land Doctrine
+		ww1_landdoctrine = 1
+		ww1_directfire = 1
+		ww1_rifle_ammo = 1
+		ww1_long_march = 1
+		ww1_battlefield = 1
+		ww1_target = 1
+		ww1_night = 1
+		ww1_armored_car = 1
+
+		# Navy
+		ww1_battleship4 = 1
+		ww1_battleship4_mtg = 1
+		ww1_battleship5 = 1
+		ww1_battleship5_mtg = 1
+		ww1_battlecruiser1 = 1
+		ww1_battlecruiser1_mtg = 1
+		ww1_battlecruiser1 = 1
+		ww1_battlecruiser1_mtg = 1
+		ww1_battlecruiser2 = 1
+		ww1_battlecruiser2_mtg = 1
+		ww1_battlecruiser3 = 1
+		ww1_battlecruiser3_mtg = 1
+		ww1_light_cruiser1 = 1
+		ww1_light_cruiser1_mtg = 1
+		ww1_light_cruiser3 = 1
+		ww1_light_cruiser3_mtg = 1
+		ww1_light_cruiser4 = 1
+		ww1_light_cruiser4_mtg = 1
+		ww1_light_cruiser5 = 1
+		ww1_light_cruiser5_mtg = 1
+		ww1_destroyer3 = 1
+		ww1_destroyer3_mtg = 1
+		ww1_destroyer4 = 1
+		ww1_destroyer4_mtg = 1
+		ww1_destroyer5 = 1
+		ww1_destroyer5_mtg = 1
+		ww1_submarine2 = 1
+		ww1_submarine2_mtg = 1
+		ww1_submarine3 = 1
+		ww1_submarine3_mtg = 1
+		ww1_submarine4 = 1
+		ww1_submarine4_mtg = 1
+		ww1_coastal_submarine2 = 1
+		ww1_coastal_submarine2_mtg = 1
+		ww1_coastal_submarine3 = 1
+		ww1_coastal_submarine3_mtg = 1
+		ww1_coastal_submarine4 = 1
+		ww1_coastal_submarine4_mtg = 1
+		ww1_cruiser_submarine1 = 1
+		ww1_cruiser_submarine1_mtg = 1
+		ww1_cruiser_submarine2 = 1
+		ww1_cruiser_submarine2_mtg = 1
+		ww1_smoke_generator = 1
+		ww1_smoke_generator_mtg = 1
+		seaplane_carrier = 1
+		seaplane_carrier_mtg = 1
+
+		# Naval Doctrine
+		ww1_navaldoctrine = 1
+		ww1_navaldoctrine_2 = 1
+		ww1_navaldoctrine_3 = 1
+		ww1_navaldoctrine_4 = 1
+		ww1_navaldoctrine_5b = 1
+		ww1_navaldoctrine_6b = 1
+
+		# Air
+		ww1_fighter2 = 1
+		ww1_fighter2b = 1
+		ww1_fighter3 = 1
+		ww1_fighter4 = 1
+		ww1_seaplane1 = 1
+		ww1_seaplane2 = 1
+		ww1_bomber1 = 1
+		ww1_bomber2 = 1
+		ww1_bomber3 = 1
+		ww1_zeppelin2 = 1
+
+		# Air Doctrine
+		ww1_airdoctrine = 1
+		ww1_airdoctrine_2 = 1
+		ww1_airdoctrine_3 = 1
+		ww1_airdoctrine_4 = 1
+		ww1_airdoctrine_5 = 1
+		ww1_airdoctrine_6 = 1
+		ww1_airdoctrine_7 = 1
+		ww1_airdoctrine_8 = 1
+		ww1_airdoctrine_9 = 1
+
+		# Engineering
+		supertech1 = 1
+		torpedotech1 = 1
+		tankaircraft1 = 1
+		radio = 1
+		radio2 = 1
+		hoi4tgw_encryption = 1
+		hoi4tgw_decryption = 1
+		dingfelder_engine1 = 1
+		tanktrack1 = 1
+		subhulltech1 = 1
+		mechanical_computing = 1
+		mechanical_computing2 = 1
+		chemical_research2 = 1
+		tank_unlocker2 = 1
+		tank_unlocker2__nostepback = 1
+
+		# Industry
+		ww1_tools1 = 1
+		ww1_tools2 = 1
+		ww1_tools3 = 1
+		ww1_camera1 = 1
+		ww1_camera2 = 1
+		ww1_industry1 = 1
+		ww1_industry2 = 1
+		ww1_medicine1 = 1
+		ww1_medicine2 = 1
+		ww1_medicine3 = 1
+		ww1_construction1 = 1
+		ww1_construction2 = 1
+		ww1_mining1 = 1
+		ww1_mining2 = 1
+		ww1_oil1 = 1
+		ww1_oil2 = 1
+		ww1_bergiusprocess = 1
+		ww1_fortification2 = 1
+		ww1_fortification3 = 1
+		ww1_fortification3b = 1
+	}
 }

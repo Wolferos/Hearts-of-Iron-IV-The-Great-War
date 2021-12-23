@@ -1,7 +1,8 @@
 focus_tree = {
+
 	id = british_focus
 	default = no
-	country = { factor=0 modifier = { add = 10 tag = ENG } }
+	country = { factor = 0 modifier = { add = 10 tag = ENG } }
 
 	###########################################################################################################################
 	# POLITICAL
@@ -14,7 +15,7 @@ focus_tree = {
 		cost = 10
 		x = 2
 		y = 0
-		}
+	}
 
 	#----------------------------------------------------------------------- 
 	# Bloc 1 - Support the Republic
@@ -22,23 +23,23 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_support_republic
-		prerequisite = { focus=ENG_ww1_political_effort }
+		prerequisite = { focus = ENG_ww1_political_effort }
 		icon = GFX_goal_generic_territory_or_war
-		#available = { has_government=neutrality }
+
 		completion_reward = { add_political_power=100 }
 
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 1
 		y = 1
-		mutually_exclusive = { focus=ENG_ww1_contest_republic }
+		mutually_exclusive = { focus = ENG_ww1_contest_republic }
 	}
 
 	focus = {
 		id = ENG_ww1_democracy
-		prerequisite = { focus=ENG_ww1_support_republic }
+		prerequisite = { focus = ENG_ww1_support_republic }
 		icon = GFX_goal_support_democracy
-		completion_reward = { add_ideas=liberty_ethos_focus }
+		completion_reward = { add_ideas = liberty_ethos_focus }
 
 		ai_will_do = { factor = 20 }
 		cost = 10
@@ -48,7 +49,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_freespeech
-		prerequisite = { focus=ENG_ww1_democracy }
+		prerequisite = { focus = ENG_ww1_democracy }
 		icon = GFX_goal_generic_propaganda
 
 		completion_reward = { add_tech_bonus={ name=industrial_bonus bonus=0.15 uses=1 category=industry } add_political_power=50 }
@@ -61,7 +62,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_conscription_focus
-		prerequisite = { focus=ENG_ww1_freespeech }
+		prerequisite = { focus = ENG_ww1_freespeech }
 		icon = GFX_goal_generic_allies_build_infantry
 		completion_reward = { add_manpower = 23000}
 		ai_will_do = { factor = 10 }
@@ -72,7 +73,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_centralizedpower
-		prerequisite = { focus=ENG_ww1_conscription_focus }
+		prerequisite = { focus = ENG_ww1_conscription_focus }
 		icon = GFX_goal_molotov_ribbentrop_pact
 
 		completion_reward = {
@@ -111,7 +112,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_unitedpeople
-		prerequisite = { focus=ENG_ww1_centralizedpower }
+		prerequisite = { focus = ENG_ww1_centralizedpower }
 		icon = GFX_goal_generic_demand_territory
 		completion_reward = {
 			add_political_power=50
@@ -134,7 +135,7 @@ focus_tree = {
 	#-----------------------------------------------------------------------
 	focus = {
 		id = ENG_ww1_contest_republic
-		prerequisite = { focus=ENG_ww1_political_effort }
+		prerequisite = { focus = ENG_ww1_political_effort }
 		icon = GFX_goal_generic_alliance
 		completion_reward = { add_political_power=-100 }
 
@@ -142,13 +143,13 @@ focus_tree = {
 		cost = 10
 		x = 3
 		y = 1
-		mutually_exclusive = { focus=ENG_ww1_support_republic }
+		mutually_exclusive = { focus = ENG_ww1_support_republic }
 	}
 
 
 	focus = {
 		id = ENG_ww1_internationalism_focus
-		prerequisite = { focus=ENG_ww1_contest_republic }
+		prerequisite = { focus = ENG_ww1_contest_republic }
 		available = {
 			OR={
 	 			SOV = {
@@ -173,7 +174,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_political_correctness
-		prerequisite = { focus=ENG_ww1_internationalism_focus }
+		prerequisite = { focus = ENG_ww1_internationalism_focus }
 		icon = GFX_goal_generic_dangerous_deal
 		completion_reward = { add_political_power=200 add_ideas=idea_political_correctness }
 
@@ -185,7 +186,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_indoctrination_focus
-		prerequisite = { focus=ENG_ww1_political_correctness }
+		prerequisite = { focus = ENG_ww1_political_correctness }
 		icon = GFX_goal_generic_propaganda
 		completion_reward = { add_ideas=indoctrination_focus add_political_power=150 }
 
@@ -197,8 +198,8 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_install_communism
-		prerequisite = { focus=ENG_ww1_indoctrination_focus }
-		#prerequisite = { focus=ENG_ww1_leave_triple_entente }
+		prerequisite = { focus = ENG_ww1_indoctrination_focus }
+		#prerequisite = { focus = ENG_ww1_leave_triple_entente }
 		icon = GFX_goal_generic_soviet_construction
 
 		completion_reward = {
@@ -222,7 +223,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_political_commissars
-		prerequisite = { focus=ENG_ww1_install_communism }		
+		prerequisite = { focus = ENG_ww1_install_communism }		
 		icon = GFX_goal_generic_forceful_treaty
 		available = { }
 		completion_reward = { add_ideas=political_commissars_focus if={ limit={ has_government=fascism } add_popularity={ ideology=fascism popularity=0.2 } } if={ limit={ has_government=communism } add_popularity={ ideology=communism popularity=0.2 } } add_political_power=200 }
@@ -236,7 +237,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_limited_rearmament
-		prerequisite = { focus=ENG_ww1_unitedpeople focus=ENG_ww1_political_commissars  }
+		prerequisite = { focus = ENG_ww1_unitedpeople focus = ENG_ww1_political_commissars  }
 		icon = GFX_goal_generic_consumer_goods
 
 
@@ -251,7 +252,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_massive_effort
-		prerequisite = { focus=ENG_ww1_unitedpeople focus=ENG_ww1_political_commissars  }
+		prerequisite = { focus = ENG_ww1_unitedpeople focus = ENG_ww1_political_commissars  }
 		icon = GFX_goal_generic_construction
 
 		completion_reward = {
@@ -286,7 +287,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_reorganization_act
-		prerequisite = { focus=ENG_ww1_unitedpeople focus=ENG_ww1_political_commissars  }
+		prerequisite = { focus = ENG_ww1_unitedpeople focus = ENG_ww1_political_commissars  }
 		icon = GFX_goal_generic_production2
 		x = 4
 		y = 7
@@ -299,7 +300,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_liberate_policy
-		prerequisite = { focus=ENG_ww1_political_commissars }
+		prerequisite = { focus = ENG_ww1_political_commissars }
 		icon = GFX_goal_generic_forceful_treaty
 		available = { }
 		completion_reward = { 
@@ -314,13 +315,38 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_release_egypt
-		prerequisite = { focus=ENG_ww1_liberate_policy }
-		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = ENG_ww1_liberate_policy }
+		icon = GFX_focus_chi_british_cooperation
 		available = {
-			NOT={ country_exists=EGY }
+			EGY = {
+				exists = yes
+				is_puppet_of = ENG
+			}
 		}
 		completion_reward = { 
-			release = EGY
+			end_puppet = EGY
+
+			EGY = {
+				every_country = {
+					limit = {
+						has_war_with = EGY
+					}
+					ROOT = {
+						white_peace = PREV
+					}
+				}
+			}
+
+			EGY = {
+				every_country = {
+					limit = {
+						has_war_with = EGY
+					}
+					ROOT = {
+						white_peace = PREV
+					}
+				}
+			}
 		}
 		ai_will_do = { factor = 0 }
 		cost = 10
@@ -330,7 +356,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_release_ireland
-		prerequisite = { focus=ENG_ww1_liberate_policy }
+		prerequisite = { focus = ENG_ww1_liberate_policy }
 		icon = GFX_goal_generic_forceful_treaty
 		available = { 
 			NOT={ country_exists=IRE }
@@ -362,47 +388,66 @@ focus_tree = {
 	#----------------------------------------------------------------------- 
 	# Bloc 1
 	#-----------------------------------------------------------------------
+
 	focus = {
-		id = ENG_ww1_triple_alliance
-		prerequisite = { focus=ENG_ww1_diplomatic_effort }
-		available = { NOT = { has_country_flag= leaved_triple_entente } }
-		icon = GFX_goal_generic_demand_territory
-		completion_reward = { ENG={ add_opinion_modifier={ target=FRA modifier=triple_alliance_opinion } } RUS={ add_opinion_modifier={ target=FRA modifier=triple_alliance_opinion } } }
+		id = ENG_ww1_sultanate_egypt
+		icon = GFX_goal_molotov_ribbentrop_pact
+		prerequisite = { focus = ENG_ww1_diplomatic_effort }
+		available = {
+			ENG = {
+				has_war_with = TUR
+			}
+			EGY = {
+				is_puppet_of = ENG
+				NOT = {
+					has_government = democratic
+				}
+			}
+			date > 1914.11.11
+		}
+		completion_reward = {
+			news_event = { days = 1 id = kis_news.121 }
+			hidden_effect = {
+				EGY = {
+					kill_country_leader = yes
+					set_politics = {
+					    ruling_party = democratic last_election = "1911.7.1"
+					    election_frequency = 48 
+					    elections_allowed = no
+					}
+					set_popularities = {
+						neutrality = 0
+						fascism = 0
+						democratic = 100
+						communism = 0
+					}					
+					add_popularity = {
+						ideology = democratic
+						popularity = 1
+					}
+				}
+			}
+
+			EGY = {
+				create_country_leader = {
+					name = "Hussein Kamel"
+					desc = "POLITICS_HusseinKamel_DESC"
+					picture = "gfx/hoi4tgw_portraits/EGY/country_leaders/EGY_hussein_kamel.dds"
+					expire = "1965.1.1"
+					ideology = conservatism
+					traits = { }
+				}
+			}
+		}
 		ai_will_do = { factor = 20 }
 		cost = 10
-		x = 8
+		x = 6
 		y = 1
 	}
 
 	focus = {
-		id = ENG_ww1_back_france
-		prerequisite = { focus=ENG_ww1_triple_alliance }
-		icon = GFX_hoi4tgw_marianne
-		available = { NOT={ has_war_with=ENG } }
-		completion_reward = { ENG={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_alliance_bonus } } RUS={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_alliance_malus } } }
-		ai_will_do = { factor = 20 }
-		cost = 10
-		x = 7
-		y = 2
-		mutually_exclusive = { focus=ENG_ww1_back_russia }
-	}
-
-	focus = {
-		id = ENG_ww1_back_russia
-		prerequisite = { focus=ENG_ww1_triple_alliance }
-		icon = GFX_hoi4tgw_russianempire
-		available = { NOT={ has_war_with=RUS } }
-		completion_reward = { RUS={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_alliance_bonus } } ENG={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_alliance_malus } } }
-		ai_will_do = { factor = 20 }
-		cost = 10
-		x = 9
-		y = 2
-		mutually_exclusive = { focus=ENG_ww1_back_france }
-	}
-
-	focus = {
 		id = ENG_ww1_send_diplomats
-		prerequisite = { focus=ENG_ww1_back_france focus=ENG_ww1_back_russia }
+		prerequisite = { focus = ENG_ww1_diplomatic_effort }
 		icon = GFX_goal_generic_territory_or_war
 		completion_reward = { 
 			ENG = { 
@@ -410,31 +455,167 @@ focus_tree = {
 					target = FRA modifier=HOI4TGW_Opinion_diplomats_bonus 
 				} 
 			}
-			FRA = { 
+			ENG = { 
 				add_opinion_modifier = { 
-					target = ENG modifier=HOI4TGW_Opinion_diplomats_bonus 
+					target = GER modifier=HOI4TGW_Opinion_diplomats_bonus 
 				} 
 			} 
-			RUS = { 
+			ENG = { 
 				add_opinion_modifier = { 
-					target = FRA modifier=HOI4TGW_Opinion_diplomats_bonus
+					target = SER modifier=HOI4TGW_Opinion_diplomats_bonus
 				} 
 			} 
-			FRA = { 
+			ENG = { 
 				add_opinion_modifier = { 
 					target = RUS modifier=HOI4TGW_Opinion_diplomats_bonus
 				} 
 			} 
+			ENG = { 
+				add_opinion_modifier = { 
+					target = TUR modifier=HOI4TGW_Opinion_diplomats_bonus 
+				} 
+			}
+			ENG = { 
+				add_opinion_modifier = { 
+					target = AUH modifier=HOI4TGW_Opinion_diplomats_bonus
+				} 
+			} 
 		}
-		ai_will_do = { factor = 20 }
+		ai_will_do = { factor = 120 }
 		cost = 10
 		x = 8
+		y = 1
+	}
+
+
+	focus = {
+		id = ENG_ww1_back_france
+		prerequisite = { focus = ENG_ww1_send_diplomats }
+		icon = GFX_hoi4tgw_marianne
+		available = { NOT={ has_war_with=FRA } }
+
+		completion_reward = {
+			ENG={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_alliance_bonus } }
+		}
+
+		ai_will_do = { factor = 70 }
+		cost = 9
+		x = 6
+		y = 2
+	}
+
+	focus = {
+		id = ENG_ww1_back_russia
+		prerequisite = { focus = ENG_ww1_send_diplomats }
+		icon = GFX_hoi4tgw_russianempire
+		available = { NOT={ has_war_with=RUS } }
+
+		completion_reward = {
+			ENG={ add_opinion_modifier={ target=RUS modifier=HOI4TGW_Opinion_alliance_bonus } }
+		}
+
+		ai_will_do = { factor = 70 }
+		cost = 9
+		x = 8
+		y = 2
+	}
+
+	#Open Beta 0.2
+	focus = {
+		id = ENG_ww1_triple_alliance
+		prerequisite = { focus = ENG_ww1_back_france focus = ENG_ww1_back_russia }
+
+		mutually_exclusive = { focus = ENG_ww1_join_GERMANY }
+
+		icon = GFX_goal_generic_demand_territory
+
+		bypass = {
+			is_in_faction_with = FRA
+		}
+
+		available = {
+			NOT = { has_war_with = FRA }
+			NOT = { has_war_with = RUS }
+
+	        FRA = {
+	            is_faction_leader = yes
+	        }
+		}
+
+		completion_reward = { 
+            FRA = {
+                add_to_faction = ENG
+            }
+		}
+
+		ai_will_do = {
+			factor = 800
+			modifier = {
+				factor = 0
+				FRA = {	is_ai = no	}
+			}
+		}
+
+		cost = 10
+		x = 7
 		y = 3
 	}
 
 	focus = {
+		id = ENG_ww1_join_GERMANY
+		prerequisite = { focus = ENG_ww1_pro_ger }
+
+		mutually_exclusive = { focus = ENG_ww1_triple_alliance }
+
+		icon = GFX_goal_generic_major_alliance
+		available = {
+			NOT = { has_war_with = GER }
+			NOT = { has_war_with = AUH }
+
+	        GER = {
+	            is_faction_leader = yes
+	        }
+		}
+
+		completion_reward = { 
+            GER = {
+                add_to_faction = ENG
+            }
+		}
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 9
+		y = 3
+	}
+
+	focus = {
+		id = ENG_ww1_austria_friend
+		prerequisite = { focus = ENG_ww1_join_GERMANY focus = ENG_ww1_ready_country }
+		icon = GFX_hoi4tgw_austriahungary
+		available = {
+
+		    AUH = {
+		        exists = yes 
+		    }
+
+		    is_in_faction_with = AUH
+		    is_in_faction_with = GER
+		}
+
+		completion_reward = {
+			ENG={ add_opinion_modifier={ target=AUH modifier=HOI4TGW_Opinion_alliance_bonus } }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 8
+		x = 9
+		y = 5
+	}
+
+	focus = {
 		id = ENG_ww1_portugal_friend
-		prerequisite = { focus=ENG_ww1_send_diplomats }
+		prerequisite = { focus = ENG_ww1_triple_alliance focus = ENG_ww1_ready_country }
 		icon = GFX_goal_generic_improve_relations
 		available = {
 			has_war_with = GER
@@ -469,14 +650,14 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 8
-		y = 4
+		x = 7
+		y = 5
 	}
 
 	focus = {
 		id = ENG_ww1_small_arms_focus
-		#prerequisite = { focus=ENG_ww1_portugal_puppet focus=ENG_ww1_portugal_friend}
-		prerequisite = { focus=ENG_ww1_portugal_friend}
+		#prerequisite = { focus = ENG_ww1_portugal_puppet focus = ENG_ww1_portugal_friend}
+		prerequisite = { focus = ENG_ww1_portugal_friend}
 		icon = GFX_goal_generic_production2
 		available = {
 			has_war_with = GER
@@ -484,13 +665,13 @@ focus_tree = {
 		completion_reward = { add_ideas=british_arms_discount }
 		ai_will_do = { factor = 20 }
 		cost = 10
-		x = 8
-		y = 5
+		x = 7
+		y = 6
 	}	
 
 	focus = {
 		id = ENG_ww1_crypto_bomb_focus
-		prerequisite = { focus=ENG_ww1_small_arms_focus }
+		prerequisite = { focus = ENG_ww1_small_arms_focus }
 		icon = GFX_hoi4tgw_britania
 		available = {
 			has_war_with = GER
@@ -498,13 +679,13 @@ focus_tree = {
 		completion_reward = { add_tech_bonus={ name=codebreaking_bonus bonus=0.5 uses=3 category=decryption_tech category=computing_tech } }
 		ai_will_do = { factor = 20 }
 		cost = 10
-		x = 8
-		y = 6
+		x = 7
+		y = 7
 	}	
 
 	focus = {
 		id = ENG_ww1_military_training_act
-		prerequisite = { focus=ENG_ww1_crypto_bomb_focus }
+		prerequisite = { focus = ENG_ww1_crypto_bomb_focus }
 		icon = GFX_goal_generic_allies_build_infantry
 		available = {
 			has_war_with = GER
@@ -513,99 +694,406 @@ focus_tree = {
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 6
-		y = 7
+		y = 8
 	}
 	
 	focus = {
 		id = uk_lawrence_focus
-		prerequisite = { focus=ENG_ww1_crypto_bomb_focus }
 		icon = GFX_goal_generic_cavalry
+		prerequisite = { focus = ENG_ww1_crypto_bomb_focus }
 		available = {
-		  	TUR={
-			   	has_war_with=ENG
+		  	TUR = {
+			   	has_war_with = ENG
 		   	}
-		  	ENG={
-			   	controls_state=453
-		   	}
-		  	not={
-			   	HJZ={
-			    	has_war_with=ENG
+		  	NOT = {
+			   	HJZ = {
+			    	has_war_with = ENG
 			    }
 		   	}
-		  	date>1917.1.1
-	   		date<1925.12.30
+
+		   	# Open Beta 0.3.1
+			EGY = {
+				exists = yes
+				is_puppet_of = ENG
+			}
+
+		  	date > 1917.1.1
+	   		date < 1925.12.30
 	  	}
 		completion_reward = {
-			HJZ={
-		   		country_event=ww1_hejaz.8
-		   	}
-	  		set_global_flag=te_lawrence
+	  		set_global_flag = te_lawrence
+
+	  		HJZ = {
+				# create_corps_commander = {
+				# 	name = "T. E. Lawrence" 
+				# 	id = 74036
+				# 	portrait_path = "gfx/HJZ/army_generals/HJZ_Thomas_Edward_Lawrence.dds"
+				# 	traits = { }
+				# 	skill = 3
+				# 	attack_skill = 2
+				# 	defense_skill = 2
+				# 	planning_skill = 2
+				# 	logistics_skill = 2
+				# }
+				create_corps_commander = {  
+					name = "T. E. Lawrence" 
+					id = 38007 
+					portrait_path = "gfx/HJZ/army_generals/HJZ_Thomas_Edward_Lawrence.dds" 
+					traits = { 
+						trickster
+					} 
+					skill = 4
+				}
+	  		}
 		}
-		ai_will_do = { factor = 20 }
-		cost = 10
-		x = 8
-		y = 7
-	}
-
-	focus = {
-		id = uk_arab_focus
-		prerequisite = { focus=ENG_ww1_crypto_bomb_focus }
-		icon = GFX_goal_generic_occupy_states_ongoing_war
-		available = {
-		  	TUR={
-			   	has_war_with=ENG
-				   has_war_with=HJZ
-		   	}
-		 	ENG={
-				controls_state=453
-			}
-			HJZ={
-			   	NOT={
-			    	has_war_with=ENG
-			    }
-		   	}
-		  	date>1917.1.1
-		  	date<1925.12.30
-	  	}
-		completion_reward = {
-			HJZ={
-				   country_event=ww1_hejaz.7
-				   }
-			}
-		ai_will_do = { factor = 20 }
-		cost = 10
-		x = 10
-		y = 7
-	}
-
-	focus = {
-		id = uk_iran_focus
-		prerequisite = { focus=ENG_ww1_military_training_act focus=uk_lawrence_focus focus=uk_arab_focus }
-		icon = GFX_goal_generic_forceful_treaty
-		available = {
-			  GER={
-				   has_war_with=ENG
-				   }
-			  TUR={
-				   has_war_with=ENG
-				   }
-			  not={
-				   PER={
-					    has_war_with=ENG
-					    }
-				   }
-			  RAJ={
-				   controls_state=444
-				   }
-			   country_exists=PER
-			  }
-		bypass = { PER={ exists=no } }
-		completion_reward = { give_guarantee = PER }
-		ai_will_do = { factor = 20 }
+		ai_will_do = { factor = 1 }
 		cost = 10
 		x = 8
 		y = 8
 	}
+
+	focus = {
+		id = uk_arab_focus
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		prerequisite = { focus = ENG_ww1_crypto_bomb_focus }
+		available = {
+		  	TUR = {
+				has_war_with = ENG
+				has_war_with = HJZ
+		   	}
+		 	ENG = {
+				controls_state = 453
+			}
+			HJZ = {
+			   	NOT = {
+			    	has_war_with = ENG
+			    }
+		   	}
+		  	date > 1917.1.1
+		  	date < 1925.12.30
+	  	}
+		completion_reward = {
+			HJZ = {
+		   		# country_event = ww1_hejaz.8
+
+		   		add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = 10000
+                }
+		   	}
+		   	add_equipment_to_stockpile = {
+                type = infantry_equipment
+                amount = -10000
+            }
+		}
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 10
+		y = 8
+	}
+
+	################## OPEN BETA 0.8 ########## [START] #############
+
+	focus = {
+		id = ENG_ww1_Persian_Question
+		prerequisite = { 
+			focus = ENG_ww1_military_training_act
+			focus = uk_lawrence_focus 
+			focus = uk_arab_focus
+		}
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		available = {
+			PER = {
+				exists = yes
+			}
+			has_war_with = TUR
+			NOT = {
+				has_war_with = PER
+			}
+		}
+		bypass = { PER = { exists=no } }
+		completion_reward = {
+			PER = {
+				add_popularity = {
+					ideology = communism
+					popularity = 0.05
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.05
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
+			}
+		}
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 8
+		y = 9
+	}
+
+	focus = {
+		id = ENG_ww1_Support_Persia_Convention
+		icon = GFX_goal_molotov_ribbentrop_pact
+
+		prerequisite = { focus = ENG_ww1_Persian_Question }
+
+		mutually_exclusive = { focus = ENG_ww1_Revoke_Persia_Convention }
+
+		available = {
+			country_exists = PER
+			NOT = { 
+				has_war_with = PER
+				RUS = {
+					has_completed_focus = RUS_ww1_Revoke_Persia_Convention
+				}
+			}
+		}
+
+		bypass = {
+			RUS = {
+				has_completed_focus = RUS_ww1_Support_Persia_Convention
+				has_completed_focus = RUS_ww1_Revoke_Persia_Convention
+			}
+		}
+
+		cancel_if_invalid = yes
+
+		completion_reward = {
+			add_political_power = 75
+
+			ENG = { 
+				add_opinion_modifier = { 
+					target = RUS 
+					modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Respected 
+				} 
+				add_opinion_modifier = { 
+					target = PER 
+					modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Respected 
+				} 
+			}
+			PER = {
+				add_opinion_modifier = { 
+					target = ENG 
+					modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Respected 
+				} 
+			}
+			RUS = {
+				add_opinion_modifier = { 
+					target = ENG 
+					modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Respected 
+				} 
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 10
+		x = 7
+		y = 10
+
+	}
+
+	focus = {
+		id = ENG_ww1_Form_AngloPersian_Oil_Company
+		icon = GFX_goal_generic_oil_refinery
+
+		prerequisite = {
+			focus = ENG_ww1_Support_Persia_Convention
+		}
+
+		available = {
+			country_exists = PER
+			NOT = { 
+				has_war_with = PER
+			}
+		}
+
+		completion_reward = {
+			add_ideas = ww1_ENG_APOC
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 10
+		x = 7
+		y = 11
+
+	}
+
+	focus = {
+		id = ENG_ww1_Persian_MilitaryAccess
+		icon = GFX_focus_generic_treaty
+
+		prerequisite = {
+			focus = ENG_ww1_Support_Persia_Convention
+		}
+
+		available = {
+			country_exists = PER
+			NOT = { 
+				has_war_with = PER
+			}
+		}
+
+		completion_reward = {
+			PER = {
+				country_event = { days = 1 id = ww1_persia.2 }
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 10
+		x = 5
+		y = 11
+
+	}
+
+	focus = {
+		id = ENG_ww1_Revoke_Persia_Convention
+		icon = GFX_focus_eng_imperial_federation
+
+		prerequisite = { focus = ENG_ww1_Persian_Question }
+
+		mutually_exclusive = { focus = ENG_ww1_Support_Persia_Convention }
+
+		available = {
+			country_exists = PER
+			NOT = { 
+				has_war_with = PER 
+				RUS = {
+					has_completed_focus = RUS_ww1_Support_Persia_Convention
+					has_completed_focus = RUS_ww1_Revoke_Persia_Convention
+				}
+			}
+		}
+
+		bypass = {
+			RUS = {
+				has_completed_focus = RUS_ww1_Revoke_Persia_Convention
+			}
+		}
+
+		cancel_if_invalid = yes
+
+		completion_reward = {
+			add_political_power = -100
+			ENG = { 
+				add_opinion_modifier = { 
+					target = RUS 
+					modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Betrayed 
+				} 
+				add_opinion_modifier = { 
+					target = PER 
+					modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Betrayed 
+				} 
+			}
+			PER = {
+				add_opinion_modifier = { 
+					target = ENG 
+					modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Betrayed 
+				} 
+			}
+			RUS = {
+				add_opinion_modifier = { 
+					target = ENG 
+					modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Betrayed 
+				} 
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 10
+		x = 9
+		y = 10
+
+	}
+
+	focus = {
+		id = ENG_ww1_Protect_Persian_Borders
+		icon = GFX_goal_generic_construct_military
+
+		prerequisite = {
+			focus = ENG_ww1_Revoke_Persia_Convention
+		}
+
+		available = {
+			country_exists = PER
+			NOT = { 
+				has_war_with = PER
+			}
+			controls_state = 444
+		}
+
+		completion_reward = {
+			444 = {
+				add_building_construction = {
+					type = trench
+					level = 1
+					province = 5075
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 12761
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = trench
+					level = 1
+					province = 5043
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = trench
+					level = 1
+					province = 12774
+					instant_build = yes
+				}
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 10
+		x = 9
+		y = 11
+
+	}
+
+	focus = {
+		id = ENG_ww1_Protect_Persia
+		icon = GFX_goal_generic_forceful_treaty
+
+		prerequisite = {
+			focus = ENG_ww1_Revoke_Persia_Convention
+		}
+
+		available = {
+			country_exists = PER
+			NOT = { 
+				has_war_with = PER
+			}
+		}
+
+		completion_reward = {
+			give_guarantee = PER
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 10
+		x = 11
+		y = 11
+
+	}
+
+	################## OPEN BETA 0.8 ########## [END] #############
 
 	#----------------------------------------------------------------------- 
 	# Bloc 2
@@ -621,9 +1109,37 @@ focus_tree = {
 		y = 1
 	}
 
+	# Open Beta 0.2
+	focus = {
+		id = ENG_ww1_pro_ger
+		prerequisite = { focus = ENG_ww1_send_diplomats }
+		mutually_exclusive = { focus = ENG_ww1_anti_ger }
+
+		available = {
+	  		has_war=no
+	  		NOT = { is_in_faction_with = FRA }
+	  	}
+
+		icon = GFX_hoi4tgw_germanempire
+		completion_reward = {
+
+			diplomatic_relation = { country = BEL relation = guarantee active = no }
+
+			ENG={ add_opinion_modifier={ target=GER modifier=HOI4TGW_Opinion_alliance_bonus } }
+			ENG={ add_opinion_modifier={ target=BEL modifier=HOI4TGW_Opinion_alliance_malus } }
+			ENG={ add_opinion_modifier={ target=RUS modifier=HOI4TGW_Opinion_alliance_malus } }
+			ENG={ add_opinion_modifier={ target=FRA modifier=HOI4TGW_Opinion_alliance_malus } }
+		}
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 10
+		y = 2
+	}
+
 	focus = {
 		id = ENG_ww1_anti_ger
 		prerequisite = { focus = ENG_ww1_assert_position_west }
+		mutually_exclusive = { focus = ENG_ww1_pro_ger }
 		bypass = {
 			has_war_with = GER
 			NOT = { country_exists = GER }
@@ -663,7 +1179,6 @@ focus_tree = {
 			release = IRE
 		  	add_manpower = 20000
 		  	add_political_power = 30
-		  	#remove_ideas=neutrality_idea
 	  	}
 		ai_will_do = { factor = 0 }
 		cost = 10
@@ -686,7 +1201,6 @@ focus_tree = {
 		completion_reward = {
 			add_manpower = 50000
 			add_political_power = -100
-			remove_ideas=neutrality_idea
 		}
 		ai_will_do = { factor = 20 }
 		cost = 10
@@ -696,23 +1210,22 @@ focus_tree = {
 	}
 	#------------------------
 
-
 	focus = {
 		id = ENG_ww1_ready_country
-		prerequisite = { focus = ENG_ww1_ireland_release focus = ENG_ww1_ireland_crush focus = ENG_ww1_nordic_countries}
+		prerequisite = { focus = ENG_ww1_join_GERMANY focus = ENG_ww1_triple_alliance }
 		icon = GFX_goal_demand_sudetenland    
 		completion_reward = {
 			add_manpower = 100000 
 		}   
 		ai_will_do = { factor = 20 }
 		cost = 10
-		x = 13
-		y = 5
+		x = 8
+		y = 4
 	}	
 
 	focus = {
 		id = ENG_ww1_defense_border
-		prerequisite = { focus=ENG_ww1_ready_country }
+		prerequisite = { focus = ENG_ww1_ready_country }
 		icon = GFX_goal_generic_fortify_city
 		completion_reward = { 
 			126 = { # London
@@ -780,7 +1293,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_service_focus
-		prerequisite = { focus=ENG_ww1_ready_country }
+		prerequisite = { focus = ENG_ww1_ready_country }
 		icon = GFX_goal_generic_position_armies
 		available = { }
 		completion_reward = { army_experience=25 navy_experience=25 air_experience=25 }
@@ -790,10 +1303,662 @@ focus_tree = {
 		y = 7
 	}
 
+
+	#-----------------------------------------------------------------------
+	# Bloc X - Interwar
+	#-----------------------------------------------------------------------
+
+
+	focus = {
+		id = ENG_interwar_aftermath_of_world_war_i
+		icon = GFX_goal_generic_national_unity
+		available = { has_global_flag = kis_treaty_of_versailles }
+
+		completion_reward = {
+			add_stability = 0.1
+			army_experience = -500
+			navy_experience = -500
+			air_experience = -500
+
+			add_war_support = -0.15
+
+			hidden_effect = {
+				news_event = { id = interwar_news.11 days = 30 } # Irish War of Independence
+			}
+
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 17
+		y = 7
+	}
+
+	focus = {
+		id = ENG_interwar_Allied_Intervention_in_Russia # Allied intervention in the Russian Civil War
+		icon = GFX_focus_eng_global_defense
+		prerequisite = { focus = ENG_interwar_aftermath_of_world_war_i }
+
+		completion_reward = {
+			213 = {  set_border_war = yes }
+			214 = {  set_border_war = yes }
+			215 = {  set_border_war = yes }
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 20
+		y = 8
+	}
+
+	focus = {
+		id = ENG_interwar_Czechoslovak_Legion # Czechoslovak Legion
+		icon = GFX_focus_secret_rearmament_shine
+		prerequisite = { focus = ENG_interwar_Allied_Intervention_in_Russia }
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -1500
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 18
+		y = 9
+	}
+
+	focus = {
+		id = ENG_interwar_Czechoslovakia
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = { focus = ENG_interwar_Czechoslovak_Legion }
+
+		available = {
+			country_exists = CZE
+		}
+
+		completion_reward = {
+			add_opinion_modifier = { 
+				target = CZE
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 17
+		y = 10
+	}
+
+	focus = {
+		id = ENG_interwar_Mussolini # Consequences of the March on Rome
+		icon = GFX_focus_ger_assassinate_mussolini
+
+		available = {
+			date > 1920.1.1
+			country_exists = ITA	
+			ITA = { has_government = fascism }
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 15
+		y = 11
+	}
+
+	focus = {
+		id = ENG_interwar_Allied_Forces_Withdrew # Allied Forces Withdrew
+		icon = GFX_hoi4tgw_knifeintheback
+		prerequisite = { focus = ENG_interwar_Allied_Intervention_in_Russia }
+		mutually_exclusive = { focus = ENG_interwar_Support_Kolchak_s_Armies }
+
+		available = {
+			date > 1920.1.1
+		}
+
+		completion_reward = {
+
+			213 = { set_border_war = no }
+			214 = { set_border_war = no }
+			215 = { set_border_war = no }
+
+			add_opinion_modifier = { 
+				target = RUS
+				modifier =  HOI4TGW_Opinion_diplomats_malus
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 20
+		y = 10
+	}
+
+	focus = {
+		id = ENG_interwar_ImperialGoldReserve # Imperial Gold Reserve
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		prerequisite = { focus = ENG_interwar_Czechoslovak_Legion }
+		prerequisite = { focus = ENG_interwar_Allied_Forces_Withdrew }
+
+		available = {
+			date > 1920.1.1
+			country_exists = SOV
+			SOV = {
+				has_government = communism
+			}
+		}
+
+		completion_reward = {
+			add_opinion_modifier = { 
+				target = SOV
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 19
+		y = 11
+	}
+
+	focus = {
+		id = ENG_interwar_AntiFascism # Anti-Fascism
+		icon = GFX_focus_focus_fra_fascist_threat
+		prerequisite = { focus = ENG_interwar_Mussolini }
+		mutually_exclusive = { focus = ENG_interwar_DealWithMussolini }
+
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.15
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 14
+		y = 12
+	}
+
+	focus = {
+		id = ENG_interwar_WarOnFascism # WarOnFascism
+		icon = GFX_focus_rom_parties_end
+		prerequisite = { focus = ENG_interwar_AntiFascism }
+
+		available = {
+			country_exists = ITA
+			ITA = { has_government = fascism }
+			ITA = {
+				is_puppet = no
+			}
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = ITA
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 14
+		y = 13
+	}
+
+	focus = {
+		id = ENG_interwar_DealWithMussolini # Deal with Mussolini
+		icon = GFX_focus_befriend_italy
+		prerequisite = { focus = ENG_interwar_Mussolini }
+		mutually_exclusive = { focus = ENG_interwar_AntiFascism }
+		mutually_exclusive = { focus = ENG_interwar_Keep_Calm_and_Stay_the_Course }
+		mutually_exclusive = { focus = ENG_interwar_DealWithTrotsky }
+
+		available = {
+			country_exists = ITA
+			ITA = { has_government = fascism }
+		}
+
+		completion_reward = {
+			add_opinion_modifier = { target = ITA modifier = ita_diplomacy_focus }
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.15
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 16
+		y = 12
+	}
+
+	focus = {
+		id = ENG_interwar_BritishFirst # British First
+		icon = GFX_hoi4tgw_britania
+		prerequisite = { focus = ENG_interwar_DealWithMussolini }
+
+		completion_reward = {
+			add_timed_idea = { idea = reign_of_terror days = 730 }
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.65
+			}
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = no
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 16
+		y = 13
+	}
+
+	focus = {
+		id = ENG_interwar_Keep_Calm_and_Stay_the_Course # Keep Calm and Stay the Course
+		icon = GFX_focus_eng_imperial_federation
+		prerequisite = { focus = ENG_interwar_ImperialGoldReserve }
+		mutually_exclusive = { focus = ENG_interwar_DealWithMussolini }
+		mutually_exclusive = { focus = ENG_interwar_DealWithTrotsky }
+
+		available = {
+			has_war = no
+		}
+
+		completion_reward = {
+			add_war_support = -0.05
+			add_political_power = 100
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 18
+		y = 12
+	}
+
+	focus = {
+		id = ENG_interwar_Favorise_Home_Ownership # Favorise Home Ownership
+		icon = GFX_focus_usa_guarantee_the_american_dream
+		prerequisite = { focus = ENG_interwar_Keep_Calm_and_Stay_the_Course }
+
+		available = {
+			has_war = no
+		}
+
+		completion_reward = {
+			add_stability = 0.1
+		}
+
+		ai_will_do = { factor = 1 }
+
+		cost = 15
+		x = 18
+		y = 13
+	}
+
+	focus = {
+		id = ENG_interwar_DealWithTrotsky # Deal with Trotsky
+		icon = GFX_focus_fra_loyalty_trotzky
+		prerequisite = { focus = ENG_interwar_ImperialGoldReserve }
+		mutually_exclusive = { focus = ENG_interwar_Keep_Calm_and_Stay_the_Course }
+		mutually_exclusive = { focus = ENG_interwar_DealWithMussolini }
+
+
+		available = {
+			country_exists = SOV
+			NOT = { country_exists = RUS }
+			SOV = {
+				has_war = no
+				has_government = communism
+			}
+		}
+
+		completion_reward = {
+
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 20
+		y = 12
+	}
+
+	focus = {
+		id = ENG_interwar_PromoteSocialism # PromoteSocialism
+		icon = GFX_focus_por_workers_of_iberia
+		prerequisite = { focus = ENG_interwar_DealWithTrotsky }
+
+		available = {
+			country_exists = SOV
+			SOV = { has_government = communism }
+		}
+
+		completion_reward = {
+			add_stability = -0.15
+			
+			add_popularity = {
+				ideology = communism
+				popularity = 0.25
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 20
+		y = 13
+	}
+
+	focus = {
+		id = ENG_interwar_ASovietKing # A Soviet King
+		icon = GFX_goal_tfv_burn_the_royal_portraits
+		prerequisite = { focus = ENG_interwar_PromoteSocialism }
+
+		completion_reward = {
+			create_country_leader={ name = "George V" picture="gfx/hoi4tgw_portraits/ENG/country_leaders/ENG_george_v.dds" expire="1935.1.1" ideology=marxism traits={  } }
+			add_popularity = {
+				ideology = communism
+				popularity = 0.65
+			}
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 10
+		x = 20
+		y = 14
+	}
+
+
+	focus = {
+		id = ENG_interwar_Support_Kolchak_s_Armies # Kolchak's Armies
+		icon = GFX_hoi4tgw_wggrus
+		prerequisite = { focus = ENG_interwar_Allied_Intervention_in_Russia }
+		mutually_exclusive = { focus = ENG_interwar_Allied_Forces_Withdrew }
+
+		bypass = {
+			NOT = {
+				country_exists = RUS
+			}
+		}
+
+		available = {
+			country_exists = RUS
+
+			RUS = {
+				is_puppet = no
+				has_war_with = SOV
+			}
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		completion_reward = {
+			add_war_support = 0.1
+			add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -5000
+			}
+			RUS = {
+				add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 5000
+				}
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 22
+		y = 10
+	}
+
+	focus = {
+		id = ENG_interwar_AntiBolshevik
+		icon = GFX_focus_hol_united_netherlands
+		prerequisite = { focus = ENG_interwar_Support_Kolchak_s_Armies }
+
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = -0.20
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 22
+		y = 11
+	}
+
+	focus = {
+		id = ENG_interwar_OperationThinkable # Ref. to https://en.wikipedia.org/wiki/Operation_Unthinkable
+		icon = GFX_focus_eng_expose_the_belly_of_the_bear
+		prerequisite = { focus = ENG_interwar_AntiBolshevik }
+
+		available = {
+			country_exists = SOV
+			SOV = { has_government = communism }
+			SOV = {
+				is_puppet = no
+			}
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = SOV
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+
+		cost = 15
+		x = 22
+		y = 12
+	}
+
+
+	#Irish Free State
+	focus = {
+		id = ENG_interwar_irish_free_state
+		prerequisite = { focus = ENG_interwar_aftermath_of_world_war_i }
+		
+		icon = GFX_goal_support_democracy
+
+		available = {
+
+			date > 1921.1.1
+
+			OR = {
+				has_global_flag = interwar_irish_war_of_independence
+				ENG = { has_war_with = IRE }
+			}
+		}
+
+		x = 15
+		y = 9
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 100	
+		}
+
+		completion_reward = {
+
+			news_event = { id = interwar_news.12 } #Irish Free State
+
+			IRE = {
+				transfer_state = 113
+				transfer_state = 134
+				transfer_state = 135
+			}
+
+			hidden_effect = {
+				ENG = { 
+					white_peace = IRE
+				}
+				IRE = { 
+					white_peace = ENG
+				}
+			}
+		}
+	}
+
+	#Treaty of Lausanne
+	focus = {
+		id = ENG_interwar_treaty_of_lausanne
+		prerequisite = { focus = ENG_interwar_aftermath_of_world_war_i }
+		mutually_exclusive = { focus = ENG_interwar_invade_constantinople }
+		
+		icon = GFX_goal_generic_forceful_treaty
+
+		available = {
+			date>1922.1.1
+			has_global_flag = interwar_greco_turkish_war
+			not = { has_global_flag = interwar_treaty_of_lausanne }
+
+			ENG = { has_war = no }
+			FRA = { has_war = no }
+			GRE = { has_war_with = TUR }
+		}
+
+		x = 16
+		y = 8
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 100	
+		}
+
+		completion_reward = {
+
+			news_event = { id = interwar_news.10 } #Treaty of Lausanne
+
+			hidden_effect = {
+
+				GRE = { 
+					white_peace = TUR
+				}
+				TUR = { 
+					white_peace = GRE
+				}
+
+			}
+
+		}
+	}
+
+	#Invade Constantinople
+	focus = {
+		id = ENG_interwar_invade_constantinople
+		mutually_exclusive = { focus = ENG_interwar_treaty_of_lausanne }
+
+		icon = GFX_goal_generic_territory_or_war
+
+		available = {
+			date>1921.1.1
+			has_global_flag = interwar_greco_turkish_war
+			not = { has_global_flag = interwar_treaty_of_lausanne }
+
+			GRE = { has_war_with = TUR }
+		}
+
+		x = 18
+		y = 8
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+
+		completion_reward = {
+
+	        declare_war_on = {
+	            type = annex_everything
+	            target = TUR
+	        }
+		}
+	}
+
+
+
+	#-----------------------------------------------------------------------
+	# Anglo-Ottoman Convention of 1913
+	#-----------------------------------------------------------------------
+	focus = {
+		id = ENG_ww1_AngloOttomanConvention
+		prerequisite = { focus = ENG_ww1_diplomatic_effort }
+		icon = GFX_goal_generic_forceful_treaty
+
+		available = {
+			has_global_flag = ITA_Lib_War_End_Victory
+			country_exists = ENG
+			country_exists = KUW
+			country_exists = QAT
+			NOT = { has_war_with = ENG }
+			NOT = { has_war_with = KUW }
+			NOT = { has_war_with = QAT }
+		}
+
+		completion_reward = {
+			TUR = {
+				country_event = ww1_ottoman.22
+			}
+		}
+
+		ai_will_do = { factor = 50 }
+		cost = 10
+		x = 16
+		y = 1
+	}
+
+
+
+
 	#-----------------------------------------------------------------------
 
 	#-----------------------------------------------------------------------
-	# Bloc 4 - France Position in the East
+	# Bloc 4 - UK Position in the East
 	#-----------------------------------------------------------------------
 	focus = {
 		id = ENG_ww1_assert_position_east
@@ -802,13 +1967,13 @@ focus_tree = {
 		completion_reward = { add_political_power=75 }
 		ai_will_do = { factor = 20 }
 		cost = 10
-		x = 15
+		x = 14
 		y = 1
 	}
 
 	focus = {
 		id = ENG_ww1_balkan_strategy
-		prerequisite = { focus=ENG_ww1_assert_position_east }
+		prerequisite = { focus = ENG_ww1_assert_position_east }
 		icon = GFX_goal_generic_political_pressure
 		bypass = { NOT={ country_exists=YUG country_exists=GRE country_exists=ROM country_exists=BUL country_exists=HUN country_exists=TUR } }
 		completion_reward = { SER={ add_opinion_modifier={ target=ENG modifier=balkan_strategy_good } } GRE={ add_opinion_modifier={ target=ENG modifier=balkan_strategy_good } } ROM={ add_opinion_modifier={ target=ENG modifier=balkan_strategy_good } } BUL={ add_opinion_modifier={ target=ENG modifier=balkan_strategy_bad } } GER={ add_opinion_modifier={ target=ENG modifier=balkan_strategy_bad } } AUH={ add_opinion_modifier={ target=ENG modifier=balkan_strategy_bad } } TUR={ add_opinion_modifier={ target=ENG modifier=balkan_strategy_bad } } }
@@ -822,8 +1987,10 @@ focus_tree = {
 		id = ENG_ww1_support_romania
 		prerequisite = { focus = ENG_ww1_balkan_strategy }
 		icon = GFX_goal_generic_intelligence_exchange
-		available = { ROM={ exists=yes has_war=no NOT={ is_in_faction_with=ENG } } }
-		completion_reward = { ROM={ add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } add_ideas=democratic_influence country_event={ id=generic.1 } } every_country={ limit={ NOT={ has_government=democratic } num_of_factories > 30 } add_opinion_modifier={ target=ROM modifier=democratic_leanings_bad } } }
+		available = {
+			ROM = { exists = yes has_war = no NOT = { is_in_faction_with = ENG } }
+		}
+		completion_reward = { ROM = { add_opinion_modifier = { target = ENG modifier=democratic_leanings_good } add_ideas = democratic_influence country_event={ id=generic.1 } } every_country={ limit = { NOT = { has_government=democratic } num_of_factories > 30 } add_opinion_modifier = { target=ROM modifier=democratic_leanings_bad } } }
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 15
@@ -882,7 +2049,7 @@ focus_tree = {
 	#-----------------------------------------
 	focus = {
 		id = ENG_ww1_mediterranean_focus
-		prerequisite = { focus=ENG_ww1_bureau_colonies }
+		prerequisite = { focus = ENG_ww1_bureau_colonies }
 		icon = GFX_goal_generic_construct_military
 		available = { 447={ is_owned_by=ENG } }
 		completion_reward = { 
@@ -897,7 +2064,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_rock_focus
-		prerequisite = { focus=ENG_ww1_mediterranean_focus }
+		prerequisite = { focus = ENG_ww1_mediterranean_focus }
 		icon = GFX_goal_generic_defence
 		available = { 118={ is_owned_by=ENG } }
 		completion_reward = { 118={ add_building_construction={ type=bunker level=4 province=4135 instant_build=yes } } }
@@ -909,7 +2076,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_protect_suez
-		prerequisite = { focus=ENG_ww1_rock_focus }
+		prerequisite = { focus = ENG_ww1_rock_focus }
 		icon = GFX_goal_generic_construct_military
 		available = { 447={ is_owned_by=ENG } }
 		completion_reward = { 447={ add_building_construction={ type=coastal_bunker level=1 province=4076 instant_build=yes } add_building_construction={ type=naval_base level=1 province=4076 instant_build=yes } add_building_construction={ type=air_base level=1 instant_build=yes } add_building_construction={ type=bunker level=1 province=1071 instant_build=yes } } }
@@ -921,7 +2088,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_malta_focus
-		prerequisite = { focus=ENG_ww1_protect_suez }
+		prerequisite = { focus = ENG_ww1_protect_suez }
 		icon = GFX_goal_generic_construct_military
 		available = { 116={ is_owned_by=ENG } }
 		completion_reward = { 116={ add_building_construction={ type=coastal_bunker level=2 province=12003 instant_build=yes } add_building_construction={ type=air_base level=1 instant_build=yes } } }
@@ -933,7 +2100,7 @@ focus_tree = {
 	#-----------------------------------------
 	focus = {
 		id = ENG_ww1_asia_focus
-		prerequisite = { focus=ENG_ww1_bureau_colonies }
+		prerequisite = { focus = ENG_ww1_bureau_colonies }
 		icon = GFX_goal_generic_construct_civilian
 		available = { 336={ is_owned_by=ENG } 326={ is_owned_by=ENG } }
 		bypass = { 336={ free_building_slots={ building=dockyard size < 1 include_locked=yes }				 } 326={ free_building_slots={ building=industrial_complex size < 1 include_locked=yes } } }
@@ -946,7 +2113,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_singapore_focus
-		prerequisite = { focus=ENG_ww1_asia_focus }
+		prerequisite = { focus = ENG_ww1_asia_focus }
 		icon = GFX_goal_generic_fortify_city
 		available = {	336={	is_owned_by=ENG }	}
 		completion_reward = { 336={ add_building_construction={ type=coastal_bunker level=3 province=12299 instant_build=yes } } }
@@ -958,7 +2125,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_hongkong_focus
-		prerequisite = { focus=ENG_ww1_singapore_focus }
+		prerequisite = { focus = ENG_ww1_singapore_focus }
 		icon = GFX_goal_generic_fortify_city
 		available = { 326={ is_owned_by=ENG } }
 		completion_reward = { 326={ add_building_construction={ type=coastal_bunker level=3 province=10062 instant_build=yes } } }
@@ -986,10 +2153,10 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_commonwealth_focus
-		prerequisite = { focus=ENG_ww1_diplomatic_effort }
+		prerequisite = { focus = ENG_ww1_diplomatic_effort }
 		icon = GFX_goal_generic_improve_relations
 		available = { }
-		completion_reward = { CAN={ if={ limit={ is_in_faction_with=ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } AST={ if={ limit={ is_in_faction_with=ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } RAJ={ if={ limit={ is_in_faction_with=ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } NZL={ if={ limit={ is_in_faction_with=ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } SAF={ if={ limit={ is_in_faction_with=ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } }
+		completion_reward = { CAN={ if={ limit={ is_in_faction_with = ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } AST={ if={ limit={ is_in_faction_with = ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } RAJ={ if={ limit={ is_in_faction_with = ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } NZL={ if={ limit={ is_in_faction_with = ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } SAF={ if={ limit={ is_in_faction_with = ENG } add_opinion_modifier={ target=ENG modifier=democratic_leanings_good } } } }
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 21
@@ -998,7 +2165,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_india_focus
-		prerequisite = { focus=ENG_ww1_commonwealth_focus }
+		prerequisite = { focus = ENG_ww1_commonwealth_focus }
 		icon = GFX_goal_generic_construct_civ_factory
 		available = { is_in_faction_with=RAJ }
 		bypass = { RAJ={ custom_trigger_tooltip={ tooltip=construction_effort_tt all_owned_state={ free_building_slots={ building=industrial_complex size < 1 include_locked=yes } } } } }
@@ -1012,7 +2179,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_australia_focus
-		prerequisite = { focus=ENG_ww1_india_focus }
+		prerequisite = { focus = ENG_ww1_india_focus }
 		icon = GFX_goal_generic_construct_civilian
 		available = { is_in_faction_with=AST }
 		bypass = { AST={ custom_trigger_tooltip={ tooltip=construction_effort_tt all_owned_state={ free_building_slots={ building=industrial_complex size < 1 include_locked=yes } } } custom_trigger_tooltip={ tooltip=naval_effort_tt all_owned_state={ free_building_slots={ building=dockyard size < 1 include_locked=yes } } } } }
@@ -1026,7 +2193,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_new_zealand_focus
-		prerequisite = { focus=ENG_ww1_australia_focus }
+		prerequisite = { focus = ENG_ww1_australia_focus }
 		icon = GFX_goal_generic_construction
 		available = { is_in_faction_with=NZL }
 		bypass = { NZL={ custom_trigger_tooltip={ tooltip=construction_effort_tt all_owned_state={ free_building_slots={ building=industrial_complex size < 1 include_locked=yes } } } custom_trigger_tooltip={ tooltip=naval_effort_tt all_owned_state={ free_building_slots={ building=dockyard size < 1 include_locked=yes } } } } }
@@ -1040,7 +2207,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_canada_focus
-		prerequisite = { focus=ENG_ww1_new_zealand_focus }
+		prerequisite = { focus = ENG_ww1_new_zealand_focus }
 		icon = GFX_goal_generic_construct_civ_factory
 		available = { is_in_faction_with=CAN }
 		bypass = { CAN={ custom_trigger_tooltip={ tooltip=construction_effort_tt all_owned_state={ free_building_slots={ building=industrial_complex size < 1 include_locked=yes } } } custom_trigger_tooltip={ tooltip=naval_effort_tt all_owned_state={ free_building_slots={ building=dockyard size < 1 include_locked=yes } } } } }
@@ -1067,7 +2234,7 @@ focus_tree = {
 	
 	focus = {
 		id = ENG_ww1_equipment_effort
-		prerequisite = { focus=ENG_ww1_army_effort }
+		prerequisite = { focus = ENG_ww1_army_effort }
 		icon = GFX_goal_generic_small_arms
 		completion_reward = { army_experience=10 add_tech_bonus={ name=infantry_weapons_bonus bonus=0.15 uses=1 category=infantry_weapons} }
 		ai_will_do = { factor = 10 }
@@ -1078,7 +2245,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_artillery_effort_1
-		prerequisite = { focus=ENG_ww1_army_effort }
+		prerequisite = { focus = ENG_ww1_army_effort }
 		icon = GFX_goal_generic_army_artillery2
 		completion_reward = { army_experience=10 add_tech_bonus={ name=infantry_weapons_bonus bonus=0.15 uses=1 category=artillery } }
 		ai_will_do = { factor = 10 }
@@ -1088,7 +2255,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ENG_ww1_artillery_effort_2
-		prerequisite = { focus=ENG_ww1_artillery_effort_1 }
+		prerequisite = { focus = ENG_ww1_artillery_effort_1 }
 		available = { date > 1912.1.1 }
 		icon = GFX_goal_generic_army_artillery2
 		completion_reward = { army_experience=10 add_tech_bonus={ name=infantry_weapons_bonus bonus=0.15 uses=1 category=artillery } }
@@ -1099,7 +2266,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ENG_ww1_artillery_effort_3
-		prerequisite = { focus=ENG_ww1_artillery_effort_2 }
+		prerequisite = { focus = ENG_ww1_artillery_effort_2 }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_army_artillery2
 		completion_reward = { army_experience=10 add_tech_bonus={ name=infantry_weapons_bonus bonus=0.15 uses=1 category=artillery } }
@@ -1111,7 +2278,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_doctrine_effort
-		prerequisite = { focus=ENG_ww1_army_effort }
+		prerequisite = { focus = ENG_ww1_army_effort }
 		available = { date > 1911.1.1 }
 		icon = GFX_goal_generic_army_doctrines
 		completion_reward = { army_experience=15 add_tech_bonus={ name=land_doc_bonus bonus=0.2 uses=1 category=land_doctrine } }
@@ -1123,7 +2290,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_equipment_effort_2
-		prerequisite = { focus=ENG_ww1_equipment_effort }
+		prerequisite = { focus = ENG_ww1_equipment_effort }
 		available = { date > 1912.1.1 }
 		icon = GFX_goal_generic_small_arms
 		completion_reward = { army_experience=10 add_tech_bonus={ name=infantry_artillery_bonus bonus=0.15 uses=1 category=infantry_weapons } }
@@ -1136,7 +2303,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_trenchwarfare
-		prerequisite = { focus=ENG_ww1_equipment_effort }
+		prerequisite = { focus = ENG_ww1_equipment_effort }
 		available = { date > 1911.1.1 }
 		icon = GFX_goal_generic_military_sphere
 		completion_reward = { army_experience=10 add_tech_bonus={ name=trenchwarfare_bonus bonus=0.15 uses=1 technology=support_weapons technology=support_weapons2 technology=support_weapons3 } }
@@ -1149,7 +2316,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_gasmask_focus
-		prerequisite = { focus=ENG_ww1_trenchwarfare }
+		prerequisite = { focus = ENG_ww1_trenchwarfare }
 		available = { date > 1913.1.1 }
 		icon = GFX_hoi4tgw_gasmask
 		completion_reward = { army_experience=15 add_tech_bonus={ name=gasmask_bonus bonus=0.15 uses=1 technology=infantry_gasmask technology=chemical_research2 technology=chemical_research3 } }
@@ -1161,7 +2328,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_special_forces
-		prerequisite = { focus=ENG_ww1_gasmask_focus }
+		prerequisite = { focus = ENG_ww1_gasmask_focus }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_special_forces
 		completion_reward = { army_experience=15 add_tech_bonus={ name=special_forces_bonus bonus=0.15 uses=1 technology=marines technology=marines2 technology=tech_mountaineers technology=tech_mountaineers2 } }
@@ -1176,7 +2343,7 @@ focus_tree = {
 		id = ENG_ww1_army_motorization_focus
 		available = { date > 1917.1.1 }
 		icon = GFX_goal_generic_army_motorized
-		prerequisite = { focus=ENG_ww1_special_forces }
+		prerequisite = { focus = ENG_ww1_special_forces }
 		x = 23
 		y = 8
 		cost = 10
@@ -1195,7 +2362,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_doctrine_effort_2
-		prerequisite = { focus=ENG_ww1_doctrine_effort }
+		prerequisite = { focus = ENG_ww1_doctrine_effort }
 		available = { date > 1913.1.1 }
 		icon = GFX_goal_generic_army_doctrines
 		completion_reward = { army_experience=15 add_tech_bonus={ name=land_doc_bonus bonus=0.2 uses=1 category=land_doctrine } }
@@ -1207,7 +2374,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_equipment_effort_3
-		prerequisite = { focus=ENG_ww1_equipment_effort_2 }
+		prerequisite = { focus = ENG_ww1_equipment_effort_2 }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_small_arms
 		completion_reward = { army_experience=10 add_tech_bonus={ name=infantry_artillery_bonus bonus=0.15 uses=1 category=infantry_weapons } }
@@ -1219,7 +2386,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_doctrine_effort_3
-		prerequisite = { focus=ENG_ww1_doctrine_effort_2 }
+		prerequisite = { focus = ENG_ww1_doctrine_effort_2 }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_army_doctrines
 		completion_reward = { army_experience=15 add_tech_bonus={ name=land_doc_bonus bonus=0.2 uses=1 category=land_doctrine } }
@@ -1232,7 +2399,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_equipment_effort_4
-		prerequisite = { focus=ENG_ww1_equipment_effort_3 }
+		prerequisite = { focus = ENG_ww1_equipment_effort_3 }
 		available = { date > 1916.1.1 }
 		icon = GFX_goal_generic_small_arms
 		completion_reward = { army_experience=20 add_tech_bonus={ name=infantry_artillery_bonus bonus=0.2 uses=1 category=infantry_weapons } }
@@ -1244,7 +2411,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_artillery_effort_4
-		prerequisite = { focus=ENG_ww1_artillery_effort_3 }
+		prerequisite = { focus = ENG_ww1_artillery_effort_3 }
 		available = { date > 1916.1.1 }
 		icon = GFX_goal_generic_army_artillery2
 		completion_reward = { army_experience=20 add_tech_bonus={ name=infantry_artillery_bonus bonus=0.2 uses=1 category=artillery } }
@@ -1257,9 +2424,9 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_armor_effort_1
-		prerequisite = { focus=ENG_ww1_equipment_effort_4 }
-		prerequisite = { focus=ENG_ww1_doctrine_effort_3 }
-		prerequisite = { focus=ENG_ww1_artillery_effort_4 }
+		prerequisite = { focus = ENG_ww1_equipment_effort_4 }
+		prerequisite = { focus = ENG_ww1_doctrine_effort_3 }
+		prerequisite = { focus = ENG_ww1_artillery_effort_4 }
 		available = { date > 1917.1.1 }
 		icon = GFX_hoi4tgw_renaultft
 		completion_reward = { army_experience=50 add_tech_bonus={ name=armor_bonus bonus=0.15 uses=2 category=armor } }
@@ -1271,8 +2438,8 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_armor_effort_2
-		prerequisite = { focus=ENG_ww1_armor_effort_1 }
-		prerequisite = { focus=ENG_ww1_army_motorization_focus }
+		prerequisite = { focus = ENG_ww1_armor_effort_1 }
+		prerequisite = { focus = ENG_ww1_army_motorization_focus }
 		available = { date > 1918.1.1 }
 		icon = GFX_goal_generic_army_tanks
 		completion_reward = { army_experience=75 add_tech_bonus={ name=armor_bonus bonus=0.1 uses=2 category=armor } }
@@ -1286,7 +2453,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_aviation_effort
-		icon = GFX_goal_generic_build_airforce
+		icon = GFX_hoi4tgw_eng_aviation_effort
 		completion_reward = { air_experience=25 if={ limit={ capital_scope={ NOT={ free_building_slots={ building=air_base size > 1 } } } } random_owned_state={ limit={ free_building_slots={ building=air_base size > 1 } } add_building_construction={ type=air_base level=2 instant_build=yes } ROOT={ set_country_flag=aviation_effort_AB } } } if={ limit={ capital_scope={ free_building_slots={ building=air_base size > 1 } } } capital_scope={ add_building_construction={ type=air_base level=2 instant_build=yes } ROOT={ set_country_flag=aviation_effort_AB } } } add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
 		complete_tooltip = { air_experience=25 if={ limit={ has_country_flag=aviation_effort_AB } add_building_construction={ type=air_base level=2 instant_build=yes } }			 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine }			 }
 		ai_will_do = { factor = 10 }
@@ -1298,7 +2465,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_aviation_effort_2
-		prerequisite = { focus=ENG_ww1_aviation_effort }
+		prerequisite = { focus = ENG_ww1_aviation_effort }
 		icon = GFX_goal_generic_air_doctrine
 		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
 		ai_will_do = { factor = 10 }
@@ -1310,7 +2477,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_airship_focus
-		prerequisite = { focus=ENG_ww1_aviation_effort_2 }
+		prerequisite = { focus = ENG_ww1_aviation_effort_2 }
 		available = { date > 1911.1.1 }
 		icon = GFX_hoi4tgw_zeppelin
 		completion_reward = { add_tech_bonus={ name=fighter_bonus bonus=0.15 uses=1 technology=ww1_zeppelin1 technology=ww1_zeppelin2 } }
@@ -1322,7 +2489,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_fighter_focus
-		prerequisite = { focus=ENG_ww1_aviation_effort_2 }
+		prerequisite = { focus = ENG_ww1_aviation_effort_2 }
 		available = { date > 1911.1.1 }
 		icon = GFX_goal_generic_air_fighter
 		completion_reward = { add_tech_bonus={ name=fighter_bonus bonus=0.15 uses=1 technology=ww1_fighter1 technology=ww1_fighter1b technology=ww1_fighter2 technology=ww1_fighter2b } }
@@ -1330,12 +2497,12 @@ focus_tree = {
 		cost = 10
 		x = 28
 		y = 2
-		mutually_exclusive = { focus=ENG_ww1_bomber_focus }
+		mutually_exclusive = { focus = ENG_ww1_bomber_focus }
 	}
 
 	focus = {
 		id = ENG_ww1_bomber_focus
-		prerequisite = { focus=ENG_ww1_aviation_effort_2 }
+		prerequisite = { focus = ENG_ww1_aviation_effort_2 }
 		available = { date > 1911.1.1 }
 		icon = GFX_goal_generic_air_bomber
 		completion_reward = { add_tech_bonus={ name=bomber_bonus bonus=0.15 uses=1 category=tactical_bomber } }
@@ -1343,12 +2510,12 @@ focus_tree = {
 		cost = 10
 		x = 30
 		y = 2
-		mutually_exclusive = { focus=ENG_ww1_fighter_focus }
+		mutually_exclusive = { focus = ENG_ww1_fighter_focus }
 	}
 
 	focus = {
 		id = ENG_ww1_aviation_effort_3
-		prerequisite = { focus=ENG_ww1_bomber_focus focus=ENG_ww1_fighter_focus focus=ENG_ww1_airship_focus }
+		prerequisite = { focus = ENG_ww1_bomber_focus focus = ENG_ww1_fighter_focus focus = ENG_ww1_airship_focus }
 		available = { date > 1912.1.1 }
 		icon = GFX_goal_generic_air_doctrine
 		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
@@ -1360,7 +2527,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_pilotformation_1
-		prerequisite = { focus=ENG_ww1_aviation_effort_3 }
+		prerequisite = { focus = ENG_ww1_aviation_effort_3 }
 		available = { date > 1913.1.1 }
 		icon = GFX_goal_generic_CAS
 		completion_reward = { add_tech_bonus={ name=pilotformation1_bonus bonus=0.15 uses=1 technology=dogfighting_experience technology=fighter_ace_initiative technology=dispersed_fighting } }
@@ -1372,7 +2539,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_aircraftprod_1
-		prerequisite = { focus=ENG_ww1_aviation_effort_3 }
+		prerequisite = { focus = ENG_ww1_aviation_effort_3 }
 		available = { date > 1913.1.1 }
 		icon = GFX_goal_generic_air_production
 		completion_reward = { add_tech_bonus={ name=aircraftprod_1_bonus bonus=0.15 uses=1 category=air_equipment } }
@@ -1384,7 +2551,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_airbomb_1
-		prerequisite = { focus=ENG_ww1_aviation_effort_3 }
+		prerequisite = { focus = ENG_ww1_aviation_effort_3 }
 		available = { date > 1913.1.1 }
 		icon = GFX_goal_poland_goal
 		completion_reward = { add_tech_bonus={ name=pilotformation2_bonus bonus=0.15 uses=1 technology=infrastructure_destruction technology=dive_bombing technology=operational_destruction } }
@@ -1397,7 +2564,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_aviation_effort_4
-		prerequisite = { focus=ENG_ww1_pilotformation_1 focus=ENG_ww1_aircraftprod_1 focus=ENG_ww1_airbomb_1 }
+		prerequisite = { focus = ENG_ww1_pilotformation_1 focus = ENG_ww1_aircraftprod_1 focus = ENG_ww1_airbomb_1 }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_air_doctrine
 		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
@@ -1409,7 +2576,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_pilotformation_2
-		prerequisite = { focus=ENG_ww1_aviation_effort_4 }
+		prerequisite = { focus = ENG_ww1_aviation_effort_4 }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_CAS
 		completion_reward = { add_tech_bonus={ name=pilotformation2_bonus bonus=0.15 uses=1 technology=multialtitude_flying technology=hunt_and_destroy technology=fighter_veteran_initiative } }
@@ -1421,7 +2588,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_aircraftprod_2
-		prerequisite = { focus=ENG_ww1_aviation_effort_4 }
+		prerequisite = { focus = ENG_ww1_aviation_effort_4 }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_air_production
 		completion_reward = { add_tech_bonus={ name=aircraftprod_2_bonus bonus=0.2 uses=1 category=air_equipment } }
@@ -1433,7 +2600,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_airbomb_2
-		prerequisite = { focus=ENG_ww1_aviation_effort_4 }
+		prerequisite = { focus = ENG_ww1_aviation_effort_4 }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_occupy_start_war
 		completion_reward = { add_tech_bonus={ name=pilotformation2_bonus bonus=0.2 uses=1 technology=logistical_bombing technology=strategic_destruction technology=infiltration_bombing } }
@@ -1445,7 +2612,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_aviation_effort_5
-		prerequisite = { focus=ENG_ww1_pilotformation_2 focus=ENG_ww1_aircraftprod_2  focus=ENG_ww1_airbomb_2 }
+		prerequisite = { focus = ENG_ww1_pilotformation_2 focus = ENG_ww1_aircraftprod_2  focus = ENG_ww1_airbomb_2 }
 		available = { date > 1916.1.1 }
 		icon = GFX_goal_generic_air_doctrine
 		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
@@ -1458,7 +2625,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_air_innovation
-		prerequisite = { focus=ENG_ww1_aviation_effort_5 }
+		prerequisite = { focus = ENG_ww1_aviation_effort_5 }
 		available = { date > 1917.1.1 }
 		icon = GFX_goal_generic_air_fighter2
 		completion_reward = { air_experience=20 add_tech_bonus={ name=ww1_air_innovation_bonus bonus=0.2 uses=1 technology=ww1_fighter3 technology=ww1_fighter4 technology=early_fighter } }
@@ -1470,7 +2637,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_navalair
-		prerequisite = { focus=ENG_ww1_aviation_effort_5 }
+		prerequisite = { focus = ENG_ww1_aviation_effort_5 }
 		available = { date > 1917.1.1 }
 		icon = GFX_goal_generic_air_naval_bomber
 		completion_reward = { add_tech_bonus={ name=nav_bomber_bonus bonus=0.15 ahead_reduction=1 uses=1 category=naval_bomber } }
@@ -1494,7 +2661,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_infrastructure_effort
-		prerequisite = { focus=ENG_ww1_industrial_effort }
+		prerequisite = { focus = ENG_ww1_industrial_effort }
 		icon = GFX_goal_generic_construct_infrastructure
 		bypass = { custom_trigger_tooltip={ tooltip=infrastructure_effort_tt all_owned_state={			 free_building_slots={ building=infrastructure size < 1 } } } }
 		completion_reward = {
@@ -1514,7 +2681,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_construction_effort
-		prerequisite = { focus=ENG_ww1_infrastructure_effort }
+		prerequisite = { focus = ENG_ww1_infrastructure_effort }
 		available = { date > 1911.1.1 }
 		icon = GFX_goal_generic_construct_civ_factory
 		bypass = { custom_trigger_tooltip={ tooltip=construction_effort_tt all_owned_state={ free_building_slots={ building=industrial_complex size < 1 include_locked=yes }					 } } }
@@ -1528,7 +2695,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_production_effort
-		prerequisite = { focus=ENG_ww1_infrastructure_effort }
+		prerequisite = { focus = ENG_ww1_infrastructure_effort }
 		available = { date > 1911.1.1 }
 		icon = GFX_goal_generic_construct_mil_factory
 		bypass = { custom_trigger_tooltip={ tooltip=production_effort_tt all_owned_state={ free_building_slots={ building=arms_factory size < 1 include_locked=yes } } } }
@@ -1543,8 +2710,8 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_dockyard_effort_1
-		prerequisite = { focus=ENG_ww1_infrastructure_effort }
-		prerequisite = { focus=ENG_ww1_naval_effort }
+		prerequisite = { focus = ENG_ww1_infrastructure_effort }
+		prerequisite = { focus = ENG_ww1_naval_effort }
 		available = { date > 1911.1.1 }
 		icon = GFX_goal_generic_construct_naval_dockyard
 		x = 40
@@ -1604,8 +2771,8 @@ focus_tree = {
 		id = ENG_ww1_airfield_expansion_1
 		available = { date > 1911.1.1 }
 		icon = GFX_goal_generic_construction
-		prerequisite = { focus=ENG_ww1_infrastructure_effort }
-		prerequisite = { focus=ENG_ww1_aviation_effort }
+		prerequisite = { focus = ENG_ww1_infrastructure_effort }
+		prerequisite = { focus = ENG_ww1_aviation_effort }
 		x = 34
 		y = 2
 		cost = 10
@@ -1669,7 +2836,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_infrastructure_effort_2
-		prerequisite = { focus=ENG_ww1_construction_effort focus=ENG_ww1_production_effort focus=ENG_ww1_dockyard_effort_1 focus=ENG_ww1_airfield_expansion_1 }
+		prerequisite = { focus = ENG_ww1_construction_effort focus = ENG_ww1_production_effort focus = ENG_ww1_dockyard_effort_1 focus = ENG_ww1_airfield_expansion_1 }
 		available = { date > 1912.1.1 }
 		icon = GFX_goal_generic_construct_infrastructure
 		bypass = { custom_trigger_tooltip={ tooltip=infrastructure_effort_tt all_owned_state={			 free_building_slots={ building=infrastructure size < 1 } } } }
@@ -1683,8 +2850,8 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_construction_effort_2
-		prerequisite = { focus=ENG_ww1_infrastructure_effort_2 }
-		prerequisite = { focus=ENG_ww1_construction_effort }
+		prerequisite = { focus = ENG_ww1_infrastructure_effort_2 }
+		prerequisite = { focus = ENG_ww1_construction_effort }
 		available = { date > 1913.1.1 }
 		icon = GFX_goal_generic_construct_civ_factory
 		bypass = { custom_trigger_tooltip={ tooltip=construction_effort_tt all_owned_state={ free_building_slots={ building=industrial_complex size < 1 include_locked=yes } } } }
@@ -1698,8 +2865,8 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_production_effort_2
-		prerequisite = { focus=ENG_ww1_infrastructure_effort_2 }
-		prerequisite = { focus=ENG_ww1_production_effort }
+		prerequisite = { focus = ENG_ww1_infrastructure_effort_2 }
+		prerequisite = { focus = ENG_ww1_production_effort }
 		available = { date > 1913.1.1 }
 		icon = GFX_goal_generic_construct_mil_factory
 		bypass = { custom_trigger_tooltip={ tooltip=production_effort_tt all_owned_state={ free_building_slots={ building=arms_factory size < 1 include_locked=yes } } } }
@@ -1714,8 +2881,8 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_dockyard_effort_2
-		prerequisite = { focus=ENG_ww1_infrastructure_effort_2 }
-		prerequisite = { focus=ENG_ww1_dockyard_effort_1 }
+		prerequisite = { focus = ENG_ww1_infrastructure_effort_2 }
+		prerequisite = { focus = ENG_ww1_dockyard_effort_1 }
 		available = { date > 1913.1.1 }
 		icon = GFX_goal_generic_construct_naval_dockyard
 		x = 40
@@ -1773,8 +2940,8 @@ focus_tree = {
 		id = ENG_ww1_airfield_expansion_2
 		available = { date > 1913.1.1 }
 		icon = GFX_goal_generic_construction
-		prerequisite = { focus=ENG_ww1_infrastructure_effort_2 }
-		prerequisite = { focus=ENG_ww1_airfield_expansion_1 }
+		prerequisite = { focus = ENG_ww1_infrastructure_effort_2 }
+		prerequisite = { focus = ENG_ww1_airfield_expansion_1 }
 		x = 34
 		y = 4
 		cost = 10
@@ -1839,7 +3006,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_infrastructure_effort_3
-		prerequisite = { focus=ENG_ww1_construction_effort_2 focus=ENG_ww1_production_effort_2 focus=ENG_ww1_dockyard_effort_1 }
+		prerequisite = { focus = ENG_ww1_construction_effort_2 focus = ENG_ww1_production_effort_2 focus = ENG_ww1_dockyard_effort_1 }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_construct_infrastructure
 		bypass = { custom_trigger_tooltip={ tooltip=infrastructure_effort_tt all_owned_state={			 free_building_slots={ building=infrastructure size < 1 } } } }
@@ -1853,8 +3020,8 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_construction_effort_3
-		prerequisite = { focus=ENG_ww1_infrastructure_effort_3 }
-		prerequisite = { focus=ENG_ww1_construction_effort_2 }
+		prerequisite = { focus = ENG_ww1_infrastructure_effort_3 }
+		prerequisite = { focus = ENG_ww1_construction_effort_2 }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_construct_civ_factory
 		bypass = { custom_trigger_tooltip={ tooltip=construction_effort_tt all_owned_state={ free_building_slots={ building=industrial_complex size < 2 include_locked=yes } } } }
@@ -1868,8 +3035,8 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_production_effort_3
-		prerequisite = { focus=ENG_ww1_infrastructure_effort_3 }
-		prerequisite = { focus=ENG_ww1_production_effort_2 }
+		prerequisite = { focus = ENG_ww1_infrastructure_effort_3 }
+		prerequisite = { focus = ENG_ww1_production_effort_2 }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_construct_mil_factory
 		bypass = { custom_trigger_tooltip={ tooltip=production_effort_tt all_owned_state={ free_building_slots={ building=arms_factory size < 1 include_locked=yes }					 } } }
@@ -1884,8 +3051,8 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_dockyard_effort_3
-		prerequisite = { focus=ENG_ww1_infrastructure_effort_3 }
-		prerequisite = { focus=ENG_ww1_dockyard_effort_2 }
+		prerequisite = { focus = ENG_ww1_infrastructure_effort_3 }
+		prerequisite = { focus = ENG_ww1_dockyard_effort_2 }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_construct_naval_dockyard
 		ai_will_do = { factor = 10 }
@@ -1945,8 +3112,8 @@ focus_tree = {
 		id = ENG_ww1_airfield_expansion_3
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_construction
-		prerequisite = { focus=ENG_ww1_infrastructure_effort_3 }
-		prerequisite = { focus=ENG_ww1_airfield_expansion_2 }
+		prerequisite = { focus = ENG_ww1_infrastructure_effort_3 }
+		prerequisite = { focus = ENG_ww1_airfield_expansion_2 }
 		x = 34
 		y = 6
 		cost = 10
@@ -2010,7 +3177,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_extra_tech_slot
-		prerequisite = { focus=ENG_ww1_airfield_expansion_3 focus=ENG_ww1_construction_effort_3 focus=ENG_ww1_production_effort_3 focus=ENG_ww1_dockyard_effort_3}
+		prerequisite = { focus = ENG_ww1_airfield_expansion_3 focus = ENG_ww1_construction_effort_3 focus = ENG_ww1_production_effort_3 focus = ENG_ww1_dockyard_effort_3}
 		available = { date > 1916.1.1 }
 		icon = GFX_focus_research
 		completion_reward = { add_research_slot=1 }
@@ -2023,7 +3190,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_infrastructure_effort_4
-		prerequisite = { focus=ENG_ww1_extra_tech_slot }
+		prerequisite = { focus = ENG_ww1_extra_tech_slot }
 		available = { date > 1917.1.1 }
 		icon = GFX_goal_generic_construct_infrastructure
 		bypass = { custom_trigger_tooltip={ tooltip=infrastructure_effort_tt all_owned_state={			 free_building_slots={ building=infrastructure size < 1 } } } }
@@ -2037,7 +3204,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_extra_tech_slot_2
-		prerequisite = { focus=ENG_ww1_infrastructure_effort_4 }
+		prerequisite = { focus = ENG_ww1_infrastructure_effort_4 }
 		available = { date > 1918.1.1 }
 		icon = GFX_focus_research
 		available = { num_of_factories > 50 }
@@ -2065,35 +3232,50 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_newnavalcanons_1
-		prerequisite = { focus=ENG_ww1_naval_effort }
+		prerequisite = { focus = ENG_ww1_naval_effort }
 		icon = GFX_hoi4tgw_navalcanons
-		completion_reward = { navy_experience=15 add_tech_bonus={ name=newnavalcanons_1_bonus bonus=0.15 uses=1 category=naval_doctrine } }
+		completion_reward = { navy_experience=10 }
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 43
 		y = 1
 	}
 
+	focus = {
+		id = ENG_ww1_TwoForOne # Open Beta 0.8.1 Two For One
+		prerequisite = { focus = ENG_ww1_newnavalcanons_1 }
+		available = { }
+		icon = GFX_focus_ger_accept_british_naval_dominance
+
+		completion_reward = { add_tech_bonus={ name=newnavalcanons_1_bonus bonus=0.25 uses=1 category=naval_doctrine } }
+
+		ai_will_do = { factor = 10 }
+		cost = 10
+		x = 42
+		y = 2
+	}
 
 	focus = {
 		id = ENG_ww1_dreadnought_effort
-		prerequisite = { focus=ENG_ww1_newnavalcanons_1 }
+		prerequisite = { focus = ENG_ww1_newnavalcanons_1 }
+		available = { }
 		available = { date > 1911.1.1 }
 		icon = GFX_goal_generic_navy_battleship
-		completion_reward = { add_tech_bonus={ name=cr_bonus bonus=0.15 uses=1 technology=ww1_battleship0 technology=ww1_battleship1 technology=ww1_battleship2 } }
+		completion_reward = { add_tech_bonus={ name=cr_bonus bonus=0.15 uses=1 technology=ww1_battleship4 technology=ww1_battleship5 } }
 		ai_will_do = { factor=1 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		ai_will_do = { factor = 10 }
 		cost = 10
-		x = 43
+		x = 44
 		y = 2
 	}
 
 	focus = {
 		id = ENG_ww1_newnavalcanons_2
-		prerequisite = { focus=ENG_ww1_dreadnought_effort }
+		prerequisite = { focus = ENG_ww1_TwoForOne }
+		prerequisite = { focus = ENG_ww1_dreadnought_effort }
 		available = { date > 1912.1.1 }
 		icon = GFX_goal_generic_army_artillery
-		completion_reward = { navy_experience=15 add_tech_bonus={ name=newnavalcanons_2_bonus bonus=0.15 uses=1 category=naval_doctrine } }
+		completion_reward = { navy_experience=15 }
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 43
@@ -2102,7 +3284,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_flexible_navy
-		prerequisite = { focus=ENG_ww1_newnavalcanons_2 }
+		prerequisite = { focus = ENG_ww1_newnavalcanons_2 }
 		available = { date > 1913.1.1 }
 		icon = GFX_goal_generic_occupy_states_coastal
 		completion_reward = { add_tech_bonus={ name=sub_op_bonus bonus=0.2 uses=1 technology=convoy_interdiction_ti technology=unrestricted_submarine_warfare technology=wolfpacks technology=advanced_submarine_warfare } }
@@ -2110,13 +3292,13 @@ focus_tree = {
 		cost = 10
 		x = 42
 		y = 4
-		mutually_exclusive = { focus=ENG_ww1_large_navy }
+		mutually_exclusive = { focus = ENG_ww1_large_navy }
 	}
 
 
 	focus = {
 		id = ENG_ww1_large_navy
-		prerequisite = { focus=ENG_ww1_newnavalcanons_2 }
+		prerequisite = { focus = ENG_ww1_newnavalcanons_2 }
 		available = { date > 1913.1.1 }
 		icon = GFX_goal_generic_navy_doctrines_tactics
 		completion_reward = { add_tech_bonus={ name=fleet_in_being_bonus bonus=0.2 uses=1 category=fleet_in_being_tree } }
@@ -2124,15 +3306,28 @@ focus_tree = {
 		cost = 10
 		x = 44
 		y = 4
-		mutually_exclusive = { focus=ENG_ww1_flexible_navy }
+		mutually_exclusive = { focus = ENG_ww1_flexible_navy }
 	}
 
 	focus = {
 		id = ENG_ww1_submarine_effort
-		prerequisite = { focus=ENG_ww1_flexible_navy focus=ENG_ww1_large_navy }
+		prerequisite = { focus = ENG_ww1_flexible_navy focus = ENG_ww1_large_navy }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_navy_submarine
-		completion_reward = { add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1 technology=ww1_submarine2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1_mtg technology=ww1_submarine2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1 technology=ww1_submarine2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 42
@@ -2141,10 +3336,23 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_cruiser_effort
-		prerequisite = { focus=ENG_ww1_flexible_navy focus=ENG_ww1_large_navy }
+		prerequisite = { focus = ENG_ww1_flexible_navy focus = ENG_ww1_large_navy }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_navy_cruiser
-		completion_reward = { add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0 technology=ww1_light_cruiser1 technology=ww1_light_cruiser2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0_mtg technology=ww1_light_cruiser1_mtg technology=ww1_light_cruiser2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0 technology=ww1_light_cruiser1 technology=ww1_light_cruiser2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 44
@@ -2153,10 +3361,23 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_destroyer_effort
-		prerequisite = { focus=ENG_ww1_submarine_effort }
+		prerequisite = { focus = ENG_ww1_submarine_effort }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_wolf_pack
-		completion_reward = { add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0 technology=ww1_destroyer1 technology=ww1_destroyer2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0_mtg technology=ww1_destroyer1_mtg technology=ww1_destroyer2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0 technology=ww1_destroyer1 technology=ww1_destroyer2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 42
@@ -2165,10 +3386,23 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_capital_ships_effort
-		prerequisite = { focus=ENG_ww1_cruiser_effort }
+		prerequisite = { focus = ENG_ww1_cruiser_effort }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_navy_battleship
-		completion_reward = { navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0 technology=ww1_battlecruiser1 technology=ww1_battlecruiser2 technology=early_battleship technology=seaplane_carrier }  }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				 navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0_mtg technology=ww1_battlecruiser1_mtg technology=ww1_battlecruiser2_mtg technology=early_battleship_mtg technology=seaplane_carrier_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				 navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0 technology=ww1_battlecruiser1 technology=ww1_battlecruiser2 technology=early_battleship technology=seaplane_carrier }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 44
@@ -2178,11 +3412,11 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_newnavalcanons_3
-		prerequisite = { focus=ENG_ww1_capital_ships_effort }
-		prerequisite = { focus=ENG_ww1_destroyer_effort }
+		prerequisite = { focus = ENG_ww1_capital_ships_effort }
+		prerequisite = { focus = ENG_ww1_destroyer_effort }
 		available = { date > 1916.1.1 }
 		icon = GFX_goal_generic_army_artillery
-		completion_reward = { navy_experience=15 add_tech_bonus={ name=newnavalcanons_3_bonus bonus=0.2 uses=1 category=naval_doctrine } }
+		completion_reward = { navy_experience=5 add_tech_bonus={ name=newnavalcanons_3_bonus bonus=0.1 uses=1 category=naval_doctrine } }
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 43
@@ -2191,7 +3425,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_navyreform
-		prerequisite = { focus=ENG_ww1_newnavalcanons_3 }
+		prerequisite = { focus = ENG_ww1_newnavalcanons_3 }
 		available = { date > 1917.1.1 }
 		icon = GFX_goal_generic_amphibious_assault
 		completion_reward = { navy_experience=25 }
@@ -2203,7 +3437,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_carrier_focus
-		prerequisite = { focus=ENG_ww1_navyreform }
+		prerequisite = { focus = ENG_ww1_navyreform }
 		available = { date > 1918.1.1 }
 		icon = GFX_goal_generic_navy_carrier
 		completion_reward = { navy_experience=25 add_tech_bonus={ name=uk_carrier_focus bonus=0.3 uses=2 category=cv_tech } }
@@ -2215,7 +3449,7 @@ focus_tree = {
 
 	focus = {
 		id = ENG_ww1_antisubmarine
-		prerequisite = { focus=ENG_ww1_navyreform }
+		prerequisite = { focus = ENG_ww1_navyreform }
 		available = { date > 1918.1.1 }
 		icon = GFX_goal_generic_navy_anti_submarine
 		completion_reward = { navy_experience=15 add_tech_bonus={ name=newnavalcanons_3_bonus bonus=0.3 uses=1 category=naval_doctrine } }

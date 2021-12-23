@@ -3,22 +3,19 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.40
+set_stability = 0.40
 set_convoys = 100
 set_country_flag=monroe_doctrine
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Oreste Zamor" desc=HAI_oreste_zamor_DESC picture="gfx/leaders/HAI_oreste_zamor.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "Joseph Davilmar Théodore" desc=HAI_joseph_davilmar_theodore_DESC picture="gfx/leaders/HAI_joseph_davilmar_theodore.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "Vilbrun Guillaume Sam" desc=HAI_vilbrun_guillaume_sam_DESC picture="gfx/leaders/HAI_vilbrun_guillaume_sam.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "Philippe Sudré Dartiguenave" desc=HAI_philippe_sudre_dartiguenave_DESC picture="gfx/leaders/HAI_philippe_sudre_dartiguenave.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "Louis Borno" desc=HAI_louis_borno_DESC picture="gfx/leaders/HAI_louis_borno.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "François C. Antoine Simon" desc=HAI_francois_c_antoine_simon_DESC picture="gfx/leaders/HAI_francois_c_antoine_simon.dds" expire="1935.1.1" ideology=conservatism traits={  } }
-create_corps_commander={  name = "C. Zamor" id=37002 portrait_path="gfx/generals/HAI_c_zamor.tga" traits={ panzer_leader  } skill=1 }
-create_corps_commander={  name = "O. Zamor" id=37003 portrait_path="gfx/generals/HAI_o_zamor.tga" traits={   } skill=1 }
-create_navy_leader={  name = "O. Zamor" id=37004 portrait_path="gfx/admiral/HAI_o_zamor.tga" traits={   } skill=1 }
+recruit_character = HAI_francois_c_antoine_simon
+recruit_character = HAI_vilbrun_guillaume_sam
+recruit_character = HAI_philippe_sudre_dartiguenave
+recruit_character = HAI_louis_borno
+recruit_character = HAI_Oreste_Zamor
 
 1910.1.1 = {
 	oob = "HAI_1910"
@@ -36,7 +33,6 @@ create_navy_leader={  name = "O. Zamor" id=37004 portrait_path="gfx/admiral/HAI_
 		support_weapons = 1
 		infantry_binoculars = 1
 		motorised_infantry = 1
-		ww1_ambulance1 = 1
 
 
 		# Support
@@ -52,28 +48,31 @@ create_navy_leader={  name = "O. Zamor" id=37004 portrait_path="gfx/admiral/HAI_
 
 		# Artillery
 		light_field_gun1 = 1
-		heavy_field_gun1 = 1
 
 		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
-
-		# Air
-
-		# Engineering
-		electronic_mechanical_engineering = 1
-
-		# Industry
+		#ww1_destroyer0 = 1
+		#ww1_destroyer1 = 1
+		#ww1_light_cruiser1 = 1
+		#ww1_light_cruiser0 = 1
+		#ww1_battlecruiser0 = 1
+		#ww1_battleship0 = 1
+		#ww1_submarine1 = 1
+		#ww1_coastal_submarine1 = 1
+		#transport = 1
 	}
 
-	set_politics={  parties={ democratic={ popularity=100 }  fascism={ popularity=0 }  communism={ popularity=0  } }  ruling_party=democratic last_election="1908.1.1" election_frequency=36 elections_allowed=yes }
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1908.1.1"
+	    election_frequency = 36
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 97
+	    fascism = 1
+	    communism = 1
+	    neutrality = 1
+	}
 
 	add_ideas = {
 
@@ -142,14 +141,23 @@ create_navy_leader={  name = "O. Zamor" id=37004 portrait_path="gfx/admiral/HAI_
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -160,7 +168,18 @@ create_navy_leader={  name = "O. Zamor" id=37004 portrait_path="gfx/admiral/HAI_
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=100 }  fascism={ popularity=0 }  communism={ popularity=0  } }  ruling_party=democratic last_election="1911.7.1" election_frequency=36 elections_allowed=yes }
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1911.7.1"
+	    election_frequency = 36
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 97
+	    fascism = 1
+	    communism = 1
+	    neutrality = 1
+	}
 
 	add_ideas = {
 

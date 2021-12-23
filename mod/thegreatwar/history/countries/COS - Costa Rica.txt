@@ -3,26 +3,55 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.75
+set_stability = 0.75
 set_convoys = 10
 set_country_flag=monroe_doctrine
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Federico Tinoco Granados" desc=COS_federico_tinoco_granados_DESC picture="gfx/leaders/COS_federico_tinoco_granados.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "Alfredo González Flores" desc=COS_alfredo_gonzalez_flores_DESC picture="gfx/leaders/COS_alfredo_gonzalez_flores.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Francisco Aguilar Barquero" desc=COS_francisco_aguilar_barquero_DESC picture="gfx/leaders/COS_francisco_aguilar_barquero.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "Julio Acosta García" desc=COS_julio_acosta_garcia_DESC picture="gfx/leaders/COS_julio_acosta_garcia.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "Ricardo Jiménez Oreamuno" desc=COS_ricardo_jimenez_oreamuno_DESC picture="gfx/leaders/COS_ricardo_jimenez_oreamuno.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_corps_commander={  name = "Pinaud" id=18002 portrait_path="gfx/generals/COS_pinaud.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Chavaría" id=18003 portrait_path="gfx/generals/COS_chavaria.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Ontúfar" id=18004 portrait_path="gfx/generals/COS_ontufar.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Amerling" id=18005 portrait_path="gfx/generals/COS_amerling.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Quirós" id=18006 portrait_path="gfx/generals/COS_quiros.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Osorio" id=18007 portrait_path="gfx/generals/COS_osorio.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Tinoco J.J." id=18009 portrait_path="gfx/generals/COS_tinoco_jj.tga" traits={   } skill=2 }
-create_field_marshal={  name = "Tinoco F." id=18008 portrait_path="gfx/fieldmarshal/COS_tinoco_f.tga" traits={   } skill=2 }
+
+# LEADERS
+recruit_character = COS_ricardo_jimenez_oreamuno
+recruit_character = COS_federico_tinoco_granados
+recruit_character = COS_alfredo_gonzalez_flores
+recruit_character = COS_francisco_aguilar_barquero
+recruit_character = COS_julio_acosta_garcia
+
+# ARMY
+recruit_character = COS_pinaud
+recruit_character = COS_chavaria
+recruit_character = COS_ontufar
+recruit_character = COS_amerling
+recruit_character = COS_quiros
+recruit_character = COS_osorio
+recruit_character = COS_tinoco_jj
+recruit_character = COS_tinoco_f
+
+
+set_technology = {
+	# Navy
+	ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+
+	ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1 # light_cruiser_1890 (Protected Cruiser I)
+
+	ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1 # destroyer_1890 (Torpedo Boat I)
+	ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1 # destroyer_1900 (Destroyer I)
+
+	ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
+
+	ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1 # coastal_submarine_1900 (Coastal Submarine 1900, first available Submarine)
+
+	transport = 1
+	transport_mtg = 1 # Naval Transport
+}
 
 1910.1.1 = {
 	oob = "COS_1910"
@@ -58,17 +87,6 @@ create_field_marshal={  name = "Tinoco F." id=18008 portrait_path="gfx/fieldmars
 		light_field_gun1 = 1
 		heavy_field_gun1 = 1
 
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
-
 		# Air
 
 		# Engineering
@@ -77,7 +95,18 @@ create_field_marshal={  name = "Tinoco F." id=18008 portrait_path="gfx/fieldmars
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=98 }  fascism={ popularity=2 }  communism={ popularity=0  } }  ruling_party=democratic last_election="1909.12.7" election_frequency=48 elections_allowed=yes }
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1909.12.7"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 96
+	    fascism = 1
+	    communism = 2
+	    neutrality = 1
+	}
 
 	add_ideas = {
 
@@ -144,17 +173,6 @@ create_field_marshal={  name = "Tinoco F." id=18008 portrait_path="gfx/fieldmars
 		heavy_field_gun1 = 1
 		bonus_bertha1 = 1
 
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
-
 		# Air
 		ww1_fighter1 = 1
 
@@ -164,7 +182,18 @@ create_field_marshal={  name = "Tinoco F." id=18008 portrait_path="gfx/fieldmars
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=98 }  fascism={ popularity=2 }  communism={ popularity=0  } }  ruling_party=democratic last_election="1913.12.7" election_frequency=48 elections_allowed=yes }
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1913.12.7"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 96
+	    fascism = 2
+	    communism = 1
+	    neutrality = 1
+	}
 
 	add_ideas = {
 

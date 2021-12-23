@@ -2,13 +2,12 @@
 
 add_namespace = ww1_armistice
 
-
-# Germany Surrend - Trigger to the GER
+# Let the Player choose for the Treaty of Versailles or the Peace Conference Mechanism
 #____________________________________________________________
 country_event = {
-	id = ww1_armistice.3
-	title = ww1_armistice.3.t
-	desc = ww1_armistice.3.d
+	id = ww1_armistice.500
+	title = ww1_armistice.500.t
+	desc = ww1_armistice.500.d
 	picture = GFX_report_event_generic_read_write
 
 	fire_only_once = yes
@@ -18,7 +17,7 @@ country_event = {
 	}
 
 	trigger = {
-		TAG = GER
+
 		GER = {
 			surrender_progress > 0.55
 			has_war_with = ENG
@@ -28,104 +27,159 @@ country_event = {
 			
 			NOT = {
 				has_global_flag = kis_ask_ger_surrend #
+				has_global_flag = kis_player_decided_ger_surrend #
+			}
+		}
+
+		# If Player is one of the Main
+		if = {
+			limit = {
+				FRA = {
+					is_ai = no
+				}
+			}
+			TAG = FRA
+			else = {
+				if = {
+					limit = {
+						ENG = {
+							is_ai = no
+							is_in_faction_with = FRA
+							has_war_with = GER
+						}
+					}
+					TAG = ENG
+					else = 	{
+						if = {
+							limit = {
+								ITA = {
+									is_ai = no
+									is_in_faction_with = FRA
+									has_war_with = GER
+								}
+							}
+							TAG = ITA
+							else = {
+								if = {
+									limit = {
+										SER = {
+											is_ai = no
+											is_in_faction_with = FRA
+											has_war_with = GER
+										}
+									}
+									TAG = SER
+									else = {
+										if = {
+											limit = {
+												USA = {
+													is_ai = no
+													is_in_faction_with = FRA
+													has_war_with = GER
+												}
+											}
+											TAG = USA
+											else = {
+												# If Player is not one of the Main
+												if = {
+													limit = {
+														FRA = {
+															is_ai = yes
+														}
+													}
+													TAG = FRA
+													else = {
+														if = {
+															limit = {
+																ENG = {
+																	is_ai = yes
+																	is_in_faction_with = FRA
+																	has_war_with = GER
+																}
+															}
+															TAG = ENG
+															else = {
+																if = {
+																	limit = {
+																		USA = {
+																			is_ai = yes
+																			is_in_faction_with = FRA
+																			has_war_with = GER
+																		}
+																	}
+																	TAG = USA
+																	else = {
+																		if = {
+																			limit = {
+																				ITA = {
+																					is_ai = yes
+																					is_in_faction_with = FRA
+																					has_war_with = GER
+																				}
+																			}
+																			TAG = ITA
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}	
+				}
 			}
 		}
 	}
+
+	# The Player chooses the Treaty of Versailles
+	option = {		
+		name = ww1_armistice.500.a
+		ai_chance = { factor = 100 }
+		GER = {
+			country_event = { days = 1 id = ww1_armistice.503 }
+  		}
+  		hidden_effect = {
+  			set_global_flag = kis_player_decided_ger_surrend
+  		}
+	}
+
+	# The Player chooses the Peace Conference Mechanism
+	option = {
+		name = ww1_armistice.500.b
+		ai_chance = { factor = 0 }
+		hidden_effect = {
+  			set_global_flag = kis_player_decided_ger_surrend
+  		}
+	}
+}
+#____________________________________________________________
+
+
+#____________________________________________________________
+country_event = {
+	id = ww1_armistice.503
+	title = ww1_armistice.503.t
+	desc = ww1_armistice.503.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
 
 	immediate = {
 		set_global_flag = kis_ask_ger_surrend
 	}
 
 	option = {
-		name = ww1_armistice.3.a
+		name = ww1_armistice.503.a
 		ai_chance = { factor = 100 }
 
 		hidden_effect = {
-
-			#Dirty Code but only way for now...
-			GER = { white_peace = FRA }
-			GER = { white_peace = ENG }
-			GER = { white_peace = RUS }
-			GER = { white_peace = SOV }
-			GER = { white_peace = HOL }
-			GER = { white_peace = BEL }
-			GER = { white_peace = ITA }
-			GER = { white_peace = LUX }
-			GER = { white_peace = MTN }
-			GER = { white_peace = SER }
-			GER = { white_peace = BUL }
-			GER = { white_peace = TUR }
-			GER = { white_peace = GRE }
-			GER = { white_peace = JAP }
-			GER = { white_peace = USA }
-			GER = { white_peace = ROM }
-			GER = { white_peace = CHI }
-			GER = { white_peace = QIN }
-
-			GER = {	diplomatic_relation = {	country = FRA relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = ENG relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = RUS relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = HOL relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = BEL relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = ITA relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = LUX relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = MTN relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = SER relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = BUL relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = TUR relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = GRE relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = JAP relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = USA relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = ROM relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = CHI relation = non_aggression_pact } }
-			GER = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
-
-			AUH = { white_peace = FRA }
-			AUH = { white_peace = ENG }
-			AUH = { white_peace = RUS }
-			AUH = { white_peace = SOV }
-			AUH = { white_peace = HOL }
-			AUH = { white_peace = BEL }
-			AUH = { white_peace = ITA }
-			AUH = { white_peace = LUX }
-			AUH = { white_peace = MTN }
-			AUH = { white_peace = SER }
-			AUH = { white_peace = BUL }
-			AUH = { white_peace = TUR }
-			AUH = { white_peace = GRE }
-			AUH = { white_peace = JAP }
-			AUH = { white_peace = USA }
-			AUH = { white_peace = ROM }
-			AUH = { white_peace = CHI }
-			AUH = { white_peace = QIN }
-
-			AUH = {	diplomatic_relation = {	country = FRA relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = ENG relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = RUS relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = HOL relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = BEL relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = ITA relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = LUX relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = MTN relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = SER relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = BUL relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = TUR relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = GRE relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = JAP relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = USA relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = ROM relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = CHI relation = non_aggression_pact } }
-			AUH = {	diplomatic_relation = {	country = QIN relation = non_aggression_pact } }
-
-			GER = {
-				remove_from_faction = AUH
-				remove_from_faction = BUL
-				remove_from_faction = ROM
-				remove_from_faction = ITA
-				remove_from_faction = MEX
-				remove_from_faction = SWE
-				remove_from_faction = GER
-			}
 
 			HUN = {
 				transfer_state = 43
@@ -133,8 +187,7 @@ country_event = {
 				transfer_state = 154
 
                 kill_country_leader = yes
-                create_country_leader={ name = "Miklós Horthy" desc=HUN_miklos_horothy_DESC picture="gfx/leaders/HUN_miklos_horthy.dds" expire="1935.1.1" ideology=despotism traits={  } }
-
+                create_country_leader={ name = "Miklós Horthy" desc=HUN_miklos_horothy_DESC picture="gfx/hoi4tgw_portraits/HUN/country_leaders/HUN_miklos_horthy.dds" expire="1935.1.1" ideology=despotism traits = { }}
 			}
 
 			CZE = {
@@ -179,6 +232,7 @@ news_event = {
 	picture = EVENT_hoi4tgw_armistice
 
 	major = yes
+	fire_only_once = yes
 	is_triggered_only = yes
 
 	# GER Accepts - The German Empire fall and Democratic Germany is
@@ -194,83 +248,204 @@ news_event = {
 			}
 			GER = {
 				set_politics = {
-				    parties = {
-				        neutrality = {
-				            popularity = 10
-				        }
-				        fascism = {
-				            popularity = 5
-				        }
-				        democratic = {
-				            popularity = 80
-				        }
-				        communism = {
-				            popularity = 5
-				        }
-				    }
 				    ruling_party = democratic last_election = "1911.7.1"
 				    election_frequency = 48 elections_allowed = yes
+				}
+				set_popularities = {
+					neutrality = 10
+					fascism = 5
+					democratic = 80
+					communism = 5
+				}	
+			}
+
+			if = {
+				limit = {
+					TUR = {
+						is_in_faction_with = GER
+						has_war_with = FRA
+					}
+				}
+				FRA = {
+					transfer_state = 553
+					transfer_state = 554
+					transfer_state = 680
+					transfer_state = 677
+
+					add_state_core = 553
+					add_state_core = 554
+					add_state_core = 680
+					add_state_core = 677
+				}
+				SAU = {
+					transfer_state = 747
+
+					add_state_core = 747
+				}
+			}
+
+			if = {
+				limit = {
+					TUR = {
+						is_in_faction_with = GER
+						has_war_with = ENG
+					}
+				}
+				QAT = {
+					transfer_state = 765
+				}
+				KUW = {
+					transfer_state = 656
+				}
+
+				ENG = {
+					transfer_state = 675
+					transfer_state = 291
+					transfer_state = 455
+					transfer_state = 454
+
+					add_state_core = 675
+					add_state_core = 291
+					add_state_core = 455
+					add_state_core = 454
+
+
+					if = { 
+						limit = { 
+							has_dlc = "Together for Victory" 
+						}
+						set_autonomy = {
+							target = QAT
+							autonomous_state = autonomy_colony
+						}
+						else = {
+							puppet = QAT
+						}
+					}
+
+					if = { 
+						limit = { 
+							has_dlc = "Together for Victory" 
+						}
+						set_autonomy = {
+							target = KUW
+							autonomous_state = autonomy_colony
+						}
+						else = {
+							puppet = KUW
+						}
+					}
 				}
 			}
 
 			FRA = {
 				transfer_state = 28
-				transfer_state = 553
-				transfer_state = 667
-				transfer_state = 554
-				transfer_state = 680
-				transfer_state = 677
-			}					
+				#transfer_state = 667
 
-			ROM = {
-				transfer_state = 80
-				transfer_state = 79
-				transfer_state = 46
-				transfer_state = 77
-				transfer_state = 81
-				transfer_state = 82
-				transfer_state = 83
-				transfer_state = 84
-				transfer_state = 76
+				add_state_core = 28
+
 			}
 
-			ITA = {
-				transfer_state = 39
-				transfer_state = 736
-			}	
-
-			SER = {
-				transfer_state = 107
-				transfer_state = 108
-				transfer_state = 760
-				transfer_state = 106
-				transfer_state = 759
-				transfer_state = 104
-				transfer_state = 103
-				transfer_state = 109
-				if = {
-					limit = {
-						MTN = {
-							is_ai = yes
-						}
+			if = {
+				limit = {
+					ROM = {
+						has_war_with = AUH
+						is_in_faction_with = FRA
 					}
-					transfer_state = 105
-					transfer_state = 761
 				}
-				country_event = { days = 1 id = ww1_armistice.101 }
+				ROM = {
+					transfer_state = 80
+					transfer_state = 79
+					transfer_state = 46
+					transfer_state = 77
+					transfer_state = 81
+					transfer_state = 82
+					transfer_state = 83
+					transfer_state = 84
+					transfer_state = 76
+
+					add_state_core = 80
+					add_state_core = 79
+					add_state_core = 46
+					add_state_core = 77
+					add_state_core = 81
+					add_state_core = 82
+					add_state_core = 83
+					add_state_core = 84
+					add_state_core = 76
+				}
 			}
 
+			if = {
+				limit = {
+					ITA = {
+						has_war_with = AUH
+						is_in_faction_with = FRA
+					}
+				}
+				ITA = {
+					transfer_state = 39
+					transfer_state = 736
+
+					add_state_core = 39
+					add_state_core = 736
+				}
+
+				# Can be removed with ITA NF
+				39 = { 
+					set_demilitarized_zone = yes 
+				}
+			}
+
+			if = {
+				limit = {
+					SER = {
+						is_in_faction_with = FRA
+					}
+				}
+				SER = {
+					transfer_state = 107
+					transfer_state = 108
+					transfer_state = 760
+					transfer_state = 106
+					transfer_state = 759
+					transfer_state = 104
+					transfer_state = 103
+					transfer_state = 109
+					transfer_state = 764 # https://en.wikipedia.org/wiki/Banat#The_Banat_Question_at_the_end_of_First_World_War
+
+					add_state_core = 107
+					add_state_core = 108
+					add_state_core = 760
+					add_state_core = 106
+					add_state_core = 759
+					add_state_core = 104
+					add_state_core = 103
+					add_state_core = 109
+					add_state_core = 764
+
+					if = {
+						limit = {
+							MTN = {
+								is_ai = yes
+							}
+						}
+						transfer_state = 105
+						transfer_state = 761
+
+						add_state_core = 105
+						add_state_core = 761
+					}
+					country_event = { days = 1 id = ww1_armistice.101 }
+				}
+			}
+				
 			ENG = {
 				transfer_state = 656
-				transfer_state = 675
-				transfer_state = 291
 				transfer_state = 676
-				transfer_state = 455
-				transfer_state = 454
-			}
 
-			SAU = {
-				transfer_state = 747
+				add_state_core = 656
+				add_state_core = 676
 			}
 
 			POL = {
@@ -280,18 +455,96 @@ news_event = {
 				transfer_state = 98
 				transfer_state = 10
 				transfer_state = 90
+
+				add_state_core = 85
+				add_state_core = 86
+				add_state_core = 87
+				add_state_core = 98
+				add_state_core = 10
+				add_state_core = 90
 			}
 
 			AUH = {
 				drop_cosmetic_tag = yes # Open Beta 0.1.8
+				country_event = { days = 1 id = ww1_armistice.100 }
+
 				transfer_state = 153
 				transfer_state = 152
 				transfer_state = 4
-				country_event = { days = 1 id = ww1_armistice.100 }
+
+				add_state_core = 153
+				add_state_core = 152
+				add_state_core = 4
+			}
+
+			BUL = {
+				kill_country_leader = yes
+				create_country_leader = { 
+					name = "Boris III" 
+					picture="gfx/hoi4tgw_portraits/BUL/country_leaders/BUL_boris_iii.dds" 
+					expire="1935.1.1" 
+					ideology = despotism
+					traits = { }
+				}
 			}
 
 			LUX = {
 				transfer_state = 8
+				
+				add_state_core = 8
+			}
+
+			#Dirty Code but only way for now...
+
+			AUH = { white_peace = SER }
+			GER = { white_peace = SER }
+			
+			#More appropriate, logical and less buggy code (MasterWaifuman)
+			# Updated by Wolferos
+			every_country = {
+			    limit = {
+				    has_war_with = GER
+					is_in_faction_with = FRA
+				}
+				white_peace = GER
+			}
+			
+			every_country = {
+			    limit = {
+				    has_war_with = AUH
+					is_in_faction_with = FRA
+				}
+				white_peace = AUH
+			}
+			
+			if = {
+			    limit = {
+				    BUL = {
+					    is_in_faction_with = GER
+					}
+				}
+				every_country = {
+			        limit = {
+				        has_war_with = BUL
+						is_in_faction_with = FRA
+				    }
+				    white_peace = BUL
+			    }
+			}
+			
+			if = {
+			    limit = {
+				    TUR = {
+					    is_in_faction_with = GER
+					}
+				}
+				every_country = {
+			        limit = {
+				        has_war_with = TUR
+						is_in_faction_with = FRA
+				    }
+				    white_peace = TUR
+			    }
 			}
 
 			news_event = { days = 3 id = ww1_armistice.2 }
@@ -323,40 +576,88 @@ news_event = {
 				transfer_state = 664
 				transfer_state = 73
 				transfer_state = 71
+
+				add_state_core = 664
+				add_state_core = 73
+				add_state_core = 71
 			}
 
 			ROM = {
 				transfer_state = 78
+				transfer_state = 766
+				transfer_state = 80
+				transfer_state = 79
+				transfer_state = 46
+				transfer_state = 77
+				transfer_state = 81
+				transfer_state = 82
+				transfer_state = 83
+				transfer_state = 84
+				transfer_state = 76
+
+				add_state_core = 78
+				add_state_core = 766
+				add_state_core = 80
+				add_state_core = 79
+				add_state_core = 46
+				add_state_core = 77
+				add_state_core = 81
+				add_state_core = 82
+				add_state_core = 83
+				add_state_core = 84
+				add_state_core = 76
 			}
 
 			ITA = {
 				transfer_state = 163
+
+				add_state_core = 163
 			}
 
 			SER = {
 				transfer_state = 102
 				transfer_state = 45
+
+				add_state_core = 102
+				add_state_core = 45
 			}
 
 			ENG = {
 				transfer_state = 770
+				transfer_state = 749
 				transfer_state = 546
 				transfer_state = 725
+
+				add_state_core = 770
+				add_state_core = 749
+				add_state_core = 546
+				add_state_core = 725
 			}
 
 			FRA = {
 				transfer_state = 769
 				transfer_state = 539
 				transfer_state = 755
+				transfer_state = 774	# Entenschnabel
+
+				add_state_core = 769
+				add_state_core = 539
+				add_state_core = 755
+				add_state_core = 774	# Entenschnabel
 			}
 
 			SAF = {
 				transfer_state = 541
+
+				add_state_core = 541
 			}
 
 			AST = {
 				transfer_state = 523
 				transfer_state = 737
+
+				add_state_core = 523
+				add_state_core = 737
 			}
 
 			JAP = {
@@ -365,14 +666,26 @@ news_event = {
 				transfer_state = 648
 				transfer_state = 633
 				transfer_state = 647
+
+				add_state_core = 684
+				add_state_core = 646
+				add_state_core = 648
+				add_state_core = 633
+				add_state_core = 647
 			}
 
 			EST = {
 				transfer_state = 13
 				transfer_state = 191
+
+				add_state_core = 13
+				add_state_core = 191
 			}
 
 			LAT = {
+				transfer_state = 12
+				transfer_state = 190
+
 				transfer_state = 12
 				transfer_state = 190
 			}
@@ -381,11 +694,20 @@ news_event = {
 				transfer_state = 189
 				transfer_state = 188
 				transfer_state = 11
+				transfer_state = 784
+
+				add_state_core = 189
+				add_state_core = 188
+				add_state_core = 11
+				add_state_core = 784
 			}
 
 			GRE = {
 				transfer_state = 184
 				transfer_state = 757
+
+				add_state_core = 184
+				add_state_core = 757
 			}
 
 			POL = {
@@ -399,6 +721,46 @@ news_event = {
 				transfer_state = 97
 				transfer_state = 95
 				transfer_state = 96
+
+				add_state_core = 90
+				add_state_core = 89
+				add_state_core = 88
+				add_state_core = 92
+				add_state_core = 91
+				add_state_core = 93
+				add_state_core = 94
+				add_state_core = 97
+				add_state_core = 95
+				add_state_core = 96
+			}
+			
+			GER = {
+				dismantle_faction = yes
+			}
+			FRA = {
+				dismantle_faction = yes
+			}
+
+			if = {
+				limit = {
+					TUR = {
+						is_in_faction_with = FRA
+						has_war_with = GER
+					}
+				}
+				TUR = {
+					transfer_state = 546
+					transfer_state = 749
+
+					add_state_core = 546
+					add_state_core = 749
+				}
+			}
+
+			every_country = { 
+				#remove_ideas = superior_enemy 
+				#remove_ideas = even_worse 
+				#remove_ideas = absolute_defence 
 			}
 		}
 	}
@@ -425,20 +787,8 @@ country_event = {
 		hidden_effect = {
 
 			# The Entente is dead after the Great War ### OPEN BETA 0.1.6
-			ENG = {
-				remove_from_faction = USA
-				remove_from_faction = RUS
-				remove_from_faction = JAP
-				remove_from_faction = ROM
-				remove_from_faction = SER
-				remove_from_faction = LUX
-				remove_from_faction = HOL
-				remove_from_faction = GRE
-				remove_from_faction = POL
-				remove_from_faction = DEN
-				remove_from_faction = BEL
-				remove_from_faction = POR
-				remove_from_faction = SPR
+			FRA = {
+				dismantle_faction = yes
 			}
 
 			AUH = {
@@ -452,23 +802,15 @@ country_event = {
 			#		traits = { }
 			#	}
 				set_politics = {
-				    parties = {
-				        neutrality = {
-				            popularity = 10
-				        }
-				        fascism = {
-				            popularity = 5
-				        }
-				        democratic = {
-				            popularity = 80
-				        }
-				        communism = {
-				            popularity = 5
-				        }
-				    }
 				    ruling_party = democratic last_election = "1911.7.1"
 				    election_frequency = 48 elections_allowed = yes
 				}
+				set_popularities = {
+						neutrality = 10
+						fascism = 5
+						democratic = 80
+						communism = 5
+					}	
 			}
 		}
 	}

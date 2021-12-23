@@ -1,6 +1,6 @@
 focus_tree = {
-	id=bul_focus
-	default=no
+	id = bul_focus
+	default = no
 	country={ factor=0  modifier={ add=10 tag=BUL }  modifier={ add=10 original_tag=BUL } }
 
 
@@ -26,9 +26,11 @@ focus_tree = {
 		prerequisite = { focus=BUL_ww1_political_effort }
 		icon = GFX_goal_support_democracy
 
-		available = { has_government=democratic }
+		available = { 
+			# has_government = democratic
+		}
 
-		completion_reward = { add_political_power=50 add_national_unity = 0.03 }
+		completion_reward = { add_political_power=50 add_stability = 0.03 }
 
 		ai_will_do = { factor = 100 }
 		cost = 10
@@ -68,7 +70,7 @@ focus_tree = {
 		prerequisite = { focus=BUL_ww1_Reconciliation }
 		icon = GFX_goal_demand_sudetenland
 
-		completion_reward = { add_political_power=-50 add_national_unity = -0.03 }
+		completion_reward = { add_political_power=-50 add_stability = -0.03 }
 
 		ai_will_do = { factor = 0 }
 		cost = 10
@@ -141,7 +143,7 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 
 		completion_reward = {
 			add_political_power= 20
-			add_national_unity = 0.05
+			add_stability = 0.05
 			army_experience=10
 		}
 
@@ -174,7 +176,7 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 		id = BUL_ww1_military_youth
 		prerequisite = { focus=BUL_ww1_full_rearmament }
 		icon = GFX_goal_generic_more_territorial_claims
-		completion_reward = { add_ideas=military_youth_focus if={ limit={ has_government=fascism } add_popularity={ ideology=fascism popularity=0.2 } } if={ limit={ has_government=communism } add_popularity={ ideology=communism popularity=0.2 } } }
+		completion_reward = { add_ideas = military_youth_focus if={ limit={ has_government=fascism } add_popularity={ ideology=fascism popularity=0.2 } } if={ limit={ has_government=communism } add_popularity={ ideology=communism popularity=0.2 } } }
 		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 4
@@ -187,7 +189,7 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 		icon = GFX_goal_generic_demand_territory
 		completion_reward = {
 			add_political_power=50
-			add_national_unity = 0.05
+			add_stability = 0.05
 			add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=land_doctrine }
 			add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=naval_doctrine }
 			add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=air_doctrine }
@@ -276,7 +278,7 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 		prerequisite = { focus= BUL_ww1_BolshevikRevolution }
 		icon = GFX_goal_generic_dangerous_deal
 
-		completion_reward = { 	add_national_unity = -0.05 add_ideas=communist_influence }
+		completion_reward = { 	add_stability = -0.05 add_ideas=communist_influence }
 
 		ai_will_do = { factor = 0 }
 		cost = 10
@@ -285,6 +287,7 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 		mutually_exclusive = { focus=BUL_ww1_CommunistMenace }
 
 	}
+
 	focus = {
 		id = BUL_ww1_SovietBulgaria
 		prerequisite = { focus= BUL_ww1_MarxistIdeas }
@@ -294,20 +297,62 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 		completion_reward = {
 
 			set_politics = {
-					ruling_party = communism
-					elections_allowed = yes
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.50
-				}
+				ruling_party = communism
+				elections_allowed = yes
+			}
+
+			add_popularity = {
+				ideology = communism
+				popularity = 0.50
+			}
 		}
 
 		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 0
 		y = 7
+	}
 
+	focus = {
+		id = BUL_ww1_SpreadRevolutionBosphorus # Spread Revolution beyond the Bosphorus
+		prerequisite = { focus= BUL_ww1_SovietBulgaria }
+		icon = GFX_focus_BUL_supremacy_on_the_bosporus
+
+		available = {
+			has_government = communism
+			country_exists = TUR
+
+			TUR = {
+				NOT = { has_government = communism }
+			}
+		}
+
+		completion_reward = {
+
+			create_wargoal = {
+				type = annex_everything
+				target = TUR
+			}
+
+			TUR = {
+				add_popularity = {
+					ideology = communism
+					popularity = 0.03
+				}
+			}
+
+			BUL = {
+				add_popularity = {
+					ideology = communism
+					popularity = 0.20
+				}
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 0
+		y = 8
 	}
 
 ##########################################
@@ -360,7 +405,7 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 		prerequisite = { focus=BUL_ww1_diplomatic_effort }
 		icon = GFX_goal_generic_territory_or_war
 
-		completion_reward = { add_national_unity=0.05 add_political_power=100 }
+		completion_reward = { add_stability=0.05 add_political_power=100 }
 		
 		ai_will_do = { factor = 2000 }
 		cost = 10
@@ -447,7 +492,7 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 
 		completion_reward = {
 			add_political_power= -200
-			add_national_unity = -0.2
+			add_stability = -0.2
 
 			ROM = { transfer_state = 77 }
 		}
@@ -474,7 +519,6 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 			756 = { remove_claim_by = BUL }
 			757 = { remove_claim_by = BUL }
 			759 = { remove_claim_by = BUL }
-			762 = { remove_claim_by = BUL }
 		}
 		
 		ai_will_do = { factor = 0	}
@@ -487,18 +531,11 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 
 
 
-
-
-
-
-
-
-
-
 	#War in Balkans Focus
 	focus = {
 		id = BUL_ww1_anti_ottoman
 		prerequisite = { focus=BUL_ww1_BalkansPolitics }
+		mutually_exclusive = { focus=BUL_ww1_ApeasementBalkans }
 		icon = GFX_goal_generic_political_pressure
 
 		completion_reward = {
@@ -536,7 +573,7 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 
 			army_experience=5
 			add_manpower = 20000
-			add_national_unity = 0.01
+			add_stability = 0.01
 
 		}
 
@@ -673,7 +710,7 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 
 		completion_reward = {
 			army_experience = 15
-			add_national_unity = 0.1
+			add_stability = 0.1
 			add_manpower = 10000
 		}
 		
@@ -916,22 +953,22 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 		icon = GFX_goal_generic_improve_relations 
 
 		bypass = {
-			is_in_faction_with = ENG
+			is_in_faction_with = FRA
 		} 
 
 	 	available = {
 	 		is_puppet = no
-	 		NOT = { has_war_with = ENG }
+	 		NOT = { has_war_with = FRA }
 			is_in_faction = no
 	 		
-	 		ENG = {
+	 		FRA = {
 	 			exists = yes
  				is_faction_leader = yes
 	 		}
 		}
 		completion_reward = {
 
-				ENG={
+				FRA={
 					add_to_faction=ROOT
 				}
 		}
@@ -1093,7 +1130,7 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 
 		}
 
-		completion_reward = { add_manpower = 8000 add_political_power=150 	add_national_unity = -0.01 }
+		completion_reward = { add_manpower = 8000 add_political_power=150 	add_stability = -0.01 }
 
 		ai_will_do = { factor = 10 }
 		cost = 10
@@ -1513,7 +1550,7 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 
 	focus = {
 		id = BUL_ww1_aviation_effort
-		icon = GFX_goal_generic_build_airforce
+		icon = GFX_hoi4tgw_bul_aviation_effort
 		completion_reward = { air_experience=25 if={ limit={ capital_scope={ NOT={ free_building_slots={ building=air_base size > 1 } } } } random_owned_state={ limit={ free_building_slots={ building=air_base size > 1 } } add_building_construction={ type=air_base level=2 instant_build=yes } ROOT={ set_country_flag=aviation_effort_AB } } } if={ limit={ capital_scope={ free_building_slots={ building=air_base size > 1 } } } capital_scope={ add_building_construction={ type=air_base level=2 instant_build=yes } ROOT={ set_country_flag=aviation_effort_AB } } } add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
 		complete_tooltip = { air_experience=25 if={ limit={ has_country_flag=aviation_effort_AB } add_building_construction={ type=air_base level=2 instant_build=yes } }			 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine }			 }
 		ai_will_do = { factor = 10 }
@@ -2359,7 +2396,20 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 		prerequisite = { focus=BUL_ww1_flexible_navy focus=BUL_ww1_large_navy }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_navy_submarine
-		completion_reward = { add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1 technology=ww1_submarine2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1_mtg technology=ww1_submarine2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1 technology=ww1_submarine2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 35
@@ -2371,7 +2421,20 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 		prerequisite = { focus=BUL_ww1_flexible_navy focus=BUL_ww1_large_navy }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_navy_cruiser
-		completion_reward = { add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0 technology=ww1_light_cruiser1 technology=ww1_light_cruiser2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0_mtg technology=ww1_light_cruiser1_mtg technology=ww1_light_cruiser2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0 technology=ww1_light_cruiser1 technology=ww1_light_cruiser2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 37
@@ -2383,7 +2446,20 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 		prerequisite = { focus=BUL_ww1_submarine_effort }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_wolf_pack
-		completion_reward = { add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0 technology=ww1_destroyer1 technology=ww1_destroyer2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0_mtg technology=ww1_destroyer1_mtg technology=ww1_destroyer2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0 technology=ww1_destroyer1 technology=ww1_destroyer2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 35
@@ -2395,7 +2471,20 @@ add_extra_state_shared_building_slots=1 add_building_construction={ type=arms_fa
 		prerequisite = { focus=BUL_ww1_cruiser_effort }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_navy_battleship
-		completion_reward = { navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0 technology=ww1_battlecruiser1 technology=ww1_battlecruiser2 technology=early_battleship technology=seaplane_carrier }  }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				 navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0_mtg technology=ww1_battlecruiser1_mtg technology=ww1_battlecruiser2_mtg technology=early_battleship_mtg technology=seaplane_carrier_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				 navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0 technology=ww1_battlecruiser1 technology=ww1_battlecruiser2 technology=early_battleship technology=seaplane_carrier }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 37

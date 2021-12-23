@@ -74,8 +74,8 @@ country_event = {
 # Fascist Take Power
 country_event = {
 	id = ww1_germany.17
-	title = "Ludendorff Putsch"
-	desc = "Ludendorff Putsch"
+	title = ww1_germany.17.t
+	desc = ww1_germany.17.d
 	picture = GFX_report_event_fascist_gathering
 	
 	fire_only_once=yes
@@ -87,16 +87,17 @@ country_event = {
 
 
 	option = {
-		name = "Ein volk, Ein reich, Ein Führer"
+		name = ww1_germany.17.a
 		set_politics = {
 			ruling_party = fascism
 			elections_allowed = no
-			parties = {
-		        fascism = {
-		            popularity = 100
-		        }
-		    }
 		}
+		set_popularities = {
+			neutrality = 0
+			fascism = 100
+			democratic = 0
+			communism = 0
+		}	
 		add_timed_idea = { idea = reign_of_terror days = 730 }
 	}
 }
@@ -105,8 +106,8 @@ country_event = {
 # Communist Take Power
 country_event = {
 	id = ww1_germany.18
-	title = "Revolution in Germany"
-	desc = "Revolution in Germany"
+	title = ww1_germany.18.t
+	desc = ww1_germany.18.d
 	picture = GFX_report_event_gathering_protest
 	
 	fire_only_once=yes
@@ -130,8 +131,8 @@ country_event = {
 # Democrat Take Power
 country_event = {
 	id = ww1_germany.19
-	title = "Weimar Republic is Proclaimed."
-	desc = "A national assembly was convened in Weimar, where a new constitution for the German Reich was written."
+	title = ww1_germany.19.t
+	desc = ww1_germany.19.d
 	picture = GFX_report_event_gathering_protest
 	
 	fire_only_once=yes
@@ -154,8 +155,8 @@ country_event = {
 #____________________________________________________________
 country_event = {
 	id=ww1_germany.20
-	title="Boer Revolt"
-	desc="A revolt occurend whith men who supported the recreation of a Boer South African Republic rose up against the government of the Union of South Africa."
+	title = ww1_germany.20.t
+	desc = ww1_germany.20.d
 	picture = GFX_report_event_swedish_soldier
 	
 	fire_only_once=yes
@@ -167,12 +168,12 @@ country_event = {
 	}
 	
 	option = {
-		name = "Gut!"
-
-		GER = {
-			load_oob="BOER_1914" # Boer Revolt in South Africa
-		}
+		name = ww1_germany.20.a
+		
 		hidden_effect = {
+			GER = {
+				load_oob="BOER_1914" # Boer Revolt in South Africa
+			}
 			news_event = { days = 1 id = kis_news.5 }
 		}
 	}
@@ -233,6 +234,7 @@ country_event = {
 		149 = { add_claim_by = SWE }
 		150 = { add_claim_by = SWE }
 		722 = { add_claim_by = SWE }
+		set_global_flag = swedenincp
 	}
 	option = {
 		name = ww1_germany.22.b
@@ -278,6 +280,86 @@ country_event = {
 		ai_chance = { factor = 50 }
 
 		set_global_flag = interwar_hitler_putsch_fail
+	}
+}
+#____________________________________________________________
+
+# Military Access from HOL
+#____________________________________________________________
+country_event = {
+	id =  ww1_germany.24
+	title = ww1_germany.24.t
+	desc = ww1_germany.24.d
+	picture = GFX_report_event_generic_read_write
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.24.a
+		ai_chance = { factor = 50 }
+		GER = {
+			diplomatic_relation = {
+				country = DEN
+				relation = military_access
+				active = yes
+			}
+		}
+
+	}
+	option = {
+		name = ww1_germany.24.b
+		ai_chance = { factor = 50 }
+		GER = {
+			create_wargoal = {
+					type = annex_everything
+					target = DEN
+			}
+		}
+	}
+}
+#____________________________________________________________
+
+# Christmas Truce
+#____________________________________________________________
+country_event = {
+	id = ww1_germany.210
+	title = ww1_kis_news_christmastruce.210.t
+	desc = ww1_kis_news_christmastruce.210.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = GER
+		GER = {
+			OR = {
+				has_war_with = FRA
+				has_war_with = BEL
+				has_war_with = ENG			
+			}
+		}
+		date > 1914.12.18
+		date < 1915.1.10
+	}
+
+	option = {
+		name = ww1_kis_news_christmastruce.210.a
+		ai_chance = { factor = 90 }
+		GER = {
+			add_political_power = -80
+			army_experience = 60
+			add_timed_idea = { idea = ww1_Christmas_Truth_Repressed days = 30 }
+		}
+	}
+	option = {
+		name = ww1_kis_news_christmastruce.210.b
+		ai_chance = { factor = 10 }
+		GER = {
+			add_political_power = 80
+			army_experience = -60
+			add_timed_idea = { idea = ww1_Christmas_Truth_Ignored days = 30 }
+		}
 	}
 }
 #____________________________________________________________

@@ -3,32 +3,87 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.75
+set_stability = 0.75
 set_convoys = 20
 set_country_flag=monroe_doctrine
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Carlos Herrera" desc=GUA_carlos_herrera_DESC picture="gfx/leaders/GUA_carlos_herrera.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "José Orellana" desc=GUA_jose_orellana_DESC picture="gfx/leaders/GUA_jose_orellana.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Manuel Cabrera" desc=GUA_manuel_cabrera_DESC picture="gfx/leaders/GUA_manuel_cabrera.dds" expire="1935.1.1" ideology=autocracy traits={  } }
-create_corps_commander={  name = "Letona" id=36003 portrait_path="gfx/generals/GUA_letona.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Aguijar" id=36004 portrait_path="gfx/generals/GUA_aguijar.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Herrera" id=36005 portrait_path="gfx/generals/GUA_herrera.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Padilla" id=36006 portrait_path="gfx/generals/GUA_padilla.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Orantes" id=36007 portrait_path="gfx/generals/GUA_orantes.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Larrave" id=36008 portrait_path="gfx/generals/GUA_larrave.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Linares" id=36009 portrait_path="gfx/generals/GUA_linares.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Sifuentes" id=36010 portrait_path="gfx/generals/GUA_sifuentes.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Lima" id=36011 portrait_path="gfx/generals/GUA_lima.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Jiménez" id=36012 portrait_path="gfx/generals/GUA_jimenez.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Ruiz" id=36013 portrait_path="gfx/generals/GUA_ruiz.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Monterrosa" id=36014 portrait_path="gfx/generals/GUA_monterrosa.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Sandoval" id=36015 portrait_path="gfx/generals/GUA_sandoval.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Mejía" id=36016 portrait_path="gfx/generals/GUA_mejia.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Bonilla" id=36017 portrait_path="gfx/generals/GUA_bonilla.tga" traits={   } skill=2 }
-create_field_marshal={  name = "Chacón" id=36001 portrait_path="gfx/fieldmarshal/GUA_chacon.tga" traits={   } skill=2 }
+
+#LEADERS
+recruit_character = GUA_manuel_cabrera
+recruit_character = GUA_jose_orellana
+recruit_character = GUA_carlos_herrera
+
+#ARMY
+recruit_character = GUA_letona
+recruit_character = GUA_aguijar
+recruit_character = GUA_herrera
+recruit_character = GUA_padilla
+recruit_character = GUA_orantes
+recruit_character = GUA_larrave
+recruit_character = GUA_linares
+recruit_character = GUA_sifuentes
+recruit_character = GUA_lima
+recruit_character = GUA_jimenez
+recruit_character = GUA_ruiz
+recruit_character = GUA_monterrosa
+recruit_character = GUA_sandoval
+recruit_character = GUA_mejia
+recruit_character = GUA_bonilla
+
+set_technology = {
+	# Navy
+	ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+	
+	ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
+	
+	###ww1_battleship2 = 0 #  ww1_battleship_1906 (Dreadnought I)
+	###ww1_battleship3 = 0 #  ww1_battleship_1910 (Dreadnought II)
+	###ww1_battleship4 = 0 #  ww1_battleship_1914 (Dreadnought III)
+
+	###ww1_battlecruiser1 = 0 # ww1_battlecruiser_1906 (Battlecruiser I)
+	###ww1_battlecruiser2 = 0 # ww1_battlecruiser_1910 (Battlecruiser II)
+	###ww1_battlecruiser3 = 0 # ww1_battlecruiser_1910 (Battlecruiser III)
+
+	ww1_heavy_cruiser0 = 1
+	ww1_heavy_cruiser0_mtg = 1 # heavy_cruiser_1890 (Armored Cruiser I)
+	ww1_heavy_cruiser1 = 1
+	ww1_heavy_cruiser1_mtg = 1 # heavy_cruiser_1900 (Armored Cruiser II)
+
+	ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1 # light_cruiser_1890 (Protected Cruiser I)
+	ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1 # light_cruiser_1900 (Protected Cruiser II)
+	###ww1_light_cruiser2 = 0 # light_cruiser_1906 (Light Cruiser I)
+	###ww1_light_cruiser3 = 0 # light_cruiser_1910 (Light Cruiser II)
+	###ww1_light_cruiser4 = 0 # light_cruiser_1914 (Light Cruiser III)
+
+	ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1 # destroyer_1890 (Torpedo Boat I)
+	ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1 # destroyer_1900 (Destroyer I)
+	ww1_destroyer2 = 1
+	ww1_destroyer2_mtg = 1 # destroyer_1906 (Destroyer II)
+	###ww1_destroyer3 = 0 # destroyer_1910 (Destroyer III)
+	###ww1_destroyer4 = 0 # destroyer_1914 (Destroyer IV)	
+
+	ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
+
+	ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1 # coastal_submarine_1900 (Coastal Submarine 1900, first available Submarine)
+	###ww1_submarine1 = 0 # submarine_1906 (Submarine I)
+	###ww1_submarine2 = 0 # submarine_1910 (Submarine II)
+	###ww1_submarine3 = 0 # submarine_1914 (Submarine III)
+
+	transport = 1
+	transport_mtg = 1 # Naval Transport
+}
 
 1910.1.1 = {
 	oob = "GUA_1910"
@@ -64,17 +119,6 @@ create_field_marshal={  name = "Chacón" id=36001 portrait_path="gfx/fieldmarsha
 		light_field_gun1 = 1
 		heavy_field_gun1 = 1
 
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
-
 		# Air
 
 		# Engineering
@@ -83,7 +127,18 @@ create_field_marshal={  name = "Chacón" id=36001 portrait_path="gfx/fieldmarsha
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=30 }  fascism={ popularity=0 }  communism={ popularity=0  }  neutrality={ popularity=70 } }  ruling_party=neutrality last_election="1910.4.11" election_frequency=72 elections_allowed=yes }
+	set_politics = {
+	    ruling_party = neutrality
+	    last_election = "1910.4.11"
+	    election_frequency = 72
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 30
+	    fascism = 0
+	    communism = 0
+	    neutrality = 70
+	}
 
 	add_ideas = {
 
@@ -117,7 +172,6 @@ create_field_marshal={  name = "Chacón" id=36001 portrait_path="gfx/fieldmarsha
 	complete_national_focus = neutrality_focus
 	complete_national_focus = ww1_military_reserve
 	
-
 	#-------------------------------------------------------
 
 	set_technology = {
@@ -130,7 +184,6 @@ create_field_marshal={  name = "Chacón" id=36001 portrait_path="gfx/fieldmarsha
 		infantry_grenade = 1
 		motorised_infantry = 1
 		ww1_ambulance1 = 1
-
 
 		# Support
 		tech_support = 1
@@ -150,17 +203,6 @@ create_field_marshal={  name = "Chacón" id=36001 portrait_path="gfx/fieldmarsha
 		heavy_field_gun1 = 1
 		bonus_bertha1 = 1
 
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
-
 		# Air
 		ww1_fighter1 = 1
 
@@ -170,7 +212,18 @@ create_field_marshal={  name = "Chacón" id=36001 portrait_path="gfx/fieldmarsha
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=30 }  fascism={ popularity=0 }  communism={ popularity=0  }  neutrality={ popularity=70 } }  ruling_party=neutrality last_election="1910.4.11" election_frequency=72 elections_allowed=yes }
+	set_politics = {
+	    ruling_party = neutrality
+	    last_election = "1910.4.11"
+	    election_frequency = 72
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 30
+	    fascism = 0
+	    communism = 0
+	    neutrality = 70
+	}
 
 	add_ideas = {
 

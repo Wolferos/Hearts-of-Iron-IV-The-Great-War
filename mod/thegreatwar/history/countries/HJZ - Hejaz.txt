@@ -3,27 +3,49 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.50
+set_stability = 0.50
 set_convoys = 100
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Ali Haydar" desc=HJZ_ali_haydar_DESC picture="gfx/leaders/HJZ_ali_haydar.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "Hussein bin Ali" desc=HJZ_hussein_bin_ali_DESC picture="gfx/leaders/HJZ_hussein_bin_ali.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_corps_commander={  name = "Nasir" id=38004 portrait_path="gfx/generals/HJZ_nasir.tga" traits={   } skill=1 }
-create_corps_commander={  name = "Ali" id=38005 portrait_path="gfx/generals/HJZ_ali.tga" traits={   } skill=1 }
-create_corps_commander={  name = "Lawrence" id=38007 portrait_path="gfx/generals/HJZ_lawrence.tga" traits={ trickster  } skill=4 }
-create_corps_commander={  name = "Joyce" id=38008 portrait_path="gfx/generals/HJZ_joyce.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Newcombe" id=38009 portrait_path="gfx/generals/HJZ_newcombe.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Auda" id=38010 portrait_path="gfx/generals/HJZ_auda.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Nuri" id=38011 portrait_path="gfx/generals/HJZ_nuri.tga" traits={   } skill=1 }
-create_field_marshal={  name = "Feisal" id=38001 portrait_path="gfx/fieldmarshal/HJZ_feisal.tga" traits={   } skill=1 }
+
+# LEADERS
+recruit_character = HJZ_hussein_bin_ali
+recruit_character = HJZ_ali_haydar
+
+# ARMY
+recruit_character = HJZ_nasir
+recruit_character = HJZ_ali
+recruit_character = HJZ_joyce
+recruit_character = HJZ_newcombe
+recruit_character = HJZ_auda
+recruit_character = HJZ_nuri
+recruit_character = HJZ_feisal
+
+# ADVISORS
+recruit_character = HJZ_thomas_edward_lawrence
+recruit_character = HJZ_mehmet_vehib_kaci
+recruit_character = HJZ_faisal_bin_hussein_bin_ali
+
+set_politics = {
+    ruling_party = neutrality
+    last_election = "1910.1.1"
+    election_frequency = 48
+    elections_allowed = no
+}
+set_popularities = {
+    democratic = 0
+    fascism = 0
+    communism = 0
+    neutrality = 100
+}
 
 1910.1.1 = {
 	oob = "HJZ_1910"
-
+	#set_cosmetic_tag = HJZ_TUR
 	#-------------------------------------------------------
 	#							NF
 	#-------------------------------------------------------
@@ -57,14 +79,23 @@ create_field_marshal={  name = "Feisal" id=38001 portrait_path="gfx/fieldmarshal
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battlecruiser0 = 1
+	ww1_battlecruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 
@@ -73,8 +104,6 @@ create_field_marshal={  name = "Feisal" id=38001 portrait_path="gfx/fieldmarshal
 
 		# Industry
 	}
-
-	set_politics={  parties={ democratic={ popularity=0 }  fascism={ popularity=0 }  communism={ popularity=0  }  neutrality={ popularity=100 } }  ruling_party=neutrality last_election="1910.1.1" election_frequency=48 elections_allowed=no }
 
 	add_ideas = {
 		ww1_Faith_Allah
@@ -143,14 +172,23 @@ create_field_marshal={  name = "Feisal" id=38001 portrait_path="gfx/fieldmarshal
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -161,9 +199,10 @@ create_field_marshal={  name = "Feisal" id=38001 portrait_path="gfx/fieldmarshal
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=0 }  fascism={ popularity=0 }  communism={ popularity=0  }  neutrality={ popularity=100 } }  ruling_party=neutrality last_election="1910.1.1" election_frequency=48 elections_allowed=no }
-
 	add_ideas = {
 		ww1_Faith_Allah
 	}
+}
+1919.1.1 = {
+	drop_cosmetic_tag = yes
 }

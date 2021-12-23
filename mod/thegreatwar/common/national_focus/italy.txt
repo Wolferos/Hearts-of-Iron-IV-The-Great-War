@@ -1,7 +1,7 @@
 focus_tree = {
 	id = italian_focus
 	default = no
-	country = { factor=0 modifier = { add = 10 tag = ITA } }
+	country = { factor = 0 modifier = { add = 10 tag = ITA } }
 
 
 	###########################################################################################################################
@@ -25,15 +25,15 @@ focus_tree = {
 	focus = {
 		id = ITA_ww1_support_republic
 		prerequisite = { focus=ITA_ww1_political_effort }
+		mutually_exclusive = { focus = ITA_ww1_contest_republic }
 		icon = GFX_goal_generic_territory_or_war
-		#available = { has_government=neutrality }
+
 		completion_reward = { add_political_power=100 }
 
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 1
 		y = 1
-		mutually_exclusive = { focus=ITA_ww1_contest_republic }
 	}
 
 	focus = {
@@ -41,7 +41,12 @@ focus_tree = {
 		prerequisite = { focus=ITA_ww1_support_republic }
 		icon = GFX_goal_support_democracy
 
-		available = { OR={ has_government=democratic has_government=neutrality } }
+		available = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+			}
+		}
 
 		completion_reward = { add_ideas=liberty_ethos_focus }
 		ai_will_do = { factor = 20 }
@@ -55,7 +60,10 @@ focus_tree = {
 		prerequisite = { focus=ITA_ww1_democracy }
 		icon = GFX_goal_generic_propaganda
 
-		completion_reward = { add_tech_bonus={ name=industrial_bonus bonus=0.15 uses=1 category=industry } add_political_power=50 }
+		completion_reward = {
+			add_political_power = 50
+			add_tech_bonus = { name = industrial_bonus bonus = 0.15 uses = 1 category = industry }
+		}
 
 		ai_will_do = { factor = 10 }
 		cost = 10
@@ -67,7 +75,23 @@ focus_tree = {
 		id = ITA_ww1_organize_colony
 		prerequisite = { focus=ITA_ww1_freespeech }
 		icon = GFX_goal_generic_position_armies
-		completion_reward = { }
+		available = {
+			ITA = { 
+				controls_state = 448
+			}
+		}		
+		completion_reward = {
+			add_manpower = 5000
+			448 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+		            type = arms_factory level = 1 instant_build = yes
+		        }
+				add_building_construction = {
+		            type = industrial_complex level = 1 instant_build = yes
+		        }
+			}
+		}
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 1
@@ -119,7 +143,7 @@ focus_tree = {
 
 		completion_reward = {
 
-		add_ideas=militarism_focus
+		add_ideas = militarism_focus
 		add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=land_doctrine }
 		add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=naval_doctrine }
 		add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=air_doctrine }
@@ -378,7 +402,7 @@ focus_tree = {
 		id = ITA_ww1_recognize_albania
 		icon = GFX_goal_generic_intelligence_exchange
 		prerequisite = { focus=ITA_ww1_back_france focus=ITA_ww1_back_ger}
-		bypass {
+		bypass = {
 			GER = {
 				has_war_with = FRA
 			}
@@ -430,7 +454,7 @@ focus_tree = {
 				is_in_faction_with = FRA 
 			}
 		}
-		icon = GFX_goal_generic_dangerous_deal
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
 		ai_will_do = { factor = 0 }
 		completion_reward = { ITA={ add_opinion_modifier={ target=ENG modifier=HOI4TGW_Opinion_anti_uk_policy_malus } } }
 		cost = 10
@@ -571,11 +595,7 @@ focus_tree = {
 	focus = {
 		id = ITA_ww1_second_balkan_war_finished
 		icon = GFX_goal_generic_intelligence_exchange
-		available = {
-			NOT = { 
-				is_in_faction_with = GER 
-			}
-		}
+		available = { }
 		prerequisite = { focus=ITA_ww1_anti_fra focus=ITA_ww1_anti_ah}
 		completion_reward = { add_political_power=150 }
 		ai_will_do = { factor = 2000 }
@@ -606,6 +626,7 @@ focus_tree = {
 
 	focus = {
 		id = ITA_ww1_central_power
+		mutually_exclusive = { focus = ITA_ww1_triple_entente }
 		available = {
 
 			NOT = { has_global_flag = kis_treaty_of_versailles }
@@ -643,6 +664,7 @@ focus_tree = {
 
 	focus = {
 		id = ITA_ww1_triple_entente
+		mutually_exclusive = { focus = ITA_ww1_central_power }
 		available = {
 
 			NOT = { has_global_flag = kis_treaty_of_versailles }
@@ -657,13 +679,12 @@ focus_tree = {
 		}
 		bypass = {
 			ITA = {
-				is_in_faction_with = ENG
+				is_in_faction_with = FRA
 			}
 		}
 		prerequisite = { focus=ITA_ww1_the_great_war_started }
 		prerequisite = { focus=ITA_ww1_german_africa }
 		prerequisite = { focus=ITA_ww1_trieste_tyrol }
-		prerequisite = { focus=ITA_ww1_ready_country }
 		icon = GFX_goal_tripartite_pact
 		bypass = {
 			ITA = {
@@ -671,7 +692,7 @@ focus_tree = {
 			}
 		}
 		completion_reward = { 
-			ENG = {
+			FRA = {
 				add_to_faction = ITA
 			}
 		}
@@ -701,23 +722,19 @@ focus_tree = {
 		ai_will_do = { factor = 30 }
 		cost = 10
 		x = 13
-		y = 7
+		y = 6
 	}
-
 
 	focus = {
 		id = ITA_ww1_diaz
-		prerequisite = { focus=ITA_ww1_ready_country }
+		prerequisite = { focus = ITA_ww1_ready_country focus = ITA_ww1_the_great_war_started }
 		icon = GFX_goal_generic_special_forces
+
 		completion_reward = {
-		  	add_political_power=100
-		  	custom_effect_tooltip=remove_military_high_command
-		  	hidden_effect={
-			   	remove_ideas=ITA_luigi_cadorna
-		   	}
-			  remove_unit_leader=46028
-			  add_ideas=ITA_armando_diaz
-			  }
+		  	army_experience = 50
+		  	add_political_power = 80
+		}
+
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 12
@@ -762,7 +779,7 @@ focus_tree = {
 
 		ai_will_do = { factor = 10 }
 		x = 14
-		y = 8
+		y = 7
 		cost = 10		
 	}
 
@@ -776,6 +793,28 @@ focus_tree = {
 		prerequisite = { focus=ITA_ww1_diplomatic_effort }
 		icon = GFX_goal_generic_construct_civilian
 		ai_will_do = { factor = 20 }
+
+		available = {
+			ITA = {
+				controls_state = 156
+				controls_state = 161
+			}
+		}
+		completion_reward = {
+			156 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+		            type = industrial_complex level = 1 instant_build = yes
+		        }
+			}
+			161 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+		            type = industrial_complex level = 1 instant_build = yes
+		        }
+			}
+		}
+
 		cost = 10
 		x = 13
 		y = 1
@@ -994,7 +1033,7 @@ focus_tree = {
 		prerequisite = { focus=ITA_ww1_fortification_effort_sardinia focus=ITA_ww1_fortification_effort_sicily}
 		icon = GFX_goal_generic_small_arms
 		available = {}
-		completion_reward = {}
+		completion_reward = { random_owned_state={ limit={ free_building_slots={ building=arms_factory size > 0 include_locked=yes } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=arms_factory size > 0 include_locked=yes } is_in_home_area=yes } } } } } add_extra_state_shared_building_slots=2 add_building_construction={ type=arms_factory level=2 instant_build=yes } } }
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 12
@@ -1007,7 +1046,7 @@ focus_tree = {
 		prerequisite = { focus=ITA_ww1_fortification_effort_sardinia focus=ITA_ww1_fortification_effort_sicily}
 		icon = GFX_goal_generic_production2
 		available = {}
-		completion_reward = {}
+		completion_reward = { random_owned_state={ limit={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=industrial_complex size > 0 include_locked=yes } is_in_home_area=yes } } } } } add_extra_state_shared_building_slots=2 add_building_construction={ type=industrial_complex level=2 instant_build=yes } } }
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 14
@@ -1035,7 +1074,7 @@ focus_tree = {
 	focus = {
 		id = ITA_ww1_libyan_claims
 		prerequisite = { focus=ITA_ww1_italian_expansionism }
-		icon = GFX_goal_generic_occupy_states_ongoing_war
+		icon = GFX_hoi4tgw_ita_libyan_claims
 		available = { 
 			#has_global_flag = SUPER_GLOBAL_Agadir_Crisis_Historical
 			country_exists=TUR
@@ -1294,7 +1333,7 @@ focus_tree = {
 	#----------
 	focus = {
 		id = ITA_ww1_italian_askari
-		prerequisite = { focus=ITA_ww1_italian_civil_tripoli focus=ITA_ww1_italian_civil_cyrenaica}
+		prerequisite = { focus=ITA_ww1_italian_civil_tripoli focus=ITA_ww1_italian_civil_cyrenaica focus=ITA_ww1_ready_country}
 		icon = GFX_goal_generic_military_sphere
 		available = {
 			ITA = { 
@@ -1316,7 +1355,12 @@ focus_tree = {
 	focus = {
 		id = ITA_ww1_army_effort
 		icon = GFX_goal_generic_allies_build_infantry
-		completion_reward = { army_experience=15 add_tech_bonus={ name=land_doc_bonus bonus=0.2 uses=1 category=land_doctrine } }
+
+		completion_reward = {
+			army_experience = 15
+			add_tech_bonus = { name = land_doc_bonus bonus = 0.2 uses = 1 category = land_doctrine }
+		}
+
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 22
@@ -1544,7 +1588,7 @@ focus_tree = {
 
 	focus = {
 		id = ITA_ww1_aviation_effort
-		icon = GFX_goal_generic_build_airforce
+		icon = GFX_hoi4tgw_ita_aviation_effort
 		completion_reward = { air_experience=25 if={ limit={ capital_scope={ NOT={ free_building_slots={ building=air_base size > 1 } } } } random_owned_state={ limit={ free_building_slots={ building=air_base size > 1 } } add_building_construction={ type=air_base level=2 instant_build=yes } ROOT={ set_country_flag=aviation_effort_AB } } } if={ limit={ capital_scope={ free_building_slots={ building=air_base size > 1 } } } capital_scope={ add_building_construction={ type=air_base level=2 instant_build=yes } ROOT={ set_country_flag=aviation_effort_AB } } } add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
 		complete_tooltip = { air_experience=25 if={ limit={ has_country_flag=aviation_effort_AB } add_building_construction={ type=air_base level=2 instant_build=yes } }			 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine }			 }
 		ai_will_do = { factor = 10 }
@@ -2390,7 +2434,20 @@ focus_tree = {
 		prerequisite = { focus=ITA_ww1_flexible_navy focus=ITA_ww1_large_navy }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_navy_submarine
-		completion_reward = { add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1 technology=ww1_submarine2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1_mtg technology=ww1_submarine2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1 technology=ww1_submarine2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 39
@@ -2402,7 +2459,20 @@ focus_tree = {
 		prerequisite = { focus=ITA_ww1_flexible_navy focus=ITA_ww1_large_navy }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_navy_cruiser
-		completion_reward = { add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0 technology=ww1_light_cruiser1 technology=ww1_light_cruiser2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0_mtg technology=ww1_light_cruiser1_mtg technology=ww1_light_cruiser2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0 technology=ww1_light_cruiser1 technology=ww1_light_cruiser2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 41
@@ -2414,7 +2484,20 @@ focus_tree = {
 		prerequisite = { focus=ITA_ww1_submarine_effort }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_wolf_pack
-		completion_reward = { add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0 technology=ww1_destroyer1 technology=ww1_destroyer2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0_mtg technology=ww1_destroyer1_mtg technology=ww1_destroyer2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0 technology=ww1_destroyer1 technology=ww1_destroyer2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 39
@@ -2426,7 +2509,20 @@ focus_tree = {
 		prerequisite = { focus=ITA_ww1_cruiser_effort }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_navy_battleship
-		completion_reward = { navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0 technology=ww1_battlecruiser1 technology=ww1_battlecruiser2 technology=early_battleship technology=seaplane_carrier }  }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				 navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0_mtg technology=ww1_battlecruiser1_mtg technology=ww1_battlecruiser2_mtg technology=early_battleship_mtg technology=seaplane_carrier_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				 navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0 technology=ww1_battlecruiser1 technology=ww1_battlecruiser2 technology=early_battleship technology=seaplane_carrier }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 41
@@ -2489,24 +2585,265 @@ focus_tree = {
 
 
 
-	# 0.1.5
-
 	################ INTERWAR START
+
+
+
+	focus = {
+		id = ITA_interwar_Treaty_of_SaintGermain # Treaty of Saint-Germain-en-Laye
+
+		icon = GFX_goal_generic_intelligence_exchange
+
+		available = {
+			has_global_flag = kis_treaty_of_versailles
+			country_exists = AUS
+			ITA = { controls_state = 39 }
+			is_puppet = no
+		}
+
+		x = 14
+		y = 8
+
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 150	
+		}
+
+		completion_reward = {
+			39 = { 
+				set_demilitarized_zone = no 
+			}
+		}
+	}
+
+
+
+	focus = {
+		id = ITA_interwar_postwar_refuse
+
+		mutually_exclusive = { focus = ITA_interwar_postwar_accept }
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+
+		available = {
+			has_global_flag = kis_treaty_of_versailles
+		}
+
+		x = 16
+		y = 8
+
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 500	
+		}
+		completion_reward = {
+			remove_ideas = { interwar_spirit_TheGreatWar_Winner }
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = ITA_interwar_postwar_war_albania
+		prerequisite = { focus = ITA_interwar_postwar_refuse }
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+
+		available = {
+			country_exists = ALB
+		}
+
+		x = 15
+		y = 9
+
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1	
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = ALB
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_interwar_postwar_interventionTURKEY
+		prerequisite = { focus = ITA_interwar_postwar_refuse }
+
+		icon = GFX_goal_generic_territory_or_war
+
+		x = 11
+		y = 9
+
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+
+		available = {
+			OR = {
+				country_exists = TUR			
+				country_exists = TUK			
+			}
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				type = take_state_focus
+				target = TUR
+				generator = { 341 }
+				expire = 0
+			}
+			create_wargoal = {
+				type = take_state_focus
+				target = TUK
+				generator = { 341 }
+				expire = 0
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_interwar_postwar_interventionSOVIET
+		prerequisite = { focus = ITA_interwar_postwar_refuse }
+
+		icon = GFX_goal_generic_political_pressure
+
+		available = {
+			country_exists = SOV
+		}
+
+		x = 13
+		y = 9
+
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+		completion_reward = {
+			add_popularity = { ideology = communism popularity = -0.05 }
+			add_stability = -0.10
+
+			add_opinion_modifier = { target = SOV modifier = minor_sanctions }
+			add_opinion_modifier = { target = SOV modifier = minor_sanctions_relations } 
+		}
+	}
+
+
+
+
+
+
+	focus = {
+		id = ITA_interwar_postwar_accept
+
+		mutually_exclusive = { focus = ITA_interwar_postwar_refuse }
+		icon = GFX_goal_generic_national_unity
+
+		available = {
+			has_global_flag = kis_treaty_of_versailles
+		}
+
+		x = 18
+		y = 8
+
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+		completion_reward = {
+			add_political_power = -50
+		}
+	}
+
+	focus = {
+		id = ITA_interwar_france_friend
+		prerequisite = { focus = ITA_interwar_postwar_accept }
+		icon = GFX_focus_chi_reach_out_to_france
+
+		available = { 
+			country_exists = FRA
+		}
+
+		completion_reward = {
+
+			add_opinion_modifier = { 
+				target = FRA
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 19
+		y = 9
+	}
+
+
+
+	focus = {
+		id = ITA_interwar_FascistManifesto # Fascist Manifesto
+
+		icon = GFX_focus_generic_italy_first
+		prerequisite = { focus = ITA_interwar_postwar_refuse }
+
+		x = 17
+		y = 9
+
+		available = {
+			date > 1920.1.1
+			has_war = no
+			is_puppet = no
+		}
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 200	
+		}
+
+		completion_reward = {
+			add_ideas = { nationalism }
+			remove_ideas = { ITA_ww1_Risorgimento }
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+		}
+	}
+
+
+
+
+
 
 	# March on Rome
 	focus = {
 		id = ITA_interwar_march_on_rome
 
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_focus_ger_assassinate_mussolini
+		prerequisite = { focus = ITA_interwar_FascistManifesto }
 
 		available = {
-			date > 1921.10.10
+			date > 1920.6.1
 			has_war = no
 			is_puppet = no
 		}
 
-		x = 8
-		y = 9
+		x = 17
+		y = 10
 
 
 		cost = 10
@@ -2535,26 +2872,19 @@ focus_tree = {
 
 		icon = GFX_goal_generic_occupy_states_ongoing_war
 
-		prerequisite = { focus = ITA_interwar_march_on_rome }
-
 		available = {
-			date > 1934.1.1		
+			date > 1921.1.1		
 			has_government = fascism
 			is_puppet = no	
 		}
 
 		bypass = {
-
-			AND {
-
+			AND = {
 				date > 1934.1.1
-
 				OR={
-
 					is_in_faction_with=ETH
 					has_war_with=ETH
 					NOT={ country_exists=ETH }
-
 				}
 			}
 		}
@@ -4056,7 +4386,7 @@ focus_tree = {
 			factor = 1
 		}	
 		completion_reward = {
-			add_national_unity = 0.2
+			add_stability = 0.2
 		}
 	}
 	
@@ -4977,8 +5307,6 @@ focus_tree = {
 	}
 
 	################ VANILLA END
-
-
 
 
 

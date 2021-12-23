@@ -3,20 +3,101 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.75
+set_stability = 0.75
 set_convoys = 120
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Agustín P. Justo" desc=ARG_agustin_p_justo_DESC picture="gfx/leaders/ARG_agustin_p_justo.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "Hipólito Yrigoyen" desc=ARG_hipolito_yrigoyen_DESC picture="gfx/leaders/ARG_hipolito_yrigoyen.dds" expire="1935.1.1" ideology=marxism traits={  } }
-create_country_leader={ name = "Victorino de la Plaza" desc=ARG_victorino_de_la_plaza_DESC picture="gfx/leaders/ARG_victorino_de_la_plaza.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Marcelo Torcuato de Alvear" desc=ARG_marcelo_torcuato_de_alvear_DESC picture="gfx/leaders/ARG_marcelo_torcuato_de_alvear.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Manuel Quintana" desc=ARG_manuel_quintana_DESC picture="gfx/leaders/ARG_manuel_quintana.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "José Figueroa Alcorta" desc=ARG_jose_figueroa_alcorta_DESC picture="gfx/leaders/ARG_jose_figueroa_alcorta.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_corps_commander={  name = "Uriburu" id=3004 portrait_path="gfx/generals/ARG_uriburu.tga" traits={   } skill=2 }
+
+# Country Leaders
+recruit_character = ARG_agustin_p_justo
+recruit_character = ARG_hipolito_yrigoyen
+recruit_character = ARG_victorino_de_la_plaza
+recruit_character = ARG_marcelo_torcuato_de_alvear
+recruit_character = ARG_manuel_quintana
+recruit_character = ARG_jose_figueroa_alcorta
+
+# Generals
+recruit_character = ARG_jose_felix_uriburu
+
+#-------------------------------------------------------
+
+set_technology = {
+
+	# Train
+	ww1_train = 1
+
+	# Navy
+	ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+	
+	ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
+	
+	###ww1_battleship2 = 0 #  ww1_battleship_1906 (Dreadnought I)
+	###ww1_battleship3 = 0 #  ww1_battleship_1910 (Dreadnought II)
+	###ww1_battleship4 = 0 #  ww1_battleship_1914 (Dreadnought III)
+
+	###ww1_battlecruiser1 = 0 # ww1_battlecruiser_1906 (Battlecruiser I)
+	###ww1_battlecruiser2 = 0 # ww1_battlecruiser_1910 (Battlecruiser II)
+	###ww1_battlecruiser3 = 0 # ww1_battlecruiser_1910 (Battlecruiser III)
+
+	ww1_heavy_cruiser0 = 1
+	ww1_heavy_cruiser0_mtg = 1 # heavy_cruiser_1890 (Armored Cruiser I)
+	ww1_heavy_cruiser1 = 1
+	ww1_heavy_cruiser1_mtg = 1 # heavy_cruiser_1900 (Armored Cruiser II)
+
+	ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1 # light_cruiser_1890 (Protected Cruiser I)
+	ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1 # light_cruiser_1900 (Protected Cruiser II)
+	###ww1_light_cruiser2 = 0 # light_cruiser_1906 (Light Cruiser I)
+	###ww1_light_cruiser3 = 0 # light_cruiser_1910 (Light Cruiser II)
+	###ww1_light_cruiser4 = 0 # light_cruiser_1914 (Light Cruiser III)
+
+	ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1 # destroyer_1890 (Torpedo Boat I)
+	ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1 # destroyer_1900 (Destroyer I)
+	ww1_destroyer2 = 1
+	ww1_destroyer2_mtg = 1 # destroyer_1906 (Destroyer II)
+	###ww1_destroyer3 = 0 # destroyer_1910 (Destroyer III)
+	###ww1_destroyer4 = 0 # destroyer_1914 (Destroyer IV)	
+
+	ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
+
+	ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1 # coastal_submarine_1900 (Coastal Submarine 1900, first available Submarine)
+	###ww1_submarine1 = 0 # submarine_1906 (Submarine I)
+	###ww1_submarine2 = 0 # submarine_1910 (Submarine II)
+	###ww1_submarine3 = 0 # submarine_1914 (Submarine III)
+
+	transport = 1
+	transport_mtg = 1 # Naval Transport
+
+		# Naval Modules Techs
+		light_navalmodule_1890 = 1
+	light_navalmodule_1890_mtg = 1
+	
+}
+
+set_politics = {
+    ruling_party = neutrality
+    last_election = "1910.4.12"
+    election_frequency = 72
+    elections_allowed = yes
+}
+
+set_popularities = {
+    democratic = 5
+    fascism = 5
+    communism = 12
+    neutrality = 78
+}
 
 1910.1.1 = {
 	oob = "ARG_1910"
@@ -41,53 +122,17 @@ create_corps_commander={  name = "Uriburu" id=3004 portrait_path="gfx/generals/A
 		tech_support = 1
 		tech_engineers = 1
 		tech_recon = 1
-		#tech_military_police = 1
-		#tech_maintenance_company = 1
-		#tech_field_hospital = 1
-		#tech_logistics_company = 1
+		tech_military_police = 1
 
-		# Armor
 
 		# Artillery
 		light_field_gun1 = 1
 		heavy_field_gun1 = 1
 
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
-
-		# Air
-
 		# Engineering
 		electronic_mechanical_engineering = 1
 
 		# Industry
-	}
-
-	set_politics = {
-	    parties = {
-	        democratic = {
-	            popularity = 5
-	        }
-	        fascism = {
-	            popularity = 5
-	        }
-	        communism = {
-	            popularity = 12
-	        }
-	        neutrality = {
-	            popularity = 78
-	        }
-	    }
-	    ruling_party = neutrality last_election = "1910.4.12"
-	    election_frequency = 72 elections_allowed = yes
 	}
 
 	add_ideas = {
@@ -96,16 +141,49 @@ create_corps_commander={  name = "Uriburu" id=3004 portrait_path="gfx/generals/A
 	}	
 
 	set_country_flag = monroe_doctrine
+	create_equipment_variant = {
+		name = "Almirante Brown Class"
+		type = battleship_1890
+		parent_version = 0
+		obsolete = yes
+		upgrades = { ship_gun_upgrade = 0 ship_armor_upgrade = 3 ship_engine_upgrade = 0 ship_reliability_upgrade = 3 }
+	}
+
+	create_equipment_variant = {
+		name = "Libertad Class"
+		type = battleship_1890
+		parent_version = 1
+		obsolete = no
+		upgrades = { ship_gun_upgrade = 0 ship_armor_upgrade = 0 ship_engine_upgrade = 0 ship_reliability_upgrade = 0 }
+	}
+
+	create_equipment_variant = {
+		name = "25 De Mayo Class"
+		type = light_cruiser_1890
+		parent_version = 0
+		obsolete = yes
+		upgrades = { ship_gun_upgrade = 5 ship_engine_upgrade = 5 ship_reliability_upgrade = 5 ship_anti_air_upgrade = 0 }
+	}
+
+	create_equipment_variant = {
+		name = "9 De Julio Class"
+		type = light_cruiser_1890
+		parent_version = 1
+		obsolete = no
+		upgrades = { ship_gun_upgrade = 5 ship_engine_upgrade = 5 ship_reliability_upgrade = 5 ship_anti_air_upgrade = 0 }
+	}
 }
+
 1910.10.12 = {
     create_country_leader = {
         name = "Roque Sáenz Peña"
-        desc = ARG_roque_saenz_pena_DESC picture = "gfx/leaders/ARG_roque_saenz_pena.dds"
+        desc = ARG_roque_saenz_pena_DESC picture = "gfx/hoi4tgw_portraits/ARG/ARG_roque_saenz_pena.dds"
         expire = "1935.1.1"
         ideology = moderatism traits = {}
     }
     set_country_flag = roque_died
 }
+
 1914.1.1 = {
 	oob = "ARG_1910"
 
@@ -166,17 +244,6 @@ create_corps_commander={  name = "Uriburu" id=3004 portrait_path="gfx/generals/A
 		heavy_field_gun1 = 1
 		bonus_bertha1 = 1
 
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
-
 		# Air
 		ww1_fighter1 = 1
 
@@ -186,29 +253,24 @@ create_corps_commander={  name = "Uriburu" id=3004 portrait_path="gfx/generals/A
 		# Industry
 	}
 
-	set_politics = {
-        parties = {
-            democratic = {
-                popularity = 5
-            }
-            fascism = {
-                popularity = 5
-            }
-            communism = {
-                popularity = 12
-            }
-            neutrality = {
-                popularity = 78
-            }
-        }
-        ruling_party = neutrality last_election = "1910.4.12"
-        election_frequency = 72 elections_allowed = yes
-    }
-
 	add_ideas = {
 		neutrality_idea
 		limited_conscription
 	}
 
 	set_country_flag = monroe_doctrine
+}
+
+1919.1.1 = {
+
+	set_political_power = 50
+
+	create_country_leader = {
+		name = "Hipólito Yrigoyen"
+		picture = "gfx/hoi4tgw_portraits/ARG/ARG_hipolito_yrigoyen.dds"
+		expire = "1945.1.1"
+		ideology = conservatism
+		traits = {}
+	}
+
 }

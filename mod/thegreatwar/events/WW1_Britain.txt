@@ -26,7 +26,7 @@ news_event = {
 		        create_country_leader = {
 		            name = "George V"
 		            desc = ENG_george_v_DESC
-		            picture = "gfx/leaders/ENG_george_v.dds"
+		            picture = "gfx/hoi4tgw_portraits/ENG/country_leaders/ENG_george_v.dds"
 		            expire = "1935.1.1"
 		            ideology = socialism
 		            traits = {}
@@ -62,8 +62,8 @@ news_event = {
 #____________________________________________________________
 news_event = {
 	id=ww1_england.101
-	title="South Africa Independence"
-	desc="South Africa came into being on 31 May, 1910 with the unification of the previously separate colonies of the Cape Natal, Transvaal and the Orange Free State. The Union of South Africa was founded as a dominion of the British Empire."
+	title=ww1_england.101.t
+	desc=ww1_england.101.d
 	picture=EVENT_hoi4tgw_south_africa_act
 	
 	major = yes
@@ -84,8 +84,11 @@ news_event = {
 				transfer_state = 719
 				transfer_state = 275
 			}
-			ENG={
-				puppet = SAF
+			ENG = {
+			    set_autonomy = {
+		            target = SAF
+		            autonomous_state = autonomy_dominion
+	                    }
 			}
 			SAF={
 				add_political_power=101
@@ -97,7 +100,7 @@ news_event = {
 	}
 	
 	option = {
-		name = "The Union is formed!"
+		name = ww1_england.101.b
 		ai_chance = {
 			factor = 100
 		}
@@ -132,7 +135,7 @@ news_event = {
 	}
 	
 	option = {
-		name = "They said the Titanic was unsinkable..."
+		name = ww1_england.102.a
 		ai_chance = {
 			factor = 100
 		}		
@@ -144,8 +147,8 @@ news_event = {
 #____________________________________________________________
 country_event = {
 	id = ww1_england.20
-	title = "Revolution in United-Kingdom"
-	desc = "Revolution in United-Kingdom"
+	title = ww1_england.20.t
+	desc = ww1_england.20.d
 	picture = GFX_report_event_gathering_protest
 	
 	fire_only_once=yes
@@ -162,6 +165,46 @@ country_event = {
 			elections_allowed = no
 		}
 		add_timed_idea = { idea = reign_of_terror days = 730 }
+	}
+}
+#____________________________________________________________
+
+# Christmas Truce
+#____________________________________________________________
+country_event = {
+	id = ww1_england.210
+	title = ww1_kis_news_christmastruce.210.t
+	desc = ww1_kis_news_christmastruce.210.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = ENG
+		ENG = {
+			has_war_with = GER
+		}
+		date > 1914.12.18
+		date < 1915.1.10
+	}
+
+	option = {
+		name = ww1_kis_news_christmastruce.210.a
+		ai_chance = { factor = 90 }
+		ENG = {
+			add_political_power = -80
+			army_experience = 60
+			add_timed_idea = { idea = ww1_Christmas_Truth_Repressed days = 30 }
+		}
+	}
+	option = {
+		name = ww1_kis_news_christmastruce.210.b
+		ai_chance = { factor = 10 }
+		ENG = {
+			add_political_power = 80
+			army_experience = -60
+			add_timed_idea = { idea = ww1_Christmas_Truth_Ignored days = 30 }
+		}
 	}
 }
 #____________________________________________________________

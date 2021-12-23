@@ -3,14 +3,18 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.50
+set_stability = 0.50
 set_convoys = 10
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Arthur Barclay" desc=LIB_arthur_barclay_DESC picture="gfx/leaders/LIB_arthur_barclay.dds" expire="1935.1.1" ideology=conservatism traits={  } }
+
+# LEADER
+recruit_character = LIB_arthur_barclay
+
 
 1910.1.1 = {
 	oob = "LIB_1910"
@@ -30,7 +34,6 @@ create_country_leader={ name = "Arthur Barclay" desc=LIB_arthur_barclay_DESC pic
 		motorised_infantry = 1
 		ww1_ambulance1 = 1
 
-
 		# Support
 		tech_support = 1
 		tech_engineers = 1
@@ -40,24 +43,29 @@ create_country_leader={ name = "Arthur Barclay" desc=LIB_arthur_barclay_DESC pic
 		#tech_field_hospital = 1
 		#tech_logistics_company = 1
 
-		# Armor
-
 		# Artillery
 		light_field_gun1 = 1
 		heavy_field_gun1 = 1
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battlecruiser0 = 1
+	ww1_battlecruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
-
-		# Air
+	transport_mtg = 1
 
 		# Engineering
 		electronic_mechanical_engineering = 1
@@ -65,14 +73,22 @@ create_country_leader={ name = "Arthur Barclay" desc=LIB_arthur_barclay_DESC pic
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=100 }  fascism={ popularity=0 }  communism={ popularity=0  } }  ruling_party=democratic last_election="1904.1.1" election_frequency=96 elections_allowed=yes }
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1904.1.1"
+	    election_frequency = 96
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 97
+	    fascism = 1
+	    communism = 1
+	    neutrality = 1
+	}
 
-	add_ideas = {
-
-	}	
 }
 1912.1.1 = {
-	create_country_leader={ name = "Daniel Howard" desc=LIB_daniel_howard_DESC picture="gfx/leaders/LIB_daniel_howard.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+	create_country_leader={ name = "Daniel Howard" desc=LIB_daniel_howard_DESC picture="gfx/hoi4tgw_portraits/LIB/country_leaders/LIB_daniel_howard.dds" expire="1935.1.1" ideology=liberalism traits = { } }
 }
 1914.1.1 = {
 	oob = "LIB_1914"
@@ -136,14 +152,23 @@ create_country_leader={ name = "Arthur Barclay" desc=LIB_arthur_barclay_DESC pic
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -154,9 +179,17 @@ create_country_leader={ name = "Arthur Barclay" desc=LIB_arthur_barclay_DESC pic
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=100 }  fascism={ popularity=0 }  communism={ popularity=0  } }  ruling_party=democratic last_election="1912.1.1" election_frequency=96 elections_allowed=yes }
-
-	add_ideas = {
-
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1912.1.1"
+	    election_frequency = 96
+	    elections_allowed = yes
 	}
+	set_popularities = {
+	    democratic = 97
+	    fascism = 1
+	    communism = 1
+	    neutrality = 1
+	}
+
 }

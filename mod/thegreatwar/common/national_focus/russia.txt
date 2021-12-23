@@ -1,9 +1,12 @@
 focus_tree = {
+
     id = rus_focus
     default = no
     country = {
-        factor = 0 modifier = {
-            add = 10 tag = RUS
+        factor = 0
+        modifier = {
+            add = 10
+            tag = RUS
         }
     }
 
@@ -14,7 +17,7 @@ focus_tree = {
 	focus = {
 		id = RUS_ww1_political_effort
 		icon = GFX_goal_generic_demand_territory
-		completion_reward = { add_political_power=120 }
+		completion_reward = { add_political_power = 80 }
 		ai_will_do = { factor = 20 }
 		cost = 10
 		x = 3
@@ -42,7 +45,6 @@ focus_tree = {
 			}
 		}
 		ai_will_do = { factor = 0 }
-				
 	}
 
 	focus = {
@@ -84,6 +86,7 @@ focus_tree = {
         }
         ai_will_do = { factor = 0 }
     }
+
 	focus = {
         id = RUS_ww1_crush_strikes
         icon = GFX_goal_generic_secret_weapon
@@ -96,10 +99,9 @@ focus_tree = {
         cost = 10
         completion_reward = {
         	add_political_power = -100
-        	add_national_unity = -0.05
+        	add_stability = -0.05
         }
         ai_will_do = { factor = 0 }
-
     }
 
 	focus = {
@@ -120,7 +122,7 @@ focus_tree = {
         y = 2
         cost = 10
         completion_reward = {
-			add_national_unity = 0.10
+			add_stability = 0.10
         }
         ai_will_do = { factor = 30 }
     }
@@ -141,7 +143,7 @@ focus_tree = {
         y = 3
         cost = 10
         completion_reward = {
-			add_national_unity = 0.10
+			add_stability = 0.10
         }
         ai_will_do = { factor = 30 }
     }
@@ -160,13 +162,10 @@ focus_tree = {
         y = 4
         cost = 10
         completion_reward = {
-			add_national_unity = 0.10
+			add_stability = 0.10
         }
         ai_will_do = { factor = 30 }
     }
-
-
-
 
 	focus = {
         id = RUS_ww1_arrest_opposition_leaders
@@ -194,9 +193,9 @@ focus_tree = {
 		x = 0
         y = 5
         cost = 10
-        completion_reward = {			
+        completion_reward = {
         	add_political_power = -200
-        	add_national_unity = 0.03
+        	add_stability = 0.03
         }
         ai_will_do = { factor = 0 }
     }
@@ -216,13 +215,13 @@ focus_tree = {
         y = 3
         cost = 10
         completion_reward = {
-			create_country_leader = { 
-				name = "Georgy Lvov" 
-				desc = RUS_georgy_lvov_DESC 
-				picture = "gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_georgy_lvov.dds" 
-				expire = "1935.1.1" 
-				ideology = conservatism 
-				traits = { } 
+			create_country_leader = {
+				name = "Georgy Lvov"
+				desc = RUS_georgy_lvov_DESC
+				picture = "gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_georgy_lvov.dds"
+				expire = "1935.1.1"
+				ideology = conservatism
+				traits = { }
 			}
 		}
         ai_will_do = { factor = 0 }
@@ -264,24 +263,27 @@ focus_tree = {
         id = RUS_ww1_adopt_marxist_ideas
         icon = GFX_goal_support_communism
         prerequisite = {
-				focus = RUS_ww1_reject_reforms
-				focus = RUS_ww1_adopt_reforms
+				    focus = RUS_ww1_reject_reforms
+				        focus = RUS_ww1_adopt_reforms
 		}
 		mutually_exclusive = {
 				focus = RUS_ww1_discuss_tsar_authority
 				focus = RUS_ww1_condemn_marxist_ideas
-        }
-        available = {
-        	has_country_flag = kis_tsarnicholasabdicated
-        }
-		x = 5
-        y = 2
-        cost = 10
-        completion_reward = {			
-			add_ideas = communist_influence
-        }
-        ai_will_do = { factor = 0 }
     }
+    available = {
+        OR = {
+          has_country_flag = kis_tsarnicholasabdicated
+          has_government = communism
+        }
+    }
+		x = 5
+    y = 2
+    cost = 10
+    completion_reward = {
+      add_ideas = communist_influence
+    }
+    ai_will_do = { factor = 0 }
+  }
 	focus = {
         id = RUS_ww1_legitimate_bolsheviks
         icon = GFX_goal_generic_soviet_construction
@@ -304,7 +306,7 @@ focus_tree = {
 			focus = RUS_ww1_legitimate_bolsheviks
 		}
         available = {
-        	has_government = communism        
+        	has_government = communism
         }
 		x = 6
         y = 4
@@ -321,13 +323,13 @@ focus_tree = {
 				focus = RUS_ww1_disarm_the_cossacks
 		}
         available = {
-        	has_government = communism        
+        	has_government = communism
         }
 		x = 6
         y = 5
         cost = 10
         completion_reward = {
-			
+
 			add_ideas = political_commissars_focus
         }
         ai_will_do = { factor = 0 }
@@ -349,14 +351,13 @@ focus_tree = {
 		y = 0
 	}
 
-
 	focus = {
 		id = RUS_ww1_BalkansPolitics
 		prerequisite = { focus=RUS_ww1_diplomatic_effort }
 		icon = GFX_goal_generic_territory_or_war
 
-		completion_reward = { add_national_unity=0.05 add_political_power=100 }
-		
+		completion_reward = { add_stability=0.05 add_political_power=100 }
+
 		ai_will_do = { factor = 2000	}
 		cost = 10
 		x = 9
@@ -371,15 +372,15 @@ focus_tree = {
 
 		available = { NOT={ has_war_with=SER } }
 
-		completion_reward = { 
+		completion_reward = {
 
-			add_opinion_modifier = { 
+			add_opinion_modifier = {
 				target = SER
 				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
 			}
 
 		}
-		
+
 		ai_will_do = { factor = 2000 }
 		cost = 10
 		x = 8
@@ -421,7 +422,7 @@ focus_tree = {
 		x = 12
         y = 2
         cost = 10
-        completion_reward = { 
+        completion_reward = {
 
     	    diplomatic_relation = {
     	        country = GER
@@ -442,7 +443,7 @@ focus_tree = {
 		icon = GFX_hoi4tgw_marianne
 
 		completion_reward = {
-			add_opinion_modifier = { 
+			add_opinion_modifier = {
 				target = FRA
 				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
 			}
@@ -468,22 +469,22 @@ focus_tree = {
 
 		available = { NOT={ has_war_with=AUH } }
 
-		completion_reward = { 
+		completion_reward = {
 
-			add_opinion_modifier = { 
+			add_opinion_modifier = {
 				target = AUH
 				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
 			}
 			ENG = {
 				remove_from_faction = RUS
 			}
-			add_opinion_modifier = { 
+			add_opinion_modifier = {
 				target = ENG
 				modifier =  HOI4TGW_Opinion_Russia_Leave_Entente
 			}
 
 		}
-		
+
 		ai_will_do = { factor = 100	}
 		cost = 10
 		x = 11
@@ -548,7 +549,7 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {factor = 10}
 		completion_reward = {
-			add_political_power = 100
+			add_political_power = 50
             111 = {
                 add_extra_state_shared_building_slots = 2
                 add_building_construction = {
@@ -584,9 +585,366 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {factor = 100}
 		completion_reward = {
-			add_political_power = 100
+			add_political_power = 50
 		}
 	}
+
+	focus = {
+		id = RUS_ww1_Tungsten_Nerchinsk # Search Wolfram ore near Nerchinsk
+		icon = GFX_focus_generic_tungsten
+		prerequisite = { focus = RUS_ww1_diplomatic_effort }
+		available = {
+			date > 1911.1.1
+			has_full_control_of_state = 563
+		}
+		x = 19
+		y = 1
+		cost = 10
+		ai_will_do = {factor = 100}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			563 = {
+				add_resource = {
+					type = tungsten
+					amount = 2
+				}
+			}
+		}
+	}
+
+    ################## OPEN BETA 0.8 Persian Campaign ########## [START] #############
+
+
+    focus = {
+        id = RUS_ww1_Reinforce_Northern_Persia # Open Beta 0.8 Persian Campaign ::: Reinforce Russia's Position in Northern Persia
+        icon = GFX_goal_generic_construction2
+
+        available = {
+            country_exists = PER
+            NOT = { has_war_with = PER }
+            PER = {
+                controls_state = 266
+            }
+        }
+
+        prerequisite = { focus = RUS_asian_focus }
+
+        x = 18
+        y = 2
+        cost = 10
+
+        completion_reward = {
+            266 = {
+                add_building_construction = {
+                    type = infrastructure
+                    level = 1
+                    instant_build = yes
+                }
+            }
+        }
+        ai_will_do = { factor = 1 }
+    }
+
+    focus = {
+        id = RUS_ww1_Revoke_Persia_Convention # Open Beta 0.8 Persian Campaign ::: Revoke The Anglo-Russian Convention
+        icon = GFX_focus_renounce_the_treaty_of_trianon
+
+        available = {
+            country_exists = PER
+            NOT = { has_war_with = PER }
+        }
+
+        prerequisite = { focus = RUS_ww1_Reinforce_Northern_Persia }
+
+        x = 19
+        y = 3
+        cost = 10
+
+        completion_reward = {
+            add_political_power = -300
+            RUS = { 
+                add_opinion_modifier = { 
+                    target = ENG 
+                    modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Betrayed 
+                } 
+                add_opinion_modifier = { 
+                    target = PER 
+                    modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Betrayed 
+                } 
+            }
+            PER = {
+                add_opinion_modifier = { 
+                    target = ENG 
+                    modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Betrayed 
+                } 
+            }
+            ENG = {
+                add_opinion_modifier = { 
+                    target = RUS 
+                    modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Betrayed 
+                } 
+            }
+        }
+
+        ai_will_do = {
+            factor = 0
+            modifier = { 
+                factor = 1 
+                is_historical_focus_on = no
+            }
+        }
+        mutually_exclusive = { focus = RUS_ww1_Support_Persia_Convention }
+    }
+
+    focus = {
+        id = RUS_ww1_Support_Persia_Convention # Open Beta 0.8 Persian Campaign ::: Support The Anglo-Russian Convention
+        icon = GFX_focus_chi_british_cooperation
+
+        available = {
+            country_exists = PER
+            NOT = { has_war_with = PER }
+        }
+
+        prerequisite = { focus = RUS_ww1_Reinforce_Northern_Persia }
+
+        x = 17
+        y = 3
+        cost = 10
+
+        completion_reward = {
+            add_political_power = 120
+            RUS = { 
+                add_opinion_modifier = { 
+                    target = ENG 
+                    modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Respected 
+                } 
+                add_opinion_modifier = { 
+                    target = PER 
+                    modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Respected 
+                } 
+            }
+            PER = {
+                add_opinion_modifier = { 
+                    target = ENG 
+                    modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Respected 
+                } 
+            }
+            ENG = {
+                add_opinion_modifier = { 
+                    target = RUS 
+                    modifier = HOI4TGW_Opinion_ENG_RUS_Convention_Respected 
+                } 
+            }
+        }
+        ai_will_do = {
+            factor = 1
+            modifier = { 
+                factor = 0
+                is_historical_focus_on = no
+            }
+        }
+        mutually_exclusive = { focus=RUS_ww1_Revoke_Persia_Convention }
+    }
+
+
+    focus = {
+        id = RUS_ww1_Persian_Cossack_Brigade # Open Beta 0.8 Persian Campaign ::: Reinforce The Persian Cossack Brigade
+        icon = GFX_goal_generic_army_doctrines
+        available = {
+
+            country_exists = PER
+            NOT = { has_war_with = PER }
+
+            RUS = {
+                has_war_with = TUR
+            }        
+        }
+        prerequisite = { focus = RUS_ww1_Support_Persia_Convention }
+
+        x = 17
+        y = 5
+        cost = 10
+
+        completion_reward = {
+            add_manpower = 15000
+            army_experience = 20
+
+        }
+        ai_will_do = {factor = 1}
+    }
+
+    focus = {
+        id = RUS_ww1_Russian_Influence_over_Persia # Open Beta 0.8
+        icon = GFX_goal_generic_position_armies
+        available = {
+
+            country_exists = PER
+            NOT = { has_war_with = PER }
+
+            RUS = {
+                has_war_with = TUR
+            }        
+        }
+        prerequisite = { focus = RUS_ww1_Persian_Cossack_Brigade }
+
+        x = 17
+        y = 7
+        cost = 10
+
+        completion_reward = {
+            PER = {
+                country_event = { days = 1 id = ww1_persia.3 }
+            }
+        }
+        ai_will_do = {factor = 0}
+    }
+
+    focus = {
+        id = RUS_ww1_Puppet_Persia # Open Beta 0.8 Persian Campaign ::: Occupy Northern Persia
+        icon = GFX_focus_eng_move_to_secure_the_dominions
+        available = {
+
+            country_exists = PER
+            NOT = { has_war_with = PER }
+
+            RUS = {
+                has_war_with = GER
+                has_war_with = AUH
+                has_war_with = TUR
+            }
+            ENG = {
+                has_war_with = GER
+                has_war_with = AUH
+                has_war_with = TUR
+            }
+        }
+        prerequisite = { focus = RUS_ww1_Revoke_Persia_Convention }
+
+        x = 19
+        y = 5
+        cost = 10
+
+        completion_reward = {
+
+            PEN = {
+                if = {
+                    limit = {
+                        PER = {
+                            controls_state = 420
+                        }
+                    }
+                    transfer_state = 420
+                }
+                if = {
+                    limit = {
+                        PER = {
+                            controls_state = 266
+                        }
+                    }
+                    transfer_state = 266
+                }
+                if = {
+                    limit = {
+                        PER = {
+                            controls_state = 418
+                        }
+                    }
+                    transfer_state = 418
+                }
+                if = {
+                    limit = {
+                        PER = {
+                            controls_state = 416
+                        }
+                    }
+                    transfer_state = 416
+                }
+
+                hidden_effect = {
+                    add_state_core = 420
+                    add_state_core = 266
+                    add_state_core = 418
+                    add_state_core = 416
+
+                    kill_country_leader = yes
+                }
+
+                create_country_leader = { 
+                    name = "Vladimir Liakhov" 
+                    desc = PEN_vladimir_liakhov_DESC 
+                    picture = "gfx/hoi4tgw_portraits/PEN/country_leaders/PEN_vladimir_liakhov.dds" 
+                    expire = "1935.1.1" 
+                    ideology = autocracy 
+                    traits = {  } 
+                }
+
+                hidden_effect = {
+                    set_politics = {
+                        ruling_party = neutrality
+                        last_election = "1910.1.1"
+                        election_frequency = 48
+                        elections_allowed = no
+                    }
+                    set_popularities = {
+                        democratic = 0
+                        fascism = 0
+                        communism = 0
+                        neutrality = 100
+                    }
+                }
+            }
+            RUS = {
+                puppet = PEN
+            }
+        }
+        ai_will_do = {
+            factor = 0
+            modifier = { 
+                factor = 1 
+                date > 1916.3.3
+            }
+        }
+    }
+
+    focus = {
+        id = RUS_ww1_Militarize_NorthenPersia # Open Beta 0.8
+        icon = GFX_goal_generic_political_pressure
+        available = {
+
+            PEN = {
+                exists = yes
+                is_puppet_of = RUS
+            }
+        }
+        prerequisite = { focus = RUS_ww1_Puppet_Persia }
+
+        x = 19
+        y = 7
+        cost = 10
+
+        completion_reward = {
+            PEN = {
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = 9000
+                }
+            }
+            add_equipment_to_stockpile = {
+                type = infantry_equipment
+                amount = -9000
+            }
+            # custom_effect_tooltip = kis_pen_load_oob_effect
+        }
+        ai_will_do = {factor = 0}
+    }
+
+    ################## OPEN BETA 0.8 Persian Campaign ########## [END] #############
+
+
 
     focus = {
         id = RUS_around_manchuria
@@ -594,7 +952,7 @@ focus_tree = {
         available = {}
 		prerequisite = { focus = RUS_asian_focus }
 
-		x = 17
+		x = 16
         y = 2
         cost = 10
         completion_reward = {
@@ -752,15 +1110,15 @@ focus_tree = {
 
 		available = { NOT={ has_war_with=ROM } }
 
-		completion_reward = { 
+		completion_reward = {
 
-			add_opinion_modifier = { 
+			add_opinion_modifier = {
 				target = ROM
 				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
 			}
 
 		}
-		
+
 		ai_will_do = { factor = 100	}
 		cost = 10
 		x = 9
@@ -781,7 +1139,7 @@ focus_tree = {
 		completion_reward = {
 			add_opinion_modifier = { target = ENG modifier = minor_sanctions }
 			ENG = {
-				add_opinion_modifier = { 
+				add_opinion_modifier = {
 					target = RUS
 					modifier =  HOI4TGW_Opinion_Russia_Leave_Entente
 				}
@@ -827,8 +1185,8 @@ focus_tree = {
         prerequisite = { focus = RUS_ww1_add_fuel_to_the_fire }
 
 		available = {
-			#BUL = { 
-			#	exists = yes 
+			#BUL = {
+			#	exists = yes
 			#	is_in_faction_with = GER
 			#}
 		}
@@ -846,8 +1204,121 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {
 			factor = 1
-		}	
+		}
 	}
+
+
+    focus = {
+        id = RUS_ww1_CaucasusFocus # Caucasus Focus # Open Beta 0.8.1
+        prerequisite = { focus=RUS_ww1_diplomatic_effort }
+        icon = GFX_goal_generic_occupy_states_ongoing_war
+
+        completion_reward = { add_political_power = 50 }
+
+        ai_will_do = { factor = 1 }
+        cost = 10
+        x = 7
+        y = 1
+    }
+
+    focus = {
+        id = RUS_ww1_BakuInvest # Invest in Baku # Open Beta 0.8.1
+        icon = GFX_goal_generic_oil_refinery
+        prerequisite = {
+            focus = RUS_ww1_CaucasusFocus
+        }
+        available = {
+            controls_state = 229
+        }
+        x = 7
+        y = 6
+
+        ai_will_do = { factor = 1 }
+        cost = 10
+
+        completion_reward = {
+            229 = {
+                add_resource = {
+                    type = oil
+                    amount = 38
+                }
+            }
+        }
+    }
+
+    focus = {
+        id = RUS_ww1_RussoTurkishBorder # Strengthen Russo-Turkish Border # Open Beta 0.8.1
+        icon = GFX_goal_generic_construct_military
+        prerequisite = {
+            focus = RUS_ww1_BakuInvest
+        }
+
+        ai_will_do = { factor = 0 }
+        available = {
+            controls_state = 230
+            controls_state = 231
+        }
+        x = 8
+        y = 7
+        cost = 10
+
+        completion_reward = {
+            230 = {
+                add_building_construction = {
+                    type = trench
+                    level = 1
+                    province = 10472
+                    instant_build = yes
+                }
+                add_building_construction = {
+                    type = trench
+                    level = 1
+                    province = 3564
+                    instant_build = yes
+                }
+                add_building_construction = {
+                    type = trench
+                    level = 1
+                    province = 12320
+                    instant_build = yes
+                }
+            }
+            231 = {
+                add_building_construction = {
+                    type = trench
+                    level = 1
+                    province = 7454
+                    instant_build = yes
+                }
+                add_building_construction = {
+                    type = trench
+                    level = 1
+                    province = 10403
+                    instant_build = yes
+                }
+            }
+        }
+    }
+
+    focus = {
+        id = RUS_ww1_AzerbaijanisRights # Recognize Azerbaijanis Rights # Open Beta 0.8.1
+        icon = GFX_focus_generic_treaty
+        prerequisite = { focus=RUS_ww1_BakuInvest }
+        prerequisite = { focus=RUS_ww1_right_of_the_people }
+        available = {
+            controls_state = 229
+        }
+        x = 6
+        y = 7
+        ai_will_do = { factor = 0 }
+        cost = 10
+
+        completion_reward = {
+            add_manpower = 15000
+            229 = { add_core_of = AZR }
+        }
+    }
+
 	focus = {
         id = RUS_ww1_restore_russia_glory
         icon = GFX_hoi4tgw_greattsar
@@ -858,20 +1329,22 @@ focus_tree = {
 			has_war_with = GER
             controls_state = 188
 		}
-		x = 8
+		x = 9
         y = 6
         cost = 10
+        ai_will_do = { factor = 0 }
         completion_reward = {
-            add_political_power = 200
+            add_political_power = 170
         }
     }
 
 	focus = {
         id = RUS_ww1_avenge_fall_constantinople
         icon = GFX_hoi4tgw_orthodoxy_triumphant
-        prerequisite = {
-            focus = RUS_ww1_restore_russia_glory
-        }
+
+        prerequisite = { focus=RUS_ww1_restore_russia_glory }
+        prerequisite = { focus=RUS_ww1_RussoTurkishBorder }
+
         available = {
 			RUS = { controls_state = 341 }
 			any_country = {
@@ -879,15 +1352,16 @@ focus_tree = {
 				controls_state = 341
 			}
 		}
-		x = 8
-        y = 7
+		x = 9
+        y = 8
         cost = 10
+        ai_will_do = { factor = 0 }
 		completion_reward = {
                add_state_claim = 49
                add_state_claim = 339
                add_state_claim = 344
                add_state_claim = 340
-               add_state_claim = 341               
+               add_state_claim = 341
                add_state_claim = 342
                add_state_claim = 343
                add_state_claim = 345
@@ -969,7 +1443,7 @@ focus_tree = {
         available = {
 
         }
-		x = 14
+		x = 13
         y = 5
         cost = 10
         completion_reward = {
@@ -993,7 +1467,7 @@ focus_tree = {
 
         }
         available = {}
-		x = 14
+		x = 12
         y = 6
         cost = 10
         completion_reward = {
@@ -1036,7 +1510,7 @@ focus_tree = {
 		completion_reward = { add_political_power = 100 }
 		ai_will_do = { factor = 20 }
 		cost = 10
-		x = 17
+		x = 15
 		y = 3
 	}
 	#-----------------------------------------
@@ -1046,15 +1520,16 @@ focus_tree = {
 
 	focus = {
         id = RUS_mongolian_protectorate
-        icon = GFX_goal_generic_more_territorial_claims
+        icon = GFX_goal_tfv_saf_anti_colonialist_crusade
 
 		prerequisite = { focus = RUS_ww1_Xinhai_Revolution_Opportunity }
         available = {
         	MON = {
         		exists = yes
         	}
+            NOT = { has_war_with = MON }
         }
-		x = 17
+		x = 16
         y = 4
         cost = 10
         completion_reward = {
@@ -1066,7 +1541,7 @@ focus_tree = {
         ai_will_do = { factor = 200 }
     }
 
-    
+
     focus = {
         id = RUS_reinforce_vladivostok
         icon = GFX_goal_generic_build_navy
@@ -1074,9 +1549,9 @@ focus_tree = {
 		prerequisite = { focus = RUS_mongolian_protectorate }
 
         available = {
-			date > 1914.9.1        
+			date > 1914.9.1
         }
-		x = 17
+		x = 15
         y = 5
         cost = 10
         completion_reward = {
@@ -1100,6 +1575,7 @@ focus_tree = {
                     instant_build = yes
                 }
             }
+
         }
         ai_will_do = { factor = 0 }
     }
@@ -1110,30 +1586,30 @@ focus_tree = {
 
 		icon = GFX_goal_tripartite_pact
 
-		available = { 
-			NOT={ 
-				has_war_with = JAP 
+		available = {
+			NOT={
+				has_war_with = JAP
 			}
 			JAP = {
-				is_in_faction_with = ENG
+				is_in_faction_with = FRA
 			}
 			RUS = {
-				is_in_faction_with = ENG
+				is_in_faction_with = FRA
 			}
 		}
 
-		completion_reward = { 
+		completion_reward = {
 
-			add_opinion_modifier = { 
+			add_opinion_modifier = {
 				target = JAP
 				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
 			}
 
 		}
-		
+
 		ai_will_do = { factor = 0	}
 		cost = 10
-		x = 16
+		x = 14
 		y = 6
 		mutually_exclusive = { focus=RUS_annex_manchurian_sphere }
 	}
@@ -1147,7 +1623,7 @@ focus_tree = {
         available = {
     		is_in_faction = no
         }
-		x = 18
+		x = 16
         y = 6
         cost = 10
         completion_reward = {
@@ -1172,7 +1648,7 @@ focus_tree = {
 				is_in_faction = no
 			}
         }
-		x = 18
+		x = 15
         y = 7
         cost = 10
         completion_reward = {
@@ -1183,7 +1659,7 @@ focus_tree = {
                     537 744
                 }
             }
-            remove_ideas = RUS_ww1_tsushima_humiliation
+            swap_ideas = { remove_idea = RUS_ww1_tsushima_humiliation add_idea = RUS_ww1_tsushima_humiliation_counter }
         }
     }
 
@@ -1199,7 +1675,7 @@ focus_tree = {
 		x = 22
 		y = 0
 		}
-	
+
 	focus = {
 		id = RUS_ww1_equipment_effort
 		prerequisite = { focus=RUS_ww1_army_effort }
@@ -1627,6 +2103,27 @@ focus_tree = {
 		y = 0
 	}
 
+    focus = {
+        id = RUS_ww1_extension_of_the_putilov_factory
+        icon = GFX_focus_generic_industry_2
+        cost = 10
+
+        prerequisite = {
+            focus = RUS_ww1_industrial_effort
+        }
+        x = 36
+        y = 1
+        
+        completion_reward = {
+            custom_effect_tooltip = available_designer
+            show_ideas_tooltip = Putilov_design_bureau
+        }
+
+        ai_will_do = {
+            factor = 1
+        }
+    }
+
 	focus = {
 		id = RUS_ww1_infrastructure_effort
 		prerequisite = { focus=RUS_ww1_industrial_effort }
@@ -1636,7 +2133,7 @@ focus_tree = {
 			random_owned_state={ limit={ free_building_slots={ building=infrastructure size > 0 } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=infrastructure size > 0 } is_in_home_area=yes } } } } } add_building_construction={ type=infrastructure level=1 instant_build=yes } }
 
 
-			random_owned_state={ limit={ free_building_slots={ building=infrastructure size > 0 } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=infrastructure size > 0 } is_in_home_area=yes } } } } } add_building_construction={ type=infrastructure level=1 instant_build=yes } } 
+			random_owned_state={ limit={ free_building_slots={ building=infrastructure size > 0 } OR={ is_in_home_area=yes NOT={ owner={ any_owned_state={ free_building_slots={ building=infrastructure size > 0 } is_in_home_area=yes } } } } } add_building_construction={ type=infrastructure level=1 instant_build=yes } }
 		}
 
 
@@ -1761,7 +2258,7 @@ focus_tree = {
 		completion_reward = {
 
 			random_owned_state = {
-				limit = { 
+				limit = {
 					free_building_slots = {
 						building = air_base
 						size > 1
@@ -1771,10 +2268,10 @@ focus_tree = {
 					type = air_base
 					level = 1
 					instant_build = yes
-				}							
+				}
 			}
 			random_owned_state = {
-				limit = { 
+				limit = {
 					free_building_slots = {
 						building = air_base
 						size > 1
@@ -1784,10 +2281,10 @@ focus_tree = {
 					type = air_base
 					level = 1
 					instant_build = yes
-				}							
+				}
 			}
 			random_owned_state = {
-				limit = { 
+				limit = {
 					free_building_slots = {
 						building = air_base
 						size > 1
@@ -1797,8 +2294,8 @@ focus_tree = {
 					type = air_base
 					level = 1
 					instant_build = yes
-				}							
-			}			
+				}
+			}
 		}
 	}
 
@@ -1930,7 +2427,7 @@ focus_tree = {
 		completion_reward = {
 
 			random_owned_state = {
-				limit = { 
+				limit = {
 					free_building_slots = {
 						building = air_base
 						size > 1
@@ -1940,10 +2437,10 @@ focus_tree = {
 					type = air_base
 					level = 1
 					instant_build = yes
-				}							
+				}
 			}
 			random_owned_state = {
-				limit = { 
+				limit = {
 					free_building_slots = {
 						building = air_base
 						size > 1
@@ -1953,10 +2450,10 @@ focus_tree = {
 					type = air_base
 					level = 1
 					instant_build = yes
-				}							
+				}
 			}
 			random_owned_state = {
-				limit = { 
+				limit = {
 					free_building_slots = {
 						building = air_base
 						size > 1
@@ -1966,8 +2463,8 @@ focus_tree = {
 					type = air_base
 					level = 1
 					instant_build = yes
-				}							
-			}			
+				}
+			}
 		}
 	}
 
@@ -2102,7 +2599,7 @@ focus_tree = {
 		completion_reward = {
 
 				random_owned_state = {
-					limit = { 
+					limit = {
 						free_building_slots = {
 							building = air_base
 							size > 1
@@ -2112,10 +2609,10 @@ focus_tree = {
 						type = air_base
 						level = 1
 						instant_build = yes
-					}							
+					}
 				}
 				random_owned_state = {
-					limit = { 
+					limit = {
 						free_building_slots = {
 							building = air_base
 							size > 1
@@ -2125,10 +2622,10 @@ focus_tree = {
 						type = air_base
 						level = 1
 						instant_build = yes
-					}							
+					}
 				}
 				random_owned_state = {
-					limit = { 
+					limit = {
 						free_building_slots = {
 							building = air_base
 							size > 1
@@ -2138,8 +2635,8 @@ focus_tree = {
 						type = air_base
 						level = 1
 						instant_build = yes
-					}							
-				}			
+					}
+				}
 		}
 	}
 
@@ -2215,7 +2712,7 @@ focus_tree = {
 
 	focus = {
 		id = RUS_ww1_naval_effort
-		icon = GFX_goal_generic_build_navy 
+		icon = GFX_goal_generic_build_navy
 		available = { any_state={ is_coastal=yes is_controlled_by=ROOT } }
 		completion_reward = { navy_experience=25 if={ limit={ NOT={ any_owned_state={ dockyard > 0 free_building_slots={ building=dockyard size > 2 include_locked=yes } } } any_owned_state={ is_coastal=yes } } random_owned_state={ limit={ is_coastal=yes free_building_slots={ building=dockyard size > 2 include_locked=yes } } add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } } set_country_flag=naval_effort_built } if={ limit={ NOT={ has_country_flag=naval_effort_built } any_owned_state={ dockyard > 0 free_building_slots={ building=dockyard size > 2 include_locked=yes } } } random_owned_state={ limit={ dockyard > 0 free_building_slots={ building=dockyard size > 2 include_locked=yes } } add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } } set_country_flag=naval_effort_built } if={ limit={ NOT={ has_country_flag=naval_effort_built } NOT={ any_owned_state={ free_building_slots={ building=dockyard size > 2 include_locked=yes } } } } random_state={ limit={ controller={ tag=ROOT } free_building_slots={ building=dockyard size > 2 include_locked=yes } } add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } } }			 }
 		complete_tooltip = { navy_experience=25 add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } }
@@ -2237,7 +2734,7 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = RUS_ww1_asian_seas_focus
         }
-		
+
 		completion_reward = {
 			navy_experience = 30
 			13 = {
@@ -2285,7 +2782,7 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = RUS_ww1_european_seas_focus
         }
-		
+
 		completion_reward = {
 			navy_experience = 30
 			409 = {
@@ -2359,7 +2856,20 @@ focus_tree = {
 		prerequisite = { focus=RUS_ww1_flexible_navy focus=RUS_ww1_large_navy }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_navy_submarine
-		completion_reward = { add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1 technology=ww1_submarine2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1_mtg technology=ww1_submarine2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1 technology=ww1_submarine2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 39
@@ -2371,7 +2881,20 @@ focus_tree = {
 		prerequisite = { focus=RUS_ww1_flexible_navy focus=RUS_ww1_large_navy }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_navy_cruiser
-		completion_reward = { add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0 technology=ww1_light_cruiser1 technology=ww1_light_cruiser2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0_mtg technology=ww1_light_cruiser1_mtg technology=ww1_light_cruiser2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0 technology=ww1_light_cruiser1 technology=ww1_light_cruiser2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 41
@@ -2383,7 +2906,20 @@ focus_tree = {
 		prerequisite = { focus=RUS_ww1_submarine_effort }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_wolf_pack
-		completion_reward = { add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0 technology=ww1_destroyer1 technology=ww1_destroyer2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0_mtg technology=ww1_destroyer1_mtg technology=ww1_destroyer2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0 technology=ww1_destroyer1 technology=ww1_destroyer2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 39
@@ -2395,7 +2931,20 @@ focus_tree = {
 		prerequisite = { focus=RUS_ww1_cruiser_effort }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_navy_battleship
-		completion_reward = { navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0 technology=ww1_battlecruiser1 technology=ww1_battlecruiser2 technology=early_battleship technology=seaplane_carrier }  }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				 navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0_mtg technology=ww1_battlecruiser1_mtg technology=ww1_battlecruiser2_mtg technology=early_battleship_mtg technology=seaplane_carrier_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				 navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0 technology=ww1_battlecruiser1 technology=ww1_battlecruiser2 technology=early_battleship technology=seaplane_carrier }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 41
@@ -2440,17 +2989,335 @@ focus_tree = {
 		y = 9
 	}
 
+    focus = {
+        id = RUS_ww1_antisubmarine
+        icon = GFX_goal_generic_navy_anti_submarine
+        prerequisite = { focus = RUS_ww1_navyreform }
+        available = {
+            date > 1918.1.1
+        }
+        completion_reward = {
+            navy_experience = 15
+            add_tech_bonus = { name = newnavalcanons_3_bonus bonus=0.3 uses=1 category = naval_doctrine }
+        }
+        ai_will_do = { factor = 1 }
+        cost = 10
+        x = 41
+        y = 9
+    }
+
+
+
+
+    ###########################################################################################################################
+    # INTERWAR
+    ###########################################################################################################################
+
+
+
+
 	focus = {
-		id = RUS_ww1_antisubmarine
-		prerequisite = { focus=RUS_ww1_navyreform }
-		available = { date > 1918.1.1 }
-		icon = GFX_goal_generic_navy_anti_submarine
-		completion_reward = { navy_experience=15 add_tech_bonus={ name=newnavalcanons_3_bonus bonus=0.3 uses=1 category=naval_doctrine } }
-		ai_will_do = { factor = 10 }
+		id = RUS_ww1_interwar_accept_PolandIndependence # Accept Poland's Independence
+		icon = GFX_focus_generic_polish_deal
+        prerequisite = { focus = RUS_ww1_polish_corps }
+        mutually_exclusive = { focus = RUS_ww1_interwar_refuse_PolandIndependence }
+        available = {
+            country_exists = POL
+            date > 1918.1.1
+            has_global_flag = kis_treaty_of_versailles
+        }
+		completion_reward = {
+            add_opinion_modifier = { 
+                target = POL
+                modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+            }
+        }
+		ai_will_do = { factor = 0 }
 		cost = 10
-		x = 41
-		y = 9
+        x = 13
+        y = 7
 	}
+
+    focus = {
+        id = RUS_ww1_interwar_refuse_PolandIndependence # Refuse Poland's Independence
+        icon = GFX_goal_generic_political_pressure
+        prerequisite = { focus = RUS_ww1_polish_corps }
+        mutually_exclusive = { focus = RUS_ww1_interwar_accept_PolandIndependence }
+        available = {
+            country_exists = POL
+            date > 1918.1.1
+            has_global_flag = kis_treaty_of_versailles
+        }
+        completion_reward = {
+
+            declare_war_on = {
+                type = annex_everything
+                target = POL
+            }
+        }
+        ai_will_do = { factor = 0 }
+        cost = 10
+        x = 11
+        y = 7
+    }
+
+
+
+
+    focus = {
+        id = RUS_ww1_interwar_HonorRussianImperialFamily # Honor Russian Imperial Family
+        icon = GFX_hoi4tgw_greattsar
+
+        available = {
+            has_global_flag = global_RomanovFamilyExecuted
+        }
+
+        completion_reward = {
+            add_stability = 0.1
+        }
+
+        ai_will_do = { factor = 1 }
+        cost = 10
+        x = 3
+        y = 6
+    }
+
+
+
+    focus = {
+        id = RUS_ww1_interwar_TsarVladimirovich # Recognize Kirill Vladimirovich as the Tsar
+        icon = GFX_hoi4tgw_russianempire
+        prerequisite = { focus = RUS_ww1_interwar_HonorRussianImperialFamily }
+        mutually_exclusive = { focus = RUS_ww1_interwar_TraitorVladimirovich }
+
+        available = {
+            date > 1918.1.1
+        }
+
+        completion_reward = {
+            create_country_leader = {
+                name = "Kirill I" picture="gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_Tsar_Kirill_I.dds" expire="1935.1.1" ideology = autocracy traits = {}
+            }
+            add_stability = -0.25
+            add_political_power = -300
+        }
+
+        ai_will_do = { factor = 0 }
+        cost = 10
+        x = 2
+        y = 7
+    }
+
+
+    focus = {
+        id = RUS_ww1_interwar_DealWithSOV # Deal with Trotsky
+        icon = GFX_goal_generic_alliance
+        prerequisite = { focus = RUS_ww1_interwar_TsarVladimirovich }
+
+        available = {
+
+        }
+
+        completion_reward = {
+            add_opinion_modifier = { 
+                target = SOV
+                modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+            }
+        }
+
+        ai_will_do = { factor = 0 }
+        cost = 10
+        x = 2
+        y = 8
+    }
+
+
+    focus = {
+        id = RUS_ww1_interwar_TraitorVladimirovich # Vladimirovich is still a Red Traitor
+        icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+        prerequisite = { focus = RUS_ww1_interwar_HonorRussianImperialFamily }
+        mutually_exclusive = { focus = RUS_ww1_interwar_TsarVladimirovich }
+
+        available = {
+            date > 1918.1.1
+        }
+
+        completion_reward = {
+            add_political_power = -50
+        }
+
+        ai_will_do = { factor = 0 }
+        cost = 10
+        x = 4
+        y = 7
+    }
+
+    focus = {
+        id = RUS_ww1_interwar_ZemskySobor # Reestablish the Zemsky Sobor
+        icon = GFX_focus_generic_self_management
+        prerequisite = { focus = RUS_ww1_interwar_TraitorVladimirovich }
+
+        available = {
+
+        }
+
+        completion_reward = {
+            add_stability = -0.15
+        }
+
+        ai_will_do = { factor = 0 }
+        cost = 10
+        x = 4
+        y = 8
+    }
+
+
+    focus = {
+        id = RUS_ww1_interwar_AlexanderIV # Alexander IV, Emperor of all the Russias
+        icon = GFX_hoi4tgw_wggrus
+        prerequisite = { focus = RUS_ww1_interwar_ZemskySobor }
+
+        available = {
+
+        }
+
+        completion_reward = {
+            create_country_leader = {
+                name = "Alexander IV" desc=WHR_aleksandr_kolchak_DESC picture="gfx/hoi4tgw_portraits/RUS/navy_admirals/RUS_kolchak.dds" expire="1935.1.1" ideology = autocracy traits = {}
+            }
+            add_stability = -0.25
+            add_political_power = -300
+        }
+
+        ai_will_do = { factor = 0 }
+        cost = 10
+        x = 4
+        y = 9
+    }
+
+
+
+    focus = {
+        id = RUS_ww1_interwar_InvadeBalticStates
+
+        icon = GFX_focus_eng_move_to_secure_the_dominions
+        prerequisite = { focus = RUS_ww1_interwar_AlexanderIV }
+        x = 1
+        y = 10
+        cost = 10
+
+        ai_will_do = {
+            factor = 0
+        }
+
+        completion_reward = {
+            create_wargoal = {
+                type = annex_everything
+                target = LIT
+            }
+            create_wargoal = {
+                type = annex_everything
+                target = LAT
+            }
+            create_wargoal = {
+                type = annex_everything
+                target = EST
+            }
+        }
+    }
+
+    focus = {
+        id = RUS_ww1_interwar_RetakeCaucasus
+
+        icon = GFX_focus_eng_move_to_secure_the_dominions
+        prerequisite = { focus = RUS_ww1_interwar_AlexanderIV }
+        x = 7
+        y = 10
+        cost = 10
+
+        ai_will_do = {
+            factor = 0
+        }
+
+        completion_reward = {
+            create_wargoal = {
+                type = annex_everything
+                target = GEO
+            }
+            create_wargoal = {
+                type = annex_everything
+                target = AZR
+            }
+            create_wargoal = {
+                type = annex_everything
+                target = RM
+            }
+        }
+    }
+
+
+    focus = {
+        id = RUS_ww1_interwar_FinlandFriend
+
+        icon = GFX_focus_invite_finland
+        mutually_exclusive = { focus = RUS_ww1_interwar_ClaimTheGrandPrincipalityofFinland }
+        prerequisite = { focus = RUS_ww1_interwar_AlexanderIV }
+        x = 3
+        y = 10
+        cost = 10
+
+        ai_will_do = {
+            factor = 0
+        }
+
+        completion_reward = {
+            add_opinion_modifier = {
+                target = FIN
+                modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+            }
+        }
+    }
+
+    focus = {
+        id = RUS_ww1_interwar_AllTheRussias
+
+        icon = GFX_goal_tfv_strengthen_commonwealth_ties
+
+        prerequisite = { focus = RUS_ww1_interwar_FinlandFriend }
+        x = 3
+        y = 11
+        cost = 10
+
+        ai_will_do = {
+            factor = 0
+        }
+
+        completion_reward = {
+            set_cosmetic_tag = RUS_EMPIRE
+        }
+    }
+
+    focus = {
+        id = RUS_ww1_interwar_ClaimTheGrandPrincipalityofFinland
+
+        icon = GFX_goal_generic_occupy_states_ongoing_war
+        mutually_exclusive = { focus = RUS_ww1_interwar_FinlandFriend }
+        prerequisite = { focus = RUS_ww1_interwar_AlexanderIV }
+        x = 5
+        y = 10
+        cost = 10
+
+        ai_will_do = {
+            factor = 0
+        }
+
+        completion_reward = {
+            create_wargoal = {
+                type = annex_everything
+                target = FIN
+            }
+        }
+    }
 
 
 }

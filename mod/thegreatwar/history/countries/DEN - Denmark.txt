@@ -3,20 +3,103 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.75
+set_stability = 0.75
 set_convoys = 40
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Frederick VIII" desc=DEN_frederick_viii_DESC picture="gfx/leaders/DEN_frederick_viii.dds" expire="1935.1.1" ideology=centrism traits={  } }
-create_navy_leader={  name = "Carstensen" id=25001 portrait_path="gfx/admiral/DEN_carstensen.tga" traits={   } skill=2 }
-create_navy_leader={  name = "Evers" id=25002 portrait_path="gfx/admiral/DEN_evers.tga" traits={   } skill=2 }
-create_navy_leader={  name = "Garde" id=25003 portrait_path="gfx/admiral/DEN_garde.tga" traits={   } skill=2 }
-create_navy_leader={  name = "Kofoed-Hansen" id=25005 portrait_path="gfx/admiral/DEN_kofoed_hansen.tga" traits={   } skill=2 }
-create_navy_leader={  name = "Topsøe-Jensen" id=25006 portrait_path="gfx/admiral/DEN_topsoe_jensen.tga" traits={   } skill=2 }
-create_navy_leader={  name = "Juel-Brockdorff" id=25007 portrait_path="gfx/admiral/DEN_juel_brockdorff.tga" traits={   } skill=2 }
+
+# LEADER
+recruit_character = DEN_frederick_viii
+
+# ARMY
+recruit_character = DEN_palle_berthelsen
+
+# NAVY
+recruit_character = DEN_carstensen
+recruit_character = DEN_evers
+recruit_character = DEN_garde
+recruit_character = DEN_kofoed_hansen
+recruit_character = DEN_topsoe_jensen
+recruit_character = DEN_juelbrockdorff
+
+
+# ADVISORS
+recruit_character = DEN_otto_kofoed_hansen
+recruit_character = DEN_niels_nergaard
+recruit_character = DEN_henri_konow
+recruit_character = DEN_jens_christensen
+recruit_character = DEN_johan_deuntzer
+recruit_character = DEN_svend_hogsbro
+recruit_character = DEN_henri_wenck
+recruit_character = DEN_frederik_schroder
+recruit_character = DEN_edvard_brandes
+recruit_character = DEN_tage_reedtz_thott
+recruit_character = DEN_otto_liebe
+
+
+set_technology = {
+
+	# Train
+	ww1_train = 1
+
+	# Navy
+	ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+	
+	ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
+	
+	###ww1_battleship2 = 0 #  ww1_battleship_1906 (Dreadnought I)
+	###ww1_battleship3 = 0 #  ww1_battleship_1910 (Dreadnought II)
+	###ww1_battleship4 = 0 #  ww1_battleship_1914 (Dreadnought III)
+
+	###ww1_battlecruiser1 = 0 # ww1_battlecruiser_1906 (Battlecruiser I)
+	###ww1_battlecruiser2 = 0 # ww1_battlecruiser_1910 (Battlecruiser II)
+	###ww1_battlecruiser3 = 0 # ww1_battlecruiser_1910 (Battlecruiser III)
+
+	ww1_heavy_cruiser0 = 1
+	ww1_heavy_cruiser0_mtg = 1 # heavy_cruiser_1890 (Armored Cruiser I)
+	ww1_heavy_cruiser1 = 1
+	ww1_heavy_cruiser1_mtg = 1 # heavy_cruiser_1900 (Armored Cruiser II)
+
+	ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1 # light_cruiser_1890 (Protected Cruiser I)
+	ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1 # light_cruiser_1900 (Protected Cruiser II)
+	###ww1_light_cruiser2 = 0 # light_cruiser_1906 (Light Cruiser I)
+	###ww1_light_cruiser3 = 0 # light_cruiser_1910 (Light Cruiser II)
+	###ww1_light_cruiser4 = 0 # light_cruiser_1914 (Light Cruiser III)
+
+	ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1 # destroyer_1890 (Torpedo Boat I)
+	ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1 # destroyer_1900 (Destroyer I)
+	ww1_destroyer2 = 1
+	ww1_destroyer2_mtg = 1 # destroyer_1906 (Destroyer II)
+	###ww1_destroyer3 = 0 # destroyer_1910 (Destroyer III)
+	###ww1_destroyer4 = 0 # destroyer_1914 (Destroyer IV)	
+
+	ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
+
+	ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1 # coastal_submarine_1900 (Coastal Submarine 1900, first available Submarine)
+	ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1 # submarine_1906 (Submarine I)
+	###ww1_submarine2 = 0 # submarine_1910 (Submarine II)
+	###ww1_submarine3 = 0 # submarine_1914 (Submarine III)
+
+	transport = 1
+	transport_mtg = 1 # Naval Transport
+
+	ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
+	ww1_coastal_submarine2 = 1
+}
 
 
 1910.1.1 = {
@@ -53,17 +136,6 @@ create_navy_leader={  name = "Juel-Brockdorff" id=25007 portrait_path="gfx/admir
 		light_field_gun1 = 1
 		heavy_field_gun1 = 1
 
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
-
 		# Air
 
 		# Engineering
@@ -72,15 +144,36 @@ create_navy_leader={  name = "Juel-Brockdorff" id=25007 portrait_path="gfx/admir
 		# Industry
 	}
 
-	set_politics={  parties={ neutrality={ popularity=92 } democratic={ popularity=5 } fascism={ popularity=1 }  communism={ popularity=2 } }  ruling_party=neutrality last_election="1910.4.31" election_frequency=48 elections_allowed=yes }
+	set_politics = {
+	    ruling_party = neutrality
+	    last_election = "1910.4.30"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 5
+	    fascism = 1
+	    communism = 2
+	    neutrality = 92
+	}
 
 	add_ideas = {
 		neutrality_idea
 	}	
+	create_equipment_variant={ name="Skjold Class" type=battleship_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=3 ship_engine_upgrade=0 ship_reliability_upgrade=3           } }
+	create_equipment_variant={ name="Iver Hvitfeldt Class" type=battleship_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=5 ship_engine_upgrade=1 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Tordenskjold Class" type=battleship_1890 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=2 ship_engine_upgrade=0 ship_reliability_upgrade=2           } }
+	create_equipment_variant={ name="Helgoland Class" type=battleship_1890 parent_version = 3 obsolete=yes upgrades={ ship_gun_upgrade=2 ship_armor_upgrade=2 ship_engine_upgrade=0 ship_reliability_upgrade=4           } }
+	create_equipment_variant={ name="Odin Class" type=battleship_1890 parent_version = 4 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
+	create_equipment_variant={ name="Gorm Class" type=battleship_1890 parent_version = 5 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
+	create_equipment_variant={ name="Lindormen Class" type=battleship_1890 parent_version = 6 obsolete=no upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
+	create_equipment_variant={ name="Valkyrien Class" type=light_cruiser_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=1 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Fyen Class" type=light_cruiser_1890 parent_version = 1 obsolete=no upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+
 }
 
 1912.5.14 = {
-	create_country_leader={ name = "Christian X" desc=DEN_christian_x_DESC picture="gfx/leaders/DEN_christian_x.dds" expire="1935.1.1" ideology=centrism traits={  } }
+	create_country_leader={ name = "Christian X" desc=DEN_christian_x_DESC picture="gfx/hoi4tgw_portraits/DEN/country_leaders/DEN_christian_x.dds" expire="1935.1.1" ideology=centrism traits = { } }
 	set_country_flag=frederick_died
 }
 
@@ -144,17 +237,6 @@ create_navy_leader={  name = "Juel-Brockdorff" id=25007 portrait_path="gfx/admir
 		heavy_field_gun1 = 1
 		bonus_bertha1 = 1
 
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
-
 		# Air
 		ww1_fighter1 = 1
 
@@ -164,7 +246,18 @@ create_navy_leader={  name = "Juel-Brockdorff" id=25007 portrait_path="gfx/admir
 		# Industry
 	}
 
-	set_politics={  parties={ neutrality={ popularity=92 } democratic={ popularity=5 } fascism={ popularity=1 }  communism={ popularity=2 } }  ruling_party=neutrality last_election="1913.5.20" election_frequency=48 elections_allowed=yes }
+	set_politics = {
+	    ruling_party = neutrality
+	    last_election = "1913.5.20"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 5
+	    fascism = 1
+	    communism = 2
+	    neutrality = 92
+	}
 
 	add_ideas = {
 		neutrality_idea

@@ -3,22 +3,40 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.60
+set_stability = 0.60
 set_convoys = 0
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Zauditu" desc=ETH_zauditu_DESC picture="gfx/leaders/ETH_zauditu.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "Menelik II" desc=ETH_menelik_ii_DESC picture="gfx/leaders/ETH_menelik_ii.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_corps_commander={  name = "Baria-Gabr" id=30002 portrait_path="gfx/generals/ETH_baria_gabr.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Menelik II" id=30012 portrait_path="gfx/generals/ETH_menelik_ii.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Yohannes" id=30014 portrait_path="gfx/generals/ETH_yohannes.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Saffo" id=30015 portrait_path="gfx/generals/ETH_saffo.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Aboye" id=30016 portrait_path="gfx/generals/ETH_aboye.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Haimanot" id=30017 portrait_path="gfx/generals/ETH_haimanot.tga" traits={   } skill=2 }
-create_field_marshal={  name = "Nessibu" id=30004 portrait_path="gfx/fieldmarshal/ETH_nessibu.tga" traits={   } skill=2 }
+
+# LEADERS
+recruit_character = ETH_menelik_ii
+recruit_character = ETH_zauditu
+
+# ARMY
+recruit_character = ETH_baria_gabr
+recruit_character = ETH_yohannes
+recruit_character = ETH_saffo
+recruit_character = ETH_aboye
+recruit_character = ETH_haimanot
+recruit_character = ETH_nessibu
+
+set_politics = {
+    ruling_party = neutrality
+    last_election = "1910.1.1"
+    election_frequency = 48
+    elections_allowed = no
+}
+
+set_popularities = {
+    democratic = 0
+    fascism = 0
+    communism = 0
+    neutrality = 100
+}
 
 1910.1.1 = {
 	oob = "ETH_1910"
@@ -38,17 +56,10 @@ create_field_marshal={  name = "Nessibu" id=30004 portrait_path="gfx/fieldmarsha
 		motorised_infantry = 1
 		ww1_ambulance1 = 1
 
-
 		# Support
 		tech_support = 1
 		tech_engineers = 1
 		tech_recon = 1
-		#tech_military_police = 1
-		#tech_maintenance_company = 1
-		#tech_field_hospital = 1
-		#tech_logistics_company = 1
-
-		# Armor
 
 		# Artillery
 		light_field_gun1 = 1
@@ -56,36 +67,36 @@ create_field_marshal={  name = "Nessibu" id=30004 portrait_path="gfx/fieldmarsha
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battlecruiser0 = 1
+	ww1_battlecruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
-
-		# Air
+	transport_mtg = 1
 
 		# Engineering
 		electronic_mechanical_engineering = 1
-
-		# Industry
 	}
-
-	set_politics={  parties={ democratic={ popularity=0 }  fascism={ popularity=0 }  communism={ popularity=0  }  neutrality={ popularity=100 } }  ruling_party=neutrality last_election="1910.1.1" election_frequency=48 elections_allowed=no }
-
-	add_ideas = {
-
-	}	
 }
+
 1913.12.12 = {
-	create_country_leader={ name = "Iyasu V" desc=ETH_iyasu_v_DESC picture="gfx/leaders/ETH_iyasu_v.dds" expire="1935.1.1" ideology=despotism  traits={  } }
+	create_country_leader={ name = "Iyasu V" desc=ETH_iyasu_v_DESC picture="gfx/hoi4tgw_portraits/ETH/country_leaders/ETH_iyasu_v.dds" expire="1935.1.1" ideology=despotism  traits = { } }
 	set_country_flag=menelik_died
 }
+
 1914.1.1 = {
 	oob = "ETH_1914"
-
 
 	#-------------------------------------------------------
 	#							NF
@@ -118,17 +129,9 @@ create_field_marshal={  name = "Nessibu" id=30004 portrait_path="gfx/fieldmarsha
 		# Infantry
 		infantry_weapons = 1
 		ww1infantry_weapons1 = 1
-		support_weapons = 1
-		infantry_binoculars = 1
 		infantry_grenade = 1
-		motorised_infantry = 1
-		ww1_ambulance1 = 1
-
 
 		# Support
-		tech_support = 1
-		tech_engineers = 1
-		tech_recon = 1
 		tech_military_police = 1
 		tech_maintenance_company = 1
 		tech_field_hospital = 1
@@ -145,14 +148,23 @@ create_field_marshal={  name = "Nessibu" id=30004 portrait_path="gfx/fieldmarsha
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -162,8 +174,6 @@ create_field_marshal={  name = "Nessibu" id=30004 portrait_path="gfx/fieldmarsha
 
 		# Industry
 	}
-
-	set_politics={  parties={ democratic={ popularity=0 }  fascism={ popularity=0 }  communism={ popularity=0  }  neutrality={ popularity=100 } }  ruling_party=neutrality last_election="1910.1.1" election_frequency=48 elections_allowed=no }
 
 	add_ideas = {
 

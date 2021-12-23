@@ -3,18 +3,21 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.75
+set_stability = 0.75
 set_convoys = 20
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
 
+# LEADER
+recruit_character = EGY_abbas_ii
 
 1910.1.1 = {
 	oob = "EGY_1910"
-
+	#set_cosmetic_tag = EGY_ENG
 	#-------------------------------------------------------
 	#							NF
 	#-------------------------------------------------------
@@ -48,14 +51,23 @@ set_convoys = 20
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battlecruiser0 = 1
+	ww1_battlecruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 
@@ -65,7 +77,18 @@ set_convoys = 20
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=0 }  fascism={ popularity=20 }  communism={ popularity=0  }  neutrality={ popularity=80 } }  ruling_party=neutrality last_election="1910.1.1" election_frequency=48 elections_allowed=no }
+	set_politics = {
+	    ruling_party = neutrality
+	    last_election = "1910.1.1"
+	    election_frequency = 48
+	    elections_allowed = no
+	}
+	set_popularities = {
+	    democratic = 1
+	    fascism = 18
+	    communism = 1
+	    neutrality = 80
+	}
 
 	add_ideas = {
 
@@ -73,7 +96,7 @@ set_convoys = 20
 }
 
 1914.1.1 = {
-	oob = "EGY_1914"
+	oob = "EGY_1910"
 
 
 	#-------------------------------------------------------
@@ -134,14 +157,23 @@ set_convoys = 20
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -152,9 +184,33 @@ set_convoys = 20
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=0 }  fascism={ popularity=20 }  communism={ popularity=0  }  neutrality={ popularity=80 } }  ruling_party=neutrality last_election="1910.1.1" election_frequency=48 elections_allowed=no }
+	set_politics = {
+	    ruling_party = neutrality
+	    last_election = "1910.1.1"
+	    election_frequency = 48
+	    elections_allowed = no
+	}
+	set_popularities = {
+	    democratic = 1
+	    fascism = 18
+	    communism = 1
+	    neutrality = 80
+	}
 
 	add_ideas = {
 
+	}
+}
+
+1919.1.1 = {
+	set_cosmetic_tag = EGY_SULTANATE
+
+	create_country_leader = {
+		name = "Fuad I"
+		desc = "POLITICS_FuadI_DESC"
+		picture = "gfx/hoi4tgw_portraits/EGY/country_leaders/EGY_fuad_i.dds"
+		expire = "1965.1.1"
+		ideology = autocracy
+		traits = { }
 	}
 }

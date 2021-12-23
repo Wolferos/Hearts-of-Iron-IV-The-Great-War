@@ -3,35 +3,107 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.75
+set_stability = 0.75
 set_convoys = 100
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Ronald Munro-Ferguson" desc=AST_ronald_munro_ferguson_DESC picture="gfx/leaders/AST_ronald_munro_ferguson.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "William Humble Ward" desc=AST_r_h_william_ward_DESC picture="gfx/leaders/AST_r_h_william_ward.dds" expire="1935.1.1" ideology=conservatism traits={  } }
-create_corps_commander={  name = "Chauvel,H.G." id=5002 portrait_path="gfx/generals/AST_chauvel_hg.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Elliott" id=5003 portrait_path="gfx/generals/AST_elliott.tga" traits={   } skill=4 }
-create_corps_commander={  name = "Talbot Hobbs,J.J." id=5004 portrait_path="gfx/generals/AST_talbot_hobbs_jj.tga" traits={   } skill=2 }
-create_corps_commander={  name = "M'Cay" id=5005 portrait_path="gfx/generals/AST_m_cay.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Legge" id=5008 portrait_path="gfx/generals/AST_legge.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Cox" id=5009 portrait_path="gfx/generals/AST_cox.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Brand" id=5010 portrait_path="gfx/generals/AST_brand.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Gellibrand" id=5011 portrait_path="gfx/generals/AST_gellibrand.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Glasgow" id=5012 portrait_path="gfx/generals/AST_glasgow.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Holmes" id=5013 portrait_path="gfx/generals/AST_holmes.tga" traits={   } skill=3 }
-create_corps_commander={  name = "MacLaurin" id=5014 portrait_path="gfx/generals/AST_maclaurin.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Onslow" id=5015 portrait_path="gfx/generals/AST_onslow.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Rosenthal" id=5016 portrait_path="gfx/generals/AST_rosenthal.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Ryrie" id=5022 portrait_path="gfx/generals/AST_ryrie.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Wilson" id=5023 portrait_path="gfx/generals/AST_wilson.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Sinclair-MacLagan,E.G." id=5025 portrait_path="gfx/generals/AST_sinclair_maclagan_eg.tga" traits={   } skill=3 }
-create_field_marshal={  name = "Monash,J" id=5006 portrait_path="gfx/fieldmarshal/AST_monash_j.tga" traits={ organisational_leader thorough_planner } skill=5 }
-create_field_marshal={  name = "Blamey,T.A." id=5028 portrait_path="gfx/fieldmarshal/AST_blamey_ta.tga" traits={ logistics_wizard offensive_doctrine } skill=3 }
-create_navy_leader={  name = "Creswell" id=5021 portrait_path="gfx/admiral/AST_creswell.tga" traits={   } skill=3 }
-create_navy_leader={  name = "Beresford" id=5024 portrait_path="gfx/admiral/AST_beresford.tga" traits={   } skill=2 }
+
+# Country Leaders
+recruit_character = AST_andrew_fisher
+recruit_character = AST_ronald_munroferguson
+recruit_character = AST_william_humble_ward
+
+# Generals
+recruit_character = AST_chauvel_hg
+recruit_character = AST_elliott
+recruit_character = AST_talbot_hobbs_jj
+recruit_character = AST_mcay
+recruit_character = AST_legge
+recruit_character = AST_cox
+recruit_character = AST_brand
+recruit_character = AST_gellibrand
+recruit_character = AST_glasgow
+recruit_character = AST_holmes
+recruit_character = AST_maclaurin
+recruit_character = AST_onslow
+recruit_character = AST_rosenthal
+recruit_character = AST_ryrie
+recruit_character = AST_wilson
+recruit_character = AST_sinclair_maclagan_eg
+recruit_character = AST_john_monash
+recruit_character = AST_blamey_ta
+
+# Admirals
+recruit_character = AST_creswell
+recruit_character = AST_beresford
+
+# Advisors
+recruit_character = AST_henry_petre
+recruit_character = AST_joseph_gordon
+recruit_character = AST_alexander_poynton
+recruit_character = AST_gordon_legge
+recruit_character = AST_joseph_cook
+recruit_character = AST_sir_brudenell_white
+recruit_character = AST_harold_jones
+recruit_character = AST_hugh_mahon
+recruit_character = AST_wr_creswell
+recruit_character = AST_godfrey_irving
+recruit_character = AST_william_higgs
+recruit_character = AST_john_forrest
+recruit_character = AST_william_throsby_bridges
+recruit_character = AST_patrick_glynn
+
+#-------------------------------------------------------
+set_technology = {
+
+    # Train
+    ww1_train = 1
+
+	# Navy
+	ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+	
+	ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
+	
+	###ww1_battleship2 = 0 #  ww1_battleship_1906 (Dreadnought I)
+	###ww1_battleship3 = 0 #  ww1_battleship_1910 (Dreadnought II)
+	###ww1_battleship4 = 0 #  ww1_battleship_1914 (Dreadnought III)
+
+	###ww1_battlecruiser1 = 0 # ww1_battlecruiser_1906 (Battlecruiser I)
+	###ww1_battlecruiser2 = 0 # ww1_battlecruiser_1910 (Battlecruiser II)
+	###ww1_battlecruiser3 = 0 # ww1_battlecruiser_1910 (Battlecruiser III)
+
+	ww1_heavy_cruiser0 = 1
+	ww1_heavy_cruiser0_mtg = 1 # heavy_cruiser_1890 (Armored Cruiser I)
+	ww1_heavy_cruiser1 = 1
+	ww1_heavy_cruiser1_mtg = 1 # heavy_cruiser_1900 (Armored Cruiser II)
+
+	ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1 # light_cruiser_1890 (Protected Cruiser I)
+	ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1 # light_cruiser_1900 (Protected Cruiser II)
+
+	ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1 # destroyer_1890 (Torpedo Boat I)
+	ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1 # destroyer_1900 (Destroyer I)
+	ww1_destroyer2 = 1
+	ww1_destroyer2_mtg = 1 # destroyer_1906 (Destroyer II)
+
+	ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
+
+	ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1 # coastal_submarine_1900 (Coastal Submarine 1900, first available Submarine)
+
+	transport = 1
+	transport_mtg = 1 # Naval Transport
+}
 
 1910.1.1 = {
 	oob = "AST_1910"
@@ -67,17 +139,6 @@ create_navy_leader={  name = "Beresford" id=5024 portrait_path="gfx/admiral/AST_
 		light_field_gun1 = 1
 		heavy_field_gun1 = 1
 
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
-
 		# Air
 
 		# Engineering
@@ -87,19 +148,16 @@ create_navy_leader={  name = "Beresford" id=5024 portrait_path="gfx/admiral/AST_
 	}
 
 	set_politics = {
-	    parties = {
-	        democratic = {
-	            popularity = 98
-	        }
-	        fascism = {
-	            popularity = 0
-	        }
-	        communism = {
-	            popularity = 2
-	        }
-	    }
-	    ruling_party = democratic last_election = "1910.4.13"
-	    election_frequency = 36 elections_allowed = yes
+	    ruling_party = democratic
+	    last_election = "1910.4.13"
+	    election_frequency = 36
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 96
+	    fascism = 1
+	    communism = 2
+	    neutrality = 1
 	}
 
 	add_ideas = {
@@ -108,6 +166,17 @@ create_navy_leader={  name = "Beresford" id=5024 portrait_path="gfx/admiral/AST_
 }
 
 1914.1.1 = {
+
+	create_country_leader = {
+		name = "Thomas Denman, 3rd Baron Denman"
+		desc = AST_thomas_denman_3rd_baron_denman_DESC
+		picture = "gfx/hoi4tgw_portraits/AST/country_leaders/AST_thomas_denman_3rd_baron_denman.dds"
+		expire = "1935.1.1"
+		ideology = conservatism
+		traits = {
+		}
+	}
+
 	oob = "AST_1914"
 
 
@@ -164,6 +233,7 @@ create_navy_leader={  name = "Beresford" id=5024 portrait_path="gfx/admiral/AST_
 
 		# Armor
 		gwtank = 1 # 1910 Armored Car
+		gwtank__nostepback = 1
 
 		# Artillery
 		light_field_gun1 = 1
@@ -173,14 +243,23 @@ create_navy_leader={  name = "Beresford" id=5024 portrait_path="gfx/admiral/AST_
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -192,19 +271,16 @@ create_navy_leader={  name = "Beresford" id=5024 portrait_path="gfx/admiral/AST_
 	}
 
 	set_politics = {
-		parties = {
-	        democratic = {
-	            popularity = 98
-	        }
-	        fascism = {
-	            popularity = 0
-	        }
-	        communism = {
-	            popularity = 2
-	        }
-	    }
-	    ruling_party = democratic last_election = "1913.5.31"
-	    election_frequency = 36 elections_allowed = yes
+	    ruling_party = democratic
+	    last_election = "1913.5.31"
+	    election_frequency = 36
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 96
+	    fascism = 1
+	    communism = 2
+	    neutrality = 1
 	}
 
 	add_ideas = {

@@ -1,8 +1,4 @@
 on_actions = {
-	# country 
-	on_new_term_election = {
-	}
-
 	# Ace pilots
 	# country, FROM = ace
 	on_ace_promoted = {
@@ -36,11 +32,24 @@ on_actions = {
 		}
 	}
 
+	# our ace is killed by no name
 	# country, FROM = ace
 	on_ace_killed = {
 		random_events = {
 			100 = ace_died.1
 		}
+	}
+	
+	# our ace died in accident
+	# country, FROM = ace
+	on_ace_killed_on_accident = {
+	
+	}
+	
+	# enemy ace is killed by our non name
+	# country, FROM = enemy ace
+	on_non_ace_killed_other_ace = {
+	
 	}
 
 	# During justifying wargoals
@@ -67,7 +76,7 @@ on_actions = {
 			100 = war_justification.16
 			100 = war_justification.17
 			100 = war_justification.18
-			#100 = war_justification.19
+			100 = war_justification.19
 			17000 = 0
 		}
 	}
@@ -79,11 +88,68 @@ on_actions = {
 	}
 
 	on_nuke_drop = {
-		random_events = {
-			100 = nuke_dropped.0
-		}
 
 		effect = {
+			set_global_flag = first_nuke_dropped
+			if = {
+				limit = { NOT = { has_global_flag = first_nuke_dropped } }
+				country_event = { id = generic.8 }
+			}
+			if = {
+				limit = { has_idea = race_for_the_bomb_outclassed }
+				remove_ideas = race_for_the_bomb_outclassed
+			}
+			if = {
+				limit = { NOT = { has_country_flag = achievement_has_dropped_nuke } }
+				goto_state = FROM
+				set_country_flag = achievement_has_dropped_nuke
+			}
+			if = {
+				limit = {
+					FROM = { state = 378 }					
+				}
+				set_country_flag = achievement_has_nuked_california
+			}
+			if = {
+				limit = {
+					FROM = { is_core_of = AST }					
+				}
+				set_country_flag = achievement_AST_nuke_self
+			}
+			if = {
+				limit = {
+					tag = SWE
+					FROM = {
+						is_owned_by = DEN
+						is_core_of = DEN
+					}
+				}
+				set_country_flag = achievement_med_plutonium
+			}
+			if = {
+				limit = {
+					FROM = {
+						is_core_of = JAP
+					}
+					has_global_flag = JAP_nuke_1
+					NOT = {
+						has_global_flag = JAP_nuke_2
+					}
+				}
+				set_global_flag = JAP_nuke_2
+			}
+			if = {
+				limit = {
+					FROM = {
+						is_core_of = JAP
+					}
+					NOT = {
+						has_global_flag = JAP_nuke_1
+					}
+				}
+				set_global_flag = JAP_nuke_1
+			}
+			
 			news_event = { id = nuke_dropped.2 days = 1}
 			news_event = { id = nuke_dropped.3 days = 1}
 			news_event = { id = nuke_dropped.4 days = 1}
@@ -96,6 +162,9 @@ on_actions = {
 			news_event = { id = nuke_dropped.11 days = 1}
 			news_event = { id = nuke_dropped.12 days = 1}
 			news_event = { id = nuke_dropped.13 days = 1}
+		}
+		random_events = {
+			100 = nuke_dropped.0
 		}
 	}
 
@@ -110,12 +179,25 @@ on_actions = {
 
 	on_border_war_lost = {
 		effect = {
+			owner = {
+				country_event = { id = china.14 }
+				country_event = { id = china.16 }
+			}
 		}
 	}
 	
 	on_leave_faction = {
 		effect = {
-			PREV = {
+			if = {
+				limit = { 
+					AND = {
+						tag = CAN 	
+						NOT = { has_dlc = "Together for Victory" }
+					}
+				}
+				abandon_colony_tag = yes
+			}
+			FROM = {
 				add_opinion_modifier = {
 					modifier = faction_traitor
 					target = ROOT
@@ -131,29 +213,146 @@ on_actions = {
 		}
 	}
 
-	#PREV is faction leader
-	on_join_faction = {
+	#FROM is the one that joins the faction
+	on_create_faction = {
 		effect = {
+			# Sunset invasion check
+			if = {
+				limit = {
+					FROM = { is_puppet = no }
+					OR = {
+						AND = {
+							tag = MEX
+							FROM = {
+								capital_scope = {
+									NOT = { is_on_continent = south_america }
+								}
+							}
+						}
+						AND = {
+							FROM = {
+								tag = MEX
+							}
+							capital_scope = {
+								NOT = { is_on_continent = south_america }
+							}
+						}
+					}
+				}
+				set_country_flag = achievement_failed_sunset_invasion
+			}
+		}
+	}
+
+	#FROM is country getting invited.
+	on_offer_join_faction = {
+		effect = {
+			#Give achievement to nation joining a faction, but not in one from game start
+			if = {
+				limit = {
+					date > 1936.01.02
+				}
+				FROM = {
+					if = {
+						limit = {
+							is_faction_leader = no
+						}
+						set_country_flag = achievement_has_joined_faction
+					}
+				}
+			}
 			#Remove anti_soviet_pact if joining commie Soviet in faction
 			if = {
-				limit = { 
+				limit = {
+					original_tag = SOV
+					has_government = communism
+					FROM = {
+						has_idea = anti_soviet_pact 
+					}
+				}
+				FROM = {
+					remove_ideas = anti_soviet_pact
+				}
+			}
+	
+			# Sunset invasion check
+			if = {
+				limit = {
+					is_puppet = no
+					OR = {
+						AND = {
+							tag = MEX
+							FROM = {
+								capital_scope = {
+									NOT = { is_on_continent = south_america }
+								}
+							}
+						}
+						AND = {
+							FROM = {
+								tag = MEX
+							}
+							capital_scope = {
+								NOT = { is_on_continent = south_america }
+							}
+						}
+					}
+				}
+				set_country_flag = achievement_failed_sunset_invasion
+			}			
+		}
+	}
+
+	#FROM is faction leader on join faction requests. THIS DOES NOT FIRE ON ADD_TO_FACTION EFFECT! USE ON_OFFER_JOIN_FACTION!
+	on_join_faction = {
+		effect = {
+			set_country_flag = achievement_has_joined_faction
+			#Remove anti_soviet_pact if joining commie Soviet in faction
+			if = {
+				limit = {
 					has_idea = anti_soviet_pact 
-					PREV = {
+					FROM = {
 						original_tag = SOV
 						has_government = communism
 					}
 				}
 				remove_ideas = anti_soviet_pact
 			}
+
+			# Sunset invasion check
+			if = {
+				limit = {
+					is_puppet = no
+					OR = {
+						AND = {
+							tag = MEX
+							FROM = {
+								capital_scope = {
+									NOT = { is_on_continent = south_america }
+								}
+							}
+						}
+						AND = {
+							FROM = {
+								tag = MEX
+							}
+							capital_scope = {
+								NOT = { is_on_continent = south_america }
+							}
+						}
+					}
+				}
+				set_country_flag = achievement_failed_sunset_invasion
+			}
 		}
 	}
 
-	#PREV is war target
+	#FROM is war target
 	on_declare_war = {
 		effect = {
 			if = {
 				limit = {
-					PREV = {
+					FROM = {
 						OR = {
 							has_idea = american_protection_drift_democratic
 							has_idea = american_protection_drift_communism
@@ -167,7 +366,7 @@ on_actions = {
 						tag = USA
 						is_in_faction_with = USA # I guess USA will not go to war with someone they are in faction with
 						has_war_with = USA
-						#USA = { has_war_with = PREV } Should USA enforce peace in a nation it is already at war with?
+						#USA = { has_war_with = FROM } Should USA enforce peace in a nation it is already at war with?
 					}
 					OR = {
 						has_idea = american_protection_drift_democratic
@@ -177,13 +376,14 @@ on_actions = {
 						has_idea = american_protection_defence_communism
 						has_idea = american_protection_defence_fascism
 					}
-				}
+				}				
+				FROM = { country_event = { id = usa.16 days = 1 } }
 			}
 
 			## Soviet defensive war while having purge penalty
 			if = {
 				limit = {
-					PREV = {
+					FROM = {
 						tag = SOV
 						OR = {
 							has_idea = officers_purged
@@ -205,13 +405,14 @@ on_actions = {
 					}
 					ROOT = { is_major = yes }
 				}
+				SOV = { country_event = { id = soviet.46 days = 2 } }
 			}
 
 			## Soviet war after purge
 			if = {
 				limit = {
 					OR = {
-						PREV = { tag = SOV }
+						FROM = { tag = SOV }
 						ROOT = { tag = SOV }
 					}
 					SOV = {
@@ -226,7 +427,7 @@ on_actions = {
 			if = {
 				limit = {
 					tag = GER
-					PREV = {
+					FROM = {
 						OR = {
 							has_opinion_modifier = anti_comintern_pact_opinion
 							has_opinion_modifier = tripartite_pact_opinion
@@ -234,18 +435,130 @@ on_actions = {
 						}
 					}
 				}
-				PREV = {
+				FROM = {
 					remove_opinion_modifier = { target = GER modifier = anti_comintern_pact_opinion }
 					remove_opinion_modifier = { target = GER modifier = tripartite_pact_opinion }
 					remove_ideas = anti_soviet_pact
 				}
 			}
+			#Germany has started a war - allies should try to contain Germany
+			if = {
+				limit = {
+					ROOT = {
+						TAG = GER
+					}
+					NOT = {
+						has_global_flag = GER_has_started_war
+					}
+				}
+				set_global_flag = GER_has_started_war
+			}
+
+
 
 			#Call Anti-Soviet pact members to war
 			if = {
 				limit = {
 					ROOT = { tag = SOV }
-					PREV = { has_idea = anti_soviet_pact }
+					FROM = { has_idea = anti_soviet_pact }
+				}
+				FROM = {
+					country_event = { id = germany.84 days = 1 }
+				}
+			}
+
+			#Remove MEFO bills if Germany goes to war
+			if = {
+				limit = {
+					ROOT = { tag = GER }
+					ROOT = { GER_has_mefo_bills = yes }
+				}
+				ROOT = {
+					country_event = { id = wtt_germany.61 }
+				}
+			}
+
+			#Remove MEFO bills if Germany is declared war on
+			if = {
+				limit = {
+					FROM = { tag = GER }
+					FROM = { GER_has_mefo_bills = yes } #TODO_WTT_CD_MEFO_REWORK
+					NOT = { ROOT = { original_tag = GER } }
+				}
+				FROM = {
+					country_event = { id = wtt_germany.61 }
+				}
+			}
+
+			#Remove previous ideology civil war faction from Democratic Germany faction and add Democratic civil war faction to Germany's faction
+			if = {
+				limit = {
+					FROM = {
+						is_in_faction_with = GER
+					#	has_civil_war = yes
+						NOT = { has_government = democratic }
+					}
+					has_government = democratic
+					GER = { has_government = democratic }
+				}
+				FROM = { set_country_flag = GER_civil_war_target }
+				GER = { remove_from_faction = FROM }
+				GER = { add_to_faction = ROOT }
+				GER = { country_event = wtt_germany.52 }
+			}
+
+			#If prepared by siphoning equipment, receive equipment back
+			if = {
+				limit = {
+					FROM = {
+						has_civil_war = yes
+						has_country_flag = siphoned_equipment_stockpiles_for_civil_war
+					}
+					has_civil_war = yes
+				}
+				FROM = {
+					clr_country_flag = siphoned_equipment_stockpiles_for_civil_war
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 1000
+					}
+				}
+			}
+
+			#If prepared with surprise attack plan, get bonus
+			if = {
+				limit = {
+					FROM = {
+						has_civil_war = yes
+						has_country_flag = formulated_surprise_attack_plan_for_civil_war
+					}
+					has_civil_war = yes
+				}
+				FROM = {
+					clr_country_flag = formulated_surprise_attack_plan_for_civil_war
+					add_timed_idea = {
+						idea = civil_war_surprise_attack_plan
+						days = 30
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					FROM = {
+						has_civil_war = yes
+						original_tag = SPR
+					}
+					has_civil_war = yes
+					original_tag = SPR
+
+				}
+				random_country = {
+					limit = {
+						original_tag = FRA
+						has_completed_focus = FRA_support_the_right
+					}
+					country_event = { id = france.32 }
 				}
 			}
 		}
@@ -261,12 +574,72 @@ on_actions = {
 	# ROOT is capitulated country, FROM is winner
 	on_capitulation = {
 		effect = {
+			if = {
+				limit = {
+					NOT = { original_tag = GER }
+					NOT = { has_government = fascism }
+					NOT = { has_civil_war = yes }
+				}
+			}
 			news_event = { id = country_capitulated.0 days = 0 }
+			if = {
+				limit = { 
+					original_tag = POL
+					has_government = neutrality
+				}
+				retire_country_leader = yes
+			}
+			if = {
+				limit = {
+					original_tag = YUG
+				}
+				# remove_ideas = YUG_idea_economic_aid
+			}
+			if = {
+				limit = {
+					original_tag = HOL
+					has_country_flag = netherlands_refused_return_kaiser
+					FROM = {
+						original_tag = GER
+						has_country_flag = germany_war_return_kaiser
+						has_government = neutrality
+					}
+				}
+				FROM = { country_event = { id = wtt_germany.6 } }
+			}
+			if = {
+				limit = {
+					original_tag = DEN
+				}
+				country_event = { id = wtt_denmark.1 days = 1 }
+			}
+		}
+	}
+
+	# ROOT is previously capitulated country
+	on_uncapitulation = {
+		effect = {
+			if = {
+				limit = {
+					original_tag = FRA
+					has_government = democratic
+					is_puppet = no
+				}
+				drop_cosmetic_tag = yes
+			}
 		}
 	}
 
 	on_government_change = {
-		effect = {
+		effect = {			
+			#Make sure Soviet can always create factions
+			if = {
+				limit = {
+					original_tag = SOV
+					NOT = { has_government = communism }
+				}
+				set_rule = { can_create_factions = yes }
+			}
 			if = {
 				limit = { has_government = democratic }
 				if = {
@@ -284,6 +657,10 @@ on_actions = {
 			}
 			if = {
 				limit = { has_government = communism }
+				if = {
+					limit = { TAG = SAF }
+					set_cosmetic_tag = SAF_COM
+				}
 				if = {
 					limit = { has_idea = communist_partisans_recruiting }
 					remove_ideas = communist_partisans_recruiting
@@ -322,28 +699,387 @@ on_actions = {
 					remove_ideas = anti_nazi_coup
 				}
 			}
+			#Replace the following two with events for SOV if they are not communist.
+			#if = {
+			#	limit = { 
+			#		OR = {
+			#			has_idea = trotskyite_plot 
+			#			has_idea = trotskyite_plot_purged
+			#		}
+			#		NOT = {
+			#			has_civil_war = yes
+			#		}
+			#	}
+			#	country_event = { id = soviet.54 }
+			#}
 		}
 	}
 
 	on_coup_succeeded = {
 		effect = {
 			#Turn elections on for democracies created from coup
-			random_country = {
+			random_other_country = {
 				limit = {
 					has_government = democratic
 					original_tag = ROOT
 				}
 				set_politics = {
+					ruling_party = democratic
 					elections_allowed = yes
 				}
 			}
 		}
 	}
 
-	#ROOT is winner #FROM gets annexed
+	#ROOT is winner #FROM gets annexed - This will also fire on_annex
 	on_civil_war_end = {
 		effect = {
 
+			#End of SCW
+			if = {
+				limit = {
+					NOT = { has_dlc = "La Resistance" }
+					FROM = {
+						original_tag = SPR
+					}
+					ROOT = {
+						original_tag = SPR
+						has_government = fascism
+					}
+				}
+				# add_timed_idea = { idea = SPA_recovering_from_civil_war days = 1825 }
+			}
+			#End of SCW
+			if = {
+				limit = {
+					FROM = {
+						original_tag = SPR
+					}
+				}
+				ROOT = {
+					set_country_flag = achievement_won_spanish_civil_war
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_politics = {
+					elections_allowed = yes
+				}
+			}
+			#End of German Civil War
+			if = {
+				limit = {
+					FROM = {
+						original_tag = GER
+						has_government = fascism
+					}
+					original_tag = GER
+					has_government = neutrality
+				}
+				set_global_flag = { flag = civil_war_olympics value = 1 days = 30 }
+				country_event = { id = wtt_germany.18 days = 1 }
+			}
+
+			#End of ideology Civil War
+			if = {
+				limit = {
+					has_country_flag = ideology_civil_war
+				}
+				country_event = { id = generic.11 days = 1 }
+			}
+		}
+	}
+
+	#used when puppeting in a peace conference
+	#ROOT = nation being puppeted, FROM = overlord
+	
+	on_puppet = {
+		effect = {
+
+			# Interwar TGW IA - Annex HSR instead of Puppet
+			if = {
+				limit ={
+					has_start_date > 1919.1.1
+					ROOT = { 
+						tag = HSR
+						is_ai = yes
+					}
+					FROM = {
+						tag = HUN
+						is_ai = yes
+					}
+				}
+				HUN = {
+					annex_country = {
+						target = HSR
+						transfer_troops = no
+					}
+				}
+			}
+			# Interwar TGWA IA - SOV tries to puppet White Russia
+			if = {
+				limit = {
+					has_start_date > 1919.1.1
+					ROOT = {
+						tag = RUS
+						is_ai = yes
+					}
+					FROM = {
+						tag = SOV
+						is_ai = yes
+					}
+					NOT = {
+						has_global_flag = kis_start_1919_russian_civil_war
+					}
+				}
+				SOV = {
+					annex_country = {
+						target = RUS
+						transfer_troops = no
+					}
+				}
+				set_global_flag = kis_start_1919_russian_civil_war
+			}
+			# Interwar TGWA IA - SOV tries to puppet White Russia
+			if = {
+				limit = {
+					has_start_date > 1919.1.1
+					ROOT = {
+						tag = UKR
+						is_ai = yes
+					}
+					FROM = {
+						tag = SOV
+						is_ai = yes
+					}
+					NOT = {
+						has_global_flag = kis_start_1919_ukrainian_soviet_war
+					}
+				}
+				SOV = {
+					annex_country = {
+						target = UKR
+						transfer_troops = no
+					}
+				}
+				set_global_flag = kis_start_1919_ukrainian_soviet_war
+			}
+
+			if = {
+				limit = {
+					OR = {
+						original_tag = DDR
+						original_tag = WGR
+						original_tag = GER
+					}
+					has_government = communism
+					has_country_leader = { name = "Wilhelm Pieck" }
+					FROM = {
+						original_tag = SOV
+						has_government = communism
+						has_country_leader = { name = "Joseph Stalin" } # Would look silly if Trotsky released Stalin's Puppet
+					}
+				}
+				add_country_leader_trait = stalins_puppet
+			}
+			if = {
+				limit = {
+					NOT = { has_elections = yes }
+					has_government = democratic
+				}
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = yes
+				}
+			}			
+		}
+	}
+	
+	#used when puppeting through the occupied territories menu during peace time (or when releasing from non-core but owned territory, f.e. Britain releasing Egypt)
+	#ROOT = nation being released, FROM = overlord
+	
+	on_release_as_puppet = {
+		effect = {
+			if = {
+				limit = {
+					OR = {
+						original_tag = DDR
+						original_tag = WGR
+						original_tag = GER
+					}
+					has_government = communism
+					has_country_leader = { name = "Wilhelm Pieck" }
+					FROM = {
+						original_tag = SOV
+						has_government = communism
+						has_country_leader = { name = "Joseph Stalin" } # Would look silly if Trotsky released Stalin's Puppet
+					}
+				}
+				add_country_leader_trait = stalins_puppet
+			}
+			if = {
+				limit = {
+					NOT = { has_elections = yes }
+					has_government = democratic
+				}
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = yes
+				}
+			}
+		}
+	}
+	
+	#ROOT is winner #FROM gets annexed - For civil wars on_civil_war_end is also fired
+	on_annex = {
+		effect = {
+			
+		}
+	}
+
+	#Not run on a specific country.
+	on_startup = {
+		effect = {
+			
+		}
+	}
+	
+	on_unit_leader_created = {
+		effect = {
+		}
+	}
+
+	#ROOT is new controller #FROM is old controller #FROM.FROM is state ID
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					tag = GER
+					divisions_in_state = { state = FROM.FROM size > 0 }
+					FROM = {
+						original_tag = GER
+						has_government = fascism
+						has_civil_war = yes
+					}
+				}
+				FROM.FROM = { 
+					set_state_flag = nazi_state_withdrawn
+					random_list = {
+						20 = {
+							set_state_flag = nazi_state_withdrawn1
+						}
+						20 = {
+							set_state_flag = nazi_state_withdrawn2
+						}
+						20 = {
+							set_state_flag = nazi_state_withdrawn3
+						}
+						20 = {
+							set_state_flag = nazi_state_withdrawn4
+						}
+						20 = {
+							set_state_flag = nazi_state_withdrawn5
+						}
+					}
+					state_event = { id = wtt_germany.49 trigger_for = controller }
+				}
+			}
+			if = {
+				limit = {
+					tag = GER
+					64 = { is_controlled_by = GER }
+					any_other_country = {
+						original_tag = GER
+						has_government = fascism
+						has_civil_war = yes
+						owns_state = 64
+					}
+					NOT = { has_global_flag = fall_of_berlin_civil_war }
+				}
+				set_global_flag = fall_of_berlin_civil_war
+				country_event = { id = wtt_germany.50 days = 1 random = 3 }
+			}
+		}
+	}
+	
+	on_unit_leader_level_up = {
+		effect = {
+			
+		}
+	}
+	
+	# From is owner country
+	on_army_leader_daily = {
+		effect = {
+			if = {
+				limit = {
+					check_variable = { random < 0.02 }
+					NOT = { has_trait = sick }
+					set_temp_variable = { temp = sum_unit_terrain_modifier@sickness_chance }
+					divide_temp_variable = { temp = num_units }
+					check_variable = { temp > 0.75 }
+					NOT = { has_unit_leader_flag = recently_sick }
+				}
+				add_timed_unit_leader_trait = {
+					trait = sick
+					days = 30
+				}
+				#unit_leader_event = { id = generic.17 }
+			}
+		}
+	}
+	
+	# From is owner country
+	on_army_leader_won_combat = {
+		effect = {
+			if = {
+				limit = {
+					set_temp_variable = { chance = 0.001 }
+					set_temp_variable = { factor = 1.0 }
+					add_to_temp_variable = { factor = leader_modifier@wounded_chance_factor } 
+					multiply_temp_variable = { chance = factor }
+					check_variable = { random < chance }
+					NOT = { has_trait = wounded }
+				}
+				add_timed_unit_leader_trait = {
+					trait = wounded
+					days = 90
+				}
+				unit_leader_event = { id = generic.18 }
+			}
+		}
+	}
+	
+	# From is owner country
+	on_army_leader_lost_combat = {
+		effect = {
+			if = {
+				limit = {
+					set_temp_variable = { chance = 0.005 }
+					set_temp_variable = { factor = 1.0 }
+					add_to_temp_variable = { factor = leader_modifier@wounded_chance_factor } 
+					multiply_temp_variable = { chance = factor }
+					check_variable = { random < chance }
+					NOT = { has_trait = wounded }
+				}
+				add_timed_unit_leader_trait = {
+					trait = wounded
+					days = 90
+				}
+				unit_leader_event = { id = generic.18 }
+			}
+		}
+	}
+	
+	
+	on_army_leader_promoted = {
+		effect = {
+			add_timed_unit_leader_trait = {
+				trait = recently_promoted
+				days = 100
+			}
 		}
 	}
 }

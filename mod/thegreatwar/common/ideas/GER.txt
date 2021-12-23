@@ -1,0 +1,692 @@
+ideas = {
+
+	naval_manufacturer = {
+		designer = yes
+		blohm_und_voss={ allowed={ TAG = GER } research_bonus={ naval_equipment=0.10 } traits={ raiding_fleet_naval_manufacturer } }
+		kaiserliche_werft_wilhelmshaven={ allowed={ TAG = GER } research_bonus={ naval_equipment=0.10 } traits={ atlantic_fleet_naval_manufacturer } picture=GER_kaiserliche_wilhelmshaven }
+		#vulcan_werke_ag={ allowed={ TAG = GER } research_bonus={ naval_equipment=0.10 } traits={ convoy_escort_naval_manufacturer } picture=generic_naval_manufacturer_1 }
+	}
+
+	aircraft_manufacturer = {
+			designer = yes
+			#junkers={ allowed={ TAG = GER } research_bonus={ air_equipment=0.10 } traits={ CAS_manufacturer } }
+			#messerschmitt={ allowed={ TAG = GER } research_bonus={ air_equipment=0.10 } traits={ light_aircraft_manufacturer } }
+			#focke_wulf={ allowed={ TAG = GER } research_bonus={ air_equipment=0.10 } traits={ medium_aircraft_manufacturer } }
+
+			#Fokker Aeroplanbau
+			fokker = {
+				allowed = { tag = GER }
+				available = { has_completed_focus = GER_ww1_fokker_aeroplanbau }
+				research_bonus = { air_equipment = 0.10 }
+				traits = { light_aircraft_manufacturer }
+			}
+
+			#Luftschiffbau Zeppelin
+			luftschiffbau_zeppelin={ allowed={ TAG=GER } research_bonus={ air_equipment=0.10 } traits={ heavy_aircraft_manufacturer } }
+
+			#Allgemeine Elektricitäts-Gesellschaft
+			allgemeine_elektricitats_gesellschaft={ allowed={ TAG=GER } research_bonus={ air_equipment=0.10 } traits={ medium_aircraft_manufacturer } }
+
+			#Albatros Flugzeugwerke GmbH
+			albatros_flugzeugwerke_gmbh_ger = {
+				allowed = { tag = GER }
+				picture = generic_industrial_concern_2
+				research_bonus = { air_equipment = 0.08 }
+				traits = { naval_aircraft_manufacturer }
+			}
+
+			#Gothaer Waggonfabrik
+			gothaer_waggonfabrik={ allowed={ TAG=GER } research_bonus={ air_equipment=0.15 } traits={ medium_aircraft_manufacturer } }
+			}
+
+	materiel_manufacturer = {
+			designer = yes
+			mauser={ allowed={ TAG=GER } research_bonus={ infantry_weapons=0.10 } traits={ infantry_equipment_manufacturer } }
+			rheinmetall={ allowed={ TAG=GER } research_bonus={ artillery=0.10 } traits={ artillery_manufacturer } }
+			}
+	industrial_concern = {
+			designer = yes
+			krupp={ allowed={ TAG=GER }    research_bonus = {
+							    industry = 0.10
+
+							   } traits={ industrial_concern } }
+
+
+			#oberschlesien_eisen_industrie_ag={ allowed={ TAG=GER }    research_bonus = {  industry = 0.10    } traits={ industrial_concern } picture=generic_tank_manufacturer_3 }
+
+			siemens={ allowed={ TAG=GER }    research_bonus = {
+							    electronics = 0.10
+							   } traits={ electronics_concern } }
+			}
+	tank_manufacturer={
+			designer = yes
+			#MAN={ allowed={ TAG=GER } research_bonus={ armor=0.10 } traits={ medium_tank_manufacturer } }
+			opel={ allowed={ TAG=GER } research_bonus={ armor=0.10 } traits={ fast_tank_manufacturer } picture=generic_tank_manufacturer_3 }
+			daimler_motoren_gesellschaft={ allowed={ TAG=GER } research_bonus={ armor=0.10 } traits={ medium_tank_manufacturer } }
+			}
+
+	country = {
+	        sour_loser = {
+	            allowed = {
+	                always = no
+	            }
+	            allowed_civil_war = {
+	                always = yes
+	            }
+	            removal_cost = -1 modifier = {
+	                drift_defence_factor = 0.5
+	            }
+	            rule = {
+	                can_create_factions = yes
+	            }
+	        }
+	        general_staff = {
+	            allowed = {
+	                original_tag = GER
+	            }
+	            allowed_civil_war = {
+	                always = yes
+	            }
+	            removal_cost = -1 modifier = {
+	                army_org_Factor = 0.05 planning_speed = 0.25
+	            }
+	        }
+	        triumphant_will = {
+	            allowed = {
+	                always = no
+	            }
+	            removal_cost = -1 allowed_civil_war = {
+	                has_government = fascism
+	            }
+	            modifier = {
+	                political_power_gain = 1 drift_defence_factor = 0.5
+	            }
+	            rule = {
+	                can_create_factions = yes
+	            }
+	        }
+	        GER_air_innovations_2_idea = {
+	            removal_cost = -1 allowed = {
+	                always = no
+	            }
+	            allowed_civil_war = {
+	                always = yes
+	            }
+	            picture = generic_air_bonus research_bonus = {
+	                battlefield_support_tree = 0.10 jet_technology = 0.10
+	            }
+	        }
+	        GER_rocketry_idea = {
+	            removal_cost = -1 allowed = {
+	                always = no
+	            }
+	            allowed_civil_war = {
+	                always = yes
+	            }
+	            research_bonus = {
+	                rocketry = 0.10
+	            }
+	            picture = generic_research_bonus modifier = {
+	                production_speed_rocket_site_factor = 0.15
+	            }
+	        }
+	        rhineland_challenge_met = {
+	            allowed = {
+	                always = no
+	            }
+	            allowed_civil_war = {
+	                has_government = fascism
+	            }
+	            removal_cost = -1 picture = generic_democratic_drift_bonus modifier = {
+	                stability_factor = -0.10
+	            }
+	        }
+
+
+		# ======================================================
+
+		GER_ww1_North_German_Confederation = {
+
+			allowed = {
+				original_tag = GER
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			modifier={ stability_factor  = 0.10 }
+		}
+
+		German_staff_ww1 = {
+					allowed = { always = yes }
+					allowed_civil_war = { always = yes }
+
+					removal_cost = -1
+
+         picture = GFX_idea_German_staff_ww1
+
+					modifier = {
+						conscription_factor = 0.45
+						army_leader_start_level = 1
+						experience_gain_army = 0.03
+						army_speed_factor = 0.10
+						planning_speed = 0.10
+						max_planning = 0.1
+					}
+				}
+
+		idea_oppression_minorities = {
+
+			allowed = {
+				always = no
+			}
+
+			research_bonus = {
+				land_doctrine = -0.10
+				naval_doctrine = -0.10
+				air_doctrine = -0.10
+			}
+
+			modifier = {
+				army_org_factor = -0.25
+			}
+		}
+		#======================================================
+
+
+		GER_mefo_bills_1 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -0.20
+			}
+		}
+
+		GER_mefo_bills_2 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -0.25
+			}
+		}
+
+		GER_mefo_bills_3 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -0.30
+			}
+		}
+
+		GER_mefo_bills_4 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -0.35
+			}
+		}
+
+		GER_mefo_bills_5 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -0.40
+			}
+		}
+
+		GER_mefo_bills_6 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -0.45
+			}
+		}
+
+		GER_mefo_bills_7 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -0.50
+			}
+		}
+
+		GER_mefo_bills_8 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -0.55
+			}
+		}
+
+		GER_mefo_bills_9 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -0.60
+			}
+		}
+
+		GER_mefo_bills_10 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -0.65
+			}
+		}
+
+		GER_mefo_bills_11 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -0.70
+			}
+		}
+
+		GER_mefo_bills_12 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -0.75
+			}
+		}
+
+		GER_mefo_bills_13 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -0.80
+			}
+		}
+
+		GER_mefo_bills_14 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -0.85
+			}
+		}
+
+		GER_mefo_bills_15 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -0.90
+			}
+		}
+
+		GER_mefo_bills_16 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -0.95
+			}
+		}
+
+		GER_mefo_bills_17 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -1.00
+			}
+		}
+
+		GER_mefo_bills_18 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -1.05
+			}
+		}
+
+		GER_mefo_bills_19 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -1.10
+			}
+		}
+
+		GER_mefo_bills_20 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -1.15
+			}
+		}
+
+		GER_mefo_bills_21 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -1.20
+			}
+		}
+
+		GER_mefo_bills_22 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -1.25
+			}
+		}
+
+		GER_mefo_bills_23 = {
+			name = GER_mefo_bills
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills
+
+			modifier = {
+				consumer_goods_factor = -0.20
+				political_power_gain = -1.30
+			}
+		}
+
+		GER_mefo_bills_ended = {
+			allowed = {
+				original_tag = GER
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ger_mefo_bills_payment
+
+			modifier = {
+				consumer_goods_factor = 0.20
+			}
+		}
+
+
+		GER_interwar_spirit_BannedConscription = {
+			allowed={ always = no }
+			allowed_civil_war={ always = no }
+			removal_cost=-1
+			modifier = {
+				conscription_factor = -0.50
+				army_morale_factor = -0.15
+			}
+		}
+
+
+	}
+}

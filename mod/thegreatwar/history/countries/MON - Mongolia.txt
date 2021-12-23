@@ -3,16 +3,17 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.50
+set_stability = 0.50
 set_convoys = 0
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Bogd Khan" desc=MON_bogd_khan_DESC picture="gfx/leaders/MON_bogd_khan.dds" expire="1935.1.1" ideology=autocracy traits={  } }
-create_corps_commander={  name = "Peljidiyn Genden" id=56002 portrait_path="gfx/generals/MON_peljidiyn_genden.tga" traits={   } skill=1 }
-create_corps_commander={  name = "Anandyn Amar" id=56003 portrait_path="gfx/generals/MON_anandyn_amar.tga" traits={   } skill=1 }
+create_country_leader={ name = "Bogd Khan" desc=MON_bogd_khan_DESC picture="gfx/hoi4tgw_portraits/MON/country_leaders/MON_bogd_khan.dds" expire="1935.1.1" ideology=autocracy traits = { } }
+create_corps_commander={  name = "Peljidiyn Genden" id=56002 portrait_path="gfx/generals/MON_peljidiyn_genden.dds" traits={   } skill=1 }
+create_corps_commander={  name = "Anandyn Amar" id=56003 portrait_path="gfx/generals/MON_anandyn_amar.dds" traits={   } skill=1 }
 
 1910.1.1 = {
 	oob = "MON_1910"
@@ -50,14 +51,23 @@ create_corps_commander={  name = "Anandyn Amar" id=56003 portrait_path="gfx/gene
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battlecruiser0 = 1
+	ww1_battlecruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 
@@ -67,7 +77,18 @@ create_corps_commander={  name = "Anandyn Amar" id=56003 portrait_path="gfx/gene
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=0 banned=yes }  neutrality={ popularity=90 banned=yes }  communism={ popularity=10  } }  ruling_party=neutrality last_election="1910.1.1" election_frequency=48 elections_allowed=no }
+	set_politics = {
+	    ruling_party = neutrality
+	    last_election = "1910.1.1"
+	    election_frequency = 48
+	    elections_allowed = no
+	}
+	set_popularities = {
+	    democratic = 0
+	    fascism = 0
+	    communism = 10
+	    neutrality = 90
+	}
 
 	add_ideas = {
 		neutrality_idea
@@ -137,14 +158,23 @@ create_corps_commander={  name = "Anandyn Amar" id=56003 portrait_path="gfx/gene
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -154,8 +184,19 @@ create_corps_commander={  name = "Anandyn Amar" id=56003 portrait_path="gfx/gene
 
 		# Industry
 	}
-
-	set_politics={  parties={ democratic={ popularity=0 banned=yes }  neutrality={ popularity=90 banned=yes }  communism={ popularity=10  } }  ruling_party=neutrality last_election="1910.1.1" election_frequency=48 elections_allowed=no }
+	
+	set_politics = {
+	    ruling_party = neutrality
+	    last_election = "1910.1.1"
+	    election_frequency = 48
+	    elections_allowed = no
+	}
+	set_popularities = {
+	    democratic = 0
+	    fascism = 0
+	    communism = 10
+	    neutrality = 90
+	}
 
 	add_ideas = {
 		neutrality_idea

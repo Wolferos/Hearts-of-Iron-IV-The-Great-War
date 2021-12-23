@@ -1,7 +1,7 @@
 focus_tree = {
-	id=ser_focus
-	default=no
-	country={ factor=0  modifier={ add=10 tag=SER }  modifier={ add=10 original_tag=SER } }
+	id = ser_focus
+	default = no
+	country = { factor = 0  modifier={ add=10 tag=SER }  modifier={ add=10 original_tag=SER } }
 
 	
 
@@ -29,7 +29,7 @@ focus_tree = {
 
 		available = { has_government=democratic }
 
-		completion_reward = { add_political_power=50 add_national_unity = 0.03 }
+		completion_reward = { add_political_power=50 add_stability = 0.03 }
 
 		ai_will_do = { factor = 0 }
 		cost = 10
@@ -69,7 +69,7 @@ focus_tree = {
 		prerequisite = { focus=SER_ww1_Reconciliation }
 		icon = GFX_goal_demand_sudetenland
 
-		completion_reward = { add_political_power=-50 add_national_unity = -0.03 }
+		completion_reward = { add_political_power=-50 add_stability = -0.03 }
 
 		ai_will_do = { factor = 0 }
 		cost = 10
@@ -142,7 +142,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_political_power= 20
-			add_national_unity = 0.05
+			add_stability = 0.05
 			army_experience=10
 		}
 
@@ -175,7 +175,7 @@ focus_tree = {
 		id = SER_ww1_military_youth
 		prerequisite = { focus=SER_ww1_full_rearmament }
 		icon = GFX_goal_generic_more_territorial_claims
-		completion_reward = { add_ideas=military_youth_focus if={ limit={ has_government=fascism } add_popularity={ ideology=fascism popularity=0.2 } } if={ limit={ has_government=communism } add_popularity={ ideology=communism popularity=0.2 } } }
+		completion_reward = { add_ideas = military_youth_focus if={ limit={ has_government=fascism } add_popularity={ ideology=fascism popularity=0.2 } } if={ limit={ has_government=communism } add_popularity={ ideology=communism popularity=0.2 } } }
 		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 4
@@ -188,7 +188,7 @@ focus_tree = {
 		icon = GFX_goal_generic_demand_territory
 		completion_reward = {
 			add_political_power=50
-			add_national_unity = 0.05
+			add_stability = 0.05
 			add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=land_doctrine }
 			add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=naval_doctrine }
 			add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=air_doctrine }
@@ -277,7 +277,7 @@ focus_tree = {
 		prerequisite = { focus= SER_ww1_BolshevikRevolution }
 		icon = GFX_goal_generic_dangerous_deal
 
-		completion_reward = { 	add_national_unity = -0.05 add_ideas=communist_influence }
+		completion_reward = { 	add_stability = -0.05 add_ideas=communist_influence }
 
 		ai_will_do = { factor = 0 }
 		cost = 10
@@ -321,12 +321,9 @@ focus_tree = {
 
 
 		completion_reward = {
-
- 			add_ideas=indoctrination_focus
-
-			remove_ideas = internationalism	
-
-			add_political_power=50
+ 			add_ideas = indoctrination_focus
+			remove_ideas = internationalism
+			add_political_power = 50
 		}
 
 		ai_will_do = { factor = 0 }
@@ -361,7 +358,7 @@ focus_tree = {
 		prerequisite = { focus=SER_ww1_diplomatic_effort }
 		icon = GFX_goal_generic_territory_or_war
 
-		completion_reward = { add_national_unity=0.05 add_political_power=100 }
+		completion_reward = { add_stability=0.05 add_political_power=100 }
 		
 		ai_will_do = { factor = 2000	}
 		cost = 10
@@ -461,7 +458,8 @@ focus_tree = {
 		id = SER_ww1_anti_ottoman
 		prerequisite = { focus=SER_ww1_BalkansPolitics }
 		icon = GFX_goal_generic_political_pressure
-
+		mutually_exclusive = { focus=SER_ww1_ApeasementBalkans }
+		
 		completion_reward = {
 			add_political_power= 70
 			add_opinion_modifier = { 
@@ -498,7 +496,7 @@ focus_tree = {
 
 			army_experience=5
 			add_manpower = 20000
-			add_national_unity = 0.01
+			add_stability = 0.01
 
 		}
 
@@ -806,6 +804,29 @@ focus_tree = {
 
 	#-----------------------------------------
 	focus = {
+		id = SER_ww1_DismantleSecretOrganizations # Dismantle Secret Organizations
+		prerequisite = { focus = SER_ww1_ready_country }
+		icon = GFX_focus_generic_little_entente 
+
+		available = {
+			has_war = yes
+			has_idea = SER_ww1_blackhand
+		}
+
+		completion_reward = {
+			remove_ideas = SER_ww1_blackhand
+			add_political_power = -25 
+		}
+  
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 13
+		y = 7
+	}
+
+
+	#-----------------------------------------
+	focus = {
 		id = SER_ww1_EmbargoGermany
 		prerequisite = { focus = SER_ww1_ready_country }
 		icon = GFX_goal_generic_trade
@@ -846,15 +867,16 @@ focus_tree = {
 		icon = GFX_goal_generic_improve_relations 
 
 		bypass = {
-			is_in_faction_with = ENG
+			is_in_faction_with = FRA
 		} 
 
 	 	available = {
 	 		is_puppet = no
-	 		NOT = { has_war_with = ENG }
+	 		NOT = { has_war_with = FRA }
+	 		NOT = { has_war_with = RUS }
 			is_in_faction = no
 	 		
-	 		ENG = {
+	 		FRA = {
 	 			exists = yes
  				is_faction_leader = yes
 	 		}
@@ -862,7 +884,7 @@ focus_tree = {
 		}
 		completion_reward = {
 
-				ENG={
+				FRA={
 					add_to_faction=ROOT
 				}
 		}
@@ -951,7 +973,7 @@ focus_tree = {
 
 		}
 
-		completion_reward = { add_manpower = 8000 add_political_power=150 	add_national_unity = -0.01 }
+		completion_reward = { add_manpower = 8000 add_political_power=150 	add_stability = -0.01 }
 
 		ai_will_do = { factor = 20 }
 		cost = 10
@@ -1065,7 +1087,7 @@ focus_tree = {
 
 			army_experience=5
 			add_manpower = 10000
-			add_national_unity = 0.02
+			add_stability = 0.02
 
 		}
 		ai_will_do = { factor = 3 }
@@ -1156,7 +1178,7 @@ focus_tree = {
 
 		completion_reward = { 
 			set_cosmetic_tag = SER_YUG
-			add_national_unity=0.02
+			add_stability=0.02
 		}
 
 		ai_will_do = { factor = 500 }
@@ -1398,7 +1420,7 @@ focus_tree = {
 
 	focus = {
 		id = SER_ww1_aviation_effort
-		icon = GFX_goal_generic_build_airforce
+		icon = GFX_hoi4tgw_ser_aviation_effort
 		completion_reward = { air_experience=25 if={ limit={ capital_scope={ NOT={ free_building_slots={ building=air_base size > 1 } } } } random_owned_state={ limit={ free_building_slots={ building=air_base size > 1 } } add_building_construction={ type=air_base level=2 instant_build=yes } ROOT={ set_country_flag=aviation_effort_AB } } } if={ limit={ capital_scope={ free_building_slots={ building=air_base size > 1 } } } capital_scope={ add_building_construction={ type=air_base level=2 instant_build=yes } ROOT={ set_country_flag=aviation_effort_AB } } } add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
 		complete_tooltip = { air_experience=25 if={ limit={ has_country_flag=aviation_effort_AB } add_building_construction={ type=air_base level=2 instant_build=yes } }			 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine }			 }
 		ai_will_do = { factor = 10 }
@@ -2244,7 +2266,20 @@ focus_tree = {
 		prerequisite = { focus=SER_ww1_flexible_navy focus=SER_ww1_large_navy }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_navy_submarine
-		completion_reward = { add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1 technology=ww1_submarine2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1_mtg technology=ww1_submarine2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1 technology=ww1_submarine2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 37
@@ -2256,7 +2291,20 @@ focus_tree = {
 		prerequisite = { focus=SER_ww1_flexible_navy focus=SER_ww1_large_navy }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_navy_cruiser
-		completion_reward = { add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0 technology=ww1_light_cruiser1 technology=ww1_light_cruiser2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0_mtg technology=ww1_light_cruiser1_mtg technology=ww1_light_cruiser2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0 technology=ww1_light_cruiser1 technology=ww1_light_cruiser2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 39
@@ -2268,7 +2316,20 @@ focus_tree = {
 		prerequisite = { focus=SER_ww1_submarine_effort }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_wolf_pack
-		completion_reward = { add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0 technology=ww1_destroyer1 technology=ww1_destroyer2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0_mtg technology=ww1_destroyer1_mtg technology=ww1_destroyer2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0 technology=ww1_destroyer1 technology=ww1_destroyer2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 37
@@ -2280,7 +2341,20 @@ focus_tree = {
 		prerequisite = { focus=SER_ww1_cruiser_effort }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_navy_battleship
-		completion_reward = { navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0 technology=ww1_battlecruiser1 technology=ww1_battlecruiser2 technology=early_battleship technology=seaplane_carrier }  }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				 navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0_mtg technology=ww1_battlecruiser1_mtg technology=ww1_battlecruiser2_mtg technology=early_battleship_mtg technology=seaplane_carrier_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				 navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0 technology=ww1_battlecruiser1 technology=ww1_battlecruiser2 technology=early_battleship technology=seaplane_carrier }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 39

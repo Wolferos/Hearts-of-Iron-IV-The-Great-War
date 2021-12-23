@@ -67,6 +67,15 @@ on_actions = {
 
 			if = {
 				limit = {
+					has_idea = RAJ_marginalized_muslim_community_happy
+				}
+				RAJ = {
+					release = PAK
+				}
+			}
+
+			if = {
+				limit = {
 					original_tag = RAJ
 				}				
 				remove_ideas = {
@@ -80,6 +89,57 @@ on_actions = {
 				}
 			}
 
+			#Achievement
+			if = {
+				limit = {
+					FROM = {
+						original_tag = SAF
+					}
+				}
+				if = {
+					limit = {
+						tag = ANG
+					}
+					set_country_flag = SAF_released_ANG
+				}
+				if = {
+					limit = {
+						tag = MZB
+					}
+					set_country_flag = SAF_released_MZB
+				}
+				if = {
+					limit = {
+						tag = BOT
+					}
+					set_country_flag = SAF_released_BOT
+				}
+				if = {
+					limit = {
+						tag = ZIM
+					}
+					set_country_flag = SAF_released_ZIM
+				}
+				if = {
+					limit = {
+						tag = KEN
+					}
+					set_country_flag = SAF_released_KEN
+				}
+				if = {
+					limit = {
+						tag = COG
+					}
+					set_country_flag = SAF_released_COG
+				}
+			}
+
+			#Achievement
+			if = {
+				limit = { tag = EGY }
+				set_country_flag = achievement_EGY_free
+				log = EGY_free
+			}
 		}
 	}
 
@@ -139,7 +199,16 @@ on_actions = {
 	#ROOT = nation being puppeted, FROM = overlord
 	on_puppet = {
 		effect = {
-
+			if = {
+				limit = {
+					has_dlc = "Death or Dishonor"
+					tag = HUN
+					FROM = {
+						has_country_flag = HUN_ROM_puppet_war #Romania only
+					}
+				}
+				ROM = { set_country_flag = ROM_HUN_aligned }
+			}
 			if = {
 				limit = { 
 					AND = { 
@@ -161,7 +230,16 @@ on_actions = {
 					 }
 				set_cosmetic_tag = USA_UK
 			}
-
+			if = {
+				limit = { 
+					AND = { 
+						TAG = USA
+						is_subject_of = SAF
+						SAF = { has_idea = SAF_king_edward }
+						}
+					 }
+				set_cosmetic_tag = USA_SAF_EDW
+			}
 			if = {
 				limit = { 
 					AND = { 
@@ -181,7 +259,24 @@ on_actions = {
 					 }
 				set_cosmetic_tag = UKR_SOV
 			}
-
+			if = {
+				limit = { 
+					AND = { 
+						TAG = BLR
+						is_subject_of = GER
+						}
+					 }
+				set_cosmetic_tag = BLR_GER
+			}
+			if = {
+				limit = {
+					AND = {
+						TAG = CZE
+						SLO = { exists = yes }
+					}
+				}
+				CZE = { set_cosmetic_tag = CZE_ONLY } #cosmetic tag for CZE if Slovakia exists
+			}
 		}
 	}
 
@@ -189,6 +284,16 @@ on_actions = {
 	#ROOT = nation being released, FROM = overlord
 	on_release_as_puppet = {
 		effect = {
+			if = {
+				limit = {
+					has_dlc = "Death or Dishonor"
+					tag = HUN
+					FROM = {
+						has_country_flag = HUN_ROM_puppet_war #Romania only
+					}
+				}
+				ROM = { set_country_flag = ROM_HUN_aligned }
+			}
 			if = {
 				limit = { 
 					AND = { 
@@ -217,12 +322,39 @@ on_actions = {
 				}
 				set_cosmetic_tag = UKR_SOV
 			}
+			if = {
+				limit = { 
+					AND = { 
+						TAG = BLR
+						is_subject_of = GER
+					}
+				}
+				set_cosmetic_tag = BLR_GER
+			}
+			if = {
+				limit = {
+					AND = {
+						TAG = CZE
+						SLO = { exists = yes }
+					}
+				}
+				CZE = { set_cosmetic_tag = CZE_ONLY } #cosmetic tag for CZE if Slovakia exists
+			}
 		}
 	}
 
 	#ROOT is free nation FROM is releaser
 	on_release_as_free = {
 		effect = {
+			if = {
+				limit = {
+					AND = {
+						TAG = CZE
+						SLO = { exists = yes }
+					}
+				}
+				CZE = { set_cosmetic_tag = CZE_ONLY } #cosmetic tag for CZE if Slovakia exists
+			}
 		}
 	}
 

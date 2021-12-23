@@ -3,90 +3,144 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.70
 set_research_slots = 4
-set_national_unity = 0.7
+set_stability = 0.7
+set_war_support = 0.85
 set_convoys = 200
-add_namespace = { name = "ger_unit_leader" type = unit_leader }
-create_faction = central_powers
-add_to_faction = GER
-add_to_faction = AUH
-add_to_faction = BOS
-add_to_faction = BAV
 
-puppet = BAV
+starting_train_buffer = 2
 
-# SPECIAL_DLC Together for Victory
-if = { limit = { has_dlc = "Together for Victory" }
-
-	#IF-----------------------------------------
-	set_autonomy = {
-		target = BAV
-		autonomous_state = autonomy_integrated_puppet
+if = {
+	limit = {
+		has_start_date < 1919.01.01
 	}
-	#-------------------------------------------
-
-	#ELSE---------------------------------------
-	else = {
-		# WORK IN PROGRESS #
-	}
-	#-------------------------------------------
+	create_faction = central_powers
+	add_to_faction = GER
+	add_to_faction = AUH
+	add_to_faction = BOS
+	#add_to_faction = BAV
+	#puppet = BAV
 }
+
+#-------------------------------------------------------
+#					ADVISORS
+#-------------------------------------------------------
+
+# ======================================================================
+### Political Advisor ###
+
+recruit_character = GER_bernhard_von_bulow
+recruit_character = GER_theobald_von_bethmann_hollweg
+recruit_character = GER_gottlieb_von_jagow
+recruit_character = GER_arthur_zimmermann
+recruit_character = GER_karl_von_einem
+recruit_character = GER_august_thyssen
+recruit_character = GER_reinhold_von_sydow
+recruit_character = GER_clemens_von_delbruck
+recruit_character = GER_karl_trimborn
+recruit_character = GER_wolfgang_kapp
+recruit_character = GER_anton_drexler
+recruit_character = GER_albert_einstein
+recruit_character = GER_hermann_muller
+recruit_character = GER_franz_von_papen
+recruit_character = GER_rosa_luxemburg
+recruit_character = GER_random_head_of_intelligence
+
+# ======================================================================
+### Theorist ###
+
+recruit_character = GER_josias_von_heeringen
+recruit_character = GER_adolf_wild_von_hohenborn
+recruit_character = GER_hermann_von_stein
+
+# ======================================================================
+### Army Chief ###
+
+recruit_character = GER_wilhelm_heye
+recruit_character = GER_august_von_mackensen
+recruit_character = GER_wilhelm_groener
+recruit_character = GER_otto_von_lossow
+recruit_character = GER_oskar_von_hutier
+
+# ======================================================================
+### Navy Chief ###
+
+recruit_character = GER_eduard_von_capelle
+recruit_character = GER_friedrich_von_baudissin
+recruit_character = GER_hugo_von_pohl
+recruit_character = GER_reinhard_scheer
+
+# ======================================================================
+### Air Chief ###
+
+recruit_character = GER_walter_von_eberhardt
+recruit_character = GER_ernst_von_hoeppner
+
+# ======================================================================
+### High Command ###
+
+recruit_character = GER_erich_von_falkenhayn_chief
+recruit_character = GER_alfred_von_tirpitz
+recruit_character = GER_helmuth_von_moltke
+recruit_character = GER_colmar_von_der_goltz
+recruit_character = GER_karl_von_bulow
+recruit_character = GER_august_von_heeringen
+recruit_character = GER_wilhelm_siegert
+recruit_character = GER_peter_strasser
+recruit_character = GER_walther_reinhardt
+recruit_character = GER_rudiger_von_der_goltz
+
+############################################################################################################
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
 #LEADERS
-create_country_leader={ name = "Wilhelm III" desc=GER_wilhelm_iii_DESC picture="gfx/leaders/GER_wilhelm_iii.dds" expire="1935.1.1" ideology=autocracy  traits={  } }
-create_country_leader={ name = "Paul von Hindenburg" desc=GER_paul_von_hindenburg_DESC picture="gfx/leaders/GER_paul_von_hindenburg.dds" expire="1935.1.1" ideology=conservatism  traits={  } }
-create_country_leader={ name = "Adolf Hitler" desc=GER_adolf_hitler_DESC picture="gfx/leaders/GER_adolf_hitler.dds" expire="1935.1.1" ideology=nazism traits={  } }
-create_country_leader={ name = "Erich Ludendorff" desc=GER_erich_ludendorff_DESC picture="gfx/leaders/GER_erich_ludendorff.dds" expire="1935.1.1" ideology=fascism_ideology traits={  } }
-create_country_leader={ name = "Friedrich Ebert" desc=GER_friedrich_ebert_DESC picture="gfx/leaders/GER_friedrich_ebert.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Karl Liebknecht" desc=GER_karl_liebknecht_DESC picture="gfx/leaders/GER_karl_liebknecht.dds" expire="1935.1.1" ideology=marxism  traits={  } }
-create_country_leader={ name = "Wilhelm II" desc=GER_wilhelm_ii_DESC picture="gfx/leaders/GER_wilhelm_ii.dds" expire="1935.1.1" ideology=autocracy traits={  } }
+recruit_character = GER_wilhelm_ii
+recruit_character = GER_friedrich_ebert
+recruit_character = GER_wilhelm_iii
+recruit_character = GER_paul_von_hindenburg
+recruit_character = GER_adolf_hitler
+recruit_character = GER_ludendorff
+recruit_character = GER_karl_liebknecht
 
 #ARMY
-create_field_marshal={  name = "Bock" id=34013 portrait_path="gfx/fieldmarshal/GER_bock.dds" traits={   } skill=2 }
-create_field_marshal={  name = "von Gallwitz" id=34038 portrait_path="gfx/fieldmarshal/GER_von_gallwitz.dds" traits={ thorough_planner  } skill=3 }
-create_field_marshal={  name = "Duke Albrecht of Wurttemberg" id=34337 portrait_path="gfx/fieldmarshal/GER_duke_albrecht_of_wurttemberg.dds" traits={ thorough_planner  } skill=3 }
-create_field_marshal={  name = "Crown Prince Rupprecht of Bavaria" id=34547 portrait_path="gfx/fieldmarshal/GER_crown_prince_rupprecht_of_bavaria.dds" traits={   } skill=3 }
-create_field_marshal={  name = "Crown Prince Wilhelm of Prussia" id=34548 portrait_path="gfx/fieldmarshal/GER_crown_prince_wilhelm_of_prussia.dds" traits={   } skill=2 }
-
-create_corps_commander={  name = "Maximilian von Prittwitz und Gaffron" id=34036 portrait_path="gfx/fieldmarshal/GER_von_prittwitz_und_gaffron_m.dds" traits={ old_guard } skill=3 }
-create_corps_commander={  name = "Blaskowitz" id=34012 portrait_path="gfx/generals/GER_blaskowitz.dds" traits={   } skill=3 }
-create_corps_commander={  name = "von Hellingrath" id=34025 portrait_path="gfx/generals/GER_von_hellingrath.dds" traits={   } skill=3 }
-create_corps_commander={  name = "von Kluck" id=34029 portrait_path="gfx/generals/GER_von_kluck.dds" traits={   } skill=3 }
-create_corps_commander={  name = "von Preußen W." id=34032 portrait_path="gfx/generals/GER_von_preussen_w.dds" traits={   } skill=3 }
-create_corps_commander={  name = "von Francois" id=34037 portrait_path="gfx/generals/GER_von_francois.dds" traits={   } skill=4 }
-create_corps_commander={  name = "von Falkenhayn Erich" id=34040 portrait_path="gfx/generals/GER_von_falkenhayn_erich.dds" traits={   } skill=3 }
-create_corps_commander={  name = "von Einem" id=34043 portrait_path="gfx/generals/GER_von_einem.dds" traits={ fortress_buster  } skill=3 }
-create_corps_commander={  name = "von Hutier" id=34045 portrait_path="gfx/generals/GER_von_hutier.dds" traits={  fortress_buster } skill=4 }
-create_corps_commander={  name = "Ludendorff" id=34046 portrait_path="gfx/generals/GER_ludendorff.dds" traits={   } skill=4 }
-create_corps_commander={  name = "von der Marwitz" id=34048 portrait_path="gfx/generals/GER_von_der_marwitz.dds" traits={ fortress_buster  } skill=4 }
-create_corps_commander={  name = "von Lettow-Vorbeck" id=34052 portrait_path="gfx/generals/GER_von_lettow_vorbeck.dds" traits={  trickster } skill=4 }
-create_corps_commander={  name = "von Below O." id=34074 portrait_path="gfx/generals/GER_von_below_o.dds" traits={   } skill=4 }
-create_corps_commander={  name = "von Gündell" id=34101 portrait_path="gfx/generals/GER_von_gundell.dds" traits={ fortress_buster  } skill=3 }
-create_corps_commander={  name = "von Heydebreck" id=34103 portrait_path="gfx/generals/GER_von_heydebreck.dds" traits={ trickster  } skill=3 }
-create_corps_commander={  name = "Krafft von Dellmensingen" id=34117 portrait_path="gfx/generals/GER_krafft_von_dellmensingen.dds" traits={ commando  } skill=3 }
-create_corps_commander={  name = "Sixt von Armin" id=34127 portrait_path="gfx/generals/GER_sixt_von_armin.dds" traits={ fortress_buster  } skill=3 }
-create_corps_commander={  name = "von Schlieffen" id=34245 portrait_path="gfx/generals/GER_von_schlieffen.dds" traits={   } skill=3 }
-create_corps_commander={  name = "von der Goltz C." id=34260 portrait_path="gfx/generals/GER_von_der_goltz_c.dds" traits={  old_guard } skill=3 }
-create_corps_commander={  name = "von Hindenburg" id=34315 portrait_path="gfx/generals/GER_von_hindenburg.dds" traits={   } skill=3 }
-create_corps_commander={  name = "von dem Borne" id=34321 portrait_path="gfx/generals/GER_von_dem_borne.dds" traits={ fortress_buster  } skill=3 }
-create_corps_commander={  name = "von Bülow" id=34332 portrait_path="gfx/generals/GER_von_bulow.dds" traits={ fortress_buster  } skill=3 }
-create_corps_commander={  name = "von Mackensen" id=34485 portrait_path="gfx/generals/GER_von_mackensen.dds" traits={   } skill=4 }
+recruit_character = GER_von_gallwitz
+recruit_character = GER_duke_albrecht_of_wurttemberg
+recruit_character = GER_crown_prince_rupprecht_of_bavaria
+recruit_character = GER_crown_prince_wilhelm_of_prussia
+recruit_character = GER_maximilian_von_prittwitz_und_gaffron
+recruit_character = GER_von_hellingrath
+recruit_character = GER_von_kluck
+recruit_character = GER_von_preussen_w
+recruit_character = GER_von_francois
+recruit_character = GER_von_falkenhayn_erich
+recruit_character = GER_von_einem
+recruit_character = GER_von_hutier
+recruit_character = GER_von_der_marwitz
+recruit_character = GER_von_lettowvorbeck
+recruit_character = GER_von_below_o
+recruit_character = GER_von_gundell
+recruit_character = GER_von_heydebreck
+recruit_character = GER_krafft_von_dellmensingen
+recruit_character = GER_sixt_von_armin
+recruit_character = GER_von_schlieffen
+recruit_character = GER_von_der_goltz_c
+recruit_character = GER_von_hindenburg
+recruit_character = GER_von_dem_borne
+recruit_character = GER_von_bulow
+recruit_character = GER_von_mackensen
 
 #NAVY
-create_navy_leader={  name = "Franz von Hipper" id=34055 portrait_path="gfx/admiral/GER_hipper.dds" traits={ spotter  } skill=4 }
-create_navy_leader={  name = "Reinhard Scheer" id=34053 portrait_path="gfx/admiral/GER_scheer.dds" traits={ superior_tactician  } skill=4 }
-create_navy_leader={  name = "Maximilian von Spee" id=34054 portrait_path="gfx/admiral/GER_von_spee.dds" traits={ superior_tactician  } skill=4 }
-create_navy_leader={  name = "Lothar von Arnauld de la Perière" id=34226 portrait_path="gfx/admiral/GER_von_arnauld_de_la_periere.dds" traits={ seawolf  } skill=4 }
-create_navy_leader={  name = "Karl von Müller" id=34228 portrait_path="gfx/admiral/GER_von_muller_k.dds" traits={   } skill=4 }
-create_navy_leader={  name = "Alfred von Tirpitz" id=34298 portrait_path="gfx/admiral/GER_von_tirpitz.dds" traits={ spotter  } skill=3 }
-create_navy_leader={  name = "Curt von Prittwitz und Gaffron" id=34306 portrait_path="gfx/admiral/GER_von_prittwitz_boc.dds" traits={   } skill=3 }
-create_navy_leader={  name = "Henning von Holtzendorff" id=34312 portrait_path="gfx/admiral/GER_von_holtzendorff.dds" traits={ blockade_runner  } skill=3 }
-create_navy_leader={  name = "Friedrich Graf von Baudissin" id=34313 portrait_path="gfx/admiral/GER_von_baudissin.dds" traits={   } skill=3 }
-create_navy_leader={  name = "Max von Fischel" id=34314 portrait_path="gfx/admiral/GER_von_fischel.dds" traits={   } skill=3 }
-
+recruit_character = GER_franz_von_hipper
+recruit_character = GER_maximilian_von_spee
+recruit_character = GER_lothar_von_arnauld_de_la_perière
+recruit_character = GER_von_muller_k
+recruit_character = GER_curt_von_prittwitz_und_gaffron
+recruit_character = GER_henning_von_holtzendorff # Also Advisor
+recruit_character = GER_friedrich_graf_von_baudissin
+recruit_character = GER_max_von_fischel # Also Advisor
 
 1910.1.1 = {
 	oob = "GER_1910"
@@ -97,13 +151,17 @@ create_navy_leader={  name = "Max von Fischel" id=34314 portrait_path="gfx/admir
 	#Army
 	complete_national_focus = GER_ww1_army_effort
 	complete_national_focus = GER_ww1_industrial_effort
-	complete_national_focus = GER_ww1_naval_effort
+	unlock_national_focus = GER_ww1_naval_effort
+	complete_national_focus = GER_ww1_newnavalcanons_1
 
 	#Diplomatic
 	complete_national_focus = GER_ww1_diplomatic_effort
 	#-------------------------------------------------------
 
 	set_technology = {
+
+		# Train
+		ww1_train = 1
 
 		# Infantry
 		infantry_weapons = 1
@@ -114,15 +172,15 @@ create_navy_leader={  name = "Max von Fischel" id=34314 portrait_path="gfx/admir
 		motorised_infantry = 1
 		ww1_ambulance1 = 1
 		tech_mountaineers = 1
-		
+
 		# Support
 		tech_support = 1
 		tech_engineers = 1
 		tech_recon = 1
-		#tech_military_police = 1
-		#tech_maintenance_company = 1
-		#tech_field_hospital = 1
-		#tech_logistics_company = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
 
 		# Armor
 		gwtank=1 # 1910 Armored Car
@@ -132,18 +190,62 @@ create_navy_leader={  name = "Max von Fischel" id=34314 portrait_path="gfx/admir
 		heavy_field_gun1 = 1
 
 		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_light_cruiser1 = 1
+		ww1_heavy_cruiser0 = 1
+	ww1_heavy_cruiser0_mtg = 1
+		ww1_heavy_cruiser1 = 1
+	ww1_heavy_cruiser1_mtg = 1
 		ww1_battlecruiser0 = 1
-		ww1_battlecruiser0b = 1
+	ww1_battlecruiser0_mtg = 1
 		ww1_battlecruiser1 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
+	ww1_battlecruiser1_mtg = 1
+		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
+		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
+		ww1_light_cruiser2 = 1
+	ww1_light_cruiser2_mtg = 1
+		ww1_light_cruiser3 = 1
+	ww1_light_cruiser3_mtg = 1
+		ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
+		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
+		ww1_battleship2 = 1
+	ww1_battleship2_mtg = 1
+		ww1_battleship3 = 1
+	ww1_battleship3_mtg = 1
+		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
+		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
+		ww1_destroyer2 = 1
+	ww1_destroyer2_mtg = 1
+		ww1_destroyer3 = 1
+	ww1_destroyer3_mtg = 1
+		ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
 		transport = 1
+	transport_mtg = 1
+
+		# Naval Modules Techs
+		heavy_navalmodule_1890 = 1
+	heavy_navalmodule_1890_mtg = 1
+		heavy_navalmodule_1900 = 1
+	heavy_navalmodule_1900_mtg = 1
+		medium_navalmodule_1890 = 1
+	medium_navalmodule_1890_mtg = 1
+		medium_navalmodule_1900 = 1
+	medium_navalmodule_1900_mtg = 1
+		light_navalmodule_1890 = 1
+	light_navalmodule_1890_mtg = 1
+		light_navalmodule_1900 = 1
+	light_navalmodule_1900_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -155,80 +257,122 @@ create_navy_leader={  name = "Max von Fischel" id=34314 portrait_path="gfx/admir
 		tank_unlocker1 = 1
 
 		# Industry
-		ww1_medicine1 = 1
+		ww1_tools1 = 1 # Carpentry Schools
+
+		ww1_medicine1 = 1 # New Surgical Instruments
+		ww1_medicine2 = 1 # War Medicine
+
+		ww1_construction1 = 1 # Construction I
+
+		ww1_oil1 = 1 # Oil Extraction
 	}
 
 	set_politics = {
-	    parties = {
-	        democratic = {
-	            popularity = 10
-	        }
-	        fascism = {
-	            popularity = 8
-	        }
-	        communism = {
-	            popularity = 2
-	        }
-	        neutrality = {
-	            popularity = 80
-	        }
-	    }
-	    ruling_party = neutrality last_election = "1907.1.25"
-	    election_frequency = 60 elections_allowed = yes
+		ruling_party = neutrality
+		last_election = "1907.1.25"
+		election_frequency = 60
+		elections_allowed = yes
+	}
+
+	set_popularities = {
+		democratic = 10
+		fascism = 8
+		communism = 2
+		neutrality = 80
 	}
 
 	add_ideas = {
-		general_staff
+		#general_staff
+		German_staff_ww1
 		GER_ww1_North_German_Confederation
 		ww1_Scramble_for_Africa
-		limited_exports 
-		limited_conscription 
+		limited_exports
+		limited_conscription
 		partial_economic_mobilisation
 	}
 
-	
+	create_equipment_variant = { name = "Sachsen Class" type=battleship_1890 name_group = GER_BB_HISTORICAL parent_version = 0 obsolete=yes upgrades = { ship_gun_upgrade=2 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=2           } }
+	create_equipment_variant = { name = "Oldenburg Class" type=battleship_1890 name_group = GER_BB_HISTORICAL parent_version = 1 obsolete=yes upgrades = { ship_gun_upgrade=4 ship_armor_upgrade=1 ship_engine_upgrade=0 ship_reliability_upgrade=5           } }
+	create_equipment_variant = { name = "Siegfried Class" type=battleship_1890 name_group = GER_BB_HISTORICAL parent_version = 2 obsolete=yes upgrades = { ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
+	create_equipment_variant = { name = "Brandenburg Class" type=battleship_1890 name_group = GER_BB_HISTORICAL parent_version = 3 obsolete=yes upgrades = { ship_gun_upgrade=5 ship_armor_upgrade=5 ship_engine_upgrade=3 ship_reliability_upgrade=5           } }
+	create_equipment_variant = { name = "Kaiser Friedrich III Class" type=battleship_1890 name_group = GER_BB_HISTORICAL parent_version = 4 obsolete=yes upgrades = { ship_gun_upgrade=4 ship_armor_upgrade=5 ship_engine_upgrade=4 ship_reliability_upgrade=5           } }
+	create_equipment_variant = { name = "Wittelsbach Class" type=battleship_1890 name_group = GER_BB_HISTORICAL parent_version = 5 obsolete=yes upgrades = { ship_gun_upgrade=4 ship_armor_upgrade=5 ship_engine_upgrade=4 ship_reliability_upgrade=5           } }
+	create_equipment_variant = { name = "Deutschland Class" type=battleship_1900 name_group = GER_BB_HISTORICAL parent_version = 0 obsolete=yes upgrades = { ship_gun_upgrade=4 ship_armor_upgrade=2 ship_engine_upgrade=1 ship_reliability_upgrade=5           } }
+	create_equipment_variant = { name = "Helgoland Class" type=battleship_1906 parent_version = 0 obsolete=yes upgrades = { ship_gun_upgrade=3 ship_armor_upgrade=1 ship_engine_upgrade=0 ship_reliability_upgrade=4           } }
+	create_equipment_variant = { name = "Victoria Luise Class" type=heavy_cruiser_1890 parent_version = 0 obsolete=yes upgrades = { ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=1 ship_reliability_upgrade=1           } }
+	create_equipment_variant = { name = "Fürst Bismarck Class" type=heavy_cruiser_1890 parent_version = 1 obsolete=yes upgrades = { ship_gun_upgrade=2 ship_armor_upgrade=0 ship_engine_upgrade=1 ship_reliability_upgrade=3           } }
+	create_equipment_variant = { name = "Prinz Heinrich Class" type=heavy_cruiser_1890 parent_version = 2 obsolete=yes upgrades = { ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=3 ship_reliability_upgrade=3           } }
+	create_equipment_variant = { name = "Roon Class" type=heavy_cruiser_1900 parent_version = 0 obsolete=yes upgrades = { ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
+	create_equipment_variant = { name = "Scharnhorst Class" type=heavy_cruiser_1900 parent_version = 1 obsolete=yes upgrades = { ship_gun_upgrade=2 ship_armor_upgrade=0 ship_engine_upgrade=2 ship_reliability_upgrade=4           } }
+	create_equipment_variant = { name = "Blücher Class" type=heavy_cruiser_1900 parent_version = 2 obsolete=yes upgrades = { ship_gun_upgrade=5 ship_armor_upgrade=0 ship_engine_upgrade=3 ship_reliability_upgrade=5           } }
+	create_equipment_variant = { name = "Hela Class" type=light_cruiser_1890 parent_version = 0 obsolete=yes upgrades = { ship_gun_upgrade=0  ship_engine_upgrade=5 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant = { name = "Irene Class" type=light_cruiser_1890 parent_version = 1 obsolete=yes upgrades = { ship_gun_upgrade=5  ship_engine_upgrade=3 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant = { name = "Gazelle Class" type=light_cruiser_1906 parent_version = 0 obsolete=yes upgrades = { ship_gun_upgrade=1  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant = { name = "Bremen Class" type=light_cruiser_1906 parent_version = 1 obsolete=yes upgrades = { ship_gun_upgrade=1  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant = { name = "Königsberg Class" type=light_cruiser_1906 parent_version = 2 obsolete=yes upgrades = { ship_gun_upgrade=1  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant = { name = "Dresden Class" type=light_cruiser_1906 parent_version = 3 obsolete=yes upgrades = { ship_gun_upgrade=1  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant = { name = "Kolberg Class" type=light_cruiser_1906 parent_version = 4 obsolete=yes upgrades = { ship_gun_upgrade=3  ship_engine_upgrade=2 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant = { name = "D3 Class" type=destroyer_1890 name_group = GER_DD_HISTORICAL parent_version = 0 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "D5 Class" type=destroyer_1890 name_group = GER_DD_HISTORICAL parent_version = 1 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "D7 Class" type=destroyer_1890 name_group = GER_DD_HISTORICAL parent_version = 2 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "D9 Class" type=destroyer_1890 name_group = GER_DD_HISTORICAL parent_version = 3 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "D10 Class" type=destroyer_1890 name_group = GER_DD_HISTORICAL  parent_version = 4 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "S90 Class" type=destroyer_1890 parent_version = 5 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "S114 Class" type=destroyer_1900 parent_version = 0 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=1    ship_torpedo_upgrade=1 } }
+	create_equipment_variant = { name = "S120 Class" type=destroyer_1900 parent_version = 1 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=1 } }
+	create_equipment_variant = { name = "S126 Class" type=destroyer_1900 parent_version = 2 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=1    ship_torpedo_upgrade=1 } }
+	create_equipment_variant = { name = "G132 Class" type=destroyer_1900 parent_version = 3 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=1    ship_torpedo_upgrade=5 } }
+	create_equipment_variant = { name = "S138 Class" type=destroyer_1906 parent_version = 0 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=1    ship_torpedo_upgrade=1 } }
+	create_equipment_variant = { name = "V150 Class" type=destroyer_1906 parent_version = 1 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=1 } }
+	create_equipment_variant = { name = "V161 Class" type=destroyer_1906 parent_version = 2 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=1 } }
+	create_equipment_variant = { name = "V162 Class" type=destroyer_1906 parent_version = 3 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=1 } }
+	create_equipment_variant = { name = "S165 Class" type=destroyer_1906 parent_version = 4 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=1 } }
+	create_equipment_variant = { name = "G169 Class" type=destroyer_1906 parent_version = 5 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=5 } }
+	create_equipment_variant = { name = "S176 Class" type=destroyer_1906 parent_version = 6 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=5 } }
+	create_equipment_variant = { name = "V180 Class" type=destroyer_1906 parent_version = 7 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=5 } }
+	create_equipment_variant = { name = "G192 Class" type=destroyer_1906 parent_version = 8 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=5 } }
+	create_equipment_variant = { name = "G7 Class" type=destroyer_1910 parent_version = 0 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=1    ship_torpedo_upgrade=0 } }
+	create_equipment_variant = { name = "S13 Class" type=destroyer_1910 parent_version = 1 obsolete=no upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=1    ship_torpedo_upgrade=0 } }
+	create_equipment_variant = { name = "U2 Class" type=coastal_submarine_1906 parent_version = 0 obsolete=yes upgrades = {    ship_reliability_upgrade=1       sub_torpedo_upgrade=5 sub_stealth_upgrade=1 sub_engine_upgrade=1  } }
+	create_equipment_variant = { name = "U3 Class" type=coastal_submarine_1906 parent_version = 1 obsolete=yes upgrades = {    ship_reliability_upgrade=0       sub_torpedo_upgrade=5 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant = { name = "U5 Class" type=coastal_submarine_1906 parent_version = 2 obsolete=yes upgrades = {    ship_reliability_upgrade=1       sub_torpedo_upgrade=5 sub_stealth_upgrade=1 sub_engine_upgrade=1  } }
+	create_equipment_variant = { name = "U9 Class" type=coastal_submarine_1906 parent_version = 3 obsolete=yes upgrades = {    ship_reliability_upgrade=3       sub_torpedo_upgrade=5 sub_stealth_upgrade=3 sub_engine_upgrade=3  } }
 }
 
 1914.1.1 = {
 	oob = "GER_1914"
 
-
 	#-------------------------------------------------------
 	#							NF
 	#-------------------------------------------------------
 	#Army
-	complete_national_focus = GER_ww1_army_effort
 	complete_national_focus = GER_ww1_equipment_effort
 	complete_national_focus = GER_ww1_artillery_effort_1
 	complete_national_focus = GER_ww1_doctrine_effort
 	complete_national_focus = GER_ww1_trenchwarfare
-	
+
 	# Air
 	complete_national_focus = GER_ww1_aviation_effort
 	complete_national_focus = GER_ww1_aviation_effort_2
 	complete_national_focus = GER_ww1_airship_focus
-	
+
 	# Industry
-	complete_national_focus = GER_ww1_industrial_effort
 	complete_national_focus = GER_ww1_infrastructure_effort
 	complete_national_focus = GER_ww1_airfield_expansion_1
 	complete_national_focus = GER_ww1_construction_effort
 	complete_national_focus = GER_ww1_production_effort
 	complete_national_focus = GER_ww1_dockyard_effort_1
-	
+
 	# Naval
-	complete_national_focus = GER_ww1_naval_effort
-	complete_national_focus = GER_ww1_newnavalcanons_1
 	complete_national_focus = GER_ww1_dreadnought_effort
 
 	#Political
 	complete_national_focus = GER_ww1_political_effort
 	complete_national_focus = GER_ww1_support_kaiser
-	complete_national_focus = GER_ww1_militarism
+	unlock_national_focus = GER_ww1_militarism
 	complete_national_focus = GER_ww1_centralizedpower
 	complete_national_focus = GER_ww1_full_rearmament
 	complete_national_focus = GER_ww1_reorganization_act
-
 
 	#Diplomatic
 	complete_national_focus = GER_ww1_diplomatic_effort
@@ -270,7 +414,10 @@ create_navy_leader={  name = "Max von Fischel" id=34314 portrait_path="gfx/admir
 
 		# Armor
 		gwtank=1 # 1910 Armored Car
+			ww1_armored_car_2__nostepback = 1
+
 		ww1_armored_car_2 = 1
+			ww1_armored_car_2__nostepback = 1
 
 		# Artillery
 		light_field_gun1 = 1
@@ -283,19 +430,49 @@ create_navy_leader={  name = "Max von Fischel" id=34314 portrait_path="gfx/admir
 		ww1_directfire = 1
 
 		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_destroyer2 = 1
-		ww1_light_cruiser0 = 1
-		ww1_light_cruiser1 = 1
+		ww1_heavy_cruiser0 = 1
+	ww1_heavy_cruiser0_mtg = 1
+		ww1_heavy_cruiser1 = 1
+	ww1_heavy_cruiser1_mtg = 1
 		ww1_battlecruiser0 = 1
-		ww1_battlecruiser0b = 1
+	ww1_battlecruiser0_mtg = 1
 		ww1_battlecruiser1 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
+	ww1_battlecruiser1_mtg = 1
+		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
+		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
+		ww1_light_cruiser2 = 1
+	ww1_light_cruiser2_mtg = 1
+		ww1_light_cruiser3 = 1
+	ww1_light_cruiser3_mtg = 1
+		ww1_light_cruiser4 = 1
+		ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
+		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
+		ww1_battleship2 = 1
+	ww1_battleship2_mtg = 1
+		ww1_battleship3 = 1
+	ww1_battleship3_mtg = 1
+		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
+		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
+		ww1_destroyer2 = 1
+	ww1_destroyer2_mtg = 1
+		ww1_destroyer3 = 1
+	ww1_destroyer3_mtg = 1
+		ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -327,34 +504,310 @@ create_navy_leader={  name = "Max von Fischel" id=34314 portrait_path="gfx/admir
 		ww1_medicine1 = 1
 		ww1_fortification1 = 1
 		ww1_fortification2 = 1
-
 	}
 
 	set_politics = {
-	    parties = {
-	        democratic = {
-	            popularity = 10
-	        }
-	        fascism = {
-	            popularity = 9
-	        }
-	        communism = {
-	            popularity = 1
-	        }
-	        neutrality = {
-	            popularity = 80
-	        }
-	    }
-	    ruling_party = neutrality last_election = "1912.1.12"
-	    election_frequency = 60 elections_allowed = yes
+		ruling_party = neutrality
+		last_election = "1912.1.12"
+		election_frequency = 60
+		elections_allowed = yes
+	}
+
+	set_popularities = {
+		democratic = 9
+		fascism = 9
+		communism = 3
+		neutrality = 79
 	}
 
 	add_ideas = {
-		general_staff
+		#general_staff
+		#German_staff_ww1
 		GER_ww1_North_German_Confederation
 		ww1_Scramble_for_Africa
-		limited_exports 
-		limited_conscription 
+		limited_exports
+		limited_conscription
 		partial_economic_mobilisation
 	}
+	
+	create_equipment_variant = { name = "König Class" type=battleship_1910 parent_version = 0 obsolete=no upgrades = { ship_gun_upgrade=0 ship_armor_upgrade=3 ship_engine_upgrade=0 ship_reliability_upgrade=3           } }
+	create_equipment_variant = { name = "Derfflinger Class" type=battle_cruiser_1914 parent_version = 0 obsolete=no upgrades = { ship_gun_upgrade=0 ship_armor_upgrade=4 ship_engine_upgrade=0 ship_reliability_upgrade=4           } }
+	create_equipment_variant = { name = "Karlsruhe Class" type=light_cruiser_1910 parent_version = 0 obsolete=yes upgrades = { ship_gun_upgrade=0  ship_engine_upgrade=1 ship_reliability_upgrade=1 ship_anti_air_upgrade=0          } }
+	create_equipment_variant = { name = "Graudenz Class" type=light_cruiser_1910 parent_version = 1 obsolete=yes upgrades = { ship_gun_upgrade=0  ship_engine_upgrade=2 ship_reliability_upgrade=2 ship_anti_air_upgrade=0          } }
+	create_equipment_variant = { name = "Pillau Class" type=light_cruiser_1910 parent_version = 2 obsolete=no upgrades = { ship_gun_upgrade=5  ship_engine_upgrade=2 ship_reliability_upgrade=5 ship_anti_air_upgrade=5          } }
+	create_equipment_variant = { name = "V25 Class" type=destroyer_1910 parent_version = 2 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=5 } }
+	create_equipment_variant = { name = "S31' Class" type=destroyer_1910 parent_version = 3 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=5 } }
+	create_equipment_variant = { name = "G37 Class" type=destroyer_1910 parent_version = 4 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=5 } }
+	create_equipment_variant = { name = "V43 Class" type=destroyer_1910 parent_version = 5 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=3    ship_torpedo_upgrade=5 } }
+	create_equipment_variant = { name = "V67 Class" type=destroyer_1914 parent_version = 0 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "G85 Class" type=destroyer_1914 parent_version = 1 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "G96 Class" type=destroyer_1914 parent_version = 2 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "B97 Class" type=destroyer_1914 parent_version = 3 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "G101 Class" type=destroyer_1914 parent_version = 4 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "V105 Class" type=destroyer_1914 parent_version = 5 obsolete=no upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "U23 Class" type=submarine_1910 parent_version = 0 obsolete=yes upgrades = {    ship_reliability_upgrade=5       sub_torpedo_upgrade=0 sub_stealth_upgrade=3 sub_engine_upgrade=3  } }
+	create_equipment_variant = { name = "U27 Class" type=submarine_1910 parent_version = 1 obsolete=yes upgrades = {    ship_reliability_upgrade=5       sub_torpedo_upgrade=0 sub_stealth_upgrade=3 sub_engine_upgrade=3  } }
+	create_equipment_variant = { name = "U31 Class" type=submarine_1910 parent_version = 2 obsolete=yes upgrades = {    ship_reliability_upgrade=5       sub_torpedo_upgrade=0 sub_stealth_upgrade=2 sub_engine_upgrade=2  } }
+	create_equipment_variant = { name = "U43 Class" type=submarine_1910 parent_version = 3 obsolete=yes upgrades = {    ship_reliability_upgrade=5       sub_torpedo_upgrade=0 sub_stealth_upgrade=1 sub_engine_upgrade=1  } }
+	create_equipment_variant = { name = "U57 Class" type=submarine_1914 parent_version = 0 obsolete=yes upgrades = {    ship_reliability_upgrade=5       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant = { name = "U63 Class" type=submarine_1914 parent_version = 1 obsolete=yes upgrades = {    ship_reliability_upgrade=5       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant = { name = "U66 Class" type=submarine_1914 parent_version = 2 obsolete=yes upgrades = {    ship_reliability_upgrade=1       sub_torpedo_upgrade=0 sub_stealth_upgrade=1 sub_engine_upgrade=1  } }
+	create_equipment_variant = { name = "U71 Class" type=submarine_1914 parent_version = 3 obsolete=no upgrades = {    ship_reliability_upgrade=0       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant = { name = "U16 Class" type=coastal_submarine_1910 parent_version = 0 obsolete=no upgrades = {    ship_reliability_upgrade=5       sub_torpedo_upgrade=5 sub_stealth_upgrade=5 sub_engine_upgrade=5  } }
+	create_equipment_variant = { name = "Derfflinger Class" type=battle_cruiser_1914 parent_version = 0 obsolete=yes upgrades = { ship_gun_upgrade=0 ship_armor_upgrade=4 ship_engine_upgrade=0 ship_reliability_upgrade=4           } }
+	create_equipment_variant = { name = "Hindenburg Class" type=battle_cruiser_1914 parent_version = 1 obsolete=no upgrades = { ship_gun_upgrade=0 ship_armor_upgrade=4 ship_engine_upgrade=0 ship_reliability_upgrade=4           } }
+}
+
+1919.1.1 = {
+	set_cosmetic_tag = GER_WEIMAR
+	set_political_power = 0
+	oob = "GER_1919"
+
+	add_ideas = {
+		GER_interwar_spirit_BannedConscription
+	}
+
+	remove_ideas = {
+		German_staff_ww1
+		GER_ww1_North_German_Confederation
+		ww1_Scramble_for_Africa
+	}
+
+	set_politics = {
+		ruling_party = democratic
+		last_election = "1919.1.19"
+		election_frequency = 17
+		elections_allowed = yes
+	}
+
+	set_popularities = {
+		democratic = 33
+		fascism = 21
+		communism = 24
+		neutrality = 22
+	}
+
+	create_country_leader = {
+		name = "Ernst Thälmann"
+		picture = "gfx/hoi4tgw_portraits/GER/country_leaders/GER_Ernst_Thalmann.dds"
+		expire = "1935.1.1"
+		ideology = stalinism traits = {}
+	}
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+	# Diplomatic
+	unlock_national_focus = GER_ww1_turkey_friend
+	complete_national_focus = GER_ww1_baghdad
+	unlock_national_focus = GER_asienkorps
+
+	unlock_national_focus = GER_ww1_bulgaria_friend
+
+	unlock_national_focus = GER_ww1_zimmermann_telegram
+	unlock_national_focus = GER_ww1_friend_sweden
+
+	unlock_national_focus = GER_ww1_restructure_ostafrika
+	unlock_national_focus = GER_ww1_train_ostafrika
+	unlock_national_focus = GER_asienkorps
+
+	complete_national_focus = GER_ww1_ready_country
+	unlock_national_focus = GER_ww1_war_with_france
+	unlock_national_focus = GER_strat_bombing
+	unlock_national_focus = GER_ww1_hol_militaryaccess
+	unlock_national_focus = GER_ww1_den_militaryaccess
+
+	unlock_national_focus = GER_ww1_support_boer
+	unlock_national_focus = GER_ww1_support_boer_war
+
+	unlock_national_focus = GER_ww1_unitedpeople
+
+	unlock_national_focus = GER_ww1_unitedpeople
+
+	unlock_national_focus = GER_ww1_polnische_wehrmacht
+
+	complete_national_focus = GER_ww1_gasmask_focus
+	unlock_national_focus = GER_ww1_equipment_effort_2
+	unlock_national_focus = GER_ww1_doctrine_effort_2
+	unlock_national_focus = GER_ww1_artillery_effort_2
+
+	unlock_national_focus = GER_ww1_fighter_focus
+	unlock_national_focus = GER_ww1_aviation_effort_3
+
+	unlock_national_focus = GER_ww1_infrastructure_effort_2
+
+	unlock_national_focus = GER_ww1_newnavalcanons_2
+	
+	#-------------------------------------------------------
+
+	set_technology = {
+		# Infantry
+		support_weapons3 = 1
+		ww1infantry_weapons2 = 1
+		ww1_infantry2_equip = 1
+		infantry_gasmask = 1
+		infantry_ww1_mortar1 = 1
+		infantry_flamethrower1 = 1
+		infantry_ww1_machinegun1 = 1
+		early_motorised = 1
+		ww1_ambulance2 = 1
+		tech_mountaineers2 = 1
+		marines = 1
+
+		# Support
+		tech_signal_company = 1
+
+		tech_engineers2 = 1
+		tech_recon2 = 1
+		tech_military_police2 = 1
+		tech_maintenance_company2 = 1
+		tech_field_hospital2 = 1
+		tech_logistics_company2 = 1
+		tech_signal_company2 = 1
+
+		tech_engineers3 = 1
+		tech_recon3 = 1
+		tech_military_police3 = 1
+		tech_field_hospital3 = 1
+		tech_logistics_company3 = 1
+
+		# Armor
+		ww1_armored_car_3 = 1
+			ww1_armored_car_3__nostepback = 1
+		ww1_light_tank = 1
+			ww1_light_tank__nostepback = 1
+		ww1_heavy_tank = 1
+			ww1_heavy_tank__nostepback = 1
+		ww1_heavy_tank2 = 1
+			ww1_heavy_tank2__nostepback = 1
+		ww1_super_heavy_tank = 1
+			ww1_super_heavy_tank__nostepback = 1
+
+		# Artillery
+		light_field_gun2 = 1
+		heavy_field_gun2 = 1
+		bonus_artillery4 = 1
+		bonus_bertha4 = 1
+		bonus_artillery2 = 1
+		bonus_bertha2 = 1
+
+		# Land Doctrine
+		ww1_rifle_ammo = 1
+		ww1_long_march = 1
+		ww1_battlefield = 1
+		ww1_target = 1
+		ww1_night = 1
+		ww1_armored_car = 1
+
+		# Navy
+		ww1_battleship4 = 1
+		ww1_battleship4_mtg = 1
+		ww1_battlecruiser2 = 1
+		ww1_battlecruiser2_mtg = 1
+		ww1_light_cruiser4 = 1
+		ww1_light_cruiser4_mtg = 1
+		ww1_destroyer4 = 1
+		ww1_destroyer4_mtg = 1
+		ww1_submarine2 = 1
+		ww1_submarine2_mtg = 1
+		ww1_submarine3 = 1
+		ww1_submarine3_mtg = 1
+		ww1_submarine4 = 1
+		ww1_submarine4_mtg = 1
+		ww1_coastal_submarine2 = 1
+		ww1_coastal_submarine2_mtg = 1
+		ww1_coastal_submarine3 = 1
+		ww1_coastal_submarine3_mtg = 1
+		ww1_coastal_submarine4 = 1
+		ww1_coastal_submarine4_mtg = 1
+		ww1_cruiser_submarine1 = 1
+		ww1_cruiser_submarine1_mtg = 1
+		ww1_cruiser_submarine2 = 1
+		ww1_cruiser_submarine2_mtg = 1
+		ww1_smoke_generator = 1
+		ww1_smoke_generator_mtg = 1
+		seaplane_carrier = 1
+		seaplane_carrier_mtg = 1
+
+		# Naval Doctrine
+		ww1_navaldoctrine_4 = 1
+		ww1_navaldoctrine_5 = 1
+		ww1_navaldoctrine_6 = 1
+
+		# Air
+		ww1_fighter2 = 1
+		ww1_fighter2b = 1
+		ww1_fighter3 = 1
+		ww1_fighter4 = 1
+		ww1_seaplane1 = 1
+		ww1_bomber1 = 1
+		ww1_bomber2 = 1
+		ww1_bomber3 = 1
+		ww1_zeppelin2 = 1
+
+		# Air Doctrine
+		ww1_airdoctrine_4 = 1
+		ww1_airdoctrine_5 = 1
+		ww1_airdoctrine_6 = 1
+		ww1_airdoctrine_7 = 1
+		ww1_airdoctrine_8 = 1
+		ww1_airdoctrine_9 = 1
+
+		# Engineering
+		radio2 = 1
+		hoi4tgw_encryption = 1
+		hoi4tgw_decryption = 1
+		dingfelder_engine1 = 1
+		tanktrack1 = 1
+		subhulltech1 = 1
+		mechanical_computing2 = 1
+		chemical_research2 = 1
+		tank_unlocker2 = 1
+			tank_unlocker2__nostepback = 1
+
+		# Industry
+		ww1_tools2 = 1
+		ww1_tools3 = 1
+		ww1_camera1 = 1
+		ww1_industry1 = 1
+		ww1_industry2 = 1
+		ww1_medicine2 = 1
+		ww1_medicine3 = 1
+		ww1_construction1 = 1
+		ww1_construction2 = 1
+		ww1_mining1 = 1
+		ww1_mining2 = 1
+		ww1_oil1 = 1
+		ww1_oil2 = 1
+		ww1_bergiusprocess = 1
+		ww1_fortification3 = 1
+		ww1_fortification3b = 1
+	}
+
+	create_equipment_variant = { name = "König Class" type=battleship_1910 parent_version = 0 obsolete=no upgrades = { ship_gun_upgrade=0 ship_armor_upgrade=3 ship_engine_upgrade=0 ship_reliability_upgrade=3 } }
+	create_equipment_variant = { name = "Derfflinger Class" type=battle_cruiser_1914 parent_version = 0 obsolete=no upgrades = { ship_gun_upgrade=0 ship_armor_upgrade=4 ship_engine_upgrade=0 ship_reliability_upgrade=4 } }
+	create_equipment_variant = { name = "Karlsruhe Class" type=light_cruiser_1910 parent_version = 0 obsolete=yes upgrades = { ship_gun_upgrade=0  ship_engine_upgrade=1 ship_reliability_upgrade=1 ship_anti_air_upgrade=0 } }
+	create_equipment_variant = { name = "Graudenz Class" type=light_cruiser_1910 parent_version = 1 obsolete=yes upgrades = { ship_gun_upgrade=0  ship_engine_upgrade=2 ship_reliability_upgrade=2 ship_anti_air_upgrade=0 } }
+	create_equipment_variant = { name = "Pillau Class" type=light_cruiser_1910 parent_version = 2 obsolete=no upgrades = { ship_gun_upgrade=5  ship_engine_upgrade=2 ship_reliability_upgrade=5 ship_anti_air_upgrade=5 } }
+	create_equipment_variant = { name = "V25 Class" type=destroyer_1910 parent_version = 2 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=5 } }
+	create_equipment_variant = { name = "S31' Class" type=destroyer_1910 parent_version = 3 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=5 } }
+	create_equipment_variant = { name = "G37 Class" type=destroyer_1910 parent_version = 4 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=5 } }
+	create_equipment_variant = { name = "V43 Class" type=destroyer_1910 parent_version = 5 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=3    ship_torpedo_upgrade=5 } }
+	create_equipment_variant = { name = "V67 Class" type=destroyer_1914 parent_version = 0 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "G85 Class" type=destroyer_1914 parent_version = 1 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "G96 Class" type=destroyer_1914 parent_version = 2 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "B97 Class" type=destroyer_1914 parent_version = 3 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "G101 Class" type=destroyer_1914 parent_version = 4 obsolete=yes upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "V105 Class" type=destroyer_1914 parent_version = 5 obsolete=no upgrades = { ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = { name = "U23 Class" type=submarine_1910 parent_version = 0 obsolete=yes upgrades = {    ship_reliability_upgrade=5       sub_torpedo_upgrade=0 sub_stealth_upgrade=3 sub_engine_upgrade=3  } }
+	create_equipment_variant = { name = "U27 Class" type=submarine_1910 parent_version = 1 obsolete=yes upgrades = {    ship_reliability_upgrade=5       sub_torpedo_upgrade=0 sub_stealth_upgrade=3 sub_engine_upgrade=3  } }
+	create_equipment_variant = { name = "U31 Class" type=submarine_1910 parent_version = 2 obsolete=yes upgrades = {    ship_reliability_upgrade=5       sub_torpedo_upgrade=0 sub_stealth_upgrade=2 sub_engine_upgrade=2  } }
+	create_equipment_variant = { name = "U43 Class" type=submarine_1910 parent_version = 3 obsolete=yes upgrades = {    ship_reliability_upgrade=5       sub_torpedo_upgrade=0 sub_stealth_upgrade=1 sub_engine_upgrade=1  } }
+	create_equipment_variant = { name = "U57 Class" type=submarine_1914 parent_version = 0 obsolete=yes upgrades = {    ship_reliability_upgrade=5       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant = { name = "U63 Class" type=submarine_1914 parent_version = 1 obsolete=yes upgrades = {    ship_reliability_upgrade=5       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant = { name = "U66 Class" type=submarine_1914 parent_version = 2 obsolete=yes upgrades = {    ship_reliability_upgrade=1       sub_torpedo_upgrade=0 sub_stealth_upgrade=1 sub_engine_upgrade=1  } }
+	create_equipment_variant = { name = "U71 Class" type=submarine_1914 parent_version = 3 obsolete=no upgrades = {    ship_reliability_upgrade=0       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+	create_equipment_variant = { name = "U16 Class" type=coastal_submarine_1910 parent_version = 0 obsolete=no upgrades = {    ship_reliability_upgrade=5       sub_torpedo_upgrade=5 sub_stealth_upgrade=5 sub_engine_upgrade=5 } }
+	create_equipment_variant = { name = "Derfflinger Class" type=battle_cruiser_1914 parent_version = 0 obsolete=yes upgrades = { ship_gun_upgrade=0 ship_armor_upgrade=4 ship_engine_upgrade=0 ship_reliability_upgrade=4 } }
+	create_equipment_variant = { name = "Hindenburg Class" type=battle_cruiser_1914 parent_version = 1 obsolete=no upgrades = { ship_gun_upgrade=0 ship_armor_upgrade=4 ship_engine_upgrade=0 ship_reliability_upgrade=4 } }
 }

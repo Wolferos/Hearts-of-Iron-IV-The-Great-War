@@ -1,0 +1,81 @@
+add_namespace = 2saw
+
+#basically nothing's happened here yet, will work on this
+
+#2saw1- puppet DOM
+#2saw2- DOM accepts
+#2saw3- DOM declines
+
+#"Spain proposes a return to the New World" 
+country_event = {
+	id = 2saw.4
+	title = 2saw.4.t
+	desc = 2saw.4.desc
+	picture = GFX_report_event_generic_parliament
+	
+	is_triggered_only = yes
+	
+	option = { #Accept!
+		name = 2saw.4.a
+		ai_chance = { base = 70 }
+		POR = {create_wargoal = { type = puppet_wargoal_focus target = BRA }}
+		SPR = { country_event = { id = 2saw.4 } }
+	}
+		
+	option = { #We have no issue with the Yankees.
+		name = 2saw.4.b
+		ai_chance = { base = 30 }
+	   	SPR = { country_event = { id = 2saw.4 }	}
+	}
+}
+
+#"Portugal accepts!!"
+country_event = {
+	id = 2saw.5
+	title = 2saw.5.t
+	desc = 2saw.5.desc
+	picture = GFX_report_event_generic_parliament
+	
+	is_triggered_only = yes
+	
+	option = { #Huzzah!
+		name = 2saw.5.a
+		SPR = { create_faction = "imperial_league" }
+		SPR = { add_to_faction = POR }
+	}
+}
+
+#"Portugal declines!"
+country_event = {
+	id = 2saw.6
+	title = 2saw.6.t
+	desc = 2saw.6.desc
+	picture = GFX_report_event_generic_parliament
+	
+	is_triggered_only = yes
+	
+	option = { #There IS an alternative...
+		name = 2saw.6.a
+		ai_chance = { base = 100 }
+		SPR = {create_wargoal = { type = puppet_wargoal_focus target = POR }}
+	}
+		
+	option = { #Bastards.
+		name = 2saw.6.b
+		ai_chance = { base = 30 }
+		SPR = { add_opinion_modifier = { target = POR modifier = reconquista.2 }}	
+	}
+}
+
+#2saw7 US takes Haiti in response to SPR taking DOM
+#2saw8 US event that gives them a malus if they lose Haiti, causes...
+#2saw9, only for the player, which informs them of how to win (occupy a few atlantic ports for a time- TBD)
+#2saw10 US surrender event that happens when mission succeeds, which causes
+#2saw11, Spain gets the choice to accept old colonies or continue the war (bad idea, US loses malus)
+#2saw12 Spain accepts
+#2saw13 Spain declines
+#2saw14, Spain times out and US wins and sues for peace
+#2saw15 Spain fails to take any objectives, surrender (working treaty idea: release basque counties, consumer goods reparations) or fight to the bitter end
+#2saw16, spain accepts surrender
+#2saw17, spain declines surrender
+#that's it fellas

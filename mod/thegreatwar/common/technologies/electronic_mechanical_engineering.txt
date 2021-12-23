@@ -1,19 +1,22 @@
 technologies = {
 
-
-#======================================================
+	#======================================================
 
 	tank_unlocker1 = {
 
-		research_time_factor = -0.01
+		start_year = 1903
+		research_cost = 2
+		research_speed_factor = 0.01
 		
 		path = {
 			leads_to_tech = tank_unlocker2
 			research_cost_coeff = 1
 		}
-		
-		start_year = 1903
-		research_cost = 2
+
+		path = {
+			leads_to_tech = tank_unlocker2__nostepback
+			research_cost_coeff = 1
+		}
 		
 		folder = {
 			name = electronics_folder
@@ -31,20 +34,27 @@ technologies = {
 	
 	tank_unlocker2 = {
 
-		desc = "TANK_UNLOCKER_SPECIAL"
-
-		on_research_complete = {
-			custom_effect_tooltip = TANK_UNLOCKER_RESEARCHED
+		allow_branch = {
+			NOT = { has_dlc = "No Step Back" }
 		}
-		
-		start_year = 1915
-		research_cost = 3
-		
+
 		folder = {
 			name = electronics_folder
 			position = { x = 0 y = 2 }
 		}
 
+		start_year = 1915
+		research_cost = 3
+		desc = "TANK_UNLOCKER_SPECIAL"
+
+		#dependencies = {
+		#	tank_unlocker1 = 1
+		#}
+
+		on_research_complete = {
+			custom_effect_tooltip = TANK_UNLOCKER_RESEARCHED
+		}		
+		
 		folder = {
 			name = armour_folder
 			position = { x = -4 y = 3 }
@@ -55,23 +65,90 @@ technologies = {
 		}
 		
 		categories = {
+			armor
 			electronics
 		}
 	}
 
-#======================================================
+	tank_unlocker2__nostepback = {
+
+		allow_branch = {
+			has_dlc = "No Step Back"
+		}
+
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 2 }
+		}
+
+		start_year = 1915
+		research_cost = 3
+		desc = "TANK_UNLOCKER_SPECIAL"
+
+		#dependencies = {
+		#	tank_unlocker1 = 1
+		#}
+
+		on_research_complete = {
+			custom_effect_tooltip = TANK_UNLOCKER_RESEARCHED
+		}
+
+		folder = {
+			name = nsb_armour_folder
+			position = { x = -4 y = 3 }
+		}
+
+		enable_equipment_modules = {
+
+			tank_heavy_machine_gun
+			tank_small_cannon
+			secondary_turret_small_cannon
+
+
+			tank_torsion_bar_suspension
+			tank_riveted_armor
+			tank_gasoline_engine
+			tank_diesel_engine
+			tank_petrol_electric_engine
+			tank_cast_armor
+			tank_christie_suspension
+			tank_bogie_suspension
+			tank_interleaved_suspension
+
+			tank_medium_one_man_tank_turret
+			tank_medium_two_man_tank_turret
+			tank_medium_three_man_tank_turret
+			tank_medium_fixed_superstructure_turret
+
+			tank_modern_tank_turret
+			sloped_armor
+			extra_ammo_storage
+			wet_ammo_storage
+			smoke_launchers
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		categories = {
+			armor
+			electronics
+		}
+	}
+
+	#======================================================
 
 	chemical_research = {
 
-		research_time_factor = -0.01
+		start_year = 1890
+		research_cost = 1
+		research_speed_factor = 0.01
 		
 		path = {
 			leads_to_tech = chemical_research2
 			research_cost_coeff = 1
-		}
-		
-		start_year = 1890
-		research_cost = 1
+		}		
 		
 		folder = {
 			name = electronics_folder
@@ -138,14 +215,13 @@ technologies = {
 			electronics
 		}
 	}
-#======================================================
 
-
+	#======================================================
 
 	electronic_mechanical_engineering = {
 
 		# small boost to research speed
-		research_time_factor = -0.01
+  		research_speed_factor = 0.01
 		
 		path = {
 			leads_to_tech = radio 
@@ -180,7 +256,8 @@ technologies = {
 	electronic_ww2 = {
 
 		# units with radios can more efficiently join combats when there is room
-		research_time_factor = -0.01
+		# research_speed_factor = 0.04
+		research_speed_factor = 0.01
 		
 		path = {
 			leads_to_tech = radio3
@@ -203,9 +280,6 @@ technologies = {
 			electronics
 		}
 	}
-
-
-
 
 	
 	radio = {
@@ -542,10 +616,10 @@ technologies = {
 
 	torpedotech1 = {
 
-		navy_submarine_attack_factor = 0.02
+		navy_submarine_attack_factor = 0.01
 		
 		path = {
-			leads_to_tech = torpedotech2
+			leads_to_tech = subhulltech1
 			research_cost_coeff = 1
 		}
 
@@ -558,7 +632,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 6
+			factor = 5
 		}
 		
 		categories = {
@@ -566,6 +640,34 @@ technologies = {
 			computing_tech
 		}
 	}
+
+	subhulltech1 = { # Improved Submarine Compartments
+
+		submarine = {
+			max_organisation = 5
+		}
+	
+		path = {
+			leads_to_tech = torpedotech2
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1
+		start_year = 1910
+		folder = {
+			name = electronics_folder
+			position = { x = 6 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 3
+		}
+		
+		categories = {
+			electronics
+		}		
+	}
+
 	torpedotech2 = {
 
 		navy_submarine_attack_factor = 0.02
@@ -575,27 +677,6 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 1.0
-		start_year = 1910
-		
-		folder = {
-			name = electronics_folder
-			position = { x = 6 y = 4 }
-		}
-		
-		ai_will_do = {
-			factor = 6
-		}
-		
-		categories = {
-			electronics
-			computing_tech
-		}
-	}
-	torpedotech3 = {
-
-		navy_submarine_attack_factor = 0.02
-		
 		research_cost = 1.0
 		start_year = 1916
 		
@@ -614,13 +695,34 @@ technologies = {
 		}
 	}
 
+	torpedotech3 = {
+
+		navy_submarine_attack_factor = 0.03
+		
+		research_cost = 1.0
+		start_year = 1922
+		
+		folder = {
+			name = electronics_folder
+			position = { x = 6 y = 8 }
+		}
+		
+		ai_will_do = {
+			factor = 6
+		}
+		
+		categories = {
+			electronics
+			computing_tech
+		}
+	}
 
 
-	
+
 	mechanical_computing = {
 
 		# small boost to research speed
-		research_time_factor = -0.01
+		research_speed_factor = 0.01
 		
 		path = {
 			leads_to_tech = tankaircraft1
@@ -791,8 +893,8 @@ technologies = {
 
 	mechanical_computing2 = {
 
-		# small boost to research speed
-		research_time_factor = -0.01
+		# research_time_factor = -0.01
+		research_speed_factor = 0.01
 		
 		path = {
 			leads_to_tech = tankaircraft2
@@ -880,7 +982,7 @@ technologies = {
 	tanktrack2 = {
 	
 		category_all_armor = {
-			breakthrough = 0.02
+			breakthrough = 0.03
 		}
 				
 		research_cost = 1.0
@@ -905,7 +1007,8 @@ technologies = {
 	mechanical_computing3 = {
 
 		# small boost to research speed
-		research_time_factor = -0.01
+		# research_time_factor = -0.01
+		research_speed_factor = 0.04
 		
 		path = {
 			leads_to_tech = computing_machine 
@@ -933,7 +1036,8 @@ technologies = {
 	computing_machine = {
 
 		# small boost to research speed
-		research_time_factor = -0.03
+		# research_time_factor = -0.03
+		research_speed_factor = 0.03
 		
 		path = {
 			leads_to_tech = improved_computing_machine 
@@ -971,7 +1075,8 @@ technologies = {
 	improved_computing_machine = {
 
 		# small boost to research speed
-		research_time_factor = -0.05
+		# research_time_factor = -0.05
+		research_speed_factor = 0.05
 		
 		path = {
 			leads_to_tech = advanced_computing_machine 
@@ -1009,7 +1114,8 @@ technologies = {
 	advanced_computing_machine = {
 
 		# small boost to research speed
-		research_time_factor = -0.05
+		# research_time_factor = -0.05
+		research_speed_factor = 0.08
 		
 		path = {
 			leads_to_tech = advanced_encryption 
@@ -1243,7 +1349,8 @@ technologies = {
 			name = electronics_folder
 			position = { x = 0 y = 12 }
 		}
-			folder = {
+
+		folder = {
 			name = secret_weapons_folder
 			position = { x = 10 y = 0 }
 		}
@@ -1372,7 +1479,7 @@ technologies = {
 	
 	atomic_research = {
 
-		research_time_factor = -0.02
+		research_speed_factor = 0.01
 		
 		path = {
 			leads_to_tech = nuclear_reactor 
@@ -1394,8 +1501,6 @@ technologies = {
 		categories = {
 			nuclear
 		}
-		
-
 	}
 	
 	nuclear_reactor = {

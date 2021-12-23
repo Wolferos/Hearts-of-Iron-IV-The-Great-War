@@ -10,7 +10,7 @@ focus_tree = {
 	focus = {
 		id = GER_ww1_political_effort
 		icon = GFX_goal_generic_demand_territory
-		completion_reward = { add_political_power=120 }
+		completion_reward = { add_political_power = 50 }
 		ai_will_do = { factor = 800 }
 		cost = 10
 		x = 3
@@ -23,11 +23,11 @@ focus_tree = {
 	focus = {
 		id = GER_ww1_support_kaiser
 		prerequisite = { focus=GER_ww1_political_effort }
-		#icon = GFX_goal_generic_territory_or_war
+
 		icon = GFX_hoi4tgw_germanempire
 		available = { has_government=neutrality }
 
-		completion_reward = { add_political_power=100 }
+		completion_reward = { add_political_power = 80 }
 
 
 		ai_will_do = { factor = 800 }
@@ -39,52 +39,57 @@ focus_tree = {
 	}
 
 	focus = {
-		id = GER_ww1_militarism
-		prerequisite = { focus=GER_ww1_support_kaiser }
-		icon = GFX_goal_generic_political_pressure
-		completion_reward = { add_ideas=militarism_focus army_experience=20 set_rule={ can_send_volunteers=yes } }
-		ai_will_do = { factor = 20 }
+		id = GER_ww1_imperial_research_department
+		icon = GFX_goal_tfv_generic_tech_sharing
 		cost = 10
-		x = 2
+		prerequisite = {
+			focus = GER_ww1_support_kaiser
+		}
+		x = 0
 		y = 2
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		available = {
+		}
+		bypass = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = GER_albert_einstein
+			add_tech_bonus = {
+				name = GER_imperial_research_department
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
+			add_tech_bonus = {
+				name = GER_imperial_research_department
+				bonus = 1.0
+				uses = 1
+				category = electronics
+			}
+			add_tech_bonus = {
+				name = GER_imperial_research_department
+				bonus = 1.0
+				uses = 1
+				category = support_tech
+				category = infantry_weapons
+			}
+		}	
+		ai_will_do = {
+			factor = 1
+		}
 	}
 
 	focus = {
-		id = GER_ww1_annex_BAV
-		prerequisite = { focus = GER_ww1_support_kaiser }
-		icon = GFX_hoi4tgw_ironcross
-
-		available = {
-
-			country_exists=BAV
-
-			BAV = {
-				has_government=neutrality
-				is_puppet = yes
-			}
-		}
-
-		completion_reward = {
-
-			add_national_unity = -0.05
-
-			annex_country = {
-				target = BAV
-				transfer_troops = yes
-			}
-
-		}
-
-		ai_will_do = {
-			factor = 800
-			modifier = {
-				factor = 0
-				BAV = {	is_ai = no	}
-			}
-		}
-
-		cost = 3
-		x = 0
+		id = GER_ww1_militarism
+		prerequisite = { focus=GER_ww1_support_kaiser }
+		icon = GFX_hoi4tgw_ger_militarism
+		completion_reward = { add_ideas = militarism_focus army_experience=20 set_rule={ can_send_volunteers=yes } }
+		ai_will_do = { factor = 20 }
+		cost = 10
+		x = 2
 		y = 2
 	}
 
@@ -142,11 +147,11 @@ focus_tree = {
 
 	focus = {
 		id = GER_ww1_unitedpeople
-		prerequisite = { focus=GER_ww1_reorganization_act }
+		prerequisite = { focus = GER_ww1_reorganization_act }
 		icon = GFX_goal_generic_demand_territory
 
 		completion_reward = {
-			add_political_power=50
+			add_political_power = 50
 			add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=land_doctrine }
 			add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=naval_doctrine }
 			add_tech_bonus={ name=unitedpeople_a_bonus bonus=0.15 uses=1 category=air_doctrine }
@@ -158,12 +163,35 @@ focus_tree = {
 		y = 6
 	}
 
+	# Open Beta 0.7.7b
+	focus = {
+		id = GER_ww1_imperialismus
+		prerequisite = { focus=GER_ww1_unitedpeople }
+		icon = GFX_focus_ger_revive_kaiserreich
+
+		available = {
+			date > 1919.1.1
+			is_puppet = no
+			has_government = neutrality
+		}
+
+		completion_reward = { army_experience=40 }
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 3
+		y = 7
+	}
+
+
+
+
 	#---------- Fascist
 	focus = {
 		id = GER_ww1_military_youth
-		prerequisite = { focus=GER_ww1_militarism }
+		prerequisite = { focus = GER_ww1_militarism }
 		icon = GFX_goal_generic_more_territorial_claims
-		completion_reward = { add_ideas=military_youth_focus if={ limit={ has_government=fascism } add_popularity={ ideology=fascism popularity=0.2 } } if={ limit={ has_government=communism } add_popularity={ ideology=communism popularity=0.2 } } }
+		completion_reward = { add_ideas = military_youth_focus if={ limit={ has_government=fascism } add_popularity={ ideology=fascism popularity=0.2 } } if={ limit={ has_government=communism } add_popularity={ ideology=communism popularity=0.2 } } }
 		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 0
@@ -243,7 +271,7 @@ focus_tree = {
 	focus = {
 		id = GER_ww1_contest_kaiser
 		prerequisite = { focus=GER_ww1_political_effort }
-		icon = GFX_goal_generic_alliance
+		icon = GFX_hoi4tgw_ger_contest_kaiser
 
 		available = {
 			date > 1916.1.1
@@ -277,7 +305,14 @@ focus_tree = {
 		}
 		prerequisite = { focus=GER_ww1_contest_kaiser }
 		icon = GFX_goal_support_communism
-		available = { OR={ has_government=communism has_government=neutrality } }
+
+		available = {
+			OR = {
+				has_government = communism
+				has_government = neutrality
+			}
+		}
+
 		completion_reward = { add_ideas=internationalism }
 
 		ai_will_do = { factor = 0 }
@@ -533,10 +568,17 @@ focus_tree = {
 
 		completion_reward = { 
 			random_owned_state = {
+				limit = {
+					#is_in_home_area = yes
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
 				add_building_construction = {
 					type = coastal_bunker
 					level = 3
-					province = 12299
 					instant_build = yes
 				}
 			}
@@ -563,13 +605,77 @@ focus_tree = {
 		y = 0
 	}
 
+	# HOI4TGW 0.1.9
+
+	focus = {
+		id = GER_ww1_free_BAV
+		prerequisite = { focus = GER_ww1_diplomatic_effort }
+		icon = GFX_goal_generic_propaganda
+
+		available = {
+			NOT = {country_exists=BAV }
+			controls_state = 52
+			controls_state = 53
+			controls_state = 54
+		}
+
+		completion_reward = {
+
+			add_stability = 0.10
+			add_manpower = 15000
+
+			BAV = {
+				transfer_state = 52
+				transfer_state = 53
+				transfer_state = 54
+			}
+
+
+	        # SPECIAL_DLC Together for Victory
+	        if = { limit = { has_dlc = "Together for Victory" }
+
+				puppet = BAV
+
+	            #IF-----------------------------------------
+	            set_autonomy = {
+	                target = BAV
+	                autonomous_state = autonomy_integrated_puppet
+	            }
+	            #-------------------------------------------
+
+	            #ELSE---------------------------------------
+	            else = {
+	                # WORK IN PROGRESS # Temporary Solution for Open Beta 0.1.9
+	            }
+	            #-------------------------------------------
+	        }
+	        else = {
+				puppet = BAV
+	        }
+
+	        hidden_effect = {
+	        	BAV = { load_oob = "BAV_1910" }
+	        }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		cost = 9
+		x = 7
+		y = 1
+	}
+
+
 	#----------------------------------------------------------------------- 
 	# Bloc 1
 	#-----------------------------------------------------------------------
+
 	focus = {
 		id = GER_ww1_triple_alliance
 		prerequisite = { focus=GER_ww1_diplomatic_effort }
-		icon = GFX_goal_generic_demand_territory
+		icon = GFX_hoi4tgw_triple_alliance
 		completion_reward = { AUH={ add_opinion_modifier={ target=GER modifier=triple_alliance_opinion } } ITA={ add_opinion_modifier={ target=GER modifier=triple_alliance_opinion } } }
 		
 		available = {
@@ -706,8 +812,8 @@ focus_tree = {
 		}
 		available = { 
 			SWE = {
+				is_in_faction = no
 				NOT = {
-					is_in_faction = no
 					has_war_with = GER
 				}
 			}
@@ -734,12 +840,18 @@ focus_tree = {
 		icon = GFX_goal_generic_improve_relations
 
 		available = {
-		NOT = { has_global_flag = kis_treaty_of_versailles }
-		is_puppet=no NOT={ has_war_with=TUR } TUR={ exists=yes is_puppet=no } TUR={ custom_trigger_tooltip={ tooltip=GER_alone_or_peace_faction_tt is_alone_or_in_faction_at_peace_with_GER=yes } }
+			NOT = { 
+				has_global_flag = kis_treaty_of_versailles 
+			}
+			is_puppet = no 
+			NOT = { 
+				has_war_with = TUR 
+			} 
+			TUR = { 
+				exists=yes 
+				is_puppet=no 
+			} 
 		}
-
-
-
 
 		completion_reward = {
 			TUR = {
@@ -747,16 +859,11 @@ focus_tree = {
 			}
 		}
 
-
 		ai_will_do = {
 			factor = 800
-			modifier = {
-				factor = 0
-				date < 1914.5.5
-			}
 		}
 
-		cost = 10
+		cost = 2
 		x = 10
 		y = 4
 	}
@@ -801,6 +908,52 @@ focus_tree = {
 		y = 6
 	}
 
+	# Finnish Civil War # Open Beta 0.5
+	focus = {
+		id = GER_ww1_finnish_civil_war
+
+		available = {
+
+			SOV = {exists = yes}
+
+			date > 1917.1.1
+			not = {has_global_flag = kis_treaty_of_versailles }
+
+			FIN = {
+				exists = yes
+				is_puppet=no
+			}
+		}
+		prerequisite = { focus=GER_ww1_send_advisor }
+
+		icon = GFX_goal_anti_comintern_pact
+
+		completion_reward = {
+			FIN = {
+				start_civil_war = {
+					ruling_party = democratic
+					ideology = communism
+					size = 0.1
+					capital = 150
+					states = { 150 }
+				}
+			}
+
+			hidden_effect = {
+				news_event = { id = ww1_finland.1 days = 3 } # Finnish Civil War
+			}
+		}
+
+		ai_will_do = { factor = 10 }
+		cost = 10
+		x = 9
+		y = 7
+	}
+
+
+
+
+
 	#----------------------------------------------------------------------- 
 	# Bloc 2
 	#-----------------------------------------------------------------------
@@ -830,7 +983,9 @@ focus_tree = {
 		id = GER_ww1_anti_uk
 		prerequisite = { focus = GER_ww1_anti_fr }
 		icon = GFX_goal_generic_political_pressure
-		completion_reward = { GER={ add_opinion_modifier={ target=ENG modifier=HOI4TGW_Opinion_anti_uk_policy_malus } } }
+		completion_reward = {
+			GER={ add_opinion_modifier={ target=ENG modifier=HOI4TGW_Opinion_anti_uk_policy_malus } }
+		}
 		ai_will_do = { factor = 30 }
 		cost = 10
 		x = 13
@@ -962,6 +1117,43 @@ focus_tree = {
 		x = 15
 		y = 2
 	}
+
+	focus = {
+		id = GER_ww1_claim_mittleafrika
+		icon = GFX_goal_mittelafrika
+		cost = 10
+		prerequisite = {
+			focus = GER_ww1_train_ostafrika
+		}
+		x = 15
+		y = 3
+		available = {
+			is_puppet = no
+			NOT = { has_global_flag = kis_treaty_of_versailles }
+		}
+		completion_reward = {
+			add_named_threat = {
+				threat = 2
+				name = GER_ww1_claim_mittleafrika
+			}
+			add_state_claim = 752
+			add_state_claim = 772
+			add_state_claim = 295
+			add_state_claim = 538
+			add_state_claim = 718
+			add_state_claim = 771
+			add_state_claim = 770
+			add_state_claim = 789
+			add_state_claim = 548
+			add_state_claim = 558
+			add_state_claim = 776
+			add_state_claim = 274
+			add_state_claim = 297
+		}	
+		ai_will_do = {
+			factor = 0
+		}
+	}
 	#-----------------------------------------------------------------------	
 
 	#-----------------------------------------------------------------------
@@ -1006,11 +1198,24 @@ focus_tree = {
 		icon = GFX_goal_generic_military_deal
 		available = {
 
-		NOT = { has_global_flag = kis_treaty_of_versailles }
+			NOT = { 
+				has_global_flag = kis_treaty_of_versailles 
+			}
 
-		date > 1915.6.1 is_puppet=no NOT={ has_war_with=BUL } BUL={ exists=yes is_puppet=no } BUL={ custom_trigger_tooltip={ tooltip=GER_alone_or_peace_faction_tt is_alone_or_in_faction_at_peace_with_GER=yes } } }
+			date > 1915.6.1 
+			is_puppet = no 
+			NOT= {  
+				has_war_with = BUL 
+			} 
+			BUL = { 
+				exists = yes 
+				is_puppet = no
+			}
+		}
 		completion_reward = { 
-			BUL = { country_event = ww1_bulgaria.1 }
+			BUL = { 
+				country_event = ww1_bulgaria.1 
+			}
 		}
 		ai_will_do = { factor = 800 }
 		cost = 10
@@ -1079,7 +1284,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			add_named_threat = { threat = 5 name = "Schlieffen Plan" }
+			add_named_threat = { threat = 15 name = "Schlieffen Plan" }
 
 			GER = {
 				set_country_flag=GER_ww1_schlieffen_plan
@@ -1113,6 +1318,22 @@ focus_tree = {
 		ai_will_do = { factor = 2000 }
 		cost = 10
 		x = 15
+		y = 7
+	}
+
+	focus = {
+		id = GER_ww1_den_militaryaccess
+		prerequisite = { focus = GER_ww1_war_with_france }
+		icon = GFX_goal_generic_axis_build_infantry
+		available = {  has_war_with = ENG  NOT = { has_war_with = DEN } }
+		completion_reward = { 
+			DEN = {
+				country_event = { days = 1 id = ww1_germany.24 }
+			}
+		}
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 17
 		y = 7
 	}
 
@@ -1385,13 +1606,28 @@ focus_tree = {
 
 	focus = {
 		id = GER_ww1_aviation_effort
-		icon = GFX_goal_generic_build_airforce
+		icon = GFX_hoi4tgw_ger_aviation_effort
 		completion_reward = { air_experience=25 if={ limit={ capital_scope={ NOT={ free_building_slots={ building=air_base size > 1 } } } } random_owned_state={ limit={ free_building_slots={ building=air_base size > 1 } } add_building_construction={ type=air_base level=2 instant_build=yes } ROOT={ set_country_flag=aviation_effort_AB } } } if={ limit={ capital_scope={ free_building_slots={ building=air_base size > 1 } } } capital_scope={ add_building_construction={ type=air_base level=2 instant_build=yes } ROOT={ set_country_flag=aviation_effort_AB } } } add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
 		complete_tooltip = { air_experience=25 if={ limit={ has_country_flag=aviation_effort_AB } add_building_construction={ type=air_base level=2 instant_build=yes } }			 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine }			 }
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 26
 		y = 0
+	}
+
+	focus = {
+		id = GER_ww1_fokker_aeroplanbau
+		icon = GFX_focus_hol_fokker
+		cost = 10
+		prerequisite = {
+			focus = GER_ww1_aviation_effort
+		}
+		x = 24
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = available_designer
+			show_ideas_tooltip = fokker
+		}
 	}
 
 
@@ -1434,7 +1670,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_ww1_bomber_focus
-		prerequisite = { focus=GER_ww1_aviation_effort_2 }
+		prerequisite = { focus = GER_ww1_aviation_effort_2 }
 		available = { date > 1911.1.1 }
 		icon = GFX_goal_generic_air_bomber
 		completion_reward = { add_tech_bonus={ name=bomber_bonus bonus=0.15 uses=1 category=tactical_bomber } }
@@ -1442,12 +1678,12 @@ focus_tree = {
 		cost = 10
 		x = 26
 		y = 2
-		mutually_exclusive = { focus=GER_ww1_fighter_focus }
+		mutually_exclusive = { focus = GER_ww1_fighter_focus }
 	}
 
 	focus = {
 		id = GER_ww1_aviation_effort_3
-		prerequisite = { focus=GER_ww1_bomber_focus focus=GER_ww1_fighter_focus focus=GER_ww1_airship_focus }
+		prerequisite = { focus=GER_ww1_bomber_focus focus = GER_ww1_fighter_focus focus=GER_ww1_airship_focus }
 		available = { date > 1912.1.1 }
 		icon = GFX_goal_generic_air_doctrine
 		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
@@ -1459,7 +1695,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_ww1_pilotformation_1
-		prerequisite = { focus=GER_ww1_aviation_effort_3 }
+		prerequisite = { focus = GER_ww1_aviation_effort_3 }
 		available = { date > 1913.1.1 }
 		icon = GFX_goal_generic_CAS
 		completion_reward = { add_tech_bonus={ name=pilotformation1_bonus bonus=0.15 uses=1 technology=dogfighting_experience technology=fighter_ace_initiative technology=dispersed_fighting } }
@@ -1471,7 +1707,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_ww1_aircraftprod_1
-		prerequisite = { focus=GER_ww1_aviation_effort_3 }
+		prerequisite = { focus = GER_ww1_aviation_effort_3 }
 		available = { date > 1913.1.1 }
 		icon = GFX_goal_generic_air_production
 		completion_reward = { add_tech_bonus={ name=aircraftprod_1_bonus bonus=0.15 uses=1 category=air_equipment } }
@@ -1483,7 +1719,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_ww1_airbomb_1
-		prerequisite = { focus=GER_ww1_aviation_effort_3 }
+		prerequisite = { focus = GER_ww1_aviation_effort_3 }
 		available = { date > 1913.1.1 }
 		icon = GFX_goal_poland_goal
 		completion_reward = { add_tech_bonus={ name=pilotformation2_bonus bonus=0.15 uses=1 technology=infrastructure_destruction technology=dive_bombing technology=operational_destruction } }
@@ -1496,7 +1732,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_ww1_aviation_effort_4
-		prerequisite = { focus=GER_ww1_pilotformation_1 focus=GER_ww1_aircraftprod_1 focus=GER_ww1_airbomb_1 }
+		prerequisite = { focus = GER_ww1_pilotformation_1 focus = GER_ww1_aircraftprod_1 focus = GER_ww1_airbomb_1 }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_air_doctrine
 		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
@@ -1508,7 +1744,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_ww1_pilotformation_2
-		prerequisite = { focus=GER_ww1_aviation_effort_4 }
+		prerequisite = { focus = GER_ww1_aviation_effort_4 }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_CAS
 		completion_reward = { add_tech_bonus={ name=pilotformation2_bonus bonus=0.15 uses=1 technology=multialtitude_flying technology=hunt_and_destroy technology=fighter_veteran_initiative } }
@@ -1547,20 +1783,19 @@ focus_tree = {
 		prerequisite = { focus=GER_ww1_pilotformation_2 focus=GER_ww1_aircraftprod_2  focus=GER_ww1_airbomb_2 }
 		available = { date > 1916.1.1 }
 		icon = GFX_goal_generic_air_doctrine
-		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
+		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.10 uses=1 category=air_doctrine } }
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 26
 		y = 7
 	}
 
-
 	focus = {
 		id = GER_ww1_air_innovation
 		prerequisite = { focus=GER_ww1_aviation_effort_5 }
 		available = { date > 1917.1.1 }
 		icon = GFX_goal_generic_air_fighter2
-		completion_reward = { air_experience=20 add_tech_bonus={ name=ww1_air_innovation_bonus bonus=0.2 uses=1 technology=ww1_fighter3 technology=ww1_fighter4 technology=early_fighter } }
+		completion_reward = { air_experience=20 add_tech_bonus={ name=ww1_air_innovation_bonus bonus=0.2 uses=1 technology=ww1_fighter3 technology=ww1_fighter4 technology=ww1_fighter5 } }
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 25
@@ -1577,6 +1812,42 @@ focus_tree = {
 		cost = 10
 		x = 27
 		y = 8
+	}
+
+	focus = {
+		id = GER_ww1_aviation_effort_6
+		prerequisite = { focus=GER_ww1_navalair focus=GER_ww1_air_innovation }
+		available = { date > 1918.1.1 }
+		icon = GFX_goal_generic_air_doctrine
+		completion_reward = { air_experience=8 add_tech_bonus={ name=air_doc_bonus bonus=0.08 uses=1 category=air_doctrine } }
+		ai_will_do = { factor = 10 }
+		cost = 10
+		x = 26
+		y = 9
+	}
+
+	focus = {
+		id = GER_interwar_fighter
+		prerequisite = { focus=GER_ww1_aviation_effort_6 }
+		available = { date > 1919.1.1 }
+		icon = GFX_hoi4tgw_ww2_air_fighter
+		completion_reward = { air_experience=12 add_tech_bonus={ name=interwar_air_fighter_bonus bonus=0.2 uses=1 technology=ww1_fighter6 technology=early_fighter } }
+		ai_will_do = { factor = 10 }
+		cost = 10
+		x = 25
+		y = 10
+	}
+
+	focus = {
+		id = GER_interwar_bomber
+		prerequisite = { focus=GER_ww1_aviation_effort_6 }
+		available = { date > 1919.1.1 }
+		icon = GFX_hoi4tgw_ww2_air_bomber
+		completion_reward = { air_experience=12 add_tech_bonus={ name=interwar_air_bomber_bonus bonus=0.3 uses=1 technology=ww1_bomber3 technology=ww1_bomber4 } }
+		ai_will_do = { factor = 10 }
+		cost = 10
+		x = 27
+		y = 10
 	}
 
 	###########################################################################################################################
@@ -2231,7 +2502,20 @@ focus_tree = {
 		prerequisite = { focus=GER_ww1_flexible_navy focus=GER_ww1_large_navy }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_navy_submarine
-		completion_reward = { add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1 technology=ww1_submarine2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1_mtg technology=ww1_submarine2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=ss_bonus bonus=0.2 uses=1 technology=ww1_submarine1 technology=ww1_submarine2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 38
@@ -2243,7 +2527,20 @@ focus_tree = {
 		prerequisite = { focus=GER_ww1_flexible_navy focus=GER_ww1_large_navy }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_navy_cruiser
-		completion_reward = { add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0 technology=ww1_light_cruiser1 technology=ww1_light_cruiser2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0_mtg technology=ww1_light_cruiser1_mtg technology=ww1_light_cruiser2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=cr_bonus bonus=0.2 uses=1 technology=ww1_light_cruiser0 technology=ww1_light_cruiser1 technology=ww1_light_cruiser2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 40
@@ -2255,7 +2552,20 @@ focus_tree = {
 		prerequisite = { focus=GER_ww1_submarine_effort }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_wolf_pack
-		completion_reward = { add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0 technology=ww1_destroyer1 technology=ww1_destroyer2 } }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0_mtg technology=ww1_destroyer1_mtg technology=ww1_destroyer2_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				add_tech_bonus={ name=dd_bonus bonus=0.2 uses=1 technology=ww1_destroyer0 technology=ww1_destroyer1 technology=ww1_destroyer2 }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 38
@@ -2267,7 +2577,20 @@ focus_tree = {
 		prerequisite = { focus=GER_ww1_cruiser_effort }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_navy_battleship
-		completion_reward = { navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0 technology=ww1_battlecruiser1 technology=ww1_battlecruiser2 technology=early_battleship technology=seaplane_carrier }  }
+		completion_reward = {
+			if = { 
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				 navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0_mtg technology=ww1_battlecruiser1_mtg technology=ww1_battlecruiser2_mtg technology=early_battleship_mtg technology=seaplane_carrier_mtg }
+			}
+			if = { 
+				limit = { 
+					not = { has_dlc = "Man the Guns" }
+				}
+				 navy_experience=25 add_tech_bonus={ name=capital_ships_bonus bonus=0.2 uses=1 technology=ww1_battlecruiser0 technology=ww1_battlecruiser1 technology=ww1_battlecruiser2 technology=early_battleship technology=seaplane_carrier }
+			}
+		}
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 40
@@ -2326,14 +2649,469 @@ focus_tree = {
 
 
 
+	################ INTERWAR START (Treaty of Frankfurt)
+
+	# Open Beta 0.7.7b
+	focus = {
+		id = GER_ww1_claimholyromanempire
+		prerequisite = { focus=GER_ww1_imperialismus }
+		icon = GFX_goal_generic_territory_or_war
+
+		available = {
+			date > 1915.1.1
+		}
+		completion_reward = {
+			add_political_power = -150
+			set_global_flag = kis_holy_roman_empire_for_the_kaiser
+			custom_effect_tooltip = kis_holy_roman_empire_for_the_kaiser_effect
+		}
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 4
+		y = 8
+	}
+
+	focus = {
+		id = GER_ww1_formholyromanempire #Heiliges Römisches Reich / Form Holy Roman Empire, disband faction, form Holy Roman Empire Faction, change Flag & Name of German Empire
+		icon = GFX_focus_ger_return_of_the_kaiser
+
+		available = {
+			has_global_flag = kis_holy_roman_empire_for_the_kaiser
+			date > 1919.1.1
+
+			OR = {
+				date > 1922.1.1
+				has_global_flag = kis_second_treaty_frankfort
+			}
+		}
+
+		completion_reward = {
+			create_faction = "Holy Roman Empire"
+			set_cosmetic_tag = GER_HRE
+
+			# New Portrait for the Kaiser
+			hidden_effect = {
+				GER = {
+					kill_country_leader = yes
+					create_country_leader = { 
+						name = "Kaiser Wilhelm II" 
+						desc = GER_wilhelm_ii_DESC 
+						picture = "gfx/hoi4tgw_portraits/GER/country_leaders/GER_kaiser_wilhelm_ii.dds" 
+						expire = "1935.1.1" 
+						ideology = autocracy 
+						traits = {  } 
+					}
+					set_politics = {
+					    ruling_party = neutrality
+					    last_election = "1910.1.1"
+					    election_frequency = 60
+					    elections_allowed = no
+					}
+					set_popularities = {
+					    democratic = 0
+					    fascism = 0
+					    communism = 0
+					    neutrality = 100
+					}				
+				}
+			}
+		}
+
+		ai_will_do = {	factor = 0	}
+		cost = 15
+		x = 7
+		y = 7
+	}
+
+	focus = {
+		id = GER_ww1_claimBurgundy # Gives claims on Eastern Switzerland / Switzerland / Piedmont
+		icon = GFX_focus_attack_switzerland
+		prerequisite = { focus=GER_ww1_formholyromanempire }
+
+		completion_reward = {
+            add_state_claim = 3
+            add_state_claim = 151
+            add_state_claim = 158
+        }
+
+		ai_will_do = {	factor = 0	}
+		cost = 12
+		x = 6
+		y = 8
+	}
+
+	focus = {
+		id = GER_ww1_claimAustriaAndBohemia # Gives claims on Tyrol / South Tyrol / Upper Austria / Lower Austria / Sudetenland / Bohemia
+		icon = GFX_focus_renounce_the_treaty_of_trianon
+		prerequisite = { focus=GER_ww1_formholyromanempire }
+
+		completion_reward = {
+            add_state_claim = 39
+            add_state_claim = 153
+            add_state_claim = 152
+            add_state_claim = 4
+            add_state_claim = 69
+            add_state_claim = 9
+        }
+
+		ai_will_do = {	factor = 0	}
+		cost = 12
+		x = 8
+		y = 8
+	}
+
+	focus = {
+		id = GER_ww1_claimNetherlands # Gives claims on Holland / Friesland / Brabant
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		prerequisite = { focus=GER_ww1_formholyromanempire }
+
+		completion_reward = {
+            add_state_claim = 36
+            add_state_claim = 7
+            add_state_claim = 35
+        }
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 10
+		y = 8
+	}
+
+	focus = {
+		id = GER_ww1_DerKirchenstaat
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+		prerequisite = { focus=GER_ww1_claimAustriaAndBohemia }
+		prerequisite = { focus=GER_ww1_claimBurgundy }
+
+		completion_reward = {
+            add_state_claim = 159
+            add_state_claim = 160
+            add_state_claim = 161
+            add_state_claim = 162
+            add_state_claim = 157
+            add_state_claim = 2
+        }
+
+		ai_will_do = {	factor = 0	}
+		cost = 12
+		x = 7
+		y = 9
+	}
+
+	focus = {
+		id = GER_ww1_BalticStates # Old Prussia is Prussia
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		prerequisite = { focus=GER_ww1_formholyromanempire }
+
+		completion_reward = {
+            add_state_claim = 189
+            add_state_claim = 190
+            add_state_claim = 12
+            add_state_claim = 13
+            add_state_claim = 11
+            add_state_claim = 191
+        }
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 9
+		y = 9
+	}	
+
+	focus = {
+		id = GER_ww1_CrownedByThePope
+		icon = GFX_focus_generic_concessions
+		prerequisite = { focus=GER_ww1_DerKirchenstaat }
+
+		available = { 
+			GER = { 
+				controls_state = 2
+			}
+		}
+
+		completion_reward = {
+			set_global_flag = kis_kaiser_crowned_by_pope
+			custom_effect_tooltip = kis_kaiser_crowned_by_pope_effect
+		}
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 6
+		y = 10
+	}
 
 
-	# 0.1.5
+	focus = {
+		id = GER_ww1_RestoreTeutonicOrder
+		icon = GFX_focus_generic_air_defense
+		prerequisite = { focus = GER_ww1_DerKirchenstaat }
+		prerequisite = { focus = GER_ww1_BalticStates }
 
-	################ INTERWAR START
+		available = { 
+
+			has_global_flag = kis_kaiser_crowned_by_pope
+
+			GER = { 
+				controls_state = 189
+				controls_state = 190
+				controls_state = 12
+				controls_state = 13
+				controls_state = 11
+				controls_state = 191
+			}
+		}
+
+		completion_reward = {
+			army_experience=20
+			set_global_flag = kis_teutonic_order_has_been_restored
+			custom_effect_tooltip = kis_teutonic_order_has_been_restored_effect
+		}
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 8
+		y = 10
+	}
 
 
-	# Beer Hall Putsch
+	focus = {
+		id = GER_ww1_Constantinopolis #341
+		icon = GFX_focus_hol_war_on_pacifism
+
+		available = { 
+			has_global_flag = kis_teutonic_order_has_been_restored
+		}
+
+		completion_reward = {
+            add_state_claim = 341
+        }
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 1
+		y = 9
+	}
+
+	focus = {
+		id = GER_ww1_Hierusalem
+		icon = GFX_goal_demand_sudetenland
+
+		prerequisite = { focus = GER_ww1_imperialismus }
+
+		available = { 
+			has_global_flag = kis_teutonic_order_has_been_restored
+		}
+
+		completion_reward = {
+            add_state_claim = 454
+        }
+
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 3
+		y = 9
+	}
+
+	focus = {
+		id = GER_ww1_CrusaderKing
+		icon = GFX_focus_generic_strike_at_democracy1
+
+		prerequisite = { focus = GER_ww1_Constantinopolis }
+		prerequisite = { focus = GER_ww1_Hierusalem }
+
+		available = { 
+			GER = { 
+				controls_state = 454
+				controls_state = 341
+				controls_state = 2
+			}
+		}
+
+		completion_reward = { set_capital = { state = 2 } }
+
+		ai_will_do = {	factor = 0	}
+		cost = 10
+		x = 2
+		y = 10
+	}
+
+
+
+
+	################ INTERWAR START (Treaty of Versailles)
+	
+	# The Locarno Treaties
+	focus = {
+		id = GER_interwar_locarno_treaties
+
+		icon = GFX_goal_generic_national_unity
+
+		available = {
+			date > 1922.1.1
+			has_global_flag = kis_treaty_of_versailles
+			has_war = no
+			is_puppet = no		
+			NOT = { has_government = fascism }
+			FRA = { has_completed_focus = FRA_interwar_occupation_ruhr }
+		}
+
+		x = 11
+		y = 7
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 10	
+		}
+		completion_reward = {
+			add_political_power = -5
+			add_named_threat = {
+				threat = -10
+				name = "The Locarno Treaties"
+			}
+
+			hidden_effect = {
+				news_event = { id = interwar_news.13 days = 1 } # News The Locarno Treaties
+			}
+
+		}
+	}
+
+
+
+
+
+	# Communist Germany
+	focus = {
+		id = GER_interwar_beer_ProSpartacists # Liebknecht and Luxemburg are German Martyrs
+
+		icon = GFX_focus_YUG_pan_slavic_congress
+		mutually_exclusive = { focus = GER_interwar_beer_AntiSpartacists }
+
+		available = {
+			has_war = no
+			is_puppet = no
+			NOT = { has_government = communism }
+			has_global_flag = kis_treaty_of_versailles
+		}
+
+		x = 15
+		y = 8
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+		completion_reward = {
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+			}
+
+			start_civil_war = {
+				ideology = democratic
+			}
+		}
+	}
+
+	focus = {
+		id = GER_interwar_beer_ContactTrotsky
+
+		icon = GFX_focus_fra_loyalty_trotzky
+		prerequisite = { focus = GER_interwar_beer_ProSpartacists }
+
+		available = {
+			country_exists = SOV
+			has_government = communism
+		}
+
+		x = 15
+		y = 9
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+
+		completion_reward = {
+			add_political_power = 80
+		}
+	}
+
+	focus = {
+		id = GER_interwar_beer_HelpSovietAgainstPoland
+
+		icon = GFX_focus_generic_join_comintern
+		prerequisite = { focus = GER_interwar_beer_ContactTrotsky }
+
+		available = {
+			has_government = communism
+			country_exists = SOV
+			country_exists = POL
+
+			SOV = {
+				has_war_with = POL
+			}
+		}
+
+		x = 15
+		y = 10
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+
+		completion_reward = {
+			add_to_war = { targeted_alliance = SOV enemy = POL hostility_reason = asked_to_join }
+		}
+	}
+
+	focus = {
+		id = GER_interwar_beer_AntiSpartacists # Crush the Spartacists
+
+		icon = GFX_goal_generic_secret_weapon
+		mutually_exclusive = { focus = GER_interwar_beer_ProSpartacists }
+
+		available = {
+			has_war = no
+			is_puppet = no		
+			NOT = { has_government = fascism }
+			NOT = { has_government = communism }
+			has_global_flag = kis_treaty_of_versailles
+		}
+
+		x = 17
+		y = 8
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0	
+		}
+
+		completion_reward = {
+			add_popularity = { ideology = communism popularity = -0.15 }
+			add_political_power = -30
+			add_stability = -0.15
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+	# Beer Hall Putsch - IRL: 8-9 November 1923
 	focus = {
 		id = GER_interwar_beer_hall_putsch
 
@@ -2344,10 +3122,14 @@ focus_tree = {
 			has_war = no
 			is_puppet = no		
 			NOT = { has_government = fascism }
-			# Emplacement pour Treaty of Versailles
+			has_global_flag = kis_treaty_of_versailles
+
+			ITA = {
+				has_completed_focus = ITA_interwar_march_on_rome
+			}
 		}
 
-		x = 12
+		x = 13
 		y = 7
 
 		cost = 10
@@ -2364,7 +3146,7 @@ focus_tree = {
 	focus = {
 		id = GER_interwar_mein_kampf
 
-		icon = GFX_goal_support_fascism
+		icon = GFX_focus_ger_reichskommisariats
 
 		prerequisite = { focus = GER_interwar_beer_hall_putsch }
 
@@ -2406,7 +3188,7 @@ focus_tree = {
 			is_puppet = no
 		}
 
-		x = 12
+		x = 11
 		y = 9
 
 		cost = 10
@@ -2418,9 +3200,13 @@ focus_tree = {
 
 			drop_cosmetic_tag = yes
 
+			remove_ideas = {
+				GER_interwar_spirit_BannedConscription
+			}
+
 			add_popularity = {
 				ideology = fascism
-				popularity = 0.72
+				popularity = 0.42
 			}
 			set_politics = {
 				ruling_party = fascism
@@ -2442,6 +3228,73 @@ focus_tree = {
 		}
 	}
 
+	# Promote Fedor von Bock
+	focus = {
+		id = GER_interwar_PromoteFedorVonBock
+		icon = GFX_focus_generic_military_mission
+
+		available = { date > 1925.5.1}
+
+		completion_reward = {
+
+	  		GER = {
+				create_corps_commander = {  
+					name = "Fedor von Bock" 
+					id = 98001
+					portrait_path = "gfx/hoi4tgw_portraits/GER/army_generals/GER_Fedor_von_Bock.dds" 
+					traits = { 
+						trickster
+					} 
+					skill = 5
+					attack_skill = 4
+					defense_skill = 2
+					planning_skill = 3
+					logistics_skill = 3
+				}
+	  		}
+		}
+
+		ai_will_do = { factor = 1 }
+		cost = 1
+		x = 13
+		y = 9
+	}
+
+	# Mein Kampf
+	focus = {
+		id = GER_interwar_Reichstag_Fire_Decree # Reichstag Fire Decree
+
+		icon = GFX_focus_ger_reichskommisariats
+
+		prerequisite = { focus = GER_interwar_hitler_chancellor }
+
+		available = {
+			has_government = fascism
+		}
+
+		x = 11
+		y = 10
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1	
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.10
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = -0.20
+			}
+		}
+	}
+
+
+
+
 	# Night of the Long Knives (IRL: June 30 – July 2, 1934)
 	focus = {
 		id = GER_interwar_night_long_knives
@@ -2456,7 +3309,7 @@ focus_tree = {
 			has_government = fascism
 		}
 
-		x = 12
+		x = 13
 		y = 10
 
 		cost = 10
@@ -3052,12 +3905,13 @@ focus_tree = {
 			#show_ideas_tooltip = walther_von_brauchitsch			
 		}
 	}
+
 	
 	focus = {
 		id = GER_soviet_treaty
 		icon = GFX_goal_generic_scientific_exchange
 		prerequisite = { focus = GER_army_innovation }
-		mutually_exclusive = { focus = GER_anti_soviet_pact }
+		# mutually_exclusive = { focus = GER_anti_soviet_pact }
 		#cancel = { 
 		#	OR = {
 		#		has_war_with = SOV
@@ -4573,7 +5427,7 @@ focus_tree = {
 					original_tag = SPR
 					has_government = fascism
 				}
-				remove_ideas = SPA_recovering_from_civil_war
+				# remove_ideas = SPA_recovering_from_civil_war
 				add_opinion_modifier = { target = GER modifier = ger_spa_alliance_focus }
 			}
 		}

@@ -3,35 +3,109 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.90
+set_stability = 0.4 #crisis after Athens coup of 1909
+set_war_support = 0.70
 set_convoys = 10
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Alexandros I" desc=GRE_alexandros_i_DESC picture="gfx/leaders/GRE_alexandros_i.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "George I" desc=GRE_george_i_DESC picture="gfx/leaders/GRE_george_i.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_corps_commander={  name = "Danglis" id=35004 portrait_path="gfx/generals/GRE_danglis.tga" traits={ trait_engineer  } skill=3 }
-create_corps_commander={  name = "Trikoupis" id=35005 portrait_path="gfx/generals/GRE_trikoupis.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Dousmanis" id=35010 portrait_path="gfx/generals/GRE_dousmanis.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Bairas" id=35011 portrait_path="gfx/generals/GRE_bairas.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Zymvrakakis E." id=35014 portrait_path="gfx/generals/GRE_zymvrakakis_e.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Nider" id=35016 portrait_path="gfx/generals/GRE_nider.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Papoulas" id=35019 portrait_path="gfx/generals/GRE_papoulas.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Paraskevopoulos" id=35022 portrait_path="gfx/generals/GRE_paraskevopoulos.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Hatzianestis" id=35023 portrait_path="gfx/generals/GRE_hatzianestis.tga" traits={ old_guard  } skill=1 }
-create_corps_commander={  name = "Vlahopoulos" id=35024 portrait_path="gfx/generals/GRE_vlahopoulos.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Sapountzakis" id=35027 portrait_path="gfx/generals/GRE_sapountzakis.tga" traits={ old_guard  } skill=1 }
-create_corps_commander={  name = "Prince Andreas" id=35028 portrait_path="gfx/generals/GRE_prince_andreas.tga" traits={   } skill=1 }
-create_corps_commander={  name = "Miliotis-Komninos" id=35029 portrait_path="gfx/generals/GRE_miliotis_komninos.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Mazarakis" id=35030 portrait_path="gfx/generals/GRE_mazarakis.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Othonaios" id=35031 portrait_path="gfx/generals/GRE_othonaios.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Kondylis" id=35032 portrait_path="gfx/generals/GRE_kondylis.tga" traits={ trickster  } skill=2 }
-create_corps_commander={  name = "Plastiras" id=35034 portrait_path="gfx/generals/GRE_plastiras.tga" traits={   } skill=2 }
-create_field_marshal={  name = "Constantine" id=35002 portrait_path="gfx/fieldmarshal/GRE_constantine.tga" traits={ offensive_doctrine  } skill=3 }
-create_navy_leader={  name = "Kountouriotis" id=35006 portrait_path="gfx/admiral/GRE_kountouriotis.tga" traits={ superior_tactician spotter } skill=3 }
-create_navy_leader={  name = "Hatzikiriakos" id=35033 portrait_path="gfx/admiral/GRE_hatzikiriakos.tga" traits={   } skill=2 }
+
+# Leaders
+recruit_character = GRE_alexandros_i
+recruit_character = GRE_george_i
+
+### Army Leaders ###
+recruit_character = GRE_panagiotis_danglis
+recruit_character = GRE_nikolaos_trikoupis
+recruit_character = GRE_victor_dousmanis
+
+recruit_character = GRE_emmanouil_zymvrakakis
+recruit_character = GRE_konstantinos_nider
+recruit_character = GRE_anastasios_papoulas
+recruit_character = GRE_paraskevopoulos
+recruit_character = GRE_georgios_hatzianestis
+recruit_character = GRE_konstantinos_sapountzakis
+recruit_character = GRE_prince_andreas
+recruit_character = GRE_theodoros_pangalos
+recruit_character = GRE_konstantinos_mazarakis
+recruit_character = GRE_alexandros_othonaios
+recruit_character = GRE_georgios_kondylis
+recruit_character = GRE_plastiras
+recruit_character = GRE_constantine_of_the_hellenes
+
+### Naval Leaders ###
+recruit_character = GRE_paulos_kountouriotis
+recruit_character = GRE_hatzikiriakos
+
+### Advisors ###
+recruit_character = GRE_dimitrios_rallis
+recruit_character = GRE_alexandros_zaimis
+recruit_character = GRE_dimitrios_gounaris
+recruit_character = GRE_spiridon_lambros
+recruit_character = GRE_nikolaos_stratos
+recruit_character = GRE_petros_protopapadakis
+recruit_character = GRE_emmanouil_repoulis
+recruit_character = GRE_eleftherios_venizelos
+recruit_character = GRE_mark_kerr
+
+set_technology = {
+
+	# Train
+	ww1_train = 1
+
+	# Navy
+	ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+	
+	ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
+
+	ww1_heavy_cruiser0 = 1
+	ww1_heavy_cruiser0_mtg = 1 # heavy_cruiser_1890 (Armored Cruiser I)
+	ww1_heavy_cruiser1 = 1
+	ww1_heavy_cruiser1_mtg = 1 # heavy_cruiser_1900 (Armored Cruiser II)
+
+	ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1 # light_cruiser_1890 (Protected Cruiser I)
+	ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1 # light_cruiser_1900 (Protected Cruiser II)
+	###ww1_light_cruiser2 = 0 # light_cruiser_1906 (Light Cruiser I)
+	###ww1_light_cruiser3 = 0 # light_cruiser_1910 (Light Cruiser II)
+	###ww1_light_cruiser4 = 0 # light_cruiser_1914 (Light Cruiser III)
+
+	ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1 # destroyer_1890 (Torpedo Boat I)
+	ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1 # destroyer_1900 (Destroyer I)
+	ww1_destroyer2 = 1
+	ww1_destroyer2_mtg = 1 # destroyer_1906 (Destroyer II)
+	###ww1_destroyer3 = 0 # destroyer_1910 (Destroyer III)
+	###ww1_destroyer4 = 0 # destroyer_1914 (Destroyer IV)	
+
+	ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
+
+	ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1 # coastal_submarine_1900 (Coastal Submarine 1900, first available Submarine)
+	###ww1_submarine1 = 0 # submarine_1906 (Submarine I)
+	###ww1_submarine2 = 0 # submarine_1910 (Submarine II)
+	###ww1_submarine3 = 0 # submarine_1914 (Submarine III)
+
+	transport = 1
+	transport_mtg = 1 # Naval Transport
+
+		# Naval Modules Techs
+		heavy_navalmodule_1890 = 1
+	heavy_navalmodule_1890_mtg = 1
+		medium_navalmodule_1890 = 1
+	medium_navalmodule_1890_mtg = 1
+		light_navalmodule_1890 = 1
+	light_navalmodule_1890_mtg = 1
+	
+}
 
 1910.1.1 = {
 	oob = "GRE_1910"
@@ -67,17 +141,6 @@ create_navy_leader={  name = "Hatzikiriakos" id=35033 portrait_path="gfx/admiral
 		light_field_gun1 = 1
 		heavy_field_gun1 = 1
 
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
-
 		# Air
 
 		# Engineering
@@ -88,33 +151,54 @@ create_navy_leader={  name = "Hatzikiriakos" id=35033 portrait_path="gfx/admiral
 	}
 
 	set_politics = {
-	    parties = {
-	        democratic = {
-	            popularity = 10
-	        }
-	        fascism = {
-	            popularity = 5
-	        }
-	        communism = {
-	            popularity = 2
-	        }
-	        neutrality = {
-	            popularity = 83
-	        }
-	    }
-	    ruling_party = neutrality last_election = "1906.5.31"
-	    election_frequency = 48 elections_allowed = yes
+	    ruling_party = neutrality
+	    last_election = "1906.5.31"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 10
+	    fascism = 5
+	    communism = 2
+	    neutrality = 83
 	}
 
 	add_ideas = {
 		limited_conscription
-	}	
+	}
+
+	
+	create_equipment_variant = {
+	    name = "Basilissa Olga Class"
+	    type = heavy_cruiser_1890 parent_version = 0 obsolete = yes upgrades = {
+	        ship_gun_upgrade = 0 ship_armor_upgrade = 0 ship_engine_upgrade = 0 ship_reliability_upgrade = 0
+	    }
+	}
+	create_equipment_variant = {
+	    name = "Hydra Class"
+	    type = heavy_cruiser_1890 parent_version = 1 obsolete = yes upgrades = {
+	        ship_gun_upgrade = 0 ship_armor_upgrade = 5 ship_engine_upgrade = 0 ship_reliability_upgrade = 5
+	    }
+	}
+	create_equipment_variant = {
+	    name = "Pisa Class"
+	    type = heavy_cruiser_1890 parent_version = 2 obsolete = no upgrades = {
+	        ship_gun_upgrade = 3 ship_armor_upgrade = 4 ship_engine_upgrade = 5 ship_reliability_upgrade = 5
+	    }
+	}
+	create_equipment_variant = {
+	    name = "Hellas Class"
+	    type = light_cruiser_1890 parent_version = 0 obsolete = no upgrades = {
+	        ship_gun_upgrade = 5 ship_engine_upgrade = 0 ship_reliability_upgrade = 5 ship_anti_air_upgrade = 0
+	    }
+	}
+
 }
 
 1914.1.1 = {
 	oob = "GRE_1914"
 
-	create_country_leader={ name = "Constantine I" desc=GRE_constantine_i_DESC picture="gfx/leaders/GRE_constantine_i.dds" expire="1935.1.1" ideology=despotism traits={  } }
+	create_country_leader={ name = "Constantine I" desc=GRE_constantine_i_DESC picture="gfx/hoi4tgw_portraits/GRE/country_leaders/GRE_constantine_i.dds" expire="1935.1.1" ideology=despotism traits = { } }
 	set_country_flag=george_died
 
 	#-------------------------------------------------------
@@ -177,16 +261,8 @@ create_navy_leader={  name = "Hatzikiriakos" id=35033 portrait_path="gfx/admiral
 		heavy_field_gun1 = 1
 		bonus_bertha1 = 1
 
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
+		ww1_destroyer3 = 1
+	ww1_destroyer3_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -195,6 +271,9 @@ create_navy_leader={  name = "Hatzikiriakos" id=35033 portrait_path="gfx/admiral
 		ww1_navaldoctrine = 1
 		ww1_navaldoctrine_2 = 1
 		ww1_navaldoctrine_3 = 1
+		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
+		ww1_coastal_submarine2 = 1
 
 		# Engineering
 		electronic_mechanical_engineering = 1
@@ -214,25 +293,139 @@ create_navy_leader={  name = "Hatzikiriakos" id=35033 portrait_path="gfx/admiral
 	}
 
 	set_politics = {
-	    parties = {
-	        democratic = {
-	            popularity = 90
-	        }
-	        fascism = {
-	            popularity = 5
-	        }
-	        communism = {
-	            popularity = 5
-	        }
-	        neutrality = {
-	            popularity = 0
-	        }
-	    }
-	    ruling_party = democratic last_election = "1911.5.28"
-	    election_frequency = 48 elections_allowed = yes
+	    ruling_party = democratic
+	    last_election = "1911.5.28"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 89
+	    fascism = 5
+	    communism = 5
+	    neutrality = 1
 	}
 
 	add_ideas = {
 		limited_conscription
 	}
+}
+
+1919.1.1 = {
+	oob = "GRE_1919"
+
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+	unlock_national_focus = ww1_joinfrance
+	#-------------------------------------------------------
+
+
+	set_technology = {
+
+        # Infantry
+        infantry_weapons = 1
+        ww1infantry_weapons1 = 1
+        ww1infantry_weapons2 = 1
+        ww1_infantry_equip1 = 1
+        ww1_infantry2_equip = 1
+        support_weapons = 1
+        support_weapons2 = 1
+        infantry_binoculars = 1
+        infantry_grenade = 1
+        motorised_infantry = 1
+        ww1_ambulance1 = 1
+        tech_mountaineers = 1
+        infantry_gasmask = 1
+        infantry_ww1_machinegun1 = 1
+
+        # Support
+        tech_support = 1
+        tech_engineers = 1
+        tech_recon = 1
+        tech_military_police = 1
+        tech_maintenance_company = 1
+        tech_field_hospital = 1
+        tech_logistics_company = 1
+
+        tech_signal_company = 1
+
+        tech_engineers2 = 1
+        tech_recon2 = 1
+        tech_military_police2 = 1
+        tech_maintenance_company2 = 1
+        tech_field_hospital2 = 1
+        tech_logistics_company2 = 1
+        tech_signal_company2 = 1
+
+        # Armor
+        gwtank=1 # 1910 Armored Car
+        ww1_armored_car_2 = 1
+        ww1_armored_car_3 = 1
+
+        # Artillery
+        light_field_gun1 = 1
+        bonus_artillery1 = 1
+        heavy_field_gun1 = 1
+        bonus_bertha1 = 1
+        light_field_gun2 = 1
+        heavy_field_gun2 = 1
+
+        # Land Doctrine
+        ww1_landdoctrine = 1
+        ww1_directfire = 1
+        ww1_rifle_ammo = 1
+        ww1_long_march = 1
+        ww1_battlefield = 1
+        ww1_target = 1
+
+        # Air
+        ww1_fighter1 = 1
+        ww1_fighter1b = 1
+        ww1_fighter2 = 1
+        ww1_fighter2b = 1
+        ww1_seaplane1 = 1
+        ww1_bomber1 = 1
+        ww1_bomber2 = 1
+        ww1_zeppelin1 = 1
+
+        # Air Doctrine
+        ww1_airdoctrine = 1
+        ww1_airdoctrine_2 = 1
+        ww1_airdoctrine_3 = 1
+
+        # Navy Doctrine
+        ww1_navaldoctrine = 1
+        ww1_navaldoctrine_2 = 1
+        ww1_navaldoctrine_3 = 1
+
+        # Engineering
+        electronic_mechanical_engineering = 1
+        mechanical_computing = 1
+        chemical_research = 1
+        tank_unlocker1 = 1
+        radio = 1
+        supertech1 = 1
+        tankaircraft1 = 1
+        torpedotech1 = 1
+
+        # Industry
+        ww1_tools1 = 1
+        ww1_medicine1 = 1
+        ww1_fortification1 = 1
+        ww1_fortification2 = 1
+        ww1_tools2 = 1
+        ww1_tools3 = 1
+        ww1_camera1 = 1
+        ww1_industry1 = 1
+        ww1_industry2 = 1
+        ww1_medicine2 = 1
+        ww1_construction1 = 1
+        ww1_construction2 = 1
+        ww1_mining1 = 1
+        ww1_oil1 = 1
+        ww1_oil2 = 1
+        ww1_fortification3 = 1
+        ww1_fortification3b = 1
+
+    }
 }

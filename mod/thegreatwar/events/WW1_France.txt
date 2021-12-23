@@ -20,9 +20,9 @@ country_event = {
 		hidden_effect={
 			remove_ideas=FRA_rene_viviani
 		}
-		#KiS#add_ideas=FRA_aristide_briand
+		#add_ideas=FRA_aristide_briand
 		add_ideas=FRA_joseph_gallieni
-		#KiS#add_ideas=FRA_louis_malvy
+		#add_ideas=FRA_louis_malvy
 		add_political_power=25
 		}
 	}
@@ -48,7 +48,7 @@ country_event = {
 		}
 	option={
 		name=ww1_france.3.a
-		add_national_unity=0.10
+		add_stability=0.10
 		}
 	}
 #____________________________________________________________
@@ -57,14 +57,14 @@ country_event = {
 #____________________________________________________________
 country_event = {
 	id = ww1_france.15
-	title = "France sends l'Armée d'Orient"
-	desc = "Mobilize l'Armée d'Orient"
+	title = ww1_france.15.t
+	desc = ww1_france.15.d
 	picture=ww1_france_15
 
 	is_triggered_only=yes
 
 	option = {
-		name = "Send l'Armée d'Orient in Greece!"
+		name = ww1_france.15.a
 
 		FRA = {
 			load_oob="WW1_ArmeeOrient"
@@ -81,8 +81,8 @@ country_event = {
 #____________________________________________________________
 country_event = {
 	id = ww1_france.16
-	title = "Revolution in France"
-	desc = "Revolution in France"
+	title = ww1_france.16.t
+	desc = ww1_france.16.t
 	picture = GFX_report_event_gathering_protest
 	
 	fire_only_once=yes
@@ -134,6 +134,85 @@ news_event = {
 		name = ww1_france.100.a
 		ai_chance = {
 			factor = 100
+		}
+	}
+}
+#____________________________________________________________
+
+# Rename Event for Strasbourg and Mulhouse
+#____________________________________________________________
+country_event = {
+	id = ww1_france.200
+	title = ww1_france.200.t
+	desc = ww1_france.200.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FRA
+		FRA = {
+			has_war_with = GER
+			owns_state = 28 
+		}
+	}
+
+	option = { #a great idea!
+		name = ww1_france.200.a
+		ai_chance = {
+			base = 100
+		}
+		set_province_name = { id = 9503 name = "Strasbourg"}
+		set_province_name = { id = 678 name = "Mulhouse"}
+		add_manpower = 3200
+	}
+
+	option = { #rather not
+		name = ww1_france.200.b
+		ai_chance = {
+			base = 0
+		}
+		#Open Beta 0.3
+		add_stability = -0.05
+	}
+}
+#____________________________________________________________
+
+# Christmas Truce
+#____________________________________________________________
+country_event = {
+	id = ww1_france.210
+	title = ww1_kis_news_christmastruce.210.t
+	desc = ww1_kis_news_christmastruce.210.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FRA
+		FRA = {
+			has_war_with = GER
+		}
+		date > 1914.12.18
+		date < 1915.1.10
+	}
+
+	option = {
+		name = ww1_kis_news_christmastruce.210.a
+		ai_chance = { factor = 90 }
+		FRA = {
+			add_political_power = -80
+			army_experience = 60
+			add_timed_idea = { idea = ww1_Christmas_Truth_Repressed days = 30 }
+		}
+	}
+	option = {
+		name = ww1_kis_news_christmastruce.210.b
+		ai_chance = { factor = 10 }
+		FRA = {
+			add_political_power = 80
+			army_experience = -60
+			add_timed_idea = { idea = ww1_Christmas_Truth_Ignored days = 30 }
 		}
 	}
 }

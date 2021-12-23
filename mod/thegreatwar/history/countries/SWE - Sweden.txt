@@ -3,33 +3,110 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.9
+set_stability = 0.9
 set_convoys = 25
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Oscar II" desc=SWE_oscar_ii_DESC picture="gfx/leaders/SWE_oscar_ii.dds" expire="1935.1.1" ideology=conservatism traits={  } }
-create_country_leader={ name = "Zeth Höglund" desc=SWE_zeth_hoglund_DESC picture="gfx/leaders/SWE_zeth_hoglund.dds" expire="1935.1.1" ideology=stalinism traits={  } }
-create_country_leader={ name = "Gustaf V" desc=SWE_gustaf_v_DESC picture="gfx/leaders/SWE_gustaf_v.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_corps_commander={  name = "von Matern" id=87002 portrait_path="gfx/generals/SWE_von_matern.tga" traits={ winter_specialist  } skill=2 }
-create_corps_commander={  name = "Fallenius" id=87003 portrait_path="gfx/generals/SWE_fallenius.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Mörcke" id=87004 portrait_path="gfx/generals/SWE_morcke.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Nordenskjöld" id=87005 portrait_path="gfx/generals/SWE_nordenskjold.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Uggla" id=87006 portrait_path="gfx/generals/SWE_uggla.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Hasselroth" id=87007 portrait_path="gfx/generals/SWE_hasselroth.tga" traits={   } skill=2 }
-create_corps_commander={  name = "von Platen" id=87009 portrait_path="gfx/generals/SWE_von_platen.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Munck" id=87010 portrait_path="gfx/generals/SWE_munck.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Carleson" id=87011 portrait_path="gfx/generals/SWE_carleson.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Jungstedt" id=87013 portrait_path="gfx/generals/SWE_jungstedt.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Wrangel" id=87014 portrait_path="gfx/generals/SWE_wrangel.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Toll" id=87015 portrait_path="gfx/generals/SWE_toll.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Nyström" id=87016 portrait_path="gfx/generals/SWE_nystrom.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Wikander" id=87017 portrait_path="gfx/generals/SWE_wikander.tga" traits={ winter_specialist  } skill=2 }
-create_corps_commander={  name = "Bergström" id=87018 portrait_path="gfx/generals/SWE_bergstrom.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Hammarskjöld" id=87019 portrait_path="gfx/generals/SWE_hammarskjold.tga" traits={   } skill=2 }
-create_field_marshal={  name = "Schmidt" id=87021 portrait_path="gfx/fieldmarshal/SWE_schmidt.tga" traits={ defensive_doctrine  } skill=2 }
+
+# LEADERS
+recruit_character = SWE_gustaf_v # The King is still the King (unless communism)
+recruit_character = SWE_zeth_hoglund
+
+# GENERALS
+recruit_character = SWE_von_matern
+recruit_character = SWE_fallenius
+recruit_character = SWE_morcke
+recruit_character = SWE_nordenskjold
+recruit_character = SWE_uggla
+recruit_character = SWE_hasselroth
+recruit_character = SWE_von_platen
+recruit_character = SWE_munck
+recruit_character = SWE_carleson
+recruit_character = SWE_jungstedt
+recruit_character = SWE_wrangel
+recruit_character = SWE_toll
+recruit_character = SWE_nystrom
+recruit_character = SWE_wikander
+recruit_character = SWE_bergstrom
+recruit_character = SWE_hammarskjold
+recruit_character = SWE_schmidt
+
+# ADVISORS
+recruit_character = SWE_carl_gustaf_ekman
+recruit_character = SWE_knut_gillis_bildt
+recruit_character = SWE_carl_gustaf_hammarskjold
+recruit_character = SWE_carsten_warberg
+recruit_character = SWE_sten_ankarcrona
+recruit_character = SWE_lars_tingsten
+recruit_character = SWE_henning_von_krusenstjerna
+recruit_character = SWE_alfred_lagerheim
+recruit_character = SWE_ludvig_sidner
+recruit_character = SWE_theodor_carl_adam_sandstrom
+recruit_character = SWE_ernst_meyer
+recruit_character = SWE_otto_grimlund
+recruit_character = SWE_karl_staaff
+recruit_character = SWE_axel_vennersten
+recruit_character = SWE_ludvig_douglas
+recruit_character = SWE_anton_nilsson
+recruit_character = SWE_fredrik_von_otter
+recruit_character = SWE_erik_gustav_bostrom
+recruit_character = SWE_fredrik_wachtmeister
+recruit_character = SWE_christian_lundeberg
+
+
+
+set_technology = {
+
+	# Train
+	ww1_train = 1
+
+	# Navy
+	ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+	
+	ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
+	
+	ww1_heavy_cruiser0 = 1
+	ww1_heavy_cruiser0_mtg = 1 # heavy_cruiser_1890 (Armored Cruiser I)
+	ww1_heavy_cruiser1 = 1
+	ww1_heavy_cruiser1_mtg = 1 # heavy_cruiser_1900 (Armored Cruiser II)
+
+	ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1 # light_cruiser_1890 (Protected Cruiser I)
+	ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1 # light_cruiser_1900 (Protected Cruiser II)
+
+	ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1 # destroyer_1890 (Torpedo Boat I)
+	ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1 # destroyer_1900 (Destroyer I)
+	ww1_destroyer2 = 1
+	ww1_destroyer2_mtg = 1 # destroyer_1906 (Destroyer II)
+
+	ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
+
+	ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1 # coastal_submarine_1900 (Coastal Submarine 1900, first available Submarine)
+	ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1 # submarine_1906 (Submarine I)
+
+	transport = 1
+	transport_mtg = 1 # Naval Transport
+
+	ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
+	ww1_coastal_submarine2 = 1
+	
+	# Industry
+	ww1_tools1 = 1
+	ww1_fortification1 = 1
+}
 
 1910.1.1 = {
 	oob = "SWE_1910"
@@ -39,9 +116,13 @@ create_field_marshal={  name = "Schmidt" id=87021 portrait_path="gfx/fieldmarsha
 	#-------------------------------------------------------
 
 	#-------------------------------------------------------
-
+	
+	#Diplomatic
+	complete_national_focus = SWE_ww1_diplomatic_effort
+	complete_national_focus = SWE_ww1_boden_fortress
+		
 	set_technology = {
-
+	
 		# Infantry
 		infantry_weapons = 1
 		support_weapons = 1
@@ -49,34 +130,14 @@ create_field_marshal={  name = "Schmidt" id=87021 portrait_path="gfx/fieldmarsha
 		motorised_infantry = 1
 		ww1_ambulance1 = 1
 
-
 		# Support
 		tech_support = 1
-		tech_engineers = 1
 		tech_recon = 1
-		#tech_military_police = 1
-		#tech_maintenance_company = 1
-		#tech_field_hospital = 1
-		#tech_logistics_company = 1
-
-		# Armor
+		tech_military_police = 1
 
 		# Artillery
 		light_field_gun1 = 1
 		heavy_field_gun1 = 1
-
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
-
-		# Air
 
 		# Engineering
 		electronic_mechanical_engineering = 1
@@ -84,39 +145,69 @@ create_field_marshal={  name = "Schmidt" id=87021 portrait_path="gfx/fieldmarsha
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=75 }  neutrality={ popularity=14 }  communism={ popularity=8 }  fascism={ popularity=3 }  }  ruling_party=democratic last_election="1908.9.1" election_frequency=36 elections_allowed=yes }
+	set_politics = {
+	    ruling_party = democratic # "democratic" goverment, but "neutrality" got the power in reality
+	    last_election = "1908.9.1"
+	    election_frequency = 36
+	    elections_allowed = yes
+	}
+
+	# https://en.wikipedia.org/wiki/1911_Swedish_general_election
+	set_popularities = {
+	    democratic = 72 # Liberals 44% + Social Democrats 28%
+	    fascism = 0
+	    communism = 0
+	    neutrality = 28 # General Electoral League 28 %
+	}
 
 	add_ideas = {
-		en_svensk_tiger
-	}	
+		neutrality_idea
+		SWE_ww1_idea_russophobia
+	}
+	
+	create_equipment_variant = {
+		name="Oden Class" type=battleship_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=3 ship_reliability_upgrade=3 } }
+	create_equipment_variant = {
+		name="Dristigheten Class" type=battleship_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=3 ship_reliability_upgrade=3 } }
+	create_equipment_variant = {
+		name="Oscar II Class" type=battleship_1900 parent_version = 0 obsolete=no upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0 } }
+	create_equipment_variant = {
+		name="Magne Class" type=destroyer_1900 parent_version = 0 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = {
+		name="Wale Class" type=destroyer_1900 parent_version = 1 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=2 } }
+	create_equipment_variant = {
+		name="Hugin Class" type=destroyer_1906 parent_version = 0 obsolete=no upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=0 } }
+	create_equipment_variant = {
+		name="U2 Class" type=coastal_submarine_1906 parent_version = 0 obsolete=no upgrades={    ship_reliability_upgrade=0       sub_torpedo_upgrade=0 sub_stealth_upgrade=0 sub_engine_upgrade=0  } }
+
 }
 
 1914.1.1 = {
 	oob = "SWE_1914"
-
 
 	#-------------------------------------------------------
 	#							NF
 	#-------------------------------------------------------
 
 	#Army
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = ww1_artillery_effort_1
-	complete_national_focus = doctrine_effort
-	complete_national_focus = ww1_trenchwarfare
+	complete_national_focus = SWE_ww1_army_effort
+	complete_national_focus = SWE_ww1_equipment_effort
+	complete_national_focus = SWE_ww1_artillery_effort_1
+	complete_national_focus = SWE_ww1_doctrine_effort
+	complete_national_focus = SWE_ww1_trenchwarfare
 
 	#Industrial
-	complete_national_focus = industrial_effort
-	complete_national_focus = infrastructure_effort
+	complete_national_focus = SWE_ww1_industrial_effort
+	complete_national_focus = SWE_ww1_infrastructure_effort
 
 	#Political
-	complete_national_focus = political_effort
+	complete_national_focus = SWE_political_effort
 
 	#Diplomatic
-	complete_national_focus = ww1_diplomatic_effort
-	complete_national_focus = neutrality_focus
-	complete_national_focus = ww1_military_reserve
+	complete_national_focus = SWE_ww1_diplomatic_effort
+	complete_national_focus = SWE_ww1_boden_fortress
+	complete_national_focus = SWE_ww1_disarmament
+	complete_national_focus = SWE_ww1_neutrality_focus
 	
 
 	#-------------------------------------------------------
@@ -124,20 +215,13 @@ create_field_marshal={  name = "Schmidt" id=87021 portrait_path="gfx/fieldmarsha
 	set_technology = {
 
 		# Infantry
-		infantry_weapons = 1
 		ww1infantry_weapons1 = 1
-		support_weapons = 1
 		infantry_binoculars = 1
 		infantry_grenade = 1
 		motorised_infantry = 1
 		ww1_ambulance1 = 1
 
-
 		# Support
-		tech_support = 1
-		tech_engineers = 1
-		tech_recon = 1
-		tech_military_police = 1
 		tech_maintenance_company = 1
 		tech_field_hospital = 1
 		tech_logistics_company = 1
@@ -146,21 +230,9 @@ create_field_marshal={  name = "Schmidt" id=87021 portrait_path="gfx/fieldmarsha
 		gwtank = 1 # 1910 Armored Car
 
 		# Artillery
-		light_field_gun1 = 1
 		bonus_artillery1 = 1
 		heavy_field_gun1 = 1
 		bonus_bertha1 = 1
-
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -171,9 +243,22 @@ create_field_marshal={  name = "Schmidt" id=87021 portrait_path="gfx/fieldmarsha
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=75 }  neutrality={ popularity=14 }  communism={ popularity=8 }  fascism={ popularity=3 }  }  ruling_party=democratic last_election="1911.9.1" election_frequency=36 elections_allowed=yes }
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1911.9.1"
+	    election_frequency = 36
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 72
+	    fascism = 0
+	    communism = 0
+	    neutrality = 28
+	}
 
 	add_ideas = {
-		en_svensk_tiger
+		neutrality_idea
+		SWE_ww1_idea_russophobia
 	}
+	create_equipment_variant={ name="Delfinen Class" type=coastal_submarine_1910 parent_version = 0 obsolete=no upgrades={    ship_reliability_upgrade=1       sub_torpedo_upgrade=0 sub_stealth_upgrade=1 sub_engine_upgrade=1  } }
 }

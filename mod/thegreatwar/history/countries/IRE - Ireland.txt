@@ -3,25 +3,49 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.60
+set_stability = 0.60
 set_convoys = 20
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "George V" desc=IRE_george_v_DESC picture="gfx/leaders/IRE_george_v.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Cathal Brugha" desc=IRE_cathal_brugha_DESC picture="gfx/leaders/IRE_cathal_brugha.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_corps_commander={  name = "Aiken" id=44002 portrait_path="gfx/generals/IRE_aiken.tga" traits={   } skill=2 }
+create_country_leader = {
+	name = "Cathal Brugha"
+	desc = IRE_cathal_brugha_DESC
+	picture = "gfx/hoi4tgw_portraits/IRE/country_leaders/IRE_cathal_brugha.dds"
+	expire = "1935.1.1"
+	ideology = liberalism
+	traits = { }
+}
+
+create_country_leader = { 
+	name = "Éamon de Valera" 
+	picture="gfx/hoi4tgw_portraits/IRE/country_leaders/IRE_eamon_de_valera.dds" 
+	expire = "1935.1.1" 
+	ideology = conservatism 
+	traits = { }
+}
+
+create_corps_commander = {
+	name = "Aiken" 
+	id = 44002 
+	portrait_path = "gfx/generals/IRE_aiken.dds" 
+	traits = { } 
+	skill = 2
+}
+
+create_corps_commander = {
+	name = "Michael Collins" 
+	id = 44003 
+	portrait_path = "gfx/hoi4tgw_portraits/IRE/army_generals/IRE_michael_collins.dds" 
+	traits = { } 
+	skill = 2
+}
 
 1910.1.1 = {
 	oob = "IRE_1910"
-
-	#-------------------------------------------------------
-	#							NF
-	#-------------------------------------------------------
-
-	#-------------------------------------------------------
 
 	set_technology = {
 
@@ -31,7 +55,6 @@ create_corps_commander={  name = "Aiken" id=44002 portrait_path="gfx/generals/IR
 		infantry_binoculars = 1
 		motorised_infantry = 1
 		ww1_ambulance1 = 1
-
 
 		# Support
 		tech_support = 1
@@ -50,33 +73,39 @@ create_corps_commander={  name = "Aiken" id=44002 portrait_path="gfx/generals/IR
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
+	ww1_light_cruiser0_mtg = 1
 
-		# Air
+		transport = 1
+	transport_mtg = 1
 
 		# Engineering
 		electronic_mechanical_engineering = 1
-
-		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=98 }  fascism={ popularity=1 }  communism={ popularity=1 } }  ruling_party=democratic last_election="1918.12.14" election_frequency=48 elections_allowed=yes }
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1918.12.14"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
 
-	add_ideas = {
+	set_popularities = {
+	    democratic = 97
+	    fascism = 1
+	    communism = 1
+	    neutrality = 1
+	}
 
-	}	
 }
 
 1914.1.1 = {
 	oob = "IRE_1914"
-
 
 	#-------------------------------------------------------
 	#							NF
@@ -101,7 +130,6 @@ create_corps_commander={  name = "Aiken" id=44002 portrait_path="gfx/generals/IR
 	complete_national_focus = neutrality_focus
 	complete_national_focus = ww1_military_reserve
 	
-
 	#-------------------------------------------------------
 
 	set_technology = {
@@ -114,7 +142,6 @@ create_corps_commander={  name = "Aiken" id=44002 portrait_path="gfx/generals/IR
 		infantry_grenade = 1
 		motorised_infantry = 1
 		ww1_ambulance1 = 1
-
 
 		# Support
 		tech_support = 1
@@ -136,27 +163,41 @@ create_corps_commander={  name = "Aiken" id=44002 portrait_path="gfx/generals/IR
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
 
 		# Engineering
 		electronic_mechanical_engineering = 1
-
-		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=98 }  fascism={ popularity=1 }  communism={ popularity=1 } }  ruling_party=democratic last_election="1918.12.14" election_frequency=48 elections_allowed=yes }
-
-	add_ideas = {
-
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1918.12.14"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 97
+	    fascism = 1
+	    communism = 1
+	    neutrality = 1
 	}
 }

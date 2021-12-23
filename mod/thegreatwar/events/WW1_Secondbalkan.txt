@@ -24,7 +24,7 @@ country_event = {
 				add_to_faction = MTN
 			}
 			BUL = {
-				create_faction = "Greater Bulgaria"
+				create_faction = "greater_builgaria"
 				add_named_threat = {
 					threat = 5
 					name = "Second War in the Balkans"
@@ -135,7 +135,7 @@ country_event = {
 	trigger = {
 		tag = BUL
 		has_war_with = SER
-		surrender_progress > 0.12
+		surrender_progress > 0.20
 		NOT = {
 			has_global_flag = kis_secondbalkanwar_victory
 			is_in_faction_with = GER 
@@ -153,8 +153,8 @@ country_event = {
 				transfer_state = 211
 				transfer_state = 212
 				transfer_state = 756
-				transfer_state = 759
-				transfer_state = 762
+				transfer_state = 757
+				transfer_state = 788
 				remove_opinion_modifier = { 
 					target = TUR 
 					modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
@@ -170,6 +170,7 @@ country_event = {
 				SER = { 
 					white_peace = BUL
 					transfer_state = 759
+					add_state_core = 759
 					diplomatic_relation = {
 						country = BUL
 						relation = non_aggression_pact
@@ -207,6 +208,7 @@ country_event = {
 				GRE = { 
 					white_peace = BUL
 					transfer_state = 184
+					add_state_core = 184
 					diplomatic_relation = {
 						country = BUL
 						relation = non_aggression_pact
@@ -226,6 +228,7 @@ country_event = {
 				ROM = { 
 					white_peace = BUL
 					transfer_state = 77
+					add_state_core = 77
 					diplomatic_relation = {
 						country = BUL
 						relation = non_aggression_pact
@@ -241,6 +244,7 @@ country_event = {
 				TUR = { 
 					white_peace = BUL
 					transfer_state = 756
+					add_state_core = 756
 					diplomatic_relation = {
 						country = BUL
 						relation = non_aggression_pact
@@ -265,15 +269,24 @@ country_event = {
 			}
 
 			SER = {
-				remove_from_faction = MTN
-				remove_from_faction = GRE
-				remove_from_faction = ROM
-				remove_from_faction = TUR
-				remove_from_faction = SER
+				dismantle_faction = yes
+			}
+			MTN = {
+				dismantle_faction = yes
+			}
+			GRE = {
+				dismantle_faction = yes
+			}
+			ROM = {
+				dismantle_faction = yes
+			}
+			TUR = {
+				dismantle_faction = yes
 			}
 			BUL = {
-				remove_from_faction = BUL
+				dismantle_faction = yes
 			}
+
 			news_event = { days = 1 id = ww1_secondbalkan.101 }
 		}
 

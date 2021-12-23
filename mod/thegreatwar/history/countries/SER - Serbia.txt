@@ -3,67 +3,47 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.6
+set_stability = 0.6
+set_war_support = 0.80
 set_convoys = 0
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={
-	name = "Filip Filipovic"
-	desc=SER_filip_filipovic_DESC
-	picture="gfx/hoi4tgw_portraits/SER/country_leaders/SER_filip_filipovic.dds"
-	expire="1935.1.1"
-	ideology=stalinism
-	traits={  }
-}
-create_country_leader={
-	name = "Peter I"
-	desc=SER_peter_i_DESC
-	picture="gfx/hoi4tgw_portraits/SER/country_leaders/SER_peter_i.dds"
-	expire="1935.1.1"
-	ideology=conservatism
-	traits={  }
-}
-create_country_leader={
-	name = "Peter I"
-	desc=SER_peter_i_DESC
-	picture="gfx/hoi4tgw_portraits/SER/country_leaders/SER_peter_i.dds"
-	expire="1935.1.1"
-	ideology=autocracy
-	traits={  }
-}
-create_field_marshal={
-	name = "Radomir Putnik" id=82002
-	portrait_path="gfx/hoi4tgw_portraits/SER/army_generals/SER_radomir_putnik.dds"
-	traits={ defensive_doctrine old_guard }
-	skill=4
-}
-create_corps_commander={
-	name = "Stepa Stepanović" id=82003
-	portrait_path="gfx/hoi4tgw_portraits/SER/army_generals/SER_stepa_stepanovic.dds"
-	traits={ trickster commando }
-	skill=3
-}
-create_corps_commander={
-	name = "Živojin Mišić" id=82004
-	portrait_path="gfx/hoi4tgw_portraits/SER/army_generals/SER_zivojin_misic.dds"
-	traits={ trickster }
-	skill=3
-}
-create_corps_commander={
-	name = "Pavle Jurišić Šturm" id=82005
-	portrait_path="gfx/hoi4tgw_portraits/SER/army_generals/SER_jurisic_sturm.dds"
-	traits={ old_guard }
-	skill=3
-}
-create_corps_commander={
-	name = "Petar Bojović" id=82006
-	portrait_path="gfx/hoi4tgw_portraits/SER/army_generals/SER_petar_bojovic.dds"
-	traits={ fortress_buster }
-	skill=3
-}
+
+# LEADERS
+recruit_character = SER_peter_i
+recruit_character = SER_filip_filipovic
+
+# ARMY
+recruit_character = SER_radomir_putnik
+recruit_character = SER_stepa_stepanovic
+recruit_character = SER_zivojin_misic # Also Advisor
+recruit_character = SER_jurisic_sturm
+recruit_character = SER_petar_bojovic
+
+# ADVISORS
+recruit_character = SER_lazar_pacu
+recruit_character = SER_petar_pesic
+recruit_character = SER_mihailo_rasic
+recruit_character = SER_mihailo_gavrilovic
+recruit_character = SER_stojan_novakovic
+recruit_character = SER_momcilo_nincic
+recruit_character = SER_milos_vasic
+recruit_character = SER_stevan_hadzic
+recruit_character = SER_zivko_pavlovic
+recruit_character = SER_jovan_jovanovic_pizon
+recruit_character = SER_stojan_protic
+recruit_character = SER_milovan_milovanovic
+recruit_character = SER_svetozar_pribicevic
+recruit_character = SER_duro_dakovic
+recruit_character = SER_milenko_vesnic
+recruit_character = SER_kosta_miletic # Air Chief
+
+
+
 
 1910.1.1 = {
 	oob = "SER_1910"
@@ -75,6 +55,9 @@ create_corps_commander={
 	#-------------------------------------------------------
 
 	set_technology = {
+
+		# Train
+		ww1_train = 1
 
 		# Infantry
 		infantry_weapons = 1
@@ -103,17 +86,28 @@ create_corps_commander={
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_battlecruiser0 = 1
-		ww1_battlecruiser0b = 1
+	ww1_battlecruiser0_mtg = 1
+		#ww1_battlecruiser0b = 1
 		ww1_battlecruiser1 = 1
+	ww1_battlecruiser1_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -128,28 +122,26 @@ create_corps_commander={
 	}
 
 	set_politics = {
-	    parties = {
-	        democratic = {
-	            popularity = 78
-	        }
-	        fascism = {
-	            popularity = 2
-	        }
-	        communism = {
-	            popularity = 8
-	        }
-	        neutrality = {
-	            popularity = 12
-	        }
-	    }
-	    ruling_party = democratic last_election = "1908.5.31"
-	    election_frequency = 36 elections_allowed = yes
+	    ruling_party = democratic
+	    last_election = "1908.5.31"
+	    election_frequency = 36
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 78
+	    fascism = 2
+	    communism = 8
+	    neutrality = 12
 	}
 
 	add_ideas = {
+		SER_ww1_zduhac
+		SER_ww1_blackhand
 		limited_conscription
 		partial_economic_mobilisation
 	}
+
+	add_manpower = 25874
 }
 1914.1.1 = {
 	oob = "SER_1914"
@@ -239,18 +231,30 @@ create_corps_commander={
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_destroyer2 = 1
+	ww1_destroyer2_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_battlecruiser0 = 1
-		ww1_battlecruiser0b = 1
+	ww1_battlecruiser0_mtg = 1
+		#ww1_battlecruiser0b = 1
 		ww1_battlecruiser1 = 1
+	ww1_battlecruiser1_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -280,22 +284,16 @@ create_corps_commander={
 	}
 
 	set_politics = {
-	    parties = {
-	        democratic = {
-	            popularity = 78
-	        }
-	        fascism = {
-	            popularity = 2
-	        }
-	        communism = {
-	            popularity = 8
-	        }
-	        neutrality = {
-	            popularity = 12
-	        }
-	    }
-	    ruling_party = democratic last_election = "1911.5.31"
-	    election_frequency = 36 elections_allowed = yes
+	    ruling_party = democratic
+	    last_election = "1911.5.31"
+	    election_frequency = 36
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 78
+	    fascism = 2
+	    communism = 8
+	    neutrality = 12
 	}
 
 	add_ideas = {		

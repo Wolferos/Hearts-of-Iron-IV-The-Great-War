@@ -1,0 +1,90 @@
+﻿add_namespace = ww1_holland
+
+news_event = {
+	id=ww1_holland.1
+	title=ww1_holland.1.t
+
+	desc=ww1_holland.1.d
+
+	picture=EVENT_hoi4tgw_Censuskiesrecht
+  fire_only_once=yes
+	major = no
+
+	trigger = {
+		TAG = HOL
+
+		NOT = { has_global_flag = SUPER_GLOBAL_KIES }
+		has_completed_focus = HOL_End_census_kies
+
+		HOL = {
+			has_civil_war = no
+			has_government = democratic
+		}
+
+		date > 1910.10.12
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+  set_global_flag = SUPER_GLOBAL_KIES
+
+
+		hidden_effect = {
+
+     add_manpower = 1000
+
+			}
+		}
+
+
+	option = {
+		name = ww1_holland.1.a
+	}
+}
+
+############
+news_event = {
+	id=ww1_holland.2
+	title=ww1_holland.2.t
+
+	desc=ww1_holland.2.d
+
+	picture=EVENT_hoi4tgw_PotatoRev
+	fire_only_once=yes
+
+	major = yes
+
+	trigger = {
+		has_global_flag = SUPER_GLOBAL_KIES
+		has_completed_focus = HOL_Let_them_eat_potatoes
+
+
+		HOL = {
+			has_civil_war = no
+		}
+
+		date > 1912.10.12
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+  set_global_flag = SUPER_GLOBAL_POTATO
+
+
+		hidden_effect = {
+    add_stability = 0.05
+
+			}
+		}
+
+
+	option = {
+		name = ww1_holland.2.a
+	}
+}

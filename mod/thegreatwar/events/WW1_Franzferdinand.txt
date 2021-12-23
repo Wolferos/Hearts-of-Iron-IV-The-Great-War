@@ -15,7 +15,7 @@ news_event = {
 		date < 1914.9.1
 		NOT = { has_global_flag = kis_franzferdinand_murdered }
 		NOT = { has_global_flag = kis_fra_war_ger } # Set by France
-		country_exists=SER
+		country_exists = SER
 		SER = {
         	is_puppet = no 
         	has_war = no
@@ -283,7 +283,7 @@ country_event = {
 			target = TUR
 			modifier = medium_increase
 		}
-		add_national_unity = 0.10
+		add_stability = 0.10
 		#ITA = {
 		#	#country_event = { days = id = ww1_franzferdinand.6 }
 		#}
@@ -337,21 +337,67 @@ country_event = {
 	desc = ww1_franzferdinand.8.d
 	picture = ww1_franzferdinand_8
 
-	fire_only_once = yes
+	#fire_only_once = yes
 	is_triggered_only = yes
 	mean_time_to_happen = {
 		days = 1
 	}
 
 	immediate = {
-		# Dirty fix, need to fix it in a future version
+		# Dirty fix
 		hidden_effect = {
 			set_global_flag = hoi4tgw_SchlieffenSecurity
 			SER = {
-				remove_from_faction = BUL
-				remove_from_faction = GRE
-				remove_from_faction = BUL
-				remove_from_faction = MTN
+				dismantle_faction = yes
+			}
+			MTN = {
+				dismantle_faction = yes
+			}
+			GRE = {
+				dismantle_faction = yes
+			}
+			BUL = {
+				dismantle_faction = yes
+			}
+			TUR = {
+				dismantle_faction = yes
+			}
+			if = { 
+				limit = { 
+					country_exists = SER 
+					FRA = {
+						is_faction_leader = yes
+					}
+				} 
+				FRA = { add_to_faction = SER }
+			}
+			if = { 
+				limit = { 
+					country_exists = MTN 
+					FRA = {
+						is_faction_leader = yes
+					}
+				} 
+				FRA = { add_to_faction = MTN }
+			}
+
+			if = { 
+				limit = { 
+					country_exists = SER 
+					ENG = {
+						is_faction_leader = yes
+					}
+				} 
+				ENG = { add_to_faction = SER }
+			}
+			if = { 
+				limit = { 
+					country_exists = MTN 
+					ENG = {
+						is_faction_leader = yes
+					}
+				} 
+				ENG = { add_to_faction = MTN }
 			}
 		}
 	}
@@ -361,13 +407,21 @@ country_event = {
 		name = ww1_franzferdinand.8.a
 		ai_chance =  { factor = 100 }
 
-		hidden_effect = {
-			ENG = {
-				add_to_faction = BEL
+		GER = {
+			declare_war_on = {
+				type = annex_everything
+				target = BEL
 			}
-		
+			add_timed_idea = {
+				idea = schlieffen
+				days = 180
+			}
+		}
+
+
+		hidden_effect = {
 			add_named_threat = {
-				threat = 10
+				threat = 30
 				name = "The Great War"
 			}
 			#GER = {
@@ -383,24 +437,23 @@ country_event = {
 		        }
 		    }
 		}
-
-		GER = {
-
-			LUX = {
-				add_to_war = {
-		            targeted_alliance = BEL enemy = GER
-		        }
-	        }
-
-			declare_war_on = {
-				type = annex_everything
-				target = BEL
-			}
-			add_timed_idea = {
-				idea = schlieffen
-				days = 180
-			}
+		
+		hidden_effect = {
+		    BEL = {
+		        add_timed_idea = { days = 180 idea = superior_enemy }
+		    }
 		}
+		
+		
+
+		LUX = {
+		    hidden_effect = {
+		        add_timed_idea = { days = 180 idea = superior_enemy }
+			}
+			add_to_war = {
+	            targeted_alliance = BEL enemy = GER
+	        }
+        }
 	}
 
 	# New Schlieffen Plan - War with FRA, BEL, HOL and RUS, Invasion of LUX
@@ -408,13 +461,20 @@ country_event = {
 		name = ww1_franzferdinand.8.b
 		ai_chance =  { factor = 0 }
 
-		hidden_effect = {
-			ENG = {
-				add_to_faction = BEL
-				add_to_faction = HOL
+		GER = {
+			declare_war_on = {
+				type = annex_everything
+				target = BEL
 			}
+			add_timed_idea = {
+				idea = schlieffen
+				days = 180
+			}
+		}
+		
+		hidden_effect = {
 			add_named_threat = {
-				threat = 10
+				threat = 30
 				name = "The Great War"
 			}
 			#GER = {
@@ -430,23 +490,25 @@ country_event = {
 		    }
 		
 		}
-
-		GER = {
-			declare_war_on = {
-				type = annex_everything
-				target = BEL
-			}
-			add_timed_idea = {
-				idea = schlieffen
-				days = 180
+		
+		hidden_effect = {
+		    BEL = {
+		        add_timed_idea = { days = 180 idea = superior_enemy }
 			}
 		}
+
 		HOL = {
+		    hidden_effect = {
+		        add_timed_idea = { days = 180 idea = superior_enemy }
+			}
 			add_to_war = {
 	            targeted_alliance = BEL enemy = GER
 	        }
 		}
 		LUX = {
+		    hidden_effect = {
+		        add_timed_idea = { days = 180 idea = superior_enemy }
+			}
 			add_to_war = {
 	            targeted_alliance = BEL enemy = GER
 	        }

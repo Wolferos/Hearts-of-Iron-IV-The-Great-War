@@ -3,28 +3,51 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.75
+set_stability = 0.75
 set_convoys = 5
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Esat Toptani" desc=ALB_esat_toptani_DESC picture="gfx/leaders/ALB_esat_toptani.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "Ahmed Izzet" desc=ALB_ahmed_izzet_DESC picture="gfx/leaders/ALB_ahmed_izzet.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "Nicholas" desc=ALB_nicholas_DESC picture="gfx/leaders/ALB_nicholas.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "Mehmed V" desc=ALB_mehmed_v_DESC picture="gfx/leaders/ALB_mehmed_v.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "Prenk Doda" desc=ALB_prenk_doda_DESC picture="gfx/leaders/ALB_prenk_doda.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_corps_commander={  name = "Rushedi Pashë Dërralla" id=2002 portrait_path="gfx/generals/ALB_rushedi_pashe_derralla.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Prenk Pasha" id=2003 portrait_path="gfx/generals/ALB_prenk_pasha.tga" traits={   } skill=2 }
-create_country_leader={ name = "Vidi I" desc=ALB_vidit_i_DESC picture="gfx/leaders/ALB_vidit_i.dds" expire="1935.1.1" ideology=despotism  traits={  } }
+
+# LEADERS
+recruit_character = ALB_vidi_i
+recruit_character = ALB_esat_toptani
+recruit_character = ALB_ahmed_izzet
+recruit_character = ALB_prenk_bib_doda
+recruit_character = ALB_rushedi_pashe_derralla
+recruit_character = ALB_prenk_pasha
+
+# ADVISORS
+recruit_character = ALB_qamil_musa_haxhi_feza
+recruit_character = ALB_mustafa_ndroqi
+recruit_character = ALB_hasan_prishtina
+recruit_character = ALB_filip_noga
+recruit_character = ALB_idhomene_kosturi
+recruit_character = ALB_iljaz_vrioni
+recruit_character = ALB_ndoc_acoba
+recruit_character = ALB_turhan_permeti
+recruit_character = ALB_xhafer_villa
+
+
+set_politics = {
+    ruling_party = neutrality
+    last_election = "1910.1.1"
+    election_frequency = 48
+    elections_allowed = no
+}
+
+set_popularities = {
+    democratic = 0
+    fascism = 0
+    communism = 0
+    neutrality = 100
+}
 
 1910.1.1 = {
 	oob = "ALB_1910"
-
-	#-------------------------------------------------------
-	#							NF
-	#-------------------------------------------------------
 
 	#-------------------------------------------------------
 
@@ -37,7 +60,6 @@ create_country_leader={ name = "Vidi I" desc=ALB_vidit_i_DESC picture="gfx/leade
 		motorised_infantry = 1
 		ww1_ambulance1 = 1
 
-
 		# Support
 		tech_support = 1
 		tech_engineers = 1
@@ -47,36 +69,35 @@ create_country_leader={ name = "Vidi I" desc=ALB_vidit_i_DESC picture="gfx/leade
 		#tech_field_hospital = 1
 		#tech_logistics_company = 1
 
-		# Armor
-
 		# Artillery
 		light_field_gun1 = 1
 		heavy_field_gun1 = 1
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battlecruiser0 = 1
+	ww1_battlecruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
-
-		# Air
+	transport_mtg = 1
 
 		# Engineering
 		electronic_mechanical_engineering = 1
 
 		# Industry
 	}
-
-	set_politics={  parties={ democratic={ popularity=0 }  fascism={ popularity=0 }  communism={ popularity=0 }  neutrality={ popularity=100 } }  ruling_party=neutrality last_election="1910.1.1" election_frequency=48 elections_allowed=no }
-
-	add_ideas = {
-
-	}	
 }
 
 1914.1.1 = {
@@ -105,7 +126,6 @@ create_country_leader={ name = "Vidi I" desc=ALB_vidit_i_DESC picture="gfx/leade
 	complete_national_focus = ww1_diplomatic_effort
 	complete_national_focus = neutrality_focus
 	complete_national_focus = ww1_military_reserve
-	
 
 	#-------------------------------------------------------
 
@@ -141,14 +161,23 @@ create_country_leader={ name = "Vidi I" desc=ALB_vidit_i_DESC picture="gfx/leade
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -158,8 +187,6 @@ create_country_leader={ name = "Vidi I" desc=ALB_vidit_i_DESC picture="gfx/leade
 
 		# Industry
 	}
-
-	set_politics={  parties={ democratic={ popularity=0 }  fascism={ popularity=0 }  communism={ popularity=0 }  neutrality={ popularity=100 } }  ruling_party=neutrality last_election="1910.1.1" election_frequency=48 elections_allowed=no }
 
 	add_ideas = {
 

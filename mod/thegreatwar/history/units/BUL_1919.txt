@@ -1,0 +1,120 @@
+﻿###################################################################
+
+division_template = {
+	name = "Infantry Division"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Infantry Brigade"
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 0 }
+	}
+	priority = 0
+}
+
+division_template = {
+	name = "Cavalry Division"
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }
+	}
+}
+
+###################################################################
+
+units = {
+
+	fleet = {
+		name = "1st Fleet Fleet"
+		naval_base = 9783
+		task_force = {
+			name = "1st Fleet"
+			location = 9783
+			ship = { name = "Nadezhda" definition = destroyer equipment = { destroyer_1900 = { amount = 1 owner = BUL } } }
+			ship = { name = "1. Torpedo Boat" definition = destroyer equipment = { destroyer_1890 = { amount = 1 owner = BUL } } }
+			ship = { name = "2. Torpedo Boat" definition = destroyer equipment = { destroyer_1890 = { amount = 1 owner = BUL } } }
+			ship = { name = "3. Torpedo Boat" definition = destroyer equipment = { destroyer_1890 = { amount = 1 owner = BUL } } }
+			ship = { name = "4. Torpedo Boat" definition = destroyer equipment = { destroyer_1890 = { amount = 1 owner = BUL } } }
+			ship = { name = "5. Torpedo Boat" definition = destroyer equipment = { destroyer_1890 = { amount = 1 owner = BUL } } }
+			ship = { name = "6. Torpedo Boat" definition = destroyer equipment = { destroyer_1890 = { amount = 1 owner = BUL } } }
+		}
+	}
+
+	
+	
+	division = { 
+		name = "1-ta 'Sofiyska' Pehotna Divizija"
+		location = 949 # Sofiya
+		division_template = "Infantry Brigade"
+		start_experience_factor = 0.1
+		# start_equipment_factor = 0.3 
+		start_manpower_factor = 0.3
+	}
+	
+	division = { 
+		name = "1-ta Konna brigada"
+		location = 949 # Sofiya
+		division_template = "Cavalry Division"
+		start_experience_factor = 0.15
+	}
+	
+	division = { 
+		name = "3-a 'Balkanska' Pehotna Divizija"
+		location=6923 # Plovdiv
+		division_template = "Infantry Brigade"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.77 
+		# start_manpower_factor = 0.3
+	}	
+	
+	division = { 
+		name = "8-ta 'Tundzhavska' Pehotna Divizija"
+		location=6923 # Plovdiv
+		division_template = "Infantry Brigade"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3 
+		start_manpower_factor = 0.69
+	}	
+
+	division = { 
+		name = "9-ta 'Plevenska' Pehotna Divizija"
+		location = 9612 # Ruse
+		division_template = "Infantry Brigade"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3 
+		start_manpower_factor = 0.39
+	}	
+	
+	division = { 
+		name = "3-a Konna brigada"
+		location = 9612 # Ruse
+		division_template = "Cavalry Division"
+		start_experience_factor = 0.1
+		# start_equipment_factor = 0.3 
+		start_manpower_factor = 0.57
+	}
+
+		
+
+}
+
+
+
+instant_effect = {
+	add_equipment_production = { equipment = { type = infantry_equipment_0 creator = "BUL" } requested_factories = 1 progress = 0.1 efficiency = 50}
+}

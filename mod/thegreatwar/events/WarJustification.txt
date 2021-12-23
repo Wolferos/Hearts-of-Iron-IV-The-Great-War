@@ -1,4 +1,4 @@
-﻿###########################
+###########################
 # Wargoal Justification Events
 ###########################
 
@@ -829,13 +829,19 @@ country_event = {
 
 	trigger = {
 		has_war = no
+		NOT = {
+			AND = {
+				original_tag = ENG
+				# has_completed_focus = ENG_enforce_the_naval_treaties
+			}
+		}
 	}
 	
 	option = {
 		name = war_justification.301.a
 		trigger = { has_government = democratic }
 		add_political_power = -30
-		add_national_unity = -0.03
+		add_war_support = -0.05
 		add_popularity = {
 			ideology = democratic
 			popularity = -0.05
@@ -846,7 +852,7 @@ country_event = {
 		name = war_justification.301.b
 		trigger = { has_government = communism }
 		add_political_power = -30
-		add_national_unity = -0.03
+		add_war_support = -0.05
 		add_popularity = {
 			ideology = communism
 			popularity = -0.05
@@ -862,7 +868,7 @@ country_event = {
 			}
 		}
 		add_political_power = -30
-		add_national_unity = -0.03
+		add_war_support = -0.05
 		add_popularity = {
 			ideology = fascism
 			popularity = -0.05

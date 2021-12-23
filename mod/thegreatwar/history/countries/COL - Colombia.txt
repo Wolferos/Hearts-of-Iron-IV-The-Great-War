@@ -3,23 +3,84 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.75
+set_stability = 0.75
 set_convoys = 20
 set_country_flag=monroe_doctrine
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Pedro Nel Ospina" desc=COL_pedro_nel_ospina_DESC picture="gfx/leaders/COL_pedro_nel_ospina.dds" expire="1935.1.1" ideology=conservatism traits={  } }
-create_country_leader={ name = "Marco Fidel Suárez" desc=COL_marco_fidel_suarez_DESC picture="gfx/leaders/COL_marco_fidel_suarez.dds" expire="1935.1.1" ideology=conservatism traits={  } }
-create_country_leader={ name = "José Vicente Concha" desc=COL_jose_vicente_concha_DESC picture="gfx/leaders/COL_jose_vicente_concha.dds" expire="1935.1.1" ideology=conservatism traits={  } }
-create_country_leader={ name = "Gral. Jorge Holguín" desc=COL_gral_jorge_holguin_DESC picture="gfx/leaders/COL_gral_jorge_holguin.dds" expire="1935.1.1" ideology=conservatism traits={  } }
-create_country_leader={ name = "Ramón González Valencia" desc=COL_ramon_gonzalez_valencia_DESC picture="gfx/leaders/COL_ramon_gonzalez_valencia.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_corps_commander={  name = "Valencia" id=17003 portrait_path="gfx/generals/COL_valencia.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Holguín" id=17005 portrait_path="gfx/generals/COL_holguin.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Briceño" id=17006 portrait_path="gfx/generals/COL_briceno.tga" traits={   } skill=2 }
-create_field_marshal={  name = "Nel Ospina" id=17001 portrait_path="gfx/fieldmarshal/COL_nel_ospina.tga" traits={   } skill=2 }
-create_field_marshal={  name = "Restrepo" id=17004 portrait_path="gfx/fieldmarshal/COL_restrepo.tga" traits={   } skill=2 }
+
+# LEADERS
+recruit_character = COL_pedro_nel_ospina
+recruit_character = COL_marco_fidel_suarez
+recruit_character = COL_jose_vicente_concha
+recruit_character = COL_gral_jorge_holguin
+recruit_character = COL_ramon_gonzalez_valencia
+
+# ARMY
+recruit_character = COL_valencia
+recruit_character = COL_holguin
+recruit_character = COL_briceno
+recruit_character = COL_nel_ospina
+recruit_character = COL_restrepo
+
+
+set_technology = {
+
+	# Train
+	ww1_train = 1
+
+	# Navy
+	ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+	
+	ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
+	
+	###ww1_battleship2 = 0 #  ww1_battleship_1906 (Dreadnought I)
+	###ww1_battleship3 = 0 #  ww1_battleship_1910 (Dreadnought II)
+	###ww1_battleship4 = 0 #  ww1_battleship_1914 (Dreadnought III)
+
+	###ww1_battlecruiser1 = 0 # ww1_battlecruiser_1906 (Battlecruiser I)
+	###ww1_battlecruiser2 = 0 # ww1_battlecruiser_1910 (Battlecruiser II)
+	###ww1_battlecruiser3 = 0 # ww1_battlecruiser_1910 (Battlecruiser III)
+
+	ww1_heavy_cruiser0 = 1
+	ww1_heavy_cruiser0_mtg = 1 # heavy_cruiser_1890 (Armored Cruiser I)
+	ww1_heavy_cruiser1 = 1
+	ww1_heavy_cruiser1_mtg = 1 # heavy_cruiser_1900 (Armored Cruiser II)
+
+	ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1 # light_cruiser_1890 (Protected Cruiser I)
+	ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1 # light_cruiser_1900 (Protected Cruiser II)
+	###ww1_light_cruiser2 = 0 # light_cruiser_1906 (Light Cruiser I)
+	###ww1_light_cruiser3 = 0 # light_cruiser_1910 (Light Cruiser II)
+	###ww1_light_cruiser4 = 0 # light_cruiser_1914 (Light Cruiser III)
+
+	ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1 # destroyer_1890 (Torpedo Boat I)
+	ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1 # destroyer_1900 (Destroyer I)
+	ww1_destroyer2 = 1
+	ww1_destroyer2_mtg = 1 # destroyer_1906 (Destroyer II)
+	###ww1_destroyer3 = 0 # destroyer_1910 (Destroyer III)
+	###ww1_destroyer4 = 0 # destroyer_1914 (Destroyer IV)	
+
+	ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
+
+	ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1 # coastal_submarine_1900 (Coastal Submarine 1900, first available Submarine)
+	###ww1_submarine1 = 0 # submarine_1906 (Submarine I)
+	###ww1_submarine2 = 0 # submarine_1910 (Submarine II)
+	###ww1_submarine3 = 0 # submarine_1914 (Submarine III)
+
+	transport = 1
+	transport_mtg = 1 # Naval Transport
+}
 
 1910.1.1 = {
 	oob = "COL_1910"
@@ -55,17 +116,6 @@ create_field_marshal={  name = "Restrepo" id=17004 portrait_path="gfx/fieldmarsh
 		light_field_gun1 = 1
 		heavy_field_gun1 = 1
 
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
-
 		# Air
 
 		# Engineering
@@ -74,7 +124,18 @@ create_field_marshal={  name = "Restrepo" id=17004 portrait_path="gfx/fieldmarsh
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=99 }  fascism={ popularity=0 }  communism={ popularity=1  } }  ruling_party=democratic last_election="1910.4.31" election_frequency=48 elections_allowed=yes }
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1910.4.30"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 96
+	    fascism = 1
+	    communism = 2
+	    neutrality = 1
+	}
 
 	add_ideas = {
 
@@ -82,7 +143,7 @@ create_field_marshal={  name = "Restrepo" id=17004 portrait_path="gfx/fieldmarsh
 }
 
 1910.8.7 = {
-	create_country_leader={ name = "Carlos Eugenio Restrepo" desc=COL_carlos_eugenio_restrepo_restrepo_DESC picture="gfx/leaders/hoi4tgw/COL_carlos_eugenio_restrepo.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+	create_country_leader={ name = "Carlos Eugenio Restrepo" desc=COL_carlos_eugenio_restrepo_DESC picture="gfx/hoi4tgw_portraits/COL/country_leaders/COL_carlos_eugenio_restrepo.dds" expire="1935.1.1" ideology=liberalism traits = { } }
 }
 
 1914.1.1 = {
@@ -145,17 +206,6 @@ create_field_marshal={  name = "Restrepo" id=17004 portrait_path="gfx/fieldmarsh
 		heavy_field_gun1 = 1
 		bonus_bertha1 = 1
 
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
-
 		# Air
 		ww1_fighter1 = 1
 
@@ -165,7 +215,18 @@ create_field_marshal={  name = "Restrepo" id=17004 portrait_path="gfx/fieldmarsh
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=99 }  fascism={ popularity=0 }  communism={ popularity=1  } }  ruling_party=democratic last_election="1910.4.31" election_frequency=48 elections_allowed=yes }
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1910.4.30"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 96
+	    fascism = 1
+	    communism = 2
+	    neutrality = 1
+	}
 
 	add_ideas = {
 

@@ -1,1 +1,32 @@
 ﻿add_namespace = ww1_montenegro
+
+# Prince Nicholas of Montenegro proclaimed the Kingdom of Montenegro in Cetinje on 28 August 1910, elevating the country from the rank of Principality.
+#____________________________________________________________
+news_event = {
+	id = ww1_montenegro.2
+	title = ww1_montenegro.2.t
+	desc = ww1_montenegro.2.d
+
+	picture = EVENT_hoi4tgw_kingdom_montenegro_proclaimed
+	
+	major = yes
+	
+	trigger = {
+		date > 1910.08.28
+		NOT = { has_global_flag = kingdom_montenegro_proclaimed }
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+
+	immediate = {
+		set_global_flag = kingdom_montenegro_proclaimed
+		hidden_effect = {}
+	}
+	
+	option = {
+		name = ww1_montenegro.2.a
+	}
+}
+#____________________________________________________________

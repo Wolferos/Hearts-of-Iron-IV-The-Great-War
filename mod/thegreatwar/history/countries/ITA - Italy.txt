@@ -3,30 +3,94 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.26
 set_research_slots = 4
-set_national_unity = 0.6
+set_stability = 0.6
+set_war_support = 0.60
 set_convoys = 200
+starting_train_buffer = 1.5
+
+#-------------------------------------------------------
+#					ADVISORS
+#-------------------------------------------------------
+
+# ======================================================================
+### Political Advisor ###
+
+recruit_character = ITA_luigi_pelloux
+recruit_character = ITA_antonino_paterne_castello
+recruit_character = ITA_paolo_boselli
+recruit_character = ITA_luigi_facta
+recruit_character = ITA_luigi_luzzatti
+recruit_character = ITA_antonio_salandra
+recruit_character = ITA_eduardo_moroni
+recruit_character = ITA_giampietro_pellegrini
+recruit_character = ITA_guido_buffarini_guidi
+
+# ======================================================================
+### Theorist ###
+
+recruit_character = ITA_felice_napoleone_canevaro
+recruit_character = ITA_paolo_spingardi
+
+# ======================================================================
+### Army Chief ###
+
+recruit_character = ITA_enrico_caviglia
+recruit_character = ITA_gaetano_ettore_giardino
+recruit_character = ITA_domenico_grandi
+recruit_character = ITA_paolo_morrone
+recruit_character = ITA_giuseppe_ettore_vigane
+recruit_character = ITA_vittorio_italico_zupelli
+recruit_character = ITA_gastone_gambara
+recruit_character = ITA_rodolfo_graziani
+
+# ======================================================================
+### Navy Chief ###
+
+recruit_character = ITA_camillo_corsi
+recruit_character = ITA_duca_degli_abruzzi
+
+# ======================================================================
+### Air Chief ###
+
+recruit_character = ITA_arrigo_tessari
+
+# ======================================================================
+### High Command ###
+
+recruit_character = ITA_mario_calderara
+recruit_character = ITA_giulio_douhet
+recruit_character = ITA_luigi_cadorna
+recruit_character = ITA_armando_diaz
+recruit_character = ITA_alberto_pollio
+recruit_character = ITA_giuseppe_vaccari
+recruit_character = ITA_vittorio_alfieri
+recruit_character = ITA_leone_viale
+recruit_character = ITA_carlo_porro
+recruit_character = ITA_pier_angelo_brandimarte
+
+############################################################################################################
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
 #LEADERS
-create_country_leader={ name = "Giacinto Menotti Serrati" desc=ITA_giacinto_menotti_serrati_DESC picture="gfx/hoi4tgw_portraits/ITA/country_leaders/ITA_giacinto_menotti_serrati.dds" expire="1935.1.1" ideology=stalinism traits={  } }
-create_country_leader={ name = "Benito Mussolini" desc=ITA_benito_mussolini_DESC picture="gfx/hoi4tgw_portraits/ITA/country_leaders/ITA_benito_mussolini.dds" expire="1935.1.1" ideology=nazism traits={  } }
-create_country_leader={ name = "Vittorio Emanuele III" desc=ITA_vittorio_emanuele_iii_DESC picture="gfx/hoi4tgw_portraits/ITA/country_leaders/ITA_vittorio_emanuele_iii.dds" expire="1935.1.1" ideology=despotism traits={  } }
-create_country_leader={ name = "Vittorio Emanuele III" desc=ITA_vittorio_emanuele_iii_DESC picture="gfx/hoi4tgw_portraits/ITA/country_leaders/ITA_vittorio_emanuele_iii.dds" expire="1935.1.1" ideology=conservatism traits={  } }
+recruit_character = ITA_vittorio_emanuele_iii
+recruit_character = ITA_giacinto_menotti_serrati
+recruit_character = ITA_benito_mussolini
 
 #ARMY
-create_field_marshal={  name = "Luigi Cadorna" id=46028 portrait_path="gfx/hoi4tgw_portraits/ITA/army_generals/ITA_Luigi_Cadorna.dds" traits={  old_guard } skill=2 }
-create_field_marshal={  name = "Armando Diaz" id=46025 portrait_path="gfx/hoi4tgw_portraits/ITA/army_generals/ITA_Armando_Diaz.dds" traits={   } skill=4 }
-
-create_corps_commander={  name = "Pecori Giraldi" id=46071 portrait_path="gfx/hoi4tgw_portraits/ITA/army_generals/ITA_Pecori_Giraldi.dds" traits={   } skill=2 }
-create_corps_commander={  name = "Carlo Caneva" id=46009 portrait_path="gfx/hoi4tgw_portraits/ITA/army_generals/ITA_Carlo_Caneva.dds" traits={   } skill=3 }
-create_corps_commander={  name = "Emanuele Filiberto" id=46070 portrait_path="gfx/hoi4tgw_portraits/ITA/army_generals/ITA_Emanuele_Filiberto.dds" traits={   } skill=3 }
+#recruit_character = ITA_luigi_cadorna # <<< Already Advisor
+#recruit_character = ITA_armando_diaz # <<< Already Advisor
+recruit_character = ITA_pecori_giraldi
+recruit_character = ITA_carlo_caneva
+recruit_character = ITA_emanuele_filiberto
 
 #NAVY
-create_navy_leader={  name = "Luigi Amedeo" id=46001 portrait_path="gfx/hoi4tgw_portraits/ITA/navy_admirals/ITA_duca_degli_abruzzi.tga" traits={   } skill=2 }
-create_navy_leader={  name = "Thaon di Revel" id=46075 portrait_path="gfx/hoi4tgw_portraits/ITA/navy_admirals/ITA_thaon_di_revel.tga" traits={   } skill=2 }
+recruit_character = ITA_luigi_amedeo
+recruit_character = ITA_thaon_di_revel
+recruit_character = ITA_marcello_amero_dastestella
 
 1910.1.1 = {
 	oob = "ITA_1910"
@@ -37,13 +101,14 @@ create_navy_leader={  name = "Thaon di Revel" id=46075 portrait_path="gfx/hoi4tg
 	#Army
 	complete_national_focus = ITA_ww1_army_effort
 	complete_national_focus = ITA_ww1_industrial_effort
-	complete_national_focus = ITA_ww1_naval_effort
+	unlock_national_focus = ITA_ww1_naval_effort
 
-	#Diplomatic
-	complete_national_focus = ITA_ww1_diplomatic_effort
 	#-------------------------------------------------------
 
 	set_technology = {
+
+	    # Train
+	    ww1_train = 1
 
 		# Infantry
 		infantry_weapons = 1
@@ -59,31 +124,60 @@ create_navy_leader={  name = "Thaon di Revel" id=46075 portrait_path="gfx/hoi4tg
 		tech_support = 1
 		tech_engineers = 1
 		tech_recon = 1
-		#tech_military_police = 1
-		#tech_maintenance_company = 1
-		#tech_field_hospital = 1
-		#tech_logistics_company = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
 
 		# Armor
-		gwtank=1 # 1910 Armored Car
+		gwtank = 1 # 1910 Armored Car
+		gwtank__nostepback = 1
 
 		# Artillery
 		light_field_gun1 = 1
 		heavy_field_gun1 = 1
 
 		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
+		ww1_heavy_cruiser0 = 1
+	ww1_heavy_cruiser0_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_light_cruiser1 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battlecruiser0b = 1
-		ww1_battlecruiser1 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
+	ww1_light_cruiser1_mtg = 1
+		ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
+		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
+		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
+		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
+		ww1_heavy_cruiser0 = 0 # heavy_cruiser_1890 (Armored Cruiser I)
+		ww1_heavy_cruiser1 = 0 # heavy_cruiser_1900 (Armored Cruiser II)
+		ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
 		transport = 1
+	transport_mtg = 1
+
+		# Naval Modules Techs
+		heavy_navalmodule_1890 = 1
+	heavy_navalmodule_1890_mtg = 1
+		heavy_navalmodule_1900 = 1
+	heavy_navalmodule_1900_mtg = 1
+		medium_navalmodule_1890 = 1
+	medium_navalmodule_1890_mtg = 1
+		medium_navalmodule_1900 = 1
+	medium_navalmodule_1900_mtg = 1
+		light_navalmodule_1890 = 1
+	light_navalmodule_1890_mtg = 1
+		light_navalmodule_1900 = 1
+	light_navalmodule_1900_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -98,19 +192,16 @@ create_navy_leader={  name = "Thaon di Revel" id=46075 portrait_path="gfx/hoi4tg
 	}
 
 	set_politics = {
-	    parties = {
-	        democratic = {
-	            popularity = 85
-	        }
-	        fascism = {
-	            popularity = 5
-	        }
-	        communism = {
-	            popularity = 10
-	        }
-	    }
-	    ruling_party = democratic last_election = "1909.3.14"
-	    election_frequency = 48 elections_allowed = yes
+	    ruling_party = democratic
+	    last_election = "1909.3.14"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 85
+	    fascism = 5
+	    communism = 9
+	    neutrality = 1
 	}
 
 	add_ideas = {
@@ -120,8 +211,29 @@ create_navy_leader={  name = "Thaon di Revel" id=46075 portrait_path="gfx/hoi4tg
 		partial_economic_mobilisation
 		limited_exports
 	}
-}
+	
+	create_equipment_variant={ name="Italia Class" type=battleship_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=0 ship_engine_upgrade=5 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Ruggiero di Lauria Class" type=battleship_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=4 ship_engine_upgrade=4 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Re Umberto Class" type=battleship_1890 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=0 ship_engine_upgrade=5 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Ammiraglio di Saint Bon Class" type=battleship_1890 parent_version = 3 obsolete=yes upgrades={ ship_gun_upgrade=2 ship_armor_upgrade=4 ship_engine_upgrade=5 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Regina Elena Class" type=battleship_1900 parent_version = 0 obsolete=no upgrades={ ship_gun_upgrade=3 ship_armor_upgrade=4 ship_engine_upgrade=4 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Vittor Pisani Class" type=heavy_cruiser_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=1 ship_reliability_upgrade=1           } }
+	create_equipment_variant={ name="Garibaldi Class" type=heavy_cruiser_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=2 ship_reliability_upgrade=2           } }
+	create_equipment_variant={ name="Pisa Class" type=heavy_cruiser_1890 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=4 ship_engine_upgrade=5 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="San Giorgio Class" type=heavy_cruiser_1890 parent_version = 3 obsolete=no upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=4 ship_engine_upgrade=5 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Goito Class" type=light_cruiser_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=3 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Partenope Class" type=light_cruiser_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=4 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Bausan Class" type=light_cruiser_1900 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Etna Class" type=light_cruiser_1900 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Dogali Class" type=light_cruiser_1900 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=2  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Piemonte Class" type=light_cruiser_1900 parent_version = 3 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=1 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Umbria Class" type=light_cruiser_1900 parent_version = 4 obsolete=yes upgrades={ ship_gun_upgrade=3  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Calabria Class" type=light_cruiser_1900 parent_version = 5 obsolete=no upgrades={ ship_gun_upgrade=2  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Lampo Class" type=destroyer_1890 parent_version = 0 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=3    ship_torpedo_upgrade=0 } }
+	create_equipment_variant={ name="Soldati Class" type=destroyer_1900 parent_version = 0 obsolete=no upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=1    ship_torpedo_upgrade=5 } }
+	create_equipment_variant={ name="Glauco Class" type=coastal_submarine_1900 parent_version = 0 obsolete=yes upgrades={    ship_reliability_upgrade=5       sub_torpedo_upgrade=5 sub_stealth_upgrade=5 sub_engine_upgrade=5  } }
 
+}
 
 1914.1.1 = {
 	oob = "ITA_1914"
@@ -130,7 +242,6 @@ create_navy_leader={  name = "Thaon di Revel" id=46075 portrait_path="gfx/hoi4tg
 	#							NF
 	#-------------------------------------------------------
 	#Army
-	complete_national_focus = ITA_ww1_army_effort
 	complete_national_focus = ITA_ww1_equipment_effort
 	complete_national_focus = ITA_ww1_artillery_effort_1
 	complete_national_focus = ITA_ww1_doctrine_effort
@@ -141,15 +252,11 @@ create_navy_leader={  name = "Thaon di Revel" id=46075 portrait_path="gfx/hoi4tg
 	complete_national_focus = ITA_ww1_aviation_effort_2
 	
 	# Industry
-	complete_national_focus = ITA_ww1_industrial_effort
 	complete_national_focus = ITA_ww1_infrastructure_effort
 	complete_national_focus = ITA_ww1_airfield_expansion_1
 	complete_national_focus = ITA_ww1_construction_effort
 	complete_national_focus = ITA_ww1_production_effort
 	complete_national_focus = ITA_ww1_dockyard_effort_1
-	
-	# Naval
-	complete_national_focus = ITA_ww1_naval_effort
 
 	#Political
 	complete_national_focus = ITA_ww1_political_effort
@@ -159,12 +266,12 @@ create_navy_leader={  name = "Thaon di Revel" id=46075 portrait_path="gfx/hoi4tg
 	complete_national_focus = ITA_ww1_organize_colony
 
 	#Diplomatic
-	complete_national_focus = ITA_ww1_diplomatic_effort
 	complete_national_focus = ITA_ww1_europe_focus
 	complete_national_focus = ITA_ww1_italian_development
 	complete_national_focus = ITA_ww1_italian_highways
 	complete_national_focus = ITA_ww1_italian_expansionism	
 	unlock_national_focus = ITA_ww1_libyan_claims
+	unlock_national_focus = ITA_ww1_back_france
 	#-------------------------------------------------------
 
 	set_technology = {
@@ -205,19 +312,49 @@ create_navy_leader={  name = "Thaon di Revel" id=46075 portrait_path="gfx/hoi4tg
 		ww1_directfire = 1
 
 		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
+		ww1_light_cruiser2 = 1
+	ww1_light_cruiser2_mtg = 1
+		ww1_light_cruiser3 = 1
+	ww1_light_cruiser3_mtg = 1
+		ww1_submarine2 = 1
+		ww1_coastal_submarine2 = 1
+		ww1_battleship2 = 1
+	ww1_battleship2_mtg = 1
+		ww1_battleship3 = 1
+	ww1_battleship3_mtg = 1
+		ww1_battleship4 = 1
 		ww1_destroyer2 = 1
+	ww1_destroyer2_mtg = 1
+		ww1_destroyer3 = 1
+	ww1_destroyer3_mtg = 1
+
+		ww1_heavy_cruiser0 = 1
+	ww1_heavy_cruiser0_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_light_cruiser1 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battlecruiser0b = 1
-		ww1_battlecruiser1 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
+	ww1_light_cruiser1_mtg = 1
+		ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
+		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
+		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
+		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
+		ww1_heavy_cruiser0 = 0 # heavy_cruiser_1890 (Armored Cruiser I)
+		ww1_heavy_cruiser1 = 0 # heavy_cruiser_1900 (Armored Cruiser II)
+		ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
 		transport = 1
+	transport_mtg = 1
+
 
 		# Air
 		ww1_fighter1 = 1
@@ -253,19 +390,16 @@ create_navy_leader={  name = "Thaon di Revel" id=46075 portrait_path="gfx/hoi4tg
 	}
 
 	set_politics = {
-	    parties = {
-	        democratic = {
-	            popularity = 85
-	        }
-	        fascism = {
-	            popularity = 5
-	        }
-	        communism = {
-	            popularity = 10
-	        }
-	    }
-	    ruling_party = democratic last_election = "1913.11.1"
-	    election_frequency = 48 elections_allowed = yes
+	    ruling_party = democratic
+	    last_election = "1913.11.1"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 85
+	    fascism = 5
+	    communism = 9
+	    neutrality = 1
 	}
 
 	add_ideas = {
@@ -275,6 +409,145 @@ create_navy_leader={  name = "Thaon di Revel" id=46075 portrait_path="gfx/hoi4tg
 		partial_economic_mobilisation
 		limited_exports
 	}
+	create_equipment_variant={ name="Cavour Class" type=battleship_1910 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=1 ship_armor_upgrade=0 ship_engine_upgrade=1 ship_reliability_upgrade=2           } }
+	create_equipment_variant={ name="Bixio Class" type=light_cruiser_1910 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=1 ship_reliability_upgrade=1 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Novara Class" type=light_cruiser_1910 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=1 ship_reliability_upgrade=1 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Magdeburg Class" type=light_cruiser_1910 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=2 ship_reliability_upgrade=2 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Graudenz Class" type=light_cruiser_1910 parent_version = 3 obsolete=yes upgrades={ ship_gun_upgrade=0  ship_engine_upgrade=2 ship_reliability_upgrade=2 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="Pillau Class" type=light_cruiser_1910 parent_version = 4 obsolete=no upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=2 ship_reliability_upgrade=5 ship_anti_air_upgrade=5          } }
+	create_equipment_variant={ name="Ascaro Class" type=destroyer_1900 parent_version = 1 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=1    ship_torpedo_upgrade=5 } }
+	create_equipment_variant={ name="Ardito Class" type=destroyer_1906 parent_version = 0 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=3    ship_torpedo_upgrade=0 } }
+	create_equipment_variant={ name="Pilo Class" type=destroyer_1910 parent_version = 0 obsolete=no upgrades={     ship_anti_air_upgrade=5    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=0 } }
+	create_equipment_variant={ name="Atropo Class" type=coastal_submarine_1910 parent_version = 0 obsolete=yes upgrades={    ship_reliability_upgrade=4       sub_torpedo_upgrade=0 sub_stealth_upgrade=4 sub_engine_upgrade=4  } }
+	create_equipment_variant={ name="Nautilus Class" type=coastal_submarine_1910 parent_version = 1 obsolete=yes upgrades={    ship_reliability_upgrade=1       sub_torpedo_upgrade=0 sub_stealth_upgrade=1 sub_engine_upgrade=1  } }
+	create_equipment_variant={ name="Pullino Class" type=coastal_submarine_1910 parent_version = 2 obsolete=yes upgrades={    ship_reliability_upgrade=5       sub_torpedo_upgrade=5 sub_stealth_upgrade=2 sub_engine_upgrade=2  } }
+	create_equipment_variant={ name="Argonauta Class" type=coastal_submarine_1910 parent_version = 3 obsolete=no upgrades={    ship_reliability_upgrade=1       sub_torpedo_upgrade=0 sub_stealth_upgrade=1 sub_engine_upgrade=1  } }
 
 	give_guarantee = ALB
+}
+
+
+1919.1.1 = {
+
+	add_ideas = { interwar_spirit_TGWWinner_Italy }
+
+	oob = "ITA_1919"
+	
+	#-------------------------------------------------------
+	#							NF
+	#-------------------------------------------------------
+	unlock_national_focus = ITA_ww1_back_france
+	unlock_national_focus = ITA_ww1_recognize_albania
+	unlock_national_focus = ITA_ww1_anti_ah
+	unlock_national_focus = ITA_ww1_second_balkan_war_finished
+	unlock_national_focus = ITA_ww1_trieste_tyrol
+	unlock_national_focus = ITA_ww1_the_great_war_started
+	unlock_national_focus = ITA_ww1_triple_entente
+	unlock_national_focus = ITA_ww1_diaz
+	unlock_national_focus = ITA_ww1_italian_askari
+	#-------------------------------------------------------
+
+	set_technology = {
+		# Infantry
+		ww1infantry_weapons2 = 1
+		ww1_infantry2_equip = 1
+		infantry_gasmask = 1
+		infantry_ww1_mortar1 = 1
+		infantry_ww1_machinegun1 = 1
+		early_motorised = 1
+		ww1_ambulance2 = 1
+		tech_mountaineers2 = 1
+
+		# Support
+		tech_signal_company = 1
+
+		tech_engineers2 = 1
+		tech_recon2 = 1
+		tech_military_police2 = 1
+		tech_maintenance_company2 = 1
+		tech_field_hospital2 = 1
+		tech_logistics_company2 = 1
+		tech_signal_company2 = 1
+
+		# Armor
+		ww1_armored_car_3 = 1
+		ww1_light_tank = 1
+		ww1_heavy_tank = 1
+
+		# Artillery
+		light_field_gun2 = 1
+		heavy_field_gun2 = 1
+		bonus_artillery4 = 1
+		bonus_bertha4 = 1
+
+		# Land Doctrine
+		ww1_rifle_ammo = 1
+		ww1_long_march = 1
+		ww1_battlefield = 1
+		ww1_target = 1
+		ww1_night = 1
+
+		# Navy
+		ww1_battleship4 = 1
+		ww1_battleship4_mtg = 1
+		ww1_battlecruiser0 = 1
+		ww1_battlecruiser0_mtg = 1
+		ww1_battlecruiser1 = 1
+		ww1_battlecruiser1_mtg = 1
+		ww1_battlecruiser2 = 1
+		ww1_battlecruiser2_mtg = 1
+		ww1_light_cruiser4 = 1
+		ww1_light_cruiser4_mtg = 1
+		ww1_destroyer3 = 1
+		ww1_destroyer3_mtg = 1
+		ww1_destroyer4 = 1
+		ww1_destroyer4_mtg = 1
+		ww1_submarine2 = 1
+		ww1_submarine2_mtg = 1
+		ww1_submarine3 = 1
+		ww1_submarine3_mtg = 1
+		ww1_coastal_submarine2 = 1
+		ww1_coastal_submarine2_mtg = 1
+		ww1_smoke_generator = 1
+		ww1_smoke_generator_mtg = 1
+
+		# Naval Doctrine
+
+		# Air
+		ww1_fighter2 = 1
+		ww1_fighter2b = 1
+		ww1_seaplane1 = 1
+		ww1_bomber1 = 1
+		ww1_bomber2 = 1
+
+		# Air Doctrine
+		ww1_airdoctrine_4 = 1
+		ww1_airdoctrine_5 = 1
+		ww1_airdoctrine_6 = 1
+		ww1_airdoctrine_7 = 1
+
+		# Engineering
+		hoi4tgw_encryption = 1
+		hoi4tgw_decryption = 1
+		dingfelder_engine1 = 1
+		tanktrack1 = 1
+		tank_unlocker2 = 1
+			tank_unlocker2__nostepback = 1
+
+		# Industry
+		ww1_tools2 = 1
+		ww1_tools3 = 1
+		ww1_camera1 = 1
+		ww1_industry1 = 1
+		ww1_industry2 = 1
+		ww1_medicine2 = 1
+		ww1_construction1 = 1
+		ww1_construction2 = 1
+		ww1_mining1 = 1
+		ww1_oil1 = 1
+		ww1_oil2 = 1
+		ww1_fortification3 = 1
+		ww1_fortification3b = 1
+	}
+
 }

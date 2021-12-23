@@ -1,29 +1,30 @@
-﻿
-capital = 12
+﻿capital = 12
 
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.75
+set_stability = 0.75
 set_convoys = 10
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
 
-create_country_leader={ name = "Janis Cakste" desc=LAT_janis_cakste_DESC picture="gfx/leaders/LAT_janis_cakste.dds" expire="1935.1.1" ideology=autocracy traits={  } }
-create_country_leader={ name = "Janis Cakste" desc=LAT_janis_cakste_DESC picture="gfx/leaders/LAT_janis_cakste.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Janis Cakste" desc=LAT_janis_cakste_DESC picture="gfx/leaders/LAT_janis_cakste.dds" expire="1935.1.1" ideology=fascism_ideology traits={  } }
-create_country_leader={ name = "Janis Cakste" desc=LAT_janis_cakste_DESC picture="gfx/leaders/LAT_janis_cakste.dds" expire="1935.1.1" ideology=marxism traits={  } }
-create_corps_commander={  name = "Briedis" id=50002 portrait_path="gfx/generals/LAT_briedis.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Teodors" id=50003 portrait_path="gfx/generals/LAT_teodors.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Andrejs" id=50004 portrait_path="gfx/generals/LAT_andrejs.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Gailitis" id=50005 portrait_path="gfx/generals/LAT_gailitis.tga" traits={   } skill=2 }
-create_corps_commander={  name = "von Meden" id=50006 portrait_path="gfx/generals/LAT_von_meden.tga" traits={   } skill=2 }
-create_corps_commander={  name = "von Brandes" id=50007 portrait_path="gfx/generals/LAT_von_brandes.tga" traits={   } skill=2 }
-create_corps_commander={  name = "von Weimah" id=50008 portrait_path="gfx/generals/LAT_von_weimah.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Adienis" id=50009 portrait_path="gfx/generals/LAT_adienis.tga" traits={   } skill=2 }
+create_country_leader={ name = "Jānis Čakste" desc=LAT_janis_cakste_DESC picture="gfx/leaders/LAT_janis_cakste.dds" expire="1935.1.1" ideology=autocracy traits = { } }
+create_country_leader={ name = "Jānis Čakste" desc=LAT_janis_cakste_DESC picture="gfx/leaders/LAT_janis_cakste.dds" expire="1935.1.1" ideology=liberalism traits = { } }
+create_country_leader={ name = "Jānis Čakste" desc=LAT_janis_cakste_DESC picture="gfx/leaders/LAT_janis_cakste.dds" expire="1935.1.1" ideology=fascism_ideology traits = { } }
+create_country_leader={ name = "Jānis Čakste" desc=LAT_janis_cakste_DESC picture="gfx/leaders/LAT_janis_cakste.dds" expire="1935.1.1" ideology=marxism traits = { } }
+
+create_corps_commander={  name = "Briedis" id=50002 portrait_path="gfx/generals/LAT_briedis.dds" traits={   } skill=3 }
+create_corps_commander={  name = "Teodors" id=50003 portrait_path="gfx/generals/LAT_teodors.dds" traits={   } skill=2 }
+create_corps_commander={  name = "Andrejs" id=50004 portrait_path="gfx/generals/LAT_andrejs.dds" traits={   } skill=2 }
+create_corps_commander={  name = "Gailitis" id=50005 portrait_path="gfx/generals/LAT_gailitis.dds" traits={   } skill=2 }
+create_corps_commander={  name = "von Meden" id=50006 portrait_path="gfx/generals/LAT_von_meden.dds" traits={   } skill=2 }
+create_corps_commander={  name = "von Brandes" id=50007 portrait_path="gfx/generals/LAT_von_brandes.dds" traits={   } skill=2 }
+create_corps_commander={  name = "von Weimah" id=50008 portrait_path="gfx/generals/LAT_von_weimah.dds" traits={   } skill=2 }
+create_corps_commander={  name = "Adienis" id=50009 portrait_path="gfx/generals/LAT_adienis.dds" traits={   } skill=2 }
 
 1910.1.1 = {
 	oob = "LAT_1910"
@@ -61,14 +62,23 @@ create_corps_commander={  name = "Adienis" id=50009 portrait_path="gfx/generals/
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battlecruiser0 = 1
+	ww1_battlecruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 
@@ -78,7 +88,18 @@ create_corps_commander={  name = "Adienis" id=50009 portrait_path="gfx/generals/
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=30 }  fascism={ popularity=15 }  communism={ popularity=15 }  neutrality={ popularity=50 } }  ruling_party=neutrality last_election="1910.1.1" election_frequency=108 elections_allowed=no }
+	set_politics = {
+	    ruling_party = neutrality
+	    last_election = "1910.1.1"
+	    election_frequency = 48
+	    elections_allowed = no
+	}
+	set_popularities = {
+	    democratic = 30
+	    fascism = 10
+	    communism = 10
+	    neutrality = 50
+	}
 
 	add_ideas = {
 
@@ -147,14 +168,23 @@ create_corps_commander={  name = "Adienis" id=50009 portrait_path="gfx/generals/
 
 		# Navy
 		ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1
 		ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1
 		ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1
 		ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1
 		ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
 		ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
 		ww1_submarine1 = 1
+	ww1_submarine1_mtg = 1
 		ww1_coastal_submarine1 = 1
+	ww1_coastal_submarine1_mtg = 1
 		transport = 1
+	transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -165,9 +195,35 @@ create_corps_commander={  name = "Adienis" id=50009 portrait_path="gfx/generals/
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=30 }  fascism={ popularity=15 }  communism={ popularity=15 }  neutrality={ popularity=50 } }  ruling_party=neutrality last_election="1910.1.1" election_frequency=108 elections_allowed=no }
-
 	add_ideas = {
 
 	}
+}
+
+1919.1.1 = {
+	
+	oob = "LAT_1919"
+
+	create_country_leader = { 
+		name = "Jānis Čakste" 
+		picture = "gfx/leaders/LAT_janis_cakste.dds" 
+		expire = "1935.1.1" 
+		ideology = autocracy 
+		traits = { }
+	}
+
+
+	set_politics = {
+	    ruling_party = neutrality
+	    last_election = "1918.12.17"
+	    election_frequency = 120
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 28
+	    fascism = 7
+	    communism = 3
+	    neutrality = 62
+	}
+
 }

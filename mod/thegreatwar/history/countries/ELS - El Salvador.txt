@@ -3,33 +3,88 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.75
+set_stability = 0.75
 set_convoys = 20
 set_country_flag=monroe_doctrine
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Alfonso Quiñónez Molina" desc=ELS_alfonso_quinonez_molina_DESC picture="gfx/leaders/ELS_alfonso_quinonez_molina.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "Jorge Meléndez Ramírez" desc=ELS_jorge_melendez_ramirez_DESC picture="gfx/leaders/ELS_jorge_melendez_ramirez.dds" expire="1935.1.1" ideology=despotism  traits={  } }
-create_country_leader={ name = "Fernando Figueroa" desc=ELS_fernando_figueroa_DESC picture="gfx/leaders/ELS_fernando_figueroa.dds" expire="1935.1.1" ideology=autocracy  traits={  } }
-create_corps_commander={  name = "Preza" id=79003 portrait_path="gfx/generals/ELS_preza.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Duarte" id=79004 portrait_path="gfx/generals/ELS_duarte.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Arévalo" id=79005 portrait_path="gfx/generals/ELS_arevalo.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Flores" id=79006 portrait_path="gfx/generals/ELS_flores.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Rodolfo Cristales" id=79007 portrait_path="gfx/generals/ELS_rodolfo_cristales.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Tercero" id=79008 portrait_path="gfx/generals/ELS_tercero.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Ruiz" id=79009 portrait_path="gfx/generals/ELS_ruiz.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Rivera" id=79010 portrait_path="gfx/generals/ELS_rivera.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Ascencio" id=79011 portrait_path="gfx/generals/ELS_ascencio.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Marín" id=79012 portrait_path="gfx/generals/ELS_marin.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Rivas" id=79013 portrait_path="gfx/generals/ELS_rivas.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Montenegro" id=79014 portrait_path="gfx/generals/ELS_montenegro.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Durón" id=79015 portrait_path="gfx/generals/ELS_duron.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Bustamante" id=79016 portrait_path="gfx/generals/ELS_bustamante.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Romero" id=79017 portrait_path="gfx/generals/ELS_romero.tga" traits={   } skill=2 }
-create_field_marshal={  name = "Figueroa" id=79002 portrait_path="gfx/fieldmarshal/ELS_figueroa.tga" traits={   } skill=2 }
 
+# LEADERS
+recruit_character = ELS_fernando_figueroa
+recruit_character = ELS_alfonso_quinonez_molina
+recruit_character = ELS_jorge_melendez_ramirez
+
+# ARMY
+recruit_character = ELS_preza
+recruit_character = ELS_duarte
+recruit_character = ELS_arevalo
+recruit_character = ELS_flores
+recruit_character = ELS_rodolfo_cristales
+recruit_character = ELS_tercero
+recruit_character = ELS_ruiz
+recruit_character = ELS_rivera
+recruit_character = ELS_ascencio
+recruit_character = ELS_marin
+recruit_character = ELS_rivas
+recruit_character = ELS_montenegro
+recruit_character = ELS_duron
+recruit_character = ELS_bustamante
+recruit_character = ELS_romero
+
+
+set_technology = {
+	# Navy
+	ww1_battleship0 = 1
+	ww1_battleship0_mtg = 1
+	
+	ww1_battleship1 = 1
+	ww1_battleship1_mtg = 1
+	
+	###ww1_battleship2 = 0 #  ww1_battleship_1906 (Dreadnought I)
+	###ww1_battleship3 = 0 #  ww1_battleship_1910 (Dreadnought II)
+	###ww1_battleship4 = 0 #  ww1_battleship_1914 (Dreadnought III)
+
+	###ww1_battlecruiser1 = 0 # ww1_battlecruiser_1906 (Battlecruiser I)
+	###ww1_battlecruiser2 = 0 # ww1_battlecruiser_1910 (Battlecruiser II)
+	###ww1_battlecruiser3 = 0 # ww1_battlecruiser_1910 (Battlecruiser III)
+
+	ww1_heavy_cruiser0 = 1
+	ww1_heavy_cruiser0_mtg = 1 # heavy_cruiser_1890 (Armored Cruiser I)
+	ww1_heavy_cruiser1 = 1
+	ww1_heavy_cruiser1_mtg = 1 # heavy_cruiser_1900 (Armored Cruiser II)
+
+	ww1_light_cruiser0 = 1
+	ww1_light_cruiser0_mtg = 1 # light_cruiser_1890 (Protected Cruiser I)
+	ww1_light_cruiser1 = 1
+	ww1_light_cruiser1_mtg = 1 # light_cruiser_1900 (Protected Cruiser II)
+	###ww1_light_cruiser2 = 0 # light_cruiser_1906 (Light Cruiser I)
+	###ww1_light_cruiser3 = 0 # light_cruiser_1910 (Light Cruiser II)
+	###ww1_light_cruiser4 = 0 # light_cruiser_1914 (Light Cruiser III)
+
+	ww1_destroyer0 = 1
+	ww1_destroyer0_mtg = 1 # destroyer_1890 (Torpedo Boat I)
+	ww1_destroyer1 = 1
+	ww1_destroyer1_mtg = 1 # destroyer_1900 (Destroyer I)
+	ww1_destroyer2 = 1
+	ww1_destroyer2_mtg = 1 # destroyer_1906 (Destroyer II)
+	###ww1_destroyer3 = 0 # destroyer_1910 (Destroyer III)
+	###ww1_destroyer4 = 0 # destroyer_1914 (Destroyer IV)	
+
+	ww1_moduleMTG_mines = 1
+	ww1_moduleMTG_mines_mtg = 1 # Mines
+
+	ww1_submarine0 = 1
+	ww1_submarine0_mtg = 1 # coastal_submarine_1900 (Coastal Submarine 1900, first available Submarine)
+	###ww1_submarine1 = 0 # submarine_1906 (Submarine I)
+	###ww1_submarine2 = 0 # submarine_1910 (Submarine II)
+	###ww1_submarine3 = 0 # submarine_1914 (Submarine III)
+
+	transport = 1
+	transport_mtg = 1 # Naval Transport
+}
 
 1910.1.1 = {
 	oob = "ELS_1910"
@@ -65,17 +120,6 @@ create_field_marshal={  name = "Figueroa" id=79002 portrait_path="gfx/fieldmarsh
 		light_field_gun1 = 1
 		heavy_field_gun1 = 1
 
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
-
 		# Air
 
 		# Engineering
@@ -84,14 +128,25 @@ create_field_marshal={  name = "Figueroa" id=79002 portrait_path="gfx/fieldmarsh
 		# Industry
 	}
 
-	set_politics={  parties={ democratic={ popularity=0 banned=yes  }  neutrality={ popularity=100 }  communism={ popularity=0 banned=yes  } }  ruling_party=neutrality last_election="1935.1.15" election_frequency=48 elections_allowed=no }
+	set_politics = {
+	    ruling_party = neutrality
+	    last_election = "1910.1.1"
+	    election_frequency = 48
+	    elections_allowed = no
+	}
+	set_popularities = {
+	    democratic = 0
+	    fascism = 0
+	    communism = 0
+	    neutrality = 100
+	}
 
 	add_ideas = {
 
 	}	
 }
 1911.3.1 = {
-	create_country_leader={ name = "Carlos Meléndez" desc=ELS_carlos_melendez_DESC picture="gfx/leaders/ELS_carlos_melendez.dds" expire="1935.1.1" ideology=despotism  traits={  } }
+	recruit_character = ELS_carlos_melendez # He is the New President of El Salvador
 }
 1914.1.1 = {
 	oob = "ELS_1914"
@@ -153,17 +208,6 @@ create_field_marshal={  name = "Figueroa" id=79002 portrait_path="gfx/fieldmarsh
 		heavy_field_gun1 = 1
 		bonus_bertha1 = 1
 
-		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
-
 		# Air
 		ww1_fighter1 = 1
 
@@ -173,7 +217,19 @@ create_field_marshal={  name = "Figueroa" id=79002 portrait_path="gfx/fieldmarsh
 		# Industry
 	}
 
-	set_politics={  parties={ neutrality={ popularity=100  }  fascism={ popularity=0 }  communism={ popularity=0 banned=yes  } }  ruling_party=neutrality last_election="1913.2.9" election_frequency=48 elections_allowed=yes }
+
+	set_politics = {
+	    ruling_party = neutrality
+	    last_election = "1913.2.9"
+	    election_frequency = 48
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 0
+	    fascism = 0
+	    communism = 0
+	    neutrality = 100
+	}
 
 	add_ideas = {
 

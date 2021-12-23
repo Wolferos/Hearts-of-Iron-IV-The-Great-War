@@ -1,0 +1,171 @@
+﻿add_namespace = interwar_poland_events
+
+# Cease Hostilities with Lithuania
+#____________________________________________________________
+country_event = {
+	id = interwar_poland_events.1
+	title = interwar_poland_events.1.t
+	desc = interwar_poland_events.1.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	# LIT is OK for Ceasefire
+	option = {
+		name = interwar_poland_events.1.a
+		ai_chance = { factor = 100 }
+
+		POL = { white_peace = LIT }
+
+		hidden_effect = {
+			set_global_flag = pol_lit_ceasefire
+
+			LIT = {
+				diplomatic_relation = {
+					country = POL
+					relation = non_aggression_pact
+				}
+			}
+		}
+	}
+
+	# LIT is NOT-OK for Ceasefire
+	option = {
+		name = interwar_poland_events.1.b
+		ai_chance = { factor = 0 }
+	}
+}
+#____________________________________________________________
+
+# Coup d'état in Lithuania
+#____________________________________________________________
+country_event = {
+	id = interwar_poland_events.2
+	title = interwar_poland_events.2.t
+	desc = interwar_poland_events.2.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = interwar_poland_events.2.a
+		ai_chance = { factor = 1 }
+	}
+}
+#____________________________________________________________
+
+# In the wake of the Polish advance eastward, the Soviets sued for peace and the war ended with a cease-fire on 18 October 1920
+#____________________________________________________________
+country_event = {
+	id = interwar_poland_events.3
+	title = interwar_poland_events.3.t
+	desc = interwar_poland_events.3.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	# SOV is OK for Ceasefire
+	option = {
+		name = interwar_poland_events.3.a
+		ai_chance = { factor = 100 }
+
+		SOV = { white_peace = POL }
+		POL = {
+			remove_ideas = {
+				POL_interwar_spirit_WielkopolskaUprising
+			}
+		}
+
+		hidden_effect = {
+			set_global_flag = pol_sov_ceasefire
+
+			SOV = {
+				diplomatic_relation = {
+					country = POL
+					relation = non_aggression_pact
+				}
+			}
+		}
+	}
+
+	# SOV is NOT-OK for Ceasefire
+	option = {
+		name = interwar_poland_events.3.b
+		ai_chance = { factor = 0 }
+	}
+}
+#____________________________________________________________
+
+# Polish-Ukrainian War (1 November 1918 - 18 July 1919)
+#____________________________________________________________
+country_event = {
+	id = interwar_poland_events.4
+	title = interwar_poland_events.4.t
+	desc = interwar_poland_events.4.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	# UKR is OK for Ceasefire
+	option = {
+		name = interwar_poland_events.4.a
+		ai_chance = { factor = 100 }
+
+		UKR = { white_peace = POL }
+
+		hidden_effect = {
+			set_global_flag = pol_ukr_ceasefire
+
+			UKR = {
+				diplomatic_relation = {
+					country = POL
+					relation = non_aggression_pact
+				}
+			}
+		}
+	}
+
+	# UKR is NOT-OK for Ceasefire
+	option = {
+		name = interwar_poland_events.4.b
+		ai_chance = { factor = 0 }
+	}
+}
+#____________________________________________________________
+
+# POL deal with White Russian
+#____________________________________________________________
+country_event = {
+	id = interwar_poland_events.5
+	title = interwar_poland_events.5.t
+	desc = interwar_poland_events.5.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	# RUS is OK for Ceasefire
+	option = {
+		name = interwar_poland_events.5.a
+		ai_chance = { factor = 100 }
+
+		RUS = { white_peace = POL }
+
+		hidden_effect = {
+			set_global_flag = pol_rus_ceasefire
+
+			RUS = {
+				diplomatic_relation = {
+					country = POL
+					relation = non_aggression_pact
+				}
+			}
+		}
+	}
+
+	# RUS is NOT-OK for Ceasefire
+	option = {
+		name = interwar_poland_events.5.b
+		ai_chance = { factor = 0 }
+	}
+}
+#____________________________________________________________

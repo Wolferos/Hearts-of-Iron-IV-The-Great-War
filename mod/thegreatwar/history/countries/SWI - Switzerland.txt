@@ -3,43 +3,63 @@
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
+set_fuel_ratio = 0.20
 set_research_slots = 3
-set_national_unity = 0.85
+set_stability = 0.85
 
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = "Ulrich Wille" desc=SWI_ulrich_wille_DESC picture="gfx/leaders/SWI_ulrich_wille.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Felix Louis Calonder" desc=SWI_felix_louis_calonder_DESC picture="gfx/leaders/SWI_felix_louis_calonder.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Gustave Ador" desc=SWI_gustave_ador_DESC picture="gfx/leaders/SWI_gustave_ador.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Jules Humbert-Droz" desc=SWI_jules_humbert_droz_DESC picture="gfx/leaders/SWI_jules_humbert_droz.dds" expire="1935.1.1" ideology=stalinism traits={  } }
-create_country_leader={ name = "Camille Decoppet" desc=SWI_camille_decoppet_DESC picture="gfx/leaders/SWI_camille_decoppet.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Edmund Schulthess" desc=SWI_edmund_schulthess_DESC picture="gfx/leaders/SWI_edmund_schulthess.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Robert Haab" desc=SWI_robert_haab_DESC picture="gfx/leaders/SWI_robert_haab.dds" expire="1935.1.1" ideology=liberalism traits={  } }
-create_country_leader={ name = "Federal Council" desc="POLITICS_FEDERAL_COUNCIL_DESC" picture="Portrait_Switzerland_Federal_council.dds" expire="1935.1.1" ideology=moderatism traits={  } }
-create_corps_commander={  name = "Audéoud" id=81002 portrait_path="gfx/generals/SWI_audeoud.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Bornand" id=81003 portrait_path="gfx/generals/SWI_bornand.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Sonderegger" id=81004 portrait_path="gfx/generals/SWI_sonderegger.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Büel" id=81010 portrait_path="gfx/generals/SWI_buel.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Bohny" id=81011 portrait_path="gfx/generals/SWI_bohny.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Bolli" id=81012 portrait_path="gfx/generals/SWI_bolli.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Brügger" id=81013 portrait_path="gfx/generals/SWI_brugger.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Decoppet" id=81014 portrait_path="gfx/generals/SWI_decoppet.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Dietler" id=81015 portrait_path="gfx/generals/SWI_dietler.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Fama" id=81016 portrait_path="gfx/generals/SWI_fama.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Iselin" id=81017 portrait_path="gfx/generals/SWI_iselin.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Isler P." id=81018 portrait_path="gfx/generals/SWI_isler_p.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Kunz" id=81019 portrait_path="gfx/generals/SWI_kunz.tga" traits={   } skill=2 }
-create_corps_commander={  name = "de Loys" id=81020 portrait_path="gfx/generals/SWI_de_loys.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Schiess" id=81021 portrait_path="gfx/generals/SWI_schiess.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Schiessle" id=81022 portrait_path="gfx/generals/SWI_schiessle.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Schmid" id=81023 portrait_path="gfx/generals/SWI_schmid.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Sprecher von Bernegg" id=81024 portrait_path="gfx/generals/SWI_sprecher_von_bernegg.tga" traits={   } skill=3 }
-create_corps_commander={  name = "Steinbuch" id=81025 portrait_path="gfx/generals/SWI_steinbuch.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Vogel" id=81026 portrait_path="gfx/generals/SWI_vogel.tga" traits={   } skill=2 }
-create_corps_commander={  name = "von Wattenwyl" id=81027 portrait_path="gfx/generals/SWI_von_wattenwyl.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Weber" id=81028 portrait_path="gfx/generals/SWI_weber.tga" traits={   } skill=2 }
-create_corps_commander={  name = "Wildbolz" id=81029 portrait_path="gfx/generals/SWI_wildbolz.tga" traits={   } skill=2 }
+
+# LEADERS
+recruit_character = SWI_federal_council
+recruit_character = SWI_ulrich_wille
+recruit_character = SWI_felix_louis_calonder
+recruit_character = SWI_gustave_ador
+recruit_character = SWI_jules_humbertdroz
+recruit_character = SWI_camille_decoppet
+recruit_character = SWI_edmund_schulthess
+recruit_character = SWI_robert_haab
+
+# ARMY
+recruit_character = SWI_alfred_audeoud # Also Advisor
+recruit_character = SWI_bornand
+recruit_character = SWI_sonderegger
+recruit_character = SWI_buel
+recruit_character = SWI_bohny
+recruit_character = SWI_bolli
+recruit_character = SWI_brugger
+recruit_character = SWI_decoppet
+recruit_character = SWI_dietler
+recruit_character = SWI_fama
+recruit_character = SWI_iselin
+recruit_character = SWI_isler_p
+recruit_character = SWI_kunz
+recruit_character = SWI_de_loys
+recruit_character = SWI_schiess
+recruit_character = SWI_schiessle
+recruit_character = SWI_schmid
+recruit_character = SWI_sprecher_von_bernegg
+recruit_character = SWI_steinbuch
+recruit_character = SWI_vogel
+recruit_character = SWI_von_wattenwyl
+recruit_character = SWI_weber
+recruit_character = SWI_wildbolz
+
+# ADVISORS
+recruit_character = SWI_theophil_sprecher_von_bernegg
+recruit_character = SWI_albert_muller
+recruit_character = SWI_arnold_isler
+recruit_character = SWI_walter_scherrer
+recruit_character = SWI_heinrich_haberlin
+recruit_character = SWI_marc_schleppy
+recruit_character = SWI_louis_henri_bornand
+recruit_character = SWI_walther_bringholf
+recruit_character = SWI_leonie_kascher
+recruit_character = SWI_jakob_herzog
+recruit_character = SWI_hans_schatzmann
+recruit_character = SWI_theodor_real
+
 
 1910.1.1 = {
 	oob = "SWI_1910"
@@ -51,6 +71,9 @@ create_corps_commander={  name = "Wildbolz" id=81029 portrait_path="gfx/generals
 	#-------------------------------------------------------
 
 	set_technology = {
+
+		# Train
+		ww1_train = 1
 
 		# Infantry
 		infantry_weapons = 1
@@ -75,15 +98,24 @@ create_corps_commander={  name = "Wildbolz" id=81029 portrait_path="gfx/generals
 		heavy_field_gun1 = 1
 
 		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battlecruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
+		# ww1_destroyer0 = 1
+	# ww1_destroyer0_mtg = 1
+		# ww1_destroyer1 = 1
+	# ww1_destroyer1_mtg = 1
+		# ww1_light_cruiser1 = 1
+	# ww1_light_cruiser1_mtg = 1
+		# ww1_light_cruiser0 = 1
+	# ww1_light_cruiser0_mtg = 1
+		# ww1_battlecruiser0 = 1
+	# ww1_battlecruiser0_mtg = 1
+		# ww1_battleship0 = 1
+	# ww1_battleship0_mtg = 1
+		# ww1_submarine1 = 1
+	# ww1_submarine1_mtg = 1
+		# ww1_coastal_submarine1 = 1
+	# ww1_coastal_submarine1_mtg = 1
+		# transport = 1
+	# transport_mtg = 1
 
 		# Air
 
@@ -94,22 +126,16 @@ create_corps_commander={  name = "Wildbolz" id=81029 portrait_path="gfx/generals
 	}
 
 	set_politics = {
-	    parties = {
-	        neutrality = {
-	            popularity = 15
-	        }
-	        democratic = {
-	            popularity = 70
-	        }
-	        fascism = {
-	            popularity = 3
-	        }
-	        communism = {
-	            popularity = 2
-	        }
-	    }
-	    ruling_party = democratic last_election = "1908.10.29"
-	    election_frequency = 36 elections_allowed = yes
+	    ruling_party = democratic
+	    last_election = "1908.10.29"
+	    election_frequency = 36
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 80
+	    fascism = 3
+	    communism = 2
+	    neutrality = 15
 	}
 
 	add_ideas = {
@@ -181,15 +207,24 @@ create_corps_commander={  name = "Wildbolz" id=81029 portrait_path="gfx/generals
 		bonus_bertha1 = 1
 
 		# Navy
-		ww1_destroyer0 = 1
-		ww1_destroyer1 = 1
-		ww1_light_cruiser1 = 1
-		ww1_light_cruiser0 = 1
-		ww1_battleship0 = 1
-		ww1_battleship1 = 1
-		ww1_submarine1 = 1
-		ww1_coastal_submarine1 = 1
-		transport = 1
+		# ww1_destroyer0 = 1
+	# ww1_destroyer0_mtg = 1
+		# ww1_destroyer1 = 1
+	# ww1_destroyer1_mtg = 1
+		# ww1_light_cruiser1 = 1
+	# ww1_light_cruiser1_mtg = 1
+		# ww1_light_cruiser0 = 1
+	# ww1_light_cruiser0_mtg = 1
+		# ww1_battleship0 = 1
+	# ww1_battleship0_mtg = 1
+		# ww1_battleship1 = 1
+	# ww1_battleship1_mtg = 1
+		# ww1_submarine1 = 1
+	# ww1_submarine1_mtg = 1
+		# ww1_coastal_submarine1 = 1
+	# ww1_coastal_submarine1_mtg = 1
+		# transport = 1
+	# transport_mtg = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -200,24 +235,18 @@ create_corps_commander={  name = "Wildbolz" id=81029 portrait_path="gfx/generals
 		# Industry
 	}
 
-    set_politics = {
-        parties = {
-            neutrality = {
-                popularity = 15
-            }
-            democratic = {
-                popularity = 70
-            }
-            fascism = {
-                popularity = 3
-            }
-            communism = {
-                popularity = 2
-            }
-        }
-        ruling_party = democratic last_election = "1911.10.29"
-        election_frequency = 36 elections_allowed = yes
-    }
+	set_politics = {
+	    ruling_party = democratic
+	    last_election = "1911.10.29"
+	    election_frequency = 36
+	    elections_allowed = yes
+	}
+	set_popularities = {
+	    democratic = 80
+	    fascism = 3
+	    communism = 2
+	    neutrality = 15
+	}
 
 	add_ideas = {
 		neutrality_idea

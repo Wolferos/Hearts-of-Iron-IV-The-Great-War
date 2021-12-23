@@ -1,7 +1,7 @@
 ideas = {
-
 	mobilization_laws = { 
 		law = yes
+		use_list_view = yes
 
 		disarmed_nation = {
 						
@@ -15,6 +15,7 @@ ideas = {
 
 			modifier = {
 				conscription = 0.01
+				industrial_capacity_factory = 0.03	#mb should be a debuff?
 			}
 			
 			cancel_if_invalid = no
@@ -52,7 +53,7 @@ ideas = {
 			available = {
 				#has_manpower_for_recruit_change_to =  { value = 0.025 group = mobilization_laws }
 				threat > 0.10
-			}
+				}
 
 			modifier = {
 				conscription = 0.025
@@ -64,11 +65,11 @@ ideas = {
 		extensive_conscription = {
 			
 			available = {
-				#has_manpower_for_recruit_change_to = { value = 0.05 group = mobilization_laws }
+				#has_manpower_for_recruit_change_to = { 1 = 0.05 group = mobilization_laws }
 				threat > 0.4
 				has_war = yes
-				enemies_strength_ratio > 0.3						
-			}
+				enemies_strength_ratio > 0.3	
+				}
 			
 			cost = 150
 			removal_cost = -1
@@ -76,10 +77,19 @@ ideas = {
 			
 			modifier = {
 				conscription = 0.05
-				#industrial_capacity_factory = -0.1
-				#production_speed_buildings_factor = -0.1
-				training_time_factor = 0.1
+				industrial_capacity_factory = -0.01
+				production_speed_buildings_factor = -0.01
+				training_time_factor = 0.03
 			}
+			ai_will_do = {
+   				factor = 100
+				
+			modifier = {
+				factor = 0
+				has_manpower > 500000
+			}
+				
+			}	
 			
 			cancel_if_invalid = no
 		}
@@ -91,7 +101,7 @@ ideas = {
 				#has_manpower_for_recruit_change_to =  { value = 0.1 group = mobilization_laws }
 				threat > 0.6
 				has_war = yes
-				enemies_strength_ratio > 0.6
+				enemies_strength_ratio > 0.6				
 			}
 			
 			cost = 150
@@ -100,11 +110,19 @@ ideas = {
 
 			modifier = {
 				conscription = 0.1
-				industrial_capacity_factory = -0.1
-				production_speed_buildings_factor = -0.1
-				training_time_factor = 0.2
+				industrial_capacity_factory = -0.06
+				production_speed_buildings_factor = -0.06
+				training_time_factor = 0.1
 			}
-			
+			ai_will_do = {
+   				factor = 100
+				
+			modifier = {
+				factor = 0
+				has_manpower > 500000
+			}
+				
+			}		
 			cancel_if_invalid = no
 		}
 		
@@ -124,11 +142,20 @@ ideas = {
 			
 			modifier = {
 				conscription = 0.2
-				industrial_capacity_factory = -0.3
-				production_speed_buildings_factor = -0.3
+				industrial_capacity_factory = -0.17
+				production_speed_buildings_factor = -0.17
 				#XP from reinforcement penalty (small)
-				training_time_factor = 0.3
+				training_time_factor = 0.1
 			}
+			ai_will_do = {
+   				factor = 100
+				
+			modifier = {
+				factor = 0
+				has_manpower > 500000
+			}
+				
+			}	
 			
 			cancel_if_invalid = no
 		}
@@ -141,7 +168,7 @@ ideas = {
 				has_war = yes
 				threat > 0.9
 				enemies_strength_ratio > 1
-			}
+				}
 			
 			cost = 150
 			removal_cost = -1
@@ -151,8 +178,17 @@ ideas = {
 				conscription = 0.25
 				industrial_capacity_factory = -0.4
 				production_speed_buildings_factor = -0.4
-				training_time_factor = 0.5
+				training_time_factor = 0.17
 			}
+			ai_will_do = {
+   				factor = 100
+				
+			modifier = {
+				factor = 0
+				has_manpower > 500000
+			}
+				
+			}	
 			
 			cancel_if_invalid = no
 		}
