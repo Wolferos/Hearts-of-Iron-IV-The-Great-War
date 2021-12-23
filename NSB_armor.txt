@@ -28,7 +28,17 @@ technologies = {
 			leads_to_tech = ww1_heavy_tank__nostepback
 			research_cost_coeff = 1
 		}
-	
+		path =
+		{
+			leads_to_tech = engine_tech_1
+			research_cost_coeff = 1
+		}
+		path =
+		{
+			leads_to_tech = armor_tech_1
+			research_cost_coeff = 1
+		}
+			
 		research_cost = 2
 		start_year = 1910
 		folder = {
@@ -486,9 +496,7 @@ technologies = {
 			light_tank_artillery_chassis_2
 			light_tank_aa_chassis_2
 		}
-		enable_equipment_modules = {
-			tank_welded_armor
-		}
+		
 		path = {
 			leads_to_tech = advanced_light_tank_chassis
 			research_cost_coeff = 1
@@ -559,9 +567,7 @@ technologies = {
 			light_tank_artillery_chassis_3
 			light_tank_aa_chassis_3
 		}
-		enable_equipment_modules = {
-			armor_skirts
-		}
+		
 		path = {
 			leads_to_tech = main_battle_tank_chassis
 			research_cost_coeff = 1
@@ -621,9 +627,7 @@ technologies = {
 			medium_tank_artillery_chassis_1
 			medium_tank_aa_chassis_1
 		}
-		enable_equipment_modules = {
-			tank_welded_armor
-		}
+		
 		enable_subunits = {
 			medium_armor
 		}
@@ -728,9 +732,7 @@ technologies = {
 			medium_tank_artillery_chassis_2
 			medium_tank_aa_chassis_2
 		}
-		enable_equipment_modules = {
-			armor_skirts
-		}
+		
 		path = {
 			leads_to_tech = advanced_medium_tank_chassis
 			research_cost_coeff = 1
@@ -1113,6 +1115,10 @@ technologies = {
 		}
 	}
 	armor_tech_1 = {
+		dependencies = {
+			gwtank__nostepback = 1
+			tank_unlocker2__nostepback = 1
+		}
 		enable_equipment_modules = {
 			tank_welded_armor
 		}
@@ -1121,7 +1127,7 @@ technologies = {
 			leads_to_tech = armor_tech_2
 			research_cost_coeff = 1
 		}
-
+		
 		on_research_complete = {
 			custom_effect_tooltip = armor_tech_1_tt
 		}
@@ -1131,7 +1137,7 @@ technologies = {
 		start_year = 1934
 		folder = {
 			name = nsb_armour_folder
-			position = { x = -8 y = 14 }
+			position = { x = 11 y = 14 }
 		}
 
 		ai_will_do = {
@@ -1186,7 +1192,7 @@ technologies = {
 		start_year = 1936
 		folder = {
 			name = nsb_armour_folder
-			position = { x = -8 y = 16 }
+			position = { x = 11 y = 16 }
 		}
 
 		ai_will_do = {
@@ -1239,7 +1245,7 @@ technologies = {
 		start_year = 1941
 		folder = {
 			name = nsb_armour_folder
-			position = { x = -8 y = 20 }
+			position = { x = 11 y = 20 }
 		}
 
 		ai_will_do = {
@@ -1281,7 +1287,7 @@ technologies = {
 		start_year = 1944
 		folder = {
 			name = nsb_armour_folder
-			position = { x = -8 y = 22 }
+			position = { x = 11 y = 22 }
 		}
 
 		on_research_complete = {
@@ -1324,10 +1330,13 @@ technologies = {
 
 	engine_tech_1 = {
 
-
 		path = {
 			leads_to_tech = engine_tech_2
 			research_cost_coeff = 1
+		}
+		dependencies = {
+			gwtank__nostepback = 1
+			tank_unlocker2__nostepback = 1
 		}
 		on_research_complete = {
 			custom_effect_tooltip = engine_tech_1_tt
@@ -1337,7 +1346,7 @@ technologies = {
 		start_year = 1934
 		folder = {
 			name = nsb_armour_folder
-			position = { x = -6 y = 14 }
+			position = { x = 14 y = 14 }
 		}
 
 		ai_will_do = {
@@ -1390,7 +1399,7 @@ technologies = {
 		start_year = 1936
 		folder = {
 			name = nsb_armour_folder
-			position = { x = -6 y = 16 }
+			position = { x = 14 y = 16 }
 		}
 
 		ai_will_do = {
@@ -1441,7 +1450,7 @@ technologies = {
 		start_year = 1941
 		folder = {
 			name = nsb_armour_folder
-			position = { x = -6 y = 20 }
+			position = { x = 14 y = 20 }
 		}
 
 		ai_will_do = {
@@ -1483,7 +1492,7 @@ technologies = {
 		start_year = 1944
 		folder = {
 			name = nsb_armour_folder
-			position = { x = -6 y = 22 }
+			position = { x = 14 y = 22 }
 		}
 		on_research_complete = {
 			custom_effect_tooltip = engine_tech_4_tt
