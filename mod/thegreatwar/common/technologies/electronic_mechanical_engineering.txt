@@ -104,7 +104,6 @@ technologies = {
 			tank_small_cannon
 			secondary_turret_small_cannon
 
-
 			tank_torsion_bar_suspension
 			tank_riveted_armor
 			tank_gasoline_engine
@@ -286,7 +285,7 @@ technologies = {
 
 		# units with radios can more efficiently join combats when there is room
 		land_reinforce_rate = 0.02
-		
+		coordination_bonus = 0.04
 		path = {
 			leads_to_tech = supertech1
 			research_cost_coeff = 1
@@ -299,7 +298,9 @@ technologies = {
 			name = electronics_folder
 			position = { x = -2 y = 2 }
 		}
-		
+		enable_equipment_modules = { 
+			tank_radio_1
+		}
 		folder = {
 			name = support_folder
 			position = { x = 11 y = 9 } # x = 12 y = 0
@@ -406,7 +407,9 @@ technologies = {
 			leads_to_tech = radio_detection
 			research_cost_coeff = 1
 		}
-		
+		enable_equipment_modules = { 
+			tank_radio_2
+		}
 		research_cost = 1.0
 		start_year = 1936
 		
@@ -438,7 +441,7 @@ technologies = {
 			building = radar_station
 			level = 1
 		}
-		
+		coordination_bonus = 0.01
 		path = {
 			leads_to_tech = decimetric_radar 
 			research_cost_coeff = 1
@@ -470,10 +473,12 @@ technologies = {
 			leads_to_tech = improved_decimetric_radar 
 			research_cost_coeff = 1
 		}
-		
+		coordination_bonus = 0.01
 		research_cost = 1.5
 		start_year = 1938
-		
+		enable_equipment_modules = { 
+			ship_radar_1
+		}
 		folder = {
 			name = electronics_folder
 			position = { x = -2 y = 16 }
@@ -501,7 +506,10 @@ technologies = {
 			building = radar_station
 			level = 3
 		}
-		
+		coordination_bonus = 0.01
+		enable_equipment_modules = { 
+			ship_radar_2
+		}
 		path = {
 			leads_to_tech = centimetric_radar 
 			research_cost_coeff = 1
@@ -532,7 +540,11 @@ technologies = {
 			building = radar_station
 			level = 4
 		}
-		
+		coordination_bonus = 0.01
+		enable_equipment_modules = { 
+			ship_radar_3
+			tank_radio_3
+		}
 		path = {
 			leads_to_tech = improved_centimetric_radar 
 			research_cost_coeff = 1
@@ -563,7 +575,10 @@ technologies = {
 			building = radar_station
 			level = 5
 		}
+		coordination_bonus = 0.01
 		
+		static_anti_air_hit_chance_factor = 0.2
+
 		path = {
 			leads_to_tech = advanced_centimetric_radar 
 			research_cost_coeff = 1
@@ -594,7 +609,10 @@ technologies = {
 			building = radar_station
 			level = 6
 		}		
-		
+		coordination_bonus = 0.01
+		enable_equipment_modules = { 
+			ship_radar_4
+		}
 		research_cost = 2.5
 		start_year = 1942
 		
@@ -1014,7 +1032,10 @@ technologies = {
 			leads_to_tech = computing_machine 
 			research_cost_coeff = 1
 		}
-		
+		path = {
+			leads_to_tech = basic_fire_control_system
+			research_cost_coeff = 1
+		}
 		research_cost = 1.0
 		start_year = 1936
 		
@@ -1051,7 +1072,10 @@ technologies = {
 			leads_to_tech = basic_decryption 
 			research_cost_coeff = 1
 		}
-		
+		path = {
+			leads_to_tech = improved_computing_machine 
+			research_cost_coeff = 1
+		}
 		research_cost = 2.5
 		start_year = 1938
 		
@@ -1090,7 +1114,11 @@ technologies = {
 			leads_to_tech = improved_decryption 
 			research_cost_coeff = 1
 		}
-		
+		path = {
+			leads_to_tech = improved_fire_control_system
+			research_cost_coeff = 1
+		}
+	
 		research_cost = 2.5
 		start_year = 1940
 		
@@ -1125,7 +1153,10 @@ technologies = {
 			leads_to_tech = advanced_decryption 
 			research_cost_coeff = 1
 		}
-		
+		path = {
+			leads_to_tech = advanced_fire_control_system
+			research_cost_coeff = 1
+		}
 		research_cost = 2.5
 		start_year = 1942
 		
@@ -1554,4 +1585,126 @@ technologies = {
 			nuclear
 		}
 	}
+		basic_fire_control_system = {
+
+		allow_branch = {
+			has_dlc = "Man the Guns"
+		}
+
+		enable_equipment_modules = { 
+			ship_fire_control_system_1
+		}
+		
+		research_cost = 1
+		
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 12 }
+		}
+		
+		ai_will_do = {
+			factor = 0.75
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+					tag = JAP
+				}
+				factor = 3
+			}
+			modifier = {
+				OR = {
+					can_research = improved_fire_control_system
+					has_tech = improved_fire_control_system
+				}
+				factor = 0
+			}
+		}
+		
+		categories = {
+			electronics
+			computing_tech
+			naval_equipment
+		}
+	}
+
+	improved_fire_control_system = {
+
+		enable_equipment_modules = { 
+			ship_fire_control_system_2
+		}
+		
+		research_cost = 1
+		allow_branch = {
+			has_dlc = "Man the Guns"
+		}
+
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 22 }
+		}
+		
+		ai_will_do = {
+			factor = 0.75
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+					tag = JAP
+				}
+				factor = 3
+			}
+			modifier = {
+				OR = {
+					can_research = advanced_fire_control_system
+					has_tech = advanced_fire_control_system
+				}
+				factor = 0
+			}
+		}
+		
+		categories = {
+			electronics
+			computing_tech
+			naval_equipment
+		}
+	}
+
+	advanced_fire_control_system = {
+
+		enable_equipment_modules = { 
+			ship_fire_control_system_3
+		}
+
+		allow_branch = {
+			has_dlc = "Man the Guns"
+		}
+		
+		research_cost = 1
+		
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 26 }
+		}
+		
+		ai_will_do = {
+			factor = 0.75
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+					tag = JAP
+				}
+				factor = 3
+			}
+			
+		}
+		
+		categories = {
+			electronics
+			computing_tech
+			naval_equipment
+		}
+	}
+
 }
