@@ -15,5 +15,5 @@ tags={
 }
 picture="tgw_picture.png"
 version="0.17.3"
-supported_version="1.11.4"
+supported_version="1.11.5"
 remote_file_id="699709023"
