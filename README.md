@@ -7,9 +7,9 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.17.2 "Railways" (on Steam/Paradox/Mod DB/NexusMods) / 0.17.3 WIP "Railways" (on GitHub)
+**Current Version:** 0.17.3 "Railways"
 
-**Compatible with:** Hearts of Iron IV "Barbarossa" 1.11.4 (with or without Paid DLC)
+**Compatible with:** Hearts of Iron IV "Barbarossa" 1.11.5 (with or without Paid DLC)
 
 **Supported Languages:**
 - English
@@ -113,6 +113,7 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - sano2
    - Landorin
    - Ecrfour
+   - renoth
 ----------
 [Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow
 [Austro-Hungarians Voices](http://steamcommunity.com/sharedfiles/filedetails/?id=946923873) made by Geodomus 
