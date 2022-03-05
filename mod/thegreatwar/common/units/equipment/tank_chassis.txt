@@ -1,9 +1,15 @@
 equipments = {
 
 	light_tank_chassis = {
-		year = 1915 # TGW Tank Prototype
+		year = 1915
 		is_archetype = yes
 		is_buildable = no
+
+		can_be_produced = {
+			NOT = {
+				has_idea = BUL_army_restrictions
+			}
+		}
 
 		picture = archetype_light_tank_equipment
 		type = armor
@@ -133,7 +139,9 @@ equipments = {
 			count < 2
 		}
 		default_modules = {
-			main_armament_slot = empty
+			#main_armament_slot = empty
+			main_armament_slot = tank_small_cannon
+
 			turret_type_slot = tank_light_one_man_tank_turret
 			suspension_type_slot = tank_bogie_suspension
 			armor_type_slot = tank_riveted_armor
@@ -154,20 +162,46 @@ equipments = {
 
 	}
 
-	light_tank_chassis_0 = { #also great war tank
-		abbreviation = "lt0"
-		derived_variant_name = light_tank_equipment_0
+	light_tank_chassis_1917 = { # Light 1917
+		abbreviation = "l17"
+		derived_variant_name = ww1_light_tank_equipment_1
 		visual_level = 0
-
-		year = 1917 # TGW Early Light Tank I
-
+		year = 1917
 		archetype = light_tank_chassis
 		priority = 2000
 		module_slots = inherit
 
-		default_modules = {
-			main_armament_slot = tank_small_cannon
+		upgrades = {
+			tank_nsb_engine_upgrade
+			tank_nsb_armor_upgrade
 		}
+	}
+
+	light_tank_chassis_1922 = { # Light 1922
+		parent = light_tank_chassis_1917
+		abbreviation = "l22"
+		derived_variant_name = ww1_light_tank_equipment_2
+		visual_level = 0
+		year = 1922
+		archetype = light_tank_chassis
+		priority = 2000
+		module_slots = inherit
+
+		upgrades = {
+			tank_nsb_engine_upgrade
+			tank_nsb_armor_upgrade
+		}
+	}
+
+	light_tank_chassis_1928 = { # Light 1928
+		parent = light_tank_chassis_1922
+		abbreviation = "lt0"
+		derived_variant_name = ww1_light_tank_equipment_3
+		visual_level = 0
+		year = 1928
+		archetype = light_tank_chassis
+		priority = 2000
+		module_slots = inherit
 
 		upgrades = {
 			tank_nsb_engine_upgrade
@@ -176,12 +210,12 @@ equipments = {
 	}
 
 	light_tank_chassis_1 = {
+		parent = light_tank_chassis_1928
 		abbreviation = "lt1"
 		derived_variant_name = light_tank_equipment_1
 		visual_level = 0
 		year = 1934
 		archetype = light_tank_chassis
-		parent = light_tank_chassis_0
 		priority = 2000
 		module_slots = inherit
 		maximum_speed = 4
@@ -232,7 +266,11 @@ equipments = {
 		year = 1922
 		is_archetype = yes
 		is_buildable = no
-
+		can_be_produced = {
+			NOT = {
+				has_idea = BUL_army_restrictions
+			}
+		}
 		picture = archetype_medium_tank_equipment
 		type = armor
 		group_by = archetype
@@ -359,7 +397,9 @@ equipments = {
 			count < 2
 		}
 		default_modules = {
-			main_armament_slot = empty
+			#main_armament_slot = empty
+			main_armament_slot = tank_medium_cannon
+
 			turret_type_slot = tank_medium_one_man_tank_turret
 			suspension_type_slot = tank_bogie_suspension
 			armor_type_slot = tank_riveted_armor
@@ -447,15 +487,15 @@ equipments = {
 		}
 	}
 
-	# =================================================================================================================
-
 	heavy_tank_chassis = {
-
-		year = 1915 # TGW Tank Prototype
-
+		year = 1922
 		is_archetype = yes
 		is_buildable = no
-
+		can_be_produced = {
+			NOT = {
+				has_idea = BUL_army_restrictions
+			}
+		}
 		picture = archetype_heavy_tank_equipment
 		type = armor
 		group_by = archetype
@@ -580,7 +620,9 @@ equipments = {
 			count < 2
 		}
 		default_modules = {
-			main_armament_slot = empty
+			#main_armament_slot = empty
+			main_armament_slot = tank_heavy_cannon
+
 			turret_type_slot = tank_heavy_two_man_tank_turret
 			suspension_type_slot = tank_bogie_suspension
 			armor_type_slot = tank_riveted_armor
@@ -601,104 +643,76 @@ equipments = {
 
 	}
 
-	heavy_tank_chassis_1916 = { # Heavy Tank I ::: 1916 (WW1)
 
-		# parent = NONE, it's the first Heavy Tank
+	heavy_tank_chassis_1916 = { # Heavy 1916
+		abbreviation = "h16"
+		derived_variant_name = ww1_heavy_tank_equipment_1
 		visual_level = 0
-		archetype = heavy_tank_chassis
-		priority = 2000
-		module_slots = inherit
-
-		abbreviation = "hv0"
-		derived_variant_name = heavy_tank_equipment_0
-
 		year = 1916
-
-		default_modules = {
-			main_armament_slot = tank_heavy_cannon
-		}
-
+		archetype = heavy_tank_chassis
+		priority = 2000
+		module_slots = inherit
 		upgrades = {
 			tank_nsb_engine_upgrade
 			tank_nsb_armor_upgrade
 		}
-
-		maximum_speed = 3
-		build_cost_ic = 9.2
-		reliability = 0.9
-		armor_value = 22
+		maximum_speed = 4
+		build_cost_ic = 10
+		reliability = 1
+		armor_value = 30
 	}
 
-	heavy_tank_chassis_1917 = { # Heavy Tank II ::: 1917 (WW1)
-
-		parent = heavy_tank_chassis_0
+	heavy_tank_chassis_1917 = { # Heavy 1917
+		parent = heavy_tank_chassis_1916
+		abbreviation = "h17"
+		derived_variant_name = ww1_heavy_tank_equipment_2
 		visual_level = 0
-		archetype = heavy_tank_chassis
-		priority = 2000
-		module_slots = inherit
-
-		abbreviation = "hv1"
-		derived_variant_name = heavy_tank_equipment_1
-
 		year = 1917
-
-		default_modules = {
-			main_armament_slot = tank_heavy_cannon
-		}
-
-		upgrades = {
-			tank_nsb_engine_upgrade
-			tank_nsb_armor_upgrade
-		}
-
-		maximum_speed = 3.2
-		build_cost_ic = 9.6
-		reliability = 0.95
-		armor_value = 23
-	}
-
-	heavy_tank_chassis_1928 = { # Heavy Tank III ::: 1928 (Interwar)
-
-		parent = heavy_tank_chassis_1
-		visual_level = 0
 		archetype = heavy_tank_chassis
 		priority = 2000
 		module_slots = inherit
-
-		abbreviation = "hv2"
-		derived_variant_name = heavy_tank_equipment_2
-
-		year = 1928
-
-		default_modules = {
-			main_armament_slot = tank_heavy_cannon
-		}
-
 		upgrades = {
 			tank_nsb_engine_upgrade
 			tank_nsb_armor_upgrade
 		}
-
-		maximum_speed = 3.5
-		build_cost_ic = 9.9
-		reliability = 0.98
-		armor_value = 25
+		maximum_speed = 4
+		build_cost_ic = 10
+		reliability = 1
+		armor_value = 30
 	}
 
+	heavy_tank_chassis_1928 = { # Heavy 1928
+		parent = heavy_tank_chassis_1917
+		abbreviation = "h28"
+		derived_variant_name = ww1_heavy_tank_equipment_3
+		visual_level = 0
+		year = 1917
+		archetype = heavy_tank_chassis
+		priority = 2000
+		module_slots = inherit
+		upgrades = {
+			tank_nsb_engine_upgrade
+			tank_nsb_armor_upgrade
+		}
+		maximum_speed = 4
+		build_cost_ic = 10
+		reliability = 1
+		armor_value = 30
+	}
 
-	heavy_tank_chassis_1 = { # Heavy Tank 1936 (Vanilla)
+	heavy_tank_chassis_1 = {
+		parent = heavy_tank_chassis_1928
 		abbreviation = "hv1"
 		derived_variant_name = heavy_tank_equipment_1
 		visual_level = 0
 		year = 1936
 		archetype = heavy_tank_chassis
-		parent = heavy_tank_chassis_1928
 		priority = 2000
 		module_slots = inherit
 		armor_value = 35
 	}
 
-	heavy_tank_chassis_2 = { # Heavy Tank 1940 (Vanilla)
+	heavy_tank_chassis_2 = {
 		abbreviation = "hv2"
 		derived_variant_name = heavy_tank_equipment_2
 		visual_level = 1
@@ -717,7 +731,7 @@ equipments = {
 		}
 	}
 
-	heavy_tank_chassis_3 = { # Heavy Tank 1943 (Vanilla)
+	heavy_tank_chassis_3 = {
 		abbreviation = "hv3"
 		derived_variant_name = heavy_tank_equipment_3
 		visual_level = 2
@@ -736,14 +750,15 @@ equipments = {
 		}
 	}
 
-
-	# =================================================================================================================
-
 	modern_tank_chassis = {
 		year = 1948
 		is_archetype = yes
 		is_buildable = no
-
+		can_be_produced = {
+			NOT = {
+				has_idea = BUL_army_restrictions
+			}
+		}
 		picture = archetype_modern_tank_equipment
 		type = armor
 		group_by = archetype
@@ -866,6 +881,7 @@ equipments = {
 
 		default_modules = {
 			main_armament_slot = empty
+
 			turret_type_slot = tank_modern_tank_turret
 			suspension_type_slot = tank_bogie_suspension
 			armor_type_slot = tank_riveted_armor
@@ -906,7 +922,11 @@ equipments = {
 		year = 1948
 		is_archetype = yes
 		is_buildable = no
-
+		can_be_produced = {
+			NOT = {
+				has_idea = BUL_army_restrictions
+			}
+		}
 		picture = archetype_super_heavy_tank_equipment
 		type = armor
 		group_by = archetype
@@ -1030,7 +1050,9 @@ equipments = {
 			count < 2
 		}
 		default_modules = {
-			main_armament_slot = empty
+			#main_armament_slot = empty
+			main_armament_slot = tank_heavy_cannon
+
 			turret_type_slot = tank_super_heavy_three_man_tank_turret
 			suspension_type_slot = tank_bogie_suspension
 			armor_type_slot = tank_riveted_armor
@@ -1052,9 +1074,9 @@ equipments = {
 
 	}
 
-	super_heavy_tank_chassis_1917 = { # Super Heavy Tank (WW1) 1917
-		abbreviation = "sh0"
-		derived_variant_name = super_heavy_tank_equipment_0
+	super_heavy_tank_chassis_1917 = {
+		abbreviation = "s17"
+		derived_variant_name = ww1_super_heavy_tank_equipment
 		visual_level = 0
 		year = 1917
 		archetype = super_heavy_tank_chassis
@@ -1064,16 +1086,11 @@ equipments = {
 			tank_nsb_engine_upgrade
 			tank_nsb_armor_upgrade
 		}
-		maximum_speed = 1.5
-		resources = {
-			steel = 4
-			chromium = 0
-		}
-		manpower = 0
 	}
 
-	super_heavy_tank_chassis_1 = { # Super Heavy Tank (WW2) 1943
-		abbreviation = "sh1"
+	super_heavy_tank_chassis_1 = {
+		parent = super_heavy_tank_chassis_1917
+		abbreviation = "sh0"
 		derived_variant_name = super_heavy_tank_equipment_1
 		visual_level = 0
 		year = 1943
@@ -1090,7 +1107,11 @@ equipments = {
 		year = 1936
 		is_archetype = yes
 		is_buildable = no
-
+		can_be_produced = {
+			NOT = {
+				has_idea = BUL_army_restrictions
+			}
+		}
 		picture = archetype_amphibious_tank_equipment
 		type = armor
 		group_by = archetype
