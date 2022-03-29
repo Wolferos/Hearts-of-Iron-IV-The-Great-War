@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.17.4 "Railways"
+**Current Version:** 0.17.6 "Railways"
 
 **Compatible with:** Hearts of Iron IV "Barbarossa" 1.11.7 (with or without Paid DLC)
 
@@ -114,6 +114,7 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - Landorin
    - Ecrfour
    - renoth
+   - mi105
 ----------
 [Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow
 [Austro-Hungarians Voices](http://steamcommunity.com/sharedfiles/filedetails/?id=946923873) made by Geodomus 
