@@ -1994,7 +1994,7 @@ focus_tree = {
 		prerequisite = { focus = SWE_ww1_central_power }
 
 		completion_reward = { 
-			add_tech_bonus={ name=SWE_ww1_germany_focus bonus=0.15 uses=2 category=land_doctrine }
+			add_doctrine_cost_reduction={ name=SWE_ww1_germany_focus cost_reduction=0.15 uses=2 category=land_doctrine }
 			GER = { add_equipment_to_stockpile = { type = infantry_equipment amount = -1000 } }
 			add_equipment_to_stockpile = { type = infantry_equipment amount = 1000 } 
 			army_experience=20
@@ -2177,7 +2177,7 @@ focus_tree = {
 	focus = {
 		id = SWE_ww1_army_effort
 		icon = GFX_goal_generic_allies_build_infantry
-		completion_reward = { army_experience=15 add_tech_bonus={ name=land_doc_bonus bonus=0.2 uses=1 category=land_doctrine } }
+		completion_reward = { army_experience=15 add_doctrine_cost_reduction={ name=land_doc_bonus cost_reduction=0.2 uses=1 category=land_doctrine } }
 		cost = 10
 		x = 17
 		y = 0
@@ -2235,7 +2235,7 @@ focus_tree = {
 		prerequisite = { focus=SWE_ww1_army_effort }
 		available = { date > 1911.1.1 }
 		icon = GFX_goal_generic_army_doctrines
-		completion_reward = { army_experience=15 add_tech_bonus={ name=land_doc_bonus bonus=0.2 uses=1 category=land_doctrine } }
+		completion_reward = { army_experience=15 add_doctrine_cost_reduction={ name=land_doc_bonus cost_reduction=0.2 uses=1 category=land_doctrine } }
 		cost = 10
 		x = 17
 		y = 2
@@ -2319,7 +2319,7 @@ focus_tree = {
 		prerequisite = { focus=SWE_ww1_doctrine_effort }
 		available = { date > 1913.1.1 }
 		icon = GFX_goal_generic_army_doctrines
-		completion_reward = { army_experience=15 add_tech_bonus={ name=land_doc_bonus bonus=0.2 uses=1 category=land_doctrine } }
+		completion_reward = { army_experience=15 add_doctrine_cost_reduction={ name=land_doc_bonus cost_reduction=0.2 uses=1 category=land_doctrine } }
 		cost = 10
 		x = 17
 		y = 4
@@ -2343,7 +2343,7 @@ focus_tree = {
 		prerequisite = { focus=SWE_ww1_doctrine_effort_2 }
 		available = { date > 1915.1.1 }
 		icon = GFX_goal_generic_army_doctrines
-		completion_reward = { army_experience=15 add_tech_bonus={ name=land_doc_bonus bonus=0.2 uses=1 category=land_doctrine } }
+		completion_reward = { army_experience=15 add_doctrine_cost_reduction={ name=land_doc_bonus cost_reduction=0.2 uses=1 category=land_doctrine } }
 		cost = 10
 		x = 17
 		y = 6
@@ -2408,8 +2408,8 @@ focus_tree = {
 	focus = {
 		id = SWE_ww1_aviation_effort
 		icon = GFX_goal_generic_build_airforce
-		completion_reward = { air_experience=25 if={ limit={ capital_scope={ NOT={ free_building_slots={ building=air_base size > 1 } } } } random_owned_state={ limit={ free_building_slots={ building=air_base size > 1 } } add_building_construction={ type=air_base level=2 instant_build=yes } ROOT={ set_country_flag=aviation_effort_AB } } } if={ limit={ capital_scope={ free_building_slots={ building=air_base size > 1 } } } capital_scope={ add_building_construction={ type=air_base level=2 instant_build=yes } ROOT={ set_country_flag=aviation_effort_AB } } } add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
-		complete_tooltip = { air_experience=25 if={ limit={ has_country_flag=aviation_effort_AB } add_building_construction={ type=air_base level=2 instant_build=yes } }			 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine }			 }
+		completion_reward = { air_experience=25 if={ limit={ capital_scope={ NOT={ free_building_slots={ building=air_base size > 1 } } } } random_owned_state={ limit={ free_building_slots={ building=air_base size > 1 } } add_building_construction={ type=air_base level=2 instant_build=yes } ROOT={ set_country_flag=aviation_effort_AB } } } if={ limit={ capital_scope={ free_building_slots={ building=air_base size > 1 } } } capital_scope={ add_building_construction={ type=air_base level=2 instant_build=yes } ROOT={ set_country_flag=aviation_effort_AB } } } add_doctrine_cost_reduction={ name=air_doc_bonus cost_reduction=0.15 uses=1 category=air_doctrine } }
+		complete_tooltip = { air_experience=25 if={ limit={ has_country_flag=aviation_effort_AB } add_building_construction={ type=air_base level=2 instant_build=yes } }			 add_doctrine_cost_reduction={ name=air_doc_bonus cost_reduction=0.15 uses=1 category=air_doctrine }			 }
 		cost = 10
 		x = 22
 		y = 0
@@ -2420,7 +2420,7 @@ focus_tree = {
 		id = SWE_ww1_aviation_effort_2
 		prerequisite = { focus=SWE_ww1_aviation_effort }
 		icon = GFX_goal_generic_air_doctrine
-		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
+		completion_reward = { air_experience=15 add_doctrine_cost_reduction={ name=air_doc_bonus cost_reduction=0.15 uses=1 category=air_doctrine } }
 		cost = 10
 		x = 22
 		y = 1
@@ -2470,7 +2470,7 @@ focus_tree = {
 		prerequisite = { focus=SWE_ww1_bomber_focus focus=SWE_ww1_fighter_focus focus=SWE_ww1_airship_focus }
 		available = { date > 1912.1.1 }
 		icon = GFX_goal_generic_air_doctrine
-		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
+		completion_reward = { air_experience=15 add_doctrine_cost_reduction={ name=air_doc_bonus cost_reduction=0.15 uses=1 category=air_doctrine } }
 		cost = 10
 		x = 22
 		y = 3
@@ -2518,7 +2518,7 @@ focus_tree = {
 		prerequisite = { focus=SWE_ww1_pilotformation_1 focus=SWE_ww1_aircraftprod_1 focus=SWE_ww1_airbomb_1 }
 		available = { date > 1914.1.1 }
 		icon = GFX_goal_generic_air_doctrine
-		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
+		completion_reward = { air_experience=15 add_doctrine_cost_reduction={ name=air_doc_bonus cost_reduction=0.15 uses=1 category=air_doctrine } }
 		cost = 10
 		x = 22
 		y = 5
@@ -2566,7 +2566,7 @@ focus_tree = {
 		prerequisite = { focus=SWE_ww1_pilotformation_2 focus=SWE_ww1_aircraftprod_2  focus=SWE_ww1_airbomb_2 }
 		available = { date > 1916.1.1 }
 		icon = GFX_goal_generic_air_doctrine
-		completion_reward = { air_experience=15 add_tech_bonus={ name=air_doc_bonus bonus=0.15 uses=1 category=air_doctrine } }
+		completion_reward = { air_experience=15 add_doctrine_cost_reduction={ name=air_doc_bonus cost_reduction=0.15 uses=1 category=air_doctrine } }
 		cost = 10
 		x = 22
 		y = 7
@@ -3183,7 +3183,7 @@ focus_tree = {
 		id = SWE_ww1_newnavalcanons_1
 		prerequisite = { focus=SWE_ww1_naval_effort }
 		icon = GFX_hoi4tgw_navalcanons
-		completion_reward = { navy_experience=15 add_tech_bonus={ name=newnavalcanons_1_bonus bonus=0.15 uses=1 category=naval_doctrine } }
+		completion_reward = { navy_experience=15 add_doctrine_cost_reduction={ name=newnavalcanons_1_bonus cost_reduction=0.15 uses=1 category=naval_doctrine } }
 		cost = 10
 		x = 35
 		y = 1
@@ -3208,7 +3208,7 @@ focus_tree = {
 		prerequisite = { focus=SWE_ww1_dreadnought_effort }
 		available = { date > 1912.1.1 }
 		icon = GFX_goal_generic_army_artillery
-		completion_reward = { navy_experience=15 add_tech_bonus={ name=newnavalcanons_2_bonus bonus=0.15 uses=1 category=naval_doctrine } }
+		completion_reward = { navy_experience=15 add_doctrine_cost_reduction={ name=newnavalcanons_2_bonus cost_reduction=0.15 uses=1 category=naval_doctrine } }
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 35
@@ -3349,7 +3349,7 @@ focus_tree = {
 		prerequisite = { focus=SWE_ww1_destroyer_effort }
 		available = { date > 1916.1.1 }
 		icon = GFX_goal_generic_army_artillery
-		completion_reward = { navy_experience=15 add_tech_bonus={ name=newnavalcanons_3_bonus bonus=0.2 uses=1 category=naval_doctrine } }
+		completion_reward = { navy_experience=15 add_doctrine_cost_reduction={ name=newnavalcanons_3_bonus cost_reduction=0.2 uses=1 category=naval_doctrine } }
 		ai_will_do = { factor=10 modifier={ factor=0 all_owned_state={ OR={ is_coastal=no dockyard < 1 } } } }
 		cost = 10
 		x = 35
@@ -3385,7 +3385,7 @@ focus_tree = {
 		prerequisite = { focus=SWE_ww1_navyreform }
 		available = { date > 1918.1.1 }
 		icon = GFX_goal_generic_navy_anti_submarine
-		completion_reward = { navy_experience=15 add_tech_bonus={ name=newnavalcanons_3_bonus bonus=0.3 uses=1 category=naval_doctrine } }
+		completion_reward = { navy_experience=15 add_doctrine_cost_reduction={ name=newnavalcanons_3_bonus cost_reduction=0.3 uses=1 category=naval_doctrine } }
 		cost = 10
 		x = 36
 		y = 9
