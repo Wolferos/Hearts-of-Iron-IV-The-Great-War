@@ -9,7 +9,7 @@
 
 **Current Version:** 0.17.6 "Railways"
 
-**Compatible with:** Hearts of Iron IV "Barbarossa" 1.11.7 (with or without Paid DLC)
+**Compatible with:** Hearts of Iron IV "Barbarossa" 1.11.9 (with or without Paid DLC)
 
 **Supported Languages:**
 - English
