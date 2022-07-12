@@ -14,30 +14,43 @@ set_convoys = 100
 
 # LEADER
 recruit_character = CAN_wilfrid_laurier
+recruit_character = CAN_albert_grey
+recruit_character = CAN_regency_council
+recruit_character = CAN_crown_prince_arthur
+recruit_character = CAN_arthur_meighen
+recruit_character = CAN_robert_borden # LEADER IN 1914
 
 # GENERALS
+recruit_character = CAN_edwin_alderson
 recruit_character = CAN_boyle
 recruit_character = CAN_burstall_he
 recruit_character = CAN_currie_ja
 recruit_character = CAN_hartmcharg
-recruit_character = CAN_hughes
+recruit_character = CAN_samuel_hughes
 recruit_character = CAN_hutton
+recruit_character = CAN_herbert_cyril_thacker
 recruit_character = CAN_lake
-recruit_character = CAN_lipsett_lj
+recruit_character = CAN_louis_lipsett
 recruit_character = CAN_loomis_cb
 recruit_character = CAN_macdonell_ac
 recruit_character = CAN_meighen
-recruit_character = CAN_mercer_ms
+recruit_character = CAN_malcolm_mercer
 recruit_character = CAN_ogradyhaly
 recruit_character = CAN_otter
 recruit_character = CAN_radcliffe
 recruit_character = CAN_steele
-recruit_character = CAN_turner
+recruit_character = CAN_richard_turner
 recruit_character = CAN_tuxford
 recruit_character = CAN_cochrane # Field Marshal
 recruit_character = CAN_arthur_currie # Field Marshal
 
 # ADVISORS
+recruit_character = CAN_colin_mackenzie
+recruit_character = CAN_william_bishop
+recruit_character = CAN_charles_kingsmill
+recruit_character = CAN_george_halsey_perley
+recruit_character = CAN_william_white
+recruit_character = CAN_willoughby_gwatkin
 recruit_character = CAN_francis_stanley
 recruit_character = CAN_henry_ross
 recruit_character = CAN_francis_young
@@ -165,60 +178,41 @@ set_technology = {
 	}
 
 	set_politics = {
-	    ruling_party = democratic
-	    last_election = "1908.10.26"
-	    election_frequency = 48
-	    elections_allowed = yes
+		ruling_party = democratic
+		last_election = "1908.10.26" 
+		election_frequency = 48 
+		elections_allowed = yes
 	}
 	set_popularities = {
-	    democratic = 97
-	    fascism = 1
-	    communism = 1
-	    neutrality = 1
+		fascism = 2
+		communism = 0
+		democratic = 62
+		neutrality = 36
 	}
 
 	add_ideas = {
-		limited_conscription
-	}	
+		CAN_idea_quebec_tension
+		CAN_broken_economy
+		CAN_broken_infrastructure
+		CAN_broken_industry
+	}
 }
 
 1914.1.1 = {
 	oob = "CAN_1914"
 
-	create_country_leader = {
-        name = "Robert Borden"
-        desc = CAN_robert_borden_DESC picture = "gfx/hoi4tgw_portraits/CAN/country_leaders/CAN_robert_borden.dds"
-        expire = "1935.1.1"
-        ideology = liberalism traits = {}
-    }
+	# Robert Borden is the Leader in 1914
+	promote_character = CAN_robert_borden
 
 	#-------------------------------------------------------
 	#							NF
 	#-------------------------------------------------------
 
-	#Army
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = ww1_artillery_effort_1
-	complete_national_focus = doctrine_effort
-	complete_national_focus = ww1_trenchwarfare
-
-	#Industrial
-	complete_national_focus = industrial_effort
-	complete_national_focus = infrastructure_effort
-
-	#Political
-	complete_national_focus = political_effort
-
-	#Diplomatic
-	complete_national_focus = ww1_diplomatic_effort
-	complete_national_focus = ww1_takeposition	
-	complete_national_focus = ww1_supportfrance
-	complete_national_focus = ww1_supportrussia	
-	complete_national_focus = interventionism_focus
-	complete_national_focus = volunteer_corps
-	complete_national_focus = foreign_expeditions
-	
+	unlock_national_focus = CAN_political
+	complete_national_focus = CAN_industrial_tree
+	complete_national_focus = CAN_army_focus
+	unlock_national_focus = CAN_navy_focus
+	unlock_national_focus = CAN_air_focus	
 
 	#-------------------------------------------------------
 
