@@ -7,9 +7,9 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.17.7 "Railways"
+**Current Version:** 0.18 "Ô Canada"
 
-**Compatible with:** Hearts of Iron IV "Barbarossa" 1.11.11 (with or without Paid DLC)
+**Compatible with:** Hearts of Iron IV 1.11.12 (with or without Paid DLC)
 
 **Supported Languages:**
 - English
@@ -116,6 +116,8 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - renoth
    - mi105
    - DubHacker
+   - PrometheusNavagadro
+   - NamekSurvivor
 ----------
 [Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow
 [Austro-Hungarians Voices](http://steamcommunity.com/sharedfiles/filedetails/?id=946923873) made by Geodomus 
