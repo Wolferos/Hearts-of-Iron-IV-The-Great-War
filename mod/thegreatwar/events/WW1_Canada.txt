@@ -1,1 +1,2686 @@
-﻿add_namespace = ww1_canada
+﻿###########################
+# Canadian World War 1 Events
+###########################
+add_namespace = canada
+
+country_event = {
+	id = canada.1
+	title = canada.1.t
+	desc = canada.1.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.1.a
+	}
+}
+
+#A Mari Usque ad Mare
+country_event = {
+	id = canada.2
+	title = canada.2.t
+	desc = canada.2.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.2.a
+		add_political_power = 150
+	}
+}
+
+#############################################
+#################Loyalty Path################
+#############################################
+#Canadian Loyalty
+country_event = {
+	id = canada.3
+	title = canada.3.t
+	desc = canada.3.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.3.a
+	}
+}
+
+#Persaude the Americans - Event Chain
+country_event = {
+	id = canada.4
+	title = canada.4.t
+	desc = canada.4.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#friendly
+		name = canada.4.a
+		CAN = {
+			country_event = {
+				id = canada.5
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}		#ai should make a choice
+	}
+	option = {
+		#neutral
+		name = canada.4.b
+		CAN = {
+			country_event = {
+				id = canada.6
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		#refusal
+		name = canada.4.c
+		CAN = {
+			country_event = {
+				id = canada.7
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+country_event = {
+	#america accepts
+	id = canada.5
+	title = canada.5.t
+	desc = canada.5.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.5.a
+		CAN = {
+			give_guarantee = USA
+			diplomatic_relation = {
+				country = USA
+				relation = non_aggression_pact
+			}
+		}
+		USA = {
+			add_opinion_modifier = {
+				target = CAN
+				modifier = large_increase
+			}
+			add_opinion_modifier = {
+				target = ENG
+				modifier = medium_increase
+			}
+		}
+	}
+}
+
+country_event = {
+	#america stays neutral
+	id = canada.6
+	title = canada.6.t
+	desc = canada.6.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.6.a
+		USA = {
+			add_opinion_modifier = {
+				target = CAN
+				modifier = medium_increase
+			}
+			add_opinion_modifier = {
+				target = ENG
+				modifier = small_increase
+			}
+		}
+	}
+}
+
+country_event = {
+	#america refuses diplomacy
+	id = canada.7
+	title = canada.7.t
+	desc = canada.7.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.7.a
+		USA = {
+			add_opinion_modifier = {
+				target = ENG
+				modifier = small_decrease
+			}
+		}
+	}
+}
+
+#############################################
+#Conscription Crisis
+country_event = {
+	id = canada.8
+	title = canada.8.t
+	desc = canada.8.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.8.a
+		add_ideas = CAN_cons_crisis
+	}
+}
+
+#Quebec Riots
+country_event = {
+	id = canada.9
+	title = canada.9.t
+	desc = canada.9.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.9.a
+		add_ideas = CAN_quebec_riots
+	}
+}
+
+#The British Compromise
+country_event = {
+	id = canada.10
+	title = canada.10.t
+	desc = canada.10.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.10.a
+		ENG = {
+			add_opinion_modifier = {
+				target = CAN
+				modifier = huge_increase
+			}
+		}
+		hidden_effect = {
+			drop_cosmetic_tag = yes
+		}
+	}
+}
+
+#Ask for Newfoundland and Labrador - Event Chain
+country_event = {
+	id = canada.11
+	title = canada.11.t
+	desc = canada.11.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#gives territory
+		name = canada.11.a
+		CAN = {
+			transfer_state = 332
+			transfer_state = 331
+			add_state_core = 332
+			add_state_core = 331
+			country_event = {
+				id = canada.12
+			}
+		}
+	}
+}
+
+country_event = {
+	#likes Britain
+	id = canada.12
+	title = canada.12.t
+	desc = canada.12.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.12.a
+		CAN = {
+			add_opinion_modifier = {
+				target = ENG
+				modifier = huge_increase
+			}
+		}
+	}
+}
+
+#############################################
+#############################################
+##############Americanism Path###############
+#############################################
+#Americanism
+country_event = {
+	id = canada.13
+	title = canada.13.t
+	desc = canada.13.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.13.a
+		CAN = {
+			add_opinion_modifier = {
+				target = USA
+				modifier = huge_increase
+			}
+		}
+		USA = {
+			add_opinion_modifier = {
+				target = CAN
+				modifier = huge_increase
+			}
+		}
+		add_ideas = CAN_republic_americanism
+	}
+}
+
+#North American Defence Pact - Event Chain
+#USA Event for pact
+country_event = {
+	id = canada.14
+	title = canada.14.t
+	desc = canada.14.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.14.a		#accept
+		ai_chance = {
+			base = 10
+		}
+		MEX = {
+			country_event = {
+				id = canada.15
+			}
+		}
+	}
+	option = {
+		name = canada.14.b		#refuse
+		CAN = {
+			country_event = {
+				id = canada.17
+			}
+		}
+	}
+}
+
+# Mexico Event for pact
+country_event = {
+	id = canada.15
+	title = canada.15.t
+	desc = canada.15.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.15.a		#accept
+		ai_chance = {
+			base = 10
+		}
+		CAN = {
+			country_event = {
+				id = canada.16
+			}
+		}
+	}
+	option = {
+		name = canada.15.b		#refuse
+		CAN = {
+			country_event = {
+				id = canada.17
+			}
+		}
+	}
+}
+
+#Pact has been signed
+country_event = {
+	id = canada.16
+	title = canada.16.t
+	desc = canada.16.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.16.a
+		CAN = {
+			give_guarantee = USA
+			give_guarantee = MEX
+		}
+		USA = {
+			give_guarantee = CAN
+			give_guarantee = MEX
+		}
+		MEX = {
+			give_guarantee = CAN
+			give_guarantee = USA
+		}
+	}
+}
+
+#Pact was not signed
+country_event = {
+	id = canada.17
+	title = canada.17.t
+	desc = canada.17.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.17.a
+	}
+}
+
+#############################################
+#NATO - Event Chain
+#USA Invite
+country_event = {
+	id = canada.18
+	title = canada.18.t
+	desc = canada.18.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#accept
+		ai_chance = {
+			base = 10
+		}
+		name = canada.18.a
+		CAN = {
+			country_event = {
+				id = canada.22
+			}
+		}
+	}
+	option = {
+		#refuse
+		name = canada.18.b
+		CAN = {
+			country_event = {
+				id = canada.26
+			}
+		}
+	}
+}
+
+#MEX Invite
+country_event = {
+	id = canada.19
+	title = canada.19.t
+	desc = canada.19.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#accept
+		ai_chance = {
+			base = 10
+		}
+		name = canada.19.a
+		CAN = {
+			country_event = {
+				id = canada.23
+			}
+		}
+	}
+	option = {
+		#refuse
+		name = canada.19.b
+		CAN = {
+			country_event = {
+				id = canada.27
+			}
+		}
+	}
+}
+
+#CUB Invite
+country_event = {
+	id = canada.20
+	title = canada.20.t
+	desc = canada.20.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#accept
+		ai_chance = {
+			base = 10
+		}
+		name = canada.20.a
+		CAN = {
+			country_event = {
+				id = canada.24
+			}
+		}
+	}
+	option = {
+		#refuse
+		name = canada.20.b
+		CAN = {
+			country_event = {
+				id = canada.28
+			}
+		}
+	}
+}
+
+#PAN Invite
+country_event = {
+	id = canada.21
+	title = canada.21.t
+	desc = canada.21.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#accept
+		ai_chance = {
+			base = 10
+		}
+		name = canada.21.a
+		CAN = {
+			country_event = {
+				id = canada.25
+			}
+		}
+	}
+	option = {
+		#refuse
+		name = canada.21.b
+		CAN = {
+			country_event = {
+				id = canada.29
+			}
+		}
+	}
+}
+
+#Accepted Invites
+#USA Accepts
+country_event = {
+	id = canada.22
+	title = canada.22.t
+	desc = canada.22.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.22.a
+		add_to_faction = USA
+	}
+}
+
+#MEX Accepts
+country_event = {
+	id = canada.23
+	title = canada.23.t
+	desc = canada.23.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.23.a
+		add_to_faction = MEX
+	}
+}
+
+#CUB Accepts
+country_event = {
+	id = canada.24
+	title = canada.24.t
+	desc = canada.24.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.24.a
+		add_to_faction = CUB
+	}
+}
+
+#PAN Accepts
+country_event = {
+	id = canada.25
+	title = canada.25.t
+	desc = canada.25.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.25.a
+		add_to_faction = PAN
+	}
+}
+
+#Declined Invites
+#USA Declines
+country_event = {
+	id = canada.26
+	title = canada.26.t
+	desc = canada.26.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.26.a
+	}
+}
+
+#MEX Declines
+country_event = {
+	id = canada.27
+	title = canada.27.t
+	desc = canada.27.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.27.a
+	}
+}
+
+#CUB Declines
+country_event = {
+	id = canada.28
+	title = canada.28.t
+	desc = canada.28.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.28.a
+		CUB = {
+			add_opinion_modifier = {
+				target = CAN
+				modifier = large_increase
+			}
+		}
+	}
+}
+
+#PAN Declines
+country_event = {
+	id = canada.29
+	title = canada.29.t
+	desc = canada.29.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.29.a
+		PAN = {
+			add_opinion_modifier = {
+				target = CAN
+				modifier = large_increase
+			}
+		}
+	}
+}
+
+#############################################
+#############################################
+##############Monarchist Path################
+#############################################
+#Kingdom Time
+country_event = {
+	id = canada.30
+	title = canada.30.t
+	desc = canada.30.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.30.a
+		CAN_regency_council = {
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader={
+					ideology=autocracy
+					traits={ regency_council }					
+				}
+			}
+		}
+		add_ideas = CAN_monarchism
+		set_politics = {
+			ruling_party = neutrality
+			elections_allowed = no
+			name = CAN_monarchist_party
+			long_name = CAN_monarchist_party_long
+		}
+	}
+}
+
+#Throne Time
+country_event = {
+	id = canada.31
+	title = canada.31.t
+	desc = canada.31.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.31.a
+		ENG_arthur_connaught = {
+			set_character_name = CAN_arthur_i
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader={
+					ideology=autocracy
+					traits={ canadian_imperialist  }				
+				}
+			}
+		}
+		set_party_name = {
+			ideology = neutrality
+			name = CAN_neutrality_party_royal
+			long_name = CAN_neutrality_party_royal
+		}
+		swap_ideas = {
+			remove_idea = CAN_monarchism
+			add_idea = CAN_monarchism2
+		}
+	}
+}
+
+#Canadian Empire
+country_event = {
+	id = canada.32
+	title = canada.32.t
+	desc = canada.32.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.32.a
+		add_ideas = CAN_blood_ice
+		hidden_effect = {
+			set_cosmetic_tag = CAN_empire
+		}
+	}
+}
+
+#Greenland Purchase - Event Chain
+country_event = {
+	id = canada.33
+	title = canada.33.t
+	desc = canada.33.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#accept
+		name = canada.33.a
+		remove_state_core = 101
+		CAN = {
+			transfer_state = 101
+			add_state_core = 101
+			country_event = {
+				id = canada.34
+			}
+		}
+	}
+}
+
+country_event = {
+	id = canada.34
+	title = canada.34.t
+	desc = canada.34.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.34.a
+		add_opinion_modifier = {
+			target = DEN
+			modifier = large_increase
+		}
+		DEN = {
+			add_opinion_modifier = {
+				target = CAN
+				modifier = large_increase
+			}
+			add_timed_idea = {
+				idea = DEN_canadian_trade
+				days = 500
+			}
+		}
+		CAN = {
+			add_timed_idea = {
+				idea = CAN_danish_trade
+				days = 500
+			}
+		}
+	}
+}
+
+#############################################
+#Demand Alaska - Event Chain
+country_event = {
+	id = canada.35
+	title = canada.35.t
+	desc = canada.35.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#accepts
+		name = canada.35.a
+		ai_chance = {
+			base = 7
+		}
+		remove_state_core = 463
+		CAN = {
+			transfer_state = 463
+			add_state_core = 463
+			country_event = {
+				id = canada.36
+			}
+		}
+	}
+	option = {
+		#declines
+		name = canada.35.b
+		ai_chance = {
+			base = 5
+		}
+		CAN = {
+			country_event = {
+				id = canada.37
+			}
+		}
+	}
+}
+
+country_event = {
+	#Accepts
+	id = canada.36
+	title = canada.36.t
+	desc = canada.36.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#accepts
+		name = canada.36.a
+	}
+}
+
+country_event = {
+	#Declines
+	id = canada.37
+	title = canada.37.t
+	desc = canada.37.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#accepts
+		name = canada.37.a
+		add_state_claim = 463
+		add_opinion_modifier = {
+			target = USA
+			modifier = large_decrease
+		}
+	}
+}
+
+#############################################
+#Demand Newfoundland - Event Chain
+country_event = {
+	id = canada.38
+	title = canada.38.t
+	desc = canada.38.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#accepts
+		name = canada.38.a
+		ai_chance = {
+			base = 2
+		}
+		CAN = {
+			transfer_state = 332
+			add_state_core = 332
+			transfer_state = 331
+			add_state_core = 331
+			country_event = {
+				id = canada.39
+			}
+		}
+	}
+	option = {
+		#declines
+		name = canada.38.b
+		ai_chance = {
+			base = 1
+		}
+		CAN = {
+			country_event = {
+				id = canada.40
+			}
+		}
+	}
+}
+
+country_event = {
+	#Accepts
+	id = canada.39
+	title = canada.39.t
+	desc = canada.39.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#accepts
+		name = canada.39.a
+	}
+}
+
+country_event = {
+	#Declines
+	id = canada.40
+	title = canada.40.t
+	desc = canada.40.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#accepts
+		name = canada.40.a
+		add_state_claim = 332
+		add_state_claim = 331
+		add_opinion_modifier = {
+			target = ENG
+			modifier = large_decrease
+		}
+	}
+}
+
+#############################################
+#Demand St.Pierre - Event Chain
+country_event = {
+	id = canada.41
+	title = canada.41.t
+	desc = canada.41.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#accepts
+		name = canada.41.a
+		ai_chance = {
+			base = 11
+		}
+		remove_state_core = 730
+		CAN = {
+			transfer_state = 730
+			add_state_core = 730
+			country_event = {
+				id = canada.42
+			}
+		}
+	}
+	option = {
+		#declines
+		name = canada.41.b
+		ai_chance = {
+			base = 1
+		}
+		CAN = {
+			country_event = {
+				id = canada.43
+			}
+		}
+	}
+}
+
+country_event = {
+	#Accepts
+	id = canada.42
+	title = canada.42.t
+	desc = canada.42.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.42.a
+		add_opinion_modifier = {
+			target = FRA
+			modifier = large_increase
+		}
+	}
+}
+
+country_event = {
+	#Declines
+	id = canada.43
+	title = canada.43.t
+	desc = canada.43.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.43.a
+		add_state_claim = 730
+		add_opinion_modifier = {
+			target = FRA
+			modifier = large_decrease
+		}
+	}
+}
+
+#############################################
+#Victory over the US - Event Chain
+#Hidden pre-event to check before capitulation
+country_event = {
+	id = canada.44
+	hidden = yes
+	trigger = {
+		tag = USA
+		has_war_with = CAN
+		has_government = democratic
+		361 = {
+			is_controlled_by = CAN
+		}
+		393 = {
+			is_controlled_by = CAN
+		}
+		357 = {
+			is_controlled_by = CAN
+		}
+		358 = {
+			is_controlled_by = CAN
+		}
+		360 = {
+			is_controlled_by = CAN
+		}
+		386 = {
+			is_controlled_by = CAN
+		}
+		surrender_progress > 0.8
+		CAN = {
+			has_government = neutrality
+		}
+		has_civil_war = no
+		#Don't Fire if US has pushed far into Canada
+		NOT = {
+			any_state = {
+				is_on_continent = north_america
+				NOT = {
+					state = 276
+				}
+				is_controlled_by = ROOT
+				is_owned_by = CAN
+			}
+		}
+	}
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	immediate = {
+		USA = {
+			if = {
+				#Canadian - Mexican Alliance
+				limit = {
+					has_war_with = MEX
+					MEX = {
+						is_in_faction_with = CAN
+					}
+				}
+				country_event = canada.45
+			}
+			else_if = {
+				#Canadian - Japanese Alliance
+				limit = {
+					has_war_with = JAP
+					JAP = {
+						is_in_faction_with = CAN
+					}
+				}
+				country_event = canada.46
+			}
+			else = {
+				#Default Event
+				country_event = canada.47
+			}
+		}
+	}
+}
+
+#US Surrender Decision - Mexican Alliance
+country_event = {
+	id = canada.45
+	title = canada.45.t
+	desc = canada.45.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Cede Territory
+		name = canada.45.a
+		ai_chance = {
+			base = 3
+		}
+		hidden_effect = {
+			white_peace = CAN
+			white_peace = MEX
+			MEX = {
+				transfer_state = 378				#California
+				transfer_state = 379				#Nevada
+				transfer_state = 380				#Utah
+				transfer_state = 377				#Arizona
+				transfer_state = 376				#New Mexico
+				transfer_state = 375				#Texas
+				transfer_state = 686				#Puerto Rico
+			}
+			CAN = {
+				transfer_state = 357
+				transfer_state = 358
+				transfer_state = 360
+				transfer_state = 359
+				transfer_state = 261
+				transfer_state = 393
+				transfer_state = 394
+				transfer_state = 391
+				transfer_state = 389
+				transfer_state = 390
+				transfer_state = 388
+				transfer_state = 387
+				transfer_state = 386
+				transfer_state = 385
+				transfer_state = 381
+				transfer_state = 629
+				transfer_state = 630
+				transfer_state = 631
+				transfer_state = 632
+				transfer_state = 638
+				transfer_state = 642
+				transfer_state = 685
+				transfer_state = 726
+				transfer_state = 727
+				if = {
+					limit = {
+						463 = {
+							is_owned_by = USA
+						}
+					}
+					transfer_state = 463
+				}
+			}
+			USA = {
+				release = PHI
+			}
+		}
+		CAN = {
+			#Event to Canada
+			country_event = canada.48
+		}
+		USA = {
+			add_timed_idea = {
+				idea = CAN_american_loss
+				days = 730
+			}
+		}
+	}
+	option = {
+		#Cede Territory and Become Puppet
+		name = canada.45.b
+		ai_chance = {
+			base = 2
+		}
+		hidden_effect = {
+			white_peace = CAN
+			white_peace = MEX
+			MEX = {
+				transfer_state = 378				#California
+				transfer_state = 379				#Nevada
+				transfer_state = 380				#Utah
+				transfer_state = 377				#Arizona
+				transfer_state = 376				#New Mexico
+				transfer_state = 375				#Texas
+				transfer_state = 686				#Puerto Rico
+			}
+			CAN = {
+				transfer_state = 357
+				transfer_state = 358
+				transfer_state = 360
+				transfer_state = 359
+				transfer_state = 261
+				transfer_state = 393
+				transfer_state = 394
+				transfer_state = 391
+				transfer_state = 389
+				transfer_state = 390
+				transfer_state = 388
+				transfer_state = 387
+				transfer_state = 386
+				transfer_state = 385
+				transfer_state = 381
+				transfer_state = 629
+				transfer_state = 630
+				transfer_state = 631
+				transfer_state = 632
+				transfer_state = 638
+				transfer_state = 642
+				transfer_state = 685
+				transfer_state = 726
+				transfer_state = 727
+				if = {
+					limit = {
+						463 = {
+							is_owned_by = USA
+						}
+					}
+					transfer_state = 463
+				}
+			}
+			USA = {
+				release = PHI
+			}
+		}
+		CAN = {
+			#Event to Canada - Puppet
+			country_event = canada.49
+		}
+		USA = {
+			add_ideas = CAN_american_decline
+		}
+	}
+	option = {
+		#Decide to Fight On
+		name = canada.45.c
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+#US Surrender Decision - Japanese Alliance
+country_event = {
+	id = canada.46
+	title = canada.46.t
+	desc = canada.46.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Cede Territory
+		name = canada.46.a
+		ai_chance = {
+			base = 3
+		}
+		hidden_effect = {
+			white_peace = CAN
+			white_peace = JAP
+			JAP = {
+				#Pacific Islands
+				transfer_state = 630
+				transfer_state = 631
+				transfer_state = 632
+				transfer_state = 638
+				transfer_state = 642
+				transfer_state = 726
+				transfer_state = 727
+				#Philipines
+				transfer_state = 623
+				transfer_state = 327
+				transfer_state = 624
+				transfer_state = 625
+				transfer_state = 626
+				transfer_state = 627
+				transfer_state = 628
+			}
+			CAN = {
+				transfer_state = 357
+				transfer_state = 358
+				transfer_state = 360
+				transfer_state = 359
+				transfer_state = 261
+				transfer_state = 393
+				transfer_state = 394
+				transfer_state = 391
+				transfer_state = 389
+				transfer_state = 390
+				transfer_state = 388
+				transfer_state = 387
+				transfer_state = 386
+				transfer_state = 385
+				transfer_state = 381
+				transfer_state = 629
+				transfer_state = 685
+				transfer_state = 686
+				if = {
+					limit = {
+						463 = {
+							is_owned_by = USA
+						}
+					}
+					transfer_state = 463
+				}
+			}
+		}
+		CAN = {
+			#Event to Canada
+			country_event = canada.48
+		}
+		USA = {
+			add_timed_idea = {
+				idea = CAN_american_loss
+				days = 730
+			}
+		}
+	}
+	option = {
+		#Cede Territory and Become Puppet
+		name = canada.46.b
+		ai_chance = {
+			base = 2
+		}
+		hidden_effect = {
+			white_peace = CAN
+			white_peace = JAP
+			JAP = {
+				#Pacific Islands
+				transfer_state = 630
+				transfer_state = 631
+				transfer_state = 632
+				transfer_state = 638
+				transfer_state = 642
+				transfer_state = 726
+				transfer_state = 727
+				#Philipines
+				transfer_state = 623
+				transfer_state = 327
+				transfer_state = 624
+				transfer_state = 625
+				transfer_state = 626
+				transfer_state = 627
+				transfer_state = 628
+			}
+			CAN = {
+				transfer_state = 357
+				transfer_state = 358
+				transfer_state = 360
+				transfer_state = 359
+				transfer_state = 261
+				transfer_state = 393
+				transfer_state = 394
+				transfer_state = 391
+				transfer_state = 389
+				transfer_state = 390
+				transfer_state = 388
+				transfer_state = 387
+				transfer_state = 386
+				transfer_state = 385
+				transfer_state = 381
+				transfer_state = 629
+				transfer_state = 685
+				transfer_state = 686
+				if = {
+					limit = {
+						463 = {
+							is_owned_by = USA
+						}
+					}
+					transfer_state = 463
+				}
+			}
+		}
+		CAN = {
+			#Event to Canada
+			country_event = canada.49
+		}
+		USA = {
+			add_ideas = CAN_american_decline
+		}
+	}
+	option = {
+		#Decide to Fight On
+		name = canada.46.c
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+#US Surrender Decision - Default
+country_event = {
+	id = canada.47
+	title = canada.47.t
+	desc = canada.47.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Cede Territory
+		name = canada.47.a
+		ai_chance = {
+			base = 3
+		}
+		hidden_effect = {
+			white_peace = CAN
+			if = {
+				limit = {
+					OR = {
+						has_war_with = GER
+						is_in_faction_with = ENG
+					}
+				}
+				leave_faction = yes
+				white_peace = GER
+			}
+			CAN = {
+				transfer_state = 357
+				transfer_state = 358
+				transfer_state = 360
+				transfer_state = 359
+				transfer_state = 261
+				transfer_state = 393
+				transfer_state = 394
+				transfer_state = 391
+				transfer_state = 389
+				transfer_state = 390
+				transfer_state = 388
+				transfer_state = 387
+				transfer_state = 386
+				transfer_state = 385
+				transfer_state = 381
+				transfer_state = 629
+				transfer_state = 630
+				transfer_state = 631
+				transfer_state = 632
+				transfer_state = 638
+				transfer_state = 642
+				transfer_state = 685
+				transfer_state = 726
+				transfer_state = 727
+				if = {
+					limit = {
+						463 = {
+							is_owned_by = USA
+						}
+					}
+					transfer_state = 463
+				}
+			}
+			USA = {
+				release = PHI
+			}
+		}
+		CAN = {
+			#Event to Canada
+			country_event = canada.48
+		}
+		USA = {
+			add_timed_idea = {
+				idea = CAN_american_loss
+				days = 730
+			}
+		}
+	}
+	option = {
+		#Cede Territory and Become Puppet
+		name = canada.47.b
+		ai_chance = {
+			base = 2
+		}
+		hidden_effect = {
+			white_peace = CAN
+			if = {
+				limit = {
+					OR = {
+						has_war_with = GER
+						is_in_faction_with = ENG
+					}
+				}
+				leave_faction = yes
+				white_peace = GER
+			}
+			CAN = {
+				transfer_state = 357
+				transfer_state = 358
+				transfer_state = 360
+				transfer_state = 359
+				transfer_state = 261
+				transfer_state = 393
+				transfer_state = 394
+				transfer_state = 391
+				transfer_state = 389
+				transfer_state = 390
+				transfer_state = 388
+				transfer_state = 387
+				transfer_state = 386
+				transfer_state = 385
+				transfer_state = 381
+				transfer_state = 629
+				transfer_state = 630
+				transfer_state = 631
+				transfer_state = 632
+				transfer_state = 638
+				transfer_state = 642
+				transfer_state = 685
+				transfer_state = 726
+				transfer_state = 727
+				if = {
+					limit = {
+						463 = {
+							is_owned_by = USA
+						}
+					}
+					transfer_state = 463
+				}
+			}
+			USA = {
+				release = PHI
+			}
+		}
+		CAN = {
+			#Event to Canada
+			country_event = canada.49
+		}
+		USA = {
+			add_ideas = CAN_american_decline
+		}
+	}
+	option = {
+		#Decide to Fight On
+		name = canada.47.c
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+country_event = {
+	id = canada.48
+	title = canada.48.t
+	desc = canada.48.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.48.a
+		add_timed_idea = {
+			idea = CAN_canadian_victory
+			days = 650
+		}
+		set_truce = {
+			target = USA
+			days = 730
+		}
+	}
+}
+
+country_event = {
+	id = canada.49
+	title = canada.49.t
+	desc = canada.49.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.49.a
+		CAN = {
+			puppet = USA
+		}
+		add_timed_idea = {
+			idea = CAN_canadian_victory
+			days = 650
+		}
+		set_truce = {
+			target = USA
+			days = 730
+		}
+		USA = {
+			hidden_effect = {
+				add_popularity = {
+					ideology = neutrality
+					popularity = 0.6
+				}
+				set_politics = {
+					ruling_party = neutrality
+					elections_allowed = no
+				}
+				set_cosmetic_tag = USA_CAN
+			}
+			create_country_leader = {
+				name = "Crown Prince Arthur"
+				picture = "gfx/leaders/CAN/CAN_crown_prince_arthur.png"				
+				ideology = autocracy
+			}
+		}
+	}
+}
+
+#############################################
+#Puppet USA - Event Chain
+country_event = {
+	id = canada.51
+	title = canada.51.t
+	desc = canada.51.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#US accepts puppet
+		ai_chance = {
+			base = 2
+		}
+		name = canada.51.a
+		country_event = canada.52
+		add_ideas = CAN_american_decline
+		remove_ideas = CAN_american_loss
+	}
+	option = {
+		#US declines puppet
+		ai_chance = {
+			base = 1
+		}
+		name = canada.51.b
+		country_event = canada.53
+	}
+}
+
+country_event = {
+	id = canada.52
+	title = canada.52.t
+	desc = canada.52.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.52.a
+		CAN = {
+			puppet = USA
+		}
+		USA = {
+			hidden_effect = {
+				add_popularity = {
+					ideology = neutrality
+					popularity = 0.6
+				}
+				set_politics = {
+					ruling_party = neutrality
+					elections_allowed = no
+				}
+				set_cosmetic_tag = USA_CAN
+			}
+			create_country_leader = {
+				name = "Crown Prince Arthur"
+				picture = "gfx/leaders/CAN/CAN_crown_prince_arthur.png"
+				
+				ideology = autocracy
+				traits = {
+					
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = canada.53
+	title = canada.53.t
+	desc = canada.53.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.53.a
+		CAN = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = USA
+			}
+		}
+	}
+}
+
+#############################################
+#Mexican Claims & Alliance - Event Chain
+country_event = {
+	id = canada.54
+	title = canada.54.t
+	desc = canada.54.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#accept
+		ai_chance = {
+			base = 1
+		}
+		name = canada.53.a
+		add_state_claim = 378
+		add_state_claim = 379
+		add_state_claim = 380
+		add_state_claim = 377
+		add_state_claim = 376
+		add_state_claim = 375
+		CAN = {
+			country_event = {
+				id = canada.55
+			}
+		}
+	}
+	option = {
+		#refuse
+		name = canada.53.b
+		CAN = {
+			country_event = {
+				id = canada.56
+			}
+		}
+	}
+}
+
+country_event = {
+	#accepted
+	id = canada.55
+	title = canada.55.t
+	desc = canada.55.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.55.a
+		add_to_faction = MEX
+	}
+}
+
+country_event = {
+	#refused
+	id = canada.56
+	title = canada.56.t
+	desc = canada.56.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.56.a
+	}
+}
+
+#############################################
+#Agustin - Emperor of Mexico
+country_event = {
+	id = canada.57
+	title = canada.57.t
+	desc = canada.57.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.57.a
+		create_country_leader = {
+			name = "Agustín III"
+			picture = "gfx/leaders/MEX/MEX_Agustin_de_Iturbide_y_Green.png"
+			
+			ideology = autocracy
+			traits = {
+				
+			}
+		}
+		hidden_effect = {
+			set_party_name = {
+				ideology = neutrality
+				name = MEX_neutrality_party_royal
+				long_name = MEX_neutrality_party_royal_long
+			}
+			set_cosmetic_tag = MEX_empire
+		}
+	}
+}
+
+#############################################
+#Japanese Alliance
+country_event = {
+	id = canada.58
+	title = canada.58.t
+	desc = canada.58.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Accepts
+		name = canada.58.a
+		ai_chance = {
+			base = 9
+		}
+		CAN = {
+			country_event = canada.59
+		}
+	}
+	option = {
+		#Refuses
+		name = canada.58.b
+		ai_chance = {
+			base = 1
+		}
+		CAN = {
+			country_event = canada.60
+		}
+	}
+}
+
+country_event = {
+	#Accepted
+	id = canada.59
+	title = canada.59.t
+	desc = canada.59.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Accepts
+		name = canada.59.a
+		create_faction = ottawa_yamato_pacific_treaty
+		add_to_faction = JAP
+	}
+}
+
+country_event = {
+	#Refused
+	id = canada.60
+	title = canada.60.t
+	desc = canada.60.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Accepts
+		name = canada.60.a
+	}
+}
+
+#############################################
+#German Alliance
+country_event = {
+	id = canada.61
+	title = canada.61.t
+	desc = canada.61.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Accepts
+		name = canada.61.a
+		ai_chance = {
+			base = 9
+		}
+		CAN = {
+			country_event = canada.62
+		}
+	}
+	option = {
+		#Refuses
+		name = canada.61.b
+		ai_chance = {
+			base = 1
+		}
+		CAN = {
+			country_event = canada.63
+		}
+	}
+}
+
+country_event = {
+	#Accepted
+	id = canada.62
+	title = canada.62.t
+	desc = canada.62.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Accepts
+		name = canada.62.a
+		GER = {
+			add_to_faction = CAN
+		}
+	}
+}
+
+country_event = {
+	#Refused
+	id = canada.63
+	title = canada.63.t
+	desc = canada.63.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Accepts
+		name = canada.63.a
+	}
+}
+
+#############################################
+country_event = {
+	id = canada.64
+	title = canada.64.t
+	desc = canada.64.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = canada.64.a
+	}
+}
+
+country_event = {
+	id = canada.65
+	title = canada.65.t
+	desc = canada.65.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Focus on Subs
+		name = canada.65.a
+		add_ideas = CAN_sub_focus
+	}
+	option = {
+		#Focus on Destroyers
+		name = canada.65.b
+		add_ideas = CAN_destroyer_focus
+	}
+}
+
+country_event = {
+	id = canada.66
+	title = canada.66.t
+	desc = canada.66.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Focus on Fighters
+		name = canada.66.a
+		add_ideas = CAN_fighter_focus
+	}
+	option = {
+		#Focus on CAS
+		name = canada.66.b
+		add_ideas = CAN_cas_focus
+	}
+}
+
+#############################################
+###########Democratic Elections##############
+#############################################
+country_event = {
+	id = canada.67
+	title = canada.67.t
+	desc = canada.67.d
+	picture = GFX_report_event_election_vote
+	fire_only_once = yes
+	trigger = {
+		original_tag = CAN
+		has_government = democratic
+		date > 1911.1.1
+		date < 1912.1.1
+	}
+	option = {
+		name = canada.67.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = CAN_ai_behavior
+						option = REPUBLICAN
+					}
+					has_game_rule = {
+						rule = CAN_ai_behavior
+						option = MONARCHIST
+					}
+					has_country_flag = CAN_AI_RANDOM_REPUBLICAN
+					has_country_flag = CAN_AI_RANDOM_MONARCHIST
+				}
+			}
+		}
+		promote_character = CAN_robert_borden
+		set_party_name = {
+			ideology = democratic
+			name = CAN_democratic_party2
+			long_name = CAN_democratic_party2_long
+		}
+		trigger = {
+			NOT = {
+				has_completed_focus = CAN_Americanism
+			}
+		}
+	}
+	option = {
+		#Stick with Laurier
+		name = canada.67.b
+		if = {
+			limit = {
+				is_subject_of = ENG
+				NOT = {
+					has_completed_focus = CAN_seperation
+				}
+			}
+			add_political_power = -200
+		}
+		
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = {
+        		    has_game_rule = {
+               		    rule = CAN_ai_behavior
+                		option = DEMOCRATIC_HISTORICAL
+            		}
+            		AND = {
+               		    has_game_rule = {
+                    		rule = CAN_ai_behavior
+                    		option = DEFAULT
+                		}
+                		is_historical_focus_on = yes
+            		}
+            		has_country_flag = CAN_AI_RANDOM_DEMOCRATIC_HISTORICAL
+        		}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = canada.68
+	title = canada.68.t
+	desc = canada.68.d
+	picture = GFX_report_event_election_vote
+	fire_only_once = yes
+	trigger = {
+		original_tag = CAN
+		has_government = democratic
+		date > 1920.1.1
+		date < 1921.1.1
+	}
+	option = {
+		name = canada.68.a
+		ai_chance = {
+			factor = 100
+		}
+		promote_character = CAN_arthur_meighen
+		set_party_name = {
+			ideology = democratic
+			name = CAN_democratic_party2
+			long_name = CAN_democratic_party2_long
+		}
+	}
+}
+
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+# The British Royals flee to Canada!
+country_event = {
+	id = canada.69
+	title = canada.69.t
+	desc = canada.69.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = British_Royals_flee_to_Canada
+	}
+	option = {
+		name = canada.69.a
+		trigger = {
+			NOT = {
+				has_cosmetic_tag = CAN_empire
+				has_cosmetic_tag = CAN_republic
+				has_government = communism
+			}
+		}	
+		ai_chance = {
+			base = 100
+		}	
+		if = {
+			limit = {
+				has_global_flag = ENG_windsor
+			}
+			set_party_name = {
+				ideology = neutrality
+				long_name = ENG_windsor_long
+				name = ENG_windsor
+			}
+			else_if = {
+				limit = { has_global_flag = ENG_tudor }
+				set_party_name = {
+					ideology = neutrality
+					long_name = ENG_tudor_long
+					name = ENG_tudor
+				}
+				else_if = {
+					limit = { has_global_flag = ENG_plantagenet }
+					set_party_name = {
+						ideology = neutrality
+						long_name = ENG_plantagenet_long
+						name = ENG_plantagenet
+					}
+				}
+				else = {
+					set_party_name = {
+						ideology = neutrality
+						long_name = ENG_neutrality_party_long
+						name = ENG_neutrality_party
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = king_edward_viii	
+			}
+			CAN_edward_viii = {
+				add_country_leader_role = {
+					promote_leader = yes
+					country_leader = {
+						ideology = autocracy
+						traits = { revolution_trauma }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_global_flag = king_charles_iii
+			}
+			CAN_charles_edward = {
+				add_country_leader_role = {
+					promote_leader = yes
+					country_leader = {
+						ideology = autocracy
+						traits = { autocratic_imperialist german_agent }
+					}
+				}
+			}
+		}
+		else = {
+			CAN_george_v = {
+				add_country_leader_role = {
+					promote_leader = yes
+					country_leader = {
+						ideology = autocracy
+					}
+				}
+			}
+			add_ideas = george_v
+		}
+		ENG = {
+			end_puppet = CAN
+		}
+		if = {
+			limit = {
+				JAM = {
+					exists = yes
+					has_cosmetic_tag = JAM_federation
+					NOT = {
+						is_subject_of = CAN
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = JAM
+					autonomous_state = autonomy_colony
+					freedom_level = 0.5
+				}
+				else = {
+					puppet = JAM
+				}	
+			}
+			hidden_effect = {
+				JAM = {
+					set_politics = {
+						ruling_party = neutrality
+						elections_allowed = no
+					}
+					set_popularities = {
+						democratic = 39
+						fascism = 2
+						communism = 1
+						neutrality = 58
+					}
+				}
+			}			
+		}
+		if = {
+			limit = {
+				AST = {
+					is_subject = no
+					has_government = democratic
+				}
+			}
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = AST
+					autonomous_state = autonomy_dominion
+					freedom_level = 0.5
+				}
+				else = {
+					puppet = AST
+				}	
+			}
+			hidden_effect = {
+				AST = {
+					set_politics = {
+						ruling_party = democratic
+						elections_allowed = yes
+					}
+					set_popularities = {
+						fascism = 0
+						communism = 0
+						democratic = 83
+						neutrality = 17
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				NZL = {
+					is_subject = no
+					has_government = democratic
+				}
+			}
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = NZL
+					autonomous_state = autonomy_dominion
+					freedom_level = 0.5
+				}
+				else = {
+					puppet = NZL
+				}	
+			}
+			hidden_effect = {
+				NZL = {
+					set_politics = {
+						ruling_party = democratic
+						elections_allowed = yes
+					}
+					set_popularities = {
+						democratic = 90
+						fascism = 0
+						communism = 1
+						neutrality = 9
+					}
+				}
+			}			
+		}
+		if = {
+			limit = {
+				SAF = {
+					is_subject = no
+					has_government = democratic
+					has_war = no
+				}
+			}
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = SAF
+					autonomous_state = autonomy_colony
+					freedom_level = 0.5
+				}
+				else = {
+					puppet = SAF
+				}	
+			}
+			hidden_effect = {
+				SAF = {
+					set_politics = {
+						ruling_party = democratic
+						elections_allowed = yes
+					}
+					set_popularities = {
+						democratic = 62
+						fascism = 10
+						communism = 2
+						neutrality = 26
+					}
+				}
+			}			
+		}
+		if = {
+			limit = {
+				HKG = {
+					is_subject = no
+					has_government = neutrality
+				}
+			}
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = HKG
+					autonomous_state = autonomy_colony
+					freedom_level = 0.1
+				}
+				else = {
+					puppet = HKG
+				}	
+			}
+			hidden_effect = {
+				HKG = {
+					set_politics = {
+						ruling_party = neutrality
+						elections_allowed = no
+					}
+					set_popularities = {
+						neutrality = 100
+					}
+				}
+			}			
+		}
+		if = {
+			limit = {
+				ENG = {
+					owns_state = 331
+					owns_state = 332
+				}
+			}
+			CAN = {
+				transfer_state = 331
+				transfer_state = 332
+			}
+		}
+		if = {
+			limit = {
+				ENG = {
+					has_idea = ENG_Staff
+				}
+			}
+			add_ideas = ENG_Staff
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.1
+		}
+		CAN_andrew_bonar_law = {
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					ideology = conservatism
+				}
+			}
+		}
+		add_ideas = ENG_imperial_refuge
+		set_cosmetic_tag = CAN_britain
+		add_stability = -0.07
+		hidden_effect = {
+			276 = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			UOB = {
+				every_unit_leader = {
+					limit = {
+						has_trait = trait_royalist
+					}
+					set_nationality = CAN
+				}
+				transfer_units_fraction = {
+					target = CAN
+					size = 0
+					navy_ratio = 0.5
+				}
+			}
+			BRE = {
+				every_unit_leader = {
+				    set_nationality = CAN
+				}
+				transfer_units_fraction = {
+					target = CAN
+					size = 1
+					stockpile_ratio = 0.75
+					army_ratio = 0.7
+					navy_ratio = 0.9
+					air_ratio = 0.9
+				}
+			}
+		}
+		set_country_flag = canada_is_britain
+		change_tag_from = BRE
+		every_state = {
+			limit = {
+				is_core_of = ENG
+			}
+			add_claim_by = CAN
+		}
+	}
+	option = {
+		name = canada.69.b
+		ai_chance = {
+			factor = 25
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.05
+		}
+		add_stability = -0.05
+		if = {
+			limit = {
+				ENG = {
+					owns_state = 331
+					owns_state = 332
+				}
+			}
+			CAN = {
+				transfer_state = 331
+				transfer_state = 332
+			}
+		}
+		if = {
+			limit = {
+				AST = {
+					exists = yes
+					is_subject = no
+					NOT = {
+						has_government = communism
+					}
+				}
+			}
+			AST = {
+				country_event = ww1_australia.8
+			}			
+		}	
+	}
+}
+
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+# The Great Escape of The British Royals (After the Referendum)
+country_event = {
+	id = canada.70
+	title = canada.70.t
+	desc = canada.70.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = British_Royals_flee_to_Canada
+	}
+	option = {
+		name = canada.70.a
+		trigger = {
+			NOT = {
+				has_cosmetic_tag = CAN_empire
+				has_cosmetic_tag = CAN_republic
+				has_government = communism				
+			}
+		}	
+		ai_chance = {
+			factor = 100
+		}
+		OVERLORD = {
+			end_puppet = ROOT
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = CAN_political
+					}
+				}
+				complete_national_focus = CAN_political
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = CAN_Loyalty
+						has_completed_focus = CAN_seperation
+					}
+				}
+				complete_national_focus = CAN_Loyalty
+			}
+			if = {
+				limit = {
+					has_completed_focus = CAN_Patriation
+					NOT = {
+						has_completed_focus = CAN_const_monarchy
+						has_completed_focus = CAN_Americanism
+						has_completed_focus = CAN_kingdom_own
+					}
+				}
+				complete_national_focus = CAN_const_monarchy
+			}
+		}
+		CAN_george_v = {
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					ideology = autocracy
+				}
+			}
+		}
+		add_ideas = george_v
+		set_party_name = {
+			ideology = neutrality
+			long_name = ENG_neutrality_party_long
+			name = ENG_neutrality_party
+		}
+		if = {
+			limit = {
+				AST = {
+					is_subject = no
+					has_government = democratic
+				}
+			}
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = AST
+					autonomous_state = autonomy_dominion
+					freedom_level = 0.5
+				}
+				else = {
+					puppet = AST
+				}	
+			}
+			hidden_effect = {
+				AST = {
+					set_politics = {
+						ruling_party = democratic
+						elections_allowed = yes
+					}
+					set_popularities = {
+						fascism = 0
+						communism = 0
+						democratic = 83
+						neutrality = 17
+					}
+				}
+			}		
+		}
+		if = {
+			limit = {
+				NZL = {
+					is_subject = no
+					has_government = democratic
+				}
+			}
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = NZL
+					autonomous_state = autonomy_dominion
+					freedom_level = 0.5
+				}
+				else = {
+					puppet = NZL
+				}	
+			}
+			hidden_effect = {
+				NZL = {
+					set_politics = {
+						ruling_party = democratic
+						elections_allowed = yes
+					}
+					set_popularities = {
+						democratic = 90
+						fascism = 0
+						communism = 1
+						neutrality = 9
+					}
+				}
+			}			
+		}
+		if = {
+			limit = {
+				ENG = {
+					owns_state = 331
+					owns_state = 332
+				}
+			}
+			CAN = {
+				transfer_state = 331
+				transfer_state = 332
+			}
+		}
+		if = {
+			limit = {
+				ENG = {
+					has_idea = ENG_Staff
+				}
+			}
+			add_ideas = ENG_Staff
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.1
+		}
+		add_ideas = ENG_imperial_refuge
+		set_cosmetic_tag = CAN_britain
+		add_stability = -0.03
+		set_country_flag = canada_is_britain
+	}
+	option = {
+		name = canada.70.b
+		ai_chance = {
+			factor = 25
+		}
+		OVERLORD = {
+			end_puppet = ROOT
+		}
+		if = {
+			limit = {
+				ENG = {
+					owns_state = 331
+					owns_state = 332
+				}
+			}
+			CAN = {
+				transfer_state = 331
+				transfer_state = 332
+			}
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.02
+		}
+		add_stability = -0.01
+		if = {
+			limit = {
+				AST = {
+					exists = yes
+					is_subject = no
+					NOT = {
+						has_government = communism
+					}
+				}
+			}
+			AST = {
+				country_event = ww1_australia.9
+			}	
+		}
+	}
+}
+# Prince Arthur becomes general-governor
+country_event = {
+	id = canada.71
+	title = ww1_england.215.t
+	desc =ww1_england.215.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	picture = GFX_report_event_royal_visit
+	option = {
+		name = canada.71.a
+		ENG_arthur_connaught = {
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					ideology = oligarchism
+					traits = { popular_figurehead }
+				}
+			}
+			add_advisor_role = {
+				advisor={
+					slot = political_advisor
+					idea_token = CAN_prince_arthur
+					allowed  = {
+						original_tag  = CAN
+					}
+					available = {
+						is_country_leader = no
+						NOT = {
+							has_government = communism
+						}	
+					}
+					visible = {
+						OR = {
+							is_subject_of = ENG
+							AND = {
+								has_completed_focus = CAN_const_monarchy
+								is_in_faction_with = ENG
+							}	
+						}	
+					}				
+					traits  = {
+						popular_figurehead 
+					}
+				}
+			}
+		}	
+	}
+}
+
+# Halifax Explosion
+country_event = {
+	id = canada.72
+	title = canada.72.t
+	desc = canada.72.d
+	picture = GFX_report_event_generic_ruins
+	trigger = {
+		tag = CAN
+		is_in_faction_with = FRA
+		has_global_flag = kis_war
+		NOT = { has_global_flag = great_war_ends }
+		date > 1917.12.1
+		controls_state = 464
+	}
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 6
+	}
+	option = {
+		name = canada.72.a
+		add_manpower = -2000
+		464 = {
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+			damage_building = {
+				type = industrial_complex
+				damage = 1
+			}
+			damage_building = {
+				type = dockyard
+				damage = 1
+			}
+			damage_building = {
+				type = coastal_bunker
+				damage = 1
+			}
+			damage_building = {
+				type = arms_factory
+				damage = 1
+			}
+			damage_building = {
+				type = rail_way
+				damage = 1
+			}
+		}
+		news_event = canada.73
+	}
+}
+
+# Halifax Explosion
+news_event = {
+	id = canada.73
+	title = canada.72.t
+	desc = canada.72.d
+	picture = GFX_news_event_halifax_explosion
+	is_triggered_only = yes
+	option = {
+		name = canada.72.a
+	}
+}
