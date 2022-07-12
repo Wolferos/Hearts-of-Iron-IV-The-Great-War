@@ -249,6 +249,8 @@ focus_tree = {
 				add_timed_idea = { idea = CAN_northern_freedom days = 300 }
 			}
 		}
+
+		ai_will_do = { factor = 0 }
 	}
 	
 	focus = {
@@ -300,8 +302,13 @@ focus_tree = {
 		y = 1
 		
 		ai_will_do = {
-			factor = 3
+			factor = 10
+			modifier = { # Security so if the Historical Mode is enabled the Canada AI will stay loyal to the British Empire
+				factor = 0
+				is_historical_focus_on = yes
+			}
 		}
+
 		available_if_capitulated = yes
 		
 		completion_reward = {
@@ -541,13 +548,9 @@ focus_tree = {
 		# European Refugees
 		icon = GFX_goal_CAN_refugees
 		cost = 10
-		prerequisite = {
-			focus = CAN_safe_haven
-		}
+		prerequisite = { focus = CAN_safe_haven }
 		x = 14
 		y = 9
-		
-		
 		
 		available_if_capitulated = yes
 		
@@ -604,13 +607,15 @@ focus_tree = {
 		}
 		x = 15
 		y = 6
-		
-		
-		
+
 		available_if_capitulated = yes
 		
 		completion_reward = {
-			add_research_slot = 1
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 3
+				category = armor
+			}
 		}
 	}
 	
@@ -729,16 +734,9 @@ focus_tree = {
 			focus = CAN_empire
 		}
 		x = 17
-		y = 6
-		
-		
-		
-		
-		
-		completion_reward = {
-			add_ideas = CAN_the_mounties
-		}
+		y = 7
 
+		completion_reward = { add_ideas = CAN_the_mounties }
 	}
 	
 	focus = {
@@ -746,15 +744,9 @@ focus_tree = {
 		# The Greenland Purchase
 		icon = GFX_goal_CAN_greenland
 		cost = 10
-		prerequisite = {
-			focus = CAN_empire
-		}
+		prerequisite = { focus = CAN_empire }
 		x = 21
 		y = 6
-		
-		
-		
-		
 		
 		available = {
 			NOT = {has_war_with = DEN}
@@ -766,6 +758,7 @@ focus_tree = {
 			}
 		}
 
+		ai_will_do = { factor = 0 }
 	}
 	
 	focus = {
@@ -1069,19 +1062,13 @@ focus_tree = {
 		# Tame the Southern Jaguar 
 		icon = GFX_focus_mex_jefe_maximo
 		cost = 5
-		prerequisite = {
-			focus = CAN_empire
-		}
+		prerequisite = { focus = CAN_empire }
 		mutually_exclusive = {
 			focus = CAN_japanese_alliance
 			focus = CAN_german_alliance
 		}
 		x = 25
 		y = 6
-		
-		
-		
-		
 		
 		available = {
 			NOT = {
@@ -1312,7 +1299,14 @@ focus_tree = {
 		y = 7
 
 		completion_reward = {
-			light_cruiser = { sub_detection = 0.5 }
+			add_tech_bonus = {
+				bonus = 0.8
+				uses = 1
+				technology = ww1_light_cruiser0
+				technology = ww1_light_cruiser1
+				technology = ww1_light_cruiser2
+				technology = ww1_light_cruiser3
+			}
 		}
 	}
 	
@@ -1355,8 +1349,9 @@ focus_tree = {
 		
 		completion_reward = {
 			add_tech_bonus = {
-				bonus = 0.8
+				bonus = 0.6
 				uses = 1
+				technology = ww1_battleship0
 				technology = ww1_battleship1
 				technology = ww1_battleship2
 				technology = ww1_battleship3
@@ -1865,23 +1860,15 @@ focus_tree = {
 		# Ford Motor Company
 		icon = GFX_goal_CAN_ford
 		cost = 10
-		prerequisite = {
-			focus = CAN_army_focus
-		}
+		prerequisite = { focus = CAN_army_focus }
 		x = 45
 		y = 1
 		
-		
-		
-		
-		
 		completion_reward = {
 			add_tech_bonus = {
-				
-				bonus = 1
+				bonus = 0.5
 				uses = 2
 				category = armor
-				
 			}
 		}
 	}
@@ -2484,9 +2471,7 @@ focus_tree = {
 		# The Prairies
 		icon = GFX_goal_CAN_resources_2
 		cost = 10
-		prerequisite = {
-			focus = CAN_resources
-		}
+		prerequisite = { focus = CAN_resources }
 		x = 8
 		y = 7
 
@@ -2507,7 +2492,6 @@ focus_tree = {
 		}
 		x = 12
 		y = 9
-		
 		
 		available_if_capitulated = yes
 		
@@ -2533,7 +2517,6 @@ focus_tree = {
 		x = 2
 		y = 8
 		
-		
 		available_if_capitulated = yes
 		
 		completion_reward = {
@@ -2553,20 +2536,16 @@ focus_tree = {
 		# Ross Rifle Failure
 		icon = GFX_goal_CAN_gun_scandal
 		cost = 10
-		prerequisite = {
-			focus = CAN_american_persaude
-		}
+		prerequisite = { focus = CAN_american_persaude }
 		x = 4
 		y = 8
-		
 		
 		
 		available_if_capitulated = yes
 		
 		available = {
 			has_completed_focus = CAN_ross_company
-		}
-		
+		}		
 		completion_reward = {
 			add_ideas = CAN_ross_rifle
 		}	
@@ -2583,23 +2562,17 @@ focus_tree = {
 		}
 		x = 4
 		y = 9
-		
-		
-		
+
 		available_if_capitulated = yes
 		
 		available = {
 			has_completed_focus = CAN_british_rifle_lease
 		}
 		
-		completion_reward = {
-			
+		completion_reward = {			
 			remove_ideas = CAN_ross_rifle
 			add_ideas = CAN_lee_enfield
-			
-		}	
-		
-		
+		}
 	}
 	
 	focus = {
@@ -2607,9 +2580,7 @@ focus_tree = {
 		#Canadian Siberian Expeditionary Force
 		icon = GFX_goal_CAN_siberia
 		cost = 10
-		prerequisite = {
-			focus = CAN_russia_diplomacy
-		}
+		prerequisite = { focus = CAN_russia_diplomacy }
 		x = 1
 		y = 7
 		
@@ -2619,6 +2590,8 @@ focus_tree = {
 				has_war_with = GER
 			}
 		}
+
+		ai_will_do = { factor = 0 }
 		
 		completion_reward = {
 			division_template = {
@@ -2666,26 +2639,20 @@ focus_tree = {
 		#Conscription Crisis
 		icon = GFX_goal_CAN_consc_crisis
 		cost = 6
-		prerequisite = {
-			focus = CAN_commit
-		}
+		prerequisite = { focus = CAN_commit }
 		x = 6
 		y = 9
 		
-		
-		
-		
-		
 		available = {
-			date > 1917.1.1
-			
-			date < 1918.1.1
+			date > 1917.1.1			
+			date < 1918.11.11
 		}
 		
 		completion_reward = {
 			country_event = {id  = canada.8}
 		}
 
+		ai_will_do = { factor = 0 }
 	}
 	
 	focus = {
