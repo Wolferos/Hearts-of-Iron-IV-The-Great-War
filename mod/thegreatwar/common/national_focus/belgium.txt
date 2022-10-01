@@ -33,16 +33,17 @@ focus_tree = {
 	focus = {
 		id = BEL_nationalism_focus
 		prerequisite = { focus=BEL_collectivist_ethos }
+		mutually_exclusive = { focus = BEL_internationalism_focus }
+
 		icon = GFX_goal_support_fascism
 		available = { }
 
-		completion_reward = { add_ideas=nationalism }
+		completion_reward = { add_ideas = nationalism }
 		ai_will_do = { factor = 0 }
 
 		cost = 10
 		x = 0
 		y = 2
-		mutually_exclusive = { focus=BEL_internationalism_focus }
 	}
 
 	focus = {
@@ -62,18 +63,19 @@ focus_tree = {
 	 			}
 			}
 		}
-		completion_reward = { add_ideas=internationalism }
-		#ai_will_do = { factor=5 modifier={ factor=2 any_neighbor_country={ is_major=yes has_government=communism } } }
+
+		completion_reward = { add_ideas = internationalism }
+
 		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 2
 		y = 2
-		mutually_exclusive = { focus=BEL_nationalism_focus }
+		mutually_exclusive = { focus = BEL_nationalism_focus }
 	}
 
 	focus = {
 		id = BEL_ww1_sovereignist_ethos
-		prerequisite = { focus=BEL_political_effort }
+		prerequisite = { focus = BEL_political_effort }
 		icon = GFX_goal_anschluss
 		available = { }
 		completion_reward = { add_political_power=100 }
