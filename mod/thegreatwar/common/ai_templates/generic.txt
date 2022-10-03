@@ -37,10 +37,7 @@ armor_generic = {
 				num_of_military_factories > 119
 			}
 		}
-		
-		can_upgrade_in_field = {
-			has_equipment = { light_tank_equipment < 500 } 
-		}
+
 		
 		target_width = 18.0
 		width_weight = 1.0
@@ -808,19 +805,7 @@ infantry_big_generic = {
 	infantry_default = {
 	
 		upgrade_prio = {
-			factor = 20
-
-			modifier = {
-				factor = 0
-
-				OR = {
-					date < 1938.1.1
-					stockpile_ratio = { 
-		  				archetype = infantry_equipment
-		  				ratio < 4
-		  			}
-		  		}
-			}
+			factor = 5
 		}
 		
 		target_width = 40.0
@@ -1098,13 +1083,6 @@ marines_generic = {
 		upgrade_prio = {
 			factor = 2
 
-			modifier = {
-				factor = 0
-				NOT = {
-					has_tech = amphibious_tank
-					has_tech = amphibious_mechanized_infantry
-				}
-			}
 			modifier = {
 				is_major = no
 				factor = 0
