@@ -1,13 +1,12 @@
 ﻿add_namespace = ww1_xinhai
+
 country_event = {
 	title = ww1_xinhai.1.t
 	desc = ww1_xinhai.1.d
 	id = ww1_xinhai.1
 	picture = ww1_xinhai_1
 	is_triggered_only = no
-	mean_time_to_happen = {
-		days = 2
-	}
+	mean_time_to_happen = { days = 2 }
 
 	trigger = {
 		tag = QIN
@@ -32,9 +31,7 @@ country_event = {
 	id = ww1_xinhai.2
 	picture = ww1_xinhai_2
 	is_triggered_only = no
-	mean_time_to_happen = {
-		days = 0
-	}
+	mean_time_to_happen = { days = 0 }
 	trigger = {
 		tag = QIN
 		date > 1911.9.1
@@ -62,7 +59,7 @@ country_event = {
 				puppet = TAN
 			}
 
-			BBA_start_civil_war = {
+			start_civil_war = {
 				keep_all_characters = yes
 				ruling_party = neutrality
 				ideology = democratic
@@ -204,95 +201,68 @@ country_event = {
 				puppet = TAN
 			}
 
-			set_capital = { state = 620 }
-
-
-			BBA_start_civil_war = {
-				keep_all_characters = yes
-				ruling_party = democratic
-				ideology = neutrality
-				size = 0.95
-				capital = 613
-				states = {
-					613 283 287 322 325 328 330 591 592 593 594 595 596 597 598 599 600 601 602 603 604 605 606 607 608 609 610 611 612 614 615 616 617 618 619 621 622 714 715 716 717
-				}
-			}
-
-			random_country = {
-				limit = {
-					original_tag = QIN
-					has_government = neutrality
-				}
-
-				set_stability = 0.1
-				add_manpower = -2200000
-				load_oob = "QIN_Civil_War"
-
-				create_corps_commander = {
-					name = "Huang Xing"
-					portrait_path = "gfx/hoi4tgw_portraits/CHI/army_generals/CHI_Huang_Xing.dds"
-					traits = {
-						defensive_doctrine
-					}
-					skill = 3
-				}
-				create_corps_commander = {
-					name = "Song Jiaoren"
-					portrait_path = "gfx/generals/CHI_Song_Jiaoren.dds"
-					traits = {
-						fortress_buster
-					}
-					skill = 1
-				}
-				create_corps_commander = {
-					name = "Li Yuanhong"
-					portrait_path = "gfx/generals/CHI_Li_Yuanhong.dds"
-					traits = {}
-					skill = 1
-				}
-				create_corps_commander = {
-					name = "Xu Shichang"
-					portrait_path = "gfx/generals/CHI_xu_shichang.dds"
-					traits = { old_guard }
-					skill = 1
-				}
-				create_corps_commander = {
-					name = "Wang Shizen"
-					portrait_path = "gfx/generals/CHI_wang_shizen.dds"
-					traits = { old_guard }
-					skill = 1
-				}
-				create_corps_commander = {
-					name = "Yang Zengxin"
-					portrait_path = "gfx/generals/CHI_yang_zengxin.dds"
-					traits = { old_guard }
-					skill = 1
-				}
-				create_corps_commander = {
-					name = "Yin Chang"
-					portrait_path = "gfx/generals/CHI_yin_chang.dds"
-					traits = { old_guard }
-					skill = 1
-				}
-				create_corps_commander = {
-					name = "Zhang Huaizhi"
-					portrait_path = "gfx/generals/CHI_zhang_huaizhi.dds"
-					traits = { old_guard }
-					skill = 1
-				}
-				create_corps_commander = {
-					name = "Zhang Xun"
-					portrait_path = "gfx/generals/CHI_zhang_xun.dds"
-					traits = { old_guard }
-					skill = 2
-				}
-				set_equipment_fraction = 0.1
-			}
-
 			set_politics = {
 				ruling_party = democratic
 				elections_allowed = no
 			}
+
+			set_capital = { state = 620 }
+
+			CHI = {
+				transfer_state = 283
+				transfer_state = 287
+				transfer_state = 322
+				transfer_state = 325
+				transfer_state = 328
+				transfer_state = 330
+				transfer_state = 591
+				transfer_state = 592
+				transfer_state = 593
+				transfer_state = 594
+				transfer_state = 595
+				transfer_state = 596
+				transfer_state = 597
+				transfer_state = 598
+				transfer_state = 599
+				transfer_state = 600
+				transfer_state = 601
+				transfer_state = 602
+				transfer_state = 603
+				transfer_state = 604
+				transfer_state = 605
+				transfer_state = 606
+				transfer_state = 607
+				transfer_state = 608
+				transfer_state = 609
+				transfer_state = 610
+				transfer_state = 611
+				transfer_state = 612
+				transfer_state = 614
+				transfer_state = 615
+				transfer_state = 616
+				transfer_state = 617
+				transfer_state = 618
+				transfer_state = 619
+				transfer_state = 621
+				transfer_state = 622
+				transfer_state = 714
+				transfer_state = 715
+				transfer_state = 716
+				transfer_state = 717
+
+				set_politics = {
+					ruling_party = neutrality
+					elections_allowed = no
+				}
+
+				set_capital = { state = 613 }
+
+		        declare_war_on = {
+		            type = annex_everything
+		            target = QIN
+		        }
+			}
+
 
 			set_stability = 0.9
 			add_manpower = 900000
@@ -359,6 +329,7 @@ country_event = {
 		}
 	}
 }
+
 country_event = {
 	title = ww1_xinhai.4.t# Return of Yuan Shikai
 	desc = ww1_xinhai.4.d# After the Wuchang uprising our soldiers were routed and the revolutionaries are getting stronger.It is time to recall Yuan Shikai to deal with these rebels or we will lose the loyalty of our armies.
@@ -411,6 +382,7 @@ country_event = {
 		add_manpower = -100000
 	}
 }
+
 country_event = {
 	title = ww1_xinhai.5.t# Qing Empire provinces rise up!
 	desc = ww1_xinhai.5.d# Shaanxi - Shanxi - Yunnan uprising!
@@ -451,6 +423,7 @@ country_event = {
 		}
 	}
 }
+
 country_event = {
 	title = ww1_xinhai.6.t# Qing Empire provinces rise up!
 	desc = ww1_xinhai.6.d# Nanchang - Shanghai - Zhejiang - Jiangsu uprising!
@@ -489,6 +462,7 @@ country_event = {
 		}
 	}
 }
+
 country_event = {
 	title = ww1_xinhai.7.t# Yuan Shikai as prime minister
 	desc = ww1_xinhai.7.d# The ambition of Yuan Shikai was getting stronger he threatened Manchu nobility that he wanted to be prime minister and forced Empress Dowager Longyu to appoint him as prime minister so he could negotiate with revolutionaries secretly.
@@ -515,6 +489,7 @@ country_event = {
 		set_global_flag = prime_minister_yuan
 	}
 }
+
 country_event = {
 	title = ww1_xinhai.8.t
 	desc = ww1_xinhai.8.d
@@ -557,6 +532,7 @@ country_event = {
 		}
 	}
 }
+
 country_event = {
 	title = ww1_xinhai.9.t
 	desc = ww1_xinhai.9.d
@@ -596,6 +572,7 @@ country_event = {
 		}
 	}
 }
+
 country_event = {
 	title = ww1_xinhai.10.t
 	desc = ww1_xinhai.10.d
@@ -622,6 +599,7 @@ country_event = {
 		transfer_state = 621
 	}
 }
+
 country_event = {
 	title = ww1_xinhai.11.t
 	desc = ww1_xinhai.11.d
@@ -638,6 +616,7 @@ country_event = {
 		add_stability = 0.01
 	}
 }
+
 country_event = {
 	title = ww1_xinhai.12.t
 	desc = ww1_xinhai.12.d
@@ -654,6 +633,7 @@ country_event = {
 		add_stability = 0.01
 	}
 }
+
 country_event = {
 	title = ww1_xinhai.13.t
 	desc = ww1_xinhai.13.d
@@ -670,6 +650,7 @@ country_event = {
 		add_stability = 0.01
 	}
 }
+
 country_event = {
 	title = ww1_xinhai.14.t
 	desc = ww1_xinhai.14.d
@@ -678,9 +659,7 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = ww1_xinhai.14.a
-		ai_chance = {
-			factor = 100
-		}
+		ai_chance = { factor = 100 }
 		transfer_state = 614
 		transfer_state = 597
 
@@ -698,9 +677,7 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = ww1_xinhai.16.a
-		ai_chance = {
-			factor = 80
-		}
+		ai_chance = { factor = 80 }
 
 		random_country = {
 			limit = {
@@ -712,9 +689,7 @@ country_event = {
 	}
 	option = {
 		name = ww1_xinhai.16.b
-		ai_chance = {
-			factor = 20
-		}
+		ai_chance = { factor = 20 }
 		add_political_power = -5
 		add_stability = -0.03
 	}
