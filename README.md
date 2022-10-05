@@ -7,9 +7,9 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.18.2 "Ô Canada"
+**Current Version:** 0.19 "Alpini"
 
-**Compatible with:** Hearts of Iron IV 1.11.13 (with or without Paid DLC)
+**Compatible with:** Hearts of Iron IV 1.12.2 (with or without Paid DLC)
 
 **Supported Languages:**
 - English
