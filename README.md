@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.19 "Alpini"
+**Current Version:** 0.19.2 "Alpini"
 
 **Compatible with:** Hearts of Iron IV 1.12.2 (with or without Paid DLC)
 
