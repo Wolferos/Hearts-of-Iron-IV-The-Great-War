@@ -40,36 +40,30 @@ country_event = {
 
 		hidden_effect = {
 			MEX = {
-				#BBA#set_capital = { state = 482 } # Chihuahua State
-				start_civil_war = {
-					keep_all_characters = yes
-					ruling_party = democratic
-					ideology = neutrality
-					size = 0.5
-					capital = 277
-					states = { 277 477 479 478 485}
-				}
-				random_other_country = {
-					limit = {
-						original_tag = MEX
-						has_government = neutrality
+				set_capital = { state = 482 } # Chihuahua State
+
+				# BEG is used to make Fake Mexico
+				BEG = {
+					transfer_state = 277
+					transfer_state = 477
+					transfer_state = 479
+					transfer_state = 478
+					transfer_state = 485
+
+					set_politics = {
+						ruling_party = neutrality
+						elections_allowed = no
 					}
+
+					set_capital = { state = 277 }
 					load_oob = "MEX_1910"
-					set_equipment_fraction = 0.4
-					set_stability = 0.35
 
-					recruit_character = MEX_porfirio_diaz_2
-					recruit_character = MEX_victoriano_huerta_2
-		            recruit_character = MEX_BernardoReyes_2
-		            recruit_character = MEX_FelixDiaz_2
-
-					add_manpower = -80000
-
-					add_popularity = {
-						ideology = neutrality
-						popularity = 1
-					}
+			        declare_war_on = {
+			            type = annex_everything
+			            target = MEX
+			        }
 				}
+
 				news_event = { hours = 6 id = ww1_mexico.101 }
 				set_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
 
