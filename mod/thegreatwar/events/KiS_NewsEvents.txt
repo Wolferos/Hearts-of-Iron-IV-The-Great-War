@@ -70,7 +70,6 @@ news_event = {
 	id = kis_news.100
 	title = kis_news.100.t
 	desc = kis_news.100.d
-
 	picture = ww1_news_2
 	
 	major = yes
@@ -101,7 +100,6 @@ news_event = {
 	id = kis_news.101
 	title = kis_news.101.t
 	desc = kis_news.101.d
-
 	picture = ww1_news_4
 	
 	major = yes
@@ -641,15 +639,19 @@ news_event = {
 	trigger = {
 		has_global_flag = kis_xinhairenews
 		NOT = { has_global_flag = kis_xinhaire_end }
-		CHI = {
-			NOT = { has_war_with = QIN }
+		QIN = {
+			has_civil_war = no
 		}
+		
 	}
 	
-	mean_time_to_happen = { days = 0 }
+	mean_time_to_happen = {
+		days = 0
+	}
 
 	immediate = {
 		set_global_flag = kis_xinhaire_end
+		hidden_effect = {}
 	}
 	
 	option = {

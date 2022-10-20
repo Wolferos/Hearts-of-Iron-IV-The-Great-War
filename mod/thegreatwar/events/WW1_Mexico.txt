@@ -1,6 +1,5 @@
 ﻿add_namespace = ww1_mexico
 
-
 	#########################################################
 	#														#
 	#														#
@@ -39,51 +38,56 @@ country_event = {
 		name = ww1_mexico.100.a
 
 		hidden_effect = {
-			MEX = {
-				set_capital = { state = 482 } # Chihuahua State
+		MEX = {
+			set_capital = { state = 482 } # Chihuahua State
 
-				# BEG is used to make Fake Mexico
-				BEG = {
-					transfer_state = 277
-					transfer_state = 477
-					transfer_state = 479
-					transfer_state = 478
-					transfer_state = 485
-
-					set_politics = {
-						ruling_party = neutrality
-						elections_allowed = no
-					}
-
-					set_capital = { state = 277 }
-					load_oob = "MEX_1910"
-
-			        declare_war_on = {
-			            type = annex_everything
-			            target = MEX
-			        }
+			start_civil_war = {
+				ruling_party = democratic
+				ideology = neutrality
+				size = 0.5
+				capital = 277
+				states = { 277 477 479 478 485}
+			}
+			random_other_country = {
+				limit = {
+					original_tag = MEX
+					has_government = neutrality
 				}
+				load_oob = "MEX_1910"
+				set_equipment_fraction = 0.4
+				set_stability = 0.35
 
-				news_event = { hours = 6 id = ww1_mexico.101 }
-				set_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+       create_field_marshal={  name = "Porfirio Diaz"  portrait_path="gfx/hoi4tgw_portraits/MEX/country_leaders/MEX_porfirio_diaz.dds" traits={ defensive_doctrine  offensive_doctrine old_guard } skill=4 }
+       create_corps_commander={  name = "Huerta, V"  portrait_path="gfx/generals/MEX_huerta__v.dds" traits={ fortress_buster  } skill=2 }
+			 create_corps_commander={  name = "Bernardo Reyes"  portrait_path="gfx/generals/MEX_Reyes.dds" traits={   } skill=1 }
+			 create_corps_commander={  name = "Felix Diaz"  portrait_path="gfx/generals/MEX_Felix_Diaz.dds" traits={   } skill=1 }
 
-				add_manpower = 200000
-				load_oob = "Mexican_Revolution_1910"
-
-				set_equipment_fraction = 0.9
-				set_stability = 0.8
+				add_manpower = -80000
 
 				add_popularity = {
-					ideology = democratic
+					ideology = neutrality
 					popularity = 1
 				}
-
-				recruit_character = MEX_pancho_villa_2
-				recruit_character = MEX_emiliano_zapata_2
-				recruit_character = MEX_AlvaroObregon_2
-				recruit_character = MEX_PascualOrozco_2
-
 			}
+			news_event = { hours = 6 id = ww1_mexico.101 }
+			set_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+
+      add_manpower = 200000
+			load_oob = "Mexican_Revolution_1910"
+      create_field_marshal={  name = "Pancho Villa"  portrait_path="gfx/hoi4tgw_portraits/MEX/army_generals/MEX_pancho_villa.dds" traits={ logistics_wizard offensive_doctrine inspirational_leader fast_planner} skill= 4 }
+			create_field_marshal={  name = "Emiliano Zapata"  portrait_path="gfx/hoi4tgw_portraits/MEX/army_generals/MEX_emiliano_zapata.dds" traits={  defensive_doctrine inspirational_leader } skill=2 }
+      create_corps_commander={  name = "Álvaro Obregón"  portrait_path="gfx/generals/MEX_Obregon.dds" traits={ trickster } skill=3 }
+			create_corps_commander={  name = "Pascual Orozco"  portrait_path="gfx/generals/MEX_Orozco.tga" traits={   } skill=1 }
+
+
+			set_equipment_fraction = 0.9
+			set_stability = 0.8
+
+			add_popularity = {
+				ideology = democratic
+				popularity = 1
+			}
+		}
 		}
 	}
 	option = { # Fight Revolution (Stay with Diaz)
@@ -91,64 +95,56 @@ country_event = {
 		trigger = { is_ai = no }
 
 		hidden_effect = {
-			MEX = {
-				start_civil_war = {
-					keep_all_characters = yes
-					ideology = democratic
-					size = 0.5
-					capital = 482
-					states = { 482 483 481 484 474 475 480 476  }
-				}
-				random_other_country = {
-					limit = {
-						original_tag = MEX
-						has_government = democratic
-					}
-
-					load_oob = "Mexican_Revolution_1910"
-					add_manpower = -8000
-
-					#create_corps_commander={  name = "Pancho Villa"  portrait_path="gfx/hoi4tgw_portraits/MEX/army_generals/MEX_pancho_villa.dds" traits={ logistics_wizard offensive_doctrine } skill=2 }
-					#create_corps_commander={  name = "Emiliano Zapata"  portrait_path="gfx/hoi4tgw_portraits/MEX/army_generals/MEX_emiliano_zapata.dds" traits={  defensive_doctrine } skill=2 }
-					#create_corps_commander={  name = "Álvaro Obregón"  portrait_path="gfx/hoi4tgw_portraits/MEX/army_generals/MEX_Obregon.dds" traits={ trickster } skill=3 }
-					#create_corps_commander={  name = "Pascual Orozco"  portrait_path="gfx/hoi4tgw_portraits/MEX/army_generals/MEX_Orozco.dds" traits={   } skill=1 }
-
-					recruit_character = MEX_pancho_villa_2
-					recruit_character = MEX_emiliano_zapata_2
-					recruit_character = MEX_AlvaroObregon_2
-					recruit_character = MEX_PascualOrozco_2
-
-					set_equipment_fraction = 0.9
-					set_stability = 0.9
-				}
-
-				news_event = { hours = 6 id = ww1_mexico.101 }
-
-				set_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
-
-				set_politics = {
-					ruling_party = neutrality
-					elections_allowed = yes
-				}
-				add_popularity = {
-					ideology = democratic
-					popularity = 0.05
-				}
-				add_popularity = {
-					ideology = neutrality
-					popularity = 1
-				}
-				add_manpower = 20000
-
-				recruit_character = MEX_porfirio_diaz
-				recruit_character = MEX_victoriano_huerta
-				recruit_character = MEX_BernardoReyes
-				recruit_character = MEX_FelixDiaz
-
-				load_oob = "MEX_1910"
-				set_equipment_fraction = 0.9
-				set_stability = 0.5
+		MEX = {
+			start_civil_war = {
+				ideology = democratic
+				size = 0.5
+				capital = 482
+				states = { 482 483 481 484 474 475 480 476  }
 			}
+			random_other_country = {
+				limit = {
+					original_tag = MEX
+					has_government = democratic
+				}
+
+				load_oob = "Mexican_Revolution_1910"
+				add_manpower = -8000
+				create_field_marshal={  name = "Pancho Villa"  portrait_path="gfx/hoi4tgw_portraits/MEX/army_generals/MEX_pancho_villa.dds" traits={ logistics_wizard offensive_doctrine } skill=2 }
+				create_field_marshal={  name = "Emiliano Zapata"  portrait_path="gfx/hoi4tgw_portraits/MEX/army_generals/MEX_emiliano_zapata.dds" traits={  defensive_doctrine } skill=2 }
+				create_corps_commander={  name = "Álvaro Obregón"  portrait_path="gfx/hoi4tgw_portraits/MEX/army_generals/MEX_Obregon.dds" traits={ trickster } skill=3 }
+				create_corps_commander={  name = "Pascual Orozco"  portrait_path="gfx/hoi4tgw_portraits/MEX/army_generals/MEX_Orozco.dds" traits={   } skill=1 }
+
+				set_equipment_fraction = 0.9
+				set_stability = 0.9
+			}
+			news_event = { hours = 6 id = ww1_mexico.101 }
+
+			set_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+
+			set_politics = {
+				ruling_party = neutrality
+				elections_allowed = yes
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = neutrality
+				popularity = 1
+			}
+			add_manpower = 20000
+
+			create_field_marshal={  name = "Porfirio Diaz"  portrait_path="gfx/hoi4tgw_portraits/MEX/country_leaders/MEX_porfirio_diaz.dds" traits={ defensive_doctrine  offensive_doctrine old_guard } skill=4 }
+			create_corps_commander={  name = "Victoriano Huerta"  portrait_path="gfx/hoi4tgw_portraits/MEX/army_generals/MEX_victoriano_huerta.dds" traits={ fortress_buster  } skill=2 }
+			create_corps_commander={  name = "Bernardo Reyes"  portrait_path="gfx/hoi4tgw_portraits/MEX/army_generals/MEX_Reyes.dds" traits={   } skill=1 }
+			create_corps_commander={  name = "Félix Díaz"  portrait_path="gfx/hoi4tgw_portraits/MEX/army_generals/MEX_Felix_Diaz.dds" traits={   } skill=1 }
+
+			load_oob = "MEX_1910"
+			set_equipment_fraction = 0.9
+			set_stability = 0.5
+		}
 		}
 	}
 }
@@ -158,10 +154,10 @@ country_event = {
 # News about Mexican Revolution
 #____________________________________________________________
 news_event = {
-	id = ww1_mexico.101
-	title = ww1_mexico.101.t
+	id=ww1_mexico.101
+	title=ww1_mexico.101.t
 
-	desc = ww1_mexico.101.d
+	desc=ww1_mexico.101.d
 
 	picture=EVENT_hoi4tgw_mexican_revolution
 
@@ -187,11 +183,12 @@ news_event = {
 # News about Madero takes power and Porfirio Díaz (exil)
 #____________________________________________________________
 news_event = {
-	id = ww1_mexico.102
-	title = ww1_mexico.102.t
+	id=ww1_mexico.102
+	title=ww1_mexico.102.t
 
-	desc = ww1_mexico.102.d
-	#"Porfirio Díaz is no longer the President of Mexico. Díaz fell from power after he imprisoned Francisco I. Madero, his electoral rival, and declared himself the winner of an eighth term in office. He has been deposed in the Mexican Revolution and fled to Spain. Francisco I. Madero will now rules Mexico, the Porfiriato period, started in 1876, is definitely over."
+	desc=ww1_mexico.102.d
+
+#"Porfirio Díaz is no longer the President of Mexico. Díaz fell from power after he imprisoned Francisco I. Madero, his electoral rival, and declared himself the winner of an eighth term in office. He has been deposed in the Mexican Revolution and fled to Spain. Francisco I. Madero will now rules Mexico, the Porfiriato period, started in 1876, is definitely over."
 
 	picture=EVENT_hoi4tgw_adios_porfirio_diaz
 
@@ -224,9 +221,9 @@ news_event = {
 ##################
 #news about the plan of san diego###
 news_event = {
-	id = ww1_mexico.1080
-	title = ww1_mexico.1080.t
-  desc = ww1_mexico.1080.d
+	id=ww1_mexico.1080
+	title= ww1_mexico.1080.t
+  desc=ww1_mexico.1080.d
 
 
 	picture= EVENT_hoi4tgw_plan_san_diego
@@ -236,8 +233,8 @@ news_event = {
 	trigger = {
 		NOT = { has_global_flag = FLAG_MEX_adios_porfirio_diaz }
 		NOT = { has_global_flag = FLAG_MEX_Plan_San_D }
+    has_completed_focus = mex_ww1_Plan_of_San_Diego
 		NOT = { has_government = democratic }
-    	has_completed_focus = mex_ww1_Plan_of_San_Diego
 
 		MEX = {
 			has_civil_war = no
@@ -266,10 +263,10 @@ news_event = {
 # Madero has been assassinated
 #____________________________________________________________
 news_event = {
-	id = ww1_mexico.103
-	title = ww1_mexico.103.t
+	id=ww1_mexico.103
+	title=ww1_mexico.103.t
 
-	desc = ww1_mexico.103.d
+	desc=ww1_mexico.103.d
 
 	picture=EVENT_hoi4tgw_adios_francisco_madero
 
@@ -297,6 +294,7 @@ news_event = {
 	immediate = {
 		set_global_flag = SUPER_GLOBAL_Adios_Francisco_Madero_1913
 
+
 		hidden_effect = {
 
 			add_popularity = {
@@ -312,7 +310,14 @@ news_event = {
 
 				kill_country_leader = yes
 
-				recruit_character = MEX_victoriano_huerta
+		        create_country_leader = {
+		            name = "Victoriano Huerta"
+		            desc = MEX_victoriano_huerta_DESC
+		            picture = "gfx/hoi4tgw_portraits/MEX/country_leaders/MEX_victoriano_huerta.dds"
+		            expire = "1935.1.1"
+		            ideology = autocracy
+		            traits = {}
+		        }
 			}
 		}
 	}
@@ -324,10 +329,10 @@ news_event = {
 #____________________________________________________________
 
 news_event = {
-	id = ww1_mexico.1013
-	title = ww1_mexico.1013.t
+	id=ww1_mexico.1013
+	title=ww1_mexico.1013.t
 
-	desc = ww1_mexico.1013.d
+	desc=ww1_mexico.1013.d
 
 	picture=EVENT_hoi4tgw_adios_Diaz
 
@@ -369,7 +374,15 @@ news_event = {
 				}
 
 				kill_country_leader = yes
-				recruit_character = MEX_victoriano_huerta
+
+		        create_country_leader = {
+		            name = "Victoriano Huerta"
+		            desc = MEX_victoriano_huerta_DESC
+		            picture = "gfx/hoi4tgw_portraits/MEX/country_leaders/MEX_victoriano_huerta.dds"
+		            expire = "1935.1.1"
+		            ideology = autocracy
+		            traits = {}
+		        }
 			}
 		}
 	}
@@ -382,18 +395,18 @@ news_event = {
 ##################
 #Columbus Raid###
 news_event = {
-	id = ww1_mexico.1081
-	title = ww1_mexico.1081.t
-	desc = ww1_mexico.1081.d
+	id=ww1_mexico.1081
+	title= ww1_mexico.1081.t
+  desc=ww1_mexico.1081.d
 
-	picture= EVENT_hoi4tgw_columbus_raid
+
+		picture= EVENT_hoi4tgw_columbus_raid
 
 	major = yes
 
 	trigger = {
-		has_global_flag = FLAG_MEX_Plan_San_D
-    	has_completed_focus = mex_ww1_Support_the_columbus_raid
-
+	  has_global_flag = FLAG_MEX_Plan_San_D
+    has_completed_focus = mex_ww1_Support_the_columbus_raid
 		NOT = { has_government = democratic }
 
 		MEX = {
@@ -411,19 +424,21 @@ news_event = {
 	}
 
 	immediate = { set_global_flag = FLAG_MEX_Columbus_raid }
-	fire_only_once=yes
+  fire_only_once=yes
 	option = {
 		name = ww1_mexico.1081.a
 	}
 }
+######################
+######Failed Occupattion of the salinas cruz port
 
-###### Failed Occupattion of the salinas cruz port
 news_event = {
-	id = ww1_mexico.1082
-	title = ww1_mexico.1082.t
-  	desc = ww1_mexico.1082.d
+	id=ww1_mexico.1082
+	title= ww1_mexico.1082.t
+  	desc=ww1_mexico.1082.d
 
-	picture= EVENT_hoi4tgw_Salinas_Cruz
+
+		picture= EVENT_hoi4tgw_Salinas_Cruz
 
 	major = yes
  	fire_only_once=yes
@@ -435,6 +450,7 @@ news_event = {
 	mean_time_to_happen = {
 		days = 0
 	}
+
 
 	option = {
 		name = ww1_mexico.1082.a
