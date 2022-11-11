@@ -395,14 +395,6 @@ leader_traits = {
 	}
 
 
-#ai_focus_defense_factor
-#ai_focus_aggressive_factor
-#ai_focus_production_factor
-#ai_focus_military_advancements_factor
-#ai_focus_peaceful_factor
-#ai_focus_naval_factor
-#ai_focus_naval_air_factor
-#ai_focus_aviation_factor
 
 	dislikes_germany = {
 		random = no
@@ -3762,11 +3754,7 @@ leader_traits = {
 		communism_drift = 0.1
 
 		ai_will_do = {
-			factor = 1
-			modifier = {
-				not = { has_completed_focus = USA_suspend_the_presecution }
-				factor = 0
-			}
+			factor = 0 # AI avoid this if they aren't invited to do it
 		}
 	}
 
@@ -3777,7 +3765,7 @@ leader_traits = {
 		democratic_drift = 0.1
 
 		ai_will_do = {
-			factor = 0
+			factor = 0 # AI avoid this if they aren't invited to do it
 		}
 	}
 
@@ -3788,11 +3776,7 @@ leader_traits = {
 		fascism_drift = 0.1
 
 		ai_will_do = {
-			factor = 1
-			modifier = {
-				not = { has_completed_focus = USA_america_first }
-				factor = 0
-			}
+			factor = 0 # AI avoid this if they aren't invited to do it
 		}
 	}
 	staunch_monarchist = {
@@ -3802,12 +3786,7 @@ leader_traits = {
 		neutrality_drift = 0.1
 
 		ai_will_do = {
-			factor = 1
-			modifier = {
-				tag = HUN
-				not = { has_completed_focus = HUN_invite_the_habsburg_prince }
-				factor = 0
-			}
+			factor = 0 # AI avoid this if they aren't invited to do it
 		}
 	}
 
@@ -3827,7 +3806,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 
-		democratic_drift = 0.1
+		#democratic_drift = 0.1
 		stability_factor = 0.15
 
 		ai_will_do = {
@@ -3839,7 +3818,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 
-		fascism_drift = 0.1
+		#fascism_drift = 0.1
 		generate_wargoal_tension = -0.5
 		justify_war_goal_time = -0.25
 
@@ -4548,7 +4527,7 @@ leader_traits = {
 	falangist_industrialist = {
 		random = no
 		sprite = 13
-		fascism_drift = 0.05
+		#fascism_drift = 0.05
 		production_speed_industrial_complex_factor = 0.1
 		production_speed_infrastructure_factor = 0.1
 		production_speed_rail_way_factor = 0.1
@@ -4558,7 +4537,7 @@ leader_traits = {
 	falangist_syndicalist = {
 		random = no
 		sprite = 13
-		fascism_drift = 0.1
+		#fascism_drift = 0.1
 		consumer_goods_factor = -0.05
 	}
 
@@ -4575,14 +4554,14 @@ leader_traits = {
 	loyal_falangist = {
 		random = no
 		sprite = 13
-		fascism_drift = 0.1
+		#fascism_drift = 0.1
 		political_power_factor = 0.05
 	}
 
 	falangist_figurehead = {
 		random = no
 		sprite = 13
-		fascism_drift = 0.1
+		#fascism_drift = 0.1
 		political_power_factor = 0.1
 	}
 
@@ -4614,7 +4593,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 		political_power_factor = 0.1
-		fascism_drift = 0.1
+		#fascism_drift = 0.1
 		neutrality_drift = 0.05
 		fascism_acceptance = 40
 	}
@@ -4622,9 +4601,9 @@ leader_traits = {
 	democratic_crusader = {
 		random = no
 		sprite = 13
-		fascism_drift = -0.05
-		communism_drift = -0.05
-		democratic_drift = 0.05
+		fascism_drift = -0.02
+		communism_drift = -0.02
+		democratic_drift = 0.02
 		democratic_acceptance = 40
 	}
 
@@ -4647,7 +4626,7 @@ leader_traits = {
 	anti_german_personality = {
 		random = no
 		sprite = 13
-		fascism_drift = -0.05
+		fascism_drift = -0.03
 		fascism_acceptance = -40
 		targeted_modifier = {
 			tag = GER

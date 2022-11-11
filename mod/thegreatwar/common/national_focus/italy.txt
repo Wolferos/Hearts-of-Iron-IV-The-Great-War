@@ -447,13 +447,13 @@ focus_tree = {
 
 	focus = {
 		id = ITA_ww1_anti_uk
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
 		prerequisite = { focus = ITA_ww1_anti_fra }
 		available = {
 			NOT = { 
 				is_in_faction_with = FRA 
 			}
 		}
-		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
 		ai_will_do = { factor = 0 }
 		completion_reward = { ITA={ add_opinion_modifier={ target=ENG modifier=HOI4TGW_Opinion_anti_uk_policy_malus } } }
 		cost = 10
@@ -528,13 +528,13 @@ focus_tree = {
 
 	focus = {
 		id = ITA_ww1_anti_ger
+		icon = GFX_goal_generic_cavalry
 		prerequisite = { focus = ITA_ww1_anti_ah }
 		available = {
 			NOT = { 
 				is_in_faction_with = GER 
 			}
 		}
-		icon = GFX_goal_generic_cavalry
 		completion_reward = { ITA={ add_opinion_modifier={ target=GER modifier=HOI4TGW_Opinion_anti_ger_policy_malus } } }
 		ai_will_do = { factor = 2000 }
 		cost = 10
@@ -2841,8 +2841,6 @@ focus_tree = {
 
 
 
-
-
 	# March on Rome
 	focus = {
 		id = ITA_interwar_march_on_rome
@@ -2856,11 +2854,10 @@ focus_tree = {
 			is_puppet = no
 		}
 
-		x = 17
+		x = 24
 		y = 10
 
-
-		cost = 10
+		cost = 6
 
 		ai_will_do = {
 			factor = 200	
@@ -2869,15 +2866,364 @@ focus_tree = {
 			add_timed_idea = { idea = reign_of_terror days = 730 }
 			add_popularity = {
 				ideology = fascism
-				popularity = 0.65
+				popularity = 0.6
 			}
 			set_politics = {
 				ruling_party = fascism
 				elections_allowed = no
 			}
+			add_named_threat = { threat = 1 }
 			news_event = { hours = 1 id = interwar_news.2 }
 		}
 	}
+
+	# Viva il Duce
+	focus = {
+		id = ITA_interwar_Viva_il_Duce
+
+		icon = GFX_goal_support_fascism
+		prerequisite = { focus = ITA_interwar_march_on_rome }
+
+		available = {		
+			has_government = fascism
+			is_puppet = no	
+		}
+
+		x = 26
+		y = 11
+
+		cost = 6
+
+		ai_will_do = {
+			factor = 20	
+		}
+		completion_reward = {
+
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_interwar_ZaraIsNotEnough # Provincia di Zara
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+		prerequisite = { focus = ITA_interwar_Viva_il_Duce }
+		mutually_exclusive = { focus = ITA_interwar_TreatyofRapallo }
+
+		x = 25
+		y = 13
+		cost = 10
+
+		available = {
+			country_exists = YUG
+			YUG = {
+				owns_state = 163
+			}
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				type = take_state_focus
+				target = YUG
+				generator = { 163 } # Zadar
+			}
+		}
+
+		ai_will_do = {
+			factor = 0	
+		}
+	}
+
+	# Treaty of Rapallo
+	focus = {
+		id = ITA_interwar_TreatyofRapallo
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = ITA_interwar_Viva_il_Duce }
+		mutually_exclusive = { focus = ITA_interwar_ZaraIsNotEnough }
+
+		x = 27
+		y = 13
+		cost = 10
+
+		completion_reward = { add_political_power = -50 }
+
+		ai_will_do = {
+			factor = 1	
+		}
+	}
+
+
+	focus = {
+		id = ITA_interwar_AntiCommunism
+		prerequisite = { focus = ITA_interwar_march_on_rome }
+		icon = GFX_goal_generic_propaganda
+
+		available = {
+			has_government = fascism
+			is_puppet = no	
+		}
+
+		completion_reward = {
+
+			add_popularity = {
+				ideology = communism
+				popularity = -0.03
+			}
+		}
+
+		ai_will_do = { factor = 5 }
+		cost = 4
+		x = 22
+		y = 11
+	}
+
+
+	focus = {
+		id = ITA_interwar_SupportFascismEspana
+		prerequisite = { focus = ITA_interwar_AntiCommunism }
+		icon = GFX_goal_generic_military_sphere
+
+		available = {
+			date > 1933.1.1
+			has_government = fascism
+			is_puppet = no	
+		}
+
+		completion_reward = {
+
+			SPR = {
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.03
+				}			
+			}
+		}
+
+		ai_will_do = { factor = 5 }
+		cost = 4
+		x = 21
+		y = 12
+	}
+
+
+	focus = {
+		id = ITA_interwar_CrushTheLabinRepublic
+		icon = GFX_focus_eng_expose_the_belly_of_the_bear
+		prerequisite = { focus = ITA_interwar_AntiCommunism }
+
+		available = {
+			date > 1921.3.2 # The Labin Republic was proclaimed by miners from the Istrian city of Labin on March 2, 1921 during a mining strike
+			has_government = fascism
+			is_puppet = no	
+		}
+
+		completion_reward = {
+
+			add_stability = -0.03
+
+			add_popularity = {
+				ideology = communism
+				popularity = -0.06
+			}
+		}
+
+		ai_will_do = { factor = 5 }
+		cost = 4
+		x = 23
+		y = 12
+	}
+
+
+	focus = {
+		id = ITA_interwar_BanCommunism
+		prerequisite = { focus = ITA_interwar_CrushTheLabinRepublic }
+		prerequisite = { focus = ITA_interwar_LeggiFascistissime }
+
+		available = {
+			has_government = fascism
+			is_puppet = no	
+		}
+
+		icon = GFX_focus_eng_liberate_the_home_of_marx
+
+		completion_reward = {
+
+			add_stability = -0.08
+
+			add_popularity = {
+				ideology = communism
+				popularity = -1
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+		cost = 4
+		x = 23
+		y = 15
+	}
+
+
+	focus = {
+		id = ITA_interwar_LeggiFascistissime
+		icon = GFX_focus_generic_italy_first
+		prerequisite = { focus = ITA_interwar_Viva_il_Duce }
+
+		available = {
+			date > 1925.1.1
+			has_government = fascism
+			is_puppet = no	
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.07
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.07
+			}
+		}
+
+		ai_will_do = { factor = 5 }
+		cost = 4
+		x = 24
+		y = 14
+	}
+
+	focus = {
+		id = ITA_interwar_SpazioVitale
+		icon = GFX_goal_generic_position_armies
+		prerequisite = { focus = ITA_interwar_LeggiFascistissime }
+
+		available = {
+			has_government = fascism
+			is_puppet = no	
+		}
+
+		completion_reward = {
+			add_state_claim = 1 #Corsica
+			add_state_claim = 44 #Albania
+			add_state_claim = 103 #Dalmatia
+		}
+
+		ai_will_do = { factor = 5 }
+		cost = 4
+		x = 25
+		y = 15
+	}
+
+
+	focus = {
+		id = ITA_interwar_CorfuIncident
+		icon = GFX_goal_generic_secret_weapon
+		prerequisite = { focus = ITA_interwar_Viva_il_Duce }
+
+		available = {
+			date > 1923.8.29 #
+			has_government = fascism
+			is_puppet = no	
+		}
+
+		completion_reward = {
+			GRE={ add_opinion_modifier={ target=ITA modifier=HOI4TGW_Opinion_ger_auh_alliance_focus_malus } }
+			ITA={ add_opinion_modifier={ target=GRE modifier=HOI4TGW_Opinion_ger_auh_alliance_focus_malus } }
+		}
+
+		ai_will_do = { factor = 5 }
+		cost = 4
+		x = 28
+		y = 14
+	}
+
+	focus = {
+		id = ITA_interwar_OccupationOfCorfu
+		icon = GFX_goal_generic_cavalry
+		prerequisite = { focus = ITA_interwar_CorfuIncident }
+
+		available = {
+			has_government = fascism
+			is_puppet = no	
+		}
+
+		completion_reward = {
+			add_named_threat = { threat = 5 }
+			add_stability = -0.01
+			add_opinion_modifier = { target = GRE modifier = minor_sanctions }
+		}
+
+		ai_will_do = { factor = 5 }
+		cost = 4
+		x = 27
+		y = 15
+	}
+
+
+	focus = {
+		id = ITA_interwar_AttackGreece
+		icon = GFX_goal_generic_major_war
+		prerequisite = { focus = ITA_interwar_OccupationOfCorfu }
+		mutually_exclusive = { focus = ITA_interwar_DeescalationWithGreece }
+
+		x = 24
+		y = 16
+		cost = 10
+
+		available = {
+			country_exists = GRE
+			GRE = {
+				owns_state = 185
+				owns_state = 758
+			}
+		}
+
+		x = 26
+		y = 16
+		cost = 10
+			
+		completion_reward = {
+			create_wargoal = {
+				target = GRE
+				type = take_state_focus
+				generator = { 185 758 }
+			}
+		}
+
+		ai_will_do = {
+			factor = 0	
+		}
+	}
+
+	focus = {
+		id = ITA_interwar_DeescalationWithGreece
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = { focus = ITA_interwar_OccupationOfCorfu }
+		mutually_exclusive = { focus = ITA_interwar_AttackGreece }
+
+		x = 28
+		y = 16
+		cost = 10
+
+		completion_reward = { add_political_power = -75 }
+
+		ai_will_do = {
+			factor = 1	
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	# Abyssinia Crisis
@@ -4506,7 +4852,7 @@ focus_tree = {
 	focus = {
 		id = ITA_support_nationalist_spain
 		icon = GFX_goal_generic_military_deal
-		prerequisite = { focus = ITA_victoryinETH }
+		prerequisite = { focus = ITA_victoryinETH focus = ITA_interwar_SupportFascismEspana }
 		available = {
 			any_other_country = {
 				original_tag = SPR
@@ -4524,7 +4870,7 @@ focus_tree = {
 		}
 		cancel_if_invalid = no
 		x = 20
-		y = 12
+		y = 13
 		cost = 4.4
 		ai_will_do = {
 			factor = 1
