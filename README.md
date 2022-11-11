@@ -7,9 +7,9 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.19.3 "Alpini"
+**Current Version:** 0.20 "Spazio Vitale"
 
-**Compatible with:** Hearts of Iron IV 1.12.4 (with or without Paid DLC)
+**Compatible with:** Hearts of Iron IV 1.12.5 (with or without Paid DLC)
 
 **Supported Languages:**
 - English
