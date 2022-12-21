@@ -87,14 +87,14 @@ NDiplomacy = {
 	INFLUENCE_RATIO_CORE = 0.45,                     -- Ratio of influence based on distance to nearest core territory
 	INFLUENCE_RATIO_CONTROLLED = 0.5,               -- Ratio of influence based on distance to neared controlled territory (including uncontested peace conference bids)
 	INFLUENCE_DISTANCE_DIVISOR = 22.0,              -- Divide pixel distance with this when determining distance to capital / core / controlled states. Just an arbitrary way of scaling the distance numbers.
-	
+
 	INFLUENCE_PER_ADJACENCY = 0.05,					-- How much influence to add per uncontested adjacent state in the PC (blob, don't snake)
-	
+
 	INFLUENCE_MAJOR_FACTOR = 1.0,					--How much influence discount an AI major will get (inverse)
 	INFLUENCE_MINOR_FACTOR = 1.0,					--How much influence discount an AI minor will get (inverse)
-	
+
 	PEACE_TRIGGER_AI_MAX_INFLUENCE_VALUE = 0.99,	-- Max influence value for pc_is_state_outside_influence_for trigger
-	
+
 	BASE_IMPROVE_RELATION_COST = 10,                -- Political power cost to initiate relation improvement
 	BASE_IMPROVE_RELATION_SAME_IDEOLOGY_GROUP_MAINTAIN_COST = 0.2, -- Political power cost each update when boosting relations with nation of same ideology
 	BASE_IMPROVE_RELATION_DIFFERENT_IDEOLOGY_GROUP_MAINTAIN_COST = 0.4,    -- Political power cost each update when boosting relations with nation of different ideology
@@ -157,7 +157,7 @@ NDiplomacy = {
 	GUARANTEE_COST = 25,							-- Scale with the number of already guaranteed countries.
 	REVOKE_GUARANTEE_COST = 25,
 	BASE_CONDITIONAL_PEACE_WARESCORE_RATIO = 0.5, 	-- Warscore ratio needed for the losing side to able to surrender.
-	BASE_CONDITIONAL_PEACE_MONTHS = 6,				-- War length must be before a surrender is possible.
+	BASE_CONDITIONAL_PEACE_MONTHS = 3,				-- War length must be before a surrender is possible.
 	JOINING_NAP_WAR_PENALTY = 0.2,					-- War support penalty for breaking non-breakable NAP
 	BREAKING_GUARANTEE_PENALTY = 0.2,				-- War support penalty for breaking guarantee
 	PEACE_SCORE_SCALE_FACTOR = 1.35,                -- Losers' total value times this factor becomes the default total peace conference score that is distributed to the winners.
@@ -731,15 +731,15 @@ NMilitary = {
 	WAR_SCORE_LOSSES_MULT_IF_CAPITULATED = 0.25, 				-- factor applied to war score gained from casualties if capitulated
 	WAR_SCORE_STRATEGIC_BOMBING_FACTOR = 0.02,  				-- war score gained for every damage made to enemy's building with strategic bombing
 	WAR_SCORE_STRAT_BOMBING_DECAY_PER_CIVILIAN_FACTORY = 0.10,	-- monthly war score deducted from strategic bombing for every civilian factory in service on the bombed enemy side
-	WAR_SCORE_AIR_IC_LOSS_FACTOR = 0.1,							-- war score gained for every IC of damage done to an enemy's air mission
+	WAR_SCORE_AIR_IC_LOSS_FACTOR = 0.08,						-- war score gained for every IC of damage done to an enemy's air mission
 	WAR_SCORE_LAND_DAMAGE_FACTOR = 0.1,          				-- war score gained for every strengh damage done to an enemy's army
 	WAR_SCORE_ATTACKER_AND_WINNER_FACTOR = 1.2,					-- factor applied to war score gained for strength damage done when being the attacker and the winner
-	WAR_SCORE_LAND_IC_LOSS_FACTOR = 0.1,         				-- war score gained for every IC damage done to an enemy's army
-	WAR_SCORE_PROVINCE_FACTOR = 3.0,							-- war score gained when capturing a province for the first time, multiplied by province's worth
-	WAR_SCORE_LEND_LEASE_GIVEN_IC_FACTOR = 0.001,  				-- war score gained for every IC of lend lease sent to allies
-	WAR_SCORE_LEND_LEASE_GIVEN_FUEL_FACTOR = 0.001,  			-- war score gained for every 100 units of fuel lend lease sent to allies
-	WAR_SCORE_LEND_LEASE_RECEIVED_IC_FACTOR = 0.001,  			-- war score deducted for every IC of lend lease received from allies
-	WAR_SCORE_LEND_LEASE_RECEIVED_FUEL_FACTOR = 0.001, 		-- war score deducted for every 100 units of fuel lend lease received from allies
+	WAR_SCORE_LAND_IC_LOSS_FACTOR = 0.08,         				-- war score gained for every IC damage done to an enemy's army
+	WAR_SCORE_PROVINCE_FACTOR = 4.0,							-- war score gained when capturing a province for the first time, multiplied by province's worth
+	WAR_SCORE_LEND_LEASE_GIVEN_IC_FACTOR = 0.003,  				-- war score gained for every IC of lend lease sent to allies
+	WAR_SCORE_LEND_LEASE_GIVEN_FUEL_FACTOR = 0.003,  			-- war score gained for every 100 units of fuel lend lease sent to allies
+	WAR_SCORE_LEND_LEASE_RECEIVED_IC_FACTOR = 0.002,  			-- war score deducted for every IC of lend lease received from allies
+	WAR_SCORE_LEND_LEASE_RECEIVED_FUEL_FACTOR = 0.002, 		-- war score deducted for every 100 units of fuel lend lease received from allies
 
 	CORPS_COMMANDER_DIVISIONS_CAP = 24,			-- how many divisions a corps commander is limited to. 0 = inf, < 0 = blocked
 	DIVISION_SIZE_FOR_XP = 8,                   -- how many battalions should a division have to count as a full divisions when calculating XP stuff
@@ -1361,7 +1361,8 @@ NNavy = {
 	WAR_SCORE_GAIN_FOR_SUNK_SHIP_PRODUCTION_COST_FACTOR = 0.004,		-- war score gained for every IC of the sunk ship
 	WAR_SCORE_GAIN_FOR_SUNK_CONVOY = 0.05,							-- war score gained for every sunk convoy
 	WAR_SCORE_DECAY_FOR_BUILT_CONVOY = 0.03,  						-- war score deducted when convoy-raided enemy produces one new convoy
-
+	PEACE_ACTION_TRANSFER_NAVY_EXPERIENCE_RETAINED = 0.25,			-- % of experience to retain after being transferred in a peace conference
+	
 	-- Convoy Priorities START
 	NAVAL_INVASION_PRIORITY = 1,									-- Default convoy priority for naval invasions
 	NAVAL_TRANSFER_PRIORITY = 1,									-- Default convoy priority for naval transports
@@ -2174,13 +2175,22 @@ NAI = {
 	GARRISON_TEMPLATE_SCORE_IC_FACTOR = 1.0,		-- ai uses these defines while calculating garrison template score of a template.
 	GARRISON_TEMPLATE_SCORE_MANPOWER_FACTOR = 0.05,  -- formula is (template_ic * ic_factor + template_manpower * manpower_factor ) / template_supression (lower is better)
 
+	ADVISOR_SCORE_TRAIT_MODIFIER_FACTOR = 0.2,     -- When scoring advisors, factor the score contribution from the advisor's trait modifiers by this value
+	ADVISOR_SCORE_CHEAPER_IS_BETTER_FACTOR = 0.1,  -- When scoring advisors, this define scales how much the AI prefers cheaper advisors over more expensive ones. 0.0 means no effect, 0.15 means a cost difference of 100 PP modifies the score by 15 %.
+	ADVISOR_SCORE_CHEAPER_IS_BETTER_MIN = 0.5,     -- Clamps the above scoring factor to at minimum this value
+
+	-- stuff related to how the AI evaluates/scores how useful modifiers are
+	EVAL_MODIFIER_NON_PERCENT_FACTOR = 0.1,                       -- Multiply non-percent-based modifiers with this to put the values in the approximately same range so they can be compared. (Why we are using 0.1 and not 0.01? No idea...)
+	EVAL_MODIFIER_UNSPECIFIED_CATEGORY_FACTOR = 0.75,             -- Arbitrary scoring factor for modifiers the AI doesn't know how to categorize
+	EVAL_MODIFIER_MAX_COMMAND_POWER_FACTOR = 0.01,                -- Increasing CP cap with x is maybe 100 times less useful than e.g. gaining x more XP per day
+
 	-- for positive values of following defines, ai weights will take over of hardcoded ai scoring system
 	MIN_AI_SCORE_TO_MOBILIZATION_LAW_OVERRIDE_HARD_CODED_SCORE = 0.0,
 	MIN_AI_SCORE_TO_ECONOMY_LAW_OVERRIDE_HARD_CODED_SCORE = 0.0,
 	MIN_AI_SCORE_TO_TRADE_LAW_OVERRIDE_HARD_CODED_SCORE = 1000.0,
 	MIN_AI_SCORE_TO_ALL_LAWS_OVERRIDE_HARD_CODED_SCORE = 0.0,
 
-	AT_WAR_THREAT_FACTOR = 2.0,					-- How much increase in threat does AI feel for being in war against osmeone
+	AT_WAR_THREAT_FACTOR = 2.0,					-- How much increase in threat does AI feel for being in war against someone
 	NEIGHBOUR_WAR_THREAT_FACTOR = 1.10, 		-- How much increase in threat does AI feel against neighbours who are at war
 	POTENTIAL_ALLY_JOIN_WAR_FACTOR = 100, 		-- How much increase in threat does AI feel against neighbours who are allied against one of our enemies
 	POTENTIAL_FUTURE_ENEMY_FACTOR = 100, 		-- How much increase in threat does AI feel against neighbours who at war with our allies
@@ -3078,7 +3088,7 @@ NAI = {
 	AREA_DEFENSE_MINCAP_DESIRED_HOME_AREA = 3,                  -- DesiredUnits for home area is at least this.
 
 	COMMAND_POWER_BEFORE_SPEND_ON_TRAITS = 30.0,
-	
+
 	PEACE_BID_FOLD_TURNS_AGAINST_OTHER_AI = 2,					--Resolve contests against other AIs after this many turns. Don't always contest forever, it yields the same results.
 	PEACE_BID_FOLD_AGAINST_PLAYER_CHANCE = 0.5,                 -- Likelihood that AI will fold in a bidding contest against human player.
 	PEACE_BID_FOLD_AGAINST_LIBERATE_CONTEST = 1.0,				-- Likelihood that the AI will back down against a same-ideology country performing a contesting liberate bid ##Bordergore prevention therapy

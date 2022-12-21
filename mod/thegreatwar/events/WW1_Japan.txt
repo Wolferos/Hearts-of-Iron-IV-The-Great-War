@@ -31,7 +31,6 @@ country_event = {
 	}
 }
 
- 
 country_event = {
 	title = ww1_japan.1.t#Ultimatum on Germany
 	desc = ww1_japan.1.d#With the recent war that sparked between Germany and our British allies, we can negotiate our neutrality with the latter. The price for neutrality is all Germany's Pacific possessions as well as Qingdao.
@@ -41,24 +40,16 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = ww1_japan.1.a
-		ai_chance = {
-			factor = 95
-			}
-		GER = {
-			country_event = ww1_japan.14
-			}
-		}
+		ai_chance = { factor = 95 }
+		GER = { country_event = ww1_japan.14 }
+	}
 	option = {
 		name = ww1_japan.1.b
-		ai_chance = {
-			factor = 5
-			}
+		ai_chance = { factor = 5 }
 		set_global_flag = JAP_ultimatum_extended
-		GER = {
-			country_event = ww1_japan.14
-			}
-		}
+		GER = { country_event = ww1_japan.14 }
 	}
+}
 	
 country_event = {
 	title = ww1_japan.2.t#Germany did not answer
@@ -155,53 +146,41 @@ country_event = {
 	picture = ww1_japan_4
 	fire_only_once = yes
 	is_triggered_only = yes
-	trigger = {
-		tag = GER
-		}
+
+	trigger = { tag = GER }
+
 	option = {
 		name = ww1_japan.4.a
-		ai_chance = {
-			factor = 75
-			}
-		JAP = {
-			country_event = ww1_japan.9
-			}
-		}
+		ai_chance = { factor = 75 }
+		JAP = { country_event = ww1_japan.9 }
+	}
 	option = {
 		name = ww1_japan.4.b
-		ai_chance = {
-			factor = 25
-			}
-		JAP = {
-			country_event = ww1_japan.10
-			}
+		ai_chance = { factor = 25 }
+		JAP = { country_event = ww1_japan.10 }
 		add_political_power = -5
 		every_state = {
 			limit = {
 				is_owned_by = GER
 				is_claimed_by = JAP
-				}
-			JAP = {
-				transfer_state = PREV
-				}
 			}
+			JAP = { transfer_state = PREV }
+		}
 		every_state = {
 			limit = {
 				is_owned_by = GER
 				is_claimed_by = AST
-				}
-			JAP = {
-				transfer_state = PREV
-				}
 			}
+			JAP = { transfer_state = PREV }
+		}
 		every_country = {
 			limit = {
 				tag = GER
 				has_global_flag = JAP_ultimatum_extended
-				}
 			}
 		}
 	}
+}
 
 country_event = {
 	title = ww1_japan.5.t#Emperor Meiji dies
@@ -210,22 +189,22 @@ country_event = {
 	picture = ww1_japan_5
 	fire_only_once = yes
 	is_triggered_only = no
-	mean_time_to_happen = {
-		days = 1
-		}
+	mean_time_to_happen = { days = 1 }
+
 	trigger = {
 		tag = JAP
 		has_government = democratic
 		not = {
 			has_country_flag = king_death_meiji
-			}
-		date>1912.6.30
 		}
+		date>1912.6.30
+	}
+
 	option = {
 		name = ww1_japan.5.a
 		ai_chance = {
 			factor = 100
-			}
+		}
 		kill_country_leader = yes
 		create_country_leader = {
 			name = "Yoshihito"
@@ -233,13 +212,11 @@ country_event = {
 			picture = "gfx/hoi4tgw_portraits/JAP/country_leaders/JAP_yoshihito.dds"
 			expire = "1935.1.1"
 			ideology = liberalism
-			traits = {
-				}
-			}
-		set_country_flag = king_death_meiji
+			traits = { }
 		}
+		set_country_flag = king_death_meiji
 	}
-
+}
 
 country_event = {
 	title = ww1_japan.6.t#Japan–Korea Annexation Treaty
