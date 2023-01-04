@@ -7,9 +7,9 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.20.1 "Spazio Vitale"
+**Current Version:** 0.20.3 "Spazio Vitale"
 
-**Compatible with:** Hearts of Iron IV 1.12.6 (with or without Paid DLC)
+**Compatible with:** Hearts of Iron IV 1.12.7 (with or without Paid DLC)
 
 **Supported Languages:**
 - English
