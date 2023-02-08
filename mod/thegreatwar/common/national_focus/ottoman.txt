@@ -49,8 +49,8 @@ focus_tree = {
 
 	focus = {
 		id = TUR_ww1_AbolishConstitution
-		prerequisite = { focus=TUR_ww1_ContestYoungTurksReforms }
-		icon = GFX_hoi4tgw_tur_abolish_constitution
+		prerequisite = { focus = TUR_ww1_ContestYoungTurksReforms }
+		icon = GFX_focus_TUR_pivot_to_the_past
 
 		available = { has_government = neutrality }
 
@@ -67,33 +67,75 @@ focus_tree = {
 	}
 
 
-	#---------- Fascist
 	focus = {
-		id = TUR_ww1_military_youth
-		prerequisite = { focus=TUR_ww1_AbolishConstitution }
-		icon = GFX_goal_generic_more_territorial_claims
-		completion_reward = { add_ideas = military_youth_focus if={ limit={ has_government=fascism } add_popularity={ ideology=fascism popularity=0.2 } } if={ limit={ has_government=communism } add_popularity={ ideology=communism popularity=0.2 } } }
-		ai_will_do = { factor = 0 }
-		cost = 10
+		id = TUR_ww1_AbdulhamidII # Put Abdülhamid II back on the Throne
+		prerequisite = { focus = TUR_ww1_AbolishConstitution }
+		icon = GFX_focus_rom_royal_dictatorship
+
+		available = {
+			has_government = neutrality
+			date < 1918.2.10
+		}
+
+		completion_reward = {
+
+			TUR = {
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.05
+				}
+
+				add_stability = -0.07
+			}
+
+			TUR = {
+				kill_country_leader = yes
+				create_country_leader = {
+					name = "Abdülhamid II" 
+					desc = TUR_Abdulhamid_II_DESC 
+					picture = "gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_Abdulhamid_II.dds" 
+					expire = "1935.1.1" 
+					ideology = autocracy 
+					traits = {} 
+				}
+			}
+		}
+
+		ai_will_do = {factor = 0 }
+		cost = 15
 		x = 0
 		y = 3
 	}
 
+
+
+	#---------- Fascist
+	focus = {
+		id = TUR_ww1_military_youth
+		prerequisite = { focus = TUR_ww1_AbdulhamidII }
+		icon = GFX_goal_generic_more_territorial_claims
+		completion_reward = { add_ideas = military_youth_focus if={ limit={ has_government=fascism } add_popularity={ ideology=fascism popularity=0.2 } } if={ limit={ has_government=communism } add_popularity={ ideology=communism popularity=0.2 } } }
+		ai_will_do = { factor = 0 }
+		cost = 10
+		x = 1
+		y = 4
+	}
+
 	focus = {
 		id = TUR_ww1_paramilitarism
-		prerequisite = { focus=TUR_ww1_military_youth }
+		prerequisite = { focus=TUR_ww1_AbdulhamidII }
 		icon = GFX_goal_generic_military_sphere
 
 		completion_reward = { add_ideas=paramilitarism_focus }
 		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 0
-		y = 4
+		y = 5
 	}
 
 	focus = {
 		id = TUR_ww1_oppression_minorities
-		prerequisite = { focus=TUR_ww1_limited_rearmament  focus=TUR_ww1_paramilitarism }
+		prerequisite = { focus = TUR_ww1_limited_rearmament  focus = TUR_ww1_paramilitarism }
 		icon = GFX_goal_generic_secret_weapon
 
 		available = { has_government=fascism }
@@ -112,7 +154,7 @@ focus_tree = {
 		ai_will_do = { factor = 0.1 }
 		cost = 10
 		x = 1
-		y = 5
+		y = 6
 
 	}
 
@@ -136,7 +178,7 @@ focus_tree = {
 		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 0
-		y = 6
+		y = 7
 
 	}
 
@@ -167,7 +209,7 @@ focus_tree = {
 		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 0
-		y = 7
+		y = 8
 	}
 
 	#----------------------------------------------------------------------- 
@@ -237,7 +279,7 @@ focus_tree = {
 		y = 3
 	}
 
-	#---------- Kaiser+
+	#----------
 
 	focus = {
 		id = TUR_ww1_limited_rearmament
@@ -251,8 +293,8 @@ focus_tree = {
 
 		ai_will_do = { factor = 10 }
 		cost = 10
-		x = 2
-		y = 4
+		x = 3
+		y = 5
 	}
 
 	focus = {
@@ -266,7 +308,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 2
-		y = 6
+		y = 7
 
 	}
 
@@ -285,7 +327,7 @@ focus_tree = {
 		ai_will_do = {	factor = 10	}
 		cost = 10
 		x = 2
-		y = 7
+		y = 8
 	}
 
 
@@ -444,7 +486,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 1
-		y = 8
+		y = 9
 	}
 
 	focus = {
@@ -465,7 +507,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 0
-		y = 9
+		y = 10
 		mutually_exclusive = { focus=TUR_ww1_fortify_coast }
 	}
 
@@ -493,7 +535,7 @@ focus_tree = {
 		}
 		ai_will_do = { factor = 0 }
 		x = 2
-		y = 9
+		y = 10
 		cost = 10
 		mutually_exclusive = { focus=TUR_ww1_fortify_city }
 	}
@@ -645,9 +687,6 @@ focus_tree = {
 
 
 
-
-
-	# Open Beta 0.12
 	focus = {
 		id = TUR_interwar_ParisPeaceConference # https://en.wikipedia.org/wiki/Paris_Peace_Conference_(1919%E2%80%931920)
 		icon = GFX_goal_generic_territory_or_war
@@ -669,13 +708,8 @@ focus_tree = {
 		ai_will_do = {	factor = 0	}
 		cost = 10
 		x = 7
-		y = 7
+		y = 9
 	}
-
-
-
-
-
 
 
 
