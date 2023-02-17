@@ -1274,7 +1274,7 @@ focus_tree = {
 		}     
 		ai_will_do = { factor = 20 }
 		cost = 10
-		x = 13
+		x = 14
 		y = 6
 	}
 
@@ -1312,7 +1312,7 @@ focus_tree = {
 				news_event = { days = 1 id = kis_news.1 }
 			}
 		}
-		x = 15
+		x = 16
 		y = 6
 		cost = 2
 
@@ -1355,38 +1355,61 @@ focus_tree = {
 	}
 
 	focus = {
-		id = GER_strat_bombing
-		prerequisite = { focus = GER_ww1_ready_country }
-		icon = GFX_hoi4tgw_zeppelin
-		available = {  has_war_with=ENG  NOT={  GER={  has_country_flag=Zeppelin_bombing  }  }  }
-		completion_reward = { 
-			USA = {
-	            add_opinion_modifier = {
-	                target = GER
-	                modifier = small_decrease
-	            }
-	        }
-	        ENG = {
-	            add_timed_idea = {
-	                idea = zeppelin_bombing
-	                days = 365
-	            }
-	        }
-	        GER = {
-				set_country_flag = Zeppelin_bombing  
-				news_event = ww1_germany.2  
-				add_tech_bonus = { 
-					name = bomber_bonus 
-					bonus = 0.5 
-					ahead_reduction=1 
-					technology = ww1_zeppelin2 
-				}
-			}  
+		id = GER_ww1_Siegfriedstellung # Siegfriedstellung
+		icon = GFX_goal_generic_army_doctrines
+
+		prerequisite = { focus=GER_ww1_trenchwarfare }
+
+		available = {
+			available = { date > 1916.1.1 }
+			has_war_with = FRA
+			GER = { 
+				controls_state = 34
+			}
 		}
-		ai_will_do = { factor = 80 }
+
+		completion_reward = { 
+			34 = {
+				add_building_construction = {
+					type = trench
+					level = 1
+					instant_build = yes
+				}
+			}
+			34 = {
+				add_building_construction = {
+					type = trench
+					level = 1
+					instant_build = yes
+				}
+			}
+			34 = {
+				add_building_construction = {
+					type = trench
+					level = 1
+					instant_build = yes
+				}
+			}
+			34 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+				}
+			}
+			34 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		ai_will_do = { factor = 50 }
 		cost = 10
-		x = 17
-		y = 6
+		x = 18
+		y = 5
 	}
 	#===============================
 
@@ -1613,7 +1636,6 @@ focus_tree = {
 		y = 7
 	}
 
-
 	focus = {
 		id = GER_ww1_armor_effort_1
 		prerequisite = { focus=GER_ww1_equipment_effort_4 }
@@ -1638,7 +1660,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		cost = 10
 		x = 20
-		y = 9
+		y = 10
 	}
 
 	#############################################################################
@@ -1650,7 +1672,7 @@ focus_tree = {
 		complete_tooltip = { air_experience=25 if={ limit={ has_country_flag=aviation_effort_AB } add_building_construction={ type=air_base level=2 instant_build=yes } }			 add_doctrine_cost_reduction={ name=air_doc_bonus cost_reduction=0.15 uses=1 category=air_doctrine }			 }
 		ai_will_do = { factor = 10 }
 		cost = 10
-		x = 26
+		x = 27
 		y = 0
 	}
 
@@ -1692,6 +1714,41 @@ focus_tree = {
 		cost = 10
 		x = 28
 		y = 2
+	}
+
+	focus = {
+		id = GER_strat_bombing
+		prerequisite = { focus = GER_ww1_airship_focus }
+		icon = GFX_hoi4tgw_zeppelin
+		available = {  has_war_with=ENG  NOT={  GER={  has_country_flag=Zeppelin_bombing  }  }  }
+		completion_reward = { 
+			USA = {
+	            add_opinion_modifier = {
+	                target = GER
+	                modifier = small_decrease
+	            }
+	        }
+	        ENG = {
+	            add_timed_idea = {
+	                idea = zeppelin_bombing
+	                days = 365
+	            }
+	        }
+	        GER = {
+				set_country_flag = Zeppelin_bombing  
+				news_event = ww1_germany.2  
+				add_tech_bonus = { 
+					name = bomber_bonus 
+					bonus = 0.5 
+					ahead_reduction=1 
+					technology = ww1_zeppelin2 
+				}
+			}  
+		}
+		ai_will_do = { factor = 80 }
+		cost = 10
+		x = 29
+		y = 3
 	}
 
 	focus = {
@@ -2467,8 +2524,8 @@ focus_tree = {
 		completion_reward = { navy_experience=25 if={ limit={ NOT={ any_owned_state={ dockyard > 0 free_building_slots={ building=dockyard size > 2 include_locked=yes } } } any_owned_state={ is_coastal=yes } } random_owned_state={ limit={ is_coastal=yes free_building_slots={ building=dockyard size > 2 include_locked=yes } } add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } } set_country_flag=naval_effort_built } if={ limit={ NOT={ has_country_flag=naval_effort_built } any_owned_state={ dockyard > 0 free_building_slots={ building=dockyard size > 2 include_locked=yes } } } random_owned_state={ limit={ dockyard > 0 free_building_slots={ building=dockyard size > 2 include_locked=yes } } add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } } set_country_flag=naval_effort_built } if={ limit={ NOT={ has_country_flag=naval_effort_built } NOT={ any_owned_state={ free_building_slots={ building=dockyard size > 2 include_locked=yes } } } } random_state={ limit={ controller={ tag=ROOT } free_building_slots={ building=dockyard size > 2 include_locked=yes } } add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } } }			 }
 		complete_tooltip = { navy_experience=25 add_extra_state_shared_building_slots=3 add_building_construction={ type=dockyard level=3 instant_build=yes } }
 		ai_will_do = { factor = 10 }
-		cost = 10
-		x = 39
+		cost = 5
+		x = 38
 		y = 0
 	}
 
