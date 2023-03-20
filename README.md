@@ -7,9 +7,9 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.21 "Siegfriedstellung"
+**Current Version:** 0.21.1 "Siegfriedstellung"
 
-**Compatible with:** Hearts of Iron IV 1.12.10 (with or without Paid DLC)
+**Compatible with:** Hearts of Iron IV 1.12.11 (with or without Paid DLC)
 
 **Supported Languages:**
 - English
