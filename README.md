@@ -7,9 +7,9 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.21.1 "Siegfriedstellung"
+**Current Version:** 0.21.2 "Siegfriedstellung"
 
-**Compatible with:** Hearts of Iron IV 1.12.11 (with or without Paid DLC)
+**Compatible with:** Hearts of Iron IV 1.12.12 (with or without Paid DLC)
 
 **Supported Languages:**
 - English
@@ -123,6 +123,7 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - default-guy
    - FOREVERGWC
    - tg90nor
+   - Proho16
 ----------
 [Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow
 [Austro-Hungarians Voices](http://steamcommunity.com/sharedfiles/filedetails/?id=946923873) made by Geodomus 
