@@ -2609,10 +2609,14 @@ focus_tree = {
 		icon = GFX_goal_generic_intelligence_exchange
 
 		available = {
-			has_global_flag = kis_treaty_of_versailles
 			country_exists = AUS
 			ITA = { controls_state = 39 }
 			is_puppet = no
+
+			OR = {
+				has_global_flag = kis_treaty_of_versailles
+				date > 1920.1.1
+			}
 		}
 
 		x = 14
@@ -2632,8 +2636,6 @@ focus_tree = {
 		}
 	}
 
-
-
 	focus = {
 		id = ITA_interwar_postwar_refuse
 
@@ -2641,7 +2643,10 @@ focus_tree = {
 		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
 
 		available = {
-			has_global_flag = kis_treaty_of_versailles
+			OR = {
+				has_global_flag = kis_treaty_of_versailles
+				date > 1920.1.1
+			}
 		}
 
 		x = 16
@@ -2695,7 +2700,6 @@ focus_tree = {
 		x = 11
 		y = 9
 
-
 		cost = 10
 
 		ai_will_do = {
@@ -2738,7 +2742,6 @@ focus_tree = {
 		x = 13
 		y = 9
 
-
 		cost = 10
 
 		ai_will_do = {
@@ -2765,12 +2768,14 @@ focus_tree = {
 		icon = GFX_goal_generic_national_unity
 
 		available = {
-			has_global_flag = kis_treaty_of_versailles
+			OR = {
+				has_global_flag = kis_treaty_of_versailles
+				date > 1920.1.1
+			}
 		}
 
 		x = 18
 		y = 8
-
 
 		cost = 10
 
@@ -2805,8 +2810,6 @@ focus_tree = {
 		y = 9
 	}
 
-
-
 	focus = {
 		id = ITA_interwar_FascistManifesto # Fascist Manifesto
 
@@ -2837,9 +2840,6 @@ focus_tree = {
 			}
 		}
 	}
-
-
-
 
 	# March on Rome
 	focus = {
