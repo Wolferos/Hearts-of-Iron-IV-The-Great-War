@@ -47,13 +47,13 @@ Wolferos is a small independent game development studio founded in 2015. More In
 
 **Usefull Links**
 
- - [Modding](http://www.hoi4wiki.com/Modding)
- - [Console Commands](http://www.hoi4wiki.com/Console_commands)
- - [Scopes](http://www.hoi4wiki.com/Scopes)
- - [Conditions](http://www.hoi4wiki.com/Conditions)
- - [Commands](http://www.hoi4wiki.com/Commands)
- - [Modifiers](http://www.hoi4wiki.com/Modifiers)
- - [Event Modding](http://www.hoi4wiki.com/Event_Modding)
+ - [Modding](https://hoi4.paradoxwikis.com/Modding)
+ - [Console Commands](https://hoi4.paradoxwikis.com/Console_commands)
+ - [Scopes](https://hoi4.paradoxwikis.com/Scopes)
+ - [Conditions](https://hoi4.paradoxwikis.com/Triggers)
+ - [Commands](https://hoi4.paradoxwikis.com/Effect)
+ - [Modifiers](https://hoi4.paradoxwikis.com/Modifiers)
+ - [Event Modding](https://hoi4.paradoxwikis.com/Event_modding)
 
 ----------
 
