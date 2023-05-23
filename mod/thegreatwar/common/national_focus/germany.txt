@@ -74,9 +74,7 @@ focus_tree = {
 			}
 		}
 
-		ai_will_do = {
-			factor = 1
-		}
+		ai_will_do = { factor = 1 }
 	}
 
 	focus = {
@@ -122,7 +120,10 @@ focus_tree = {
 		prerequisite = { focus=GER_ww1_centralizedpower }
 		icon = GFX_goal_generic_build_tank
 
-		completion_reward = { army_experience=20 add_political_power=50 }
+		completion_reward = {
+			army_experience = 20
+			add_political_power = 50
+		}
 
 		ai_will_do = { factor = 20 }
 		cost = 10
@@ -191,15 +192,13 @@ focus_tree = {
 			has_government = neutrality
 		}
 
-		completion_reward = { army_experience=40 }
+		completion_reward = { army_experience = 40 }
 
 		ai_will_do = {	factor = 0	}
 		cost = 10
 		x = 3
 		y = 7
 	}
-
-
 
 
 	#---------- Fascist
@@ -229,6 +228,7 @@ focus_tree = {
 		id = GER_ww1_fascist_coup
 		prerequisite = { focus=GER_ww1_paramilitarism }
 		icon = GFX_goal_support_fascism
+		mutually_exclusive = { focus=GER_ww1_reorganization_act }
 		available = { has_government=neutrality }
 
 		completion_reward = {
@@ -243,16 +243,12 @@ focus_tree = {
 				popularity = 1
 			}
 			add_timed_idea = { idea = reign_of_terror days = 730 }
-
 		}
-
 
 		ai_will_do = { factor = 0 }
 		cost = 10
 		x = 0
 		y = 5
-
-		mutually_exclusive = { focus=GER_ww1_reorganization_act }
 	}
 
 	focus = {
@@ -276,7 +272,6 @@ focus_tree = {
 		cost = 10
 		x = 0
 		y = 6
-
 	}
 
 	#----------------------------------------------------------------------- 
@@ -294,7 +289,7 @@ focus_tree = {
 			has_war = no
 		}
 
-		completion_reward = { add_political_power=-100 }
+		completion_reward = { add_political_power = -100 }
 
 		ai_will_do = { factor = 0 }
 
