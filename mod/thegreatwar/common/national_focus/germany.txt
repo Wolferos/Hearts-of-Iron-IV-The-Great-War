@@ -2781,20 +2781,18 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			create_faction = "Holy Roman Empire"
+			create_faction = holy_roman_empire
 			set_cosmetic_tag = GER_HRE
 
 			# New Portrait for the Kaiser
 			hidden_effect = {
 				GER = {
-					kill_country_leader = yes
-					create_country_leader = { 
-						name = "Kaiser Wilhelm II" 
-						desc = GER_wilhelm_ii_DESC 
-						picture = "gfx/hoi4tgw_portraits/GER/country_leaders/GER_kaiser_wilhelm_ii.dds" 
-						expire = "1935.1.1" 
-						ideology = autocracy 
-						traits = {  } 
+					GER_wilhelm_ii = {
+						set_portraits = {
+							civilian = {
+								large = GFX_Portrait_GER_kaiser_wilhelm_ii
+							}
+						}
 					}
 					set_politics = {
 					    ruling_party = neutrality
@@ -3294,13 +3292,10 @@ focus_tree = {
 			factor = 200	
 		}
 		completion_reward = {
-
 			drop_cosmetic_tag = yes
-
 			remove_ideas = {
 				GER_interwar_spirit_BannedConscription
 			}
-
 			add_popularity = {
 				ideology = fascism
 				popularity = 0.42
@@ -3309,18 +3304,7 @@ focus_tree = {
 				ruling_party = fascism
 				elections_allowed = no
 			}
-
-			create_faction = "Axis"
-
-			create_country_leader = { 
-				name = "Adolf Hitler"
-				desc = GER_adolf_hitler_DESC
-				picture="gfx/leaders/GER_adolf_hitler.dds"
-				expire = "1955.1.1" 
-				ideology = nazism 
-				traits = { } 
-			}
-
+			create_faction = axis_faction
 			news_event = { hours = 1 id = interwar_news.1 }
 		}
 	}
