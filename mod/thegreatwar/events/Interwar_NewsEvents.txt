@@ -1,5 +1,4 @@
-﻿add_namespace = interwar_news
-
+add_namespace = interwar_news
 # Hitler Chancellor of Germany
 #____________________________________________________________
 news_event = {
@@ -7,19 +6,17 @@ news_event = {
 	title = interwar_news.1.t
 	desc = interwar_news.1.d
 	picture = EVENT_hoi4tgw_hitler_chancellor
-
 	is_triggered_only = yes
 	major = yes
-
 	option = {
-		name=interwar_news.1.a
+		name = interwar_news.1.a
 		ai_chance = {
 			factor = 100
 		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # The March on Rome (Mussolini)
 #____________________________________________________________
 news_event = {
@@ -27,10 +24,8 @@ news_event = {
 	title = interwar_news.2.t
 	desc = interwar_news.2.d
 	picture = EVENT_hoi4tgw_march_on_rome
-
 	is_triggered_only = yes
 	major = yes
-
 	option = {
 		name = interwar_news.2.a
 		ai_chance = {
@@ -38,8 +33,8 @@ news_event = {
 		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # Wall Street Crash
 #____________________________________________________________
 news_event = {
@@ -47,24 +42,19 @@ news_event = {
 	title = interwar_news.3.t
 	desc = interwar_news.3.d
 	picture = EVENT_hoi4tgw_1929_wallstreet_crash
-
 	mean_time_to_happen = {
 		days = 0
 	}
-
 	major = yes
-
 	trigger = {
 		date > 1929.10.24
 		NOT = {
 			has_global_flag = interwar_wall_street_crash_1929
 		}
 	}
-
 	immediate = {
 		set_global_flag = interwar_wall_street_crash_1929
 	}
-
 	option = {
 		name = interwar_news.3.a
 		ai_chance = {
@@ -72,8 +62,8 @@ news_event = {
 		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # Lenin is dead
 #____________________________________________________________
 news_event = {
@@ -81,46 +71,51 @@ news_event = {
 	title = interwar_news.4.t
 	desc = interwar_news.4.d
 	picture = EVENT_hoi4tgw_stalin_replace_lenin
-
 	is_triggered_only = yes
 	major = yes
-
 	trigger = {
-
 		date > 1924.1.20
-
 		NOT = {
 			has_global_flag = interwar_lenin_is_dead
 		}
-
 		OR = {
 			RUS = {
 				has_government = communism
 			}
-
 			SOV = {
 				has_government = communism
 			}
 		}
 	}
-
 	immediate = {
 		set_global_flag = interwar_lenin_is_dead
 		hidden_effect = {
 			SOV = {
 				kill_country_leader = yes
-				create_country_leader = {
-					name = "Josef Stalin"
-					desc = SOV_josef_stalin_DESC
-					picture = "gfx/leaders/SOV_josef_stalin.dds"
-					expire = "1935.1.1"
-					ideology = stalinism
-					traits = {  }
+				# create_country_leader = {
+				# 	name = "Josef Stalin"
+				# 	desc = SOV_josef_stalin_DESC
+				# 	picture = "gfx/leaders/SOV_josef_stalin.dds"
+				# 	expire = "1935.1.1"
+				# 	ideology = stalinism
+				# 	traits = {
+				# 	}
+				# }
+				add_country_leader_role = {
+					character = SOV_iosif_stalin
+					country_leader = {
+						desc = SOV_josef_stalin_DESC
+						ideology = stalinism
+						expire = "1935.1.1.1"
+						traits = {
+						}
+					}
 				}
+				promote_character = SOV_iosif_stalin
 				set_politics = {
-				    ruling_party = communism
+					ruling_party = communism
 					last_election = "1911.7.1"
-				    election_frequency = 48
+					election_frequency = 48
 					elections_allowed = no
 				}
 				set_popularities = {
@@ -128,16 +123,25 @@ news_event = {
 					fascism = 0
 					democratic = 0
 					communism = 100
-				}	
+				}
 			}
 			RUS = {
 				kill_country_leader = yes
-				recruit_character = RUS_iosif_stalin
+				add_country_leader_role = {
+					character = SOV_iosif_stalin
+					country_leader = {
+						desc = SOV_josef_stalin_DESC
+						ideology = stalinism
+						expire = "1953.1.1.1"
+						traits = {
+						}
+					}
+				}
 				promote_character = RUS_iosif_stalin
 				set_politics = {
-				    ruling_party = communism
+					ruling_party = communism
 					last_election = "1911.7.1"
-				    election_frequency = 48
+					election_frequency = 48
 					elections_allowed = no
 				}
 				set_popularities = {
@@ -145,11 +149,10 @@ news_event = {
 					fascism = 0
 					democratic = 0
 					communism = 100
-				}	
+				}
 			}
 		}
 	}
-
 	option = {
 		name = interwar_news.4.a
 		ai_chance = {
@@ -157,33 +160,31 @@ news_event = {
 		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # Revolution in Egypt
 #____________________________________________________________
 news_event = {
 	id = interwar_news.5
 	title = interwar_news.5.t
 	desc = interwar_news.5.d
-
-	picture = EVENT_hoi4tgw_albanian_revolt #
-
+	picture = EVENT_hoi4tgw_albanian_revolt	#
 	is_triggered_only = yes
 	major = yes
-
 	trigger = {
 		date > 1919.1.1
 		has_global_flag = kis_treaty_of_versailles
-		ENG = { has_war = no }
-		NOT={
-			country_exists=EGY
+		ENG = {
+			has_war = no
+		}
+		NOT = {
+			country_exists = EGY
 			has_global_flag = interwar_revolution_egypt
 		}
-		ENG = { 
-			controls_state = 551 
+		ENG = {
+			controls_state = 551
 		}
 	}
-
 	immediate = {
 		set_global_flag = interwar_revolution_egypt
 		hidden_effect = {
@@ -194,14 +195,13 @@ news_event = {
 			ENG = {
 				end_puppet = EGY
 				remove_from_faction = EGY
-				declare_war_on={
-					target=EGY
+				declare_war_on = {
+					target = EGY
 					type = annex_everything
 				}
 			}
 		}
 	}
-
 	option = {
 		name = interwar_news.5.a
 		ai_chance = {
@@ -209,51 +209,44 @@ news_event = {
 		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # Polish–Soviet War
 #____________________________________________________________
 news_event = {
 	id = interwar_news.6
 	title = interwar_news.6.t
 	desc = interwar_news.6.d
-
-	picture = EVENT_hoi4tgw_polish_soviet_war # TEMP 0.1.6
-
+	picture = EVENT_hoi4tgw_polish_soviet_war	# TEMP 0.1.6
 	is_triggered_only = yes
 	major = yes
-
 	trigger = {
 		date > 1919.2.2
 		has_global_flag = kis_treaty_of_versailles
-		SOV = { has_war = no }
-		country_exists=POL
-		country_exists=SOV
-
-		NOT={
+		SOV = {
+			has_war = no
+		}
+		country_exists = POL
+		country_exists = SOV
+		NOT = {
 			has_global_flag = interwar_polish_soviet_war
 		}
 	}
-
 	immediate = {
 		set_global_flag = interwar_polish_soviet_war
 		hidden_effect = {
-
-			SOV={
+			SOV = {
 				puppet = UKR
-
-				declare_war_on={
-						target=POL
-						type = annex_everything
+				declare_war_on = {
+					target = POL
+					type = annex_everything
 				}
 			}
-			POL={
+			POL = {
 				add_manpower = 250000
 			}
-
 		}
 	}
-
 	option = {
 		name = interwar_news.6.a
 		ai_chance = {
@@ -261,58 +254,56 @@ news_event = {
 		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # Second Spanish Republic
 #____________________________________________________________
 news_event = {
 	id = interwar_news.7
 	title = interwar_news.7.t
 	desc = interwar_news.7.d
-
 	picture = EVENT_hoi4tgw_second_spanish_republic
-
 	major = yes
-
 	trigger = {
 		date > 1931.4.14
-		NOT = { has_global_flag = interwar_second_spanish_republic }
+		NOT = {
+			has_global_flag = interwar_second_spanish_republic
+		}
 	}
-	
 	mean_time_to_happen = {
 		days = 2
 	}
-
 	immediate = {
 		set_global_flag = interwar_second_spanish_republic
 		hidden_effect = {
 			SPR = {
+				recruit_character = SPR_niceto_alcalá_zamora
 				kill_country_leader = yes
-
-				create_country_leader = {
-					name = "Niceto Alcalá-Zamora"
-					desc = "POLITICS_Niceto_DESC"
-					picture = "gfx/hoi4tgw_portraits/SPR/country_leaders/SPR_niceto_alcala-zamora.dds"
-					expire = "1965.1.1"
-					ideology = marxism
-					traits = { }
-				}
-				
+				# create_country_leader = {
+				# 	name = "Niceto Alcalá-Zamora"
+				# 	desc = "POLITICS_Niceto_DESC"
+				# 	picture = "gfx/hoi4tgw_portraits/SPR/country_leaders/SPR_niceto_alcala-zamora.dds"
+				# 	expire = "1965.1.1"
+				# 	ideology = marxism
+				# 	traits = {
+				# 	}
+				# }
 				set_politics = {
-				    ruling_party = communism last_election = "1931.4.14"
-				    election_frequency = 48 
-				    elections_allowed = yes
+					ruling_party = communism
+					last_election = "1931.4.14"
+					election_frequency = 48
+					elections_allowed = yes
 				}
 				set_popularities = {
 					neutrality = 20
 					fascism = 2
 					democratic = 8
 					communism = 70
-				}	
+				}
+				promote_character = SPR_niceto_alcalá_zamora
 			}
 		}
 	}
-
 	option = {
 		name = interwar_news.7.a
 		ai_chance = {
@@ -320,70 +311,92 @@ news_event = {
 		}
 	}
 }
+
 #____________________________________________________________
-
-
 # The Turkish National Movement # Open Beta 0.5
 #____________________________________________________________
 news_event = {
 	id = interwar_news.8
 	title = interwar_news.8.t
 	desc = interwar_news.8.d
-
 	picture = EVENT_hoi4tgw_turkish_national_movement
-
 	major = yes
-
 	trigger = {
 		date > 1919.5.5
 		has_global_flag = kis_treaty_of_versailles
-		NOT = { has_global_flag = interwar_turkish_national_movement }
+		NOT = {
+			has_global_flag = interwar_turkish_national_movement
+		}
 	}
-	
 	mean_time_to_happen = {
 		days = 2
 	}
-
 	immediate = {
 		set_global_flag = interwar_turkish_national_movement
 		hidden_effect = {
-
 			# Started in 1910 or 1914 
 			if = {
 				limit = {
 					has_start_date < 1919.1.1
 				}
-
 				# Territorial changes
-				if = { limit = { TUR = { controls_state = 49  }	} TUK = { transfer_state = 49  } }
-				if = { limit = { TUR = { controls_state = 348 }	} TUK = { transfer_state = 348 } }
-				if = { limit = { TUR = { controls_state = 349 }	} TUK = { transfer_state = 349 } }
-
+				if = {
+					limit = {
+						TUR = {
+							controls_state = 49
+						}
+					}
+					TUK = {
+						transfer_state = 49
+					}
+				}
+				if = {
+					limit = {
+						TUR = {
+							controls_state = 348
+						}
+					}
+					TUK = {
+						transfer_state = 348
+					}
+				}
+				if = {
+					limit = {
+						TUR = {
+							controls_state = 349
+						}
+					}
+					TUK = {
+						transfer_state = 349
+					}
+				}
 				# Loading OOB for TUK
 				TUK = {
 					load_oob = "TUK_1919"
 				}
-
 				# Start of the War
 				TUK = {
-					declare_war_on={
+					declare_war_on = {
 						target = TUR
 						type = annex_everything
 					}
 				}
-
 				# For the Greco-Turkish War
 				GRE = {
-					country_event = { days = 13 id = ww1_greece.6 }
+					country_event = {
+						days = 13
+						id = ww1_greece.6
+					}
 				}
 			}
 			else = {
-				news_event = { days = 4 id = interwar_news.9 }
+				news_event = {
+					days = 4
+					id = interwar_news.9
+				}
 			}
-
 		}
 	}
-
 	option = {
 		name = interwar_news.8.a
 		ai_chance = {
@@ -391,29 +404,25 @@ news_event = {
 		}
 	}
 }
+
 #____________________________________________________________
-
-
 # The Greco-Turkish War # Open Beta 0.5
 #____________________________________________________________
 news_event = {
 	id = interwar_news.9
 	title = interwar_news.9.t
 	desc = interwar_news.9.d
-
 	picture = EVENT_hoi4tgw_greco_turkish_war
-
 	major = yes
 	is_triggered_only = yes
-
 	trigger = {
-		NOT = { has_global_flag = interwar_greco_turkish_war }
+		NOT = {
+			has_global_flag = interwar_greco_turkish_war
+		}
 	}
-
 	immediate = {
 		set_global_flag = interwar_greco_turkish_war
 	}
-
 	option = {
 		name = interwar_news.9.a
 		ai_chance = {
@@ -421,29 +430,25 @@ news_event = {
 		}
 	}
 }
+
 #____________________________________________________________
-
-
 # Treaty of Lausanne # Open Beta 0.5
 #____________________________________________________________
 news_event = {
 	id = interwar_news.10
 	title = interwar_news.10.t
 	desc = interwar_news.10.d
-
 	picture = EVENT_hoi4tgw_interwar_treaty_of_lausanne
-
 	major = yes
 	is_triggered_only = yes
-
 	trigger = {
-		NOT = { has_global_flag = interwar_treaty_of_lausanne }
+		NOT = {
+			has_global_flag = interwar_treaty_of_lausanne
+		}
 	}
-
 	immediate = {
 		set_global_flag = interwar_treaty_of_lausanne
 	}
-
 	option = {
 		name = interwar_news.10.a
 		ai_chance = {
@@ -451,49 +456,39 @@ news_event = {
 		}
 	}
 }
+
 #____________________________________________________________
-
-
-
 # Irish War of Independence # Open Beta 0.5
 #____________________________________________________________
 news_event = {
 	id = interwar_news.11
 	title = interwar_news.11.t
 	desc = interwar_news.11.d
-
 	picture = EVENT_hoi4tgw_interwar_irish_war_of_independence
-
 	major = yes
 	is_triggered_only = yes
-
 	trigger = {
-		NOT = { has_global_flag = interwar_irish_war_of_independence }
+		NOT = {
+			has_global_flag = interwar_irish_war_of_independence
+		}
 	}
-
 	immediate = {
 		set_global_flag = interwar_irish_war_of_independence
-
 		hidden_effect = {
-
 			IRE = {
 				transfer_state = 113
 				transfer_state = 134
 				transfer_state = 135
 				load_oob = "IRE_WoI"
 			}
-
 			ENG = {
 				declare_war_on = {
-				    type = annex_everything 
-				    target = IRE
+					type = annex_everything
+					target = IRE
 				}
 			}
-
 		}
-
 	}
-
 	option = {
 		name = interwar_news.11.a
 		ai_chance = {
@@ -501,30 +496,25 @@ news_event = {
 		}
 	}
 }
+
 #____________________________________________________________
-
-
-
 # Irish Free State # Open Beta 0.5
 #____________________________________________________________
 news_event = {
 	id = interwar_news.12
 	title = interwar_news.12.t
 	desc = interwar_news.12.d
-
 	picture = EVENT_hoi4tgw_interwar_irish_free_state
-
 	major = yes
 	is_triggered_only = yes
-
 	trigger = {
-		NOT = { has_global_flag = interwar_irish_free_state }
+		NOT = {
+			has_global_flag = interwar_irish_free_state
+		}
 	}
-
 	immediate = {
 		set_global_flag = interwar_irish_free_state
 	}
-
 	option = {
 		name = interwar_news.12.a
 		ai_chance = {
@@ -532,29 +522,25 @@ news_event = {
 		}
 	}
 }
+
 #____________________________________________________________
-
-
 # The Locarno Treaties # Open Beta 0.5.1 (03/2018)
 #____________________________________________________________
 news_event = {
 	id = interwar_news.13
 	title = interwar_news.13.t
 	desc = interwar_news.13.d
-
 	picture = EVENT_hoi4tgw_interwar_locarno_treaties
-
 	major = yes
 	is_triggered_only = yes
-
 	trigger = {
-		NOT = { has_global_flag = interwar_locarno_treaties }
+		NOT = {
+			has_global_flag = interwar_locarno_treaties
+		}
 	}
-
 	immediate = {
 		set_global_flag = interwar_locarno_treaties
 	}
-
 	option = {
 		name = interwar_news.13.a
 		ai_chance = {
@@ -562,34 +548,32 @@ news_event = {
 		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # Iraqi revolt against the British # Open Beta 0.6 (11/11/2018)
 #____________________________________________________________
 news_event = {
 	id = interwar_news.14
 	title = interwar_news.14.t
 	desc = interwar_news.14.d
-
-	picture = EVENT_hoi4tgw_albanian_revolt #
-
+	picture = EVENT_hoi4tgw_albanian_revolt	#
 	major = yes
 	is_triggered_only = yes
-
 	trigger = {
 		date > 1920.5.1
 		has_global_flag = kis_treaty_of_versailles
-		ENG = { has_war = no }
-		NOT={
+		ENG = {
+			has_war = no
+		}
+		NOT = {
 			country_exists = IRQ
 			has_global_flag = interwar_iraqi_revolt
 		}
-		ENG = { 
-			controls_state = 291 
+		ENG = {
+			controls_state = 291
 			controls_state = 676
 		}
 	}
-
 	immediate = {
 		set_global_flag = interwar_iraqi_revolt
 		hidden_effect = {
@@ -606,7 +590,6 @@ news_event = {
 			}
 		}
 	}
-
 	option = {
 		name = interwar_news.14.a
 		ai_chance = {
@@ -614,39 +597,49 @@ news_event = {
 		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # Mehmed VI on the throne after the death of Mehmed V # Open Beta 0.6.2
 #____________________________________________________________
 news_event = {
 	id = interwar_news.15
 	title = interwar_news.15.t
 	desc = interwar_news.15.d
-
-	picture = EVENT_hoi4tgw_interwar_mehmed_vi_succeeded_mehmed_v # hoi4tgw_mehmed_vi_succeeded_mehmed_v.dds
-
+	picture = EVENT_hoi4tgw_interwar_mehmed_vi_succeeded_mehmed_v	# hoi4tgw_mehmed_vi_succeeded_mehmed_v.dds
 	major = yes
-
 	trigger = {
 		date > 1919.7.2
 		has_global_flag = kis_treaty_of_versailles
-		NOT = { has_global_flag = interwar_turkish_national_movement }
-		NOT = { has_global_flag = interwar_mehmed_vi_succeeded_mehmed_v }
+		NOT = {
+			has_global_flag = interwar_turkish_national_movement
+		}
+		NOT = {
+			has_global_flag = interwar_mehmed_vi_succeeded_mehmed_v
+		}
 	}
-	
 	mean_time_to_happen = {
 		days = 2
 	}
-
 	immediate = {
 		set_global_flag = interwar_mehmed_vi_succeeded_mehmed_v
 		hidden_effect = {
 			TUR = {
-				create_country_leader={ name = "Mehmed VI" desc = TUR_mehmed_vi_DESC picture="gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_mehmed_vi.dds" expire="1935.1.1" ideology=liberalism traits={  } }
+				promote_character = {
+					character = TUR_mehmed_vi
+					ideology = liberalism
+				}
+				# create_country_leader = {
+				# 	name = "Mehmed VI"
+				# 	desc = TUR_mehmed_vi_DESC
+				# 	picture = "gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_mehmed_vi.dds"
+				# 	expire = "1935.1.1"
+				# 	ideology = liberalism
+				# 	traits = {
+				# 	}
+				# }
 			}
 		}
 	}
-
 	option = {
 		name = interwar_news.15.a
 		ai_chance = {
@@ -654,47 +647,52 @@ news_event = {
 		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # Józef Piłsudski is dead # Fixed in Open Beta 0.10.2
 #____________________________________________________________
 news_event = {
 	id = interwar_news.16
 	title = interwar_news.16.t
 	desc = interwar_news.16.d
-
 	picture = EVENT_hoi4tgw_interwar_jozef_pilsudski_death
-
 	major = yes
-
 	trigger = {
 		date > 1935.5.11
-		NOT = { has_global_flag = EVENT_hoi4tgw_interwar_jozef_pilsudski_death }
+		NOT = {
+			has_global_flag = EVENT_hoi4tgw_interwar_jozef_pilsudski_death
+		}
 	}
-	
 	mean_time_to_happen = {
 		days = 2
 	}
-
 	immediate = {
 		hidden_effect = {
 			POL = {
 				kill_country_leader = yes
-
-				create_country_leader = {
-					name = "Ignacy Mościcki"
-					desc = "POLITICS_IGNACY_MOSCICKI_DESC"
-					picture = "Portrait_Poland_Ignacy_Moscicki.dds"
-					expire = "1965.1.1"
-					ideology = oligarchism
-					traits = {}
+				add_country_leader_role = {
+					character = POL_ignacy_moscicki
+					country_leader = {
+						ideology = oligarchism
+						expire = "1965.1.1.1"
+						traits = {
+						}
+					}
 				}
+				promote_character = POL_ignacy_moscicki
+				# create_country_leader = {
+				# 	name = "Ignacy Mościcki"
+				# 	desc = "POLITICS_IGNACY_MOSCICKI_DESC"
+				# 	picture = "Portrait_Poland_Ignacy_Moscicki.dds"
+				# 	expire = "1965.1.1"
+				# 	ideology = oligarchism
+				# 	traits = {
+				# 	}
+				# }
 			}
 		}
-
 		set_global_flag = EVENT_hoi4tgw_interwar_jozef_pilsudski_death
 	}
-
 	option = {
 		name = interwar_news.16.a
 		ai_chance = {
@@ -702,33 +700,28 @@ news_event = {
 		}
 	}
 }
+
 #____________________________________________________________
-
-
 # Wall Street Bombing # https://en.wikipedia.org/wiki/Wall_Street_bombing
 #____________________________________________________________
 news_event = {
 	id = interwar_news.17
 	title = interwar_news.17.t
 	desc = interwar_news.17.d
-
 	picture = EVENT_hoi4tgw_interwar_wall_street_bombing
-
 	major = yes
-
 	trigger = {
 		date > 1920.9.16
-		NOT = { has_global_flag = interwar_wall_street_bombing }
+		NOT = {
+			has_global_flag = interwar_wall_street_bombing
+		}
 	}
-	
 	mean_time_to_happen = {
 		days = 2
 	}
-
 	immediate = {
 		set_global_flag = interwar_wall_street_bombing
 	}
-
 	option = {
 		name = interwar_news.17.a
 		ai_chance = {
@@ -736,32 +729,28 @@ news_event = {
 		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # Earthquake in China # https://en.wikipedia.org/wiki/1920_Haiyuan_earthquake
 #____________________________________________________________
 news_event = {
 	id = interwar_news.18
 	title = interwar_news.18.t
 	desc = interwar_news.18.d
-
 	picture = EVENT_hoi4tgw_interwar_haiyuan_earthquake
-
 	major = yes
-
 	trigger = {
 		date > 1920.12.16
-		NOT = { has_global_flag = interwar_haiyuan_earthquake }
+		NOT = {
+			has_global_flag = interwar_haiyuan_earthquake
+		}
 	}
-	
 	mean_time_to_happen = {
 		days = 2
 	}
-
 	immediate = {
 		set_global_flag = interwar_haiyuan_earthquake
 	}
-
 	option = {
 		name = interwar_news.18.a
 		ai_chance = {
@@ -769,4 +758,5 @@ news_event = {
 		}
 	}
 }
+
 #____________________________________________________________

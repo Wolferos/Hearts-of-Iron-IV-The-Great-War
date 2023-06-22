@@ -3,24 +3,23 @@ focus_tree = {
 	country = {
 		factor = 0
 		modifier = {
-			add = 1000 
+			add = 1000
 			tag = CAN
 		}
 	}
-	
-	default = no	
-	continuous_focus_position = { x = 80 y = 1600}
-	
+	default = no
+	continuous_focus_position = {
+		x = 80
+		y = 1600
+	}
 	focus = {
 		id = CAN_political
 		#A Mari Usque ad Mare
 		icon = GFX_goal_CAN_political
 		cost = 10
 		x = 8
-		y = 0		
-		
+		y = 0
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			country_event = canada.2
 		}
@@ -28,19 +27,18 @@ focus_tree = {
 			FOCUS_FILTER_HISTORICAL
 		}
 	}
-	
 	focus = {
 		id = CAN_Americanism
 		#Americanism
 		icon = GFX_goal_CAN_Americanism
 		cost = 10
-		
-		prerequisite = { focus = CAN_Patriation }
+		prerequisite = {
+			focus = CAN_Patriation
+		}
 		mutually_exclusive = {
 			focus = CAN_const_monarchy
 			focus = CAN_kingdom_own
 		}
-
 		x = 13
 		y = 3
 		available = {
@@ -48,9 +46,10 @@ focus_tree = {
 				is_subject = no
 				is_subject_of = USA
 			}
-			has_country_leader = { character = CAN_wilfrid_laurier }
+			has_country_leader = {
+				character = CAN_wilfrid_laurier
+			}
 		}
-		
 		completion_reward = {
 			country_event = canada.13
 			if = {
@@ -62,11 +61,11 @@ focus_tree = {
 								is_faction_leader = no
 							}
 							has_war = yes
-						}						
+						}
 					}
 				}
 				leave_faction = yes
-			}		
+			}
 			if = {
 				limit = {
 					has_unit_leader = 829
@@ -81,25 +80,26 @@ focus_tree = {
 						}
 					}
 				}
-				ENG_arthur_connaught = { set_nationality = ENG }
+				ENG_arthur_connaught = {
+					set_nationality = ENG
+				}
 			}
 		}
-		ai_will_do = { factor = 5 }
+		ai_will_do = {
+			factor = 5
+		}
 	}
-	
 	focus = {
 		id = CAN_industrial_tree
 		#A Broken Economy
 		icon = GFX_goal_CAN_industrial_tree
 		cost = 5
 		x = 36
-		y = 0		
-		
+		y = 0
 		completion_reward = {
 			add_political_power = -50
 		}
 	}
-	
 	focus = {
 		id = CAN_army_focus
 		#The Canadian Armed Forces
@@ -107,12 +107,11 @@ focus_tree = {
 		cost = 10
 		x = 46
 		y = 0
-
 		available_if_capitulated = yes
-		
-		completion_reward = { army_experience = 50 }
+		completion_reward = {
+			army_experience = 50
+		}
 	}
-	
 	focus = {
 		id = CAN_navy_focus
 		#A Navy of Our Own
@@ -120,13 +119,10 @@ focus_tree = {
 		cost = 10
 		x = 50
 		y = 0
-		
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			country_event = canada.65
 			navy_experience = 50
-
 			if = {
 				limit = {
 					CAN = {
@@ -139,7 +135,6 @@ focus_tree = {
 			}
 		}
 	}
-
 	focus = {
 		id = CAN_air_focus
 		#A New Airforce
@@ -147,15 +142,12 @@ focus_tree = {
 		cost = 10
 		x = 54
 		y = 0
-
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			country_event = canada.66
 			air_experience = 50
 		}
 	}
-	
 	focus = {
 		id = CAN_Loyalty
 		#Canadian Loyalty
@@ -169,16 +161,16 @@ focus_tree = {
 		}
 		x = 3
 		y = 1
-		
-		ai_will_do = { factor = 9 }
-		
+		ai_will_do = {
+			factor = 9
+		}
 		available = {
-			ENG = { has_government = ROOT }
+			ENG = {
+				has_government = ROOT
+			}
 			is_subject_of = ENG
 		}
-	
 		available_if_capitulated = yes
-
 		completion_reward = {
 			ENG = {
 				add_opinion_modifier = {
@@ -188,37 +180,34 @@ focus_tree = {
 			}
 			country_event = canada.3
 		}
-
 		search_filters = {
 			FOCUS_FILTER_HISTORICAL
 		}
 	}
-	
 	focus = {
 		id = CAN_republic
 		#Formalize the Republic
 		icon = GFX_goal_CAN_republic
 		cost = 10
-		prerequisite = { focus = CAN_Americanism }
+		prerequisite = {
+			focus = CAN_Americanism
+		}
 		x = 13
 		y = 4
-
 		available_if_capitulated = yes
-		
 		available = {
 			has_government = democratic
 		}
-		
 		completion_reward = {
-			hidden_effect = {set_cosmetic_tag = CAN_republic}
-
+			hidden_effect = {
+				set_cosmetic_tag = CAN_republic
+			}
 			swap_ideas = {
 				remove_idea = CAN_republic_americanism
 				add_idea = CAN_republic_americanism2
 			}
-		}	
+		}
 	}
-	
 	focus = {
 		id = CAN_democracy
 		#Northern Freedom
@@ -229,9 +218,7 @@ focus_tree = {
 		}
 		x = 11
 		y = 5
-		
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			every_other_country = {
 				limit = {
@@ -245,26 +232,29 @@ focus_tree = {
 						original_tag = USA
 					}
 				}
-				add_timed_idea = { idea = CAN_northern_freedom days = 300 }
+				add_timed_idea = {
+					idea = CAN_northern_freedom
+					days = 300
+				}
 			}
 		}
-
-		ai_will_do = { factor = 0 }
+		ai_will_do = {
+			factor = 0
+		}
 	}
-	
 	focus = {
 		id = CAN_americas_guarantee
 		#Safegaurd the Americas
 		icon = GFX_goal_CAN_americas_guarantee
 		cost = 10
-		prerequisite = { focus = CAN_democracy }
+		prerequisite = {
+			focus = CAN_democracy
+		}
 		x = 11
 		y = 6
-		
 		available_if_capitulated = yes
-
 		completion_reward = {
-			custom_effect_tooltip = 2_CAN_tt			
+			custom_effect_tooltip = 2_CAN_tt
 			hidden_effect = {
 				every_other_country = {
 					limit = {
@@ -274,18 +264,16 @@ focus_tree = {
 								is_on_continent = north_america
 								is_on_continent = south_america
 							}
-						}										
+						}
 					}
-					give_guarantee = PREV	
+					give_guarantee = PREV
 				}
 			}
 		}
-
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
 	focus = {
 		id = CAN_seperation
 		#The Canadian Dream
@@ -299,32 +287,29 @@ focus_tree = {
 		}
 		x = 13
 		y = 1
-		
 		ai_will_do = {
 			factor = 10
-			modifier = { # Security so if the Historical Mode is enabled the Canada AI will stay loyal to the British Empire
+			modifier = {
+				# Security so if the Historical Mode is enabled the Canada AI will stay loyal to the British Empire
 				factor = 0
 				is_historical_focus_on = yes
 			}
 		}
-
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			add_ideas = CAN_canadian_dream
 			if = {
 				limit = {
 					has_idea = CAN_albert_grey
 				}
-				set_party_name = { 
-					ideology = neutrality 
-					long_name = CAN_monarchist_party_long 
-					name = CAN_monarchist_party 
+				set_party_name = {
+					ideology = neutrality
+					long_name = CAN_monarchist_party_long
+					name = CAN_monarchist_party
 				}
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_Patriation
 		#Immediate Patriation
@@ -340,9 +325,7 @@ focus_tree = {
 				is_subject_of = ENG
 			}
 		}
-		
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			add_ideas = CAN_patriation
 			ENG = {
@@ -353,7 +336,6 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_const_monarchy
 		#The British Compromise
@@ -366,20 +348,20 @@ focus_tree = {
 			focus = CAN_Americanism
 			focus = CAN_kingdom_own
 		}
-		
 		x = 7
 		y = 3
 		available = {
 			ENG = {
-				NOT  = { has_government = communism }
+				NOT = {
+					has_government = communism
+				}
 			}
-			has_government = democratic 
+			has_government = democratic
 			has_country_leader = {
 				character = CAN_robert_borden
 			}
 		}
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			country_event = canada.10
 		}
@@ -387,7 +369,6 @@ focus_tree = {
 			factor = 10
 		}
 	}
-	
 	focus = {
 		id = CAN_commonwealth_research
 		#For the Empire
@@ -399,25 +380,20 @@ focus_tree = {
 		}
 		x = 3
 		y = 4
-		
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			add_tech_bonus = {
-				
 				name = electronics_bonus
 				bonus = 1
 				uses = 2
 				category = electronics
-				category  = industry
+				category = industry
 			}
 		}
 		search_filters = {
 			FOCUS_FILTER_HISTORICAL
 		}
-
 	}
-	
 	focus = {
 		id = CAN_france_diplomacy
 		#Mission to France
@@ -428,15 +404,10 @@ focus_tree = {
 		}
 		x = 1
 		y = 5
-		
 		available = {
 			is_in_faction_with = FRA
 		}
-		
-		
-		
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			FRA = {
 				add_opinion_modifier = {
@@ -445,9 +416,7 @@ focus_tree = {
 				}
 			}
 		}
-
 	}
-	
 	focus = {
 		id = CAN_McGill_fair
 		#McGill University Fair
@@ -458,20 +427,14 @@ focus_tree = {
 		}
 		x = 5
 		y = 5
-		
-		
-		
 		available_if_capitulated = yes
-		
 		available = {
 			has_completed_focus = CAN_industrial_tree
 		}
-
 		completion_reward = {
 			add_research_slot = 1
 		}
 	}
-	
 	focus = {
 		id = CAN_eng_oil
 		#Develop Albertan Oil Sands
@@ -483,13 +446,9 @@ focus_tree = {
 		}
 		x = 8
 		y = 5
-		
-		
-		
 		available_if_capitulated = yes
-
 		completion_reward = {
-			470  = {
+			470 = {
 				add_resource = {
 					type = oil
 					amount = 5
@@ -497,7 +456,6 @@ focus_tree = {
 			}
 		}
 	}
-		
 	focus = {
 		id = CAN_fleet
 		# The Canadian Fleet
@@ -508,14 +466,11 @@ focus_tree = {
 		}
 		x = 11
 		y = 7
-		
 		available_if_capitulated = yes
-
 		completion_reward = {
 			navy_experience = 25
 		}
 	}
-	
 	focus = {
 		id = CAN_safe_haven
 		# A Safe Haven for the World
@@ -526,29 +481,25 @@ focus_tree = {
 		}
 		x = 13
 		y = 7
-		
-		
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			add_ideas = CAN_safe_haven_world
 		}
 	}
-	
 	focus = {
 		id = CAN_refugees
 		# European Refugees
 		icon = GFX_goal_CAN_refugees
 		cost = 10
-		prerequisite = { focus = CAN_safe_haven }
+		prerequisite = {
+			focus = CAN_safe_haven
+		}
 		x = 14
 		y = 9
-		
 		available_if_capitulated = yes
-		
 		available = {
 			GER = {
-				OR  = {
+				OR = {
 					has_war_with = FRA
 					has_war_with = ENG
 					has_war_with = RUS
@@ -559,7 +510,6 @@ focus_tree = {
 			add_ideas = CAN_euro_refugees
 		}
 	}
-	
 	focus = {
 		id = CAN_toronto_fair
 		# Toronto University Fair
@@ -570,25 +520,20 @@ focus_tree = {
 		}
 		x = 15
 		y = 5
-		
 		available = {
 			has_completed_focus = CAN_industrial_tree
 		}
-		
-		completion_reward =  {
-			
+		completion_reward = {
 			add_tech_bonus = {
-				
 				name = electronics_bonus
 				bonus = 0.5
 				uses = 2
 				category = electronics
-				category  = industry
-				category  = land_doctrine
+				category = industry
+				category = land_doctrine
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_research_slot
 		# Scientific Haven
@@ -599,9 +544,7 @@ focus_tree = {
 		}
 		x = 15
 		y = 6
-
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 0.75
@@ -610,7 +553,6 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_kingdom_own
 		# A Kingdom of our Own!
@@ -625,16 +567,10 @@ focus_tree = {
 		}
 		x = 21
 		y = 3
-		
-		
-		
-		
-		
 		available = {
 			is_subject = no
 			neutrality > 0.5
 		}
-		
 		completion_reward = {
 			country_event = canada.30
 			if = {
@@ -646,17 +582,16 @@ focus_tree = {
 								is_faction_leader = no
 							}
 							has_war = yes
-						}						
+						}
 					}
 				}
 				leave_faction = yes
-			}	
+			}
 		}
 		ai_will_do = {
 			factor = 2
 		}
 	}
-	
 	focus = {
 		id = CAN_king
 		# An Empty Throne
@@ -667,7 +602,6 @@ focus_tree = {
 		}
 		x = 21
 		y = 4
-
 		available = {
 			has_government = neutrality
 		}
@@ -683,7 +617,9 @@ focus_tree = {
 						limit = {
 							has_unit_leader = 829
 						}
-						ENG_arthur_connaught = { set_nationality = ROOT }
+						ENG_arthur_connaught = {
+							set_nationality = ROOT
+						}
 					}
 				}
 			}
@@ -692,7 +628,6 @@ focus_tree = {
 			country_event = canada.31
 		}
 	}
-	
 	focus = {
 		id = CAN_empire
 		# Forging an Empire
@@ -703,19 +638,12 @@ focus_tree = {
 		}
 		x = 21
 		y = 5
-		
-		
-		
-		
 		available = {
-			
 		}
-		
 		completion_reward = {
 			country_event = canada.32
 		}
 	}
-	
 	focus = {
 		id = CAN_rcmp
 		# The Mounties
@@ -727,32 +655,34 @@ focus_tree = {
 		}
 		x = 17
 		y = 7
-
-		completion_reward = { add_ideas = CAN_the_mounties }
+		completion_reward = {
+			add_ideas = CAN_the_mounties
+		}
 	}
-	
 	focus = {
 		id = CAN_greenland
 		# The Greenland Purchase
 		icon = GFX_goal_CAN_greenland
 		cost = 10
-		prerequisite = { focus = CAN_empire }
+		prerequisite = {
+			focus = CAN_empire
+		}
 		x = 21
 		y = 6
-		
 		available = {
-			NOT = {has_war_with = DEN}
+			NOT = {
+				has_war_with = DEN
+			}
 		}
-		
 		completion_reward = {
 			DEN = {
 				country_event = canada.33
 			}
 		}
-
-		ai_will_do = { factor = 0 }
+		ai_will_do = {
+			factor = 0
+		}
 	}
-	
 	focus = {
 		id = CAN_Alaska
 		# Demand Alaska
@@ -763,22 +693,17 @@ focus_tree = {
 		}
 		x = 21
 		y = 7
-		
-		
-		
-		
-		
 		available = {
-			NOT = {has_war_with = USA}
+			NOT = {
+				has_war_with = USA
+			}
 		}
-		
 		completion_reward = {
 			USA = {
 				country_event = canada.35
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_british_demands
 		# Demand Newfoundland and Labrador
@@ -789,29 +714,23 @@ focus_tree = {
 		}
 		x = 19
 		y = 7
-		
-		
-		
-		
-		
-		bypass ={
+		bypass = {
 			ROOT = {
 				owns_state = 332
 				owns_state = 331
 			}
 		}
-		
 		available = {
-			NOT = {has_war_with = ENG}
+			NOT = {
+				has_war_with = ENG
+			}
 		}
-		
 		completion_reward = {
 			ENG = {
 				country_event = canada.38
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_france_demands
 		# Demand St.Pierre and Miquelon
@@ -822,22 +741,17 @@ focus_tree = {
 		}
 		x = 23
 		y = 7
-		
-		
-		
-		
-		
 		available = {
-			NOT = {has_war_with = FRA}
+			NOT = {
+				has_war_with = FRA
+			}
 		}
-		
 		completion_reward = {
 			FRA = {
 				country_event = canada.41
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_1812
 		# An Alternate 1812
@@ -853,7 +767,7 @@ focus_tree = {
 			focus = CAN_france_demands
 		}
 		x = 21
-		y = 8	
+		y = 8
 		available = {
 			any_country = {
 				OR = {
@@ -870,7 +784,7 @@ focus_tree = {
 			NOT = {
 				has_country_flag = great_war_loser
 			}
-		}		
+		}
 		completion_reward = {
 			hidden_effect = {
 				add_state_claim = 357
@@ -906,14 +820,28 @@ focus_tree = {
 					create_wargoal = {
 						type = take_claimed_state
 						target = PREV
-						generator = {357 358 360 359 261 393 394 391 389 390 388 387 386 385}
+						generator = {
+							357
+							358
+							360
+							359
+							261
+							393
+							394
+							391
+							389
+							390
+							388
+							387
+							386
+							385
+						}
 					}
 				}
 				add_ideas = CAN_american_defensive_war
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_integrate_midwest
 		# Integrate the Midwest
@@ -924,11 +852,6 @@ focus_tree = {
 		}
 		x = 21
 		y = 9
-		
-		
-		
-		
-		
 		available = {
 			has_war = no
 			owns_state = 261
@@ -940,7 +863,6 @@ focus_tree = {
 			owns_state = 388
 			owns_state = 387
 		}
-		
 		completion_reward = {
 			add_state_core = 261
 			add_state_core = 393
@@ -952,7 +874,6 @@ focus_tree = {
 			add_state_core = 387
 		}
 	}
-	
 	focus = {
 		id = CAN_integration
 		# Integrate New England
@@ -963,10 +884,6 @@ focus_tree = {
 		}
 		x = 19
 		y = 9
-		
-		
-		
-		
 		available = {
 			has_war = no
 			owns_state = 357
@@ -974,7 +891,6 @@ focus_tree = {
 			owns_state = 359
 			owns_state = 360
 		}
-		
 		completion_reward = {
 			add_state_core = 357
 			add_state_core = 358
@@ -982,7 +898,6 @@ focus_tree = {
 			add_state_core = 360
 		}
 	}
-	
 	focus = {
 		id = CAN_reintegrate_columbia
 		# Reintegrate Columbia
@@ -993,22 +908,16 @@ focus_tree = {
 		}
 		x = 23
 		y = 9
-		
-		
-		
-		
 		available = {
 			has_war = no
 			owns_state = 385
 			owns_state = 386
 		}
-		
 		completion_reward = {
 			add_state_core = 385
 			add_state_core = 386
 		}
 	}
-	
 	focus = {
 		id = CAN_american_puppet
 		# An American Protectorate
@@ -1025,43 +934,36 @@ focus_tree = {
 		}
 		x = 21
 		y = 10
-		
-		
-		
-		
-		
 		available = {
 			USA = {
 				exists = yes
 			}
 		}
-		
 		bypass = {
 			USA = {
 				is_subject_of = CAN
 			}
 		}
-		
 		completion_reward = {
 			USA = {
 				country_event = canada.51
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_mexico
 		# Tame the Southern Jaguar 
 		icon = GFX_focus_mex_jefe_maximo
 		cost = 5
-		prerequisite = { focus = CAN_empire }
+		prerequisite = {
+			focus = CAN_empire
+		}
 		mutually_exclusive = {
 			focus = CAN_japanese_alliance
 			focus = CAN_german_alliance
 		}
 		x = 25
 		y = 6
-		
 		available = {
 			NOT = {
 				has_completed_focus = CAN_1812
@@ -1069,14 +971,12 @@ focus_tree = {
 				has_war_with = MEX
 			}
 		}
-		
 		completion_reward = {
 			MEX = {
 				add_ideas = CAN_mexican_influence
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_mexican_claims
 		# Reinstate Mexican Claims
@@ -1087,22 +987,16 @@ focus_tree = {
 		}
 		x = 25
 		y = 7
-		
-		
-		
-		
-		
 		available = {
 			NOT = {
 				has_completed_focus = CAN_1812
 				has_war_with = USA
 				has_war_with = MEX
 				MEX = {
-					neutrality < 0.40
+					neutrality < 0.4
 				}
 			}
 		}
-		
 		completion_reward = {
 			create_faction = imperial_authority_treaty
 			MEX = {
@@ -1110,7 +1004,6 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_mexico_empire
 		# The Third Mexican Empire
@@ -1121,11 +1014,6 @@ focus_tree = {
 		}
 		x = 25
 		y = 8
-		
-		
-		
-		
-		
 		available = {
 			MEX = {
 				is_in_faction_with = CAN
@@ -1135,61 +1023,54 @@ focus_tree = {
 				has_completed_focus = CAN_1812
 			}
 		}
-		
 		completion_reward = {
 			MEX = {
 				country_event = canada.57
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_carribean
 		# Strike the Carribean
-		icon = GFX_goal_generic_major_war #fix icon, please
+		icon = GFX_goal_generic_major_war		#fix icon, please
 		cost = 10
 		prerequisite = {
 			focus = CAN_1812
 		}
 		x = 25
 		y = 9
-		
-		
-		
-		
-		
 		available = {
 			has_war = no
 		}
-		
 		completion_reward = {
 			hidden_effect = {
 				add_state_claim = 315
 				add_state_claim = 318
 				add_state_claim = 319
-				
 			}
-			
 			create_wargoal = {
 				type = take_claimed_state
 				target = CUB
-				generator = {315}
+				generator = {
+					315
+				}
 			}
-			
 			create_wargoal = {
 				type = take_claimed_state
 				target = HAI
-				generator = {318}
+				generator = {
+					318
+				}
 			}
-			
 			create_wargoal = {
 				type = take_claimed_state
 				target = DOM
-				generator = {319}
+				generator = {
+					319
+				}
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_carribean_confederation
 		# A United Carribean Protectorate
@@ -1200,64 +1081,59 @@ focus_tree = {
 		}
 		x = 25
 		y = 10
-
 		available = {
 			has_war = no
 			owns_state = 315
 			owns_state = 318
 			owns_state = 319
 		}
-		
 		completion_reward = {
 			custom_effect_tooltip = 1_CAN_tt
 			hidden_effect = {
 				release = CUB
 				puppet = CUB
-			
 				CUB = {
 					transfer_state = 318
 					transfer_state = 319
 					add_state_core = 318
 					add_state_core = 319
-					
 					add_popularity = {
 						ideology = neutrality
-						popularity = 0.60
+						popularity = 0.6
 					}
 					set_politics = {
 						ruling_party = neutrality
 						elections_allowed = no
 					}
-
 					CUB_albert_grey = {
 						add_country_leader_role = {
 							promote_leader = yes
-							country_leader={
+							country_leader = {
 								ideology = autocracy
-								traits = {  }					
+								traits = {
+								}
 							}
 						}
 					}
-					
 					set_cosmetic_tag = CUB_CAN
 				}
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_japanese_alliance
 		# A Pacific Alliance
 		icon = GFX_focus_jap_pacific_guardian
 		cost = 5
-		prerequisite = { focus = CAN_empire }
+		prerequisite = {
+			focus = CAN_empire
+		}
 		mutually_exclusive = {
 			focus = CAN_german_alliance
 			focus = CAN_mexico
 		}
 		x = 27
 		y = 6
-		
 		available = {
 			NOT = {
 				has_completed_focus = CAN_1812
@@ -1271,14 +1147,12 @@ focus_tree = {
 				}
 			}
 		}
-		
 		completion_reward = {
 			JAP = {
 				country_event = canada.58
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_japanese_ships
 		# Japanese Ship Orders
@@ -1289,7 +1163,6 @@ focus_tree = {
 		}
 		x = 27
 		y = 7
-
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 0.8
@@ -1301,20 +1174,20 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_german_alliance
 		# An Sacrilegious Alliance
 		icon = GFX_focus_ger_revive_kaiserreich
 		cost = 5
-		prerequisite = { focus = CAN_empire }
+		prerequisite = {
+			focus = CAN_empire
+		}
 		mutually_exclusive = {
 			focus = CAN_japanese_alliance
 			focus = CAN_mexico
 		}
 		x = 29
 		y = 6
-
 		available = {
 			NOT = {
 				has_completed_focus = CAN_1812
@@ -1322,12 +1195,10 @@ focus_tree = {
 				has_war_with = GER
 			}
 		}
-		
 		completion_reward = {
 			navy_capital_ship_attack_factor = 0.2
 		}
 	}
-	
 	focus = {
 		id = CAN_german_ships
 		# German Ship Orders
@@ -1338,7 +1209,6 @@ focus_tree = {
 		}
 		x = 29
 		y = 7
-		
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 0.6
@@ -1350,7 +1220,6 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_technology_share
 		# Technology Sharing
@@ -1363,9 +1232,8 @@ focus_tree = {
 		}
 		x = 28
 		y = 8
-		
 		completion_reward = {
-			add_tech_bonus = {				
+			add_tech_bonus = {
 				name = electronics_bonus
 				bonus = 0.85
 				uses = 4
@@ -1375,78 +1243,78 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_technology_queens
 		#Queen's University Fair
 		icon = GFX_goal_CAN_technology_queens
 		cost = 4
-		prerequisite = { focus = CAN_technology_share }
+		prerequisite = {
+			focus = CAN_technology_share
+		}
 		x = 28
 		y = 9
-
-		available = { has_completed_focus = CAN_industrial_tree }
-		
+		available = {
+			has_completed_focus = CAN_industrial_tree
+		}
 		completion_reward = {
 			add_research_slot = 1
 		}
 	}
-	
 	focus = {
 		id = CAN_excavation
 		# Canadian Minerals
 		icon = GFX_focus_generic_steel
 		cost = 12
-		prerequisite = { focus = CAN_industrial_tree }
+		prerequisite = {
+			focus = CAN_industrial_tree
+		}
 		x = 31
 		y = 1
-		
 		completion_reward = {
-			682  = {
+			682 = {
 				add_resource = {
 					type = steel
 					amount = 8
 				}
 			}
-			683  = {
+			683 = {
 				add_resource = {
 					type = steel
 					amount = 11
 				}
 			}
-			466  = {
+			466 = {
 				add_resource = {
 					type = steel
 					amount = 17
 				}
 			}
-			
 		}
 	}
-	
 	focus = {
 		id = CAN_lowland_excavation
 		# Lowland Quarries
 		icon = GFX_focus_generic_tungsten
 		cost = 12
-		prerequisite = { focus = CAN_excavation }
+		prerequisite = {
+			focus = CAN_excavation
+		}
 		x = 31
 		y = 2
-
 		completion_reward = {
-			276  = {
+			276 = {
 				add_resource = {
 					type = tungsten
 					amount = 5
 				}
 			}
-			468  = {
+			468 = {
 				add_resource = {
 					type = tungsten
 					amount = 4
 				}
 			}
-			471  = {
+			471 = {
 				add_resource = {
 					type = tungsten
 					amount = 24
@@ -1454,18 +1322,18 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_columbian_metals
 		# Pacific Coast Rare Metals
 		icon = GFX_focus_usa_reestablish_the_gold_standard
 		cost = 12
-		prerequisite = { focus = CAN_lowland_excavation }
+		prerequisite = {
+			focus = CAN_lowland_excavation
+		}
 		x = 31
 		y = 3
-		
 		completion_reward = {
-			473  = {
+			473 = {
 				add_resource = {
 					type = chromium
 					amount = 12
@@ -1479,19 +1347,18 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_grand_excavation
 		# Grand Canadian Excavation
 		icon = GFX_goal_CAN_excavation
 		cost = 10
-		prerequisite = { focus = CAN_columbian_metals }
+		prerequisite = {
+			focus = CAN_columbian_metals
+		}
 		x = 31
 		y = 4
-		
 		completion_reward = {
 			add_tech_bonus = {
-				
 				name = electronics_bonus
 				bonus = 1
 				uses = 3
@@ -1502,30 +1369,30 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_oil
 		# Imperial Oil
 		icon = GFX_goal_CAN_oil
 		cost = 14
-		prerequisite = { focus = CAN_industrial_tree }
+		prerequisite = {
+			focus = CAN_industrial_tree
+		}
 		x = 34
 		y = 1
-		
 		completion_reward = {
-			470  = {
+			470 = {
 				add_resource = {
 					type = oil
 					amount = 26
 				}
 			}
-			276  = {
+			276 = {
 				add_resource = {
 					type = oil
 					amount = 8
 				}
 			}
-			471  = {
+			471 = {
 				add_resource = {
 					type = oil
 					amount = 20
@@ -1538,26 +1405,26 @@ focus_tree = {
 		# Texas Refineries
 		icon = GFX_goal_CAN_fuel
 		cost = 10
-		prerequisite = { focus = CAN_oil }
+		prerequisite = {
+			focus = CAN_oil
+		}
 		x = 34
 		y = 2
-
 		completion_reward = {
 			add_ideas = CAN_texas_refine
 		}
 	}
-	
 	focus = {
 		id = CAN_CNR
 		# Canadian National Railway
 		icon = GFX_goal_CAN_CNR
 		cost = 10
-		prerequisite = { focus = CAN_industrial_tree }
+		prerequisite = {
+			focus = CAN_industrial_tree
+		}
 		x = 38
 		y = 1
-		
 		completion_reward = {
-
 			#464 = {
 			#	add_building_construction = {
 			#		type = infrastructure
@@ -1579,14 +1446,12 @@ focus_tree = {
 			#		instant_build = yes
 			#	}
 			#}			
-			
 			swap_ideas = {
 				remove_idea = CAN_broken_infrastructure
 				add_idea = CAN_broken_infrastructure1
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_railway2
 		# The People's Railway
@@ -1597,11 +1462,6 @@ focus_tree = {
 		}
 		x = 38
 		y = 2
-		
-		
-		
-		
-		
 		completion_reward = {
 			682 = {
 				add_building_construction = {
@@ -1624,14 +1484,12 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			
 			swap_ideas = {
 				remove_idea = CAN_broken_infrastructure1
 				add_idea = CAN_broken_infrastructure2
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_pacific_railway
 		# Canadian Pacific Railway
@@ -1645,11 +1503,6 @@ focus_tree = {
 		}
 		x = 36
 		y = 3
-		
-		
-		
-		
-		
 		completion_reward = {
 			470 = {
 				add_building_construction = {
@@ -1675,7 +1528,6 @@ focus_tree = {
 			remove_ideas = CAN_broken_infrastructure2
 		}
 	}
-	
 	focus = {
 		id = CAN_industry_limited
 		# Canadian Industries Limited
@@ -1686,7 +1538,6 @@ focus_tree = {
 		}
 		x = 41
 		y = 1
-		
 		completion_reward = {
 			276 = {
 				add_extra_state_shared_building_slots = 2
@@ -1702,7 +1553,6 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_assembly_line
 		# The Assembly Line
@@ -1713,11 +1563,6 @@ focus_tree = {
 		}
 		x = 41
 		y = 2
-		
-		
-		
-		
-		
 		completion_reward = {
 			add_tech_bonus = {
 				name = CAN_assembly_line
@@ -1728,14 +1573,12 @@ focus_tree = {
 				technology = machine_tools4
 				technology = machine_tools5
 			}
-			
 			swap_ideas = {
 				remove_idea = CAN_broken_industry1
 				add_idea = CAN_broken_industry2
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_hudson_bay
 		# The Hudson Bay Company
@@ -1746,11 +1589,6 @@ focus_tree = {
 		}
 		x = 41
 		y = 3
-		
-		
-		
-		
-		
 		completion_reward = {
 			276 = {
 				add_extra_state_shared_building_slots = 2
@@ -1771,7 +1609,6 @@ focus_tree = {
 			remove_ideas = CAN_broken_industry2
 		}
 	}
-	
 	focus = {
 		id = CAN_artillery_factories
 		# Artillery Factories
@@ -1782,16 +1619,9 @@ focus_tree = {
 		}
 		x = 39
 		y = 4
-		
-		
-		
-		
-		
 		available = {
 			has_war = yes
 		}
-		
-		
 		completion_reward = {
 			468 = {
 				add_extra_state_shared_building_slots = 1
@@ -1821,12 +1651,6 @@ focus_tree = {
 		}
 		x = 41
 		y = 4
-		
-		
-		
-		
-		
-		
 		completion_reward = {
 			276 = {
 				add_extra_state_shared_building_slots = 1
@@ -1846,16 +1670,16 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_ford
 		# Ford Motor Company
 		icon = GFX_goal_CAN_ford
 		cost = 10
-		prerequisite = { focus = CAN_army_focus }
+		prerequisite = {
+			focus = CAN_army_focus
+		}
 		x = 45
 		y = 1
-		
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 0.5
@@ -1864,7 +1688,6 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_model_T
 		# The Model T
@@ -1875,11 +1698,6 @@ focus_tree = {
 		}
 		x = 45
 		y = 2
-		
-		
-		
-		
-		
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 0.85
@@ -1893,7 +1711,6 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_ross_company
 		# Ross Rifle Company
@@ -1904,11 +1721,6 @@ focus_tree = {
 		}
 		x = 47
 		y = 1
-		
-		
-		
-		
-		
 		completion_reward = {
 			add_tech_bonus = {
 				name = CAN_ross_company
@@ -1918,7 +1730,6 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_british_rifle_lease
 		# Lee Enfield Licence
@@ -1929,11 +1740,6 @@ focus_tree = {
 		}
 		x = 47
 		y = 2
-		
-		
-		
-		
-		
 		completion_reward = {
 			ENG = {
 				create_production_license = {
@@ -1951,7 +1757,6 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_modern_tactics
 		# Research Modern Tactics
@@ -1963,11 +1768,6 @@ focus_tree = {
 		}
 		x = 46
 		y = 3
-		
-		
-		
-		
-		
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				cost_reduction = 0.45
@@ -1976,7 +1776,6 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_pacific_fleet
 		# Pacific Fleet
@@ -1990,8 +1789,6 @@ focus_tree = {
 		}
 		x = 49
 		y = 1
-		
-		
 		completion_reward = {
 			add_ideas = CAN_pacific_fleet
 			#473 = {
@@ -2002,9 +1799,7 @@ focus_tree = {
 			#	}
 			#}
 		}
-
 	}
-	
 	focus = {
 		id = CAN_atlantic_fleet
 		# Atlantic Fleet
@@ -2018,11 +1813,6 @@ focus_tree = {
 		}
 		x = 51
 		y = 1
-		
-		
-		
-		
-		
 		completion_reward = {
 			add_ideas = CAN_atlantic_fleet
 			464 = {
@@ -2033,10 +1823,7 @@ focus_tree = {
 				}
 			}
 		}
-
-
 	}
-	
 	focus = {
 		id = CAN_fleet_doctrine
 		# British Fleet Doctrine
@@ -2048,14 +1835,9 @@ focus_tree = {
 		}
 		x = 50
 		y = 2
-		
-		
-		
-		
-		
 		completion_reward = {
 			add_doctrine_cost_reduction = {
-			    name = CAN_fleet_doctrine
+				name = CAN_fleet_doctrine
 				cost_reduction = 0.25
 				uses = 2
 				category = naval_doctrine
@@ -2072,11 +1854,6 @@ focus_tree = {
 		}
 		x = 50
 		y = 3
-		
-		
-		
-		
-		
 		completion_reward = {
 			464 = {
 				add_extra_state_shared_building_slots = 4
@@ -2088,7 +1865,6 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_pilots
 		# New Pilots
@@ -2099,11 +1875,6 @@ focus_tree = {
 		}
 		x = 53
 		y = 1
-		
-		
-		
-		
-		
 		completion_reward = {
 			276 = {
 				add_building_construction = {
@@ -2121,7 +1892,6 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_canucks
 		# Curtiss Canucks
@@ -2132,11 +1902,7 @@ focus_tree = {
 		}
 		x = 55
 		y = 1
-		
-		
-		
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 0.85
@@ -2147,7 +1913,6 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_air_doctrine_focus
 		# Commonwealth Doctrine
@@ -2161,11 +1926,7 @@ focus_tree = {
 		}
 		x = 54
 		y = 2
-		
-		
-		
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				cost_reduction = 0.45
@@ -2174,7 +1935,6 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_avro_project
 		# The Avro Project
@@ -2185,9 +1945,7 @@ focus_tree = {
 		}
 		x = 54
 		y = 3
-
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 0.8
@@ -2197,7 +1955,6 @@ focus_tree = {
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_miltiary
 		# The Royal Canadian Military
@@ -2214,16 +1971,11 @@ focus_tree = {
 		}
 		x = 50
 		y = 5
-		
-		
-		
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			add_ideas = CAN_royal_military
 		}
 	}
-	
 	focus = {
 		id = CAN_newfoundland
 		# Ask for Newfoundland and Labrador
@@ -2234,28 +1986,23 @@ focus_tree = {
 		}
 		x = 7
 		y = 4
-		
-		
-		
-		
-		bypass ={
+		bypass = {
 			ROOT = {
 				owns_state = 332
 				owns_state = 331
 			}
 		}
-		
 		available = {
 			is_subject = no
 		}
-		
 		completion_reward = {
 			ENG = {
-				country_event = {id = canada.11}
+				country_event = {
+					id = canada.11
+				}
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_british_factories
 		# British Factories
@@ -2266,7 +2013,6 @@ focus_tree = {
 		}
 		x = 3
 		y = 5
-		
 		bypass = {
 			custom_trigger_tooltip = {
 				tooltip = production_effort_tt
@@ -2279,13 +2025,7 @@ focus_tree = {
 				}
 			}
 		}
-
-		
-		
 		available_if_capitulated = yes
-
-		
-
 		completion_reward = {
 			random_owned_controlled_state = {
 				limit = {
@@ -2302,7 +2042,6 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			
 			random_owned_controlled_state = {
 				limit = {
 					free_building_slots = {
@@ -2318,7 +2057,6 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			
 			random_owned_controlled_state = {
 				limit = {
 					free_building_slots = {
@@ -2335,9 +2073,7 @@ focus_tree = {
 				}
 			}
 		}
-
 	}
-	
 	focus = {
 		id = CAN_supplies
 		# Supplies for War
@@ -2351,23 +2087,17 @@ focus_tree = {
 		}
 		x = 4
 		y = 6
-		
-		
-		
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			add_tech_bonus = {
-				bonus = 1.0
+				bonus = 1
 				uses = 2
 				technology = construction2
 				technology = construction3
 				technology = construction4
 			}
 		}
-
 	}
-	
 	focus = {
 		id = CAN_american_persaude
 		# Persaude the Americans
@@ -2378,32 +2108,26 @@ focus_tree = {
 		}
 		x = 4
 		y = 7
-		
-		
-		
 		available_if_capitulated = yes
-		
 		available = {
 			has_war_with = GER
 		}
-		
 		bypass = {
 			USA = {
-				OR ={
+				OR = {
 					has_war_with = GER
 					has_capitulated = yes
 				}
 			}
 		}
-		
 		completion_reward = {
 			USA = {
-				country_event = {id = canada.4}
+				country_event = {
+					id = canada.4
+				}
 			}
 		}
 	}
-
-	
 	focus = {
 		id = CAN_russia_diplomacy
 		# Diplomats in Russia
@@ -2414,13 +2138,10 @@ focus_tree = {
 		}
 		x = 1
 		y = 6
-
 		available_if_capitulated = yes
-		
 		available = {
 			is_in_faction_with = RUS
 		}
-		
 		completion_reward = {
 			RUS = {
 				add_opinion_modifier = {
@@ -2428,10 +2149,8 @@ focus_tree = {
 					modifier = large_increase
 				}
 			}
-		}	
-
+		}
 	}
-	
 	focus = {
 		id = CAN_resources
 		# The Canadian Shield
@@ -2442,35 +2161,31 @@ focus_tree = {
 		}
 		x = 8
 		y = 6
-
 		available_if_capitulated = yes
-
 		completion_reward = {
-			682  = {
+			682 = {
 				add_resource = {
 					type = steel
 					amount = 5
 				}
 			}
 		}
-		
 	}
 	focus = {
 		id = CAN_resources_2
 		# The Prairies
 		icon = GFX_goal_CAN_resources_2
 		cost = 10
-		prerequisite = { focus = CAN_resources }
+		prerequisite = {
+			focus = CAN_resources
+		}
 		x = 8
 		y = 7
-
 		available_if_capitulated = yes
-
 		completion_reward = {
 			add_ideas = CAN_the_prairies
 		}
 	}
-	
 	focus = {
 		id = CAN_immigrants
 		# Eastern Immigrants
@@ -2481,20 +2196,16 @@ focus_tree = {
 		}
 		x = 12
 		y = 9
-		
 		available_if_capitulated = yes
-		
 		available = {
 			JAP = {
 				has_war = yes
 			}
 		}
-		
 		completion_reward = {
 			add_ideas = CAN_immigrants
 		}
 	}
-	
 	focus = {
 		id = CAN_airforce
 		# Royal Air Force Canada
@@ -2505,42 +2216,35 @@ focus_tree = {
 		}
 		x = 2
 		y = 8
-		
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			add_ideas = CAN_air_force
 			add_tech_bonus = {
-				
 				bonus = 0.85
 				uses = 2
 				category = light_air
-				category  = heavy_air
+				category = heavy_air
 			}
 		}
 	}
-	
 	focus = {
 		id = CAN_gun_scandal
 		# Ross Rifle Failure
 		icon = GFX_goal_CAN_gun_scandal
 		cost = 10
-		prerequisite = { focus = CAN_american_persaude }
+		prerequisite = {
+			focus = CAN_american_persaude
+		}
 		x = 4
 		y = 8
-		
-		
 		available_if_capitulated = yes
-		
 		available = {
 			has_completed_focus = CAN_ross_company
-		}		
+		}
 		completion_reward = {
 			add_ideas = CAN_ross_rifle
-		}	
-
+		}
 	}
-	
 	focus = {
 		id = CAN_british_rifles
 		#The British Lee-Enfield
@@ -2551,99 +2255,117 @@ focus_tree = {
 		}
 		x = 4
 		y = 9
-
 		available_if_capitulated = yes
-		
 		available = {
 			has_completed_focus = CAN_british_rifle_lease
 		}
-		
-		completion_reward = {			
+		completion_reward = {
 			remove_ideas = CAN_ross_rifle
 			add_ideas = CAN_lee_enfield
 		}
 	}
-	
 	focus = {
 		id = CAN_siberia
 		#Canadian Siberian Expeditionary Force
 		icon = GFX_goal_CAN_siberia
 		cost = 10
-		prerequisite = { focus = CAN_russia_diplomacy }
+		prerequisite = {
+			focus = CAN_russia_diplomacy
+		}
 		x = 1
 		y = 7
-		
 		available = {
 			RUS = {
 				has_civil_war = yes
 				has_war_with = GER
 			}
 		}
-
-		ai_will_do = { factor = 0 }
-		
+		ai_will_do = {
+			factor = 0
+		}
 		completion_reward = {
 			division_template = {
 				name = "Canadian Expeditionary Force"
 				regiments = {
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 0 y = 2 }
-					infantry = { x = 1 y = 0 }
-					infantry = { x = 1 y = 1 }
+					infantry = {
+						x = 0
+						y = 0
+					}
+					infantry = {
+						x = 0
+						y = 1
+					}
+					infantry = {
+						x = 0
+						y = 2
+					}
+					infantry = {
+						x = 1
+						y = 0
+					}
+					infantry = {
+						x = 1
+						y = 1
+					}
 				}
 				support = {
-					engineer = { x = 0 y = 0 }
-					recon = { x = 0 y = 1 }
+					engineer = {
+						x = 0
+						y = 0
+					}
+					recon = {
+						x = 0
+						y = 1
+					}
 				}
 			}
 			408 = {
 				create_unit = {
-					division = "name = \"1. Canadian Expeditionary Force\" division_template = \"Canadian Expeditionary Force\" start_experience_factor = 3" 
+					division = "name = \"1. Canadian Expeditionary Force\" division_template = \"Canadian Expeditionary Force\" start_experience_factor = 3"
 					owner = CAN
 				}
 				create_unit = {
-					division = "name = \"2. Canadian Expeditionary Force\" division_template = \"Canadian Expeditionary Force\" start_experience_factor = 3" 
+					division = "name = \"2. Canadian Expeditionary Force\" division_template = \"Canadian Expeditionary Force\" start_experience_factor = 3"
 					owner = CAN
 				}
 				create_unit = {
-					division = "name = \"3. Canadian Expeditionary Force\" division_template = \"Canadian Expeditionary Force\" start_experience_factor = 3" 
+					division = "name = \"3. Canadian Expeditionary Force\" division_template = \"Canadian Expeditionary Force\" start_experience_factor = 3"
 					owner = CAN
 				}
 				create_unit = {
-					division = "name = \"4. Canadian Expeditionary Force\" division_template = \"Canadian Expeditionary Force\" start_experience_factor = 3" 
+					division = "name = \"4. Canadian Expeditionary Force\" division_template = \"Canadian Expeditionary Force\" start_experience_factor = 3"
 					owner = CAN
 				}
 				create_unit = {
-					division = "name = \"5. Canadian Expeditionary Force\" division_template = \"Canadian Expeditionary Force\" start_experience_factor = 3" 
+					division = "name = \"5. Canadian Expeditionary Force\" division_template = \"Canadian Expeditionary Force\" start_experience_factor = 3"
 					owner = CAN
 				}
 			}
 		}
-
 	}
-	
 	focus = {
 		id = CAN_consc_crisis
 		#Conscription Crisis
 		icon = GFX_goal_CAN_consc_crisis
 		cost = 6
-		prerequisite = { focus = CAN_commit }
+		prerequisite = {
+			focus = CAN_commit
+		}
 		x = 6
 		y = 9
-		
 		available = {
-			date > 1917.1.1			
+			date > 1917.1.1
 			date < 1918.11.11
 		}
-		
 		completion_reward = {
-			country_event = {id  = canada.8}
+			country_event = {
+				id = canada.8
+			}
 		}
-
-		ai_will_do = { factor = 0 }
+		ai_will_do = {
+			factor = 0
+		}
 	}
-	
 	focus = {
 		id = CAN_commit
 		#Commit to the War
@@ -2654,17 +2376,11 @@ focus_tree = {
 		}
 		x = 6
 		y = 8
-		
-		
-		
 		available_if_capitulated = yes
-
 		completion_reward = {
 			add_ideas = CAN_commit_to_war
 		}
-
 	}
-	
 	focus = {
 		id = CAN_bourassa
 		#The Bourassa Compromise
@@ -2678,18 +2394,12 @@ focus_tree = {
 		}
 		x = 5
 		y = 10
-		
-		
-		
 		available_if_capitulated = yes
-
 		completion_reward = {
 			add_ideas = CAN_bourassa_compromise
 			remove_ideas = CAN_cons_crisis
 		}
-
 	}
-	
 	focus = {
 		id = CAN_riots
 		#Quebec Riots
@@ -2703,17 +2413,13 @@ focus_tree = {
 		}
 		x = 7
 		y = 10
-		
-		
-		
 		available_if_capitulated = yes
-
 		completion_reward = {
-			country_event = {id = canada.9}
-		}		
-		
+			country_event = {
+				id = canada.9
+			}
+		}
 	}
-	
 	focus = {
 		id = CAN_impose
 		#Imposed Conscription
@@ -2724,10 +2430,7 @@ focus_tree = {
 		}
 		x = 7
 		y = 11
-		
-		
 		available_if_capitulated = yes
-
 		completion_reward = {
 			add_ideas = CAN_imposed_conscription
 			swap_ideas = {
@@ -2735,9 +2438,8 @@ focus_tree = {
 				add_idea = CAN_quebec_riots2
 			}
 			remove_ideas = CAN_cons_crisis
-		}	
+		}
 	}
-	
 	focus = {
 		id = CAN_war_fueled_economy_ww1
 		#War Fueled Economy
@@ -2753,18 +2455,14 @@ focus_tree = {
 		}
 		x = 36
 		y = 5
-		
 		available_if_capitulated = yes
-		
 		available = {
 			has_war = yes
 		}
-
 		completion_reward = {
 			add_ideas = CAN_war_fueled
 		}
 	}
-	
 	focus = {
 		id = CAN_industrialized_new
 		#A New Canada
@@ -2775,17 +2473,13 @@ focus_tree = {
 		}
 		x = 36
 		y = 6
-		
-		
 		available_if_capitulated = yes
-
 		completion_reward = {
 			remove_ideas = CAN_broken_economy
 			add_ideas = CAN_new_canada
 			add_research_slot = 1
 		}
 	}
-	
 	focus = {
 		id = CAN_storm_troopers
 		#Storm Troopers
@@ -2799,14 +2493,9 @@ focus_tree = {
 		}
 		x = 3
 		y = 10
-		
-		
-		
 		available_if_capitulated = yes
-		
 		completion_reward = {
 			add_ideas = CAN_storm_troopers
 		}
-		
 	}
 }

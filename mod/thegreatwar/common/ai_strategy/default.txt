@@ -136,10 +136,13 @@
 default_unit_production = {
 	enable = {
 		always = yes
-		NOT = { original_tag = GER } NOT = { original_tag = FRA } NOT = { original_tag = CHI  } NOT = { original_tag = ENG  }
-		not = { original_tag = CZE } 
-		Not = {
+		NOT = {
 			OR = {
+				original_tag = GER
+				original_tag = FRA
+				original_tag = CHI
+				original_tag = ENG
+				original_tag = CZE
 				original_tag = JAP
 			}
 		}
@@ -756,11 +759,17 @@ default_area_priority = {
 
 default_area_priority_non_africa = {
     enable = {
-        NOT = { original_tag = ITA }
-        NOT = { original_tag = FRA }
-        NOT = { original_tag = ENG }
-        NOT = { is_subject_of = ENG }
-        NOT = { capital_scope = { is_on_continent = africa } }
+		NOT = {
+			OR = {
+				original_tag = ITA
+				original_tag = FRA
+				original_tag = ENG
+				is_subject_of = ENG
+				capital_scope = {
+					is_on_continent = africa
+				}
+			}
+		}
     }
 
     ai_strategy = {
@@ -878,7 +887,17 @@ DEFAULT_template_design = {
 
 DEFAULT_template_design = {
 	enable = {
-		NOT = { OR = { tag = GER tag = ENG tag = SOV tag = ITA tag = JAP tag = USA tag = POL } }
+		NOT = {
+			OR = {
+				tag = GER
+				tag = ENG
+				tag = SOV
+				tag = ITA
+				tag = JAP
+				tag = USA
+				tag = POL
+			}
+		}
 		date > 1940.1.1				
 	}
 
