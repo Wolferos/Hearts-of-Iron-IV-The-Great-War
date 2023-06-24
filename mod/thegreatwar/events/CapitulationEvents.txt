@@ -1,9 +1,7 @@
 ﻿###########################
 # Capitulation Events
 ###########################
-
 add_namespace = country_capitulated
-
 # 	# FROM is winner
 news_event = {
 	id = country_capitulated.0
@@ -14,10 +12,22 @@ news_event = {
 		trigger = {
 			OR = {
 				has_war_with = ROOT
-				any_allied_country = { has_war_with = ROOT }
+				any_allied_country = {
+					has_war_with = ROOT
+				}
 			}
-			ROOT = { is_in_faction = no }			
-			FROM = { FROM = { NOT = { any_allied_country = { has_war_with = ROOT } } } }
+			ROOT = {
+				is_in_faction = no
+			}
+			FROM = {
+				FROM = {
+					NOT = {
+						any_allied_country = {
+							has_war_with = ROOT
+						}
+					}
+				}
+			}
 		}
 	}
 	desc = {
@@ -25,10 +35,22 @@ news_event = {
 		trigger = {
 			OR = {
 				has_war_with = ROOT
-				any_allied_country = { has_war_with = ROOT }
+				any_allied_country = {
+					has_war_with = ROOT
+				}
 			}
-			ROOT = { is_in_faction = yes }
-			FROM = { FROM = { NOT = { any_allied_country = { has_war_with = ROOT } } } }
+			ROOT = {
+				is_in_faction = yes
+			}
+			FROM = {
+				FROM = {
+					NOT = {
+						any_allied_country = {
+							has_war_with = ROOT
+						}
+					}
+				}
+			}
 		}
 	}
 	desc = {
@@ -36,10 +58,20 @@ news_event = {
 		trigger = {
 			OR = {
 				has_war_with = ROOT
-				any_allied_country = { has_war_with = ROOT }
+				any_allied_country = {
+					has_war_with = ROOT
+				}
 			}
-			ROOT = { is_in_faction = yes }
-			FROM = { FROM = { any_allied_country = { has_war_with = ROOT } } }
+			ROOT = {
+				is_in_faction = yes
+			}
+			FROM = {
+				FROM = {
+					any_allied_country = {
+						has_war_with = ROOT
+					}
+				}
+			}
 		}
 	}
 	#Bad news
@@ -51,8 +83,18 @@ news_event = {
 				is_in_faction_with = ROOT
 				tag = ROOT
 			}
-			ROOT = { is_in_faction = no }
-			FROM = { FROM = { NOT = { any_allied_country = { has_war_with = ROOT } } } }
+			ROOT = {
+				is_in_faction = no
+			}
+			FROM = {
+				FROM = {
+					NOT = {
+						any_allied_country = {
+							has_war_with = ROOT
+						}
+					}
+				}
+			}
 		}
 	}
 	desc = {
@@ -62,8 +104,18 @@ news_event = {
 				is_in_faction_with = ROOT
 				tag = ROOT
 			}
-			ROOT = { is_in_faction = yes }
-			FROM = { FROM = { NOT = { any_allied_country = { has_war_with = ROOT } } } }
+			ROOT = {
+				is_in_faction = yes
+			}
+			FROM = {
+				FROM = {
+					NOT = {
+						any_allied_country = {
+							has_war_with = ROOT
+						}
+					}
+				}
+			}
 		}
 	}
 	desc = {
@@ -73,60 +125,116 @@ news_event = {
 				is_in_faction_with = ROOT
 				tag = ROOT
 			}
-			ROOT = { is_in_faction = yes }
-			FROM = { FROM = { any_allied_country = { has_war_with = ROOT } } }
+			ROOT = {
+				is_in_faction = yes
+			}
+			FROM = {
+				FROM = {
+					any_allied_country = {
+						has_war_with = ROOT
+					}
+				}
+			}
 		}
 	}
 	#Neutral news
 	desc = {
 		text = country_capitulated.0.d_neutral_both_no_faction
 		trigger = {
-			NOT = { has_war_together_with = ROOT }
-			NOT = { is_in_faction_with = ROOT }
-			NOT = { has_war_with = ROOT }
-			NOT = { any_allied_country = { has_war_with = ROOT } }
-			ROOT = { is_in_faction = no }
-			FROM = { FROM = { NOT = { any_allied_country = { has_war_with = ROOT } } } }
+			NOT = {
+				has_war_together_with = ROOT
+			}
+			NOT = {
+				is_in_faction_with = ROOT
+			}
+			NOT = {
+				has_war_with = ROOT
+			}
+			NOT = {
+				any_allied_country = {
+					has_war_with = ROOT
+				}
+			}
+			ROOT = {
+				is_in_faction = no
+			}
+			FROM = {
+				FROM = {
+					NOT = {
+						any_allied_country = {
+							has_war_with = ROOT
+						}
+					}
+				}
+			}
 		}
 	}
 	desc = {
 		text = country_capitulated.0.d_neutral_prev_no_faction
 		trigger = {
-			NOT = { is_in_faction_with = ROOT }
-			NOT = { has_war_with = ROOT }
-			NOT = { any_allied_country = { has_war_with = ROOT } }
-			ROOT = { is_in_faction = yes }
-			FROM = { FROM = { NOT = { any_allied_country = { has_war_with = ROOT } } } }
+			NOT = {
+				is_in_faction_with = ROOT
+			}
+			NOT = {
+				has_war_with = ROOT
+			}
+			NOT = {
+				any_allied_country = {
+					has_war_with = ROOT
+				}
+			}
+			ROOT = {
+				is_in_faction = yes
+			}
+			FROM = {
+				FROM = {
+					NOT = {
+						any_allied_country = {
+							has_war_with = ROOT
+						}
+					}
+				}
+			}
 		}
 	}
 	desc = {
 		text = country_capitulated.0.d_neutral_prev_faction
 		trigger = {
-			NOT = { is_in_faction_with = ROOT }
-			NOT = { has_war_with = ROOT }	
-			NOT = { any_allied_country = { has_war_with = ROOT } }
-			ROOT = { is_in_faction = yes }
-			FROM = { FROM = { any_allied_country = { has_war_with = ROOT } } }
+			NOT = {
+				is_in_faction_with = ROOT
+			}
+			NOT = {
+				has_war_with = ROOT
+			}
+			NOT = {
+				any_allied_country = {
+					has_war_with = ROOT
+				}
+			}
+			ROOT = {
+				is_in_faction = yes
+			}
+			FROM = {
+				FROM = {
+					any_allied_country = {
+						has_war_with = ROOT
+					}
+				}
+			}
 		}
 	}
-
 	picture = GFX_news_event_generic_sign_treaty2
-
 	major = yes
-
 	is_triggered_only = yes
-
 	hidden = no
-
 	fire_only_once = no
-
 	option = {
 		name = country_capitulated.0.a
 		trigger = {
 			OR = {
 				any_allied_country = {
 					has_war_with = ROOT
-				}				
+				}
 				has_war_with = ROOT
 			}
 		}
@@ -144,10 +252,20 @@ news_event = {
 	option = {
 		name = country_capitulated.0.c
 		trigger = {
-			NOT = { has_war_together_with = ROOT }
-			NOT = { is_in_faction_with = ROOT }
-			NOT = { any_allied_country = { has_war_with = ROOT } }
-			NOT = { has_war_with = ROOT }
+			NOT = {
+				has_war_together_with = ROOT
+			}
+			NOT = {
+				is_in_faction_with = ROOT
+			}
+			NOT = {
+				any_allied_country = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = {
+				has_war_with = ROOT
+			}
 		}
 	}
 }

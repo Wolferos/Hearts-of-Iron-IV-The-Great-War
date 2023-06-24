@@ -1,18 +1,14 @@
 ﻿###########################
 # Election Events
 ###########################
-
 add_namespace = election
-
 # Test Election Event
 country_event = {
 	id = election.1
 	title = election.1.t
 	desc = election.1.d
 	picture = GFX_report_event_election_vote
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = election.1.a
 	}
@@ -24,12 +20,19 @@ country_event = {
 	title = election.2.t
 	desc = election.2.d
 	picture = GFX_report_event_airplane_factory
-	
 	is_triggered_only = yes
-	
 	trigger = {
-		NOT = { tag = USA }
-		OR = { NOT = { tag = SPR } NOT = { date < 1937.1.1 } }
+		NOT = {
+			tag = USA
+		}
+		OR = {
+			NOT = {
+				tag = SPR
+			}
+			NOT = {
+				date < 1937.1.1
+			}
+		}
 		has_government = democratic
 		NOT = {
 			OR = {
@@ -44,19 +47,18 @@ country_event = {
 		}
 		has_idea = partial_economic_mobilisation
 	}
-
 	option = {
 		name = election.2.a
 		add_ideas = low_economic_mobilisation
 	}
-
 	option = {
 		name = election.2.b
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			factor = 0
+		}
 		add_stability = -0.05
 	}
 }
-
 
 # Public Demands Rearmament
 country_event = {
@@ -64,12 +66,19 @@ country_event = {
 	title = election.3.t
 	desc = election.3.d
 	picture = GFX_report_event_tank_factory
-	
 	is_triggered_only = yes
-	
 	trigger = {
-		NOT = { tag = USA }
-		OR = { NOT = { tag = SPR } NOT = { date < 1937.1.1 } }
+		NOT = {
+			tag = USA
+		}
+		OR = {
+			NOT = {
+				tag = SPR
+			}
+			NOT = {
+				date < 1937.1.1
+			}
+		}
 		has_government = democratic
 		has_war = no
 		OR = {
@@ -89,38 +98,50 @@ country_event = {
 			has_idea = disarmed_nation
 		}
 	}
-
 	option = {
 		name = election.3.a
 		if = {
-			limit = { has_idea = low_economic_mobilisation }
+			limit = {
+				has_idea = low_economic_mobilisation
+			}
 			add_ideas = partial_economic_mobilisation
 		}
 		if = {
-			limit = { has_idea = civilian_economy }
+			limit = {
+				has_idea = civilian_economy
+			}
 			add_ideas = low_economic_mobilisation
 		}
 		if = {
-			limit = { has_idea = isolation }
+			limit = {
+				has_idea = isolation
+			}
 			add_ideas = civilian_economy
 		}
 		if = {
-			limit = { has_idea = undisturbed_isolation }
+			limit = {
+				has_idea = undisturbed_isolation
+			}
 			add_ideas = isolation
 		}
 		if = {
-			limit = { has_idea = volunteer_only }
+			limit = {
+				has_idea = volunteer_only
+			}
 			add_ideas = limited_conscription
 		}
 		if = {
-			limit = { has_idea = disarmed_nation }
+			limit = {
+				has_idea = disarmed_nation
+			}
 			add_ideas = volunteer_only
 		}
 	}
-
 	option = {
 		name = election.3.b
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			factor = 0
+		}
 		add_stability = -0.05
 	}
 }
@@ -131,17 +152,25 @@ country_event = {
 	title = election.4.t
 	desc = election.4.d
 	picture = GFX_report_event_fascist_gathering
-	
 	is_triggered_only = yes
-
 	trigger = {
-		NOT = { tag = USA }
-		OR = { NOT = { tag = SPR } NOT = { date < 1937.1.1 } }
+		NOT = {
+			tag = USA
+		}
+		OR = {
+			NOT = {
+				tag = SPR
+			}
+			NOT = {
+				date < 1937.1.1
+			}
+		}
 		has_government = democratic
-		NOT = { has_idea = fascism_defeated }
+		NOT = {
+			has_idea = fascism_defeated
+		}
 		fascism > 0.15
 	}
-	
 	option = {
 		name = election.4.a
 		add_popularity = {
@@ -150,7 +179,6 @@ country_event = {
 		}
 		set_country_flag = coalition_with_fascists
 	}
-
 	option = {
 		name = election.4.b
 		add_stability = -0.05
@@ -164,17 +192,25 @@ country_event = {
 	title = election.5.t
 	desc = election.5.d
 	picture = GFX_report_event_worker_protests
-	
 	is_triggered_only = yes
-
 	trigger = {
-		NOT = { tag = USA }
-		OR = { NOT = { tag = SPR } NOT = { date < 1937.1.1 } }
+		NOT = {
+			tag = USA
+		}
+		OR = {
+			NOT = {
+				tag = SPR
+			}
+			NOT = {
+				date < 1937.1.1
+			}
+		}
 		has_government = democratic
-		NOT = { has_idea = communism_defeated }
+		NOT = {
+			has_idea = communism_defeated
+		}
 		communism > 0.15
 	}
-	
 	option = {
 		name = election.5.a
 		add_popularity = {
@@ -183,7 +219,6 @@ country_event = {
 		}
 		set_country_flag = coalition_with_communists
 	}
-
 	option = {
 		name = election.5.b
 		add_stability = -0.05
@@ -197,18 +232,24 @@ country_event = {
 	title = election.6.t
 	desc = election.6.d
 	picture = GFX_report_event_journalists_speech
-	
 	is_triggered_only = yes
-
 	trigger = {
-		NOT = { tag = USA }
-		OR = { NOT = { tag = SPR } NOT = { date < 1937.1.1 } }
+		NOT = {
+			tag = USA
+		}
+		OR = {
+			NOT = {
+				tag = SPR
+			}
+			NOT = {
+				date < 1937.1.1
+			}
+		}
 		has_government = democratic
 		democratic < 0.5
 		fascism < 0.5
 		communism < 0.5
 	}
-	
 	option = {
 		name = election.6.a
 		add_popularity = {
@@ -217,7 +258,6 @@ country_event = {
 		}
 		set_country_flag = coalition_with_fascists
 	}
-
 	option = {
 		name = election.6.b
 		add_popularity = {
@@ -226,7 +266,6 @@ country_event = {
 		}
 		set_country_flag = coalition_with_communists
 	}
-
 	option = {
 		name = election.6.c
 		add_political_power = -80
@@ -239,14 +278,21 @@ country_event = {
 	title = election.7.t
 	desc = election.7.d
 	picture = GFX_report_event_fascist_gathering
-	
 	mean_time_to_happen = {
 		days = 730
 	}
-
 	trigger = {
-		NOT = { tag = USA }
-		OR = { NOT = { tag = SPR } NOT = { date < 1937.1.1 } }
+		NOT = {
+			tag = USA
+		}
+		OR = {
+			NOT = {
+				tag = SPR
+			}
+			NOT = {
+				date < 1937.1.1
+			}
+		}
 		has_government = democratic
 		has_country_flag = coalition_with_fascists
 		any_country = {
@@ -254,7 +300,6 @@ country_event = {
 			is_faction_leader = yes
 		}
 	}
-	
 	option = {
 		name = election.7.a
 		random_country = {
@@ -268,7 +313,6 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = election.7.b
 		add_stability = -0.05
@@ -281,14 +325,21 @@ country_event = {
 	title = election.8.t
 	desc = election.8.d
 	picture = GFX_report_event_worker_protests
-	
 	mean_time_to_happen = {
 		days = 730
 	}
-
 	trigger = {
-		NOT = { tag = USA }
-		OR = { NOT = { tag = SPR } NOT = { date < 1937.1.1 } }
+		NOT = {
+			tag = USA
+		}
+		OR = {
+			NOT = {
+				tag = SPR
+			}
+			NOT = {
+				date < 1937.1.1
+			}
+		}
 		has_government = democratic
 		has_country_flag = coalition_with_communists
 		any_country = {
@@ -296,7 +347,6 @@ country_event = {
 			is_faction_leader = yes
 		}
 	}
-	
 	option = {
 		name = election.8.a
 		random_country = {
@@ -310,7 +360,6 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = election.8.b
 		add_stability = -0.05
@@ -323,23 +372,19 @@ country_event = {
 	title = election.11.t
 	desc = election.11.d
 	picture = GFX_report_event_fascist_gathering
-	
 	is_triggered_only = yes
-
 	trigger = {
 		has_government = democratic
 		fascism > 0.5
 		is_puppet = no
 	}
-	
-	option = {	
+	option = {
 		name = election.11.a
 		set_politics = {
 			ruling_party = fascism
 			elections_allowed = no
 		}
 	}
-
 	option = {
 		name = election.11.b
 		start_civil_war = {
@@ -355,15 +400,12 @@ country_event = {
 	title = election.12.t
 	desc = election.12.d
 	picture = GFX_report_event_gathering_protest
-	
 	is_triggered_only = yes
-
 	trigger = {
 		has_government = democratic
 		communism > 0.5
 		is_puppet = no
 	}
-	
 	option = {
 		name = election.12.a
 		set_politics = {
@@ -371,7 +413,6 @@ country_event = {
 			elections_allowed = no
 		}
 	}
-
 	option = {
 		name = election.12.b
 		start_civil_war = {
@@ -387,14 +428,11 @@ country_event = {
 	title = election.13.t
 	desc = election.13.d
 	picture = GFX_report_event_fascist_gathering
-	
 	is_triggered_only = yes
-
 	trigger = {
 		has_government = democratic
 		has_idea_with_trait = motorized_equipment_manufacturer
 	}
-	
 	option = {
 		name = election.13.a
 		add_popularity = {
@@ -402,7 +440,6 @@ country_event = {
 			popularity = 0.15
 		}
 	}
-
 	option = {
 		name = election.13.b
 		remove_ideas_with_trait = motorized_equipment_manufacturer
@@ -415,21 +452,26 @@ country_event = {
 	title = election.14.t
 	desc = election.14.d
 	picture = GFX_report_event_tank_factory
-	
 	is_triggered_only = yes
-
 	trigger = {
-		NOT = { tag = USA }
-		OR = { NOT = { tag = SPR } NOT = { date < 1937.1.1 } }
+		NOT = {
+			tag = USA
+		}
+		OR = {
+			NOT = {
+				tag = SPR
+			}
+			NOT = {
+				date < 1937.1.1
+			}
+		}
 		has_government = democratic
 		has_war = yes
 	}
-	
 	option = {
 		name = election.14.a
 		add_stability = 0.05
 	}
-
 	option = {
 		name = election.14.b
 		add_political_power = 20
@@ -451,23 +493,28 @@ country_event = {
 	title = election.15.t
 	desc = election.15.d
 	picture = GFX_report_event_gathering_protest
-	
 	is_triggered_only = yes
-
 	trigger = {
-		NOT = { tag = USA }
-		OR = { NOT = { tag = SPR } NOT = { date < 1937.1.1 } }
+		NOT = {
+			tag = USA
+		}
+		OR = {
+			NOT = {
+				tag = SPR
+			}
+			NOT = {
+				date < 1937.1.1
+			}
+		}
 		has_government = democratic
 		has_war = yes
 		any_war_score < 20
 	}
-	
 	option = {
 		name = election.15.a
 		add_political_power = -50
 		add_stability = -0.05
 	}
-
 	option = {
 		name = election.15.b
 		add_political_power = 25
@@ -489,16 +536,22 @@ country_event = {
 	title = election.16.t
 	desc = election.16.d
 	picture = GFX_report_event_gathering_protest
-	
 	is_triggered_only = yes
-
 	trigger = {
-		NOT = { tag = USA }
-		OR = { NOT = { tag = SPR } NOT = { date < 1937.1.1 } }
+		NOT = {
+			tag = USA
+		}
+		OR = {
+			NOT = {
+				tag = SPR
+			}
+			NOT = {
+				date < 1937.1.1
+			}
+		}
 		has_government = fascism
 		fascism > 0.5
 	}
-	
 	option = {
 		name = election.16.a
 		add_stability = 0.05
@@ -511,16 +564,24 @@ country_event = {
 	title = election.17.t
 	desc = election.17.d
 	picture = GFX_report_event_gathering_protest
-	
 	is_triggered_only = yes
-
 	trigger = {
-		NOT = { tag = USA }
-		OR = { NOT = { tag = SPR } NOT = { date < 1937.1.1 } }
+		NOT = {
+			tag = USA
+		}
+		OR = {
+			NOT = {
+				tag = SPR
+			}
+			NOT = {
+				date < 1937.1.1
+			}
+		}
 		has_government = fascism
-		NOT = { fascism > 0.5 }
+		NOT = {
+			fascism > 0.5
+		}
 	}
-	
 	option = {
 		name = election.17.a
 		add_stability = -0.05
