@@ -7,23 +7,22 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.21.3 "Siegfriedstellung"
+**Current Version:** 0.22 "Klang der Seele"
 
 **Compatible with:** Hearts of Iron IV 1.12.14 (with or without Paid DLC)
 
 **Supported Languages:**
 - English
 - French (Integrated in the Mod)
+- German (Integrated in the Mod, mainly made by Proho16)
 - Russian (Already in the Mod thanks to the [Community of Strategium.ru](https://www.strategium.ru))
 - Japanese ([+JP: The Great War](https://steamcommunity.com/sharedfiles/filedetails/?id=854550667) | [+JP: The Great War NEW](https://steamcommunity.com/sharedfiles/filedetails/?id=1886322088))
 - Polish ([The Great War: Polskie Tłumaczenie](http://steamcommunity.com/sharedfiles/filedetails/?id=1132448900))
 - Turkish ([The Great War - Türkçe Yama](https://steamcommunity.com/sharedfiles/filedetails/?id=2489532577))
 - Chinese ([Chinese Translation](https://steamcommunity.com/sharedfiles/filedetails/?id=1898664110) or [Old Chinese Translation](https://steamcommunity.com/sharedfiles/filedetails/?id=1447670167))
 - Korean ([The Great War - Korean Translation](https://steamcommunity.com/sharedfiles/filedetails/?id=1923476226) | [Mirror](https://hearts-of-iron-4.smods.ru/archives/4568))
-- German (integrated in the mod. Playable as of the 0.21.3 successor version, but large parts of the mod still in English).
 - Portugês do Brazil (Integrated in the Mod, experimental stage)
 - Spanish (Integrated in the Mod, experimental stage)
-
 
 ⚠️ Warning ⚠️ Old Saves may not work with newer versions of the Mod
 
@@ -54,8 +53,6 @@ Wolferos is a small independent game development studio founded in 2015. More In
  - [Commands](https://hoi4.paradoxwikis.com/Effect)
  - [Modifiers](https://hoi4.paradoxwikis.com/Modifiers)
  - [Event Modding](https://hoi4.paradoxwikis.com/Event_modding)
-
-----------
 
 THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
 
