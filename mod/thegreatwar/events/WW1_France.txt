@@ -1,82 +1,75 @@
 ﻿###########################
 # French Events
 ###########################
-
 add_namespace = ww1_france
-
-
 # Dissolve Viviani Administration
 #____________________________________________________________
 country_event = {
-	title = ww1_france.2.t# Dissolve Viviani Administration
-	desc = ww1_france.2.d#The Fifth Aristide Briand administration was formed on October 29th 1915 after the Second René Vivani administration was dissolved.
-	id=ww1_france.2
-	picture=ww1_france_2
-	fire_only_once=yes
-	is_triggered_only=yes
-	option={
-		name=ww1_france.2.a
-		custom_effect_tooltip=remove_political_advisor
-		hidden_effect={
-			remove_ideas=FRA_rene_viviani
+	title = ww1_france.2.t	# Dissolve Viviani Administration
+	desc = ww1_france.2.d	#The Fifth Aristide Briand administration was formed on October 29th 1915 after the Second René Vivani administration was dissolved.
+	id = ww1_france.2
+	picture = ww1_france_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = ww1_france.2.a
+		custom_effect_tooltip = remove_political_advisor
+		hidden_effect = {
+			remove_ideas = FRA_rene_viviani
 		}
 		#add_ideas=FRA_aristide_briand
-		add_ideas=FRA_joseph_gallieni
+		add_ideas = FRA_joseph_gallieni
 		#add_ideas=FRA_louis_malvy
-		add_political_power=25
-		}
+		add_political_power = 25
 	}
-#____________________________________________________________
+}
 
+#____________________________________________________________
 # The French support for war effort
 #____________________________________________________________
 country_event = {
-	title = ww1_france.3.t#The French support for war effort
-	desc = ww1_france.3.d#After the initial shock of the German offensive has worn off the French public get behind industry to gear up for the war.
-	id=ww1_france.3
+	title = ww1_france.3.t	#The French support for war effort
+	desc = ww1_france.3.d	#After the initial shock of the German offensive has worn off the French public get behind industry to gear up for the war.
+	id = ww1_france.3
 	#picture=ww1_france_3
-	fire_only_once=yes
-	is_triggered_only=no
-	mean_time_to_happen={
-		months=3
-		}
-	trigger={
-		tag=FRA
-		FRA={
-			has_war_with=GER
-			}
-		}
-	option={
-		name=ww1_france.3.a
-		add_stability=0.10
+	fire_only_once = yes
+	is_triggered_only = no
+	mean_time_to_happen = {
+		months = 3
+	}
+	trigger = {
+		tag = FRA
+		FRA = {
+			has_war_with = GER
 		}
 	}
-#____________________________________________________________
+	option = {
+		name = ww1_france.3.a
+		add_stability = 0.1
+	}
+}
 
+#____________________________________________________________
 # France Sends Troops - Armée d'Orient
 #____________________________________________________________
 country_event = {
 	id = ww1_france.15
 	title = ww1_france.15.t
 	desc = ww1_france.15.d
-	picture=ww1_france_15
-
-	is_triggered_only=yes
-
+	picture = ww1_france_15
+	is_triggered_only = yes
 	option = {
 		name = ww1_france.15.a
-
 		FRA = {
-			load_oob="WW1_ArmeeOrient"
+			load_oob = "WW1_ArmeeOrient"
 		}
 		FRA = {
 			give_military_access = GRE
 		}
 	}
 }
+
 #____________________________________________________________
-
-
 # Communist Take Power
 #____________________________________________________________
 country_event = {
@@ -84,52 +77,47 @@ country_event = {
 	title = ww1_france.16.t
 	desc = ww1_france.16.t
 	picture = GFX_report_event_gathering_protest
-	
-	fire_only_once=yes
-	is_triggered_only=yes
-
+	fire_only_once = yes
+	is_triggered_only = yes
 	mean_time_to_happen = {
 		days = 1
 	}
-
 	option = {
 		name = political.3.a
 		set_politics = {
 			ruling_party = communism
 			elections_allowed = no
-			
 		}
-		add_timed_idea = { idea = reign_of_terror days = 730 }
+		add_timed_idea = {
+			idea = reign_of_terror
+			days = 730
+		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # Agadir Crisis, World NEWS
 #____________________________________________________________
 news_event = {
-	id=ww1_france.100
+	id = ww1_france.100
 	title = ww1_france.100.t
 	desc = ww1_france.100.d
-
 	picture = EVENT_hoi4tgw_agadir_crisis
-	
 	major = yes
-	
 	trigger = {
 		has_global_flag = kis_agadir_crisis_done
-		NOT = { has_global_flag = kis_agadir_crisis_done_d}
+		NOT = {
+			has_global_flag = kis_agadir_crisis_done_d
+		}
 	}
-	
 	mean_time_to_happen = {
 		days = 0
 	}
 	immediate = {
 		set_global_flag = kis_agadir_crisis_done_d
 		hidden_effect = {
-
 		}
 	}
-	
 	option = {
 		name = ww1_france.100.a
 		ai_chance = {
@@ -137,8 +125,8 @@ news_event = {
 		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # Rename Event for Strasbourg and Mulhouse
 #____________________________________________________________
 country_event = {
@@ -146,28 +134,32 @@ country_event = {
 	title = ww1_france.200.t
 	desc = ww1_france.200.d
 	picture = GFX_report_event_generic_read_write
-
 	fire_only_once = yes
-
 	trigger = {
 		tag = FRA
 		FRA = {
 			has_war_with = GER
-			owns_state = 28 
+			owns_state = 28
 		}
 	}
-
-	option = { #a great idea!
+	option = {
+		#a great idea!
 		name = ww1_france.200.a
 		ai_chance = {
 			base = 100
 		}
-		set_province_name = { id = 9503 name = "Strasbourg"}
-		set_province_name = { id = 678 name = "Mulhouse"}
+		set_province_name = {
+			id = 9503
+			name = "Strasbourg"
+		}
+		set_province_name = {
+			id = 678
+			name = "Mulhouse"
+		}
 		add_manpower = 3200
 	}
-
-	option = { #rather not
+	option = {
+		#rather not
 		name = ww1_france.200.b
 		ai_chance = {
 			base = 0
@@ -176,8 +168,8 @@ country_event = {
 		add_stability = -0.05
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # Christmas Truce
 #____________________________________________________________
 country_event = {
@@ -185,9 +177,7 @@ country_event = {
 	title = ww1_kis_news_christmastruce.210.t
 	desc = ww1_kis_news_christmastruce.210.d
 	picture = GFX_report_event_generic_read_write
-
 	fire_only_once = yes
-
 	trigger = {
 		tag = FRA
 		FRA = {
@@ -196,24 +186,34 @@ country_event = {
 		date > 1914.12.18
 		date < 1915.1.10
 	}
-
 	option = {
 		name = ww1_kis_news_christmastruce.210.a
-		ai_chance = { factor = 90 }
+		ai_chance = {
+			factor = 90
+		}
 		FRA = {
 			add_political_power = -80
 			army_experience = 60
-			add_timed_idea = { idea = ww1_Christmas_Truth_Repressed days = 30 }
+			add_timed_idea = {
+				idea = ww1_Christmas_Truth_Repressed
+				days = 30
+			}
 		}
 	}
 	option = {
 		name = ww1_kis_news_christmastruce.210.b
-		ai_chance = { factor = 10 }
+		ai_chance = {
+			factor = 10
+		}
 		FRA = {
 			add_political_power = 80
 			army_experience = -60
-			add_timed_idea = { idea = ww1_Christmas_Truth_Ignored days = 30 }
+			add_timed_idea = {
+				idea = ww1_Christmas_Truth_Ignored
+				days = 30
+			}
 		}
 	}
 }
+
 #____________________________________________________________

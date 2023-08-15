@@ -2,7 +2,6 @@
 # Canadian World War 1 Events
 ###########################
 add_namespace = canada
-
 country_event = {
 	id = canada.1
 	title = canada.1.t
@@ -59,7 +58,8 @@ country_event = {
 		}
 		ai_chance = {
 			factor = 10
-		}		#ai should make a choice
+		}
+		#ai should make a choice
 	}
 	option = {
 		#neutral
@@ -618,9 +618,11 @@ country_event = {
 		CAN_regency_council = {
 			add_country_leader_role = {
 				promote_leader = yes
-				country_leader={
-					ideology=autocracy
-					traits={ regency_council }					
+				country_leader = {
+					ideology = autocracy
+					traits = {
+						regency_council
+					}
 				}
 			}
 		}
@@ -647,9 +649,11 @@ country_event = {
 			set_character_name = CAN_arthur_i
 			add_country_leader_role = {
 				promote_leader = yes
-				country_leader={
-					ideology=autocracy
-					traits={ canadian_imperialist  }				
+				country_leader = {
+					ideology = autocracy
+					traits = {
+						canadian_imperialist
+					}
 				}
 			}
 		}
@@ -1513,7 +1517,7 @@ country_event = {
 			}
 			create_country_leader = {
 				name = "Crown Prince Arthur"
-				picture = "gfx/leaders/CAN/CAN_crown_prince_arthur.png"				
+				picture = "gfx/leaders/CAN/CAN_crown_prince_arthur.png"
 				ideology = autocracy
 			}
 		}
@@ -1574,10 +1578,8 @@ country_event = {
 			create_country_leader = {
 				name = "Crown Prince Arthur"
 				picture = "gfx/leaders/CAN/CAN_crown_prince_arthur.png"
-				
 				ideology = autocracy
 				traits = {
-					
 				}
 			}
 		}
@@ -1676,10 +1678,8 @@ country_event = {
 		create_country_leader = {
 			name = "Agustín III"
 			picture = "gfx/leaders/MEX/MEX_Agustin_de_Iturbide_y_Green.png"
-			
 			ideology = autocracy
 			traits = {
-				
 			}
 		}
 		hidden_effect = {
@@ -1917,25 +1917,24 @@ country_event = {
 			}
 			add_political_power = -200
 		}
-		
 		ai_chance = {
 			base = 50
 			modifier = {
 				factor = 0
 				OR = {
-        		    has_game_rule = {
-               		    rule = CAN_ai_behavior
-                		option = DEMOCRATIC_HISTORICAL
-            		}
-            		AND = {
-               		    has_game_rule = {
-                    		rule = CAN_ai_behavior
-                    		option = DEFAULT
-                		}
-                		is_historical_focus_on = yes
-            		}
-            		has_country_flag = CAN_AI_RANDOM_DEMOCRATIC_HISTORICAL
-        		}
+					has_game_rule = {
+						rule = CAN_ai_behavior
+						option = DEMOCRATIC_HISTORICAL
+					}
+					AND = {
+						has_game_rule = {
+							rule = CAN_ai_behavior
+							option = DEFAULT
+						}
+						is_historical_focus_on = yes
+					}
+					has_country_flag = CAN_AI_RANDOM_DEMOCRATIC_HISTORICAL
+				}
 			}
 		}
 	}
@@ -1988,10 +1987,10 @@ country_event = {
 				has_cosmetic_tag = CAN_republic
 				has_government = communism
 			}
-		}	
+		}
 		ai_chance = {
 			base = 100
-		}	
+		}
 		if = {
 			limit = {
 				has_global_flag = ENG_windsor
@@ -2002,14 +2001,18 @@ country_event = {
 				name = ENG_windsor
 			}
 			else_if = {
-				limit = { has_global_flag = ENG_tudor }
+				limit = {
+					has_global_flag = ENG_tudor
+				}
 				set_party_name = {
 					ideology = neutrality
 					long_name = ENG_tudor_long
 					name = ENG_tudor
 				}
 				else_if = {
-					limit = { has_global_flag = ENG_plantagenet }
+					limit = {
+						has_global_flag = ENG_plantagenet
+					}
 					set_party_name = {
 						ideology = neutrality
 						long_name = ENG_plantagenet_long
@@ -2027,14 +2030,16 @@ country_event = {
 		}
 		if = {
 			limit = {
-				has_global_flag = king_edward_viii	
+				has_global_flag = king_edward_viii
 			}
 			CAN_edward_viii = {
 				add_country_leader_role = {
 					promote_leader = yes
 					country_leader = {
 						ideology = autocracy
-						traits = { revolution_trauma }
+						traits = {
+							revolution_trauma
+						}
 					}
 				}
 			}
@@ -2048,7 +2053,10 @@ country_event = {
 					promote_leader = yes
 					country_leader = {
 						ideology = autocracy
-						traits = { autocratic_imperialist german_agent }
+						traits = {
+							autocratic_imperialist
+							german_agent
+						}
 					}
 				}
 			}
@@ -2088,7 +2096,7 @@ country_event = {
 				}
 				else = {
 					puppet = JAM
-				}	
+				}
 			}
 			hidden_effect = {
 				JAM = {
@@ -2103,7 +2111,7 @@ country_event = {
 						neutrality = 58
 					}
 				}
-			}			
+			}
 		}
 		if = {
 			limit = {
@@ -2123,7 +2131,7 @@ country_event = {
 				}
 				else = {
 					puppet = AST
-				}	
+				}
 			}
 			hidden_effect = {
 				AST = {
@@ -2158,7 +2166,7 @@ country_event = {
 				}
 				else = {
 					puppet = NZL
-				}	
+				}
 			}
 			hidden_effect = {
 				NZL = {
@@ -2173,7 +2181,7 @@ country_event = {
 						neutrality = 9
 					}
 				}
-			}			
+			}
 		}
 		if = {
 			limit = {
@@ -2194,7 +2202,7 @@ country_event = {
 				}
 				else = {
 					puppet = SAF
-				}	
+				}
 			}
 			hidden_effect = {
 				SAF = {
@@ -2209,7 +2217,7 @@ country_event = {
 						neutrality = 26
 					}
 				}
-			}			
+			}
 		}
 		if = {
 			limit = {
@@ -2229,7 +2237,7 @@ country_event = {
 				}
 				else = {
 					puppet = HKG
-				}	
+				}
 			}
 			hidden_effect = {
 				HKG = {
@@ -2241,7 +2249,7 @@ country_event = {
 						neutrality = 100
 					}
 				}
-			}			
+			}
 		}
 		if = {
 			limit = {
@@ -2330,8 +2338,8 @@ country_event = {
 			}
 			AST = {
 				country_event = ww1_australia.8
-			}			
-		}	
+			}
+		}
 	}
 }
 
@@ -2354,9 +2362,9 @@ country_event = {
 			NOT = {
 				has_cosmetic_tag = CAN_empire
 				has_cosmetic_tag = CAN_republic
-				has_government = communism				
+				has_government = communism
 			}
-		}	
+		}
 		ai_chance = {
 			factor = 100
 		}
@@ -2425,7 +2433,7 @@ country_event = {
 				}
 				else = {
 					puppet = AST
-				}	
+				}
 			}
 			hidden_effect = {
 				AST = {
@@ -2440,7 +2448,7 @@ country_event = {
 						neutrality = 17
 					}
 				}
-			}		
+			}
 		}
 		if = {
 			limit = {
@@ -2460,7 +2468,7 @@ country_event = {
 				}
 				else = {
 					puppet = NZL
-				}	
+				}
 			}
 			hidden_effect = {
 				NZL = {
@@ -2475,7 +2483,7 @@ country_event = {
 						neutrality = 9
 					}
 				}
-			}			
+			}
 		}
 		if = {
 			limit = {
@@ -2543,15 +2551,16 @@ country_event = {
 			}
 			AST = {
 				country_event = ww1_australia.9
-			}	
+			}
 		}
 	}
 }
+
 # Prince Arthur becomes general-governor
 country_event = {
 	id = canada.71
 	title = ww1_england.215.t
-	desc =ww1_england.215.d
+	desc = ww1_england.215.d
 	fire_only_once = yes
 	is_triggered_only = yes
 	picture = GFX_report_event_royal_visit
@@ -2562,21 +2571,23 @@ country_event = {
 				promote_leader = yes
 				country_leader = {
 					ideology = oligarchism
-					traits = { popular_figurehead }
+					traits = {
+						popular_figurehead
+					}
 				}
 			}
 			add_advisor_role = {
-				advisor={
+				advisor = {
 					slot = political_advisor
 					idea_token = CAN_prince_arthur
-					allowed  = {
-						original_tag  = CAN
+					allowed = {
+						original_tag = CAN
 					}
 					available = {
 						is_country_leader = no
 						NOT = {
 							has_government = communism
-						}	
+						}
 					}
 					visible = {
 						OR = {
@@ -2584,15 +2595,15 @@ country_event = {
 							AND = {
 								has_completed_focus = CAN_const_monarchy
 								is_in_faction_with = ENG
-							}	
-						}	
-					}				
-					traits  = {
-						popular_figurehead 
+							}
+						}
+					}
+					traits = {
+						popular_figurehead
 					}
 				}
 			}
-		}	
+		}
 	}
 }
 
@@ -2606,7 +2617,9 @@ country_event = {
 		tag = CAN
 		is_in_faction_with = FRA
 		has_global_flag = kis_war
-		NOT = { has_global_flag = great_war_ends }
+		NOT = {
+			has_global_flag = great_war_ends
+		}
 		date > 1917.12.1
 		controls_state = 464
 	}

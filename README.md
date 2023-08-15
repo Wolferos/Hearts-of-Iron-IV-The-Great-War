@@ -1,4 +1,4 @@
-# Hearts of Iron IV: The Great War
+﻿# Hearts of Iron IV: The Great War
 
 ----------
 [**Download on Steam**](http://steamcommunity.com/sharedfiles/filedetails/?id=699709023) | [**Download on Mod DB**](http://www.moddb.com/mods/hearts-of-iron-iv-the-great-war1) | [**Download on Nexus Mods**](https://www.nexusmods.com/heartsofironiv/mods/4?tab=description)
@@ -20,7 +20,7 @@
 - Turkish ([The Great War - Türkçe Yama](https://steamcommunity.com/sharedfiles/filedetails/?id=2489532577))
 - Chinese ([Chinese Translation](https://steamcommunity.com/sharedfiles/filedetails/?id=1898664110) or [Old Chinese Translation](https://steamcommunity.com/sharedfiles/filedetails/?id=1447670167))
 - Korean ([The Great War - Korean Translation](https://steamcommunity.com/sharedfiles/filedetails/?id=1923476226) | [Mirror](https://hearts-of-iron-4.smods.ru/archives/4568))
-- German (Integrated in the Mod, experimental stage)
+- German (integrated in the mod. Playable as of the 0.21.3 successor version, but large parts of the mod still in English).
 - Portugês do Brazil (Integrated in the Mod, experimental stage)
 - Spanish (Integrated in the Mod, experimental stage)
 

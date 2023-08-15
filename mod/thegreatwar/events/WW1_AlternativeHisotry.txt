@@ -1,15 +1,12 @@
 ﻿add_namespace = ww1_alternativehistory
-
 ##################################################################################
 #							Alternative History 1
 ##################################################################################
-
 # This Alternative History 1 triggers if
 #	Assassination of Franz Ferdinand didn't happen
 #	There is still a Balkan War (First or Second)
 #	AUH not in war with SER
 #	AUH not in war with FRA, ENG, RUS
-
 # AUH is tired of the Balkan Instability
 #____________________________________________________________
 news_event = {
@@ -17,13 +14,10 @@ news_event = {
 	title = ww1_alternativehistory.1.t
 	desc = ww1_alternativehistory.1.d
 	picture = EVENT_hoi4tgw_austria_vs_serbia
-
 	major = yes
-
-	mean_time_to_happen = { 
+	mean_time_to_happen = {
 		days = 0
 	}
-
 	trigger = {
 		date > 1914.10.1
 		date < 1915.1.20
@@ -39,7 +33,7 @@ news_event = {
 				has_war_with = SER
 				has_war_with = FRA
 				has_war_with = ENG
-				has_war_with = RUS			
+				has_war_with = RUS
 			}
 		}
 		SER = {
@@ -55,40 +49,44 @@ news_event = {
 			}
 		}
 	}
-
 	immediate = {
 		set_global_flag = kis_alternativehistory_1
 	}
-
 	# AUH Reaction
 	option = {
 		name = ww1_alternativehistory.1.a
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		trigger = {
 			TAG = AUH
 		}
-
 		set_global_flag = kis_alternativehistory_1
 		AUH = {
 			SER = {
-				country_event = { days = 1 id =ww1_alternativehistory.2 }
+				country_event = {
+					days = 1
+					id = ww1_alternativehistory.2
+				}
 			}
 		}
 	}
-
 	# SER Reaction
 	option = {
 		name = ww1_alternativehistory.1.b
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		trigger = {
 			TAG = SER
 		}
 	}
-
 	# Others Countries
 	option = {
 		name = ww1_alternativehistory.1.c
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		trigger = {
 			NOT = {
 				TAG = AUH
@@ -97,8 +95,8 @@ news_event = {
 		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # AUH is tired of the Balkan Instability
 #____________________________________________________________
 country_event = {
@@ -106,18 +104,24 @@ country_event = {
 	title = ww1_alternativehistory.2.t
 	desc = ww1_alternativehistory.2.d
 	picture = COUNTRY_hoi4tgw_report_austria_hungary
-
 	fire_only_once = yes
-	is_triggered_only = yes	
-
+	is_triggered_only = yes
 	# SER Refuses
 	option = {
 		name = ww1_alternativehistory.2.a
-		ai_chance = { factor = 80 }
+		ai_chance = {
+			factor = 80
+		}
 		hidden_effect = {
-			news_event = { days = 1 id = ww1_alternativehistory.4 }
+			news_event = {
+				days = 1
+				id = ww1_alternativehistory.4
+			}
 			RUS = {
-				country_event = { days = 1 id = ww1_alternativehistory.6 }
+				country_event = {
+					days = 1
+					id = ww1_alternativehistory.6
+				}
 			}
 			set_global_flag = kis_alternativehistory_2_serbia_refuses
 			# First Balkan War
@@ -136,10 +140,12 @@ country_event = {
 					remove_from_faction = SER
 				}
 				TUR = {
-					country_event = { days = 1 id = ww1_alternativehistory.10 }
+					country_event = {
+						days = 1
+						id = ww1_alternativehistory.10
+					}
 				}
 			}
-
 			# Second Balkan War
 			if = {
 				limit = {
@@ -149,7 +155,7 @@ country_event = {
 					}
 				}
 				SER = {
-					white_peace = BUL					
+					white_peace = BUL
 					remove_from_faction = MTN
 					remove_from_faction = GRE
 					remove_from_faction = ROM
@@ -160,10 +166,12 @@ country_event = {
 					remove_from_faction = BUL
 				}
 				TUR = {
-					country_event = { days = 1 id = ww1_alternativehistory.10 }
+					country_event = {
+						days = 1
+						id = ww1_alternativehistory.10
+					}
 				}
 			}
-
 			# Non Agression Pact to avoir AI to do stupid stuff
 			SER = {
 				diplomatic_relation = {
@@ -202,21 +210,27 @@ country_event = {
 		}
 		AUH = {
 			declare_war_on = {
-			    type = annex_everything 
-			    target = SER
+				type = annex_everything
+				target = SER
 			}
 		}
 	}
-
 	# SER Accepts
 	option = {
 		name = ww1_alternativehistory.2.b
-		ai_chance = { factor = 20 }
-
+		ai_chance = {
+			factor = 20
+		}
 		hidden_effect = {
-			news_event = { days = 1 id = ww1_alternativehistory.3 }
+			news_event = {
+				days = 1
+				id = ww1_alternativehistory.3
+			}
 			RUS = {
-				country_event = { days = 1 id = ww1_alternativehistory.5 }
+				country_event = {
+					days = 1
+					id = ww1_alternativehistory.5
+				}
 			}
 			set_global_flag = kis_alternativehistory_2_serbia_accepts
 			# First Balkan War
@@ -235,10 +249,12 @@ country_event = {
 					remove_from_faction = SER
 				}
 				TUR = {
-					country_event = { days = 1 id = ww1_alternativehistory.10 }
+					country_event = {
+						days = 1
+						id = ww1_alternativehistory.10
+					}
 				}
 			}
-
 			# Second Balkan War
 			if = {
 				limit = {
@@ -248,21 +264,23 @@ country_event = {
 					}
 				}
 				SER = {
-					white_peace = BUL					
+					white_peace = BUL
 					remove_from_faction = MTN
 					remove_from_faction = GRE
 					remove_from_faction = ROM
 					remove_from_faction = TUR
 					remove_from_faction = SER
-				}				
+				}
 				BUL = {
 					remove_from_faction = BUL
 				}
 				TUR = {
-					country_event = { days = 1 id = ww1_alternativehistory.10 }
+					country_event = {
+						days = 1
+						id = ww1_alternativehistory.10
+					}
 				}
 			}
-
 			# Non Agression Pact to avoir AI to do stupid stuff
 			SER = {
 				diplomatic_relation = {
@@ -306,10 +324,9 @@ country_event = {
 			add_stability = -0.2
 		}
 	}
-
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # Serbian accepts
 #____________________________________________________________
 news_event = {
@@ -317,17 +334,17 @@ news_event = {
 	title = ww1_alternativehistory.3.t
 	desc = ww1_alternativehistory.3.d
 	picture = GFX_news_event_generic_sign_treaty3
-
 	fire_only_once = yes
-	is_triggered_only = yes	
-
+	is_triggered_only = yes
 	option = {
 		name = ww1_alternativehistory.3.a
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # Serbian refuses
 #____________________________________________________________
 news_event = {
@@ -335,19 +352,18 @@ news_event = {
 	title = ww1_alternativehistory.4.t
 	desc = ww1_alternativehistory.4.d
 	picture = EVENT_hoi4tgw_austria_war
-
 	major = yes
-
 	fire_only_once = yes
-	is_triggered_only = yes		
-
+	is_triggered_only = yes
 	option = {
 		name = ww1_alternativehistory.4.a
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # If SER is puppet of AUH - RUS needs to react
 #____________________________________________________________
 country_event = {
@@ -355,16 +371,15 @@ country_event = {
 	title = ww1_alternativehistory.5.t
 	desc = ww1_alternativehistory.5.d
 	picture = COUNTRY_hoi4tgw_report_austria_hungary
-
 	fire_only_once = yes
-	is_triggered_only = yes	
-
+	is_triggered_only = yes
 	# RUS defends Serbia
 	option = {
 		set_global_flag = kis_alternativehistory_5
 		name = ww1_alternativehistory.5.a
-		ai_chance = { factor = 100 }
-
+		ai_chance = {
+			factor = 100
+		}
 		if = {
 			limit = {
 				RUS = {
@@ -383,9 +398,9 @@ country_event = {
 			}
 			RUS = {
 				add_to_war = {
-		            targeted_alliance = SER 
-		            enemy = AUH
-		        }
+					targeted_alliance = SER
+					enemy = AUH
+				}
 			}
 		}
 		GER = {
@@ -396,22 +411,32 @@ country_event = {
 		}
 		GER = {
 			set_country_flag = GER_ww1_schlieffen_plan
-			country_event = { id = ww1_franzferdinand.8 days = 1 }
+			country_event = {
+				id = ww1_franzferdinand.8
+				days = 1
+			}
 		}
-		news_event = { days = 1 id = ww1_alternativehistory.7 }
+		news_event = {
+			days = 1
+			id = ww1_alternativehistory.7
+		}
 	}
-
 	# RUS doesn't defend Serbia
 	option = {
 		name = ww1_alternativehistory.5.b
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			factor = 0
+		}
 		FRA = {
-			country_event = { days = 1 id = ww1_alternativehistory.8 }
+			country_event = {
+				days = 1
+				id = ww1_alternativehistory.8
+			}
 		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # If SER is at war with AUH - RUS needs to react
 #____________________________________________________________
 country_event = {
@@ -419,16 +444,15 @@ country_event = {
 	title = ww1_alternativehistory.6.t
 	desc = ww1_alternativehistory.6.d
 	picture = COUNTRY_hoi4tgw_report_austria_hungary
-
 	fire_only_once = yes
-	is_triggered_only = yes	
-
+	is_triggered_only = yes
 	# RUS defends Serbia
 	option = {
 		set_global_flag = kis_alternativehistory_5
 		name = ww1_alternativehistory.6.a
-		ai_chance = { factor = 100 }
-
+		ai_chance = {
+			factor = 100
+		}
 		if = {
 			limit = {
 				RUS = {
@@ -447,9 +471,9 @@ country_event = {
 			}
 			RUS = {
 				add_to_war = {
-		            targeted_alliance = SER 
-		            enemy = AUH
-		        }
+					targeted_alliance = SER
+					enemy = AUH
+				}
 			}
 		}
 		GER = {
@@ -460,22 +484,32 @@ country_event = {
 		}
 		GER = {
 			set_country_flag = GER_ww1_schlieffen_plan
-			country_event = { id = ww1_franzferdinand.8 days = 1 }
+			country_event = {
+				id = ww1_franzferdinand.8
+				days = 1
+			}
 		}
-		news_event = { days = 1 id = ww1_alternativehistory.7 }
+		news_event = {
+			days = 1
+			id = ww1_alternativehistory.7
+		}
 	}
-
 	# RUS doesn't defend Serbia
 	option = {
 		name = ww1_alternativehistory.6.b
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			factor = 0
+		}
 		FRA = {
-			country_event = { days = 1 id = ww1_alternativehistory.8 }
+			country_event = {
+				days = 1
+				id = ww1_alternativehistory.8
+			}
 		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # Russian Intervention for Serbia - Global News
 #____________________________________________________________
 news_event = {
@@ -483,18 +517,17 @@ news_event = {
 	title = ww1_alternativehistory.7.t
 	desc = ww1_alternativehistory.7.d
 	picture = EVENT_hoi4tgw_russia_at_war
-
 	major = yes
-
-	is_triggered_only = yes	
-
+	is_triggered_only = yes
 	option = {
 		name = ww1_alternativehistory.7.a
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # If SER is at war with AUH - RUS didn't react - FRA reacts
 #____________________________________________________________
 country_event = {
@@ -502,16 +535,15 @@ country_event = {
 	title = ww1_alternativehistory.8.t
 	desc = ww1_alternativehistory.8.d
 	picture = COUNTRY_hoi4tgw_report_austria_hungary
-
 	fire_only_once = yes
-	is_triggered_only = yes	
-
+	is_triggered_only = yes
 	# FRA defends Serbia
 	option = {
 		set_global_flag = kis_alternativehistory_8
 		name = ww1_alternativehistory.8.a
-		ai_chance = { factor = 100 }
-
+		ai_chance = {
+			factor = 100
+		}
 		if = {
 			limit = {
 				FRA = {
@@ -530,9 +562,9 @@ country_event = {
 			}
 			FRA = {
 				add_to_war = {
-		            targeted_alliance = SER 
-		            enemy = AUH
-		        }
+					targeted_alliance = SER
+					enemy = AUH
+				}
 			}
 		}
 		GER = {
@@ -543,19 +575,26 @@ country_event = {
 		}
 		GER = {
 			set_country_flag = GER_ww1_schlieffen_plan
-			country_event = { id = ww1_franzferdinand.8 days = 1 }
+			country_event = {
+				id = ww1_franzferdinand.8
+				days = 1
+			}
 		}
-		news_event = { days = 1 id = ww1_alternativehistory.9 }
+		news_event = {
+			days = 1
+			id = ww1_alternativehistory.9
+		}
 	}
-
 	# FRA doesn't defend Serbia
 	option = {
 		name = ww1_alternativehistory.8.b
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			factor = 0
+		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # French Intervention for Serbia - Global News
 #____________________________________________________________
 news_event = {
@@ -563,17 +602,17 @@ news_event = {
 	title = ww1_alternativehistory.9.t
 	desc = ww1_alternativehistory.9.d
 	picture = EVENT_hoi4tgw_france_at_war
-
 	major = yes
-	is_triggered_only = yes	
-
+	is_triggered_only = yes
 	option = {
 		name = ww1_alternativehistory.9.a
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # Ottoman reacts to Austrian Demands
 #____________________________________________________________
 country_event = {
@@ -581,14 +620,15 @@ country_event = {
 	title = ww1_alternativehistory.10.t
 	desc = ww1_alternativehistory.10.d
 	picture = COUNTRY_hoi4tgw_report_austria_hungary
-
 	fire_only_once = yes
-	is_triggered_only = yes	
-
+	is_triggered_only = yes
 	# Ottoman stops fighting
 	option = {
 		name = ww1_alternativehistory.10.a
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 	}
 }
+
 #____________________________________________________________
