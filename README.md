@@ -7,9 +7,9 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.22 "Klang der Seele"
+**Current Version:** 0.22.3 "Klang der Seele"
 
-**Compatible with:** Hearts of Iron IV 1.12.14 (with or without Paid DLC)
+**Compatible with:** Hearts of Iron IV 1.13.5 (with or without Paid DLC)
 
 **Supported Languages:**
 - English
