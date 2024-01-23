@@ -941,36 +941,48 @@ focus_tree = {
 		icon = GFX_goal_generic_occupy_states_ongoing_war
 		available = {
 			date>1912.1.1
-			SER = {
-				exists = yes
-				is_in_faction_with = BUL
-			}
-			BUL = {
-				exists = yes
-				is_in_faction_with = SER
-			}
-			MTN = {
-				exists = yes
-				is_in_faction_with = SER
-			}
-			GRE = {
-				exists = yes
-				is_in_faction_with = SER
-			}
+			SER = {	
+				exists = yes	
+			}	
+			OR = {
+				SER = {
+					is_in_faction_with = BUL
+				}
+				SER = {
+					is_in_faction_with = MTN
+				}
+				SER = {
+					is_in_faction_with = GRE
+				}
+			}	
 		}
 		completion_reward = {
 			add_opinion_modifier = {
 				target = SER
 				modifier = HOI4TGW_Opinion_hostile_diplomatic_relations
 			}
-			add_opinion_modifier = {
-				target = MTN
-				modifier = HOI4TGW_Opinion_hostile_diplomatic_relations
-			}
-			add_opinion_modifier = {
-				target = GRE
-				modifier = HOI4TGW_Opinion_hostile_diplomatic_relations
-			}
+			if = {
+				limit = {
+					SER = {
+						is_in_faction_with = MTN
+					}
+				}
+				add_opinion_modifier = {
+					target = MTN
+					modifier = HOI4TGW_Opinion_hostile_diplomatic_relations	
+				}
+			}	
+			if = {
+				limit = {
+					SER = {
+						is_in_faction_with = GRE
+					}
+				}
+				add_opinion_modifier = {
+					target = GRE
+					modifier = HOI4TGW_Opinion_hostile_diplomatic_relations	
+				}
+			}	
 		}
 		ai_will_do = {
 			factor = 200
