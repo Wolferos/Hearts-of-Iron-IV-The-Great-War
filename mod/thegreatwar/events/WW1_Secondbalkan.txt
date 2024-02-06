@@ -20,7 +20,15 @@ country_event = {
 			# Factions
 			SER = {
 				create_faction = anti_bulg_league
-				add_to_faction = GRE
+				# If Greece did not participate in the First Balkan War or left the alliance before the Second Balkan War, it will not invite to the Anti-Bulgarian League
+				if = {
+					limit = {
+						GRE = {
+							is_in_faction = yes				# Check for participation of Greece in the Balkan League
+						}
+					}
+					add_to_faction = GRE	
+				}
 				add_to_faction = MTN
 			}
 			BUL = {
@@ -42,11 +50,19 @@ country_event = {
 			    set_country_flag = kis_secondbalkanwar_start
 			}
 
-			GRE = {
-			    add_to_war = {
-		            targeted_alliance = SER enemy = BUL
-		        }
-			}
+			# If Greece did not participate in the First Balkan War or left the Anti-Bulgarian League before the Second Balkan War, it will not participate in the Second Balkan War
+			if = {
+				limit = {
+					GRE = {
+						is_in_faction_with = SER				# Check for participation of Greece in the Anti-Bulgarian League
+					}
+				}
+				GRE = {
+					add_to_war = {
+						targeted_alliance = SER enemy = BUL
+					}
+				}
+			}	
 			MTN = {
 			    add_to_war = {
 		            targeted_alliance = SER enemy = BUL
