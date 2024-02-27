@@ -32,8 +32,8 @@ NDiplomacy = {
 	MIN_TRUST_VALUE = -100,							-- Min trust value cap.
 	MAX_OPINION_VALUE = 100,						-- Max opinion value cap.
 	MIN_OPINION_VALUE = -100,						-- Min opinion value cap.
-	BASE_TRUCE_PERIOD = 30,							-- Base truce period in days.
-	TRUCE_PERIOD_AFTER_KICKING_FROM_FACTION = 30,				-- Truce period after kicking someone from faction in days.
+	BASE_TRUCE_PERIOD = 30,							-- #HOI4TGW ::: Base truce period in days.
+	TRUCE_PERIOD_AFTER_KICKING_FROM_FACTION = 30,				-- #HOI4TGW ::: Truce period after kicking someone from faction in days.
 	NUM_DAYS_TO_ENABLE_KICKING_NEW_MEMBERS_OF_FACTION = 90,			-- Number of days before being able to kick a new member of faction
 	NUM_DAYS_TO_ENABLE_REINVITE_KICKED_NATIONS = 90,			-- Number of days before being able to re invite a kicked nation to your faction
 	BASE_NEGATIVE_OPINION_AFTER_BEING_KICKED = 20,				-- Negative opinion that will be received after kicking a nation
@@ -109,12 +109,12 @@ NDiplomacy = {
 	MIN_WARGOAL_JUSTIFY_COST = 2.0,					-- It always takes atleast 10 days to justify a wargoal
 	WARGOAL_PER_JUSTIFY_AND_WAR_COST_FACTOR = 1.5,	-- Cost factor per nation at war with or justifying against
 	WARGOAL_THREAT_MAX_TIME_RATIO = 1.0,			-- Threat from justifying a wargoal slowly builds up, hitting 100% at this proportion of the way to completion
-	BASE_BOOST_PARTY_POPULARITY_DAILY_PP = 6.0, 	-- Daily pp cost for boost party popularity
+	BASE_BOOST_PARTY_POPULARITY_DAILY_PP = 6.0, 	-- #HOI4TGW ::: Daily pp cost for boost party popularity
 	BASE_BOOST_PARTY_POPULARITY_DAILY_DRIFT = 0.1, 	-- Daily amount of popularity that will be added by the activity.
-	BASE_STAGE_COUP_DAILY_PP = 6.5,					-- Daily pp cost for staging a coup
-	BASE_STAGE_COUP_TOTAL_COST = 820, 				-- Equipment consume factor for stage coup.
+	BASE_STAGE_COUP_DAILY_PP = 6.5,					-- #HOI4TGW ::: Daily pp cost for staging a coup
+	BASE_STAGE_COUP_TOTAL_COST = 820, 				-- #HOI4TGW ::: Equipment consume factor for stage coup.
 	NAP_EXPIRY_MONTHS = 48,                         -- NAPs expire after this many months
-	NAP_UNBREAKABLE_MONTHS = 48,                    -- NAPS cannot be broken for this many months
+	NAP_UNBREAKABLE_MONTHS = 48,                    -- #HOI4TGW ::: NAPS cannot be broken for this many months
 	NAP_FORCE_BALANCE_RULE_MONTHS = 6,        		-- The NAP border force balance rule changes with this interval
 	NAP_BREAK_FORCE_BALANCE_1 = 2.0,              	-- 2-1 brigades along the border required to break NAP
 	NAP_BREAK_FORCE_BALANCE_2 = 1.0,              	-- 1-1 brigades along the border required to break NAP
@@ -813,9 +813,9 @@ NMilitary = {
 	BASE_DIVISION_BRIGADE_CHANGE_COST = 5,	--Base cost to change a regiment column.
 	BASE_DIVISION_SUPPORT_SLOT_COST = 10, 	--Base cost to unlock a support slot
 
-	MAX_ARMY_EXPERIENCE = 999,			--Max army experience a country can store		#HOI4TGW ::: MAX_ARMY_EXPERIENCE = 500,
-	MAX_NAVY_EXPERIENCE = 999,			--Max navy experience a country can store		#HOI4TGW ::: MAX_NAVY_EXPERIENCE = 500,
-	MAX_AIR_EXPERIENCE = 999,			--Max air experience a country can store		#HOI4TGW ::: MAX_AIR_EXPERIENCE = 500,
+	MAX_ARMY_EXPERIENCE = 999,			--Max army experience a country can store	#HOI4TGW ::: MAX_ARMY_EXPERIENCE = 500,
+	MAX_NAVY_EXPERIENCE = 999,			--Max navy experience a country can store	#HOI4TGW ::: MAX_NAVY_EXPERIENCE = 500,
+	MAX_AIR_EXPERIENCE = 999,			--Max air experience a country can store	#HOI4TGW ::: MAX_AIR_EXPERIENCE = 500,
 
 	COMBAT_MINIMUM_TIME = 4,			-- Shortest time possible for a combat in hours
 	SPOTTING_QUALITY_DROP_HOURS = 4, 	-- Each X hours the intel quality drops after unit was spotted.
