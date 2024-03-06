@@ -9,7 +9,7 @@
 
 **Current Version:** 0.22.5 "Klang der Seele"
 
-**Compatible with:** Hearts of Iron IV 1.13.7 (with or without Paid DLC)
+**Compatible with:** Hearts of Iron IV 1.13.6 (with or without Paid DLC)
 
 **Supported Languages:**
 - English
