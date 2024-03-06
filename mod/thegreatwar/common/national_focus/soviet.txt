@@ -665,6 +665,7 @@ focus_tree = {
 		x = 22
 		y = 0
 	}
+
 	focus = {
 		id = SOV_ww1_political_effort
 		icon = GFX_goal_generic_intelligence_exchange
@@ -683,6 +684,7 @@ focus_tree = {
 		x = 7
 		y = 1
 	}
+
 	focus = {
 		id = SOV_ww1_defend_revolution
 		icon = GFX_focus_generic_soviet_politics
@@ -790,9 +792,87 @@ focus_tree = {
 			factor = 100
 		}
 		cost = 10
-		x = 1
+		x = 0
 		y = 5
 	}
+
+	focus = {
+		id = SOV_interwar_SupportSovietMongolia
+		icon = GFX_focus_YUG_pan_slavic_congress
+		prerequisite = {
+			focus = SOV_ww1_execute_imperial_family
+		}
+
+		available = {
+			country_exists = MON
+			MON = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+
+		completion_reward = {
+			MON = {
+				add_timed_idea = {
+					idea = comintern_influence
+					days = 30
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		cost = 8
+		x = 2
+		y = 5
+	}
+
+	focus = {
+		id = SOV_interwar_MongolianRevolution
+		icon = GFX_focus_generic_soviet_politics
+		prerequisite = {
+			focus = SOV_interwar_SupportSovietMongolia
+		}
+
+		available = {
+			date > 1920.1.1
+			country_exists = MON
+			MON = {
+				controls_state = 330
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+
+		completion_reward = {
+			MON = {
+				start_civil_war = {
+					keep_all_characters = yes
+					ruling_party = communism
+					ideology = communism
+					size = 0.5
+					states = {
+						330
+					}
+					capital = 330
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		cost = 15
+		x = 2
+		y = 6
+	}
+
+
 	focus = {
 		id = SOV_ww1_complete_revolution
 		available = {
