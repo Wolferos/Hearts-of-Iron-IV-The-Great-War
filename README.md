@@ -7,7 +7,7 @@
 
 **Project Lead:** Wolferos
 
-**Current Version:** 0.23.2 "Shell Shock"
+**Current Version:** 0.24.0 "Kazakh Steppe"
 
 **Compatible with:** Hearts of Iron IV 1.14.7 (with or without Paid DLC)
 

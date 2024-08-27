@@ -1,0 +1,326 @@
+ideas = {
+
+	naval_manufacturer = {
+		designer = yes
+
+		blohm_und_voss = {
+
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+			
+			traits = { raiding_fleet_naval_manufacturer }
+			
+			equipment_bonus = {
+				
+			}
+			
+		}
+
+		werft = {
+
+			
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+			
+			equipment_bonus = {
+				
+			}
+			
+			traits = { atlantic_fleet_naval_manufacturer }
+			
+		}
+	}
+
+	aircraft_manufacturer = {
+		designer = yes
+
+		fokker = {
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			available = {
+				has_completed_focus = GER_ww1_fokker_aeroplanbau
+			}
+			
+			research_bonus = {
+				air_equipment = 0.15
+			}
+			
+			traits = { light_aircraft_manufacturer }
+			
+			equipment_bonus = {
+				
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		luftschiffbau_zeppelin = {
+		
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				air_equipment = 0.15
+			}
+			
+			traits = { heavy_aircraft_manufacturer }
+			
+			equipment_bonus = {
+				
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		allgemeine_elektricitats_gesellschaft = {
+		
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				air_equipment = 0.15
+			}
+			
+			traits = { medium_aircraft_manufacturer }
+			
+			equipment_bonus = {
+				
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		albatros_flugzeugwerke_gmbh_ger = {
+		
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				air_equipment = 0.15
+			}
+			
+			traits = { naval_aircraft_manufacturer }
+			
+			equipment_bonus = {
+				
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		gothaer_waggonfabrik = {
+		
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				air_equipment = 0.15
+			}
+			
+			traits = { medium_aircraft_manufacturer }
+			
+			equipment_bonus = {
+				
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+
+	materiel_manufacturer = {
+		designer = yes
+
+		rheinmetall = {
+			
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				artillery = 0.15
+			}
+			
+			traits = { artillery_manufacturer }
+			
+			modifier = {
+				# +10% arty/at/aa research speed
+			}
+		}
+		
+		mauser = {
+
+			
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				infantry_weapons = 0.15
+			}
+			
+			traits = { infantry_equipment_manufacturer }
+			
+			ai_will_do = {
+				factor = 2
+			}
+		}
+	}
+	industrial_concern = {
+		designer = yes
+
+		krupp = {
+			
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				industry = 0.15
+			}
+			ai_will_do = {
+				factor = 2
+			}
+			
+			traits = { industrial_concern }
+		}
+
+		siemens = {
+			
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				electronics = 0.15
+			}
+			
+			traits = { electronics_concern }
+		}
+	}
+	tank_manufacturer={
+		designer = yes
+
+		opel = {
+
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				armor = 0.15
+			}
+			
+			traits = { fast_tank_manufacturer }
+		}
+
+		daimler_motoren_gesellschaft = {
+			
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				armor = 0.15
+			}
+			
+			traits = { medium_tank_manufacturer }
+		}
+	}
+
+	country = {
+
+		# ======================================================
+
+		GER_ww1_North_German_Confederation = {
+
+			allowed = {
+				original_tag = GER
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			modifier={ stability_factor  = 0.10 }
+		}
+
+		German_staff_ww1 = {
+					allowed = { always = yes }
+					allowed_civil_war = { always = yes }
+
+					removal_cost = -1
+
+         picture = GFX_idea_German_staff_ww1
+
+					modifier = {
+						conscription_factor = 0.45
+						army_leader_start_level = 1
+						experience_gain_army = 0.03
+						army_speed_factor = 0.10
+						planning_speed = 0.10
+						max_planning = 0.1
+					}
+				}
+
+		idea_oppression_minorities = {
+
+			allowed = {
+				always = no
+			}
+
+			research_bonus = {
+				land_doctrine = -0.10
+				naval_doctrine = -0.10
+				air_doctrine = -0.10
+			}
+
+			modifier = {
+				army_org_factor = -0.25
+			}
+		}
+		#======================================================
+
+		GER_interwar_spirit_BannedConscription = {
+			picture = chi_forced_conscription
+			allowed={ always = no }
+			allowed_civil_war={ always = no }
+			removal_cost=-1
+			modifier = {
+				conscription_factor = -0.50
+				army_morale_factor = -0.15
+			}
+		}
+
+
+	}
+}
