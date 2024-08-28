@@ -1,4 +1,11 @@
 name="Hearts of Iron IV: The Great War"
+replace_path="common/ai_equipment"
+replace_path="common/ai_focuses"
+replace_path="common/ai_strategy"
+replace_path="common/ai_strategy_plans"
+replace_path="common/ai_templates"
+replace_path="common/national_focus"
+replace_path="gfx/loadingscreens"
 tags={
 	"National Focuses"
 	"Map"
@@ -13,5 +20,5 @@ tags={
 }
 picture="tgw_picture.png"
 version="0.24"
-supported_version="1.14.7"
+supported_version="1.14.*"
 remote_file_id="699709023"
