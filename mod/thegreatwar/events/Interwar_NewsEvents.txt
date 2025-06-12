@@ -313,8 +313,9 @@ news_event = {
 }
 
 #____________________________________________________________
-# The Turkish National Movement (Turkey declares war on Greece and the Ottoman Empire) # Open Beta 0.5
+# The Turkish National Movement (Turkey declares war on Greece and the Ottoman Empire)
 #____________________________________________________________
+
 news_event = {
 	id = interwar_news.8
 	title = interwar_news.8.t
@@ -322,15 +323,6 @@ news_event = {
 	picture = EVENT_hoi4tgw_turkish_national_movement
 	major = yes
 	is_triggered_only = yes
-	trigger = {
-		NOT = {
-			has_global_flag = interwar_turkish_national_movement
-			has_global_flag = interwar_greco_turkish_war
-		}
-	}
-	mean_time_to_happen = {
-		days = 2
-	}
 	immediate = {
 		set_global_flag = interwar_turkish_national_movement
 		set_global_flag = interwar_greco_turkish_war
@@ -358,63 +350,65 @@ news_event = {
 					neutrality = 68
 				} 	
 			}
-				# Territorial changes
-				if = {
-					limit = {
-						TUR = {
-							controls_state = 49
-						}
-					}
-					TUK = {
-						transfer_state = 49
-					}
-				}
-				if = {
-					limit = {
-						TUR = {
-							controls_state = 348
-						}
-					}
-					TUK = {
-						transfer_state = 348
-					}
-				}
-				if = {
-					limit = {
-						TUR = {
-							controls_state = 349
-						}
-					}
-					TUK = {
-						transfer_state = 349
-					}
-				}
-				# Loading OOB for TUK
-				TUK = {
-					load_oob = "TUK_1919"
-				}
-				# Start of the War against Ottoman Empire
-				TUK = {
-					declare_war_on = {
-						target = TUR
-						type = annex_everything							# https://en.wikipedia.org/wiki/Turkish_War_of_Independence
-					}
-				}
-				# Start of the War against Greece
-				TUK = {
-					declare_war_on = {
-						target = GRE
-						type = take_state
-						generator = { 339 }								# https://en.wikipedia.org/wiki/Greco-Turkish_War_(1919%E2%80%931922)
-					}
-				}
 
-				add_named_threat = {
-					threat = 7
-					name = interwar_news.8.t
+			# Territorial changes
+			if = {
+				limit = {
+					TUR = {
+						controls_state = 49
+					}
 				}
+				TUK = {
+					transfer_state = 49
+				}
+			}
+			if = {
+				limit = {
+					TUR = {
+						controls_state = 348
+					}
+				}
+				TUK = {
+					transfer_state = 348
+				}
+			}
+			if = {
+				limit = {
+					TUR = {
+						controls_state = 349
+					}
+				}
+				TUK = {
+					transfer_state = 349
+				}
+			}
+			# Loading OOB for TUK
+			TUK = {
+				load_oob = "TUK_1919"
+			}
+			# Start of the War against Ottoman Empire
+			TUK = {
+				declare_war_on = {
+					target = TUR
+					type = annex_everything # https://en.wikipedia.org/wiki/Turkish_War_of_Independence
+				}
+			}
+			# Start of the War against Greece
+			TUK = {
+				declare_war_on = {
+					target = GRE
+					type = take_state
+					generator = { 339 } # https://en.wikipedia.org/wiki/Greco-Turkish_War_(1919%E2%80%931922)
+				}
+			}
+
+			add_named_threat = {
+				threat = 7
+				name = interwar_news.8.t
+			}
 		}
 	}
+
 	option = {
 		name = interwar_news.8.a
 		ai_chance = {
@@ -436,7 +430,7 @@ news_event = {
 	immediate = {
 		hidden_effect = {
 			GRE = {
-				transfer_state = 339 # Smyrna							# https://en.wikipedia.org/wiki/Occupation_of_Smyrna
+				transfer_state = 339 # Smyrna # https://en.wikipedia.org/wiki/Occupation_of_Smyrna
 			}
 		}
 	}
@@ -449,7 +443,7 @@ news_event = {
 }
 
 #____________________________________________________________
-# Treaty of Lausanne # Open Beta 0.5
+# Treaty of Lausanne
 #____________________________________________________________
 news_event = {
 	id = interwar_news.10

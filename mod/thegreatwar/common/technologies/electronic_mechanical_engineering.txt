@@ -853,6 +853,10 @@ technologies = {
 
 	tankaircraft1 = {
 
+		enable_building = {
+			building = naval_facility
+		}
+
 		army_bonus_air_superiority_factor = 0.01
 		category_all_armor = {
 			default_morale = 0.01
@@ -891,7 +895,11 @@ technologies = {
 
 
 	dingfelder_engine1 = {
-	
+
+		enable_building = {
+			building = air_facility
+		}
+
 		air_superiority_efficiency = 0.03
 				
 		research_cost = 1.0
@@ -913,6 +921,10 @@ technologies = {
 
 	tanktrack1 = {
 	
+		enable_building = {
+			building = land_facility
+		}
+
 		category_all_armor = {
 			breakthrough = 0.02
 		}
@@ -1409,10 +1421,10 @@ technologies = {
 			position = { x = 0 y = 12 }
 		}
 
-		folder = {
-			name = secret_weapons_folder
-			position = { x = 10 y = 0 }
-		}
+		#folder = {
+		#	name = secret_weapons_folder
+		#	position = { x = 10 y = 0 }
+		#}
 		
 		
 		ai_will_do = {
@@ -1540,6 +1552,14 @@ technologies = {
 
 		research_speed_factor = 0.01
 		
+		enable_building = {
+			building = nuclear_reactor_heavy_water
+		}
+		enable_building = {
+			building = nuclear_facility
+		}
+
+
 		path = {
 			leads_to_tech = nuclear_reactor 
 			research_cost_coeff = 1
@@ -1591,6 +1611,16 @@ technologies = {
 			building = nuclear_reactor
 			level = 1
 		}
+
+		IF = {
+			limit = {
+				has_dlc = "Gotterdammerung"
+			}
+			enable_building = {
+				building = commercial_nuclear_reactor
+			}
+		}
+		
 	}
 
 	nukes = {
