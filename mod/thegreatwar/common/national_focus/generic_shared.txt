@@ -1,0 +1,2977 @@
+shared_focus = {
+	id = ww1_army_effort
+	icon = GFX_goal_generic_allies_build_infantry
+	completion_reward = {
+		army_experience = 15
+		add_doctrine_cost_reduction = {
+			name = land_doc_bonus
+			cost_reduction = 0.2
+			uses = 1
+			category = land_doctrine
+		}
+	}
+	cost = 10
+	x = 17
+	y = 0
+	offset = {
+		x = 5
+		trigger = {
+			original_tag = RUS
+		}
+	}
+	ai_will_do = {
+		factor = 30
+	}
+}
+shared_focus = {
+	id = ww1_equipment_effort
+	text = equipment_effort
+	prerequisite = {
+		focus = ww1_army_effort
+	}
+	icon = GFX_goal_generic_small_arms
+	completion_reward = {
+		army_experience = 10
+		add_tech_bonus = {
+			name = infantry_weapons_bonus
+			bonus = 0.15
+			uses = 1
+			category = infantry_weapons
+		}
+	}
+	cost = 10
+	x = -1
+	y = 1
+	relative_position_id = ww1_army_effort
+	ai_will_do = {
+		factor = 30
+	}
+}
+shared_focus = {
+	id = ww1_artillery_effort_1
+	prerequisite = {
+		focus = ww1_army_effort
+	}
+	icon = GFX_goal_generic_army_artillery2
+	completion_reward = {
+		army_experience = 10
+		add_tech_bonus = {
+			name = infantry_weapons_bonus
+			bonus = 0.15
+			uses = 1
+			category = artillery
+		}
+	}
+	cost = 10
+	x = 1
+	y = 1
+	relative_position_id = ww1_army_effort
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_artillery_effort_2
+	prerequisite = {
+		focus = ww1_artillery_effort_1
+	}
+	icon = GFX_goal_generic_army_artillery2
+	completion_reward = {
+		army_experience = 10
+		add_tech_bonus = {
+			name = infantry_weapons_bonus
+			bonus = 0.15
+			uses = 1
+			category = artillery
+		}
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_artillery_effort_1
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_artillery_effort_3
+	prerequisite = {
+		focus = ww1_artillery_effort_2
+	}
+	icon = GFX_goal_generic_army_artillery2
+	completion_reward = {
+		army_experience = 10
+		add_tech_bonus = {
+			name = infantry_weapons_bonus
+			bonus = 0.15
+			uses = 1
+			category = artillery
+		}
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_artillery_effort_2
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_doctrine_effort
+	text = doctrine_effort
+	prerequisite = {
+		focus = ww1_army_effort
+	}
+	icon = GFX_goal_generic_army_doctrines
+	completion_reward = {
+		army_experience = 15
+		add_doctrine_cost_reduction = {
+			name = land_doc_bonus
+			cost_reduction = 0.2
+			uses = 1
+			category = land_doctrine
+		}
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_army_effort
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_equipment_effort_2
+	prerequisite = {
+		focus = ww1_equipment_effort
+	}
+	icon = GFX_goal_generic_small_arms
+	completion_reward = {
+		army_experience = 10
+		add_tech_bonus = {
+			name = infantry_artillery_bonus
+			bonus = 0.15
+			uses = 1
+			category = infantry_weapons
+		}
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_equipment_effort
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_trenchwarfare
+	prerequisite = {
+		focus = ww1_equipment_effort
+	}
+	icon = GFX_goal_generic_military_sphere
+	completion_reward = {
+		army_experience = 10
+		add_tech_bonus = {
+			name = trenchwarfare_bonus
+			bonus = 0.15
+			uses = 1
+			technology = support_weapons
+			technology = support_weapons2
+			technology = support_weapons3
+		}
+	}
+	cost = 10
+	x = -1
+	y = 1
+	relative_position_id = ww1_equipment_effort
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_gasmask_focus
+	prerequisite = {
+		focus = ww1_trenchwarfare
+	}
+	icon = GFX_hoi4tgw_gasmask
+	completion_reward = {
+		army_experience = 15
+		add_tech_bonus = {
+			name = gasmask_bonus
+			bonus = 0.15
+			uses = 1
+			technology = infantry_gasmask
+			technology = chemical_research2
+			technology = chemical_research3
+		}
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_trenchwarfare
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_special_forces
+	prerequisite = {
+		focus = ww1_gasmask_focus
+	}
+	icon = GFX_goal_generic_special_forces
+	completion_reward = {
+		army_experience = 15
+		add_tech_bonus = {
+			name = special_forces_bonus
+			bonus = 0.15
+			uses = 1
+			technology = marines
+			technology = marines2
+			technology = tech_mountaineers
+			technology = tech_mountaineers2
+		}
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_gasmask_focus
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_army_motorization_focus
+	icon = GFX_goal_generic_army_motorized
+	prerequisite = {
+		focus = ww1_special_forces
+	}
+	x = 0
+	y = 2
+	relative_position_id = ww1_special_forces
+	cost = 10
+	ai_will_do = {
+		factor = 10
+	}
+	completion_reward = {
+		army_experience = 5
+		add_tech_bonus = {
+			name = mech_army_bonus
+			bonus = 0.2
+			uses = 1
+			technology = early_motorised
+			technology = ww1_ambulance2
+		}
+	}
+}
+shared_focus = {
+	id = ww1_doctrine_effort_2
+	prerequisite = {
+		focus = ww1_doctrine_effort
+	}
+	icon = GFX_goal_generic_army_doctrines
+	completion_reward = {
+		army_experience = 15
+		add_doctrine_cost_reduction = {
+			name = land_doc_bonus
+			cost_reduction = 0.2
+			uses = 1
+			category = land_doctrine
+		}
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_doctrine_effort
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_equipment_effort_3
+	prerequisite = {
+		focus = ww1_equipment_effort_2
+	}
+	icon = GFX_goal_generic_small_arms
+	completion_reward = {
+		army_experience = 10
+		add_tech_bonus = {
+			name = infantry_artillery_bonus
+			bonus = 0.15
+			uses = 1
+			category = infantry_weapons
+		}
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_equipment_effort_2
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_doctrine_effort_3
+	prerequisite = {
+		focus = ww1_doctrine_effort_2
+	}
+	icon = GFX_goal_generic_army_doctrines
+	completion_reward = {
+		army_experience = 15
+		add_doctrine_cost_reduction = {
+			name = land_doc_bonus
+			cost_reduction = 0.2
+			uses = 1
+			category = land_doctrine
+		}
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_doctrine_effort_2
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_equipment_effort_4
+	prerequisite = {
+		focus = ww1_equipment_effort_3
+	}
+	icon = GFX_goal_generic_small_arms
+	completion_reward = {
+		army_experience = 20
+		add_tech_bonus = {
+			name = infantry_artillery_bonus
+			bonus = 0.2
+			uses = 1
+			category = infantry_weapons
+		}
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_equipment_effort_3
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_artillery_effort_4
+	prerequisite = {
+		focus = ww1_artillery_effort_3
+	}
+	icon = GFX_goal_generic_army_artillery2
+	completion_reward = {
+		army_experience = 20
+		add_tech_bonus = {
+			name = infantry_artillery_bonus
+			bonus = 0.2
+			uses = 1
+			category = artillery
+		}
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_artillery_effort_3
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_armor_effort_1
+	prerequisite = {
+		focus = ww1_equipment_effort_4
+	}
+	prerequisite = {
+		focus = ww1_doctrine_effort_3
+	}
+	prerequisite = {
+		focus = ww1_artillery_effort_4
+	}
+	icon = GFX_hoi4tgw_renaultft
+	completion_reward = {
+		army_experience = 50
+		add_tech_bonus = {
+			name = armor_bonus
+			bonus = 0.15
+			uses = 2
+			category = armor
+		}
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_doctrine_effort_3
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_armor_effort_2
+	prerequisite = {
+		focus = ww1_armor_effort_1
+	}
+	prerequisite = {
+		focus = ww1_army_motorization_focus
+	}
+	icon = GFX_goal_generic_army_tanks
+	completion_reward = {
+		army_experience = 75
+		add_tech_bonus = {
+			name = armor_bonus
+			bonus = 0.1
+			uses = 2
+			category = armor
+		}
+	}
+	cost = 10
+	x = 1
+	y = 1
+	relative_position_id = ww1_army_motorization_focus
+	ai_will_do = {
+		factor = 10
+	}
+}
+#############################################################################
+shared_focus = {
+	id = ww1_aviation_effort
+	icon = GFX_goal_generic_build_airforce
+	completion_reward = {
+		air_experience = 25
+		if = {
+			limit = {
+				capital_scope = {
+					NOT = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+				}
+			}
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = air_base
+						size > 1
+					}
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+				ROOT = {
+					set_country_flag = aviation_effort_AB
+				}
+			}
+		}
+		if = {
+			limit = {
+				capital_scope = {
+					free_building_slots = {
+						building = air_base
+						size > 1
+					}
+				}
+			}
+			capital_scope = {
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+				ROOT = {
+					set_country_flag = aviation_effort_AB
+				}
+			}
+		}
+		add_doctrine_cost_reduction = {
+			name = air_doc_bonus
+			cost_reduction = 0.15
+			uses = 1
+			category = air_doctrine
+		}
+	}
+	complete_tooltip = {
+		air_experience = 25
+		if = {
+			limit = {
+				has_country_flag = aviation_effort_AB
+			}
+			add_building_construction = {
+				type = air_base
+				level = 2
+				instant_build = yes
+			}
+		}
+		add_doctrine_cost_reduction = {
+			name = air_doc_bonus
+			cost_reduction = 0.15
+			uses = 1
+			category = air_doctrine
+		}
+	}
+	cost = 10
+	x = 22
+	y = 0
+	offset = {
+		x = 5
+		trigger = {
+			original_tag = RUS
+		}
+	}
+	ai_will_do = {
+		factor = 30
+	}
+}
+shared_focus = {
+	id = ww1_aviation_effort_2
+	prerequisite = {
+		focus = ww1_aviation_effort
+	}
+	icon = GFX_goal_generic_air_doctrine
+	completion_reward = {
+		air_experience = 15
+		add_doctrine_cost_reduction = {
+			name = air_doc_bonus
+			cost_reduction = 0.15
+			uses = 1
+			category = air_doctrine
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_aviation_effort
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_airship_focus
+	prerequisite = {
+		focus = ww1_aviation_effort_2
+	}
+	icon = GFX_hoi4tgw_zeppelin
+	completion_reward = {
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.15
+			uses = 1
+			technology = ww1_zeppelin1
+			technology = ww1_zeppelin2
+		}
+	}
+	cost = 10
+	x = 2
+	y = 1
+	relative_position_id = ww1_aviation_effort_2
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_fighter_focus
+	prerequisite = {
+		focus = ww1_aviation_effort_2
+	}
+	icon = GFX_goal_generic_air_fighter
+	completion_reward = {
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.15
+			uses = 1
+			technology = ww1_fighter1
+			technology = ww1_fighter1b
+			technology = ww1_fighter2
+			technology = ww1_fighter2b
+		}
+	}
+	cost = 10
+	x = -2
+	y = 1
+	relative_position_id = ww1_aviation_effort_2
+	mutually_exclusive = {
+		focus = ww1_bomber_focus
+	}
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_bomber_focus
+	prerequisite = {
+		focus = ww1_aviation_effort_2
+	}
+	icon = GFX_goal_generic_air_bomber
+	completion_reward = {
+		add_tech_bonus = {
+			name = bomber_bonus
+			bonus = 0.15
+			uses = 1
+			category = tactical_bomber
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_aviation_effort_2
+	mutually_exclusive = {
+		focus = ww1_fighter_focus
+	}
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_aviation_effort_3
+	prerequisite = {
+		focus = ww1_bomber_focus
+		focus = ww1_fighter_focus
+		focus = ww1_airship_focus
+	}
+	icon = {
+		trigger = {
+			original_tag = RUS
+		}
+		value = GFX_goal_generic_build_airforce
+	}
+	icon = {
+		trigger = {
+			NOT = {
+				original_tag = RUS
+			}
+		}
+		value = GFX_goal_generic_air_doctrine
+	}
+	completion_reward = {
+		air_experience = 15
+		add_doctrine_cost_reduction = {
+			name = air_doc_bonus
+			cost_reduction = 0.15
+			uses = 1
+			category = air_doctrine
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_bomber_focus
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_pilotformation_1
+	prerequisite = {
+		focus = ww1_aviation_effort_3
+	}
+	icon = GFX_goal_generic_CAS
+	completion_reward = {
+		add_tech_bonus = {
+			name = pilotformation1_bonus
+			bonus = 0.15
+			uses = 1
+			technology = dogfighting_experience
+			technology = fighter_ace_initiative
+			technology = dispersed_fighting
+		}
+	}
+	cost = 10
+	x = -2
+	y = 1
+	relative_position_id = ww1_aviation_effort_3
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_aircraftprod_1
+	prerequisite = {
+		focus = ww1_aviation_effort_3
+	}
+	icon = GFX_goal_generic_air_production
+	completion_reward = {
+		add_tech_bonus = {
+			name = aircraftprod_1_bonus
+			bonus = 0.15
+			uses = 1
+			category = air_equipment
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_aviation_effort_3
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_airbomb_1
+	prerequisite = {
+		focus = ww1_aviation_effort_3
+	}
+	icon = GFX_goal_poland_goal
+	completion_reward = {
+		add_tech_bonus = {
+			name = pilotformation2_bonus
+			bonus = 0.15
+			uses = 1
+			technology = infrastructure_destruction
+			technology = dive_bombing
+			technology = operational_destruction
+		}
+	}
+	cost = 10
+	x = 2
+	y = 1
+	relative_position_id = ww1_aviation_effort_3
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_aviation_effort_4
+	prerequisite = {
+		focus = ww1_pilotformation_1
+		focus = ww1_aircraftprod_1
+		focus = ww1_airbomb_1
+	}
+	icon = GFX_goal_generic_air_doctrine
+	completion_reward = {
+		air_experience = 15
+		add_doctrine_cost_reduction = {
+			name = air_doc_bonus
+			cost_reduction = 0.15
+			uses = 1
+			category = air_doctrine
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_aircraftprod_1
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_pilotformation_2
+	prerequisite = {
+		focus = ww1_aviation_effort_4
+	}
+	icon = GFX_goal_generic_CAS
+	completion_reward = {
+		add_tech_bonus = {
+			name = pilotformation2_bonus
+			bonus = 0.15
+			uses = 1
+			technology = multialtitude_flying
+			technology = hunt_and_destroy
+			technology = fighter_veteran_initiative
+		}
+	}
+	cost = 10
+	x = -2
+	y = 1
+	relative_position_id = ww1_aviation_effort_4
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_aircraftprod_2
+	prerequisite = {
+		focus = ww1_aviation_effort_4
+	}
+	icon = GFX_goal_generic_air_production
+	completion_reward = {
+		add_tech_bonus = {
+			name = aircraftprod_2_bonus
+			bonus = 0.2
+			uses = 1
+			category = air_equipment
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_aviation_effort_4
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_airbomb_2
+	prerequisite = {
+		focus = ww1_aviation_effort_4
+	}
+	icon = GFX_goal_generic_occupy_start_war
+	completion_reward = {
+		add_tech_bonus = {
+			name = pilotformation2_bonus
+			bonus = 0.2
+			uses = 1
+			technology = logistical_bombing
+			technology = strategic_destruction
+			technology = infiltration_bombing
+		}
+	}
+	cost = 10
+	x = 2
+	y = 1
+	relative_position_id = ww1_aviation_effort_4
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_aviation_effort_5
+	prerequisite = {
+		focus = ww1_pilotformation_2
+		focus = ww1_aircraftprod_2
+		focus = ww1_airbomb_2
+	}
+	icon = {
+		trigger = {
+			original_tag = RUS
+		}
+		value = GFX_goal_generic_air_fighter
+	}
+	icon = {
+		trigger = {
+			NOT = {
+				original_tag = RUS
+			}
+		}
+		value = GFX_goal_generic_air_doctrine
+	}
+	completion_reward = {
+		air_experience = 15
+		add_doctrine_cost_reduction = {
+			name = air_doc_bonus
+			cost_reduction = 0.15
+			uses = 1
+			category = air_doctrine
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_aircraftprod_2
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_air_innovation
+	prerequisite = {
+		focus = ww1_aviation_effort_5
+	}
+	icon = GFX_goal_generic_air_fighter2
+	completion_reward = {
+		air_experience = 20
+		add_tech_bonus = {
+			name = ww1_air_innovation_bonus
+			bonus = 0.2
+			uses = 1
+			technology = ww1_fighter3
+			technology = ww1_fighter4
+			technology = early_fighter
+		}
+	}
+	ai_will_do = {
+		factor = 1
+	}
+	cost = 10
+	x = -1
+	y = 1
+	relative_position_id = ww1_aviation_effort_5
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_navalair
+	prerequisite = {
+		focus = ww1_aviation_effort_5
+	}
+	icon = GFX_goal_generic_air_naval_bomber
+	completion_reward = {
+		add_tech_bonus = {
+			name = nav_bomber_bonus
+			bonus = 0.15
+			ahead_reduction = 1
+			uses = 1
+			category = naval_bomber
+		}
+	}
+	cost = 10
+	x = 1
+	y = 1
+	relative_position_id = ww1_aviation_effort_5
+	ai_will_do = {
+		factor = 10
+	}
+}
+###########################################################################################################################
+shared_focus = {
+	id = ww1_industrial_effort
+	icon = GFX_goal_generic_production
+	completion_reward = {
+		add_tech_bonus = {
+			name = industrial_bonus
+			bonus = 0.15
+			uses = 1
+			category = industry
+		}
+	}
+	cost = 10
+	x = 29
+	y = 0
+	offset = {
+		x = 5
+		trigger = {
+			original_tag = RUS
+		}
+	}
+	ai_will_do = {
+		factor = 30
+	}
+}
+shared_focus = {
+	id = RUS_ww1_extension_of_the_putilov_factory
+	icon = GFX_focus_generic_industry_2
+	cost = 10
+	allow_branch = {
+		original_tag = RUS
+	}
+	prerequisite = {
+		focus = ww1_industrial_effort
+	}
+	x = 2
+	y = 1
+	relative_position_id = ww1_industrial_effort
+	completion_reward = {
+		custom_effect_tooltip = available_designer
+		show_ideas_tooltip = Putilov_design_bureau
+	}
+	ai_will_do = {
+		factor = 1
+	}
+}
+shared_focus = {
+	id = ww1_infrastructure_effort
+	prerequisite = {
+		focus = ww1_industrial_effort
+	}
+	icon = GFX_goal_generic_construct_infrastructure
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = infrastructure_effort_tt
+			all_owned_state = {
+				free_building_slots = {
+					building = infrastructure
+					size < 1
+				}
+			}
+		}
+	}
+	completion_reward = {
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = infrastructure
+					size > 0
+				}
+				OR = {
+					is_in_home_area = yes
+					NOT = {
+						owner = {
+							any_owned_state = {
+								free_building_slots = {
+									building = infrastructure
+									size > 0
+								}
+								is_in_home_area = yes
+							}
+						}
+					}
+				}
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = infrastructure
+					size > 0
+				}
+				OR = {
+					is_in_home_area = yes
+					NOT = {
+						owner = {
+							any_owned_state = {
+								free_building_slots = {
+									building = infrastructure
+									size > 0
+								}
+								is_in_home_area = yes
+							}
+						}
+					}
+				}
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	complete_tooltip = {
+		add_building_construction = {
+			type = infrastructure
+			level = 1
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = infrastructure
+			level = 1
+			instant_build = yes
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_industrial_effort
+	ai_will_do = {
+		factor = 30
+	}
+}
+shared_focus = {
+	id = ww1_construction_effort
+	prerequisite = {
+		focus = ww1_infrastructure_effort
+	}
+	icon = GFX_goal_generic_construct_civ_factory
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = construction_effort_tt
+			all_owned_state = {
+				free_building_slots = {
+					building = industrial_complex
+					size < 1
+					include_locked = yes
+				}
+			}
+		}
+	}
+	completion_reward = {
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = industrial_complex
+					size > 0
+					include_locked = yes
+				}
+				OR = {
+					is_in_home_area = yes
+					NOT = {
+						owner = {
+							any_owned_state = {
+								free_building_slots = {
+									building = industrial_complex
+									size > 0
+									include_locked = yes
+								}
+								is_in_home_area = yes
+							}
+						}
+					}
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	complete_tooltip = {
+		add_extra_state_shared_building_slots = 1
+		add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+		}
+	}
+	cost = 10
+	x = -1
+	y = 1
+	relative_position_id = ww1_infrastructure_effort
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_production_effort
+	prerequisite = {
+		focus = ww1_infrastructure_effort
+	}
+	icon = GFX_goal_generic_construct_mil_factory
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = production_effort_tt
+			all_owned_state = {
+				free_building_slots = {
+					building = arms_factory
+					size < 1
+					include_locked = yes
+				}
+			}
+		}
+	}
+	completion_reward = {
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = arms_factory
+					size > 0
+					include_locked = yes
+				}
+				OR = {
+					is_in_home_area = yes
+					NOT = {
+						owner = {
+							any_owned_state = {
+								free_building_slots = {
+									building = arms_factory
+									size > 0
+									include_locked = yes
+								}
+								is_in_home_area = yes
+							}
+						}
+					}
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	complete_tooltip = {
+		add_extra_state_shared_building_slots = 1
+		add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+		}
+	}
+	cost = 10
+	x = 1
+	y = 1
+	relative_position_id = ww1_infrastructure_effort
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_dockyard_effort_1
+	prerequisite = {
+		focus = ww1_infrastructure_effort
+	}
+	prerequisite = {
+		focus = ww1_naval_effort
+	}
+	icon = GFX_goal_generic_construct_naval_dockyard
+	x = 3
+	y = 1
+	relative_position_id = ww1_infrastructure_effort
+	cost = 10
+	ai_will_do = {
+		factor = 10
+	}
+	bypass = {
+		custom_trigger_tooltip = {
+			NOT = {
+				any_owned_state = {
+					is_in_home_area = yes
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+			}
+		}
+	}
+	complete_tooltip = {
+		random_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+	completion_reward = {
+		random_owned_state = {
+			limit = {
+				is_in_home_area = yes
+				free_building_slots = {
+					building = dockyard
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+shared_focus = {
+	id = ww1_airfield_expansion_1
+	icon = GFX_goal_generic_construction
+	prerequisite = {
+		focus = ww1_infrastructure_effort
+	}
+	prerequisite = {
+		focus = ww1_aviation_effort
+	}
+	x = -3
+	y = 1
+	relative_position_id = ww1_infrastructure_effort
+	cost = 10
+	ai_will_do = {
+		factor = 10
+	}
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = air_focus_bypass_tt
+			all_owned_state = {
+				free_building_slots = {
+					building = air_base
+					size < 2
+				}
+			}
+		}
+	}
+	completion_reward = {
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = air_base
+					size > 1
+				}
+			}
+			add_building_construction = {
+				type = air_base
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = air_base
+					size > 1
+				}
+			}
+			add_building_construction = {
+				type = air_base
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = air_base
+					size > 1
+				}
+			}
+			add_building_construction = {
+				type = air_base
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+shared_focus = {
+	id = ww1_infrastructure_effort_2
+	prerequisite = {
+		focus = ww1_construction_effort
+		focus = ww1_production_effort
+		focus = ww1_dockyard_effort_1
+		focus = ww1_airfield_expansion_1
+	}
+	icon = GFX_goal_generic_construct_infrastructure
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = infrastructure_effort_tt
+			all_owned_state = {
+				free_building_slots = {
+					building = infrastructure
+					size < 1
+				}
+			}
+		}
+	}
+	completion_reward = {
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = infrastructure
+					size > 0
+				}
+				OR = {
+					is_in_home_area = yes
+					NOT = {
+						owner = {
+							any_owned_state = {
+								free_building_slots = {
+									building = infrastructure
+									size > 0
+								}
+								is_in_home_area = yes
+							}
+						}
+					}
+				}
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = infrastructure
+					size > 0
+				}
+				OR = {
+					is_in_home_area = yes
+					NOT = {
+						owner = {
+							any_owned_state = {
+								free_building_slots = {
+									building = infrastructure
+									size > 0
+								}
+								is_in_home_area = yes
+							}
+						}
+					}
+				}
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	complete_tooltip = {
+		add_building_construction = {
+			type = infrastructure
+			level = 1
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = infrastructure
+			level = 1
+			instant_build = yes
+		}
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_infrastructure_effort
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_construction_effort_2
+	prerequisite = {
+		focus = ww1_infrastructure_effort_2
+	}
+	prerequisite = {
+		focus = ww1_construction_effort
+	}
+	icon = GFX_goal_generic_construct_civ_factory
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = construction_effort_tt
+			all_owned_state = {
+				free_building_slots = {
+					building = industrial_complex
+					size < 1
+					include_locked = yes
+				}
+			}
+		}
+	}
+	completion_reward = {
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = industrial_complex
+					size > 0
+					include_locked = yes
+				}
+				OR = {
+					is_in_home_area = yes
+					NOT = {
+						owner = {
+							any_owned_state = {
+								free_building_slots = {
+									building = industrial_complex
+									size > 0
+									include_locked = yes
+								}
+								is_in_home_area = yes
+							}
+						}
+					}
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	complete_tooltip = {
+		add_extra_state_shared_building_slots = 1
+		add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+		}
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_construction_effort
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_production_effort_2
+	prerequisite = {
+		focus = ww1_infrastructure_effort_2
+	}
+	prerequisite = {
+		focus = ww1_production_effort
+	}
+	icon = GFX_goal_generic_construct_mil_factory
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = production_effort_tt
+			all_owned_state = {
+				free_building_slots = {
+					building = arms_factory
+					size < 1
+					include_locked = yes
+				}
+			}
+		}
+	}
+	completion_reward = {
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = arms_factory
+					size > 0
+					include_locked = yes
+				}
+				OR = {
+					is_in_home_area = yes
+					NOT = {
+						owner = {
+							any_owned_state = {
+								free_building_slots = {
+									building = arms_factory
+									size > 0
+									include_locked = yes
+								}
+								is_in_home_area = yes
+							}
+						}
+					}
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	complete_tooltip = {
+		add_extra_state_shared_building_slots = 1
+		add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+		}
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_production_effort
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_dockyard_effort_2
+	prerequisite = {
+		focus = ww1_infrastructure_effort_2
+	}
+	prerequisite = {
+		focus = ww1_dockyard_effort_1
+	}
+	icon = GFX_goal_generic_construct_naval_dockyard
+	x = 0
+	y = 2
+	relative_position_id = ww1_dockyard_effort_1
+	cost = 10
+	ai_will_do = {
+		factor = 10
+	}
+	bypass = {
+		custom_trigger_tooltip = {
+			NOT = {
+				any_owned_state = {
+					is_in_home_area = yes
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+			}
+		}
+	}
+	complete_tooltip = {
+		random_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+	completion_reward = {
+		random_owned_state = {
+			limit = {
+				is_in_home_area = yes
+				free_building_slots = {
+					building = dockyard
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+shared_focus = {
+	id = ww1_airfield_expansion_2
+	icon = GFX_goal_generic_construction
+	prerequisite = {
+		focus = ww1_infrastructure_effort_2
+	}
+	prerequisite = {
+		focus = ww1_airfield_expansion_1
+	}
+	x = 0
+	y = 2
+	relative_position_id = ww1_airfield_expansion_1
+	cost = 10
+	ai_will_do = {
+		factor = 10
+	}
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = air_focus_bypass_tt
+			all_owned_state = {
+				free_building_slots = {
+					building = air_base
+					size < 2
+				}
+			}
+		}
+	}
+	completion_reward = {
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = air_base
+					size > 1
+				}
+			}
+			add_building_construction = {
+				type = air_base
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = air_base
+					size > 1
+				}
+			}
+			add_building_construction = {
+				type = air_base
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = air_base
+					size > 1
+				}
+			}
+			add_building_construction = {
+				type = air_base
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+shared_focus = {
+	id = ww1_infrastructure_effort_3
+	prerequisite = {
+		focus = ww1_construction_effort_2
+		focus = ww1_production_effort_2
+		focus = ww1_dockyard_effort_1
+	}
+	icon = GFX_goal_generic_construct_infrastructure
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = infrastructure_effort_tt
+			all_owned_state = {
+				free_building_slots = {
+					building = infrastructure
+					size < 1
+				}
+			}
+		}
+	}
+	completion_reward = {
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = infrastructure
+					size > 0
+				}
+				OR = {
+					is_in_home_area = yes
+					NOT = {
+						owner = {
+							any_owned_state = {
+								free_building_slots = {
+									building = infrastructure
+									size > 0
+								}
+								is_in_home_area = yes
+							}
+						}
+					}
+				}
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = infrastructure
+					size > 0
+				}
+				OR = {
+					is_in_home_area = yes
+					NOT = {
+						owner = {
+							any_owned_state = {
+								free_building_slots = {
+									building = infrastructure
+									size > 0
+								}
+								is_in_home_area = yes
+							}
+						}
+					}
+				}
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	complete_tooltip = {
+		add_building_construction = {
+			type = infrastructure
+			level = 1
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = infrastructure
+			level = 1
+			instant_build = yes
+		}
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_infrastructure_effort_2
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_construction_effort_3
+	prerequisite = {
+		focus = ww1_infrastructure_effort_3
+	}
+	prerequisite = {
+		focus = ww1_construction_effort_2
+	}
+	icon = GFX_goal_generic_construct_civ_factory
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = construction_effort_tt
+			all_owned_state = {
+				free_building_slots = {
+					building = industrial_complex
+					size < 2
+					include_locked = yes
+				}
+			}
+		}
+	}
+	completion_reward = {
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = industrial_complex
+					size > 1
+					include_locked = yes
+				}
+				OR = {
+					is_in_home_area = yes
+					NOT = {
+						owner = {
+							any_owned_state = {
+								free_building_slots = {
+									building = industrial_complex
+									size > 1
+									include_locked = yes
+								}
+								is_in_home_area = yes
+							}
+						}
+					}
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+	complete_tooltip = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		}
+	}
+	ai_will_do = {
+		factor = 10
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_construction_effort_2
+}
+shared_focus = {
+	id = ww1_production_effort_3
+	prerequisite = {
+		focus = ww1_infrastructure_effort_3
+	}
+	prerequisite = {
+		focus = ww1_production_effort_2
+	}
+	icon = GFX_goal_generic_construct_mil_factory
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = production_effort_tt
+			all_owned_state = {
+				free_building_slots = {
+					building = arms_factory
+					size < 1
+					include_locked = yes
+				}
+			}
+		}
+	}
+	completion_reward = {
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = arms_factory
+					size > 0
+					include_locked = yes
+				}
+				OR = {
+					is_in_home_area = yes
+					NOT = {
+						owner = {
+							any_owned_state = {
+								free_building_slots = {
+									building = arms_factory
+									size > 0
+									include_locked = yes
+								}
+								is_in_home_area = yes
+							}
+						}
+					}
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	complete_tooltip = {
+		add_extra_state_shared_building_slots = 1
+		add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+		}
+	}
+	ai_will_do = {
+		factor = 10
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_production_effort_2
+}
+shared_focus = {
+	id = ww1_dockyard_effort_3
+	prerequisite = {
+		focus = ww1_infrastructure_effort_3
+	}
+	prerequisite = {
+		focus = ww1_dockyard_effort_2
+	}
+	icon = GFX_goal_generic_construct_naval_dockyard
+	x = 0
+	y = 2
+	relative_position_id = ww1_dockyard_effort_2
+	cost = 10
+	ai_will_do = {
+		factor = 10
+	}
+	bypass = {
+		custom_trigger_tooltip = {
+			NOT = {
+				any_owned_state = {
+					is_in_home_area = yes
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+			}
+		}
+	}
+	complete_tooltip = {
+		random_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+	completion_reward = {
+		random_owned_state = {
+			limit = {
+				is_in_home_area = yes
+				free_building_slots = {
+					building = dockyard
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+shared_focus = {
+	id = ww1_airfield_expansion_3
+	icon = GFX_goal_generic_construction
+	prerequisite = {
+		focus = ww1_infrastructure_effort_3
+	}
+	prerequisite = {
+		focus = ww1_airfield_expansion_2
+	}
+	x = 0
+	y = 2
+	relative_position_id = ww1_airfield_expansion_2
+	cost = 10
+	ai_will_do = {
+		factor = 10
+	}
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = air_focus_bypass_tt
+			all_owned_state = {
+				free_building_slots = {
+					building = air_base
+					size < 2
+				}
+			}
+		}
+	}
+	completion_reward = {
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = air_base
+					size > 1
+				}
+			}
+			add_building_construction = {
+				type = air_base
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = air_base
+					size > 1
+				}
+			}
+			add_building_construction = {
+				type = air_base
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = air_base
+					size > 1
+				}
+			}
+			add_building_construction = {
+				type = air_base
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+shared_focus = {
+	id = ww1_extra_tech_slot
+	prerequisite = {
+		focus = ww1_airfield_expansion_3
+		focus = ww1_construction_effort_3
+		focus = ww1_production_effort_3
+		focus = ww1_dockyard_effort_3
+	}
+	icon = GFX_focus_research
+	completion_reward = {
+		add_research_slot = 1
+	}
+	cost = 10
+	x = 0
+	y = 2
+	relative_position_id = ww1_infrastructure_effort_3
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_infrastructure_effort_4
+	prerequisite = {
+		focus = ww1_extra_tech_slot
+	}
+	icon = GFX_goal_generic_construct_infrastructure
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = infrastructure_effort_tt
+			all_owned_state = {
+				free_building_slots = {
+					building = infrastructure
+					size < 1
+				}
+			}
+		}
+	}
+	completion_reward = {
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = infrastructure
+					size > 0
+				}
+				OR = {
+					is_in_home_area = yes
+					NOT = {
+						owner = {
+							any_owned_state = {
+								free_building_slots = {
+									building = infrastructure
+									size > 0
+								}
+								is_in_home_area = yes
+							}
+						}
+					}
+				}
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = infrastructure
+					size > 0
+				}
+				OR = {
+					is_in_home_area = yes
+					NOT = {
+						owner = {
+							any_owned_state = {
+								free_building_slots = {
+									building = infrastructure
+									size > 0
+								}
+								is_in_home_area = yes
+							}
+						}
+					}
+				}
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	complete_tooltip = {
+		add_building_construction = {
+			type = infrastructure
+			level = 1
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = infrastructure
+			level = 1
+			instant_build = yes
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_extra_tech_slot
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = ww1_extra_tech_slot_2
+	prerequisite = {
+		focus = ww1_infrastructure_effort_4
+	}
+	icon = {
+		trigger = {
+			original_tag = RUS
+		}
+		value = GFX_hoi4tgw_rusacademy
+	}
+	icon = {
+		trigger = {
+			NOT = {
+				original_tag = RUS
+			}
+		}
+		value = GFX_focus_research
+	}
+	available = {
+		if = {
+			limit = { 
+				original_tag = RUS
+			}
+			has_war = no
+			else = {
+				num_of_factories > 50
+			}
+		}
+	}
+	completion_reward = {
+		if = {
+			limit = { 
+				original_tag = RUS
+			}
+			random_owned_controlled_state = {
+				prioritize = { 195 }
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+					is_coastal = yes
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 195 }
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 195 }
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		add_research_slot = 1
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_infrastructure_effort_4
+	cancel_if_invalid = ww1_no
+	ai_will_do = {
+		factor = 10
+	}
+}
+###########################################################################################################################
+shared_focus = {
+	id = ww1_naval_effort
+	icon = GFX_goal_generic_build_navy
+	available = {
+		any_state = {
+			is_coastal = yes
+			is_controlled_by = ROOT
+		}
+	}
+	completion_reward = {
+		navy_experience = 25
+		if = {
+			limit = {
+				NOT = {
+					any_owned_state = {
+						dockyard > 0
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+				}
+				any_owned_state = {
+					is_coastal = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+			}
+			set_country_flag = naval_effort_built
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = naval_effort_built
+				}
+				any_owned_state = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+				}
+			}
+			random_owned_state = {
+				limit = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+			}
+			set_country_flag = naval_effort_built
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = naval_effort_built
+				}
+				NOT = {
+					any_owned_state = {
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+				}
+			}
+			random_state = {
+				limit = {
+					controller = {
+						tag = ROOT
+					}
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+	complete_tooltip = {
+		navy_experience = 25
+		add_extra_state_shared_building_slots = 3
+		add_building_construction = {
+			type = dockyard
+			level = 3
+			instant_build = yes
+		}
+	}
+	cost = 10
+	x = 35
+	y = 0
+	offset = {
+		x = 5
+		trigger = {
+			original_tag = RUS
+		}
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			all_owned_state = {
+				OR = {
+					is_coastal = no
+					dockyard < 1
+				}
+			}
+		}
+	}
+}
+shared_focus = {
+	id = ww1_newnavalcanons_1
+	prerequisite = {
+		focus = ww1_naval_effort
+	}
+	icon = GFX_hoi4tgw_navalcanons
+	completion_reward = {
+		navy_experience = 15
+		add_doctrine_cost_reduction = {
+			name = newnavalcanons_1_bonus
+			cost_reduction = 0.15
+			uses = 1
+			category = naval_doctrine
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_naval_effort
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			all_owned_state = {
+				OR = {
+					is_coastal = no
+					dockyard < 1
+				}
+			}
+		}
+	}
+}
+shared_focus = {
+	id = RUS_ww1_european_seas_focus
+	allow_branch = {
+		original_tag = RUS
+	}
+	prerequisite = {
+		focus = ww1_newnavalcanons_1
+	}
+	icon = GFX_hoi4tgw_baltikfocus
+	x = -1
+	y = 1
+	relative_position_id = ww1_newnavalcanons_1
+	cost = 10
+	mutually_exclusive = {
+		focus = RUS_ww1_asian_seas_focus
+	}
+	completion_reward = {
+		navy_experience = 30
+		13 = {
+			add_building_construction = {
+				type = naval_base
+				level = 2
+				province = 3152
+				instant_build = yes
+			}
+		}
+		111 = {
+			add_building_construction = {
+				type = naval_base
+				level = 2
+				province = 9340
+				instant_build = yes
+			}
+		}
+		13 = {
+			add_building_construction = {
+				type = naval_base
+				level = 2
+				province = 3083
+				instant_build = yes
+			}
+		}
+		218 = {
+			add_building_construction = {
+				type = naval_base
+				level = 3
+				province = 9417
+				instant_build = yes
+			}
+		}
+	}
+}
+shared_focus = {
+	id = RUS_ww1_asian_seas_focus
+	allow_branch = {
+		original_tag = RUS
+	}
+	prerequisite = {
+		focus = ww1_newnavalcanons_1
+	}
+	icon = GFX_hoi4tgw_blackfocus
+	x = 1
+	y = 1
+	relative_position_id = ww1_newnavalcanons_1
+	cost = 10
+	mutually_exclusive = {
+		focus = RUS_ww1_european_seas_focus
+	}
+	completion_reward = {
+		navy_experience = 30
+		409 = {
+			add_building_construction = {
+				type = naval_base
+				level = 4
+				province = 9404
+				instant_build = yes
+			}
+		}
+	}
+}
+shared_focus = {
+	id = ww1_dreadnought_effort
+	prerequisite = {
+		focus = ww1_newnavalcanons_1
+	}
+	icon = GFX_goal_generic_navy_battleship
+	completion_reward = {
+		add_tech_bonus = {
+			name = cr_bonus
+			bonus = 0.15
+			uses = 1
+			technology = ww1_battleship0
+			technology = ww1_battleship1
+			technology = ww1_battleship2
+		}
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			all_owned_state = {
+				OR = {
+					is_coastal = no
+					dockyard < 1
+				}
+			}
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	offset = {
+		y = 1
+		trigger = {
+			original_tag = RUS
+		}
+	}
+	relative_position_id = ww1_newnavalcanons_1
+}
+shared_focus = {
+	id = ww1_newnavalcanons_2
+	prerequisite = {
+		focus = ww1_dreadnought_effort
+	}
+	icon = GFX_goal_generic_army_artillery
+	completion_reward = {
+		navy_experience = 15
+		add_doctrine_cost_reduction = {
+			name = newnavalcanons_2_bonus
+			cost_reduction = 0.15
+			uses = 1
+			category = naval_doctrine
+		}
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			all_owned_state = {
+				OR = {
+					is_coastal = no
+					dockyard < 1
+				}
+			}
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_dreadnought_effort
+}
+shared_focus = {
+	id = ww1_flexible_navy
+	prerequisite = {
+		focus = ww1_newnavalcanons_2
+	}
+	icon = GFX_goal_generic_occupy_states_coastal
+	completion_reward = {
+		add_tech_bonus = {
+			name = sub_op_bonus
+			bonus = 0.2
+			uses = 1
+			technology = convoy_interdiction_ti
+			technology = unrestricted_submarine_warfare
+			technology = wolfpacks
+			technology = advanced_submarine_warfare
+		}
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			all_owned_state = {
+				OR = {
+					is_coastal = no
+					dockyard < 1
+				}
+			}
+		}
+	}
+	cost = 10
+	x = -1
+	y = 1
+	relative_position_id = ww1_newnavalcanons_2
+	mutually_exclusive = {
+		focus = ww1_large_navy
+	}
+}
+shared_focus = {
+	id = ww1_large_navy
+	prerequisite = {
+		focus = ww1_newnavalcanons_2
+	}
+	icon = GFX_goal_generic_navy_doctrines_tactics
+	completion_reward = {
+		add_tech_bonus = {
+			name = fleet_in_being_bonus
+			bonus = 0.2
+			uses = 1
+			category = fleet_in_being_tree
+		}
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			all_owned_state = {
+				OR = {
+					is_coastal = no
+					dockyard < 1
+				}
+			}
+		}
+	}
+	cost = 10
+	x = 1
+	y = 1
+	relative_position_id = ww1_newnavalcanons_2
+	mutually_exclusive = {
+		focus = ww1_flexible_navy
+	}
+}
+shared_focus = {
+	id = ww1_submarine_effort
+	text = submarine_effort
+	prerequisite = {
+		focus = ww1_flexible_navy
+		focus = ww1_large_navy
+	}
+	icon = GFX_goal_generic_navy_submarine
+	completion_reward = {
+		if = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			add_tech_bonus = {
+				name = ss_bonus
+				bonus = 0.2
+				uses = 1
+				technology = ww1_submarine1_mtg
+				technology = ww1_submarine2_mtg
+			}
+		}
+		if = {
+			limit = {
+				not = {
+					has_dlc = "Man the Guns"
+				}
+			}
+			add_tech_bonus = {
+				name = ss_bonus
+				bonus = 0.2
+				uses = 1
+				technology = ww1_submarine1
+				technology = ww1_submarine2
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			all_owned_state = {
+				OR = {
+					is_coastal = no
+					dockyard < 1
+				}
+			}
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_flexible_navy
+}
+shared_focus = {
+	id = ww1_cruiser_effort
+	prerequisite = {
+		focus = ww1_flexible_navy
+		focus = ww1_large_navy
+	}
+	icon = GFX_goal_generic_navy_cruiser
+	completion_reward = {
+		if = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			add_tech_bonus = {
+				name = cr_bonus
+				bonus = 0.2
+				uses = 1
+				technology = ww1_light_cruiser0_mtg
+				technology = ww1_light_cruiser1_mtg
+				technology = ww1_light_cruiser2_mtg
+			}
+		}
+		if = {
+			limit = {
+				not = {
+					has_dlc = "Man the Guns"
+				}
+			}
+			add_tech_bonus = {
+				name = cr_bonus
+				bonus = 0.2
+				uses = 1
+				technology = ww1_light_cruiser0
+				technology = ww1_light_cruiser1
+				technology = ww1_light_cruiser2
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			all_owned_state = {
+				OR = {
+					is_coastal = no
+					dockyard < 1
+				}
+			}
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_large_navy
+}
+shared_focus = {
+	id = ww1_destroyer_effort
+	prerequisite = {
+		focus = ww1_submarine_effort
+	}
+	icon = GFX_goal_generic_wolf_pack
+	completion_reward = {
+		if = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			add_tech_bonus = {
+				name = dd_bonus
+				bonus = 0.2
+				uses = 1
+				technology = ww1_destroyer0_mtg
+				technology = ww1_destroyer1_mtg
+				technology = ww1_destroyer2_mtg
+			}
+		}
+		if = {
+			limit = {
+				not = {
+					has_dlc = "Man the Guns"
+				}
+			}
+			add_tech_bonus = {
+				name = dd_bonus
+				bonus = 0.2
+				uses = 1
+				technology = ww1_destroyer0
+				technology = ww1_destroyer1
+				technology = ww1_destroyer2
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			all_owned_state = {
+				OR = {
+					is_coastal = no
+					dockyard < 1
+				}
+			}
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_submarine_effort
+}
+shared_focus = {
+	id = ww1_capital_ships_effort
+	prerequisite = {
+		focus = ww1_cruiser_effort
+	}
+	icon = GFX_goal_generic_navy_battleship
+	completion_reward = {
+		if = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			navy_experience = 25
+			add_tech_bonus = {
+				name = capital_ships_bonus
+				bonus = 0.2
+				uses = 1
+				technology = ww1_battlecruiser0_mtg
+				technology = ww1_battlecruiser1_mtg
+				technology = ww1_battlecruiser2_mtg
+				technology = early_battleship_mtg
+				technology = seaplane_carrier_mtg
+			}
+		}
+		if = {
+			limit = {
+				not = {
+					has_dlc = "Man the Guns"
+				}
+			}
+			navy_experience = 25
+			add_tech_bonus = {
+				name = capital_ships_bonus
+				bonus = 0.2
+				uses = 1
+				technology = ww1_battlecruiser0
+				technology = ww1_battlecruiser1
+				technology = ww1_battlecruiser2
+				technology = early_battleship
+				technology = seaplane_carrier
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			all_owned_state = {
+				OR = {
+					is_coastal = no
+					dockyard < 1
+				}
+			}
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_cruiser_effort
+}
+shared_focus = {
+	id = ww1_newnavalcanons_3
+	prerequisite = {
+		focus = ww1_capital_ships_effort
+		focus = ww1_destroyer_effort
+	}
+	icon = GFX_goal_generic_army_artillery
+	completion_reward = {
+		navy_experience = 15
+		add_doctrine_cost_reduction = {
+			name = newnavalcanons_3_bonus
+			cost_reduction = 0.2
+			uses = 1
+			category = naval_doctrine
+		}
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			all_owned_state = {
+				OR = {
+					is_coastal = no
+					dockyard < 1
+				}
+			}
+		}
+	}
+	cost = 10
+	x = 1
+	y = 1
+	relative_position_id = ww1_destroyer_effort
+}
+shared_focus = {
+	id = ww1_navyreform
+	prerequisite = {
+		focus = ww1_newnavalcanons_3
+	}
+	icon = GFX_goal_generic_amphibious_assault
+	completion_reward = {
+		navy_experience = 25
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			all_owned_state = {
+				OR = {
+					is_coastal = no
+					dockyard < 1
+				}
+			}
+		}
+	}
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = ww1_newnavalcanons_3
+}
+shared_focus = {
+	id = ww1_carrier_focus
+	prerequisite = {
+		focus = ww1_navyreform
+	}
+	icon = GFX_goal_generic_navy_carrier
+	completion_reward = {
+		navy_experience = 25
+		add_tech_bonus = {
+			name = uk_carrier_focus
+			bonus = 0.3
+			uses = 2
+			category = cv_tech
+		}
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			all_owned_state = {
+				OR = {
+					is_coastal = no
+					dockyard < 1
+				}
+			}
+		}
+	}
+	cost = 10
+	x = -1
+	y = 1
+	relative_position_id = ww1_navyreform
+}
+shared_focus = {
+	id = ww1_antisubmarine
+	prerequisite = {
+		focus = ww1_navyreform
+	}
+	icon = GFX_goal_generic_navy_anti_submarine
+	completion_reward = {
+		navy_experience = 15
+		add_doctrine_cost_reduction = {
+			name = newnavalcanons_3_bonus
+			cost_reduction = 0.3
+			uses = 1
+			category = naval_doctrine
+		}
+	}
+	cost = 10
+	x = 1
+	y = 1
+	relative_position_id = ww1_navyreform
+}
