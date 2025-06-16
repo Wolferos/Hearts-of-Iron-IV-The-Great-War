@@ -166,7 +166,7 @@ news_event = {
 					transfer_troops = yes
 				}
 				
-		        #every_state={
+				#every_state={
 				#	limit={
 				#		# SOV will get the same core as RUS
 				#		#is_claimed_by = RUS
@@ -219,20 +219,12 @@ news_event = {
 					days = 180
 				}
 				create_faction = white_movement
-				kill_country_leader = yes
-				create_country_leader = { 
-					name = "Georgy Lvov" 
-					desc = RUS_georgy_lvov_DESC 
-					picture = "gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_georgy_lvov.dds" 
-					expire = "1935.1.1" 
-					ideology = conservatism 
-					traits = { } 
-				}
+				promote_character = RUS_georgy_lvov
 				set_politics = {
-				    ruling_party = democratic 
-				    last_election = "1912.9.1"
-				    election_frequency = 60 
-				    elections_allowed = no
+					ruling_party = democratic 
+					last_election = "1912.9.1"
+					election_frequency = 60 
+					elections_allowed = no
 				}
 				set_popularities = { 
 					neutrality = 0
@@ -243,9 +235,9 @@ news_event = {
 			}
 			SOV = {
 			declare_war_on = {
-		            type = annex_everything
-		            target = RUS
-		        }
+					type = annex_everything
+					target = RUS
+				}
 			}
 		}
 	}
@@ -259,8 +251,8 @@ news_event = {
 	name = ww1_russia.4.b
 	trigger = { tag = RUS NOT = { tag = SOV } }
 	ai_chance = { factor = 0 }
-	    SOV = {
-		    change_tag_from = RUS
+		SOV = {
+			change_tag_from = RUS
 		}
 	}
 	option = {
@@ -269,8 +261,8 @@ news_event = {
 		ai_chance = { factor = 100 }
 	}
 }
-#____________________________________________________________
 
+#____________________________________________________________
 # If RUS Won Against SOV
 #____________________________________________________________
 news_event = {
@@ -311,13 +303,12 @@ news_event = {
 		hidden_effect = {
 			RUS = {
 				set_country_flag = kis_octoberrevolutioncrushed
-				kill_country_leader = yes
-				create_country_leader={ name = "Nikolai II" desc = RUS_nikolai_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_nikolai_ii.dds" expire="1935.1.1" ideology=autocracy traits={  } }
+				promote_character = RUS_nikolay_ii
 				set_politics = {
-				    ruling_party = neutrality
-				    last_election = "1912.9.1"
-				    election_frequency = 60
-				    elections_allowed = no
+					ruling_party = neutrality
+					last_election = "1912.9.1"
+					election_frequency = 60
+					elections_allowed = no
 				}
 
 				set_popularities = { 
@@ -481,11 +472,11 @@ country_event = {
 				set_cosmetic_tag = UBD
 				set_capital = { state = 12 }		### Riga added (by Ecrfour)
 				create_country_leader = {
-				    name = "Adolf Friedrich, Duke of Mecklenburg-Schwerin"
-				    picture = "gfx/hoi4tgw_portraits/EST/country_leaders/EST_Adolf_Friedrich.dds"			
-				    expire = "1965.1.1"
-				    ideology = despotism
-				    traits = {}
+					name = "Adolf Friedrich, Duke of Mecklenburg-Schwerin"
+					picture = "gfx/hoi4tgw_portraits/EST/country_leaders/EST_Adolf_Friedrich.dds"			
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = {}
 				}
 				set_politics = { ruling_party = neutrality elections_allowed = no }
 					load_oob = EST_army
@@ -561,7 +552,7 @@ country_event = {
 				transfer_state = 784
 			}
 			LIT = {
-			    transfer_state = 11
+				transfer_state = 11
 				transfer_state = 189
 				load_oob = LIT_army
 			}
@@ -764,16 +755,16 @@ news_event = {
 
 	immediate = {
 		hidden_effect = {
-		    SOV = { country_event = { days = 210 id = ww1_soviet.2 }
-		    if = { limit = { NOT = { OR = { has_completed_focus = SOV_ww1_claim_victory has_completed_focus = SOV_ww1_establish_cheka } } }
+			SOV = { country_event = { days = 210 id = ww1_soviet.2 }
+			if = { limit = { NOT = { OR = { has_completed_focus = SOV_ww1_claim_victory has_completed_focus = SOV_ww1_establish_cheka } } }
 			RUS = {
 				create_faction = white_movement
 				set_global_flag = kis_whitesvsreds
 				kill_country_leader = yes
 				create_country_leader={ name = "Alexander Kolchak" desc = RUS_kolchak_ii_DESC picture="gfx/hoi4tgw_portraits/RUS/navy_admirals/RUS_kolchak.dds" expire="1935.1.1" ideology=fascism_ideology traits={ } }
 				set_politics = {
-				    ruling_party = fascism last_election = "1912.9.1"
-				    election_frequency = 60 elections_allowed = no
+					ruling_party = fascism last_election = "1912.9.1"
+					election_frequency = 60 elections_allowed = no
 				}
 
 				set_popularities = {
@@ -814,12 +805,12 @@ news_event = {
 				transfer_state = 652
 				transfer_state = 722
 				declare_war_on = {
-				    type = annex_everything
-				    target = SOV
+					type = annex_everything
+					target = SOV
 				}
 				load_oob = "SOV_Civil_War"
 			}
-		    }
+			}
 		}
 	}
 	}
@@ -841,7 +832,7 @@ country_event = {
 	fire_only_once=yes
 	
 	trigger = {
-	    tag = SOV
+		tag = SOV
 		date > 1925.1.19
 		SOV = { has_war_with = JAP has_war_with = FRA }
 	}
@@ -854,36 +845,36 @@ country_event = {
 			factor=100
 		}
 		trigger = {
-		    tag = SOV
+			tag = SOV
 		}
 		if = { limit = { JAP = { is_in_faction_with = FRA } }
 		every_country = {
-		    limit = {
-			    OR = {
-			        tag = JAP
-		            is_in_faction_with = JAP
-			    }
+			limit = {
+				OR = {
+					tag = JAP
+					is_in_faction_with = JAP
+				}
 			}
 			white_peace = SOV
 		}
 		else = {
 		every_country = {
-		    limit = {
-			    OR = {
-			        tag = FRA
-		            is_in_faction_with = FRA
-			    }
+			limit = {
+				OR = {
+					tag = FRA
+					is_in_faction_with = FRA
+				}
 			}
 			white_peace = SOV
 		}
 		JAP = { white_peace = SOV }
 		}
-	    }
+		}
 	}
 	option={
 		name=ww1_russia.21.b#"Never"
 		trigger = {
-		    tag = SOV
+			tag = SOV
 		}
 		ai_chance={
 			factor=0

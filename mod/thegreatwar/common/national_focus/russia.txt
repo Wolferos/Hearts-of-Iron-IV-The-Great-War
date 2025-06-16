@@ -946,24 +946,14 @@ focus_tree = {
 					}
 					transfer_state = 416
 				}
-				hidden_effect = {
-					add_state_core = 420
-					add_state_core = 266
-					add_state_core = 418
-					add_state_core = 416
-					kill_country_leader = yes
-				}
-				recruit_character = RUS_vladimir_liakhov
+
+				add_state_core = 420
+				add_state_core = 266
+				add_state_core = 418
+				add_state_core = 416
+
 				promote_character = RUS_vladimir_liakhov
-				# create_country_leader = {
-				# 	name = "Vladimir Liakhov"
-				# 	desc = PEN_vladimir_liakhov_DESC
-				# 	picture = "gfx/hoi4tgw_portraits/PEN/country_leaders/PEN_vladimir_liakhov.dds"
-				# 	expire = "1935.1.1"
-				# 	ideology = autocracy
-				# 	traits = {
-				# 	}
-				# }
+
 				hidden_effect = {
 					set_politics = {
 						ruling_party = neutrality
@@ -1449,12 +1439,8 @@ focus_tree = {
 			focus = RUS_ww1_RussoTurkishBorder
 		}
 		available = {
-			RUS = {
-				controls_state = 341
-			}
-			any_country = {
-				is_in_faction_with = RUS
-				controls_state = 341
+			341 = {
+				is_controlled_by_ROOT_or_ally = yes
 			}
 		}
 		x = 9
@@ -1491,6 +1477,11 @@ focus_tree = {
 			focus = RUS_ww1_pro_fra
 		}
 		available = {
+			controls_province = 6259
+			controls_province = 6567
+			controls_province = 327
+			controls_province = 6296
+			controls_province = 3392
 		}
 		x = 14
 		y = 4
@@ -1872,16 +1863,7 @@ focus_tree = {
 			date > 1918.1.1
 		}
 		completion_reward = {
-			recruit_character = RUS_kirill_i
 			promote_character = RUS_kirill_i
-			# create_country_leader = {
-			# 	name = "Kirill I"
-			# 	picture = "gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_Tsar_Kirill_I.dds"
-			# 	expire = "1935.1.1"
-			# 	ideology = autocracy
-			# 	traits = {
-			# 	}
-			# }
 			add_stability = -0.25
 			add_political_power = -300
 		}
@@ -1961,17 +1943,13 @@ focus_tree = {
 		}
 		available = { }
 		completion_reward = {
-			recruit_character = RUS_alexander_iv
-			promote_character = RUS_alexander_iv
-			# create_country_leader = {
-			# 	name = "Alexander IV"
-			# 	desc = WHR_aleksandr_kolchak_DESC
-			# 	picture = "gfx/hoi4tgw_portraits/RUS/navy_admirals/RUS_kolchak.dds"
-			# 	expire = "1935.1.1"
-			# 	ideology = autocracy
-			# 	traits = {
-			# 	}
-			# }
+			promote_character = RUS_grand_duke_alexander
+			hidden_effect = {
+				set_character_name = {
+					character = RUS_grand_duke_alexander
+					name = RUS_alexander_iv
+				}
+			}
 			add_stability = -0.25
 			add_political_power = -300
 		}
