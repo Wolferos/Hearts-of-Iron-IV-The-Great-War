@@ -1,6 +1,6 @@
+replace_path="gfx/loadingscreens"
 name="Hearts of Iron IV: The Great War"
 path="mod/thegreatwar"
-
 tags={
 	"National Focuses"
 	"Map"

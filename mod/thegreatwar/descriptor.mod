@@ -1,3 +1,4 @@
+replace_path="gfx/loadingscreens"
 name="Hearts of Iron IV: The Great War"
 tags={
 	"National Focuses"
