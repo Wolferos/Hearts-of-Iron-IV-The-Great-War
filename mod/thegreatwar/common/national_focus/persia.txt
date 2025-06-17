@@ -1,1 +1,687 @@
-#
+focus_tree = {
+	id = persian_focus
+	default = no
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = PER
+		}
+	}
+	continuous_focus_position = {
+		x = 2500
+		y = 1340
+	}
+	
+	shared_focus = ww1_army_effort
+	shared_focus = ww1_aviation_effort
+	shared_focus = ww1_industrial_effort
+	shared_focus = ww1_naval_effort
+
+	focus = {
+		id = ww1_PER_shah_fails
+		icon = GFX_focus_rom_royal_dictatorship
+		cost = 7.2
+		x = 4
+		y = 0
+		mutually_exclusive = {
+			focus = ww1_PER_shah_succeeds
+		}
+		available = {
+			hidden_trigger = {
+				has_country_flag = shah_coup_fail
+			}
+		}
+		bypass = {
+			hidden_trigger = {
+				has_country_flag = shah_coup_fail
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = event_completion_tt
+		}
+	}
+	focus = {
+		id = ww1_PER_continue_democratic_transition
+		icon = GFX_goal_support_democracy
+		cost = 7.2
+		x = -3
+		y = 1
+		relative_position_id = ww1_PER_shah_fails
+		prerequisite = {
+			focus = ww1_PER_shah_fails
+		}
+		mutually_exclusive = {
+			focus = ww1_PER_organize_strikes
+		}
+		available = {
+			
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_HISTORICAL FOCUS_FILTER_POLITICAL
+		}
+	}
+	focus = {
+		id = ww1_PER_guarantee_constitutional_rights
+		icon = GFX_focus_generic_court
+		cost = 7.2
+		x = 0
+		y = 1
+		relative_position_id = ww1_PER_continue_democratic_transition
+		prerequisite = {
+			focus = ww1_PER_continue_democratic_transition
+		}
+		available = {
+			
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = ww1_PER_shaky_constitutional_order
+				add_idea = ww1_PER_entranched_constitution
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_HISTORICAL FOCUS_FILTER_STABILITY
+		}
+	}
+	focus = {
+		id = ww1_PER_befriend_the_entente
+		icon = GFX_goal_generic_improve_relations
+		cost = 7.2
+		x = -1
+		y = 1
+		relative_position_id = ww1_PER_guarantee_constitutional_rights
+		prerequisite = {
+			focus = ww1_PER_guarantee_constitutional_rights
+		}
+		mutually_exclusive = {
+			focus = ww1_PER_stay_neutral
+		}
+		available = {
+			
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_opinion_modifier = {
+				target = ENG
+				modifier = HOI4TGW_Opinion_diplomats_bonus
+			}
+			hidden_effect = {
+				reverse_add_opinion_modifier = {
+					target = ENG
+					modifier = HOI4TGW_Opinion_diplomats_bonus
+				}
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+	focus = {
+		id = ww1_PER_join_the_entente
+		icon = GFX_focus_ARG_join_the_allies
+		cost = 7.2
+		x = 0
+		y = 1
+		relative_position_id = ww1_PER_befriend_the_entente
+		prerequisite = {
+			focus = ww1_PER_befriend_the_entente
+		}
+		available = {
+			is_in_faction = no
+			NOT = {
+				has_war_with = FRA
+			}
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			FRA = {
+				country_event = generic.2
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+		}
+	}
+	focus = {
+		id = ww1_PER_aftermath_of_versailles
+		icon = GFX_focus_renounce_the_treaty_of_trianon
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = ww1_PER_join_the_entente
+		prerequisite = {
+			focus = ww1_PER_join_the_entente
+		}
+		available = {
+			has_global_flag = kis_treaty_of_versailles
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_state_core = 291
+			add_state_core = 676
+			add_state_core = 352
+		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION 
+		}
+	}
+	focus = {
+		id = ww1_PER_stay_neutral
+		icon = GFX_goal_generic_neutrality_focus
+		cost = 7.2
+		x = 1
+		y = 1
+		relative_position_id = ww1_PER_guarantee_constitutional_rights
+		prerequisite = {
+			focus = ww1_PER_guarantee_constitutional_rights
+		}
+		mutually_exclusive = {
+			focus = ww1_PER_befriend_the_entente
+		}
+		available = {
+			has_war = no
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_ideas = neutrality_idea
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL 
+		}
+	}
+	focus = {
+		id = ww1_PER_trade_with_both_sides
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 7.2
+		x = 0
+		y = 1
+		relative_position_id = ww1_PER_stay_neutral
+		prerequisite = {
+			focus = ww1_PER_stay_neutral
+		}
+		available = {
+			has_war = no
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_opinion_modifier = {
+				target = ENG
+				modifier = ICE_trade_partner
+			}
+			add_opinion_modifier = {
+				target = RUS
+				modifier = ICE_trade_partner
+			}
+			add_opinion_modifier = {
+				target = TUR
+				modifier = ICE_trade_partner
+			}
+			add_opinion_modifier = {
+				target = GER
+				modifier = ICE_trade_partner
+			}
+			add_opinion_modifier = {
+				target = AUH
+				modifier = ICE_trade_partner
+			}
+			add_opinion_modifier = {
+				target = FRA
+				modifier = ICE_trade_partner
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+		}
+	}
+	focus = {
+		id = ww1_PER_organize_strikes
+		icon = GFX_focus_generic_workers_and_farmers_rise
+		cost = 7.2
+		x = 3
+		y = 1
+		relative_position_id = ww1_PER_shah_fails
+		prerequisite = {
+			focus = ww1_PER_shah_fails
+		}
+		mutually_exclusive = {
+			focus = ww1_PER_continue_democratic_transition
+		}
+		available = {
+			
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.1
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+
+	focus = {
+		id = ww1_PER_take_over
+		icon = GFX_goal_support_communism
+		cost = 7.2
+		x = 0
+		y = 1
+		relative_position_id = ww1_PER_organize_strikes
+		prerequisite = {
+			focus = ww1_PER_organize_strikes
+		}
+		available = {
+			
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			random_list = {
+				95 = {
+					set_politics = {
+						ruling_party = communism
+						elections_allowed = no
+					}
+				}
+				5 = {
+					start_civil_war = {
+						ideology = neutrality
+						ruling_party = communism
+					}
+				}
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+
+	focus = {
+		id = ww1_PER_secretariat_of_foreign_affairs
+		icon = GFX_focus_generic_diplomatic_treaty
+		cost = 7.2
+		x = -2
+		y = 1
+		relative_position_id = ww1_PER_take_over
+		prerequisite = {
+			focus = ww1_PER_take_over
+		}
+		available = {
+			
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_political_power = 200
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+		}
+	}
+
+	focus = {
+		id = ww1_PER_global_revolution
+		icon = GFX_focus_SOV_international_union_of_soviet_republics
+		cost = 7.2
+		x = -1
+		y = 1
+		relative_position_id = ww1_PER_secretariat_of_foreign_affairs
+		prerequisite = {
+			focus = ww1_PER_secretariat_of_foreign_affairs
+		}
+		mutually_exclusive = {
+			focus = ww1_PER_socialism_in_one_country
+		}
+		available = {
+			
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_ideas = PER_global_revolution_idea
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER 
+		}
+	}
+
+	focus = {
+		id = ww1_PER_socialism_in_one_country
+		icon = GFX_focus_generic_communist
+		cost = 7.2
+		x = 1
+		y = 1
+		relative_position_id = ww1_PER_secretariat_of_foreign_affairs
+		prerequisite = {
+			focus = ww1_PER_secretariat_of_foreign_affairs
+		}
+		mutually_exclusive = {
+			focus = ww1_PER_global_revolution
+		}
+		available = {
+			
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_ideas = neutrality_idea
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+		}
+	}
+
+	focus = {
+		id = ww1_PER_eradicate_islam_from_society
+		icon = GFX_focus_PER_state_atheism
+		cost = 7.2
+		x = 1
+		y = 1
+		relative_position_id = ww1_PER_take_over
+		prerequisite = {
+			focus = ww1_PER_take_over
+		}
+		available = {
+			
+		}
+		bypass = {
+			NOT = {
+				has_idea = ww1_Faith_Allah
+			}
+		}
+		completion_reward = {
+			remove_ideas = ww1_Faith_Allah
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+
+	focus = {
+		id = ww1_PER_establish_the_kkbad
+		icon = GFX_focus_generic_secret_service_agency
+		cost = 7.2
+		x = 0
+		y = 1
+		relative_position_id = ww1_PER_eradicate_islam_from_society
+		prerequisite = {
+			focus = ww1_PER_eradicate_islam_from_society
+		}
+		available = {
+			
+		}
+		bypass = {
+
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				create_intelligence_agency = {
+					name = "Kamisariyaye Khalgh Baraye Amor Dakhli" #NKVD in Persian
+					icon = GFX_intelligence_agency_logo_sov
+				}
+				else = {
+					add_ideas = ww1_PER_kkbad
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = ww1_PER_shah_succeeds
+		icon = GFX_focus_generic_monarchy_2
+		cost = 7.2
+		x = 12
+		y = 0
+		mutually_exclusive = {
+			focus = ww1_PER_shah_fails
+		}
+		available = {
+			hidden_trigger = {
+				has_country_flag = shah_coup_success
+			}
+		}
+		bypass = {
+			hidden_trigger = {
+				has_country_flag = shah_coup_success
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = event_completion_tt
+		}
+	}
+
+	focus = {
+		id = ww1_PER_scrap_the_constitution
+		icon = GFX_hoi4tgw_generic_democratic_opposition
+		cost = 7.2
+		x = 0
+		y = 1
+		relative_position_id = ww1_PER_shah_succeeds
+		prerequisite = {
+			focus = ww1_PER_shah_succeeds
+		}
+		available = {
+			
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = ww1_PER_shaky_constitutional_order
+				add_idea = ww1_PER_absolute_monarchy
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT 
+		}
+	}
+
+	focus = {
+		id = ww1_PER_befriend_the_germans
+		icon = GFX_hoi4tgw_ironcross
+		cost = 7.2
+		x = -1
+		y = 1
+		relative_position_id = ww1_PER_scrap_the_constitution
+		prerequisite = {
+			focus = ww1_PER_scrap_the_constitution
+		}
+		available = {
+			
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_opinion_modifier = {
+				target = GER
+				modifier = HOI4TGW_Opinion_diplomats_bonus
+			}
+			hidden_effect = {
+				reverse_add_opinion_modifier = {
+					target = GER
+					modifier = HOI4TGW_Opinion_diplomats_bonus
+				}
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+		}
+	}
+
+	focus = {
+		id = ww1_PER_join_the_central_powers
+		icon = GFX_goal_generic_major_alliance
+		cost = 7.2
+		x = 0
+		y = 1
+		relative_position_id = ww1_PER_befriend_the_germans
+		prerequisite = {
+			focus = ww1_PER_befriend_the_germans
+		}
+		available = {
+			is_in_faction = no
+			NOT = {
+				has_war_with = GER
+			}
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			GER = {
+				country_event = generic.2
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+		}
+	}
+
+	focus = {
+		id = ww1_PER_defend_the_persian_state
+		icon = GFX_focus_PER_iran_for_iranians
+		cost = 5
+		x = 20
+		y = 0
+		available = {
+			OR = {
+				has_war_with_major = yes
+				AND = {
+					has_war = yes
+					surrender_progress > 0.49
+				}
+			}
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		search_filters = {
+			FOCUS_FILTER_MANPOWER 
+		}
+	}
+
+	focus = {
+		id = ww1_PER_declare_jihad
+		icon = GFX_focus_PER_islamic_solidarity
+		cost = 5
+		x = -2
+		y = 1
+		relative_position_id = ww1_PER_defend_the_persian_state
+		prerequisite = {
+			focus = ww1_PER_defend_the_persian_state
+		}
+		available = {
+			has_war_with_major = yes
+			NOT = {
+				has_government = communism
+			}
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = ww1_Faith_Allah
+				add_idea = ww1_Faith_Allah_2
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_MANPOWER 
+		}
+	}
+
+	focus = {
+		id = ww1_PER_great_patriotic_war
+		icon = GFX_focus_generic_total_war
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = ww1_PER_defend_the_persian_state
+		prerequisite = {
+			focus = ww1_PER_defend_the_persian_state
+		}
+		available = {
+			OR = {
+				has_war_with_major = yes
+				AND = {
+					has_war = yes
+					surrender_progress > 0.49
+				}
+			}
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_ideas = ww1_PER_great_patriotic_war_idea
+		}
+		search_filters = {
+			FOCUS_FILTER_MANPOWER 
+		}
+	}
+
+	focus = {
+		id = ww1_PER_war_propaganda
+		icon = GFX_goal_generic_propaganda
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = ww1_PER_great_patriotic_war
+		prerequisite = {
+			focus = ww1_PER_great_patriotic_war
+		}
+		available = {
+			has_war = yes
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = ww1_PER_great_patriotic_war_idea
+				add_idea = ww1_PER_great_patriotic_war_idea_2
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_MANPOWER 
+		}
+	}
+}
