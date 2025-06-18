@@ -1,0 +1,63 @@
+scripted_gui = {
+
+	starting_scripted_gui = {
+		context_type = player_context
+		window_name = "starting_window"
+		visible = {
+			has_country_flag = game_start
+		}
+		effects = {
+			monologue_click = {
+				if = {
+					limit = {
+						has_country_flag = monologue_starting
+					}
+					clr_country_flag = monologue_starting
+					else = {
+						set_country_flag = monologue_starting
+					}
+				}
+			}
+			faq_click = {
+				if = {
+					limit = {
+						has_country_flag = faq_starting
+					}
+					clr_country_flag = faq_starting
+					else = {
+						set_country_flag = faq_starting
+					}
+				}
+			}
+			starting_play_click = {
+				clr_country_flag = game_start
+			}
+		}
+	}
+
+	monologue_starting_scripted_gui = {
+		context_type = player_context
+		window_name = "monologue_window"
+		visible = {
+			has_country_flag = monologue_starting
+		}
+		effects = {
+			starting_play_click = {
+				clr_country_flag = monologue_starting
+			}
+		}
+	}
+
+	faq_starting_scripted_gui = {
+		context_type = player_context
+		window_name = "faq_window"
+		visible = {
+			has_country_flag = faq_starting
+		}
+		effects = {
+			starting_play_click = {
+				clr_country_flag = faq_starting
+			}
+		}
+	}
+}
