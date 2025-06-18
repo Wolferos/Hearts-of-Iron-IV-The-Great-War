@@ -8,362 +8,15 @@ focus_tree = {
 		}
 	}
 	default = no
-	continuous_focus_position = {
-		x = 800
-		y = 800
-	}
+	continuous_focus_position = { x = 800 y = 750 }
 
 	shared_focus = ww1_army_effort
 	shared_focus = ww1_aviation_effort
 	shared_focus = ww1_industrial_effort
 	shared_focus = ww1_naval_effort
 
-	focus = {
-		id = SWE_ww1_interwar_Aftermath
-		icon = GFX_focus_generic_treaty
-		available = {
-			has_global_flag = kis_treaty_of_versailles
-		}
-		completion_reward = {
-			add_stability = 0.1
-		}
-		cost = 3
-		x = 9
-		y = 10
-		ai_will_do = {
-			factor = 1
-		}
-	}
-	focus = {
-		id = SWE_ww1_interwar_Position_RussianCivilWar
-		icon = GFX_goal_generic_army_doctrines
-		prerequisite = {
-			focus = SWE_ww1_interwar_Aftermath
-		}
-		relative_position_id = SWE_ww1_interwar_Aftermath
-		completion_reward = {
-			add_political_power = 50
-		}
-		cost = 3
-		x = -4
-		y = 1
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	focus = {
-		id = SWE_ww1_interwar_Position_RussianCivilWar_SupportRed
-		icon = GFX_focus_ger_great_red_menace
-		mutually_exclusive = {
-			focus = SWE_ww1_interwar_Position_RussianCivilWar_SupportWhite
-		}
-		available = {
-			has_government = communism
-			NOT = {
-				has_war_with = SOV
-			}
-			country_exists = RUS
-			country_exists = SOV
-			SOV = {
-				is_puppet = no
-				has_war_with = RUS
-			}
-		}
-		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = RUS
-			}
-		}
-		prerequisite = {
-			focus = SWE_ww1_interwar_Position_RussianCivilWar
-		}
-		relative_position_id = SWE_ww1_interwar_Position_RussianCivilWar
-		cost = 3
-		x = -1
-		y = 1
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	focus = {
-		id = SWE_ww1_interwar_Position_RussianCivilWar_SupportWhite
-		icon = GFX_focus_eng_expose_the_belly_of_the_bear
-		mutually_exclusive = {
-			focus = SWE_ww1_interwar_Position_RussianCivilWar_SupportRed
-		}
-		prerequisite = {
-			focus = SWE_ww1_interwar_Position_RussianCivilWar
-		}
-		relative_position_id = SWE_ww1_interwar_Position_RussianCivilWar
-		available = {
-			NOT = {
-				has_government = communism
-				has_war_with = RUS
-			}
-			country_exists = SOV
-			country_exists = RUS
-			RUS = {
-				is_puppet = no
-				has_war_with = SOV
-			}
-		}
-		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = SOV
-			}
-		}
-		cost = 3
-		x = 1
-		y = 1
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	focus = {
-		id = SWE_ww1_interwar_Position_TurkeyCivilWar
-		icon = GFX_goal_generic_position_armies
-		prerequisite = {
-			focus = SWE_ww1_interwar_Aftermath
-		}
-		relative_position_id = SWE_ww1_interwar_Aftermath
-		# Interwar, disabled for Greece, Ottoman Empire and Turkish Republic
-		allow_branch = {
-			NOT = {
-				OR = {
-					TAG = TUR
-					TAG = TUK
-					TAG = GRE
-				}
-			}
-		}
-		completion_reward = {
-			add_political_power = 50
-		}
-		cost = 3
-		x = 0
-		y = 1
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	focus = {
-		id = SWE_ww1_interwar_Position_TurkeyCivilWar_AntiGREECE
-		icon = GFX_focus_renounce_the_treaty_of_trianon
-		mutually_exclusive = {
-			focus = SWE_ww1_interwar_Position_TurkeyCivilWar_ProGREECE
-		}
-		prerequisite = {
-			focus = SWE_ww1_interwar_Position_TurkeyCivilWar
-		}
-		relative_position_id = SWE_ww1_interwar_Position_TurkeyCivilWar
-		available = {
-			country_exists = GRE
-			GRE = {
-				is_puppet = no
-			}
-		}
-		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = GRE
-			}
-		}
-		cost = 3
-		x = 1
-		y = 1
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	focus = {
-		id = SWE_ww1_interwar_Position_TurkeyCivilWar_ProGREECE
-		icon = GFX_goal_molotov_ribbentrop_pact
-		mutually_exclusive = {
-			focus = SWE_ww1_interwar_Position_TurkeyCivilWar_AntiGREECE
-		}
-		prerequisite = {
-			focus = SWE_ww1_interwar_Position_TurkeyCivilWar
-		}
-		relative_position_id = SWE_ww1_interwar_Position_TurkeyCivilWar
-		available = {
-			NOT = {
-				has_war_with = GRE
-			}
-			country_exists = GRE
-			GRE = {
-				is_puppet = no
-				OR = {
-					has_war_with = TUR
-					has_war_with = TUK
-				}
-			}
-		}
-		completion_reward = {
-			ROOT = {
-				add_opinion_modifier = {
-					target = GRE
-					modifier = balkan_strategy_good
-				}
-			}
-			GRE = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = balkan_strategy_good
-				}
-			}
-		}
-		cost = 3
-		x = -1
-		y = 1
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	focus = {
-		id = SWE_ww1_interwar_Position_Constantinople
-		icon = GFX_goal_generic_cavalry
-		prerequisite = {
-			focus = SWE_ww1_interwar_Position_TurkeyCivilWar_ProGREECE
-		}
-		relative_position_id = SWE_ww1_interwar_Position_TurkeyCivilWar_ProGREECE
-		available = {
-			OR = {
-				country_exists = TUR
-				country_exists = TUK
-			}
-		}
-		completion_reward = {
-			create_wargoal = {
-				type = take_state_focus
-				target = TUR
-				generator = {
-					341
-				}
-				expire = 0
-			}
-			create_wargoal = {
-				type = take_state_focus
-				target = TUK
-				generator = {
-					341
-				}
-				expire = 0
-			}
-		}
-		cost = 3
-		x = 0
-		y = 2
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	focus = {
-		id = SWE_ww1_interwar_Position_TurkeyCivilWar_ProTUR
-		icon = GFX_focus_generic_little_entente
-		mutually_exclusive = {
-			focus = SWE_ww1_interwar_Position_TurkeyCivilWar_ProTUK
-		}
-		prerequisite = {
-			focus = SWE_ww1_interwar_Position_TurkeyCivilWar_AntiGREECE
-		}
-		relative_position_id = SWE_ww1_interwar_Position_TurkeyCivilWar_AntiGREECE
-		available = {
-			NOT = {
-				has_war_with = TUR
-			}
-			country_exists = TUK
-			TUR = {
-				has_war_with = TUK
-			}
-		}
-		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = TUK
-			}
-		}
-		cost = 3
-		x = -1
-		y = 1
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	focus = {
-		id = SWE_ww1_interwar_Position_TurkeyCivilWar_ProTUK
-		icon = GFX_goal_generic_major_alliance
-		mutually_exclusive = {
-			focus = SWE_ww1_interwar_Position_TurkeyCivilWar_ProTUR
-		}
-		available = {
-			NOT = {
-				has_war_with = TUK
-			}
-			country_exists = TUR
-			TUK = {
-				has_war_with = TUR
-			}
-		}
-		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = TUR
-			}
-		}
-		prerequisite = {
-			focus = SWE_ww1_interwar_Position_TurkeyCivilWar_AntiGREECE
-		}
-		relative_position_id = SWE_ww1_interwar_Position_TurkeyCivilWar_AntiGREECE
-		completion_reward = {
-			add_political_power = 50
-		}
-		cost = 3
-		x = 1
-		y = 1
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	focus = {
-		id = SWE_ww1_interwar_Position_Poland
-		icon = GFX_focus_generic_polish_deal
-		prerequisite = {
-			focus = SWE_ww1_interwar_Aftermath
-		}
-		relative_position_id = SWE_ww1_interwar_Aftermath
-		available = {
-			is_puppet = no
-			NOT = {
-				has_war_with = POL
-				has_government = communism
-			}
-			country_exists = POL
-			country_exists = SOV
-			POL = {
-				has_war_with = SOV
-			}
-		}
-		completion_reward = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -1000
-			}
-			POL = {
-				add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 1000
-				}
-			}
-		}
-		cost = 3
-		x = 3
-		y = 1
-		ai_will_do = {
-			factor = 0
-		}
-	}
+	shared_focus = ww1_interwar_Aftermath
+
 	#--------------------Scandinavian Tree -------------------- (Added by Ecrfour)
 	focus = {
 		id = SWE_ww1_interwar_Victory
@@ -644,7 +297,7 @@ focus_tree = {
 					}
 				}
 				NOR = {
-					country_event = ww1_sweden.2
+					country_event = ww1_sweden.6
 				}
 			}
 			if = {
@@ -654,7 +307,7 @@ focus_tree = {
 					}
 				}
 				DEN = {
-					country_event = ww1_sweden.2
+					country_event = ww1_sweden.6
 				}
 			}
 			if = {
@@ -664,7 +317,7 @@ focus_tree = {
 					}
 				}
 				FIN = {
-					country_event = ww1_sweden.2
+					country_event = ww1_sweden.6
 				}
 			}
 		}
@@ -1087,8 +740,6 @@ focus_tree = {
 			}
 			has_global_flag = kis_whitesvsreds
 		}
-		continue_if_invalid = no
-		available_if_capitulated = no
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
@@ -1124,8 +775,6 @@ focus_tree = {
 				}
 			}
 		}
-		continue_if_invalid = no
-		available_if_capitulated = no
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
@@ -1153,7 +802,7 @@ focus_tree = {
 	}
 	focus = {
 		id = SWE_ww1_develop_chromium_sources
-		icon = GFX_goal_generic_construction
+		icon = GFX_focus_generic_chromium
 		prerequisite = {
 			focus = SWE_ww1_expand_the_pohjanmaa_sawmills
 		}
@@ -1184,8 +833,6 @@ focus_tree = {
 				}
 			}
 		}
-		continue_if_invalid = no
-		available_if_capitulated = no
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
@@ -1239,8 +886,6 @@ focus_tree = {
 				}
 			}
 		}
-		continue_if_invalid = no
-		available_if_capitulated = no
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
@@ -1282,8 +927,6 @@ focus_tree = {
 				}
 			}
 		}
-		continue_if_invalid = no
-		available_if_capitulated = no
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
@@ -1326,8 +969,6 @@ focus_tree = {
 				}
 			}
 		}
-		continue_if_invalid = no
-		available_if_capitulated = no
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
@@ -1401,8 +1042,6 @@ focus_tree = {
 				}
 			}
 		}
-		continue_if_invalid = no
-		available_if_capitulated = no
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
@@ -1441,8 +1080,6 @@ focus_tree = {
 				}
 			}
 		}
-		continue_if_invalid = no
-		available_if_capitulated = no
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
