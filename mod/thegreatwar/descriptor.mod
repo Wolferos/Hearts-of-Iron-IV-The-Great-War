@@ -1,3 +1,11 @@
+replace_path="common/decisions"
+replace_path="common/decisions/categories"
+replace_path="common/ideas"
+replace_path="common/national_focus"
+replace_path="common/scripted_effects"
+replace_path="common/scripted_localisation"
+replace_path="common/scripted_triggers"
+replace_path="events"
 replace_path="gfx/loadingscreens"
 name="Hearts of Iron IV: The Great War"
 tags={
