@@ -8,6 +8,8 @@ NDefines.NDiplomacy.BASE_STAGE_COUP_DAILY_PP = 6.1								-- #HOI4TGW ::: Daily 
 NDefines.NDiplomacy.BASE_STAGE_COUP_TOTAL_COST = 810 							-- #HOI4TGW ::: Equipment consume factor for stage coup.
 NDefines.NDiplomacy.NAP_UNBREAKABLE_MONTHS = 48									-- #HOI4TGW ::: NAPS cannot be broken for this many months
 
+NDefines.NBuildings.MAX_SHARED_SLOTS = 30			                        	-- #HOI4TGW ::: MAX_SHARED_SLOTS = 25, -- Max slots shared by factories
+
 NDefines.NMilitary.MAX_ARMY_EXPERIENCE = 999									-- #HOI4TGW ::: MAX_ARMY_EXPERIENCE = 500, Max army experience a country can store
 NDefines.NMilitary.MAX_NAVY_EXPERIENCE = 999									-- #HOI4TGW ::: MAX_NAVY_EXPERIENCE = 500, Max navy experience a country can store
 NDefines.NMilitary.MAX_AIR_EXPERIENCE = 999										-- #HOI4TGW ::: MAX_AIR_EXPERIENCE = 500, Max air experience a country can store
