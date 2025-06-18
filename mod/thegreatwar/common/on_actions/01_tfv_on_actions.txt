@@ -1,1 +1,57 @@
-#
+on_action = {
+
+	#ROOT is free nation FROM is releaser
+	on_release_as_free = { 
+
+		# Making sure Quebec City becomes the Capital of Quebec
+		effect = {
+			IF = {
+				limit = {
+					ROOT = {
+						tag = QUE
+						owns_state = 468
+					}
+				}
+				468 = {
+					set_victory_points = {
+						province = 4345
+						value = 15
+					}
+
+					set_victory_points = {
+						province = 12149
+						value = 20
+					}
+				}	
+			}
+		}
+
+	}
+
+	# ROOT is the nation being released, FROM is the overlord
+	on_release_as_puppet = {
+
+		# Making sure Quebec City becomes the Capital of Quebec
+	    effect = {
+	    	IF = {
+	    		limit = {
+	    			ROOT = {
+	    				tag = QUE
+	    				owns_state = 468
+	    			}
+	    		}
+	    		468 = {
+	    			set_victory_points = {
+	    				province = 4345
+	    				value = 15
+	    			}
+
+	    			set_victory_points = {
+	    				province = 12149
+	    				value = 20
+	    			}
+	    		}	
+	    	}
+	    }
+	}
+}

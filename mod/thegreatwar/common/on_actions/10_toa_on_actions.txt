@@ -1,1 +1,25 @@
-#
+
+on_actions = {
+
+	on_startup = {
+		effect = {
+			#Monroe Doctrine
+			
+			every_country = {
+				limit = {
+					exists = yes
+					NOT = { tag = USA }
+					OR = {
+						capital_scope = { is_on_continent = south_america }
+						capital_scope = { is_on_continent = north_america }
+						tag = CUB
+						tag = DOM
+						tag = HAI
+					}
+				}
+				add_ideas = USA_monroe_doctrine_idea
+			}
+			
+		}
+	}
+}
