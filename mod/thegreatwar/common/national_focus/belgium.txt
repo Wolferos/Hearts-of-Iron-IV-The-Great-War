@@ -510,10 +510,17 @@ focus_tree = {
 			add_political_power = 15
 		}
 		cost = 5
-		x = 13
+		x = 12
 		y = 5
 		ai_will_do = {
 			factor = 0
+			modifier = {
+				factor = 1
+				OR = {
+					has_global_flag = kis_second_treaty_frankfort
+					has_global_flag = kis_treaty_of_versailles
+				}
+			}
 		}
 	}
 	focus = {
@@ -534,7 +541,7 @@ focus_tree = {
 				}
 			}
 		}
-		cost = 12
+		cost = 10
 		x = -3
 		y = 1
 		relative_position_id = BEL_ww1_congo
@@ -576,9 +583,7 @@ focus_tree = {
 			focus = BEL_ww1_congo_infra
 		}
 		available = {
-			controls_state = 295
 			controls_state = 538
-			controls_state = 718
 		}
 		completion_reward = {
 			add_resource = {
@@ -605,11 +610,9 @@ focus_tree = {
 			focus = BEL_ww1_DenyLeopoldLegacyCongo
 		}
 		available = {
-			BEL = {
-				controls_state = 295
-				controls_state = 538
-				controls_state = 718
-			}
+			controls_state = 295
+			controls_state = 538
+			controls_state = 718
 		}
 		completion_reward = {
 			add_political_power = -50
@@ -673,7 +676,16 @@ focus_tree = {
 			controls_state = 718
 		}
 		completion_reward = {
-			add_stability = -0.05
+			295 = {
+				add_resistance = -10
+			}
+			538 = {
+				add_resistance = -10
+			}
+			718 = {
+				add_resistance = -10
+			}
+			add_stability = -0.025
 		}
 		cost = 10
 		x = 3
@@ -798,7 +810,7 @@ focus_tree = {
 				transfer_state = 718
 			}
 		}
-		cost = 10
+		cost = 5
 		x = 0
 		y = 1
 		relative_position_id = BEL_ww1_ClaimingHumanRightsAfrica
