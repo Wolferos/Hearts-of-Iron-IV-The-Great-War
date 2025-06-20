@@ -199,8 +199,14 @@ focus_tree = {
 			factor = 0
 		}
 		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 1
+				date > 1921.1.1
+			}
+		}
 		available = {
-			date > 1921.1.1
 			has_government = neutrality
 		}
 		completion_reward = {
@@ -687,11 +693,14 @@ focus_tree = {
 		y = 11
 		cost = 15
 		ai_will_do = {
-			factor = 25
+			factor = 0
+			modifier = {
+				factor = 25
+				date > 1922.1.1
+			}
 		}
 		available_if_capitulated = yes
 		available = {
-			date > 1922.1.1
 			has_government = neutrality
 		}
 		completion_reward = {
@@ -713,12 +722,15 @@ focus_tree = {
 		y = 12
 		cost = 12
 		ai_will_do = {
-			factor = 1
+			factor = 0
+			modifier = {
+				factor = 1
+				date > 1924.1.1
+			}
 		}
 		available_if_capitulated = yes
 		available = {
 			has_government = neutrality
-			date > 1924.1.1
 		}
 		completion_reward = {
 			add_political_power = -20
@@ -751,9 +763,15 @@ focus_tree = {
 			factor = 1
 		}
 		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 1
+				date > 1930.1.1
+			}
+		}
 		available = {
 			has_government = neutrality
-			date > 1930.1.1
 		}
 		completion_reward = {
 			add_stability = 0.1
@@ -1953,9 +1971,11 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {
 			factor = 0
-		}
-		available = {
-			date > 1920.1.1
+			modifier = {
+				factor = 1
+				date > 1920.1.1
+				surrender_progress > 0.8
+			}
 		}
 		completion_reward = {
 			add_political_power = 50
@@ -1975,10 +1995,14 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {
 			factor = 0
+			modifier = {
+				factor = 1
+				date > 1923.1.1
+				surrender_progress > 0.8
+			}
 		}
 		available_if_capitulated = yes
 		available = {
-			date>1923.1.1
 			NOT = {
 				country_exists = TUR
 			}
@@ -2701,9 +2725,6 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_PilotSchool
 		}
-		available = {
-			date > 1920.1.1
-		}
 		icon = GFX_goal_generic_air_fighter
 		completion_reward = {
 			add_tech_bonus = {
@@ -2717,7 +2738,11 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
+			modifier = {
+				factor = 10
+				date > 1920.1.1
+			}
 		}
 		cost = 10
 		x = 27
