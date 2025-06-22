@@ -8,6 +8,7 @@
 # localization_key -> points to the localization key
 # that'll be used if trigger passes
 
+#MM: UNUSED after WW (replaced by GetKfdWagenNames)
 defined_text = { # Country
 	name = GetKdfWagenName
 	text = {
@@ -32,6 +33,7 @@ defined_text = { # Country
 	}
 }
 
+#MM: UNUSED after WW (replaced by GetReichsWerkeName)
 defined_text = { # Country
 	name = GetHermannGoringWerkeName
 	text = {
@@ -345,6 +347,28 @@ defined_text = {
 }
 
 defined_text = {
+	name = GetLimitedRearmamentDesc
+	text = {
+		trigger = {
+			original_tag = ENG
+			#NOT = { has_completed_focus = ENG_a_change_in_course } #hoi4tgw
+			has_government = democratic
+		}
+		localization_key = ENG_LIMITED_REARMAMENT_HISTORICAL
+	}
+	text = {
+		trigger = {
+			original_tag = ENG
+			#has_completed_focus = ENG_a_change_in_course #hoi4tgw
+			NOT = {
+				has_government = democratic
+			}
+		}
+		localization_key = ENG_LIMITED_REARMAMENT_AHISTORICAL
+	}
+}
+
+defined_text = {
 	name = GetRoyalTankRegimentName
 	text = {
 		trigger = {
@@ -459,8 +483,20 @@ defined_text = {
 	text = {
 		trigger = {
 			original_tag = ENG
+			#NOT = { has_completed_focus = ENG_a_change_in_course } #hoi4tgw
+			has_government = democratic
 		}
 		localization_key = ENG_GENERAL_REARMAMENT_DESC_HISTORICAL
+	}
+	text = {
+		trigger = {
+			original_tag = ENG
+			#has_completed_focus = ENG_a_change_in_course #hoi4tgw
+			NOT = {
+				has_government = democratic
+			}
+		}
+		localization_key = ENG_GENERAL_REARMAMENT_DESC_AHISTORICAL
 	}
 }
 
@@ -607,6 +643,13 @@ defined_text = { # Country
 
 defined_text = { # Country
 	name = GetCandidatesFascism2
+	text = {
+		trigger = {
+			#has_completed_focus = USA_send_lindbergh_to_germany #hoi4tgw
+			always = no
+		}
+		localization_key = USA_lindbergh_candidate
+	}
 	text = {
 		localization_key = ""
 	}
@@ -850,5 +893,910 @@ defined_text = { # Country
 			}
 		}
 		localization_key = USA_Naval_treaty_nation
+	}
+}
+
+defined_text = { # Country
+	name = GetStresaMembers
+	text = {
+		trigger = {
+			has_global_flag = LaR_Britain_Stresa_Concessions
+		}
+		localization_key = LaR_Britain_Stresa_agreed
+	}
+	text = {
+		trigger = {
+			NOT = { has_global_flag = LaR_Britain_Stresa_Concessions }
+		}
+		localization_key = LaR_Britain_Stresa_refused
+	}
+}
+
+defined_text = { # Country
+	name = GetStresaConcessions
+	text = {
+		trigger = {
+			has_global_flag = LaR_Britain_Stresa_Concessions
+		}
+		localization_key = LaR_Britain_Stresa_Concessions
+	}
+	text = {
+		trigger = {
+			NOT = { has_global_flag = LaR_Britain_Stresa_Concessions }
+		}
+		localization_key = LaR_France_Stresa_Confessions
+	}
+}
+
+defined_text = { # Country
+	name = GetFrenchCoronationCity
+	text = {
+		trigger = {
+			#FRA = { has_completed_focus = FRA_the_legitimate_heir } #hoi4tgw
+			always = no
+		}
+		localization_key = LaR_France_Reims
+	}
+	text = {
+		trigger = {
+			FRA = { 
+				OR = {
+					#has_completed_focus = FRA_proclaim_the_third_empire #hoi4tgw
+					#has_completed_focus = FRA_orleanist_restoration
+				}
+			}
+		}
+		localization_key = LaR_France_Paris
+	}
+}
+
+defined_text = { # Country
+	name = GetFrenchRoyalTitle
+	text = {
+		trigger = {
+			FRA = {
+				#has_completed_focus = FRA_the_legitimate_heir #hoi4tgw
+			}
+		}
+		localization_key = LaR_France_King
+	}
+	text = {
+		trigger = {
+			always = no
+			FRA = {
+				#has_completed_focus = FRA_orleanist_restoration #hoi4tgw
+			}
+		}
+		localization_key = LaR_France_King_of_The_French
+	}
+	text = {
+		trigger = {
+			always = no
+			FRA = { 
+				#has_completed_focus = FRA_proclaim_the_third_empire #hoi4tgw
+			}
+		}
+		localization_key = LaR_France_Emperor
+	}
+}
+
+defined_text = {
+	name = GetIberianSummitReceiverName
+	text = {	#Portugal is sending the proposal to a Spanish Tag
+		trigger = { 
+			tag = POR
+		}
+		localization_key = POR_Iberian_Summit_Receiver_Spain
+	}
+	text = {	#A Spanish Tag is sending the proposal to Portugal
+		localization_key = POR_Iberian_Summit_Receiver_Portugal
+	}
+}
+
+defined_text = {
+	name = GetSpanishRepublicFlagAndNameDef
+	text = {	#Gets tag from SPD (once SCW has started)
+		trigger = { 
+			country_exists = SPD
+		}
+		localization_key = POR_Spanish_Republic_SPD
+	}
+	text = {	#Gets tag from SPR (before SCW starts)
+		localization_key = POR_Spanish_Republic_SPR
+	}
+}
+
+defined_text = {
+	name = GetPortugueseShipsBuilder
+	text = { #ENG builder
+		trigger = {
+			OR = {
+				has_country_flag = POR_purchase_british_submarines_flag
+				has_country_flag = POR_purchase_british_destroyers_flag
+				has_country_flag = POR_purchase_british_light_cruiser_flag
+			}
+		}
+		localization_key = POR_ENG_Ship_Builder
+	}
+	text = { #ITA builder
+		localization_key = POR_ITA_Ship_builder
+	}
+}
+
+defined_text = {
+	name = GetWargoalBasedOnGovernment
+	text = { #United Kingdom of Portugal and Brazil 
+		trigger = {
+			has_cosmetic_tag = KPB_kingdom_portugal_and_brazil
+		}
+		localization_key = POR_puppet_wargoal
+	}
+	text = { #Salazarist Portugal
+		trigger = {
+			NOT = { has_cosmetic_tag = KPB_kingdom_portugal_and_brazil }
+			has_government = neutrality
+		}
+		localization_key = POR_topple_government_wargoal
+	}
+	text = { #Fascist (else)
+		localization_key = POR_annex_wargoal
+	}
+}
+
+defined_text = {
+	name = GetOperationName
+	text = {
+		trigger = { original_tag = GER }
+		random_list = {
+			25 = { localization_key = GER_operation_1}
+			25 = { localization_key = GER_operation_2}
+			25 = { localization_key = GER_operation_3}
+			25 = { localization_key = GER_operation_4}
+		}
+	}
+	text = {
+		trigger = { original_tag = USA }
+		random_list = {
+			25 = { localization_key = USA_operation_1 }
+			25 = { localization_key = USA_operation_2 }
+			25 = { localization_key = USA_operation_3 }
+			25 = { localization_key = USA_operation_4 }
+		}
+	}
+	text = {
+		trigger = { original_tag = ENG }
+		random_list = {
+			25 = { localization_key = ENG_operation_1 }
+			25 = { localization_key = ENG_operation_2 }
+			25 = { localization_key = ENG_operation_3 }
+			25 = { localization_key = ENG_operation_4 }
+		}
+	}
+	text = {
+		random_list = {
+			25 = { localization_key = generic_operation_1 }
+			25 = { localization_key = generic_operation_2 }
+			25 = { localization_key = generic_operation_3 }
+			25 = { localization_key = generic_operation_4 }
+		}
+	}
+}
+defined_text = {
+	name = ROM_UnlockedArmor
+	text = {
+		trigger = {
+			OR ={
+					has_tech = basic_medium_tank
+					has_tech = basic_medium_tank_chassis
+				}
+		}
+		localization_key = EQUIPMENT_WEIGHT_MEDIUM
+	}
+	text = {
+		trigger = {
+			OR ={
+					NOT= {has_tech = basic_medium_tank}
+					NOT= {has_tech = basic_medium_tank_chassis}
+				}
+		}
+		localization_key = EQUIPMENT_WEIGHT_LIGHT
+	}
+}
+
+#defined_text = {
+#	name = GetChurchCandidatesName
+#	text = {
+#		trigger = {
+#			original_tag = SOV
+#			NOT = {
+#				has_completed_focus = SOV_dismantle_the_zemsky_sobor
+#			}
+#		}
+#		localization_key = SOV_CHURCH_CANDIDATES_NAME_TSARIST
+#	}
+#	text = {
+#		trigger = {
+#			original_tag = SOV
+#			has_completed_focus = SOV_dismantle_the_zemsky_sobor
+#		}
+#		localization_key = SOV_CHURCH_CANDIDATES_NAME_FASCIST
+#	}
+#}
+
+#defined_text = {
+#	name = GetChurchCandidatesDesc
+#	text = {
+#		trigger = {
+#			original_tag = SOV
+#			NOT = {
+#				has_completed_focus = SOV_dismantle_the_zemsky_sobor
+#			}
+#		}
+#		localization_key = SOV_CHURCH_CANDIDATES_DESC_TSARIST
+#	}
+#	text = {
+#		trigger = {
+#			original_tag = SOV
+#			has_completed_focus = SOV_dismantle_the_zemsky_sobor
+#		}
+#		localization_key = SOV_CHURCH_CANDIDATES_DESC_FASCIST
+#	}
+#}
+
+#defined_text = {
+#	name = GetLonelyIslandName
+#	text = {
+#		trigger = {
+#			original_tag = SOV
+#			OR = {
+#				NOT = { has_completed_focus = SOV_request_imperial_protection }
+#				NOT = { is_subject_of = JAP }
+#			}
+#		}
+#		localization_key = SOV_THE_LONELY_ISLAND_NAME_NORMAL
+#	}
+#	text = {
+#		trigger = {
+#			original_tag = SOV
+#			has_completed_focus = SOV_request_imperial_protection
+#			is_subject_of = JAP
+#		}
+#		localization_key = SOV_THE_LONELY_ISLAND_NAME_INDEPENDENCE
+#	}
+#}
+
+#defined_text = {
+#	name = GetLonelyIslandDesc
+#	text = {
+#		trigger = {
+#			original_tag = SOV
+#			OR = {
+#				NOT = { has_completed_focus = SOV_request_imperial_protection }
+#				NOT = { is_subject_of = JAP }
+#			}
+#		}
+#		localization_key = SOV_THE_LONELY_ISLAND_DESC_NORMAL
+#	}
+#	text = {
+#		trigger = {
+#			original_tag = SOV
+#			has_completed_focus = SOV_request_imperial_protection
+#			is_subject_of = JAP
+#		}
+#		localization_key = SOV_THE_LONELY_ISLAND_DESC_INDEPENDENCE
+#	}
+#}
+
+defined_text = {
+	name = GetArticle124Desc
+	text = {
+		trigger = {
+			original_tag = SOV
+			has_government = communism
+		}
+		localization_key = SOV_ARTICLE_124_DESC_COMMUNIST
+	}
+	text = {
+		trigger = {
+			original_tag = SOV
+			NOT = { has_government = communism }
+		}
+		localization_key = SOV_ARTICLE_124_DESC_EXILES
+	}
+}
+
+defined_text = {
+	name = GetRebuildtheSaviorCathedralDesc
+	text = {
+		trigger = {
+			original_tag = SOV
+			has_government = communism
+		}
+		localization_key = SOV_REBUILD_THE_SAVIOR_CATHEDRAL_DESC_COMMUNIST
+	}
+	text = {
+		trigger = {
+			original_tag = SOV
+			NOT = { has_government = communism }
+		}
+		localization_key = SOV_REBUILD_THE_SAVIOR_CATHEDRAL_DESC_EXILES
+	}
+}
+
+defined_text = {
+	name = GetReformalizetheRoleofthePatriarchateDesc
+	text = {
+		trigger = {
+			original_tag = SOV
+			has_government = communism
+		}
+		localization_key = SOV_REFORMALIZE_THE_ROLE_OF_THE_PATRIARCHATE_DESC_COMMUNIST
+	}
+	text = {
+		trigger = {
+			original_tag = SOV
+			NOT = { has_government = communism }
+		}
+		localization_key = SOV_REFORMALIZE_THE_ROLE_OF_THE_PATRIARCHATE_DESC_EXILES
+	}
+}
+
+defined_text = {
+	name = GetTheDeclarationDesc
+	text = {
+		trigger = {
+			original_tag = SOV
+			has_government = communism
+		}
+		localization_key = SOV_THE_DECLARATION_DESC_COMMUNIST
+	}
+	text = {
+		trigger = {
+			original_tag = SOV
+			NOT = { has_government = communism }
+		}
+		localization_key = SOV_THE_DECLARATION_DESC_EXILES
+	}
+}
+
+defined_text = {
+	name = GetTheUSSRName
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_THE_USSR_NAME_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = SOV_THE_USSR_NAME_EXILES
+	}
+}
+
+defined_text = {
+	name = GetMolotovRibbentropName
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_MOLOTOV_RIBBENTROP_NAME_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = SOV_MOLOTOV_RIBBENTROP_NAME_EXILES
+	}
+}
+
+defined_text = {
+	name = GetUSSRAllianceDesc
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = fascism }
+			}
+		}
+		localization_key = SOV_USSR_ALLIANCE_DESC_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				has_government = fascism
+			}
+		}
+		localization_key = SOV_USSR_ALLIANCE_DESC_EXILES
+	}
+}
+
+defined_text = {
+	name = GetBulwarkName
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_BULWARK_NAME_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				has_government = fascism
+			}
+		}
+		localization_key = SOV_BULWARK_NAME_FASCISM
+	}
+	text = {
+		trigger = {
+			SOV = {
+				OR = {
+					has_government = neutrality
+					has_government = democratic
+				}
+			}
+		}
+		localization_key = SOV_BULWARK_NAME_NEUTRALITY
+	}
+}
+
+defined_text = {
+	name = GetBulwarkBolshevismDesc
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_BULWARK_BOLSHEVISM_DESC_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				has_government = fascism
+			}
+		}
+		localization_key = SOV_BULWARK_BOLSHEVISM_DESC_FASCISM
+	}
+	text = {
+		trigger = {
+			SOV = {
+				OR = {
+					has_government = neutrality
+					has_government = democratic
+				}
+			}
+		}
+		localization_key = SOV_BULWARK_BOLSHEVISM_DESC_NEUTRALITY
+	}
+}
+
+defined_text = {
+	name = GetBulwarkCommunismDesc
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_BULWARK_COMMUNISM_DESC_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				has_government = fascism
+			}
+		}
+		localization_key = SOV_BULWARK_COMMUNISM_DESC_FASCISM
+	}
+	text = {
+		trigger = {
+			SOV = {
+				OR = {
+					has_government = neutrality
+					has_government = democratic
+				}
+			}
+		}
+		localization_key = SOV_BULWARK_COMMUNISM_DESC_NEUTRALITY
+	}
+}
+
+defined_text = {
+	name = GetDanzigGuaranteesBolsheviksDesc
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_DANZIG_GUARANTEES_BOLSHEVIKS_DESC_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				has_government = fascism
+			}
+		}
+		localization_key = SOV_DANZIG_GUARANTEES_BOLSHEVIKS_DESC_FASCISM
+	}
+	text = {
+		trigger = {
+			SOV = {
+				OR = {
+					has_government = neutrality
+					has_government = democratic
+				}
+			}
+		}
+		localization_key = SOV_DANZIG_GUARANTEES_BOLSHEVIKS_DESC_NEUTRALITY
+	}
+}
+
+defined_text = {
+	name = GetDanzigGuaranteesRedsDesc
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_DANZIG_GUARANTEES_REDS_DESC_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = SOV_DANZIG_GUARANTEES_REDS_DESC_NEUTRALITY
+	}
+}
+
+defined_text = {
+	name = GetRussiansDemonym
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_RUSSIANS_DEMONYM_SOVIETS
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = SOV_RUSSIANS_DEMONYM_RUSSIANS
+	}
+}
+
+defined_text = {
+	name = GetTackleCommunistThreatName
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_TACKLE_COMMUNIST_THREAT_NAME_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = SOV_TACKLE_COMMUNIST_THREAT_NAME_EXILES
+	}
+}
+
+defined_text = {
+	name = GetGreatRedMenaceName
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_GREAT_RED_MENACE_NAME_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = SOV_GREAT_RED_MENACE_NAME_EXILES
+	}
+}
+
+defined_text = {
+	name = GetGreatRedMenaceDesc
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_GREAT_RED_MENACE_DESC_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = SOV_GREAT_RED_MENACE_DESC_EXILES
+	}
+}
+
+defined_text = {
+	name = GetGreatRedMenaceEventDesc1
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_GREAT_RED_MENACE_EVENT_DESC_1_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = SOV_GREAT_RED_MENACE_EVENT_DESC_1_EXILES
+	}
+}
+
+defined_text = {
+	name = GetGreatRedMenaceEventDesc2
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_GREAT_RED_MENACE_EVENT_DESC_2_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = SOV_GREAT_RED_MENACE_EVENT_DESC_2_EXILES
+	}
+}
+
+defined_text = {
+	name = GetDanubianMembershipDesc
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_DANUBIAN_MEMBERSHIP_DESC_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = SOV_DANUBIAN_MEMBERSHIP_DESC_EXILES
+	}
+}
+
+defined_text = {
+	name = GetBalticMembershipDesc
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_BALTIC_MEMBERSHIP_DESC_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = SOV_BALTIC_MEMBERSHIP_DESC_EXILES
+	}
+}
+
+defined_text = {
+	name = GetFinnishMembershipDesc
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_FINNISH_MEMBERSHIP_DESC_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = SOV_FINNISH_MEMBERSHIP_DESC_EXILES
+	}
+}
+
+defined_text = {
+	name = GetStrikeAtTheSourceDesc
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_STRIKE_AT_THE_SOURCE_DESC_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = SOV_STRIKE_AT_THE_SOURCE_DESC_EXILES
+	}
+}
+
+# Governments in Exile
+defined_text = {
+	name = GetGovernmentInExileCategoryDesc
+	text = {
+		trigger = {
+			is_exile_host = yes
+		}
+		localization_key = governments_in_exile_host_desc
+	}
+	text = {
+		trigger = {
+			
+			ROOT = { 
+				is_government_in_exile = yes
+				original_tag = ETH 
+			}
+		}
+		localization_key = governments_in_exile_ETH_desc
+		#TODO_TA set correct texticon
+	}
+	text = {
+		localization_key = governments_in_exile_exiled_desc
+	}
+
+}
+
+#USSR "Fall of London"
+defined_text = {
+	name = GetSOVIdeologyLondonDesc
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = get_SOV_ideology_london_desc
+	}
+	text = {
+		
+		localization_key = get_SOV_ideology_london_desc_alt
+		
+	}
+}
+
+#USSR "Fall of London" Response
+defined_text = {
+	name = GetSOVIdeologyLondonResponse
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = get_SOV_ideology_london_response
+	}
+	text = {
+		
+		localization_key = get_SOV_ideology_london_response_alt
+		
+	}
+}
+
+# Handshake event picture (pick Hitler one only if Hitler is in charge, otherwise pick generic handshake tack)
+defined_text = {
+	name = GetHitlerHandshakeEventPicture
+	text = {
+		trigger = {
+			GER = {
+				has_country_leader = {
+				 	ruling_only = yes
+				 	character = GER_adolf_hitler
+				 }
+			}
+		}
+		localization_key = GFX_report_event_hitler_croatia_handshake
+	}
+	text = {
+		localization_key = GFX_report_event_generic_handshake
+	}
+}
+
+# Croatian Handshake event picture (pick Hitler one only if Hitler is in charge, otherwise pick generic croatian handshake tack)
+defined_text = {
+	name = GetHitlerCroatianHandshakeEventPicture
+	text = {
+		trigger = {
+			GER = {
+				has_country_leader = {
+				 	ruling_only = yes
+				 	character = GER_adolf_hitler
+				 }
+			}
+		}
+		localization_key = GFX_report_event_hitler_croatia_handshake
+	}
+	text = {
+		localization_key = GFX_report_event_generic_croatia_handshake
+	}
+}
+
+# German-China event picture (pick Hitler one only if Hitler is in charge, otherwise use picture without Hitler tack)
+defined_text = {
+	name = GetHitlerChinaEventPicture
+	text = {
+		trigger = {
+			GER = {
+				has_country_leader = {
+				 	ruling_only = yes
+				 	character = GER_adolf_hitler
+				 }
+			}
+		}
+		localization_key = GFX_report_event_hitler_china
+	}
+	text = {
+		localization_key = GFX_report_event_generic_china
+	}
+}
+
+# German-China event picture (pick Hitler one only if Hitler is in charge, otherwise use picture without Hitler tack)
+defined_text = {
+	name = GetHitlerHandshakeNewsEventPicture
+	text = {
+		trigger = {
+			GER = {
+				has_country_leader = {
+				 	ruling_only = yes
+				 	character = GER_adolf_hitler
+				 }
+			}
+		}
+		localization_key = GFX_news_event_hitler_handshake
+	}
+	text = {
+		localization_key = GFX_news_event_generic_handshake
 	}
 }

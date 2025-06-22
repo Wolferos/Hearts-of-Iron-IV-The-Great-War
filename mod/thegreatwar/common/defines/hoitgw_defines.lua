@@ -1,4 +1,4 @@
-NDefines.NGame.START_DATE = "1910.1.1.12"										-- #HOI4TGW ::: START_DATE = "1936.1.1.12", <> Hearts of Iron IV: The Great War <>
+NDefines.NGame.START_DATE = "1910.5.1.1"										-- #HOI4TGW ::: START_DATE = "1936.1.1.12", <> Hearts of Iron IV: The Great War <>
 NDefines.NGame.END_DATE = "1969.1.1.1"											-- #HOI4TGW ::: END_DATE = "1949.1.1.1",
 
 NDefines.NDiplomacy.BASE_TRUCE_PERIOD = 30										-- #HOI4TGW ::: Base truce period in days.
