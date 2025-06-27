@@ -1,0 +1,451 @@
+shared_focus = {
+	id = SAU_develop_the_industry
+	icon = GFX_focus_generic_industry_1
+	cost = 10
+	x = 10
+	y = 0
+	available_if_capitulated = yes
+	completion_reward = {
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+shared_focus = {
+	id = SAU_new_infrastructure_projects
+	icon = GFX_goal_generic_construct_infrastructure
+	cost = 10
+	x = -2
+	y = 1
+	relative_position_id = SAU_develop_the_industry
+	prerequisite = { focus = SAU_develop_the_industry }
+	available_if_capitulated = yes
+	completion_reward = {
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+shared_focus = {
+	id = SAU_arabahn
+	icon = GFX_goal_generic_construct_infrastructure
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = SAU_new_infrastructure_projects
+	prerequisite = { focus = SAU_new_infrastructure_projects }
+	available_if_capitulated = yes
+	completion_reward = {
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+shared_focus = {
+	id = SAU_new_industrial_centers
+	icon = GFX_focus_generic_industry_3
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = SAU_develop_the_industry
+	prerequisite = { focus = SAU_develop_the_industry }
+	available_if_capitulated = yes
+	completion_reward = {
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+shared_focus = {
+	id = SAU_inflationary_policies
+	icon = GFX_focus_mex_privatisation
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = SAU_new_industrial_centers
+	prerequisite = { focus = SAU_new_industrial_centers }
+	available_if_capitulated = yes
+	completion_reward = {
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_timed_idea = {
+			idea = SAU_inflation
+			days = 90
+		}
+	}
+}
+shared_focus = {
+	id = SAU_arm_ourselves
+	icon = GFX_goal_generic_construct_mil_factory
+	cost = 10
+	x = 2
+	y = 1
+	relative_position_id = SAU_develop_the_industry
+	prerequisite = { focus = SAU_develop_the_industry }
+	available_if_capitulated = yes
+	completion_reward = {
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+shared_focus = {
+	id = SAU_arabian_arms_race
+	icon = GFX_focus_generic_reorient_production
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = SAU_arm_ourselves
+	prerequisite = { focus = SAU_arm_ourselves }
+	available_if_capitulated = yes
+	completion_reward = {
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+shared_focus = {
+	id = SAU_research_grants
+	icon = GFX_focus_research
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = SAU_inflationary_policies
+	prerequisite = { focus = SAU_arabian_arms_race }
+	prerequisite = { focus = SAU_arabahn }
+	prerequisite = { focus = SAU_inflationary_policies }
+	available = {
+		num_of_controlled_factories = 14
+	}
+	available_if_capitulated = yes
+	completion_reward = {
+		add_research_slot = 1
+	}
+}
+
+shared_focus = {
+	id = SAU_restructure_military_hc
+	icon = GFX_goal_generic_position_armies
+	cost = 10
+	x = 19
+	y = 0
+	available_if_capitulated = yes
+	completion_reward = {
+		army_experience = 75
+	}
+}
+
+shared_focus = {
+	id = SAU_naval_forces
+	icon = GFX_goal_generic_build_navy
+	cost = 10
+	x = -4
+	y = 1
+	relative_position_id = SAU_restructure_military_hc
+	prerequisite = { focus = SAU_restructure_military_hc }
+	available = {
+		custom_trigger_tooltip = {
+			tooltip = SAU_naval_forces_tt
+			any_state = {
+				is_coastal = yes
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+	}
+	available_if_capitulated = yes
+	completion_reward = {
+		random_owned_controlled_state = {
+			limit = {
+				is_costal = yes
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = dockyard
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = SAU_marines
+	icon = GFX_focus_generic_naval_discipline
+	cost = 10
+	x = -1
+	y = 1
+	relative_position_id = SAU_naval_forces
+	prerequisite = { focus = SAU_naval_forces }
+	available = {
+		custom_trigger_tooltip = {
+			tooltip = SAU_naval_forces_tt
+			any_state = {
+				is_coastal = yes
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+	}
+	available_if_capitulated = yes
+	completion_reward = {
+		add_tech_bonus = {
+			name = SAU_marines
+			bonus = 1.5
+			uses = 1
+			technology = marines
+			technology = marines2
+			technology = marines3
+		}
+	}
+}
+
+shared_focus = {
+	id = SAU_ship
+	icon = GFX_focus_generic_cruiser2
+	cost = 10
+	x = 1
+	y = 1
+	relative_position_id = SAU_naval_forces
+	prerequisite = { focus = SAU_naval_forces }
+	available = {
+		custom_trigger_tooltip = {
+			tooltip = SAU_naval_forces_tt
+			any_state = {
+				is_coastal = yes
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+	}
+	available_if_capitulated = yes
+	completion_reward = {
+		add_tech_bonus = {
+			name = SAU_ship
+			bonus = 1.5
+			uses = 1
+			category = mio_cat_tech_all_screen_ship_and_modules
+			category = mio_cat_tech_all_capital_ship_and_modules
+			category = mio_cat_tech_all_carrier_and_modules
+			category = mio_cat_tech_all_cruiser_and_modules
+			category = mio_cat_tech_all_destroyer_and_modules
+		}
+	}
+}
+
+shared_focus = {
+	id = SAU_sub
+	icon = GFX_goal_generic_navy_submarine
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = SAU_ship
+	prerequisite = { focus = SAU_ship }
+	available = {
+		custom_trigger_tooltip = {
+			tooltip = SAU_naval_forces_tt
+			any_state = {
+				is_coastal = yes
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+	}
+	available_if_capitulated = yes
+	completion_reward = {
+		add_tech_bonus = {
+			name = SAU_sub
+			bonus = 1.5
+			uses = 1
+			category = mio_cat_tech_all_submarine_and_modules
+		}
+	}
+}
+
+shared_focus = {
+	id = SAU_arms_innovation
+	icon = GFX_focus_secret_rearmament
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = SAU_restructure_military_hc
+	prerequisite = { focus = SAU_restructure_military_hc }
+	available_if_capitulated = yes
+	completion_reward = {
+		add_tech_bonus = {
+			name = SAU_arms_innovation
+			bonus = 1
+			uses = 1
+			category = infantry_tech
+		}
+	}
+}
+
+shared_focus = {
+	id = SAU_arms_innovation_2
+	icon = GFX_goal_generic_small_arms
+	cost = 10
+	x = 1
+	y = 1
+	relative_position_id = SAU_arms_innovation
+	prerequisite = { focus = SAU_arms_innovation }
+	available_if_capitulated = yes
+	completion_reward = {
+		add_tech_bonus = {
+			name = SAU_arms_innovation
+			bonus = 1.5
+			uses = 1
+			category = infantry_tech
+		}
+	}
+}
+
+shared_focus = {
+	id = SAU_chemical_weapons
+	icon = GFX_hoi4tgw_gasmask
+	cost = 10
+	x = -1
+	y = 1
+	relative_position_id = SAU_arms_innovation
+	prerequisite = { focus = SAU_arms_innovation }
+	available_if_capitulated = yes
+	completion_reward = {
+		add_tech_bonus = {
+			name = SAU_chemical_weapons
+			bonus = 1
+			uses = 1
+			technology = chemical_research
+			technology = chemical_research2
+			technology = chemical_research3
+		}
+	}
+}
+
+shared_focus = {
+	id = SAU_create_af
+	icon = GFX_goal_generic_build_airforce
+	cost = 10
+	x = 4
+	y = 1
+	relative_position_id = SAU_restructure_military_hc
+	prerequisite = { focus = SAU_restructure_military_hc }
+	available_if_capitulated = yes
+	completion_reward = {
+		air_experience = 10
+		random_owned_controlled_state = {
+			add_building_construction = {
+				type = air_base
+				level = 4
+				instant_build = yes
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = SAU_air_base
+	icon = GFX_goal_generic_air_production
+	cost = 10
+	x = -1
+	y = 1
+	relative_position_id = SAU_create_af
+	prerequisite = { focus = SAU_create_af }
+	available_if_capitulated = yes
+	completion_reward = {
+		random_owned_controlled_state = {
+			add_building_construction = {
+				type = air_base
+				level = 3
+				instant_build = yes
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = SAU_air_tactics
+	icon = GFX_goal_generic_air_doctrine
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = SAU_air_base
+	prerequisite = { focus = SAU_air_base }
+	available_if_capitulated = yes
+	completion_reward = {
+		air_experience = 50
+	}
+}
+
+shared_focus = {
+	id = SAU_air_innnovations
+	icon = GFX_goal_generic_air_fighter
+	cost = 10
+	x = 1
+	y = 1
+	relative_position_id = SAU_create_af
+	prerequisite = { focus = SAU_create_af }
+	available_if_capitulated = yes
+	completion_reward = {
+		add_tech_bonus = {
+			name = SAU_air_innnovations
+			bonus = 1
+			uses = 2
+			category = air_equipment
+		}
+	}
+}
