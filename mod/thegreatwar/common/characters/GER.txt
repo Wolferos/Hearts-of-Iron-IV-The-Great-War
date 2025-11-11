@@ -18,11 +18,24 @@ characters = {
 			civilian = {
 				large = GFX_Portrait_GER_paul_von_hindenburg
 			}
+			army = {
+				large = GFX_Portrait_GER_paul_von_hindenburg
+				small = GFX_idea_GER_paul_von_hindenburg
+			}
 		}
 		country_leader = {
 			ideology = conservatism
+			traits = { JUNO_the_general_president }
 			expire = "1935.1.1.1"
 			id = -1
+		}
+		corps_commander = {
+			skill = 3
+			attack_skill = 4
+			defense_skill = 3
+			planning_skill = 3
+			logistics_skill = 2
+			legacy_id = 34315
 		}
 	}
 	GER_adolf_hitler = {
@@ -231,11 +244,45 @@ characters = {
 			legacy_id = 34037
 		}
 	}
-	GER_von_falkenhayn_erich = {
-		name = GER_von_falkenhayn_erich
+	GER_erich_von_falkenhayn = {
+		name = GER_erich_von_falkenhayn
 		portraits = {
 			army = {
-				large = GFX_Portrait_GER_von_falkenhayn_erich
+				large = GFX_Portrait_GER_erich_von_falkenhayn
+				small = GFX_idea_GER_erich_von_falkenhayn
+			}
+		}
+		advisor = {
+			idea_token = GER_erich_von_falkenhayn_chief
+			slot = high_command
+			ledger = army
+			allowed = {
+				tag = GER
+			}
+			traits = {
+				army_entrenchment_1
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		advisor = {
+			idea_token = GER_erich_von_falkenhayn
+			slot = theorist
+			allowed = {
+				tag = GER
+			}
+			available = {
+				has_government = neutrality
+			}
+			research_bonus = {
+				cat_mobile_warfare = 0.15
+			}
+			traits = {
+				mobile_warfare_expert
+			}
+			ai_will_do = {
+				factor = 10
 			}
 		}
 		corps_commander = {
@@ -247,11 +294,28 @@ characters = {
 			legacy_id = 34040
 		}
 	}
-	GER_von_einem = {
-		name = GER_von_einem
+	GER_karl_von_einem = {
+		name = GER_karl_von_einem
 		portraits = {
 			army = {
-				large = GFX_Portrait_GER_von_einem
+				large = GFX_Portrait_GER_karl_von_einem
+				small = GFX_idea_GER_karl_von_einem
+			}
+		}
+		advisor = {
+			idea_token = GER_karl_von_einem
+			slot = political_advisor
+			allowed = {
+				tag = GER
+			}
+			available = {
+				has_government = neutrality
+			}
+			traits = {
+				fortification_engineer
+			}
+			ai_will_do = {
+				factor = 1
 			}
 		}
 		corps_commander = {
@@ -451,22 +515,6 @@ characters = {
 			legacy_id = 34260
 		}
 	}
-	GER_von_hindenburg = {
-		name = GER_von_hindenburg
-		portraits = {
-			army = {
-				large = GFX_Portrait_GER_von_hindenburg
-			}
-		}
-		corps_commander = {
-			skill = 3
-			attack_skill = 4
-			defense_skill = 3
-			planning_skill = 3
-			logistics_skill = 2
-			legacy_id = 34315
-		}
-	}
 	GER_von_dem_borne = {
 		name = GER_von_dem_borne
 		portraits = {
@@ -505,11 +553,12 @@ characters = {
 			legacy_id = 34332
 		}
 	}
-	GER_von_mackensen = {
-		name = GER_von_mackensen
+	GER_august_von_mackensen = {
+		name = GER_august_von_mackensen
 		portraits = {
 			army = {
-				large = GFX_Portrait_GER_von_mackensen
+				large = GFX_Portrait_GER_august_von_mackensen
+				small = GFX_idea_GER_august_von_mackensen
 			}
 		}
 		corps_commander = {
@@ -519,6 +568,19 @@ characters = {
 			planning_skill = 1
 			logistics_skill = 1
 			legacy_id = 34485
+		}
+		advisor = {
+			idea_token = GER_august_von_mackensen
+			slot = army_chief
+			allowed = {
+				tag = GER
+			}
+			traits = {
+				army_chief_drill_1
+			}
+			ai_will_do = {
+				factor = 1
+			}
 		}
 	}
 	GER_franz_von_hipper = {
@@ -704,30 +766,6 @@ characters = {
 			}
 			traits = {
 				smooth_talking_charmer
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	GER_karl_von_einem = {
-		name = GER_karl_von_einem
-		portraits = {
-			army = {
-				small = GFX_idea_GER_karl_von_einem
-			}
-		}
-		advisor = {
-			idea_token = GER_karl_von_einem
-			slot = political_advisor
-			allowed = {
-				tag = GER
-			}
-			available = {
-				has_government = neutrality
-			}
-			traits = {
-				fortification_engineer
 			}
 			ai_will_do = {
 				factor = 1
@@ -1100,33 +1138,6 @@ characters = {
 			}
 		}
 	}
-	GER_erich_von_falkenhayn = {
-		name = GER_erich_von_falkenhayn
-		portraits = {
-			army = {
-				small = GFX_idea_GER_erich_von_falkenhayn
-			}
-		}
-		advisor = {
-			idea_token = GER_erich_von_falkenhayn
-			slot = theorist
-			allowed = {
-				tag = GER
-			}
-			available = {
-				has_government = neutrality
-			}
-			research_bonus = {
-				cat_mobile_warfare = 0.15
-			}
-			traits = {
-				mobile_warfare_expert
-			}
-			ai_will_do = {
-				factor = 10
-			}
-		}
-	}
 	GER_wilhelm_heye = {
 		name = GER_wilhelm_heye
 		portraits = {
@@ -1142,27 +1153,6 @@ characters = {
 			}
 			traits = {
 				army_chief_maneuver_1
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	GER_august_von_mackensen = {
-		name = GER_august_von_mackensen
-		portraits = {
-			army = {
-				small = GFX_idea_GER_august_von_mackensen
-			}
-		}
-		advisor = {
-			idea_token = GER_august_von_mackensen
-			slot = army_chief
-			allowed = {
-				tag = GER
-			}
-			traits = {
-				army_chief_drill_1
 			}
 			ai_will_do = {
 				factor = 1
@@ -1384,28 +1374,6 @@ characters = {
 			}
 			traits = {
 				air_chief_reform_1
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	GER_erich_von_falkenhayn_chief = {
-		name = GER_erich_von_falkenhayn_chief
-		portraits = {
-			army = {
-				small = GFX_idea_GER_erich_von_falkenhayn_chief
-			}
-		}
-		advisor = {
-			idea_token = GER_erich_von_falkenhayn_chief
-			slot = high_command
-			ledger = army
-			allowed = {
-				tag = GER
-			}
-			traits = {
-				army_entrenchment_1
 			}
 			ai_will_do = {
 				factor = 1
@@ -1661,6 +1629,9 @@ characters = {
 			planning_skill = 3
 			logistics_skill = 3
 			legacy_id = 98001
+			visible = {
+				has_completed_focus = GER_int_promote_fedor_von_bock
+			}
 		}
 	}
 }
