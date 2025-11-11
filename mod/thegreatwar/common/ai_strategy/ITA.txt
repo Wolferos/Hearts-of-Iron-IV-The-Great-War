@@ -1,4 +1,4 @@
-italoturkish_war = {
+ITA_italo_turkish_war = {
 	enable = {
 		original_tag = ITA
 		ITA = {
@@ -15,6 +15,80 @@ italoturkish_war = {
 	ai_strategy = {
 		type = area_priority
 		id = africa
+		value = 200
+	}
+}
+
+ITA_homeland_defense = {
+	enable = {
+		original_tag = ITA
+		OR = {
+			owns_state = 2
+			owns_state = 162
+			owns_state = 161
+			owns_state = 160
+			owns_state = 159
+			owns_state = 158
+		}
+		OR = {
+			has_war_with = AUH
+			has_war_with = FRA
+		}
+	}
+	abort = {
+		AND = {
+			NOT = { has_war_with = AUH }
+			NOT = { has_war_with = FRA }
+		}
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = 21
+		value = 50
+	}
+	ai_strategy = {
+		type = area_priority
+		id = 23
+		value = 50
+	}
+}
+
+ITA_battles_of_the_isonzo_river = {
+	enable = {
+		original_tag = ITA
+		is_historical_focus_on = yes
+		has_global_flag = kis_franzferdinand_murdered
+		date > 1915.05.01
+		has_war_with = AUH
+		is_in_faction_with = FRA
+	}
+	abort = {
+		OR = {
+			NOT = { has_war_with = AUH }
+			date > 1917.11.01
+		}
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = 21
+		value = 50
+	}
+	ai_strategy = {
+		type = area_priority
+		id = 24
+		value = 100
+	}
+	
+	ai_strategy = {
+		type = consider_weak
+		id = AUH
+		value = 200
+	}
+	ai_strategy = {
+		type = invade
+		id = AUH
 		value = 200
 	}
 }
