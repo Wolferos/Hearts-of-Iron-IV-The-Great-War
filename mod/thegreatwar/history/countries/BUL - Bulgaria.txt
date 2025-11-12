@@ -32,7 +32,7 @@ recruit_character = BUL_todor_ivanchov
 recruit_character = BUL_marko_tourlakov
 recruit_character = BUL_kristo_pastukhov
 # Theorist
-recruit_character = BUL_Nikola_Zhekov# Also General
+recruit_character = BUL_Nikola_Zhekov # Also General
 # Army Chief
 recruit_character = BUL_stefan_nerezov
 recruit_character = BUL_konstantin_zhostov
@@ -44,7 +44,7 @@ recruit_character = BUL_radko_dimitriev
 recruit_character = BUL_vicho_dikov
 # Navy Chief
 recruit_character = BUL_konstantin_kirkov
-recruit_character = BUL_rashko_serafimov# Also Admiral
+recruit_character = BUL_rashko_serafimov # Also Admiral
 # Air Chief
 recruit_character = BUL_vasil_zlatarov
 # High Command
@@ -57,6 +57,18 @@ recruit_character = BUL_pravoslav_tenev
 recruit_character = BUL_lazar_draganov
 recruit_character = BUL_ivan_fichev
 recruit_character = BUL_stepan_paprikov
+
+set_variable = {
+	var = bul_current_balkan_threat
+	value = 0
+}
+
+add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 9600 producer = BUL } #TODO: Move to OOB
+add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 2400 producer = BUL } #TODO: Move to OOB
+add_equipment_to_stockpile = { type = support_equipment_1 amount = 360 producer = BUL } #TODO: Move to OOB
+add_equipment_to_stockpile = { type = light_field_gun_equipment_1 amount = 240 producer = BUL } #TODO: Move to OOB
+add_equipment_to_stockpile = { type = heavy_field_gun_equipment_1 amount = 24 producer = BUL } #TODO: Move to OOB
+
 # ========================================
 #-------------------------------------------------------
 set_technology = {
@@ -256,6 +268,13 @@ set_technology = {
 		partial_economic_mobilisation
 	}
 	set_country_flag = second_balkan_war
+	BUL_ferdinand_i = {
+		swap_country_leader_traits = {
+			remove = balkan_hegemonist
+			add = defeated_balkan_hegemonist
+		}
+	}
+	add_to_variable = { var = bul_current_balkan_threat value = 2 }
 }
 
 1919.1.1 = {

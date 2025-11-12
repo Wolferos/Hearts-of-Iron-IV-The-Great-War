@@ -34,9 +34,7 @@ recruit_character = TUR_mehmed_vi
 recruit_character = TUR_abdulhamid_ii
 recruit_character = TUR_mustafa_kemal
 recruit_character = TUR_damat_ferid_pasha
-
 #create_country_leader={ name = TUR_mustafa_suphi desc = TUR_mustafa_suphi_DESC picture="gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_mustafa_suphi.dds" expire="1935.1.1" ideology=leninism traits = { } }
-
 
 #ARMY
 1914.1.1 = {
@@ -64,7 +62,6 @@ recruit_character = TUR_Halil
 recruit_character = TUR_Ahmed_Ramiz_Bey
 recruit_character = TUR_Arif_Pasa
 
-
 #ADVISORS
 recruit_character = TUR_ahmed_nessimy
 recruit_character = TUR_ahmed_tevfik
@@ -81,6 +78,16 @@ recruit_character = TUR_huseyin_hilmi
 recruit_character = TUR_ahmed_izzet
 recruit_character = TUR_mustafa_ismet
 
+set_variable = {
+	var = tur_current_balkan_threat
+	value = 5
+}
+
+add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 6000 producer = TUR } #TODO: Move to OOB
+add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 1200 producer = TUR } #TODO: Move to OOB
+add_equipment_to_stockpile = { type = support_equipment_1 amount = 60 producer = TUR } #TODO: Move to OOB
+add_equipment_to_stockpile = { type = light_field_gun_equipment_1 amount = 60 producer = TUR } #TODO: Move to OOB
+add_equipment_to_stockpile = { type = heavy_field_gun_equipment_1 amount = 12 producer = TUR } #TODO: Move to OOB
 
 set_technology = {
 
@@ -208,11 +215,11 @@ set_technology = {
 	create_equipment_variant={ name="Avni Illah Class" type=heavy_cruiser_1890 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
 	create_equipment_variant={ name="İclaliye Class" type=heavy_cruiser_1890 parent_version = 3 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
 	create_equipment_variant={ name="Feth-i Bülend Class" type=heavy_cruiser_1890 parent_version = 4 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=5 ship_engine_upgrade=0 ship_reliability_upgrade=5           } }
-	create_equipment_variant={ name="Hamidieh Class" type=heavy_cruiser_1900 parent_version = 0 obsolete=no upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
+	create_equipment_variant={ name="Hamidieh Class" type=heavy_cruiser_1900 parent_version = 0 upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
 	create_equipment_variant={ name="Heibetnuma Class" type=light_cruiser_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
 	create_equipment_variant={ name="Lutfi Humayun Class" type=light_cruiser_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
-	create_equipment_variant={ name="Medjidieh Class" type=light_cruiser_1900 parent_version = 0 obsolete=no upgrades={ ship_gun_upgrade=1  ship_engine_upgrade=3 ship_reliability_upgrade=4 ship_anti_air_upgrade=0          } }
-	create_equipment_variant={ name="S165 Class" type=destroyer_1906 parent_version = 0 obsolete=no upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=1 } }
+	create_equipment_variant={ name="Medjidieh Class" type=light_cruiser_1900 parent_version = 0 upgrades={ ship_gun_upgrade=1  ship_engine_upgrade=3 ship_reliability_upgrade=4 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="S165 Class" type=destroyer_1906 parent_version = 0 upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=1 } }
 
 }
 
@@ -355,17 +362,22 @@ set_technology = {
 		german_advisors
 	}
 
-	add_timed_idea = { idea = building_dreadnoughts days = 200 }
+	if = {
+		limit = {
+			has_start_date < 1915.1.1
+		}
+		add_timed_idea = { idea = building_dreadnoughts days = 200 }
+	}
+
+	subtract_from_variable = { var = tur_current_balkan_threat value = 1 }
 }
 
 1919.1.1 = {
-	remove_unit_leader = 90013 # Mustafa Kemal
-	remove_unit_leader = 90014 # Mustafa Kemal 2 #1914 (in the Turkish National Movement)
-	remove_unit_leader = 90015 # Mustafa Kemal 3 (Country Leader ID)
-	remove_unit_leader = 90016 # Mustafa Kemal 4 (Country Leader ID)
-	remove_unit_leader = 90515 # Fevzi Çakmak (in the Turkish National Movement)
-	remove_unit_leader = 90138 # Hasan Tahsin (He died in Lausanne in 1918)
-	remove_unit_leader = 90147 # Otto Liman von Sanders (Arrested in Malta in February 1919, retired from the German army in 1919)
+	#TODO TNM could use set_nationality
+	retire_character = TUR_mustafa_kemal # Mustafa Kemal (in the Turkish National Movement)
+	retire_character = TUR_Fevzi # Fevzi Çakmak (in the Turkish National Movement)
+	retire_character = TUR_Hasan_Tahsin # Hasan Tahsin (He died in Lausanne in 1918)
+	retire_character = TUR_Liman_von_Sanders # Otto Liman von Sanders (Arrested in Malta in February 1919, retired from the German army in 1919)
 
 	oob = "TUR_1919"
 

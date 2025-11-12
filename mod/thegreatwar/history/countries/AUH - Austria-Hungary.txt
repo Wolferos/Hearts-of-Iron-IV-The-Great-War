@@ -48,17 +48,17 @@ recruit_character = AUH_rudolf_montecuccoli
 recruit_character = AUH_karl_kailer_von_kagenfels
 recruit_character = AUH_maximilian_njegovan
 recruit_character = AUH_maximilian_daublebsky_von_sterneck
+
+set_variable = {
+	var = auh_current_balkan_threat
+	value = 0
+}
+add_to_variable = { var = auh_current_balkan_threat value = 1 }
+
 1910.1.1 = {
-	puppet = BOS
-	# SPECIAL_DLC Together for Victory
-	if = {
-		limit = {
-			has_dlc = "Together for Victory"
-		}
-		set_autonomy = {
-			target = BOS
-			autonomous_state = autonomy_integrated_puppet
-		}
+	set_autonomy = {
+		target = BOS
+		autonomous_state = autonomy_integrated_puppet
 	}
 	oob = "AUH_1910"
 	#-------------------------------------------------------
@@ -227,7 +227,6 @@ recruit_character = AUH_maximilian_daublebsky_von_sterneck
 		name = "Sankt Georg Class"
 		type = heavy_cruiser_1900
 		parent_version = 0
-		obsolete = no
 		upgrades = {
 			ship_gun_upgrade = 0
 			ship_armor_upgrade = 0
@@ -463,7 +462,6 @@ recruit_character = AUH_maximilian_daublebsky_von_sterneck
 		name = "U10 Class"
 		type = coastal_submarine_1910
 		parent_version = 0
-		obsolete = no
 		upgrades = {
 			ship_reliability_upgrade = 0
 			sub_torpedo_upgrade = 0
