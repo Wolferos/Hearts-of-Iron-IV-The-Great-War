@@ -1,0 +1,44 @@
+﻿###########################
+# News Events
+###########################
+
+add_namespace = ww1_news
+
+#-> Battle of Deçiq <><>
+news_event = {
+	id = ww1_news.1
+	title = ww1_news.1.t
+	desc = ww1_news.1.desc
+	picture = EVENT_hoi4tgw_albanian_revolt
+
+	major = yes
+
+	fire_only_once = yes
+
+	trigger = {
+		date > 1911.4.6
+		NOT = {
+			has_global_flag = kis_albanian_revolt_1911
+		}
+	}
+
+	immediate = {
+		set_global_flag = kis_albanian_revolt_1911
+	}
+
+	option = {
+		name = ww1_news.1.a
+		trigger = {
+			NOT = {
+				TAG = TUR
+			}
+		}
+	}
+
+	option = {
+		name = ww1_news.1.b
+		trigger = {
+			TAG = TUR
+		}
+	}
+}

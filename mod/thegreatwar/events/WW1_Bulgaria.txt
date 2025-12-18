@@ -14,7 +14,7 @@ country_event = {
 	option = {
 		name = ww1_bulgaria.1.a
 		ai_chance = {
-			factor = 100
+			base = 100
 		}
 		GER = {
 			send_equipment = {
@@ -36,9 +36,207 @@ country_event = {
 	option = {
 		name = ww1_bulgaria.1.b
 		ai_chance = {
-			factor = 0
+			base = 0
 		}
 	}
 }
 
 #____________________________________________________________
+
+# Montenegro Pact
+country_event = {
+	id = ww1_bulgaria.2
+	title = ww1_bulgaria.2.t
+	desc = ww1_bulgaria.2.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_bulgaria.2.a  ## accept Pact
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = BUL
+			relation = guarantee
+			active = yes
+		}
+		BUL = {
+			diplomatic_relation = {
+				country = MNT
+				relation = guarantee
+				active = yes
+			}
+			diplomatic_relation = {
+				country = MNT
+				relation = military_access
+				active = yes
+			}
+		}
+		diplomatic_relation = {
+			country = BUL
+			relation = non_aggression_pact
+			active = yes
+		}
+		diplomatic_relation = {
+			country = BUL
+			relation = military_access
+			active = yes
+		}
+	}
+
+	option = {
+		name = ww1_bulgaria.2.b  ## refuse pact
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Serbia Pact
+country_event = {
+	id = ww1_bulgaria.3
+	title = ww1_bulgaria.3.t
+	desc = ww1_bulgaria.3.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_bulgaria.3.a  ## accept Pact
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = BUL
+			relation = guarantee
+			active = yes
+		}
+		BUL = {
+			diplomatic_relation = {
+				country = SER
+				relation = guarantee
+				active = yes
+			}
+			diplomatic_relation = {
+				country = SER
+				relation = military_access
+				active = yes
+			}
+		}
+		diplomatic_relation = {
+			country = BUL
+			relation = non_aggression_pact
+			active = yes
+		}
+		diplomatic_relation = {
+			country = BUL
+			relation = military_access
+			active = yes
+		}
+	}
+
+	option = {
+		name = ww1_bulgaria.3.b  ## refuse pact
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Greece Pact
+country_event = {
+	id = ww1_bulgaria.4
+	title = ww1_bulgaria.4.t
+	desc = ww1_bulgaria.4.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_bulgaria.4.a  ## accept Pact
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = BUL
+			relation = guarantee
+			active = yes
+		}
+		BUL = {
+			diplomatic_relation = {
+				country = GRE
+				relation = guarantee
+				active = yes
+			}
+			diplomatic_relation = {
+				country = GRE
+				relation = military_access
+				active = yes
+			}
+		}
+		diplomatic_relation = {
+			country = BUL
+			relation = non_aggression_pact
+			active = yes
+		}
+		diplomatic_relation = {
+			country = BUL
+			relation = military_access
+			active = yes
+		}
+	}
+
+	option = {
+		name = ww1_bulgaria.4.b  ## refuse pact
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Albania Partition
+country_event = {
+	id = ww1_bulgaria.5
+	title = ww1_bulgaria.5.t
+	desc = ww1_bulgaria.5.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_bulgaria.5.a  ## accept demands
+		ai_chance = {
+			base = 100
+		}
+		GRE = { transfer_state = 803 }
+		SER = {
+			annex_country = {
+				target = ALB
+				transfer_troops = no
+			}
+		}
+	}
+
+	option = {
+		name = ww1_bulgaria.5.b  ## refuse demands
+		ai_chance = {
+			base = 0
+		}
+		GRE = {
+			declare_war_on = {
+				target = ALB
+				type = annex_everything
+			}
+		}
+		SER = {
+			declare_war_on = {
+				target = ALB
+				type = annex_everything
+			}
+		}
+		BUL = {
+			declare_war_on = {
+				target = ALB
+				type = annex_everything
+			}
+		}
+	}
+}

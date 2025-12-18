@@ -1,28 +1,27 @@
 characters = {
-	MEX_emiliano_zapata = {
-		name = MEX_emiliano_zapata
+	MEX_porfirio_diaz = {
+		name = MEX_porfirio_diaz
 		portraits = {
 			civilian = {
-				large = GFX_Portrait_MEX_emiliano_zapata
+				large = GFX_Portrait_MEX_porfirio_diaz
+			}
+			army = {
+				large = GFX_Portrait_MEX_porfirio_diaz
+				small = ""
 			}
 		}
 		country_leader = {
-			ideology = marxism
-			expire = "1935.1.1.1"
+			ideology = autocracy
+			expire = "1912.1.1.1"
 			id = -1
 		}
-	}
-	MEX_pancho_villa = {
-		name = MEX_pancho_villa
-		portraits = {
-			civilian = {
-				large = GFX_Portrait_MEX_pancho_villa
-			}
-		}
-		country_leader = {
-			ideology = falangism
-			expire = "1935.1.1.1"
-			id = -1
+		field_marshal = {
+			traits = { defensive_doctrine offensive_doctrine old_guard }
+			skill = 4
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
 		}
 	}
 	MEX_francisco_madero = {
@@ -38,26 +37,116 @@ characters = {
 			id = -1
 		}
 	}
-	MEX_porfirio_diaz = {
-		name = MEX_porfirio_diaz
+	MEX_venustiano_carranza = {
+		name = MEX_venustiano_carranza
 		portraits = {
 			civilian = {
-				large = GFX_Portrait_MEX_porfirio_diaz
+				large = GFX_Portrait_MEX_venustiano_carranza
 			}
 		}
 		country_leader = {
-			ideology = autocracy
-			expire = "1912.1.1.1"
+			ideology = moderatism
+			expire = "1935.1.1.1"
 			id = -1
+		}
+		field_marshal = {
+			traits={ defensive_doctrine }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = {
+				has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+			}
+		}
+	}
+	MEX_emiliano_zapata = {
+		name = MEX_emiliano_zapata
+		portraits = {
+			civilian = {
+				large = GFX_Portrait_MEX_emiliano_zapata
+			}
+			army = {
+				large = GFX_Portrait_MEX_emiliano_zapata
+			}
+		}
+		country_leader = {
+			ideology = marxism
+			expire = "1935.1.1.1"
+			id = -1
+		}
+		field_marshal = {
+			traits={ defensive_doctrine inspirational_leader }
+			skill = 3
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = {
+				has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+			}
+		}
+	}
+	MEX_pancho_villa = {
+		name = MEX_pancho_villa
+		portraits = {
+			civilian = {
+				large = GFX_Portrait_MEX_pancho_villa
+			}
+			army = {
+				large = GFX_Portrait_MEX_pancho_villa
+				small = GFX_idea_MEX_pancho_villa
+			}
+		}
+		country_leader = {
+			ideology = falangism
+			expire = "1935.1.1.1"
+			id = -1
+		}
+		field_marshal = {
+			traits = { logistics_wizard offensive_doctrine inspirational_leader fast_planner }
+			skill = 4
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = {
+				has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+			}
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = MEX_pancho_villa
+			allowed = {
+				original_tag = MEX
+			}
+			traits = {
+				army_chief_morale_1
+			}
+			visible = {
+				has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+			}
+			ai_will_do = {
+				factor = 1
+			}
 		}
 	}
 	MEX_victoriano_huerta = {
 		name = MEX_victoriano_huerta
 		portraits = {
-			army = {
-				small = ""
+			civilian = {
 				large = GFX_Portrait_MEX_victoriano_huerta
 			}
+			army = {
+				large = GFX_Portrait_MEX_victoriano_huerta
+				small = ""
+			}
+		}
+		country_leader = {
+			ideology = autocracy
+			expire = "1935.1.1"
+			id = -1
 		}
 		corps_commander = {
 			traits = {
@@ -69,6 +158,95 @@ characters = {
 			planning_skill = 1
 			logistics_skill = 1
 			legacy_id = 55005
+		}
+	}
+	MEX_bernando_reyes = {
+		name = MEX_bernando_reyes
+		portraits = {
+			army = {
+				large = GFX_Portrait_MEX_bernando_reyes
+				small = ""
+			}
+		}
+		corps_commander = {
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			legacy_id = -1
+		}
+	}
+	MEX_felix_diaz = {
+		name = MEX_felix_diaz
+		portraits = {
+			army = {
+				large = GFX_Portrait_MEX_felix_diaz
+				small = ""
+			}
+		}
+		corps_commander = {
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			legacy_id = -1
+		}
+	}
+	MEX_alvaro_obregon = {
+		name = MEX_alvaro_obregon
+		portraits = {
+			army = {
+				large = GFX_Portrait_MEX_alvaro_obregon
+			}
+		}
+		corps_commander = {
+			traits={ trickster }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = {
+				has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+			}
+		}
+	}
+	MEX_pascual_orozco = {
+		name = MEX_pascual_orozco
+		portraits = {
+			army = {
+				large = GFX_Portrait_MEX_pascual_orozco
+				small = GFX_idea_MEX_pascual_orozco
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = MEX_pascual_orozco
+			ledger = army
+			allowed = {
+				tag = MEX
+			}
+			traits = {
+				army_artillery_1
+			}
+			visible = {
+				has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		corps_commander = {
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = {
+				has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+			}
 		}
 	}
 	MEX_blanquet = {
@@ -857,27 +1035,6 @@ characters = {
 			}
 		}
 	}
-	MEX_francisco__pancho__villa = {
-		name = MEX_francisco__pancho__villa
-		portraits = {
-			army = {
-				small = GFX_idea_MEX_francisco__pancho__villa
-			}
-		}
-		advisor = {
-			slot = army_chief
-			idea_token = MEX_francisco__pancho__villa
-			allowed = {
-				tag = MEX
-			}
-			traits = {
-				army_chief_morale_1
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
 	MEX_federico_gamboa = {
 		name = MEX_federico_gamboa
 		portraits = {
@@ -1216,28 +1373,6 @@ characters = {
 			}
 			traits = {
 				army_chief_offensive_1
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	MEX_pascual_orozco = {
-		name = MEX_pascual_orozco
-		portraits = {
-			army = {
-				small = GFX_idea_MEX_pascual_orozco
-			}
-		}
-		advisor = {
-			slot = high_command
-			idea_token = MEX_pascual_orozco
-			ledger = army
-			allowed = {
-				tag = MEX
-			}
-			traits = {
-				army_artillery_1
 			}
 			ai_will_do = {
 				factor = 1

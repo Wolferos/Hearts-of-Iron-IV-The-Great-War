@@ -1,0 +1,882 @@
+###########################
+# SEA Events
+###########################
+
+add_namespace = SEA_generic_events
+
+#Dispatcher event
+country_event = {
+	id = SEA_generic_events.1
+	title = SEA_generic_events.1.t
+	desc = SEA_generic_events.1.desc
+	picture = GFX_report_event_generic_sign_treaty2
+
+	trigger = {
+		check_allow_alternate_political_events = yes
+		NOT = {
+			has_country_flag = generic_block_alternate_political_events
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	hidden = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = {
+				flag = generic_block_alternate_political_events
+				days = 70
+				value = 1
+			}
+		}
+	}
+
+	option = {
+		name = SEA_generic_events.1.a
+		#Nothing happens!
+	}
+
+	option = {	#Dispatch mild event
+		name = SEA_generic_events.1.a
+		trigger = {
+			OR = {
+				AND = {
+					fascism > 0.2
+					NOT = {
+						has_government = fascism
+					}
+				}
+				AND = {
+					democratic > 0.2
+					NOT = {
+						has_government = democratic
+					}
+				}
+				AND = {
+					neutrality > 0.2
+					NOT = {
+						has_government = neutrality
+					}
+				}
+				AND = {
+					communism > 0.2
+					NOT = {
+						has_government = communism
+					}
+				}
+			}
+		}
+		random_list = {
+			seed = random
+			1 = {
+				modifier = {
+					factor = 0
+					OR = {
+						has_government = democratic
+						NOT = {
+							democratic > 0.2
+						}
+					}
+				}
+				set_variable = { opposition_party = 1 }	#D
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					OR = {
+						has_government = communism
+						NOT = {
+							communism > 0.2
+						}
+					}
+				}
+				set_variable = { opposition_party = 2 }	#C
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					OR = {
+						has_government = fascism
+						NOT = {
+							fascism > 0.2
+						}
+					}
+				}
+				set_variable = { opposition_party = 3 }	#F
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					OR = {
+						has_government = neutrality
+						NOT = {
+							neutrality > 0.2
+						}
+					}
+				}
+				set_variable = { opposition_party = 4 }	#N
+			}
+		}
+		random_list = {
+			seed = random
+			10 = {		#Strike
+				country_event = SEA_generic_events.2
+				modifier = {
+					factor = 0
+					check_variable = { opposition_party > 2 }
+				}
+			}
+			5 = {		#Protesting weak government
+				country_event = SEA_generic_events.3
+				modifier = {
+					factor = 0
+					check_variable = { opposition_party < 2 }	#only allowed for democratic
+				}
+			}
+			10 = {		#Insignificant Protest Action
+				country_event = SEA_generic_events.4
+			}
+			10 = {		#Small political rally
+				country_event = SEA_generic_events.5
+			}
+			10 = {		#Small corruption to undermine opposition exposed
+				country_event = SEA_generic_events.6
+			}
+		}
+	}
+
+	option = {	#Dispatch serious event
+		name = SEA_generic_events.1.a
+		trigger = {
+			OR = {
+				AND = {
+					fascism > 0.35
+					NOT = {
+						has_government = fascism
+					}
+				}
+				AND = {
+					democratic > 0.35
+					NOT = {
+						has_government = democratic
+					}
+				}
+				AND = {
+					neutrality > 0.35
+					NOT = {
+						has_government = neutrality
+					}
+				}
+				AND = {
+					communism > 0.35
+					NOT = {
+						has_government = communism
+					}
+				}
+			}
+		}
+		random_list = {
+			seed = random
+			1 = {
+				modifier = {
+					factor = 0
+					OR = {
+						has_government = democratic
+						NOT = {
+							democratic > 0.35
+						}
+					}
+				}
+				set_variable = { opposition_party = 1 }	#D
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					OR = {
+						has_government = communism
+						NOT = {
+							communism > 0.35
+						}
+					}
+				}
+				set_variable = { opposition_party = 2 }	#C
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					OR = {
+						has_government = fascism
+						NOT = {
+							fascism > 0.35
+						}
+					}
+				}
+				set_variable = { opposition_party = 3 }	#F
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					OR = {
+						has_government = neutrality
+						NOT = {
+							neutrality > 0.35
+						}
+					}
+				}
+				set_variable = { opposition_party = 4 }	#N
+			}
+		}
+		random_list = {
+			seed = random
+			10 = {		#Opposition rally
+				country_event = SEA_generic_events.7
+			}
+			10 = {		#Street clash between supporters of different parties
+				country_event = SEA_generic_events.8
+			}
+			10 = {		#Foreign exploitation of growing opposition
+				country_event = SEA_generic_events.9
+			}
+			10 = {		#Larger corruption scandal
+				country_event = SEA_generic_events.10
+			}
+			10 = {		#Dockworker strike
+				country_event = SEA_generic_events.11
+			}
+			10 = {		#Anti-war sentiment
+				country_event = SEA_generic_events.12
+				modifier = {
+					factor = 0
+					has_defensive_war = yes
+				}
+			}
+		}
+	}
+
+	option = {	#Dispatch severe event
+		name = SEA_generic_events.1.a
+		trigger = {
+			OR = {
+				AND = {
+					fascism > 0.5
+					NOT = {
+						has_government = fascism
+					}
+				}
+				AND = {
+					democratic > 0.5
+					NOT = {
+						has_government = democratic
+					}
+				}
+				AND = {
+					neutrality > 0.5
+					NOT = {
+						has_government = neutrality
+					}
+				}
+				AND = {
+					communism > 0.5
+					NOT = {
+						has_government = communism
+					}
+				}
+			}
+		}
+		random_list = {
+			seed = random
+			1 = {
+				modifier = {
+					factor = 0
+					OR = {
+						has_government = democratic
+						NOT = {
+							democratic > 0.5
+						}
+					}
+				}
+				set_variable = { opposition_party = 1 }	#D
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					OR = {
+						has_government = communism
+						NOT = {
+							communism > 0.5
+						}
+					}
+				}
+				set_variable = { opposition_party = 2 }	#C
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					OR = {
+						has_government = fascism
+						NOT = {
+							fascism > 0.5
+						}
+					}
+				}
+				set_variable = { opposition_party = 3 }	#F
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					OR = {
+						has_government = neutrality
+						NOT = {
+							neutrality > 0.5
+						}
+					}
+				}
+				set_variable = { opposition_party = 4 }	#N
+			}
+		}
+		random_list = {
+			seed = random
+			10 = {		#Protestors damage infrastructure
+				country_event = SEA_generic_events.13
+			}
+			10 = {		#Very large protest
+				country_event = SEA_generic_events.14
+			}
+			10 = {		#Protest turns violent
+				country_event = SEA_generic_events.15
+			}
+		}
+	}
+}
+
+### Severity tier 1 (Lowest)
+
+#Small strike
+country_event = {
+	id = SEA_generic_events.2
+	title = SEA_generic_events.2.t
+	desc = SEA_generic_events.2.desc
+	picture = GFX_report_event_generic_strike
+
+	is_triggered_only = yes
+
+	option = {
+		name = SEA_generic_events.2.a
+		ai_chance = {
+			base = 0
+		}
+
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.03
+		}
+		add_stability = -0.01
+	}
+
+	option = {
+		name = SEA_generic_events.2.b
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+#Promoting of authoritarian government
+country_event = {
+	id = SEA_generic_events.3
+	title = SEA_generic_events.3.t
+	desc = SEA_generic_events.3.desc
+	picture = GFX_report_event_eng_mosley_mussolini
+
+	is_triggered_only = yes
+
+	option = {
+		name = SEA_generic_events.3.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.03
+		}
+	}
+
+	# option = {
+	# 	name = SEA_generic_events.3.b
+	# 	ai_chance = {
+	# 		base = 10
+	# 	}
+	# 	#Nothing
+	# }
+}
+
+#Small protest action
+country_event = {
+	id = SEA_generic_events.4
+	title = SEA_generic_events.4.t
+	desc = SEA_generic_events.4.desc
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	option = {
+		name = SEA_generic_events.4.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.03
+		}
+		add_political_power = -5
+	}
+
+	option = {
+		name = SEA_generic_events.4.b
+		ai_chance = {
+			base = 10
+		}
+		#Nothing
+	}
+}
+
+#Small political rally
+country_event = {
+	id = SEA_generic_events.5
+	title = SEA_generic_events.5.t
+	desc = SEA_generic_events.5.desc
+	picture = GFX_report_event_generic_rally2
+
+	is_triggered_only = yes
+
+	option = {
+		name = SEA_generic_events.5.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.03
+		}
+		add_political_power = -10
+	}
+
+	option = {
+		name = SEA_generic_events.5.b
+		ai_chance = {
+			base = 10
+		}
+		#Nothing
+	}
+}
+
+#Small corruption to undermine opposition exposed
+country_event = {
+	id = SEA_generic_events.6
+	title = SEA_generic_events.6.t
+	desc = SEA_generic_events.6.desc
+	picture = GFX_report_event_gathering_protest
+
+	is_triggered_only = yes
+
+	option = {
+		name = SEA_generic_events.6.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.03
+		}
+		add_political_power = -20
+	}
+
+	option = {
+		name = SEA_generic_events.6.b
+		ai_chance = {
+			base = 10
+		}
+
+		add_political_power = -10
+	}
+}
+
+### Severity tier 2 (Middle tier)
+
+#Opposition rally
+country_event = {
+	id = SEA_generic_events.7
+	title = SEA_generic_events.7.t
+	desc = SEA_generic_events.7.desc
+	picture = GFX_report_event_generic_rally
+
+	is_triggered_only = yes
+
+	option = {
+		name = SEA_generic_events.7.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+		}
+		add_political_power = -10
+	}
+
+	option = {
+		name = SEA_generic_events.5.b	#Intentional
+		ai_chance = {
+			base = 3
+		}
+	}
+}
+
+#Street clash
+country_event = {
+	id = SEA_generic_events.8
+	title = SEA_generic_events.8.t
+	desc = SEA_generic_events.8.desc
+	picture = GFX_report_event_gathering_protest
+
+	is_triggered_only = yes
+
+	option = {
+		name = SEA_generic_events.8.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+		}
+	}
+
+	option = {
+		name = SEA_generic_events.8.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_stability > 0.8
+			}
+			modifier = {
+				factor = 0.5
+			    has_stability > 0.65
+			}
+		}
+		add_stability = 0.01
+	}
+}
+
+#Foreign exploitation of growing opposition
+country_event = {
+	id = SEA_generic_events.9
+	title = SEA_generic_events.9.t
+	desc = SEA_generic_events.9.desc
+	picture = GFX_report_event_generic_rally_3
+
+	is_triggered_only = yes
+
+	option = {
+		name = SEA_generic_events.9.a
+		ai_chance = {
+			base = 2
+		}
+
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+		}
+		add_timed_idea = {
+			idea = alternate_political_infiltrated_opposition
+			days = 180
+		}
+	}
+
+	option = {
+		name = SEA_generic_events.9.b
+		ai_chance = {
+			base = 1
+		}
+
+		add_timed_idea = {
+			idea = alternate_political_infiltrated_opposition
+			days = 90
+		}
+	}
+}
+
+#Large scale corruption exposed
+country_event = {
+	id = SEA_generic_events.10
+	title = SEA_generic_events.10.t
+	desc = SEA_generic_events.10.desc
+	picture = GFX_report_event_gathering_protest
+
+	is_triggered_only = yes
+
+	option = {
+		name = SEA_generic_events.10.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+		}
+		add_timed_idea = {
+			idea = alternate_political_corruption_exposed
+			days = 60
+		}		
+	}
+
+	option = {
+		name = SEA_generic_events.10.b
+		ai_chance = {	#The penalty above isn't too bad, focus on preventing further events
+			base = 1
+		}
+
+		add_timed_idea = {
+			idea = alternate_political_corruption_exposed
+			days = 30
+		}
+	}
+}
+
+#Dockworkers strike
+country_event = {
+	id = SEA_generic_events.11
+	title = SEA_generic_events.11.t
+	desc = SEA_generic_events.11.desc
+	picture = GFX_report_event_generic_naval_treaty
+
+	is_triggered_only = yes
+
+	option = {
+		name = SEA_generic_events.11.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+		}
+		add_timed_idea = {
+			idea = alternate_political_dockworker_strike_demands_met
+			days = 150
+		}
+	}
+
+	option = {
+		name = SEA_generic_events.11.b
+		ai_chance = {	#The penalty above isn't too bad, focus on preventing further events
+			base = 1
+		}
+
+		add_timed_idea = {
+			idea = alternate_political_dockworker_strike
+			days = 30
+		}
+	}
+}
+
+#Anti-war sentiment
+country_event = {
+	id = SEA_generic_events.12
+	title = SEA_generic_events.12.t
+	desc = {
+		text = SEA_generic_events.12.desc
+		trigger = {
+			has_war = no
+		}
+	}
+	desc = {
+		text = SEA_generic_events.12.desc_wartime
+		trigger = {
+			has_war = yes
+		}
+	}
+	picture = GFX_report_event_generic_rally2
+
+	is_triggered_only = yes
+
+	option = {
+		name = SEA_generic_events.12.a
+		trigger = {
+			has_war = no
+		}
+		ai_chance = {
+			base = 1
+		}
+
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+		}
+		add_war_support = -0.04
+	}
+
+	option = {
+		name = SEA_generic_events.12.b
+		trigger = {
+			has_war = yes
+		}
+		ai_chance = {
+			base = 1
+		}
+
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+		}
+		add_war_support = -0.04
+	}
+
+	option = {
+		name = SEA_generic_events.12.c
+		ai_chance = {	#War support could be hard to regain, try to instead get support back through other events
+			base = 5
+		}
+
+		add_war_support = -0.02
+	}
+}
+
+### Severity tier 3 (Highest tier)
+
+#Protestors damage infrastructure
+country_event = {
+	id = SEA_generic_events.13
+	title = SEA_generic_events.13.t
+	desc = SEA_generic_events.13.desc
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_variable_to_random = {
+			var = generic_random_casualty
+			min = -20
+			max = -7
+			integer = yes
+		}
+	}
+
+	option = {
+		name = SEA_generic_events.13.a
+		ai_chance = {
+			base = 5
+		}
+
+		add_political_power = -5
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.07
+		}
+		capital_scope = {
+			damage_building = {
+				type = infrastructure
+				damage = 0.75
+			}
+		}
+	}
+
+	option = {
+		name = SEA_generic_events.13.b
+		ai_chance = {
+			base = 1
+		}
+
+		capital_scope = {
+			damage_building = {
+				type = infrastructure
+				state = 123
+				damage = 0.25
+			}
+		}
+		random_country_division = {
+			limit = {
+				unit_organization > 0.4
+			}
+			set_unit_organization = 0.2
+		}
+		add_manpower = generic_random_casualty
+	}
+}
+
+#Very large protest
+country_event = {
+	id = SEA_generic_events.14
+	title = SEA_generic_events.14.t
+	desc = SEA_generic_events.14.desc
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	option = {
+		name = SEA_generic_events.14.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.07
+		}
+		add_political_power = -50
+	}
+
+	option = {
+		name = SEA_generic_events.14.b
+		ai_chance = {
+			base = 10
+		}
+
+		add_timed_idea = {
+			idea = alternate_political_major_protest
+			days = 30
+		}
+	}
+}
+
+#Protest turns violent
+country_event = {
+	id = SEA_generic_events.15
+	title = SEA_generic_events.15.t
+	desc = SEA_generic_events.15.desc
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	option = {
+		name = SEA_generic_events.15.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.07
+		}
+		add_political_power = -25
+	}
+
+	option = {
+		name = SEA_generic_events.15.b
+		ai_chance = {
+			base = 10
+		}
+	}
+}

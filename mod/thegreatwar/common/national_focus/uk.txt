@@ -505,7 +505,7 @@ focus_tree = {
 		available = {
 			EGY = {
 				exists = yes
-				is_puppet_of = ENG
+				is_subject_of = ENG
 			}
 		}
 		completion_reward = {
@@ -590,7 +590,7 @@ focus_tree = {
 				has_war_with = TUR
 			}
 			EGY = {
-				is_puppet_of = ENG
+				is_subject_of = ENG
 				NOT = {
 					has_government = democratic
 				}
@@ -863,13 +863,13 @@ focus_tree = {
 		icon = GFX_goal_generic_improve_relations
 		available = {
 			has_war_with = GER
-			is_puppet = no
+			is_subject = no
 			NOT = {
 				has_war_with = POR
 			}
 			POR = {
 				exists = yes
-				is_puppet = no
+				is_subject = no
 			}
 			POR = {
 				custom_trigger_tooltip = {
@@ -986,7 +986,7 @@ focus_tree = {
 
 			EGY = {
 				exists = yes
-				is_puppet_of = ENG
+				is_subject_of = ENG
 			}
 			date > 1917.1.1
 			date < 1925.12.30
@@ -1836,7 +1836,7 @@ focus_tree = {
 				has_government = fascism
 			}
 			ITA = {
-				is_puppet = no
+				is_subject = no
 			}
 		}
 		completion_reward = {
@@ -1946,7 +1946,7 @@ focus_tree = {
 		available = {
 			RAJ = {
 				exists = yes
-				is_puppet_of = ENG
+				is_subject_of = ENG
 			}
 		}
 		completion_reward = {
@@ -2122,7 +2122,7 @@ focus_tree = {
 		available = {
 			country_exists = RUS
 			RUS = {
-				is_puppet = no
+				is_subject = no
 				has_war_with = SOV
 			}
 		}
@@ -2180,7 +2180,7 @@ focus_tree = {
 				has_government = communism
 			}
 			SOV = {
-				is_puppet = no
+				is_subject = no
 			}
 		}
 		completion_reward = {
@@ -2547,9 +2547,7 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_construct_military
 		available = {
-			447 = {
-				is_owned_by = ENG
-			}
+			owns_state = 447
 		}
 		completion_reward = {
 			183 = {
@@ -2591,9 +2589,7 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_defence
 		available = {
-			118 = {
-				is_owned_by = ENG
-			}
+			owns_state = 118
 		}
 		completion_reward = {
 			118 = {
@@ -2619,9 +2615,7 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_construct_military
 		available = {
-			447 = {
-				is_owned_by = ENG
-			}
+			owns_state = 447
 		}
 		completion_reward = {
 			447 = {
@@ -2664,9 +2658,7 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_construct_military
 		available = {
-			116 = {
-				is_owned_by = ENG
-			}
+			owns_state = 116
 		}
 		completion_reward = {
 			116 = {
@@ -2698,12 +2690,8 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_construct_civilian
 		available = {
-			336 = {
-				is_owned_by = ENG
-			}
-			326 = {
-				is_owned_by = ENG
-			}
+			owns_state = 336
+			owns_state = 326
 		}
 		bypass = {
 			336 = {
@@ -2763,9 +2751,7 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_fortify_city
 		available = {
-			336 = {
-				is_owned_by = ENG
-			}
+			owns_state = 336
 		}
 		completion_reward = {
 			336 = {
@@ -5687,9 +5673,8 @@ focus_tree = {
 		id = ENG_ww1_naval_effort
 		icon = GFX_goal_generic_build_navy
 		available = {
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 		completion_reward = {

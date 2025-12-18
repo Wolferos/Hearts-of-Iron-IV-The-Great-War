@@ -1,31 +1,26 @@
 ﻿###########################
 # Nuclear Bomb Events
 ###########################
+
 add_namespace = nuke_dropped
+
 # Hidden event to set flag on nuke dropped
 news_event = {
 	id = nuke_dropped.0
 	picture = GFX_news_event_nuke
+
 	major = yes
+
 	is_triggered_only = yes
+
 	hidden = yes
+
 	fire_only_once = yes
+
 	immediate = {
-		if = {
-			limit = {
-				tag = ITA
-				has_government = fascism
-				FROM = {
-					state = 378
-				}
-			}
-			set_country_flag = duce_nukedem_flag
-		}
-		news_event = {
-			id = nuke_dropped.1
-			days = 1
-		}
+		news_event = { id = nuke_dropped.1 days = 1 }
 	}
+	
 	option = {
 		name = dummy_nuke_option
 	}
@@ -37,68 +32,45 @@ news_event = {
 	title = nuke_dropped.1.t
 	desc = nuke_dropped.1.d
 	picture = GFX_news_event_nuke
+
 	major = yes
+
 	is_triggered_only = yes
+
 	trigger = {
 		NOT = {
 			FROM = {
-				state = 529
-			}
-			FROM = {
-				state = 528
-			}
-			FROM = {
-				state = 64
-			}
-			FROM = {
-				state = 126
-			}
-			FROM = {
-				state = 531
-			}
-			FROM = {
-				state = 282
-			}
-			FROM = {
-				state = 361
-			}
-			FROM = {
-				state = 2
-			}
-			FROM = {
-				state = 16
-			}
-			FROM = {
-				state = 219
-			}
-			FROM = {
-				state = 37
-			}
-			FROM = {
-				state = 141
-			}
-		}
-	}
-	option = {
-		name = nuke_dropped.1.a
-		trigger = {
-			NOT = {
 				FROM = {
-					FROM = {
-						is_owned_by = ROOT
+					OR = {
+						state = 529
+						state = 528
+						state = 64
+						state = 126
+						state = 531
+						state = 282
+						state = 361
+						state = 2
+						state = 16 
+						state = 219
+						state = 37
+						state = 141
 					}
 				}
 			}
 		}
 	}
+
+	option = {
+		name = nuke_dropped.1.a
+		trigger = {
+			NOT = { FROM = { FROM = { is_owned_by = ROOT } } }
+		}
+	}
+	
 	option = {
 		name = nuke_dropped.1.b
 		trigger = {
-			FROM = {
-				FROM = {
-					is_owned_by = ROOT
-				}
-			}
+			FROM = { FROM = { is_owned_by = ROOT } }
 		}
 	}
 }
@@ -109,25 +81,26 @@ news_event = {
 	title = nuke_dropped.2.t
 	desc = nuke_dropped.2.d
 	picture = GFX_news_event_nuke
+
 	is_triggered_only = yes
+
 	fire_only_once = yes
+
 	trigger = {
-		FROM = {
-			state = 529
-		}
+		FROM.FROM = { state = 529 }
 	}
+
 	option = {
 		name = nuke_dropped.2.a
 		trigger = {
-			NOT = {
-				owns_state = FROM
-			}
+			NOT = { owns_state = 529 }
 		}
 	}
+	
 	option = {
 		name = nuke_dropped.2.b
 		trigger = {
-			owns_state = FROM
+			owns_state = 529
 		}
 	}
 }
@@ -138,25 +111,26 @@ news_event = {
 	title = nuke_dropped.3.t
 	desc = nuke_dropped.3.d
 	picture = GFX_news_event_nuke
+
 	is_triggered_only = yes
+
 	fire_only_once = yes
+
 	trigger = {
-		FROM = {
-			state = 528
-		}
+		FROM.FROM = { state = 528 }
 	}
+
 	option = {
 		name = nuke_dropped.3.a
 		trigger = {
-			NOT = {
-				owns_state = FROM
-			}
+			NOT = { owns_state = 528 }
 		}
 	}
+	
 	option = {
 		name = nuke_dropped.3.b
 		trigger = {
-			owns_state = FROM
+			owns_state = 528
 		}
 	}
 }
@@ -167,26 +141,29 @@ news_event = {
 	title = nuke_dropped.4.t
 	desc = nuke_dropped.4.d
 	picture = GFX_news_event_nuke
+
 	is_triggered_only = yes
+
 	fire_only_once = yes
+
 	trigger = {
-		FROM = {
+		FROM.FROM = {
 			state = 64
 			is_owned_by = GER
 		}
 	}
+
 	option = {
 		name = nuke_dropped.4.a
 		trigger = {
-			NOT = {
-				owns_state = FROM
-			}
+			NOT = { owns_state = 64 }
 		}
 	}
+	
 	option = {
 		name = nuke_dropped.4.b
 		trigger = {
-			owns_state = FROM
+			owns_state = 64
 		}
 	}
 }
@@ -197,25 +174,26 @@ news_event = {
 	title = nuke_dropped.5.t
 	desc = nuke_dropped.5.d
 	picture = GFX_news_event_nuke
+
 	is_triggered_only = yes
+
 	fire_only_once = yes
+
 	trigger = {
-		FROM = {
-			state = 126
-		}
+		FROM.FROM = { state = 126 }
 	}
+
 	option = {
 		name = nuke_dropped.5.a
 		trigger = {
-			NOT = {
-				owns_state = FROM
-			}
+			NOT = { owns_state = 126 }
 		}
 	}
+	
 	option = {
 		name = nuke_dropped.5.b
 		trigger = {
-			owns_state = FROM
+			owns_state = 126
 		}
 	}
 }
@@ -226,25 +204,26 @@ news_event = {
 	title = nuke_dropped.6.t
 	desc = nuke_dropped.6.d
 	picture = GFX_news_event_nuke
+
 	is_triggered_only = yes
+
 	fire_only_once = yes
+
 	trigger = {
-		FROM = {
-			state = 531
-		}
+		FROM.FROM = { state = 531 }
 	}
+
 	option = {
 		name = nuke_dropped.6.a
 		trigger = {
-			NOT = {
-				owns_state = FROM
-			}
+			NOT = { owns_state = 531 }
 		}
 	}
+	
 	option = {
 		name = nuke_dropped.6.b
 		trigger = {
-			owns_state = FROM
+			owns_state = 531
 		}
 	}
 }
@@ -255,25 +234,26 @@ news_event = {
 	title = nuke_dropped.7.t
 	desc = nuke_dropped.7.d
 	picture = GFX_news_event_nuke
+
 	is_triggered_only = yes
+
 	fire_only_once = yes
+
 	trigger = {
-		FROM = {
-			state = 282
-		}
+		FROM.FROM = { state = 282 }
 	}
+
 	option = {
 		name = nuke_dropped.7.a
 		trigger = {
-			NOT = {
-				owns_state = FROM
-			}
+			NOT = { owns_state = 282 }
 		}
 	}
+	
 	option = {
 		name = nuke_dropped.7.b
 		trigger = {
-			owns_state = FROM
+			owns_state = 282
 		}
 	}
 }
@@ -284,25 +264,26 @@ news_event = {
 	title = nuke_dropped.8.t
 	desc = nuke_dropped.8.d
 	picture = GFX_news_event_nuke
+
 	is_triggered_only = yes
+
 	fire_only_once = yes
+
 	trigger = {
-		FROM = {
-			state = 361
-		}
+		FROM.FROM = { state = 361 }
 	}
+
 	option = {
 		name = nuke_dropped.8.a
 		trigger = {
-			NOT = {
-				owns_state = FROM
-			}
+			NOT = { owns_state = 361 }
 		}
 	}
+	
 	option = {
 		name = nuke_dropped.8.b
 		trigger = {
-			owns_state = FROM
+			owns_state = 361
 		}
 	}
 }
@@ -313,25 +294,26 @@ news_event = {
 	title = nuke_dropped.9.t
 	desc = nuke_dropped.9.d
 	picture = GFX_news_event_nuke
+
 	is_triggered_only = yes
+
 	fire_only_once = yes
+
 	trigger = {
-		FROM = {
-			state = 2
-		}
+		FROM.FROM = { state = 2 }
 	}
+
 	option = {
 		name = nuke_dropped.9.a
 		trigger = {
-			NOT = {
-				owns_state = FROM
-			}
+			NOT = { owns_state = 2 }
 		}
 	}
+	
 	option = {
 		name = nuke_dropped.9.b
 		trigger = {
-			owns_state = FROM
+			owns_state = 2
 		}
 	}
 }
@@ -342,25 +324,26 @@ news_event = {
 	title = nuke_dropped.10.t
 	desc = nuke_dropped.10.d
 	picture = GFX_news_event_nuke
+
 	is_triggered_only = yes
+
 	fire_only_once = yes
+
 	trigger = {
-		FROM = {
-			state = 16
-		}
+		FROM.FROM = { state = 16 }
 	}
+
 	option = {
 		name = nuke_dropped.10.a
 		trigger = {
-			NOT = {
-				owns_state = FROM
-			}
+			NOT = { owns_state = 16 }
 		}
 	}
+	
 	option = {
 		name = nuke_dropped.10.b
 		trigger = {
-			owns_state = FROM
+			owns_state = 16
 		}
 	}
 }
@@ -371,25 +354,26 @@ news_event = {
 	title = nuke_dropped.11.t
 	desc = nuke_dropped.11.d
 	picture = GFX_news_event_nuke
+
 	is_triggered_only = yes
+
 	fire_only_once = yes
+
 	trigger = {
-		FROM = {
-			state = 219
-		}
+		FROM.FROM = { state = 219 }
 	}
+
 	option = {
 		name = nuke_dropped.11.a
 		trigger = {
-			NOT = {
-				owns_state = FROM
-			}
+			NOT = { owns_state = 219 }
 		}
 	}
+	
 	option = {
 		name = nuke_dropped.11.b
 		trigger = {
-			owns_state = FROM
+			owns_state = 219
 		}
 	}
 }
@@ -400,49 +384,43 @@ news_event = {
 	title = nuke_dropped.12.t
 	desc = nuke_dropped.12.d
 	picture = GFX_news_event_nuke
+
 	is_triggered_only = yes
+
 	fire_only_once = yes
+
 	trigger = {
-		FROM = {
-			state = 37
-		}
+		FROM.FROM = { state = 37 }
 	}
+
 	option = {
 		name = nuke_dropped.12.a
 		trigger = {
 			OR = {
 				AND = {
 					tag = SWE
-					NOT = {
-						has_war_with = DEN
-					}
+					NOT = { has_war_with = DEN }
 				}
 				AND = {
-					NOT = {
-						owns_state = FROM
-					}
-					NOT = {
-						tag = SWE
-					}
-					NOT = {
-						has_war_with = DEN
-					}
+					NOT = { owns_state = 39 }
+					NOT = { tag = SWE }
+					NOT = { has_war_with = DEN }
 				}
 			}
-		}
+		}		
 	}
+	
 	option = {
 		name = nuke_dropped.12.b
 		trigger = {
-			owns_state = FROM
+			owns_state = 39
 		}
 	}
+	
 	option = {
 		name = nuke_dropped.12.c
 		trigger = {
-			NOT = {
-				owns_state = FROM
-			}
+			NOT = { owns_state = 39 }
 			tag = SWE
 			has_war_with = DEN
 		}
@@ -455,25 +433,27 @@ news_event = {
 	title = nuke_dropped.13.t
 	desc = nuke_dropped.13.d
 	picture = GFX_news_event_nuke
+
 	is_triggered_only = yes
+
 	fire_only_once = yes
+
 	trigger = {
-		FROM = {
-			state = 141
-		}
+		FROM.FROM = { state = 141 }
 	}
+
 	option = {
 		name = nuke_dropped.13.a
 		trigger = {
-			NOT = {
-				owns_state = FROM
-			}
+			NOT = { owns_state = 141 }
 		}
 	}
+	
 	option = {
 		name = nuke_dropped.13.b
 		trigger = {
-			owns_state = FROM
+			owns_state = 141
 		}
 	}
 }
+
