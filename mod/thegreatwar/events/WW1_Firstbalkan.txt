@@ -136,8 +136,8 @@ country_event = {
 				target = TUR
 				generator = {
 					106
-					757
-					758
+					851
+					852
 				}
 			}
 		}
@@ -189,10 +189,10 @@ country_event = {
 					type = take_state_focus
 					target = TUR
 					generator = {
-						757
-						754
-						755
-						760
+						851
+						848
+						849
+						854
 					}
 				}
 				add_to_war = {
@@ -215,7 +215,7 @@ country_event = {
 						is_in_faction_with = MNT
 					}
 				}
-				# Greece participates in a war with Turkey only if Turkey did not return the occupied states (731, 184, 756, 757, 790) to it before the start of the war
+				# Greece participates in a war with Turkey only if Turkey did not return the occupied states (731, 184, 850, 851, 790) to it before the start of the war
 				TUR = {
 					owns_state = 731 
 				}	
@@ -223,10 +223,10 @@ country_event = {
 					owns_state = 184 
 				}	
 				TUR = {
-					owns_state = 756
+					owns_state = 850
 				}
 				TUR = {
-					owns_state = 757
+					owns_state = 851
 				}
 				TUR = {
 					owns_state = 790
@@ -238,7 +238,7 @@ country_event = {
 					target = TUR
 					generator = {
 						731
-						756
+						850
 						184
 					}
 				}
@@ -258,10 +258,10 @@ country_event = {
 					owns_state = 184 
 				}	
 				GRE = {
-					owns_state = 756
+					owns_state = 850
 				}
 				GRE = {
-					owns_state = 757
+					owns_state = 851
 				}
 				GRE = {
 					owns_state = 790
@@ -291,7 +291,7 @@ country_event = {
 					type = take_state_focus
 					target = TUR
 					generator = {
-						759
+						853
 					}
 				}
 				add_to_war = {
@@ -329,11 +329,11 @@ country_event = {
 				controls_state = 731
 				controls_state = 788
 				controls_state = 766
-				controls_state = 759
-				controls_state = 757
-				controls_state = 760
-				controls_state = 761
-				controls_state = 758
+				controls_state = 853
+				controls_state = 851
+				controls_state = 854
+				controls_state = 855
+				controls_state = 852
 			}
 		}
 	}
@@ -376,7 +376,7 @@ country_event = {
 		ai_chance = {
 			factor = 100
 		}
-		# If Greece did not participate in the First Balkan War, then region 758 (Central Epirus) will not go to it, but to Albania
+		# If Greece did not participate in the First Balkan War, then region 852 (Central Epirus) will not go to it, but to Albania
 		if = {
 			limit = {
 				NOT = {
@@ -386,8 +386,8 @@ country_event = {
 				}
 			}	
 			ALB = {
-				transfer_state = 758
-				add_state_core = 758
+				transfer_state = 852
+				add_state_core = 852
 			}		
 		}	
 		# If Greece did not participate in the First Balkan War, then region 731 (West Macedonia) will not go to it, but to Bulgaria
@@ -408,7 +408,7 @@ country_event = {
 				add_state_core = 731
 			}			
 		}			
-		# If Greece participate in the First Balkan War, then region 731 (West Macedonia), 758 (Central Epirus) and 790 (North Aegean islands) will go to it
+		# If Greece participate in the First Balkan War, then region 731 (West Macedonia), 852 (Central Epirus) and 790 (North Aegean islands) will go to it
 		if = {
 			limit = {
 				GRE = {
@@ -418,10 +418,10 @@ country_event = {
 			GRE = {
 				white_peace = TUR
 				transfer_state = 731
-				transfer_state = 758
+				transfer_state = 852
 				transfer_state = 790
 				add_state_core = 731
-				add_state_core = 758
+				add_state_core = 852
 				add_state_core = 790
 				diplomatic_relation = {
 					country = TUR
@@ -429,7 +429,7 @@ country_event = {
 				}
 			}	
 		}	
-		# If Bulgaria did not participate in the First Balkan War, then regions 184 (East Macedonia) and 759 (Nordeastern Macedonia) will not go to it, but to Greece and Serbia
+		# If Bulgaria did not participate in the First Balkan War, then regions 184 (East Macedonia) and 853 (Nordeastern Macedonia) will not go to it, but to Greece and Serbia
 		if = {
 			limit = {
 				NOT = {
@@ -443,11 +443,11 @@ country_event = {
 				add_state_core = 184
 			}	
 			SER = {
-				transfer_state = 759
-				add_state_core = 759
+				transfer_state = 853
+				add_state_core = 853
 			}			
 		}	
-		# If Bulgaria participate in the First Balkan War, then regions 788 (East Rumelia) and 759 (Nordeastern Macedonia) will go to it
+		# If Bulgaria participate in the First Balkan War, then regions 788 (East Rumelia) and 853 (Nordeastern Macedonia) will go to it
 		if = {
 			limit = {
 				BUL = {
@@ -457,35 +457,35 @@ country_event = {
 			BUL = {
 				white_peace = TUR
 				transfer_state = 788
-				transfer_state = 759
+				transfer_state = 853
 				add_state_core = 788
-				add_state_core = 759
+				add_state_core = 853
 				diplomatic_relation = {
 					country = TUR
 					relation = non_aggression_pact
 				}
 			}	
 		}	
-		# If Turkey returned Greece to its national states (184, 756, 757) before the start of the war, then it remains with Greece and not transferred to Bulgaria
+		# If Turkey returned Greece to its national states (184, 850, 851) before the start of the war, then it remains with Greece and not transferred to Bulgaria
 		if = {
 			limit = {
 				TUR = {
 					owns_state = 184 
 				}	
 				TUR = {
-					owns_state = 756
+					owns_state = 850
 				}
 				TUR = {
-					owns_state = 757
+					owns_state = 851
 				}	
 			}		
 			BUL = {
 				transfer_state = 184
-				transfer_state = 756
-				transfer_state = 757
+				transfer_state = 850
+				transfer_state = 851
 				add_state_core = 184
-				add_state_core = 756
-				add_state_core = 757
+				add_state_core = 850
+				add_state_core = 851
 			}	
 		}	
 
@@ -493,8 +493,8 @@ country_event = {
 			white_peace = TUR
 		}		
 		MNT = {
-			transfer_state = 761
-			add_state_core = 761
+			transfer_state = 855
+			add_state_core = 855
 			diplomatic_relation = {
 				country = TUR
 				relation = non_aggression_pact
@@ -515,9 +515,9 @@ country_event = {
 		}		
 		SER = {
 			transfer_state = 106
-			transfer_state = 760
+			transfer_state = 854
 			add_state_core = 106
-			add_state_core = 760
+			add_state_core = 854
 			diplomatic_relation = {
 				country = TUR
 				relation = non_aggression_pact
