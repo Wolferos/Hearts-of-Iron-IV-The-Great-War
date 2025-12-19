@@ -1,20 +1,251 @@
-# Adjacency rules determine if an army, navy or trade can pass through the adjacency (e.g. a canal or strait).
+# Adjacency rules determine if an army, navy or trade can pass through the adjacency (e.g. a canal or strait).
 #
-# If two countries at war control provinces in the adjacency it is considered contested.
-# The optional triggers is_enemy, is_friend and is_neutral are evaluated in order and if one evaluates to true the corresponding rule is used.
-# If is_enemy and is_friend evaluates to false the neutral rule is used. In this case the is_neutral trigger will not be evaluated at all.
-# If is_friend and is_neutral evaluates to false the enemy rule is used.
-# If is_enemy and is_neutral evaluates to false the friend rule is used.
-# If any adjacency province controller is at war with the country the enemy rule is used, unless is_enemy evaluates to false, then the neutral rule is used.
-# If any adjacency province controller is an ally of is giving military access to the country the friend rule is used, unless is_friend evaluates to false, then the neutral rule is used.
-# Otherwise the neutral rule is used, unless is_neutral evaluates to false, then the enemy rule is used.
+# If two countries at war control provinces in the adjacency it is considered contested.
+# The optional triggers is_enemy, is_friend and is_neutral are evaluated in order and if one evaluates to true the corresponding rule is used.
+# If is_enemy and is_friend evaluates to false the neutral rule is used. In this case the is_neutral trigger will not be evaluated at all.
+# If is_friend and is_neutral evaluates to false the enemy rule is used.
+# If is_enemy and is_neutral evaluates to false the friend rule is used.
+# If any adjacency province controller is at war with the country the enemy rule is used, unless is_enemy evaluates to false, then the neutral rule is used.
+# If any adjacency province controller is an ally of is giving military access to the country the friend rule is used, unless is_friend evaluates to false, then the neutral rule is used.
+# Otherwise the neutral rule is used, unless is_neutral evaluates to false, then the enemy rule is used.
 #
-# The 'name' property is how you refer to the rule in adjacencies.csv
+# The 'name' property is how you refer to the rule in adjacencies.csv
+
+#Suez Canal
+adjacency_rule =
+{
+	name = "SUEZ_CANAL"
+
+	contested =
+	{
+		army = no
+		navy = no
+		submarine = no
+		trade = no
+	}
+	enemy =
+	{
+		army = no
+		navy = no
+		submarine = no
+		trade = no
+	}
+	friend =
+	{
+		army = yes
+		navy = yes
+		submarine = yes
+		trade = yes
+	}
+	neutral =
+	{
+		army = no
+		navy = no
+		submarine = no
+		trade = yes
+	}
+	
+	required_provinces = { 12049 1155 4073 9947 }
+
+	is_disabled = {
+		OR = {
+			has_global_flag = SUEZ_CANAL_BLOCKED
+			has_country_flag = SUEZ_CANAL_BLOCKED_FOR_COUNTRY
+			has_country_flag = SUEZ_SANCTIONS_FLAG
+		}
+		tooltip = suez_blocked_tt
+	}
+	
+	icon = 12049
+	offset = { 1 0 -6 }
+}
+
+#Gibraltar Strait
+adjacency_rule =
+{
+	name = "GIBRALTAR_STRAIT"
+
+	contested =
+	{
+		army = no
+		navy = no
+		submarine = yes
+		trade = no
+	}
+	enemy =
+	{
+		army = no
+		navy = no
+		submarine = yes
+		trade = no
+	}
+	friend =
+	{
+		army = yes
+		navy = yes
+		submarine = yes
+		trade = yes
+	}
+	neutral =
+	{
+		army = yes
+		navy = yes
+		submarine = yes
+		trade = yes
+	}
+	
+	required_provinces = { 4135 9945 }
+	
+	icon = 5407	
+	offset = { -31.0 0.0 -2.0 }
+}
+
+#Øresund - (Østersøen <-> Kattegat/Skagerak/Nordsøen)
+adjacency_rule =
+{
+	name = "DANISH_BELTS_STRAIT"
+
+	contested =
+	{
+		army = no
+		navy = no
+		submarine = yes
+		trade = no
+	}
+	enemy =
+	{
+		army = no
+		navy = no
+		submarine = no
+		trade = no
+	}
+	friend =
+	{
+		army = yes
+		navy = yes
+		submarine = yes
+		trade = yes
+	}
+	neutral =
+	{
+		army = yes
+		navy = yes
+		submarine = yes
+		trade = yes
+	}
+	
+	required_provinces = { 6287 3277 3325 3260 394 }
+	
+	icon = 2431
+	offset = { -2 0 -7 }
+}
+
+#Panama Canal
+adjacency_rule = {
+	name = "PANAMA_CANAL"
+
+	contested = {
+		army = no
+		navy = no
+		submarine = no
+		trade = no
+	}
+	enemy = {
+		army = no
+		navy = no
+		submarine = no
+		trade = no
+	}
+	friend = {
+		army = yes
+		navy = yes
+		submarine = yes
+		trade = yes
+	}
+	neutral = {
+		army = no
+		navy = no
+		submarine = no
+		trade = yes
+	}
+	
+	required_provinces = { 4624 7617 }
+
+	is_disabled = {
+		OR = {
+			has_global_flag = PANAMA_CANAL_BLOCKED
+			has_country_flag = PANAMA_CANAL_BLOCKED_FOR_COUNTRY
+			685 = {
+				has_dynamic_modifier = {
+					modifier = panama_canal_damaged_modifier
+					scope = THIS
+				}
+			}
+		}
+		#tooltip = disable_canal_tt
+		tooltip = kiel_canal_damaged_tt
+	}
+		
+	icon = 7617
+	offset = { -3 0 -2 }
+}
+
+#Marmara Strait
+adjacency_rule =
+{
+	name = "BOSPHORUS_STRAIT"
+
+	is_friend = {
+		TUR_is_friend_for_bosphorus = yes
+	}
+	contested =
+	{
+		army = no
+		navy = no
+		submarine = no
+		trade = no
+	}
+	enemy =
+	{
+		army = no
+		navy = no
+		submarine = no
+		trade = no
+	}
+	friend =
+	{
+		army = yes
+		navy = yes
+		submarine = yes
+		trade = yes
+	}
+	neutral =
+	{
+		army = no
+		navy = no
+		submarine = no
+		trade = yes
+	}
+	
+	required_provinces = { 9833 11829 }
+
+	is_disabled = {
+		has_country_flag = BOSPHORUS_STRAIT_BLOCKED_FOR_COUNTRY
+		tooltip = bosporus_strait_blocked_tt
+	}
+	
+	icon = 9833
+	offset = { -2 0 -9 }
+}
 
 #The Dardanelles
 adjacency_rule =
 {
 	name = "DARDANELLES_STRAIT"
+
+	is_friend = {
+		TUR_is_friend_for_dardanelles = yes
+	}
 
 	contested =
 	{
@@ -48,12 +279,64 @@ adjacency_rule =
 	required_provinces = { 849 6864 }
 
 	is_disabled = {
-		has_country_flag = DARDANELLES_STRAIT_BLOCKED_FOR_COUNTRY
+		OR = {
+			has_country_flag = BOSPHORUS_STRAIT_BLOCKED_FOR_COUNTRY #HOI4TGW Temporary - Change In the Future, Dardanelles flag not used at this moment
+			has_country_flag = DARDANELLES_STRAIT_BLOCKED_FOR_COUNTRY
+		}
 		tooltip = dardanelles_strait_blocked_tt
 	}
 	
 	icon = 849
 	offset = { 3 0 -5 } 
+}
+
+#Kiel Canal
+adjacency_rule = {
+	name = "KIEL_CANAL"
+
+	contested =
+	{
+		army = no
+		navy = no
+		submarine = no
+		trade = no
+	}
+	enemy =
+	{
+		army = no
+		navy = no
+		submarine = no
+		trade = no
+	}
+	friend =
+	{
+		army = yes
+		navy = yes
+		submarine = yes
+		trade = yes
+	}
+	neutral =
+	{
+		army = no
+		navy = no
+		submarine = no
+		trade = yes
+	}
+	
+	required_provinces = { 317 3231 3368 6257 6389 }
+
+	is_disabled = {
+		58 = {
+			has_dynamic_modifier = {
+				modifier = kiel_canal_damaged_modifier
+				scope = THIS
+			}
+		}
+		tooltip = kiel_canal_damaged_tt
+	}	
+		
+	icon = 6389
+	offset = { -9 0 2 }
 }
 
 #Strait of Hormuz
@@ -90,61 +373,26 @@ adjacency_rule =
 		trade = yes
 	}
 	
-	required_provinces = { 10904 7982 4959 }
+	required_provinces = { 13369 7982 4959 13312 }
 		
-	icon = 10904
+	icon = 13369
 	offset = { 2 0 12 }
 }
 
-#Kiel Canal
+#Strait of Otranto 
 adjacency_rule = {
-	name = KIEL_CANAL
+	name = "OTRANTO_STRAIT" 
 
 	contested = {
 		army = no
 		navy = no
-		submarine = no
-		trade = no
-	}
-	enemy = {
-		army = no
-		navy = no
-		submarine = no
-		trade = no
-	}
-	friend = {
-		army = yes
-		navy = yes
 		submarine = yes
-		trade = yes
-	}
-	neutral = {
-		army = no
-		navy = no
-		submarine = no
-		trade = yes
-	}
-
-	required_provinces = { 317 3231 11366 12251 }
-
-	icon = 6257
-	offset = { -5 0 6 }
-}
-
-#Suez
-adjacency_rule = {
-	name = SUEZ_CANAL
-
-	contested = {
-		army = no
-		navy = no
-		submarine = no
 		trade = no
 	}
 	enemy = {
 		army = no
 		navy = no
-		submarine = no
+		submarine = yes
 		trade = no
 	}
 	friend = {
@@ -159,50 +407,9 @@ adjacency_rule = {
 		submarine = yes
 		trade = yes
 	}
-
-	required_provinces = { 1155 4073 9947 12049 }
-
-	is_disabled = {
-		has_global_flag = SUEZ_CANAL_BLOCKED
-		tooltip = disable_canal_tt
-	}
-
-	icon = 12049
-	offset = { 1 0 -6 }
-}
-
-#Panama
-adjacency_rule = {
-	name = PANAMA_CANAL
-
-	contested = {
-		army = no
-		navy = no
-		submarine = no
-		trade = no
-	}
-	enemy = {
-		army = no
-		navy = no
-		submarine = no
-		trade = no
-	}
-	friend = {
-		army = yes
-		navy = yes
-		submarine = yes
-		trade = yes
-	}
-	neutral = {
-		army = yes
-		navy = yes
-		submarine = yes
-		trade = yes
-	}
-
-	required_provinces = { 7617 }
-
-
-	icon = 7617
-	offset = { -3 0 -2 }
+	
+	required_provinces = { 6979 11767 }
+		
+	icon = 6979
+	offset = { 9 0 6 }
 }
