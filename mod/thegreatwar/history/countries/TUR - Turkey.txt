@@ -53,7 +53,7 @@ recruit_character = TUR_Djemal
 recruit_character = TUR_Abdulkerim
 recruit_character = TUR_Izzet
 recruit_character = TUR_Nihat
-recruit_character = TUR_Fevzi
+recruit_character = TUR_fevzi_cakmak_pasa
 recruit_character = TUR_Cevat
 recruit_character = TUR_Halil
 
@@ -224,8 +224,10 @@ set_technology = {
 }
 
 1914.1.1 = {
-	remove_unit_leader = 90013 # Mustafa Kemal Paşa #1910 (promoted -> Field Marshal)
-	recruit_character = TUR_mustafa_kemal
+	set_character_name = { # Mustafa Kemal Paşa #1910 (promoted -> Field Marshal)
+		character = TUR_mustafa_kemal
+		name = TUR_mustafa_kemal_pasa
+	}
 
 	oob = "TUR_1914"
 
@@ -366,11 +368,12 @@ set_technology = {
 }
 
 1919.1.1 = {
-	remove_unit_leader = 90013 # Mustafa Kemal
-	remove_unit_leader = 90014 # Mustafa Kemal 2 #1914 (in the Turkish National Movement)
-	remove_unit_leader = 90015 # Mustafa Kemal 3 (Country Leader ID)
-	remove_unit_leader = 90016 # Mustafa Kemal 4 (Country Leader ID)
-	remove_unit_leader = 90515 # Fevzi Çakmak (in the Turkish National Movement)
+	TUR_mustafa_kemal = { # Mustafa Kemal (in the Turkish National Movement)
+		set_nationality = TUK
+	}
+	TUR_fevzi_cakmak_pasa = { # Fevzi Çakmak (in the Turkish National Movement)
+		set_nationality = TUK
+	}
 	remove_unit_leader = 90138 # Hasan Tahsin (He died in Lausanne in 1918)
 	remove_unit_leader = 90147 # Otto Liman von Sanders (Arrested in Malta in February 1919, retired from the German army in 1919)
 

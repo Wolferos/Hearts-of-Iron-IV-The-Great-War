@@ -30,41 +30,13 @@ characters = {
 			id = 90015
 		}
 		corps_commander = {
-			traits = {
-				defensive_doctrine
-				fast_planner
-			}
-			skill = 4
+			traits = { defensive_doctrine fast_planner }
+			skill = 5 
 			attack_skill = 2
 			defense_skill = 2
-			planning_skill = 2
-			logistics_skill = 1
+			planning_skill = 3
+			logistics_skill = 2
 			legacy_id = 90013
-		}
-	}
-	TUR_mustafa_kemal = {
-		name = TUR_mustafa_kemal
-		portraits = {
-			civilian = {
-				large = GFX_Portrait_TUR_mustafa_kemal
-			}
-		}
-		country_leader = {
-			ideology = despotism
-			expire = "1935.1.1.1"
-			id = 90016
-		}
-		corps_commander = {
-			traits = {
-				defensive_doctrine
-				fast_planner
-			}
-			skill = 4
-			attack_skill = 2
-			defense_skill = 2
-			planning_skill = 2
-			logistics_skill = 1
-			legacy_id = 90014
 		}
 	}
 	TUR_mehmed_v = {
@@ -321,12 +293,28 @@ characters = {
 			legacy_id = 90514
 		}
 	}
-	TUR_Fevzi = {
-		name = TUR_Fevzi
+	TUR_fevzi_cakmak_pasa = {
+		name = TUR_fevzi_cakmak_pasa
 		portraits = {
 			army = {
-				small = ""
-				large = GFX_Portrait_TUR_Fevzi
+				small = GFX_idea_TUR_fevzi_cakmak_pasa
+				large = GFX_Portrait_TUR_fevzi_cakmak_pasa
+			}
+		}
+		advisor = {
+			idea_token = TUR_fevzi_cakmak_pasa
+			slot = army_chief
+			allowed = {
+				#OR = { # Republican Only
+					#original_tag = TUR
+					original_tag = TUK
+				#}
+			}
+			traits = {
+				army_chief_defensive_1
+			}
+			ai_will_do = {
+				factor = 1
 			}
 		}
 		field_marshal = {
