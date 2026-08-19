@@ -1,0 +1,135 @@
+#scripted triggers for Ethiopia
+
+# Is initial war still ongoing?
+has_lon_arms_embargo = {
+	custom_trigger_tooltip = {
+		#TODO Localize this properly
+		tooltip = lon_arms_resolution_tt
+		has_global_flag = second_italo_ethiopian_war_flag
+		FROM = { has_idea = league_of_nations_member_idea }
+	}	
+}
+
+# Is the government either anarchist or anarchist communist ? 
+has_anarchist_government = {
+	custom_trigger_tooltip = {
+		tooltip = has_anarchist_government_tt
+		OR = {
+			has_country_leader_ideology = anarchist_communism 
+			has_country_leader_ideology = anarchism 
+		}
+	}	
+}
+
+# Does Ethiopia (or anyone else that want to use this) have a Military Academy? 
+# Add triggers for those countries as needed 
+has_military_academy = {
+	IF = {
+		limit = { 
+			original_tag = ETH 
+		}
+		custom_trigger_tooltip = {
+			tooltip = has_military_academy_tt 
+			has_completed_focus = ETH_ecole_militaire_haile_selassie_1er
+		}
+	}
+}
+
+
+# Does Ethiopia (or anyone else that want to use this) have a Naval Academy? 
+# Add triggers for those countries as needed 
+has_naval_academy = {
+	IF = {
+		limit = { 
+			original_tag = ETH 
+		}
+		custom_trigger_tooltip = {
+			tooltip = has_naval_academy_tt 
+			has_completed_focus = ETH_asmera_naval_college
+		}
+	}
+}
+
+# Does Ethiopia (or anyone else that want to use this) have an Air Force Academy? 
+# Add triggers for those countries as needed 
+has_air_academy = {
+	IF = {
+		limit = { 
+			original_tag = ETH 
+		}
+		custom_trigger_tooltip = {
+			tooltip = has_air_academy_tt 
+			has_completed_focus = ETH_debre_zeyit_air_force_training_center
+		}
+	}
+}
+# Does Ethiopia (or anyone else that want to use this) have an established Air Force? 
+# Add triggers for those countries as needed 
+has_air_force_command = {
+	IF = {
+		limit = { 
+			original_tag = ETH 
+		}
+		custom_trigger_tooltip = {
+			tooltip = has_air_force_command_tt 
+			has_completed_focus = ETH_the_ethiopian_air_force
+		}
+	}
+}
+
+league_of_nations_is_active = {
+	custom_trigger_tooltip = {
+		tooltip = league_of_nations_is_active_tt
+		NOT = { has_global_flag = LoN_disbanded_flag }
+	}
+}
+
+controls_all_ethiopian_core_states = {
+	custom_trigger_tooltip = {
+		tooltip = controls_ethiopian_cores_tt 
+		controls_state = 271 
+		#controls_state = 835 
+		#controls_state = 836 
+		#controls_state = 837
+		#controls_state = 838
+		#controls_state = 839 
+		#controls_state = 840
+		#controls_state = 841 
+		#controls_state = 842 
+		#controls_state = 843 
+	}
+}
+
+# East African Colony state ? 
+is_east_african_colony_state = {
+	custom_trigger_tooltip = {
+		tooltip = is_east_african_state_tt 
+		#TODO_TA update when air zone rework is in
+		OR = {
+			region = 17 # Ethiopian Highlands
+			region = 273 # Danakil 
+			region = 274 # Ogaden 
+			region = 217 # Lake Victoria
+			region = 216 # Upper Nile
+		}
+		NOT = { is_core_of = THIS.owner }
+	}
+
+}
+
+ETH_is_horn_of_africa_original_tag = {
+	OR = {
+		original_tag = ETH
+		original_tag = SOM
+		original_tag = ERI
+		original_tag = DJI
+		original_tag = AFA
+		original_tag = HAR
+		original_tag = TIG
+		original_tag = BEG
+		original_tag = GBA
+		original_tag = SID
+		original_tag = ORO
+		original_tag = QEM
+	}
+}

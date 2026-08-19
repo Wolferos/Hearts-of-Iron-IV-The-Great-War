@@ -4,87 +4,163 @@
 
 add_namespace = ww1_soviet
 
+#-> Our Independence <><>
 country_event = {
-	title = ww1_soviet.1.t#Independence of Finland
-	desc = ww1_soviet.1.d
-	id=ww1_soviet.1
-	picture=GFX_report_event_generic_finnish_letter
-	fire_only_once=yes
-	is_triggered_only=yes
-	option={
-		name=ww1_soviet.1.a
-		ai_chance={
-			factor=80
-		}
-		end_puppet = FIN
-	}
-	option={
-		name=ww1_soviet.1.b
-		ai_chance={
-			factor=20
-		}
-	}
-}
+	id = ww1_soviet.1
+	title = ww1_soviet.1.t
+	desc = ww1_soviet.1.desc
+	picture = GFX_report_event_finnish_letter
 
-news_event = {
-	title = ww1_soviet.2.t#Caucasus Uprisings
-	desc = ww1_soviet.2.d
-	id=ww1_soviet.2
-	fire_only_once=yes
-	major = yes
-	is_triggered_only = yes
-	immediate = { hidden_effect = { if = { limit = { NOT = { has_completed_focus = SOV_ww1_restore_order } } release = ARM
-		ARM = { transfer_state = 230 }
-		release = AZR
-		AZR = { transfer_state = 229 }
-		release = GEO
-		GEO = { transfer_state = 231 } } }
+	fire_only_once = yes
+
+	trigger = {
+		is_subject_of = RUS
+		has_global_flag = kis_october_revolution
 	}
-	
-	option={
-		name=ww1_soviet.2.uprising
+
+	option = {
+		name = ww1_soviet.1.a
 		ai_chance = {
-			factor = 100
+			base = 80
 		}
-		trigger = { 
-			TAG = SOV
-			SOV = {
-				NOT = { 
-					has_completed_focus = SOV_ww1_restore_order 
-				}
+		OVERLORD = {
+			set_autonomy = {
+				target = ROOT
+				autonomy_state = autonomy_free
 			}
 		}
-		ARM = { declare_war_on = { target = SOV type = take_state_focus } }
-		AZR = { declare_war_on = { target = SOV type = take_state_focus } }
-		GEO = { declare_war_on = { target = SOV type = take_state_focus } }
-	}
-	option={
-		name=ww1_soviet.2.notsov
-		trigger = { NOT = { tag = SOV } }
-		ai_chance={
-			factor=100
+		if = {
+			limit = {
+				OR = {
+					has_cosmetic_tag = FIN_RUS_neutrality_subject
+				}
+			}
+			drop_cosmetic_tag = yes
 		}
 	}
-	
-	option={
-		name=ww1_soviet.2.anothersov
-		trigger = { tag = SOV has_completed_focus = SOV_ww1_restore_order }
-		ai_chance={
-			factor=100
+
+	option = {
+		name = ww1_soviet.1.b
+		ai_chance = {
+			base = 20
 		}
 	}
 }
 
+#-> Caucasus Uprisings <><>
 country_event = {
-	title = ww1_soviet.999.t #oob for sov
-	desc = ww1_soviet.999.d
-	id=ww1_soviet.999
-	fire_only_once=yes
-	is_triggered_only=yes
-	option={
-		name=ww1_soviet.999.a
-		ai_chance={
-			factor=100
+	id = ww1_soviet.2
+	title = ww1_soviet.2.t
+	desc = ww1_soviet.2.desc
+	picture = GFX_report_event_spr_anarchist_uprising
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = SOV_ww1_restore_order
+					}
+				}
+				effect_tooltip = {
+					release = ARM
+				}
+				hidden_effect = {
+					ARM = {
+						transfer_state = 230
+						load_oob = "ARM_1919"
+					}
+				}
+				effect_tooltip = {
+					release = AZR
+				}
+				hidden_effect = {
+					AZR = {
+						transfer_state = 229
+						load_oob = "AZR_1919"
+					}
+				}
+				effect_tooltip = {
+					release = GEO
+				}
+				hidden_effect = {
+					GEO = {
+						transfer_state = 231
+						load_oob = "GEO_1919"
+					}
+				}
+			}
+			news_event = { id = ww1_news.3 hours = 6 }
+		}
+	}
+
+	option = {
+		name = ww1_soviet.2.a
+		ai_chance = {
+			base = 100
+		}
+		trigger = {
+			NOT = {
+				has_completed_focus = SOV_ww1_restore_order
+			}
+		}
+	}
+
+	option = {
+		name = ww1_soviet.2.b
+		ai_chance = {
+			base = 100
+		}
+		trigger = {
+			has_completed_focus = SOV_ww1_restore_order
+		}
+	}
+}
+
+#-> Bolshevik Volunteers <><>
+country_event = {
+	id = ww1_soviet.3
+	title = ww1_soviet.3.t
+	desc = ww1_soviet.3.d
+	picture = COUNTRY_hoi4tgw_report_lenin
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		OR = {
+			195 = { controller = { tag = SOV } }
+			219 = { controller = { tag = SOV } }
+		}
+		NOT = {
+			has_country_flag = kis_secondrevoltsov
+		}
+	}
+
+	immediate = {
+		hidden_effect = {			
+			set_country_flag = kis_sov_petrograd_captured
+			add_manpower = 10000
+			load_oob = "SOV_Revolt_02"
+			set_country_flag = kis_secondrevoltsov	
+			SOV = {
+				transfer_state = 637
+				transfer_state = 562
+				transfer_state = 644
+				transfer_state = 822
+				transfer_state = 516
+				transfer_state = 579
+				transfer_state = 580
+			}
+		}
+	}
+
+	option = {
+		name = ww1_soviet.3.a
+		ai_chance = {
+			base = 100
 		}
 	}
 }

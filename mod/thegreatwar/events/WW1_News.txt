@@ -42,3 +42,43 @@ news_event = {
 		}
 	}
 }
+
+#-> Caucasus Uprisings <><>
+news_event = {
+	id = ww1_news.3
+	title = ww1_soviet.2.t
+	desc = ww1_soviet.2.desc
+	picture = GFX_news_event_hitler_speech
+
+	major = yes
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ww1_soviet.2.a
+		trigger = {
+			tag = SOV
+			NOT = {
+				has_completed_focus = SOV_ww1_restore_order
+			}
+		}
+	}
+
+	option = {
+		name = ww1_soviet.2.b
+		trigger = {
+			tag = SOV
+			has_completed_focus = SOV_ww1_restore_order
+		}
+	}
+
+	option = {
+		name = ww1_news.3.c
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+}

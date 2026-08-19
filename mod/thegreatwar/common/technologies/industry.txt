@@ -301,10 +301,7 @@ technologies = {
 
 	ww1_fortification2 = {
 	
-		enable_building = {
-			building = trench
-			level = 4
-		}
+		trench_max_level_terrain_limit = 3
 		
 		path = {
 			leads_to_tech = ww1_fortification3
@@ -330,19 +327,7 @@ technologies = {
 	
 		production_speed_buildings_factor = 0.01
 
-		enable_building = {
-			building = trench
-			level = 7
-		}
-
-		IF = {
-			limit = {
-				has_dlc = "Gotterdammerung"
-			}
-			enable_building = {
-				building = stronghold_network
-			}
-		}
+		trench_max_level_terrain_limit = 3
 
 		path = {
 			leads_to_tech = ww1_fortification4
@@ -370,15 +355,9 @@ technologies = {
 
 	ww1_fortification3b = {
 
-		enable_building = {
-			building = trench
-			level = 9
-		}
+		trench_max_level_terrain_limit = 2
 	
-		enable_building = {
-			building = bunker
-			level = 3
-		}
+		bunker_max_level_terrain_limit = 2
 
 		path = {
 			leads_to_tech = ww1_fortification5
@@ -495,15 +474,9 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		enable_building = {
-			building = trench
-			level = 10
-		}
+		trench_max_level_terrain_limit = 1
 
-		enable_building = {
-			building = bunker
-			level = 5
-		}
+		bunker_max_level_terrain_limit = 1
 	
 		research_cost = 1.5
 		start_year = 1919
@@ -525,10 +498,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		enable_building = {
-			building = bunker
-			level = 8
-		}
+		bunker_max_level_terrain_limit = 1
 	
 		research_cost = 1.5
 		start_year = 1926
@@ -551,17 +521,32 @@ technologies = {
 
 	ww1_fortification7 = {
 	
-		enable_building = {
-			building = bunker
-			level = 10
+		path = {
+			leads_to_tech = basic_fortification_tech 
+			research_cost_coeff = 1
+		}
+
+		bunker_max_level_terrain_limit = 1
+		coastal_bunker_max_level_terrain_limit = 1
+
+		on_research_complete = {
+			if = {
+				limit = {
+					has_dlc = "Gotterdammerung"
+				}
+				custom_effect_tooltip = {
+					localization_key = SP_UNLOCK_PROJECT
+					PROJECT = sp_land_stronghold_network	
+				}
+			}
 		}
 	
 		research_cost = 1.5
-		start_year = 1937
+		start_year = 1936
 
 		folder = {
 			name = industry_folder
-			position = { x = 2 y = 18 }
+			position = { x = 2 y = 14 }
 		}
 		
 		ai_will_do = {
@@ -573,6 +558,142 @@ technologies = {
 		}
 		
 		categories = { industry cat_fortification }
+	}
+
+	basic_fortification_tech = {
+			
+		path = {
+			leads_to_tech = coastal_fort_tech_1 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = land_fort_tech_1 
+			research_cost_coeff = 1
+		}
+
+		bunker_max_level_terrain_limit = 1
+		coastal_bunker_max_level_terrain_limit = 1
+
+		research_cost = 1.5
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = 2 y = 18 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		categories = {
+			cat_fortification
+		}
+
+	}
+
+
+	land_fort_tech_1 = {
+
+		enable_equipment_modules = {
+			lc_bunker_emplacement #Module for Land Cruiser
+		}
+			
+		path = {
+			leads_to_tech = land_fort_tech_2 
+			research_cost_coeff = 1
+		}
+
+		bunker_max_level_terrain_limit = 1
+		
+		research_cost = 1.5
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = 1 y = 20 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		categories = {
+			cat_fortification
+		}
+		
+
+	}
+
+	land_fort_tech_2 = {
+
+		bunker_max_level_terrain_limit = 2
+		
+		research_cost = 1.5
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = 1 y = 22 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		categories = {
+			cat_fortification
+		}
+		
+
+	}
+
+
+	coastal_fort_tech_1 = {
+
+			
+		path = {
+			leads_to_tech = coastal_fort_tech_2 
+			research_cost_coeff = 1
+		}
+
+		coastal_bunker_max_level_terrain_limit = 1
+		
+		research_cost = 1.5
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = 3 y = 20 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		categories = {
+			cat_fortification
+		}
+		
+
+	}
+
+	coastal_fort_tech_2 = {
+
+		coastal_bunker_max_level_terrain_limit = 2
+		
+		research_cost = 1.5
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = 3 y = 22 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		categories = {
+			cat_fortification
+		}
+		
+
 	}
 
 	#======================================================================
