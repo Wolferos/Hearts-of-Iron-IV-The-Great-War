@@ -1,4 +1,5 @@
 ﻿add_namespace = interwar_poland_events
+add_namespace = int_poland
 # Cease Hostilities with Lithuania
 #____________________________________________________________
 country_event = {
@@ -168,4 +169,134 @@ country_event = {
 	}
 }
 
+#____________________________________________________________
+# TODO
+#____________________________________________________________
+country_event = {
+	id = int_poland.6
+	title = int_poland.6.title
+	desc = int_poland.6.desc
+	picture = GFX_report_event_NOR_queen_maud_funeral
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = WLK
+		controls_province = 6558
+	}
+
+	mean_time_to_happen = { days = 1 }
+
+	immediate = {
+		hidden_effect = {
+			POL = {
+				set_country_flag = ca1_kamil_on_rise_2
+			}
+			white_peace = {
+				tag = GER
+				message = int_poland.6.a.tt
+			}
+		}
+	}
+
+	option = {
+		name = int_poland.6.a
+		hidden_effect = {
+			# Ustaw strefę zdemilitaryzowaną
+			86 = {
+				set_demilitarized_zone = yes
+			}
+			51 = {
+				set_demilitarized_zone = yes
+			}
+			55 = {
+				set_demilitarized_zone = yes
+			}
+			42 = {
+				set_demilitarized_zone = yes
+			}
+			# Usuwanie jednostek w tym stanie
+			delete_unit = {
+				state = 86 
+				disband = yes #will refund equipment and manpower
+			}
+		}
+		WLK = {
+			country_event = { id = int_poland.7 days = 12}
+		}
+	}
+}
+
+#____________________________________________________________
+# TODO
+#____________________________________________________________
+country_event = {
+	id = int_poland.7
+	title = int_poland.7.title
+	desc = int_poland.7.desc
+	picture = GFX_report_event_NOR_nygaardsvold_cabinet
+
+	is_triggered_only = yes
+
+	option = {
+		name = int_poland.7.a
+		ai_chance = {
+			base = 10
+		}
+		news_event = {
+			id = interwar_news.21
+			days = 1
+		}
+		POL = {
+			annex_country = {
+				target = WLK
+			}
+		}
+		GER = {
+			country_event = {
+				id = int_poland.8
+				days = 15
+			}
+		}
+	}
+
+	option = {
+		name = int_poland.7.b
+		ai_chance = {
+			base = 0
+		}
+		hidden_effect = {
+			86 = {
+				set_demilitarized_zone = no
+			}
+		}
+		POL = {
+			create_wargoal = {
+				target = WLK
+				type = annex_everything
+			}
+		}
+	}
+
+}
+
+#____________________________________________________________
+# TODO
+#____________________________________________________________
+country_event = {
+	id = int_poland.8
+	title = int_poland.8.title
+	desc = int_poland.8.desc
+	picture = GFX_report_event_NOR_nygaardsvold_cabinet
+
+	is_triggered_only = yes
+
+	option = {
+		name = int_poland.8.a
+		POL = {
+			transfer_state = 807
+		}
+	}
+
+}
 #____________________________________________________________
