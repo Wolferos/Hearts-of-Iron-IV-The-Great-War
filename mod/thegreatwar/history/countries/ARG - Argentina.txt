@@ -11,7 +11,8 @@ set_convoys = 120
 #-------------------------------------------------------
 # Country Leaders
 recruit_character = ARG_agustin_p_justo
-#recruit_character = ARG_hipolito_yrigoyen
+recruit_character = ARG_victorino_de_la_plaza
+recruit_character = ARG_hipolito_yrigoyen
 recruit_character = ARG_marcelo_torcuato_de_alvear
 recruit_character = ARG_manuel_quintana
 recruit_character = ARG_jose_figueroa_alcorta
@@ -95,6 +96,12 @@ set_popularities = {
 		neutrality_idea
 		limited_conscription
 	}
+	if = {
+		limit = {
+			has_start_date < 1911.1.1
+		}
+		country_event = { id = ww1_argentina.1 days = 164 } # Roque Sáenz Peña Dies!
+	}
 	set_country_flag = monroe_doctrine
 	create_equipment_variant = {
 		name = "Almirante Brown Class"
@@ -147,8 +154,8 @@ set_popularities = {
 }
 
 1910.10.12 = {
-	promote_character = ARG_roque_saenz_pena
-	set_country_flag = roque_died
+	retire_character = ARG_roque_saenz_pena
+	promote_character = ARG_victorino_de_la_plaza
 }
 
 1914.1.1 = {
@@ -212,5 +219,5 @@ set_popularities = {
 
 1919.1.1 = {
 	set_political_power = 50
-	recruit_character = ARG_hipolito_yrigoyen
+	promote_character = ARG_hipolito_yrigoyen
 }

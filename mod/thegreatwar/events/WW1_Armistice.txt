@@ -284,7 +284,7 @@ news_event = {
 						has_war_with = FRA
 					}
 				}
-				FRA = {
+				SYR = {
 					transfer_state = 553
 					transfer_state = 554
 					transfer_state = 680
@@ -293,6 +293,7 @@ news_event = {
 					add_state_core = 554
 					add_state_core = 680
 					add_state_core = 677
+					load_oob = "SYR_1919"
 				}
 				SAU = {
 					transfer_state = 747
@@ -660,6 +661,43 @@ news_event = {
 			}
 			DNZ = {
 				transfer_state = 85
+			}
+			WLK = {
+				transfer_state = 86
+				add_state_core = 86
+				GER = {
+					set_state_controller = 86
+				}
+				set_province_controller = 11232
+				set_province_controller = 9532
+				set_province_controller = 3460
+				set_province_controller = 3295
+				declare_war_on = {
+					target = GER
+					type = independence_wargoal
+				}
+				division_template = {
+					name = "Polish Militia"
+					division_names_group = POL_INF_RESERVE_01
+					is_locked = yes
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+
+						militia = { x = 1 y = 0 }
+						militia = { x = 1 y = 1 }
+					}
+				}
+				86 = {
+					create_unit = { division = "name = \"Polish Militia\" division_template = \"Polish Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.5" owner = ROOT allow_spawning_on_enemy_provs = no }
+					create_unit = { division = "name = \"Polish Militia\" division_template = \"Polish Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.5" owner = ROOT allow_spawning_on_enemy_provs = no }
+					create_unit = { division = "name = \"Polish Militia\" division_template = \"Polish Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.5" owner = ROOT allow_spawning_on_enemy_provs = no }
+					create_unit = { division = "name = \"Polish Militia\" division_template = \"Polish Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.5" owner = ROOT allow_spawning_on_enemy_provs = no }
+					create_unit = { division = "name = \"Polish Militia\" division_template = \"Polish Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.5" owner = ROOT allow_spawning_on_enemy_provs = no }
+				}
+				807 = {
+					create_unit = { division = "name = \"Polish Militia\" division_template = \"Polish Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.5" owner = ROOT allow_spawning_on_enemy_provs = no prioritize_location = 3295 }
+				}
 			}
 			POL = {
 				transfer_state = 90

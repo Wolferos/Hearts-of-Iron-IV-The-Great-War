@@ -117,7 +117,8 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - dungeon-slave
    - Benjacho
    - Xaelor
+   - Dr. Labgames
 ----------
    - [Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow
    - [Austro-Hungarians Voices](http://steamcommunity.com/sharedfiles/filedetails/?id=946923873) made by Geodomus
-   - [TGW Megasubmod](http://steamcommunity.com/sharedfiles/filedetails/?id=946923873) made by Canadian Lemur, Ecrfour, Rayzin & ErekTheGreat
+   - [TGW Megasubmod](https://steamcommunity.com/sharedfiles/filedetails/?id=2440260349) made by Canadian Lemur, Ecrfour, Rayzin & ErekTheGreat

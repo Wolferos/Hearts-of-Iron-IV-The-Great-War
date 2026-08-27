@@ -4831,7 +4831,7 @@ focus_tree = {
 			add_political_power = 100
 		}
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 4
 		x = 4
@@ -4857,11 +4857,7 @@ focus_tree = {
 			add_political_power = 100
 		}
 		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 0
-				date < 1919.1.1
-			}
+			base = 10
 		}
 		cost = 10
 		x = -3
@@ -4888,7 +4884,7 @@ focus_tree = {
 		}
 		will_lead_to_war_with = SOV
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 10
 		x = -1
@@ -4912,7 +4908,7 @@ focus_tree = {
 		}
 		will_lead_to_war_with = SOV
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 10
 		x = 0
@@ -4940,7 +4936,7 @@ focus_tree = {
 		}
 		will_lead_to_war_with = SOV
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 10
 		x = 1
@@ -4970,7 +4966,7 @@ focus_tree = {
 		}
 		will_lead_to_war_with = RUS
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 10
 		x = 0
@@ -5032,7 +5028,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 10
 		x = 0
@@ -5096,7 +5092,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 10
 		x = 0
@@ -5129,7 +5125,7 @@ focus_tree = {
 			add_ideas = GER_ww1_wilhelm_ii
 		}
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 10
 		x = -1
@@ -5159,11 +5155,7 @@ focus_tree = {
 			army_experience = 40
 		}
 		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 0
-				date < 1919.1.1
-			}
+			base = 10
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
@@ -5242,7 +5234,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		cost = 14.4
 		x = 0
@@ -5442,7 +5434,7 @@ focus_tree = {
 			add_state_claim = 191
 		}
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		cost = 10
 		x = 1
@@ -5466,7 +5458,7 @@ focus_tree = {
 			custom_effect_tooltip = kis_kaiser_crowned_by_pope_effect
 		}
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		cost = 10
 		x = 0
@@ -5514,7 +5506,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		cost = 10
 		x = 1
@@ -5542,7 +5534,7 @@ focus_tree = {
 			add_state_claim = 454
 		}
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		cost = 10
 		x = 1
@@ -5570,7 +5562,7 @@ focus_tree = {
 			add_state_claim = 341
 		}
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		cost = 10
 		x = -1
@@ -5600,7 +5592,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		cost = 10
 		x = 1
@@ -5662,7 +5654,7 @@ focus_tree = {
 			add_war_support = -0.05
 		}
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 4
 		x = 13
@@ -5709,7 +5701,7 @@ focus_tree = {
 		relative_position_id = GER_int_defeat_in_the_weltkrieg
 		cost = 10
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		completion_reward = {
 			add_popularity = {
@@ -5852,7 +5844,7 @@ focus_tree = {
 		relative_position_id = GER_int_mein_kampf
 		cost = 10
 		ai_will_do = {
-			factor = 200
+			base = 100
 		}
 		completion_reward = {
 			drop_cosmetic_tag = yes
@@ -5888,7 +5880,7 @@ focus_tree = {
 		relative_position_id = GER_int_hitler_chancellor
 		cost = 10
 		ai_will_do = {
-			factor = 1
+			base = 10
 		}
 		completion_reward = {
 			add_popularity = {
@@ -5919,6 +5911,10 @@ focus_tree = {
 			modifier = {
 				add = 200
 				date > 1934.1.1
+			}
+			modifier = {
+				add = 200
+				has_completed_focus = GER_int_beer_hall_putsch_succeeds
 			}
 		}
 		completion_reward = {
@@ -5958,40 +5954,212 @@ focus_tree = {
 		relative_position_id = GER_int_defeat_in_the_weltkrieg
 		cost = 10
 		ai_will_do = {
-			factor = 0
+			base = 10
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
 		}
 		completion_reward = {
+			hidden_effect = {
+				remove_ideas = GER_interwar_spirit_BannedConscription
+				set_capital = { state = 66 }
+			}
+
+			set_cosmetic_tag = GER_communist
+
 			set_politics = {
 				ruling_party = communism
 				elections_allowed = no
 			}
+
+			# --- START WOJNY DOMOWEJ ---
 			start_civil_war = {
 				keep_all_characters = yes
 				ideology = democratic
+				capital = 64
+				states = {
+					5 50 51 52 53 54 55 56 57 58 59 60 61 64 65 763
+				}
+			}
+
+			# --- ZAPISZ NOWY TAG CYWILKI ---
+			hidden_effect = {
+				add_popularity = {
+					ideology = communism
+					popularity = 0.37
+				}
+				random_other_country = {
+					limit = {
+						original_tag = GER
+						has_government = democratic
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = fascism
+						popularity = 0.30
+					}
+					add_popularity = {
+						ideology = neutrality
+						popularity = 0.32
+					}
+					create_country_leader = {
+						name = GER_friedrich_ebert
+						picture = GFX_Portrait_GER_friedrich_ebert
+						expire = "1965.1.1"
+						ideology = liberalism
+						traits = {
+						}
+					}
+					hidden_effect = {
+						country_event = { id = int_germany.5 days = 1 }
+					}
+					set_cosmetic_tag = GER_WEIMAR
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 5000
+						producer = GER
+					}
+				}
+
+				# --- DODAJ EKWIPUNEK GŁÓWNEJ STRONIE ---
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 5000
+					producer = GER
+				}
+
+				# --- PRZENIESIENIE GENERAŁÓW ---
+				# Musi być po zapisaniu event targeta
+				GER = {
+					every_unit_leader = {
+						limit = {
+							OR = {
+								has_id = 10
+								has_id = 15
+								has_id = 20
+								has_id = 24
+							}
+						}
+						set_nationality = WEI
+					}
+				}
 			}
 		}
 	}
+
 	focus = {
-		id = GER_int_contact_trotsky
-		icon = GFX_focus_fra_loyalty_trotzky
+		id = GER_int_setup_a_revolutionary_government
+		icon = GFX_focus_GER_establish_volkskommissariats
 		prerequisite = {
 			focus = GER_int_empower_liebknechtand_luxemburg
 		}
 		available = {
-			country_exists = SOV
-			has_government = communism
+			has_civil_war = no
+			has_war = no
 		}
 		x = 0
 		y = 1
 		relative_position_id = GER_int_empower_liebknechtand_luxemburg
-		cost = 10
+		cost = 2
 		ai_will_do = {
-			factor = 0
+			base = 100
 		}
 		completion_reward = {
-			add_political_power = 80
+			set_capital = {
+				state = 64
+			}
 		}
 	}
+
+	focus = {
+		id = GER_int_recover_from_the_civil_war
+		icon = GFX_focus_GER_stakhanovite_movement
+		prerequisite = {
+			focus = GER_int_setup_a_revolutionary_government
+		}
+		x = 0
+		y = 1
+		relative_position_id = GER_int_setup_a_revolutionary_government
+		cost = 30
+
+		ai_will_do = {
+			base = 100
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_int_aftermath_of_the_civil_war
+				add_idea = GER_int_recovery_from_the_civil_war 
+				days = 200
+			}
+		}
+	}
+
+	focus = {
+		id = GER_int_scrap_the_treaty_of_versailles
+		icon = GFX_focus_GER_liberate_exploited_colonial_workers
+		prerequisite = {
+			focus = GER_int_recover_from_the_civil_war
+		}
+		available = {
+			has_idea = GER_int_forced_demilitarization
+		}
+		x = -1
+		y = 1
+		relative_position_id = GER_int_recover_from_the_civil_war
+		cost = 5
+
+		ai_will_do = {
+			base = 10
+		}
+		completion_reward = {
+			remove_ideas = GER_int_forced_demilitarization
+			FRA = {
+				country_event = {
+					id = int_france.6
+					days = 5
+				}
+			}
+			51 = {
+				set_demilitarized_zone = no
+			}
+			55 = {
+				set_demilitarized_zone = no
+			}
+			42 = {
+				set_demilitarized_zone = no
+			}
+		}
+	}
+
+	focus = {
+		id = GER_int_contact_trotsky
+		icon = GFX_focus_fra_loyalty_trotzky
+		prerequisite = {
+			focus = GER_int_recover_from_the_civil_war
+		}
+		available = {
+			SOV = {
+				is_faction_leader = yes
+			}
+		}
+		x = 1
+		y = 1
+		relative_position_id = GER_int_recover_from_the_civil_war
+		cost = 10
+		ai_will_do = {
+			base = 10
+		}
+		completion_reward = {
+			SOV = {
+				country_event = generic.2
+			}
+		}
+	}
+
 	focus = {
 		id = GER_int_alte_kameraden
 		icon = GFX_focus_generic_join_comintern
@@ -5999,9 +6167,6 @@ focus_tree = {
 			focus = GER_int_contact_trotsky
 		}
 		available = {
-			has_government = communism
-			country_exists = SOV
-			country_exists = POL
 			SOV = {
 				has_war_with = POL
 			}
@@ -6011,7 +6176,7 @@ focus_tree = {
 		relative_position_id = GER_int_contact_trotsky
 		cost = 10
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		completion_reward = {
 			add_to_war = {

@@ -1,5 +1,5 @@
 -- LOGICAL DEFINES - HOI4TGW --
-NDefines.NGame.START_DATE = "1910.1.1.12"											-- #HOI4TGW ::: START_DATE = "1936.1.1.12"
+NDefines.NGame.START_DATE = "1910.5.1.12"											-- #HOI4TGW ::: START_DATE = "1936.1.1.12"
 NDefines.NGame.END_DATE = "1936.1.1.1"												-- #HOI4TGW ::: END_DATE = "1949.1.1.1"
 
 NDefines.NDiplomacy.BASE_TRUCE_PERIOD = 30											-- #HOI4TGW ::: Base truce period in days.
@@ -8,7 +8,7 @@ NDefines.NDiplomacy.BASE_BOOST_PARTY_POPULARITY_DAILY_PP = 5.8						-- #HOI4TGW 
 NDefines.NDiplomacy.BASE_STAGE_COUP_DAILY_PP = 6.1									-- #HOI4TGW ::: Daily pp cost for staging a coup
 NDefines.NDiplomacy.BASE_STAGE_COUP_TOTAL_COST = 810								-- #HOI4TGW ::: Equipment consume factor for stage coup.
 NDefines.NDiplomacy.NAP_UNBREAKABLE_MONTHS = 48										-- #HOI4TGW ::: NAPS cannot be broken for this many months
-NDefines.NDiplomacy.TENSION_TIME_SCALE_START_DATE = "1910.1.1.12"					-- #HOI4TGW ::: Starting at this date the tension values will be scaled down (will be equal to 1 before that) #HOI4TGW ::: TENSION_TIME_SCALE_START_DATE = "1936.1.1.12"
+NDefines.NDiplomacy.TENSION_TIME_SCALE_START_DATE = "1910.5.1.12"					-- #HOI4TGW ::: Starting at this date the tension values will be scaled down (will be equal to 1 before that) #HOI4TGW ::: TENSION_TIME_SCALE_START_DATE = "1936.1.1.12"
 
 NDefines.NMilitary.MAX_ARMY_EXPERIENCE = 999										-- #HOI4TGW ::: Max army experience a country can store	#HOI4TGW ::: MAX_ARMY_EXPERIENCE = 500
 NDefines.NMilitary.MAX_NAVY_EXPERIENCE = 999										-- #HOI4TGW ::: --Max navy experience a country can store	#HOI4TGW ::: MAX_NAVY_EXPERIENCE = 500
@@ -21,8 +21,7 @@ NDefines.NAI.NAVAL_INVADED_AREA_PRIO_DURATION = 10									-- #HOI4TGW ::: NAVAL
 NDefines.NAI.NAVAL_INVADED_AREA_PRIO_MULT = 1.02									-- #HOI4TGW ::: NAVAL_INVADED_AREA_PRIO_MULT = 1.2 -- fronts that belongs to recent invasions gets more prio
 NDefines.NAI.MIN_NUM_CONQUERED_PROVINCES_TO_DEPRIO_NAVAL_INVADED_FRONTS = 3			-- #HOI4TGW ::: MIN_NUM_CONQUERED_PROVINCES_TO_DEPRIO_NAVAL_INVADED_FRONTS = 20-- if you conquer this amount of provinces after a naval invasion it will lose its prio status and will act as a regular front
 NDefines.NAI.FAILED_INVASION_AVOID_DURATION = 160									-- #HOI4TGW ::: FAILED_INVASION_AVOID_DURATION = 60 -- after a failed invasion AI will down-prioritize invading the same area again for this number of days
-NDefines.NAI.AI_UPDATE_ROLES_FREQUENCY_HOURS = 60									-- #HOI4TGW ::: FAILED_INVASION_AVOID_DURATION = 60 -- after a failed invasion AI will down-prioritize invading the same area again for this number of days
-NDefines.NAI.UPDATE_SUPPLY_MOTORIZATION_FREQUENCY_HOURS = 76						-- #HOI4TGW ::: UPDATE_SUPPLY_MOTORIZATION_FREQUENCY_HOURS = 52 -- Check if activating motorization would improve supply situation this often.
+NDefines.NAI.UPDATE_SUPPLY_MOTORIZATION_FREQUENCY_HOURS = 96						-- #HOI4TGW ::: UPDATE_SUPPLY_MOTORIZATION_FREQUENCY_HOURS = 52 -- Check if activating motorization would improve supply situation this often.
 -- VISUAL DEFINES - HOI4TGW --
 NDefines.NGraphics.VICTORY_POINT_MAP_ICON_TEXT_CUTOFF = {400, 900, 1500}			-- #HOI4TGW ::: VP names will disappear on a larger zoom
 -- FLICKERING FLAGS FIX - HOI4TGW --
