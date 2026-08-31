@@ -804,7 +804,7 @@ focus_tree = {
 			factor = 20
 		}
 		cost = 10
-		x = 13
+		x = 16
 		y = 0
 	}
 	# HOI4TGW 0.1.9
@@ -839,17 +839,277 @@ focus_tree = {
 			factor = 0
 		}
 		cost = 9
-		x = -6
+		x = -9
 		y = 1
 		relative_position_id = GER_ww1_diplomatic_effort
 	}
 	#----------------------------------------------------------------------- 
-	# Bloc 1
+	# Backstab
+	#-----------------------------------------------------------------------
+	focus = {
+		id = GER_ww1_isolate_austria
+		prerequisite = {
+			focus = GER_ww1_diplomatic_effort
+		}
+		mutually_exclusive = {
+			focus = GER_ww1_triple_alliance
+		}
+		icon = GFX_hoi4tgw_auh_contest_emperor
+		completion_reward = {
+			ITA = {
+				add_opinion_modifier = {
+					target = GER
+					modifier = ger_ita_alliance_focus
+				}
+			}
+			AUH = {
+				add_opinion_modifier = {
+					target = GER
+					modifier = HOI4TGW_Opinion_ger_auh_alliance_focus_malus
+				}
+			}
+			AUH = {
+				add_opinion_modifier = { target = GER modifier = embargo }
+				add_opinion_modifier = { target = GER modifier = sanctions_relations } 
+			}
+			GER = { 
+			   remove_from_faction = AUH 
+		    }
+		}
+		available = {
+			NOT = {
+				has_global_flag = kis_treaty_of_versailles
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 5
+		x = -7
+		y = 1
+		relative_position_id = GER_ww1_diplomatic_effort
+	}
+	focus = {
+		id = GER_ww1_dresden_conference
+		prerequisite = {
+			focus = GER_ww1_isolate_austria
+		}
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		completion_reward = {
+		    GER = {
+				add_state_core = 4
+				add_state_core = 152
+				add_state_core = 153
+				add_state_core = 102
+			}
+			RUS = {
+				add_state_claim = 88
+				add_state_claim = 89
+				add_state_claim = 91
+			}
+			GER = { 
+				add_to_faction = ITA
+		    }
+			GER = { 
+				add_to_faction = ROM
+		    }
+			hidden_effect = {
+			    ITA = { 
+			        set_politics = {
+				       ruling_party = neutrality
+					   elections_allowed = yes
+				    }
+					add_popularity = {
+					    ideology = neutrality
+						popularity = 0.80
+					}
+		        }
+                ROM = { 
+			        set_politics = {
+				       ruling_party = neutrality
+					   elections_allowed = yes
+				    }
+					add_popularity = {
+					    ideology = neutrality
+						popularity = 0.60
+					}
+		        }
+			}
+			
+		}
+		available = {
+			NOT = {
+				has_global_flag = kis_treaty_of_versailles
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 8
+		x = 0
+		y = 1
+		relative_position_id = GER_ww1_isolate_austria
+	}
+	focus = {
+		id = GER_ww1_second_bruderkrieg
+		prerequisite = {
+			focus = GER_ww1_dresden_conference
+		}
+		icon = GFX_goal_generic_secret_weapon
+		completion_reward = {
+		    custom_effect_tooltip = "All of the countries that attended to Dresden Conference will attack Austria Hungary"
+            hidden_effect = {
+			GER = {
+				declare_war_on = {
+					target = AUH
+					type = take_state
+					generator = {
+						28
+					}
+				}
+			}
+			FRA = {
+			    remove_from_faction = RUS
+			}
+			RUS = {	
+				declare_war_on = {
+					target = AUH
+					type = take_state
+					generator = {
+						28
+					}
+				}
+			}
+			ITA = {
+				declare_war_on = {
+					target = AUH
+					type = take_state
+					generator = {
+						28
+					}
+				}
+			}
+			ROM = {
+				declare_war_on = {
+					target = AUH
+					type = take_state
+					generator = {
+						28
+					}
+				}
+			}
+			
+			}
+			
+		}
+		available = {
+			NOT = {
+				has_global_flag = kis_treaty_of_versailles
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = GER_ww1_dresden_conference
+	}
+	focus = {
+		id = GER_ww1_demand_the_bohemian_crown
+		prerequisite = {
+			focus = GER_ww1_second_bruderkrieg
+		}
+		icon = GFX_focus_CZE_our_royal_claims
+		completion_reward = {
+            CZE = {
+				country_event = { id = ww1_germany.26 }
+			}
+			
+		}
+		available = {
+			NOT = {
+				has_global_flag = kis_treaty_of_versailles
+			}
+			NOT = {
+				country_exists = AUH
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 6
+		x = -1
+		y = 1
+		relative_position_id = GER_ww1_second_bruderkrieg
+	}
+	focus = {
+		id = GER_ww1_destroy_hungarian_habsburgs
+		prerequisite = {
+			focus = GER_ww1_demand_the_bohemian_crown
+		}
+		icon = GFX_focus_CZE_german_puppet
+		completion_reward = {
+            create_wargoal = {
+				target = HUN
+				type = puppet_wargoal_focus
+			}
+			
+			create_wargoal = {
+				target = CRO
+				type = puppet_wargoal_focus
+			}
+			
+		}
+		available = {
+			NOT = {
+				has_global_flag = kis_treaty_of_versailles
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = GER_ww1_demand_the_bohemian_crown
+	}
+	focus = {
+		id = GER_ww1_the_eastern_question
+		prerequisite = {
+			focus = GER_ww1_destroy_hungarian_habsburgs
+		}
+		icon = GFX_focus_SOV_the_true_tsars
+		completion_reward = {
+			country_event = {
+				days = 5
+				id = ww1_germany.29
+			}
+		}
+		available = {
+			NOT = {
+				has_global_flag = kis_treaty_of_versailles
+			}
+			has_global_flag = collapse_of_hungary
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = GER_ww1_destroy_hungarian_habsburgs
+	}
+	#----------------------------------------------------------------------- 
+	# Renew Triple Alliance
 	#-----------------------------------------------------------------------
 	focus = {
 		id = GER_ww1_triple_alliance
 		prerequisite = {
 			focus = GER_ww1_diplomatic_effort
+		}
+		mutually_exclusive = {
+			focus = GER_ww1_isolate_austria
 		}
 		icon = GFX_hoi4tgw_triple_alliance
 		completion_reward = {
@@ -1008,6 +1268,7 @@ focus_tree = {
 		id = GER_ww1_zimmermann_telegram
 		prerequisite = {
 			focus = GER_ww1_send_advisor
+			focus = GER_ww1_second_bruderkrieg
 		}
 		icon = GFX_goal_generic_forceful_treaty
 		bypass = {
@@ -1049,7 +1310,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = GER_ww1_send_advisor
 	}
@@ -1086,7 +1347,7 @@ focus_tree = {
 		}
 		cost = 10
 		x = 0
-		y = 1
+		y = 2
 		relative_position_id = GER_ww1_zimmermann_telegram
 	}
 	focus = {
@@ -1248,26 +1509,14 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = GER_ww1_send_advisor
+			focus = GER_ww1_second_bruderkrieg
 		}
 		icon = GFX_goal_anti_comintern_pact
 		completion_reward = {
 			FIN = {
-				start_civil_war = {
-					keep_all_characters = yes
-					ruling_party = democratic
-					ideology = communism
-					size = 0.1
-					capital = 150
-					states = {
-						150
-					}
+				country_event = {
+					id = ww1_finland.2 hours = 6
 				}
-			}
-			hidden_effect = {
-				news_event = {
-					id = ww1_finland.1
-					days = 3
-				}				# Finnish Civil War
 			}
 		}
 		ai_will_do = {
@@ -1278,8 +1527,8 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 0
-		y = 4
+		x = -1
+		y = 2
 		relative_position_id = GER_ww1_send_advisor
 	}
 	#----------------------------------------------------------------------- 
@@ -1846,7 +2095,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 18
+		x = 21
 		y = 5
 	}
 	#===============================
@@ -1866,7 +2115,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 21
+		x = 24
 		y = 0
 	}
 	focus = {
@@ -1888,7 +2137,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 20
+		x = 23
 		y = 1
 	}
 	focus = {
@@ -1910,7 +2159,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 22
+		x = 25
 		y = 1
 	}
 	focus = {
@@ -1935,7 +2184,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 22
+		x = 25
 		y = 3
 	}
 	focus = {
@@ -1960,7 +2209,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 22
+		x = 25
 		y = 5
 	}
 	focus = {
@@ -1985,7 +2234,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 21
+		x = 24
 		y = 2
 	}
 	focus = {
@@ -2010,7 +2259,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 20
+		x = 23
 		y = 3
 	}
 	focus = {
@@ -2037,7 +2286,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 19
+		x = 22
 		y = 2
 	}
 	focus = {
@@ -2064,7 +2313,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 19
+		x = 22
 		y = 4
 	}
 	focus = {
@@ -2092,7 +2341,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 19
+		x = 22
 		y = 6
 	}
 	focus = {
@@ -2104,7 +2353,7 @@ focus_tree = {
 		prerequisite = {
 			focus = GER_ww1_special_forces
 		}
-		x = 19
+		x = 22
 		y = 8
 		cost = 10
 		ai_will_do = {
@@ -2143,7 +2392,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 21
+		x = 24
 		y = 4
 	}
 	focus = {
@@ -2168,7 +2417,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 20
+		x = 23
 		y = 5
 	}
 	focus = {
@@ -2193,7 +2442,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 21
+		x = 24
 		y = 6
 	}
 	focus = {
@@ -2218,7 +2467,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 20
+		x = 23
 		y = 7
 	}
 	focus = {
@@ -2243,7 +2492,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 22
+		x = 25
 		y = 7
 	}
 	focus = {
@@ -2274,7 +2523,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 21
+		x = 24
 		y = 8
 	}
 	focus = {
@@ -2302,7 +2551,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 20
+		x = 23
 		y = 10
 	}
 	#############################################################################
@@ -2389,7 +2638,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 27
+		x = 30
 		y = 0
 	}
 	focus = {
@@ -2399,7 +2648,7 @@ focus_tree = {
 		prerequisite = {
 			focus = GER_ww1_aviation_effort
 		}
-		x = 24
+		x = 27
 		y = 1
 		completion_reward = {
 			custom_effect_tooltip = available_designer
@@ -2425,7 +2674,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 26
+		x = 29
 		y = 1
 	}
 	focus = {
@@ -2450,7 +2699,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 28
+		x = 31
 		y = 2
 	}
 	focus = {
@@ -2491,7 +2740,7 @@ focus_tree = {
 			factor = 80
 		}
 		cost = 10
-		x = 29
+		x = 32
 		y = 3
 	}
 	focus = {
@@ -2518,7 +2767,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 24
+		x = 27
 		y = 2
 		mutually_exclusive = {
 			focus = GER_ww1_bomber_focus
@@ -2545,7 +2794,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 26
+		x = 29
 		y = 2
 		mutually_exclusive = {
 			focus = GER_ww1_fighter_focus
@@ -2575,7 +2824,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 26
+		x = 29
 		y = 3
 	}
 	focus = {
@@ -2605,7 +2854,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 24
+		x = 27
 		y = 4
 	}
 	focus = {
@@ -2629,7 +2878,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 26
+		x = 29
 		y = 4
 	}
 	focus = {
@@ -2659,7 +2908,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 28
+		x = 31
 		y = 4
 	}
 	focus = {
@@ -2686,7 +2935,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 26
+		x = 29
 		y = 5
 	}
 	focus = {
@@ -2716,7 +2965,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 24
+		x = 27
 		y = 6
 	}
 	focus = {
@@ -2740,7 +2989,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 26
+		x = 29
 		y = 6
 	}
 	focus = {
@@ -2770,7 +3019,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 28
+		x = 31
 		y = 6
 	}
 	focus = {
@@ -2797,7 +3046,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 26
+		x = 29
 		y = 7
 	}
 	focus = {
@@ -2824,7 +3073,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 25
+		x = 28
 		y = 8
 	}
 	focus = {
@@ -2849,7 +3098,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 27
+		x = 30
 		y = 8
 	}
 	focus = {
@@ -2875,7 +3124,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 26
+		x = 29
 		y = 9
 	}
 	focus = {
@@ -2901,7 +3150,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 25
+		x = 28
 		y = 10
 	}
 	focus = {
@@ -2927,7 +3176,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 27
+		x = 30
 		y = 10
 	}
 	###########################################################################################################################
@@ -2946,7 +3195,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 33
+		x = 36
 		y = 0
 	}
 	focus = {
@@ -3038,7 +3287,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 33
+		x = 36
 		y = 1
 	}
 	focus = {
@@ -3106,7 +3355,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 32
+		x = 35
 		y = 2
 	}
 	focus = {
@@ -3174,7 +3423,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 34
+		x = 37
 		y = 2
 	}
 	focus = {
@@ -3189,7 +3438,7 @@ focus_tree = {
 			date > 1911.1.1
 		}
 		icon = GFX_goal_generic_construct_naval_dockyard
-		x = 36
+		x = 39
 		y = 2
 		cost = 10
 		ai_will_do = {
@@ -3250,7 +3499,7 @@ focus_tree = {
 		prerequisite = {
 			focus = GER_ww1_aviation_effort
 		}
-		x = 30
+		x = 33
 		y = 2
 		cost = 10
 		ai_will_do = {
@@ -3404,7 +3653,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 33
+		x = 36
 		y = 3
 	}
 	focus = {
@@ -3475,7 +3724,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 32
+		x = 35
 		y = 4
 	}
 	focus = {
@@ -3546,7 +3795,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 34
+		x = 37
 		y = 4
 	}
 	focus = {
@@ -3561,7 +3810,7 @@ focus_tree = {
 			date > 1913.1.1
 		}
 		icon = GFX_goal_generic_construct_naval_dockyard
-		x = 36
+		x = 39
 		y = 4
 		cost = 10
 		ai_will_do = {
@@ -3622,7 +3871,7 @@ focus_tree = {
 		available = {
 			date > 1913.1.1
 		}
-		x = 30
+		x = 33
 		y = 4
 		cost = 10
 		ai_will_do = {
@@ -3775,7 +4024,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 33
+		x = 36
 		y = 5
 	}
 	focus = {
@@ -3846,7 +4095,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 32
+		x = 35
 		y = 6
 	}
 	focus = {
@@ -3917,7 +4166,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 34
+		x = 37
 		y = 6
 	}
 	focus = {
@@ -3935,7 +4184,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
-		x = 36
+		x = 39
 		y = 6
 		cost = 10
 		ai_will_do = {
@@ -3996,7 +4245,7 @@ focus_tree = {
 		available = {
 			date > 1915.1.1
 		}
-		x = 30
+		x = 33
 		y = 6
 		cost = 10
 		ai_will_do = {
@@ -4074,7 +4323,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 33
+		x = 36
 		y = 7
 	}
 	focus = {
@@ -4169,7 +4418,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 33
+		x = 36
 		y = 8
 	}
 	focus = {
@@ -4189,7 +4438,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 33
+		x = 36
 		y = 9
 		cancel_if_invalid = no
 	}
@@ -4318,7 +4567,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 5
-		x = 38
+		x = 41
 		y = 0
 	}
 	focus = {
@@ -4340,7 +4589,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 39
+		x = 42
 		y = 1
 	}
 	focus = {
@@ -4375,7 +4624,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 39
+		x = 42
 		y = 2
 	}
 	focus = {
@@ -4400,7 +4649,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 39
+		x = 42
 		y = 3
 	}
 	focus = {
@@ -4439,7 +4688,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 38
+		x = 41
 		y = 4
 		mutually_exclusive = {
 			focus = GER_ww1_large_navy
@@ -4475,7 +4724,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 40
+		x = 43
 		y = 4
 		mutually_exclusive = {
 			focus = GER_ww1_flexible_navy
@@ -4532,7 +4781,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 38
+		x = 41
 		y = 5
 	}
 	focus = {
@@ -4588,7 +4837,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 40
+		x = 43
 		y = 5
 	}
 	focus = {
@@ -4643,7 +4892,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 38
+		x = 41
 		y = 6
 	}
 	focus = {
@@ -4704,7 +4953,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 40
+		x = 43
 		y = 6
 	}
 	focus = {
@@ -4732,7 +4981,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 39
+		x = 42
 		y = 7
 	}
 	focus = {
@@ -4751,7 +5000,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 39
+		x = 42
 		y = 8
 	}
 	focus = {
@@ -4776,7 +5025,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 38
+		x = 41
 		y = 9
 	}
 	focus = {
@@ -4801,7 +5050,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 40
+		x = 43
 		y = 9
 	}
 	###########################################################################################################################
@@ -4831,7 +5080,7 @@ focus_tree = {
 			add_political_power = 100
 		}
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 4
 		x = 4
@@ -4857,11 +5106,7 @@ focus_tree = {
 			add_political_power = 100
 		}
 		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 0
-				date < 1919.1.1
-			}
+			base = 10
 		}
 		cost = 10
 		x = -3
@@ -4888,7 +5133,7 @@ focus_tree = {
 		}
 		will_lead_to_war_with = SOV
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 10
 		x = -1
@@ -4912,7 +5157,7 @@ focus_tree = {
 		}
 		will_lead_to_war_with = SOV
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 10
 		x = 0
@@ -4940,7 +5185,7 @@ focus_tree = {
 		}
 		will_lead_to_war_with = SOV
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 10
 		x = 1
@@ -4970,7 +5215,7 @@ focus_tree = {
 		}
 		will_lead_to_war_with = RUS
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 10
 		x = 0
@@ -5032,7 +5277,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 10
 		x = 0
@@ -5096,7 +5341,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 10
 		x = 0
@@ -5129,7 +5374,7 @@ focus_tree = {
 			add_ideas = GER_ww1_wilhelm_ii
 		}
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 10
 		x = -1
@@ -5159,11 +5404,7 @@ focus_tree = {
 			army_experience = 40
 		}
 		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 0
-				date < 1919.1.1
-			}
+			base = 10
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
@@ -5242,7 +5483,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		cost = 14.4
 		x = 0
@@ -5442,7 +5683,7 @@ focus_tree = {
 			add_state_claim = 191
 		}
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		cost = 10
 		x = 1
@@ -5466,7 +5707,7 @@ focus_tree = {
 			custom_effect_tooltip = kis_kaiser_crowned_by_pope_effect
 		}
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		cost = 10
 		x = 0
@@ -5514,7 +5755,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		cost = 10
 		x = 1
@@ -5542,7 +5783,7 @@ focus_tree = {
 			add_state_claim = 454
 		}
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		cost = 10
 		x = 1
@@ -5570,7 +5811,7 @@ focus_tree = {
 			add_state_claim = 341
 		}
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		cost = 10
 		x = -1
@@ -5600,7 +5841,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		cost = 10
 		x = 1
@@ -5631,7 +5872,69 @@ focus_tree = {
 			}
 		}
 		cost = 2
-		x = 6
+		x = 5
+		y = 1
+		relative_position_id = GER_int_victory_in_the_weltkrieg
+	}
+	focus = {
+		id = GER_int_famine_relief_efforts
+		icon = GFX_focus_generic_welfare
+		prerequisite = {
+			focus = GER_int_victory_in_the_weltkrieg focus = GER_int_defeat_in_the_weltkrieg
+		}
+		bypass = {
+			NOT = {
+				has_idea = GER_famine_1
+				hidden_trigger = {
+					has_idea = GER_famine_2
+					has_idea = GER_famine_3
+				}
+				has_idea = GER_famine_4
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = GER_famine_4
+				}
+				add_stability = 0.1
+				add_war_support = 0.15
+				remove_ideas = { GER_famine_4 }
+			}
+			else_if = {
+				limit = {
+					has_idea = GER_famine_3
+				}
+				add_stability = 0.1
+				add_war_support = 0.15
+				remove_ideas = { GER_famine_3 }
+			}
+			else_if = {
+				limit = {
+					has_idea = GER_famine_2
+				}
+				add_stability = 0.1
+				add_war_support = 0.15
+				remove_ideas = { GER_famine_2 }
+			}
+			else_if = {
+				limit = {
+					has_idea = GER_famine_1
+				}
+				add_stability = 0.1
+				add_war_support = 0.15
+				remove_ideas = { GER_famine_1 }
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				date > 1925.5.1
+			}
+		}
+		cost = 2
+		x = 7
 		y = 1
 		relative_position_id = GER_int_victory_in_the_weltkrieg
 	}
@@ -5662,7 +5965,7 @@ focus_tree = {
 			add_war_support = -0.05
 		}
 		ai_will_do = {
-			base = 1
+			base = 10
 		}
 		cost = 4
 		x = 13
@@ -5709,7 +6012,7 @@ focus_tree = {
 		relative_position_id = GER_int_defeat_in_the_weltkrieg
 		cost = 10
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		completion_reward = {
 			add_popularity = {
@@ -5852,7 +6155,7 @@ focus_tree = {
 		relative_position_id = GER_int_mein_kampf
 		cost = 10
 		ai_will_do = {
-			factor = 200
+			base = 100
 		}
 		completion_reward = {
 			drop_cosmetic_tag = yes
@@ -5888,7 +6191,7 @@ focus_tree = {
 		relative_position_id = GER_int_hitler_chancellor
 		cost = 10
 		ai_will_do = {
-			factor = 1
+			base = 10
 		}
 		completion_reward = {
 			add_popularity = {
@@ -5919,6 +6222,10 @@ focus_tree = {
 			modifier = {
 				add = 200
 				date > 1934.1.1
+			}
+			modifier = {
+				add = 200
+				has_completed_focus = GER_int_beer_hall_putsch_succeeds
 			}
 		}
 		completion_reward = {
@@ -5958,40 +6265,211 @@ focus_tree = {
 		relative_position_id = GER_int_defeat_in_the_weltkrieg
 		cost = 10
 		ai_will_do = {
-			factor = 0
+			base = 10
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
 		}
 		completion_reward = {
+			hidden_effect = {
+				remove_ideas = GER_interwar_spirit_BannedConscription
+				set_capital = { state = 66 }
+			}
+
+			set_cosmetic_tag = GER_communist
+
 			set_politics = {
 				ruling_party = communism
 				elections_allowed = no
 			}
+
+			# --- START CIVIL WAR ---
 			start_civil_war = {
 				keep_all_characters = yes
 				ideology = democratic
+				capital = 64
+				states = {
+					5 50 51 52 53 54 55 56 57 58 59 60 61 64 65 763
+				}
+			}
+
+			# --- NEW CIVIL WAR TAG ---
+			hidden_effect = {
+				add_popularity = {
+					ideology = communism
+					popularity = 0.37
+				}
+				random_other_country = {
+					limit = {
+						original_tag = GER
+						has_government = democratic
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = fascism
+						popularity = 0.30
+					}
+					add_popularity = {
+						ideology = neutrality
+						popularity = 0.32
+					}
+					create_country_leader = {
+						name = GER_friedrich_ebert
+						picture = GFX_Portrait_GER_friedrich_ebert
+						expire = "1965.1.1"
+						ideology = liberalism
+						traits = {
+						}
+					}
+					hidden_effect = {
+						country_event = { id = int_germany.5 days = 1 }
+					}
+					set_cosmetic_tag = GER_WEIMAR
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 5000
+						producer = GER
+					}
+				}
+
+				# --- EXTRA EQUIP ---
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 5000
+					producer = GER
+				}
+
+				# --- GENERALS ---
+				GER = {
+					every_unit_leader = {
+						limit = {
+							OR = {
+								has_id = 10
+								has_id = 15
+								has_id = 20
+								has_id = 24
+							}
+						}
+						set_nationality = WEI
+					}
+				}
 			}
 		}
 	}
+
 	focus = {
-		id = GER_int_contact_trotsky
-		icon = GFX_focus_fra_loyalty_trotzky
+		id = GER_int_setup_a_revolutionary_government
+		icon = GFX_focus_GER_establish_volkskommissariats
 		prerequisite = {
 			focus = GER_int_empower_liebknechtand_luxemburg
 		}
 		available = {
-			country_exists = SOV
-			has_government = communism
+			has_civil_war = no
+			has_war = no
 		}
 		x = 0
 		y = 1
 		relative_position_id = GER_int_empower_liebknechtand_luxemburg
-		cost = 10
+		cost = 2
 		ai_will_do = {
-			factor = 0
+			base = 100
 		}
 		completion_reward = {
-			add_political_power = 80
+			set_capital = {
+				state = 64
+			}
 		}
 	}
+
+	focus = {
+		id = GER_int_recover_from_the_civil_war
+		icon = GFX_focus_GER_stakhanovite_movement
+		prerequisite = {
+			focus = GER_int_setup_a_revolutionary_government
+		}
+		x = 0
+		y = 1
+		relative_position_id = GER_int_setup_a_revolutionary_government
+		cost = 30
+
+		ai_will_do = {
+			base = 100
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_int_aftermath_of_the_civil_war
+				add_idea = GER_int_recovery_from_the_civil_war 
+				days = 200
+			}
+		}
+	}
+
+	focus = {
+		id = GER_int_scrap_the_treaty_of_versailles
+		icon = GFX_focus_GER_liberate_exploited_colonial_workers
+		prerequisite = {
+			focus = GER_int_recover_from_the_civil_war
+		}
+		available = {
+			has_idea = GER_int_forced_demilitarization
+		}
+		x = -1
+		y = 1
+		relative_position_id = GER_int_recover_from_the_civil_war
+		cost = 5
+
+		ai_will_do = {
+			base = 10
+		}
+		completion_reward = {
+			remove_ideas = GER_int_forced_demilitarization
+			FRA = {
+				country_event = {
+					id = int_france.6
+					days = 5
+				}
+			}
+			51 = {
+				set_demilitarized_zone = no
+			}
+			55 = {
+				set_demilitarized_zone = no
+			}
+			42 = {
+				set_demilitarized_zone = no
+			}
+		}
+	}
+
+	focus = {
+		id = GER_int_contact_trotsky
+		icon = GFX_focus_fra_loyalty_trotzky
+		prerequisite = {
+			focus = GER_int_recover_from_the_civil_war
+		}
+		available = {
+			SOV = {
+				is_faction_leader = yes
+			}
+		}
+		x = 1
+		y = 1
+		relative_position_id = GER_int_recover_from_the_civil_war
+		cost = 10
+		ai_will_do = {
+			base = 10
+		}
+		completion_reward = {
+			SOV = {
+				country_event = generic.2
+			}
+		}
+	}
+
 	focus = {
 		id = GER_int_alte_kameraden
 		icon = GFX_focus_generic_join_comintern
@@ -5999,9 +6477,6 @@ focus_tree = {
 			focus = GER_int_contact_trotsky
 		}
 		available = {
-			has_government = communism
-			country_exists = SOV
-			country_exists = POL
 			SOV = {
 				has_war_with = POL
 			}
@@ -6011,7 +6486,7 @@ focus_tree = {
 		relative_position_id = GER_int_contact_trotsky
 		cost = 10
 		ai_will_do = {
-			factor = 0
+			base = 10
 		}
 		completion_reward = {
 			add_to_war = {

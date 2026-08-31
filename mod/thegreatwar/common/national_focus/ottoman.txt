@@ -862,28 +862,6 @@ focus_tree = {
 		x = 6
 		y = 6
 	}
-	focus = {
-		id = TUR_interwar_ParisPeaceConference		# https://en.wikipedia.org/wiki/Paris_Peace_Conference_(1919%E2%80%931920)
-		icon = GFX_goal_generic_territory_or_war
-		available = {
-			date > 1919.1.1
-			has_global_flag = kis_treaty_of_versailles
-		}
-		completion_reward = {
-			add_political_power = -250
-			set_global_flag = kis_ottoman_empire_war_flag
-			custom_effect_tooltip = kis_ottoman_empire_war_flag_effect
-			hidden_effect = {
-				set_cosmetic_tag = TUR_WAR				# Ottoman War Flag to avoid confusion with the other Turkey
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = 7
-		y = 9
-	}
 	#War in Balkans Focus
 	focus = {
 		id = TUR_ww1_anti_serb
@@ -1491,7 +1469,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 13
+		x = 17
 		y = 2
 	}
 	focus = {
@@ -1583,6 +1561,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			end_puppet = HJZ
+			add_stability = 0.1
 		}
 		ai_will_do = {
 			factor = 0
@@ -1612,15 +1591,9 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_stability = -0.1
-			YEM = {
-				transfer_state = 293
-			}
-			puppet = YEM
-			ASR = {
-				transfer_state = 747
-			}
-			puppet = ASR
+			add_stability = 0.05
+			end_puppet = YEM
+			end_puppet = ASR
 		}
 		ai_will_do = {
 			factor = 10
@@ -1647,6 +1620,8 @@ focus_tree = {
 				target = HJZ
 				modifier = HOI4TGW_Opinion_hostile_diplomatic_relations
 			}
+			add_stability = -0.15
+			add_war_support = 0.15
 		}
 		ai_will_do = {
 			factor = 10
@@ -1669,10 +1644,11 @@ focus_tree = {
 		}
 		completion_reward = {
 			end_puppet = HJZ
-			create_wargoal = {
-				type = annex_everything
+			annex_country = {
 				target = HJZ
+				transfer_troops = yes
 			}
+			add_stability = -0.1
 		}
 		ai_will_do = {
 			factor = 0
@@ -1690,36 +1666,19 @@ focus_tree = {
 		available = {
 			country_exists = YEM
 			country_exists = ASR
-			YEM = {
-				is_subject = no
-			}
-			ASR = {
-				is_subject = no
-			}
 		}
 		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = YEM
-			}
-			create_wargoal = {
-				type = annex_everything
+			end_puppet = ASR
+			annex_country = {
 				target = ASR
+				transfer_troops = yes
 			}
-			450 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
+			end_puppet = YEM
+			annex_country = {
+				target = YEM
+				transfer_troops = yes
 			}
-			451 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
+			add_stability = -0.03
 		}
 		ai_will_do = {
 			factor = 0
@@ -1775,7 +1734,7 @@ focus_tree = {
 	focus = {
 		id = TUR_ww1_support_oman
 		prerequisite = {
-			focus = TUR_ww1_war_yemen
+			focus = TUR_ww1_support_libya
 		}
 		icon = GFX_goal_generic_demand_territory
 		available = {
@@ -1804,7 +1763,7 @@ focus_tree = {
 			factor = 0
 		}
 		cost = 10
-		x = 16
+		x = 15
 		y = 7
 	}
 	#focus = {
@@ -1856,7 +1815,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 18
+		x = 19
 		y = 2
 	}
 	focus = {
@@ -1878,11 +1837,11 @@ focus_tree = {
 			factor = 0
 		}
 		cost = 10
-		x = 18
+		x = 19
 		y = 3
 	}
 	focus = {
-		id = TUR_ww1_annex_jabal
+		id = TUR_ww1_closer_jabal
 		prerequisite = {
 			focus = TUR_ww1_fight_saud
 		}
@@ -1897,24 +1856,39 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			TUR = {
-				annex_country = {
-					target = JBS
-					transfer_troops = yes
-				}
+			JBS = {
+				country_event = { id = ww1_ottoman.23 }
 			}
 		}
 		ai_will_do = {
 			factor = 0
 		}
 		cost = 10
-		x = 18
+		x = 19
 		y = 4
+	}
+	focus = {
+		id = TUR_ww1_create_faction
+		prerequisite = {
+			focus = TUR_ww1_closer_jabal
+		}
+		icon = GFX_goal_generic_forceful_treaty
+		available = {
+		}
+		completion_reward = {
+			set_rule = { can_create_factions = yes }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = 19
+		y = 5
 	}
 	focus = {
 		id = TUR_ww1_friend_afghan
 		prerequisite = {
-			focus = TUR_ww1_annex_jabal
+			focus = TUR_ww1_create_faction
 		}
 		icon = GFX_goal_generic_major_alliance
 		available = {
@@ -1931,8 +1905,8 @@ focus_tree = {
 			factor = 0
 		}
 		cost = 10
-		x = 18
-		y = 5
+		x = 19
+		y = 6
 	}
 	################## OPEN BETA 0.8 ########## [START] #############
 	focus = {
@@ -1962,8 +1936,8 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = TUR_ww1_friend_persia
 		}
-		x = 19
-		y = 6
+		x = 20
+		y = 7
 	}
 	focus = {
 		id = TUR_ww1_claim_northenpersia
@@ -1984,8 +1958,8 @@ focus_tree = {
 			factor = 1
 		}
 		cost = 10
-		x = 19
-		y = 7
+		x = 20
+		y = 9
 	}
 	focus = {
 		id = TUR_ww1_claim_persia
@@ -2011,8 +1985,8 @@ focus_tree = {
 			factor = 1
 		}
 		cost = 10
-		x = 19
-		y = 8
+		x = 20
+		y = 10
 	}
 	focus = {
 		id = TUR_ww1_friend_persia
@@ -2041,8 +2015,8 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = TUR_ww1_anti_persia
 		}
-		x = 17
-		y = 6
+		x = 18
+		y = 7
 	}
 	focus = {
 		id = TUR_ww1_invite_persia_to_cp
@@ -2069,7 +2043,7 @@ focus_tree = {
 			factor = 1
 		}
 		cost = 10
-		x = 17
+		x = 18
 		y = 8
 	}
 	focus = {
@@ -2102,7 +2076,7 @@ focus_tree = {
 			factor = 1
 		}
 		cost = 10
-		x = 17
+		x = 18
 		y = 9
 	}
 	################## OPEN BETA 0.8 ########## [END] #############
@@ -2236,6 +2210,10 @@ focus_tree = {
 				cost_reduction = 0.2
 				uses = 1
 				category = land_doctrine
+			}
+			swap_ideas = {
+				remove_idea = TUR_army_of_bygone_era_ns
+			    add_idea = TUR_army_of_bygone_era_1_ns 
 			}
 		}
 		ai_will_do = {
@@ -2395,6 +2373,11 @@ focus_tree = {
 				uses = 1
 				category = land_doctrine
 			}
+			swap_ideas = {
+				remove_idea = TUR_army_of_bygone_era_1_ns
+				add_idea = TUR_army_of_bygone_era_2_ns
+			}
+			
 		}
 		ai_will_do = {
 			factor = 10
@@ -2445,6 +2428,7 @@ focus_tree = {
 				uses = 1
 				category = land_doctrine
 			}
+			remove_ideas = { TUR_army_of_bygone_era_2_ns }
 		}
 		ai_will_do = {
 			factor = 10
@@ -4932,5 +4916,130 @@ focus_tree = {
 		cost = 10
 		x = 42
 		y = 9
+	}
+	
+	#####################################SEVR ANLAŞMASI##########################################################
+	
+	focus = {
+		id = TUR_interwar_ParisPeaceConference		# https://en.wikipedia.org/wiki/Paris_Peace_Conference_(1919%E2%80%931920)
+		icon = GFX_goal_generic_territory_or_war
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				has_global_flag = kis_treaty_of_versailles
+			}
+		}
+		available = {
+			date > 1919.1.1
+			has_global_flag = kis_treaty_of_versailles
+		}
+		completion_reward = {
+			add_political_power = -250
+			add_war_support = -0.3
+			add_stability = -0.25
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		cost = 10
+		x = 7
+		y = 10
+	}
+	
+	focus = {
+		id = TUR_interwar_allow_for_british_landings
+		icon = GFX_focus_CZE_german_puppet
+		prerequisite = {
+			focus = TUR_interwar_ParisPeaceConference
+		}
+		completion_reward = {
+			add_political_power = -150
+			add_war_support = -0.1
+			add_stability = -0.1
+			ENG = {
+			    transfer_state = 340
+				transfer_state = 341
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		cost = 7
+		x = -1
+		y = 1
+		relative_position_id = TUR_interwar_ParisPeaceConference
+	}
+	focus = {
+		id = TUR_interwar_allow_for_italian_landings
+		icon = GFX_focus_CZE_german_puppet
+		prerequisite = {
+			focus = TUR_interwar_ParisPeaceConference
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_war_support = -0.05
+			add_stability = -0.05
+			ITA = {
+			    transfer_state = 342
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = TUR_interwar_ParisPeaceConference
+	}
+	focus = {
+		id = TUR_interwar_question_of_eastern_vilayets
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = {
+			focus = TUR_interwar_allow_for_british_landings
+		}
+		prerequisite = {
+			focus = TUR_interwar_allow_for_italian_landings
+		}
+		completion_reward = {
+			country_event = {
+				days = 1
+				id = ww1_ottoman.26
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = TUR_interwar_allow_for_british_landings
+	}
+	focus = {
+		id = TUR_interwar_disarm_the_resistance
+		icon = GFX_hoi4tgw_ita_libyan_claims
+		prerequisite = {
+			focus = TUR_interwar_question_of_eastern_vilayets
+		}
+		completion_reward = {
+		    add_political_power = -50
+			add_war_support = -0.1
+			add_stability = -0.1
+			country_event = {
+				days = 1
+				id = ww1_ottoman.27
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = TUR_interwar_question_of_eastern_vilayets
 	}
 }

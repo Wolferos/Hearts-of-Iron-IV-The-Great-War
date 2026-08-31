@@ -8,20 +8,64 @@ news_event = {
 	picture = EVENT_hoi4tgw_finnish_civil_war
 	major = yes
 	is_triggered_only = yes
-	trigger = {
-		NOT = {
-			has_global_flag = finnish_civil_war
-		}
-	}
 	immediate = {
 		set_global_flag = finnish_civil_war
 	}
 	option = {
 		name = ww1_finland.1.a
-		ai_chance = {
-			factor = 100
+		if = {
+			limit = {
+				tag = FIN
+			}
+			start_civil_war = {
+				keep_all_characters = yes
+				ruling_party = democratic
+				ideology = communism
+				size = 0.1
+				capital = 111
+				states = {
+					111
+				}
+			}
 		}
 	}
 }
 
+#____________________________________________________________
+# Germany offers help
+#____________________________________________________________
+country_event = {
+	id = ww1_finland.2
+	title = ww1_finland.2.t
+	desc = ww1_finland.2.d
+	picture = EVENT_hoi4tgw_finnish_civil_war
+	
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = ww1_finland.2.a
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = -50
+		add_stability = -0.03
+		GER = { puppet = FIN }
+	}
+	
+	option = {
+		name = ww1_finland.2.b
+		ai_chance = {
+			base = 0
+		}
+		add_political_power = 100
+		add_war_support = 0.1
+		GER = {
+		    create_wargoal = {
+				target = FIN
+				type = puppet_wargoal_focus
+			}
+		}
+	}
+}
 #____________________________________________________________

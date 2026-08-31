@@ -778,6 +778,15 @@ focus_tree = {
 			set_global_flag = global_RomanovFamilyExecuted
 			hidden_effect = {
 				RUS = {
+					if = {
+						limit = {
+							has_start_date < 1919.1.1 #Must be here due to the 1919 start date
+						}
+						add_timed_idea = {
+							idea = RUS_int_royal_family_murdered
+							days = 720
+						}
+					}
 					mark_focus_tree_layout_dirty = yes
 				}
 			}
@@ -1114,17 +1123,6 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = -20
-			if = {
-				limit = {
-					country_exists = FIN
-					FIN = {
-						is_subject_of = SOV
-					}
-				}
-				country_event = {
-					id = ww1_soviet.1
-				}
-			}
 		}
 		ai_will_do = {
 			factor = 10
@@ -1263,19 +1261,6 @@ focus_tree = {
 			add_timed_idea = {
 				idea = red_terror
 				days = 180
-			}
-			hidden_effect = {
-				if = {
-					limit = {
-						country_exists = FIN
-						FIN = {
-							is_subject_of = SOV
-						}
-					}
-					country_event = {
-						id = ww1_soviet.1
-					}
-				}
 			}
 		}
 		ai_will_do = {
@@ -1540,19 +1525,6 @@ focus_tree = {
 			set_politics = {
 				ruling_party = fascism
 				elections_allowed = no
-			}
-			if = {
-				limit = {
-					country_exists = FIN
-					FIN = {
-						is_subject_of = SOV
-					}
-				}
-				FIN = {
-					country_event = {
-						id = ww1_soviet.1
-					}
-				}
 			}
 		}
 		ai_will_do = {
@@ -2031,9 +2003,9 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 10
+			base = 10
 			modifier = {
-				factor = 1
+				factor = 0
 				is_historical_focus_on = yes
 			}
 		}
@@ -2126,9 +2098,32 @@ focus_tree = {
 		y = 14
 		cost = 10
 		ai_will_do = {
-			factor = 0
+			base = 0
+			modifier = {
+				add = 15
+				date > 1924.1.1
+			}
+			modifier = {
+				add = 15
+				has_war = no
+			}
 		}
 		completion_reward = {
+			if = {
+				limit = { 
+					NOT = {
+						ARM = {
+							owns_state = 230
+						}
+					}
+				}
+				every_country = {
+					limit = {
+						owns_state = 230
+					}
+					country_event = { id = ww1_soviet.4 }
+				}
+			}
 			create_wargoal = {
 				type = annex_everything
 				target = ARM
@@ -2198,7 +2193,7 @@ focus_tree = {
 				dismantle_faction = yes
 			}
 			create_faction_from_template = {
-				template = faction_template_comintern
+				template = faction_template_third_international
 				name = comintern
 			}
 		}

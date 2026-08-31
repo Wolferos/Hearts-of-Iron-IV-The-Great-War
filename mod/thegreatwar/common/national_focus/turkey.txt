@@ -395,8 +395,8 @@ focus_tree = {
 		}
 	}
 	focus = {
-		id = TUK_interwar_ClaimtheBalkans		# Claim the Balkans
-		icon = GFX_focus_BUL_bulgaria_on_the_three_seas
+		id = TUK_interwar_push_for_misak_i_milli
+		icon = GFX_focus_TUR_misak_i_milli
 		prerequisite = {
 			focus = TUK_interwar_ANewSultanForTheEmpire
 			focus = TUK_interwar_ProclamationRepublicTurkey
@@ -404,6 +404,93 @@ focus_tree = {
 		}
 		x = 1
 		y = 9
+		cost = 10
+		ai_will_do = {
+			factor = 0
+		}
+		available_if_capitulated = yes
+		completion_reward = {
+			add_war_support = 0.1
+		}
+	}
+	focus = {
+		id = TUK_interwar_demand_thrace_and_the_agean_islands
+		icon = GFX_focus_generic_attack_greece
+		prerequisite = {
+			focus = TUK_interwar_push_for_misak_i_milli
+		}
+		x = -1
+		y = 1
+		relative_position_id = TUK_interwar_push_for_misak_i_milli
+		cost = 10
+		ai_will_do = {
+			factor = 0
+		}
+		available_if_capitulated = yes
+		completion_reward = {
+			add_named_threat = {
+				name = TUK_interwar_demand_thrace_and_the_agean_islands
+				threat = 2
+			}
+			GRE = {
+			    country_event = { id = interwar_turkey.9 days = 5 }
+			}
+		}
+	}
+	focus = {
+		id = TUK_interwar_Adriatic
+		icon = GFX_focus_generic_aegean_sea_focus
+		prerequisite = {
+			focus = TUK_interwar_demand_thrace_and_the_agean_islands
+		}
+		x = 0
+		y = 2
+		relative_position_id = TUK_interwar_demand_thrace_and_the_agean_islands
+		cost = 10
+		ai_will_do = {
+			factor = 0
+		}
+		completion_reward = {
+			country_event = { id = bftb_turkey.30 }
+		}
+	}
+	focus = {
+		id = TUK_interwar_FightItaly
+		icon = GFX_focus_attack_italy
+		prerequisite = {
+			focus = TUK_interwar_Adriatic
+		}
+		x = 0
+		y = 1
+		relative_position_id = TUK_interwar_Adriatic
+		cost = 10
+		ai_will_do = {
+			factor = 0
+		}
+		available = {
+			ITA = {
+				owns_state = 164
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = ITA
+				type = take_state
+				generator = {
+					164
+				}
+			}
+		}
+	}
+	focus = {
+		id = TUK_interwar_ClaimtheBalkans		# Claim the Balkans
+		icon = GFX_focus_BUL_bulgaria_on_the_three_seas
+		prerequisite = {
+			focus = TUK_interwar_demand_thrace_and_the_agean_islands
+		}
+		x = 1
+		y = 1
+		relative_position_id = TUK_interwar_demand_thrace_and_the_agean_islands
 		cost = 10
 		ai_will_do = {
 			factor = 0
@@ -429,45 +516,55 @@ focus_tree = {
 		}
 	}
 	focus = {
-		id = TUK_interwar_Adriatic
-		icon = GFX_focus_generic_adriatic_sea_focus
+		id = TUK_interwar_demand_syria
+		icon = GFX_focus_attack_france
 		prerequisite = {
-			focus = TUK_interwar_ClaimtheBalkans
+			focus = TUK_interwar_push_for_misak_i_milli
 		}
-		x = 0
-		y = 10
+		x = 1
+		y = 3
+		relative_position_id = TUK_interwar_push_for_misak_i_milli
 		cost = 10
 		ai_will_do = {
 			factor = 0
 		}
+		available_if_capitulated = yes
 		completion_reward = {
-			add_state_claim = 164
+			if = {
+			    limit = {
+				    SYR = {
+				        exists = yes
+			        }
+					
+				}
+				SYR = {
+			        country_event = { id = interwar_turkey.13 }
+			    }
+				else = {
+				    FRA = {
+			            country_event = { id = interwar_turkey.14 }
+			        }
+				}
+			}
+			
 		}
 	}
 	focus = {
-		id = TUK_interwar_FightItaly
-		icon = GFX_focus_attack_italy
+		id = TUK_interwar_demand_mosul_and_kirkuk
+		icon = GFX_focus_attack_britain
 		prerequisite = {
-			focus = TUK_interwar_Adriatic
+			focus = TUK_interwar_demand_syria
 		}
 		x = 0
-		y = 11
+		y = 1
+		relative_position_id = TUK_interwar_demand_syria
 		cost = 10
 		ai_will_do = {
 			factor = 0
 		}
-		available = {
-			ITA = {
-				owns_state = 164
-			}
-		}
 		completion_reward = {
-			create_wargoal = {
-				target = ITA
-				type = take_state
-				generator = {
-					164
-				}
+			ENG = {
+			    country_event = { id = interwar_turkey.15 }
 			}
 		}
 	}
@@ -475,10 +572,11 @@ focus_tree = {
 		id = TUK_interwar_ClaimtheOttomanLands		# Claim the Ottoman Lands
 		icon = GFX_focus_TUR_taking_over_defense_of_the_gulf
 		prerequisite = {
-			focus = TUK_interwar_ClaimtheBalkans
+			focus = TUK_interwar_demand_mosul_and_kirkuk
 		}
-		x = 2
-		y = 12
+		x = 0
+		y = 1
+		relative_position_id = TUK_interwar_demand_mosul_and_kirkuk
 		cost = 10
 		ai_will_do = {
 			factor = 0
@@ -486,6 +584,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			add_named_threat = {
+				name = TUK_interwar_ClaimtheOttomanLands
 				threat = 10
 			}
 			create_wargoal = {
@@ -759,7 +858,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_NewTurkishAlphabet
 		}
-		x = 3
+		x = 4
 		y = 13
 		cost = 10
 		ai_will_do = {
@@ -790,7 +889,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_NewTurkishAlphabet
 		}
-		x = 5
+		x = 6
 		y = 13
 		cost = 10
 		ai_will_do = {
@@ -1184,7 +1283,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_DenyAlliedDemands
 		}
-		x = 19
+		x = 20
 		y = 1
 		cost = 5
 		ai_will_do = {
@@ -1201,7 +1300,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_EasternFront
 		}
-		x = 21
+		x = 22
 		y = 2
 		cost = 5
 		ai_will_do = {
@@ -1235,7 +1334,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_SupportAntiColonial
 		}
-		x = 23
+		x = 24
 		y = 4
 		cost = 5
 		ai_will_do = {
@@ -1257,7 +1356,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_SupportAntiColonial
 		}
-		x = 22
+		x = 23
 		y = 5
 		cost = 10
 		ai_will_do = {
@@ -1284,7 +1383,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_RaiseTensions
 		}
-		x = 19
+		x = 21
 		y = 8
 		cost = 10
 		ai_will_do = {
@@ -1309,7 +1408,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_MiddleEastRelations
 		}
-		x = 21
+		x = 23
 		y = 8
 		cost = 10
 		ai_will_do = {
@@ -1332,7 +1431,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_MiddleEastRelations
 		}
-		x = 23
+		x = 24
 		y = 6
 		cost = 10
 		ai_will_do = {
@@ -1356,7 +1455,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_ArabWorld
 		}
-		x = 23
+		x = 24
 		y = 7
 		cost = 10
 		ai_will_do = {
@@ -1376,7 +1475,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_EasternFront
 		}
-		x = 18
+		x = 19
 		y = 3
 		cost = 10
 		ai_will_do = {
@@ -1396,7 +1495,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_AntiSyria
 		}
-		x = 18
+		x = 19
 		y = 4
 		cost = 10
 		ai_will_do = {
@@ -1417,7 +1516,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_SupportAntiColonial
 		}
-		x = 20
+		x = 21
 		y = 3
 		cost = 10
 		ai_will_do = {
@@ -1441,7 +1540,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_ProSyria
 		}
-		x = 20
+		x = 21
 		y = 4
 		cost = 10
 		ai_will_do = {
@@ -1476,7 +1575,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_SupportSyrianRebels
 		}
-		x = 20
+		x = 21
 		y = 5
 		cost = 5
 		ai_will_do = {
@@ -1502,7 +1601,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_EasternFront
 		}
-		x = 17
+		x = 18
 		y = 5
 		cost = 5
 		ai_will_do = {
@@ -1522,7 +1621,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_TheCaucasusQuestion
 		}
-		x = 16
+		x = 17
 		y = 6
 		cost = 10
 		ai_will_do = {
@@ -1542,7 +1641,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_TheCaucasusQuestion
 		}
-		x = 20
+		x = 22
 		y = 6
 		cost = 10
 		ai_will_do = {
@@ -1564,7 +1663,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_Azerbaijan
 		}
-		x = 20
+		x = 22
 		y = 7
 		cost = 10
 		ai_will_do = {
@@ -1575,22 +1674,10 @@ focus_tree = {
 			country_exists = AZR
 			AZR = {
 				is_subject = no
-				has_war_with = SOV
 			}
 		}
 		completion_reward = {
-			set_autonomy = {
-				target = AZR
-				autonomy_state = autonomy_dominion
-				freedom_level = 0.85
-			}
-			declare_war_on = {
-				target = SOV
-				type = take_state
-				generator = {
-					229
-				}
-			}
+			country_event = { id = interwar_turkey.5 }
 		}
 	}
 	focus = {
@@ -1602,7 +1689,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_TheCaucasusQuestion
 		}
-		x = 18
+		x = 19
 		y = 6
 		cost = 10
 		ai_will_do = {
@@ -1623,7 +1710,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_TrenchWarfare
 		}
-		x = 24
+		x = 25
 		y = 3
 		cost = 5
 		ai_will_do = {
@@ -1831,7 +1918,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_TreatyofSevres
 		}
-		x = 15
+		x = 16
 		y = 7
 		cost = 10
 		ai_will_do = {
@@ -1840,6 +1927,25 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			remove_ideas = interwar_spirit_TheGreatWar_Loser
+		}
+	}
+	focus = {
+		id = TUK_interwar_treaty_of_ankara
+		icon = GFX_focus_chi_reach_out_to_france
+		prerequisite = {
+			focus = TUK_interwar_RefuseTheDismembermentOfTheEmpire
+		}
+		x = -1
+		y = 1
+		relative_position_id = TUK_interwar_RefuseTheDismembermentOfTheEmpire
+		cost = 9
+		ai_will_do = {
+			factor = 30
+		}
+		completion_reward = {
+			FRA = {
+			    country_event = { id = interwar_turkey.12 }
+            }
 		}
 	}
 	focus = {
@@ -2054,7 +2160,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_RaiseTensions
 		}
-		x = 16
+		x = 17
 		y = 8
 		cost = 5
 		ai_will_do = {
@@ -2080,8 +2186,9 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_RaiseTensions
 		}
-		x = 17
-		y = 7
+		x = -1
+		y = 1
+		relative_position_id = TUK_interwar_RaiseTensions
 		cost = 10
 		ai_will_do = {
 			factor = 0
@@ -2093,6 +2200,31 @@ focus_tree = {
 			create_wargoal = {
 				type = annex_everything
 				target = SOV
+			}
+		}
+	}
+	focus = {
+		id = TUK_interwar_sign_the_treaty_of_kars
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+		prerequisite = {
+			focus = TUK_interwar_RaiseTensions
+		}
+		mutually_exclusive = {
+			focus = TUK_interwar_FightTheBolsheviks
+		}
+		x = 1
+		y = 1
+		relative_position_id = TUK_interwar_RaiseTensions
+		cost = 10
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+			country_exists = SOV
+		}
+		completion_reward = {
+			SOV = {
+				country_event = { id = interwar_turkey.6 }
 			}
 		}
 	}
@@ -2270,7 +2402,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 16
+		x = 17
 		y = 1
 		ai_will_do = {
 			factor = 1
@@ -2365,7 +2497,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 15
+		x = 16
 		y = 2
 		ai_will_do = {
 			factor = 1
@@ -2430,7 +2562,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 14
+		x = 15
 		y = 1
 		ai_will_do = {
 			factor = 1
@@ -2508,7 +2640,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_DenyAlliedDemands
 		}
-		x = 27
+		x = 28
 		y = 1
 		cost = 10
 		ai_will_do = {
@@ -2543,7 +2675,7 @@ focus_tree = {
 			factor = 1
 		}
 		cost = 10
-		x = 26
+		x = 27
 		y = 2
 	}
 	focus = {
@@ -2566,7 +2698,7 @@ focus_tree = {
 			factor = 1
 		}
 		cost = 10
-		x = 25
+		x = 26
 		y = 4
 	}
 	focus = {
@@ -2575,7 +2707,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_gasmask_focus
 		}
-		x = 25
+		x = 26
 		y = 6
 		cost = 10
 		ai_will_do = {
@@ -2596,7 +2728,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_Turkish_Artilley
 		}
-		x = 26
+		x = 27
 		y = 8
 		cost = 10
 		ai_will_do = {
@@ -2620,7 +2752,7 @@ focus_tree = {
 			focus = TUK_interwar_FRARenaultFT
 		}
 		icon = GFX_goal_generic_army_tanks
-		x = 24
+		x = 25
 		y = 9
 		cost = 10
 		ai_will_do = {
@@ -2645,7 +2777,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_Turkish_Artilley
 		}
-		x = 27
+		x = 28
 		y = 7
 		cost = 10
 		ai_will_do = {
@@ -2661,7 +2793,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_DuzenliOrdu
 		}
-		x = 27
+		x = 28
 		y = 3
 		cost = 10
 		ai_will_do = {
@@ -2677,7 +2809,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_TurkishAirForce
 		}
-		x = 27
+		x = 28
 		y = 4
 		cost = 10
 		ai_will_do = {
@@ -2708,7 +2840,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_AirBase
 		}
-		x = 26
+		x = 27
 		y = 5
 		cost = 10
 		ai_will_do = {
@@ -2748,7 +2880,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 27
+		x = 28
 		y = 6
 	}
 	focus = {
@@ -2769,7 +2901,7 @@ focus_tree = {
 			factor = 1
 		}
 		cost = 10
-		x = 28
+		x = 29
 		y = 5
 		cost = 10
 	}
@@ -2779,7 +2911,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_DuzenliOrdu
 		}
-		x = 28
+		x = 29
 		y = 2
 		cost = 10
 		ai_will_do = {
@@ -2795,7 +2927,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_Restore_The_Turkish_Navy
 		}
-		x = 29
+		x = 30
 		y = 3
 		cost = 10
 		ai_will_do = {
@@ -2845,7 +2977,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_Shipyard
 		}
-		x = 29
+		x = 30
 		y = 6
 		cost = 10
 		available_if_capitulated = yes
@@ -2862,7 +2994,7 @@ focus_tree = {
 			focus = TUK_interwar_Shipyard
 		}
 		icon = GFX_focus_generic_destroyer
-		x = 30
+		x = 31
 		y = 4
 		cost = 10
 		ai_will_do = {
@@ -2887,7 +3019,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_destroyer_effort
 		}
-		x = 30
+		x = 31
 		y = 5
 		cost = 10
 		ai_will_do = {
@@ -2911,7 +3043,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_CompeteOnTheSeas
 		}
-		x = 30
+		x = 31
 		y = 7
 		cost = 10
 		ai_will_do = {
@@ -2947,7 +3079,7 @@ focus_tree = {
 			factor = 1
 		}
 		cost = 10
-		x = 28
+		x = 29
 		y = 8
 	}
 }

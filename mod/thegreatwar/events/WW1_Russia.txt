@@ -104,9 +104,10 @@ country_event = {
 		}
 	}
 }
+
 #____________________________________________________________
 
-# Tsar Nicholas Abdicates! + Soviet Revolution
+# Soviet Revolution
 #____________________________________________________________
 news_event = {
 	id = ww1_russia.4
@@ -116,38 +117,9 @@ news_event = {
 
 	major = yes
 
-	mean_time_to_happen = {
-		days = 0
-	}
-
-	trigger = {
-
-		NOT = {
-			has_global_flag = kis_ask_ger_surrend # Can't happened if Germany loosed the WW1
-		}
-		
-		RUS = {
-			OR = {
-				has_war_with = GER
-				has_war_with = AUH
-			}
-			NOT = {
-				has_country_flag = dual_power
-				has_government = communism
-			}
-			NOT = {	controls_state = 98 }
-			NOT = {	controls_state = 10 }
-			NOT = {	controls_state = 90 }
-			NOT = { controls_state = 97 }
-			NOT = { controls_state = 92 }
-			NOT = { controls_state = 93 }
-			NOT = { controls_state = 199 }
-			NOT = { controls_state = 206 }
-			NOT = { controls_state = 202 }
-			NOT = { controls_state = 194 }
-			NOT = { controls_state = 95 }
-		}
-	}
+	fire_only_once = yes
+	
+	is_triggered_only = yes
 
 	immediate = {
 		hidden_effect = {	
@@ -160,22 +132,7 @@ news_event = {
 			}
 			SOV = {
 				create_faction = comintern_faction
-
-				annex_country = {
-					target = MON
-					transfer_troops = yes
-				}
 				
-		        #every_state={
-				#	limit={
-				#		# SOV will get the same core as RUS
-				#		#is_claimed_by = RUS
-				#		is_core_of = RUS
-				#	}
-				#	SOV={
-				#		add_state_claim = PREV
-				#	}
-				#}
 				set_stability = 0.9
 				add_political_power = 800
 				add_manpower = 500000
@@ -209,37 +166,63 @@ news_event = {
 				country_event = { days = 1 id = ww1_soviet.999 }
 			}
 			RUS = {
-				set_country_flag = dual_power
-				set_country_flag = kis_tsarnicholasabdicated
 				set_country_flag = bolsheviks
-				add_political_power = -100
-				add_stability = -0.10
-				add_timed_idea = {
-					idea = dual_power
-					days = 180
+				add_political_power = -200
+				add_stability = -0.50
+				remove_ideas = {
+					dual_power_1
 				}
 				create_faction = white_movement
-				kill_country_leader = yes
-				create_country_leader = { 
-					name = "Georgy Lvov" 
-					desc = RUS_georgy_lvov_DESC 
-					picture = "gfx/hoi4tgw_portraits/RUS/country_leaders/RUS_georgy_lvov.dds" 
-					expire = "1935.1.1" 
-					ideology = conservatism 
-					traits = { } 
+				
+				set_rule = { can_join_factions = no }
+
+                219 = {
+				    destroy_units = {}
 				}
-				set_politics = {
-				    ruling_party = democratic 
-				    last_election = "1912.9.1"
-				    election_frequency = 60 
-				    elections_allowed = no
+
+                if = {
+				    limit = {
+                        MON = {
+                            is_subject_of = RUS
+                        }
+                    }
+				    RUS = {
+					    end_puppet = MON
+				    }
+				
+				    MON = {
+				    	every_other_country = {
+				    	    limit = {
+				    		    is_in_faction_with = GER
+				    			has_war_with = MON
+				    		}
+				    		white_peace = MON
+				    	}
+				    	leave_faction = yes
+				    }
 				}
-				set_popularities = { 
-					neutrality = 0
-					democratic = 70 
-					fascism = 0   
-					communism = 30 
-				}	
+
+                if = {
+				    limit = {
+                        FIN = {
+                            is_subject_of = RUS
+                        }
+                    }
+				    RUS = {
+					    end_puppet = FIN
+				    }
+				
+				    FIN = {
+				    	every_other_country = {
+				    	    limit = {
+				    		    is_in_faction_with = GER
+				    			has_war_with = FIN
+				    		}
+				    		white_peace = FIN
+				    	}
+				    	leave_faction = yes
+				    }
+				}				
 			}
 			SOV = {
 			declare_war_on = {
@@ -295,9 +278,9 @@ news_event = {
 		}
 		OR = {
 			SOV = {
-				exists = no
-				#has_war_with = RUS
-				#surrender_progress > 0.60
+				exists = yes
+				has_war_with = RUS
+				surrender_progress > 0.98
 			}
 			# If AI Peace Conference Occured - SOV can become democratic, we want russia to annex the remaining SOV
 			SOV = {
@@ -379,11 +362,10 @@ news_event = {
 				country_event = { days = 20 id = ww1_russia.7 }
 				country_event = { days = 2 id = ww1_russia.8 }
 				RUS = {
-					every_state = {
+					every_core_state = {
 						limit = {
 							# SOV will get the same core as RUS
 							#is_claimed_by = RUS
-							is_core_of = RUS
 						}
 						SOV = {
 							add_state_core = PREV
@@ -438,6 +420,14 @@ news_event = {
 				}
 				add_ideas = octrev
 			}
+			
+			BUK = {
+				transfer_state = 814
+				transfer_state = 742
+			}
+			KHI = {
+				transfer_state = 813
+			}
 		}
 	}
 	
@@ -471,26 +461,18 @@ country_event = {
 				transfer_state = 147	### Salla added (By Canadian Lemur)
 				transfer_state = 722 	### Petsamo added (Unhistorical but easier than integrating historical route for now)
 			}
-			EST = {
+			UBD = {
 				transfer_state = 13
 				transfer_state = 191
 				transfer_state = 12
 				transfer_state = 190
 				add_state_core = 12
 				add_state_core = 190
-				set_cosmetic_tag = UBD
-				set_capital = { state = 12 }		### Riga added (by Ecrfour)
-				create_country_leader = {
-				    name = "Adolf Friedrich, Duke of Mecklenburg-Schwerin"
-				    picture = "gfx/hoi4tgw_portraits/EST/country_leaders/EST_Adolf_Friedrich.dds"			
-				    expire = "1965.1.1"
-				    ideology = despotism
-				    traits = {}
-				}
 				set_politics = { ruling_party = neutrality elections_allowed = no }
-					load_oob = EST_army
+				load_oob = UBD_1914
 			}
-			GER = { puppet = EST }
+			GER = { puppet = UBD }
+			
 			SOV = {
 				country_event = { days = 2 id = ww1_russia.9 }
 			}
@@ -518,52 +500,89 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 		###Persian And Afghanistan demands (by Canadian Lemur)
-		if = {
+			if = {
 				limit = {
 					AFG = {
 						has_war_with = ENG
 						is_in_faction_with = GER
 					}
 				}
-				AFG = {transfer_state = 742 
-					   add_state_core = 742
+				AFG = {
+					transfer_state = 742
+					add_state_core = 742
 				}
-				
-				
-				}
-		if = {
+			}
+		    if = {
 				limit = {
 					PER = {
 						has_war_with = ENG
 						is_in_faction_with = GER
 					}
 				}
-				PER = {transfer_state = 584
-					   transfer_state = 229
-					   add_state_core = 229
-					   add_state_core = 584
+				PER = {
+					transfer_state = 584
+					add_state_core = 584
 				}
-				
-				
-				}
+			}
 			GER = {
 				transfer_state = 10
-				transfer_state = 11
 				transfer_state = 87
 				transfer_state = 90
 				transfer_state = 92
-				transfer_state = 94
-				transfer_state = 95
-				transfer_state = 96
-				transfer_state = 97
 				transfer_state = 98
-				transfer_state = 189
-				transfer_state = 784
+				transfer_state = 231
+				transfer_state = 96
+				transfer_state = 204
+				transfer_state = 206
+				transfer_state = 241
+				transfer_state = 207
+			}
+			if = {
+			    limit = {
+				    SOV = {
+				    	controls_state = 88
+				    	controls_state = 89
+				    	controls_state = 91
+				    }
+				}
+				GER = {
+				    transfer_state = 88
+					transfer_state = 89
+					transfer_state = 91
+				}
+			}
+			if = {
+				limit = {
+					TUR = {
+						is_in_faction_with = GER
+					}
+				}
+				TUR = {
+				    transfer_state = 815
+				    transfer_state = 230
+				}
+				else = {
+					ARM = {
+						transfer_state = 815
+						transfer_state = 230
+					}
+				}
 			}
 			LIT = {
 			    transfer_state = 11
 				transfer_state = 189
+				transfer_state = 95
+				transfer_state = 97
+				transfer_state = 784
+
+				add_state_core = 95
+				add_state_core = 97
 				load_oob = LIT_army
+			}
+			AZR = {
+				transfer_state = 229
+
+				add_state_core = 229
 			}
 			#Japanese Demands (By Canadian Lemur)
 			if = {
@@ -661,8 +680,10 @@ country_event = {
 				transfer_state = 225
 				transfer_state = 226
 				transfer_state = 227
-				#transfer_state = 228 #Open Beta 0.1.6
+				transfer_state = 228
 				transfer_state = 259
+				transfer_state = 94 
+				transfer_state = 194
 
 				add_state_core = 93
 				add_state_core = 192
@@ -681,6 +702,13 @@ country_event = {
 				add_state_core = 227
 				add_state_core = 228
 				add_state_core = 259
+				add_state_core = 94
+				add_state_core = 194
+				load_oob = UKR_brest
+			}
+			CRI = {
+				transfer_state = 137
+				add_state_core = 137
 			}
 			if = {
 				limit = {
@@ -703,6 +731,7 @@ country_event = {
 					AUH = {
 						exists = yes
 					}
+					controls_state = 93
 				}
 				AUH = {
 					transfer_state = 93 # Wolyn
@@ -836,8 +865,8 @@ news_event = {
 #____________________________________________________________
 
 country_event = {
-	title = ww1_russia.21.t#Peace treaty between Entente and Soviets
-	desc = ww1_russia.21.d#Ends eternal war between Soviets and Entente (irl: Soviet–Japanese Basic Convention)
+	title = ww1_russia.21.t #Peace treaty between Entente and Soviets
+	desc = ww1_russia.21.d #Ends eternal war between Soviets and Entente (irl: Soviet–Japanese Basic Convention)
 	id=ww1_russia.21
 	picture=GFX_report_event_generic_read_write
 	fire_only_once=yes
@@ -893,3 +922,24 @@ country_event = {
 	}
 }
 #____________________________________________________________
+
+#Army collapse!
+country_event = {
+	id = ww1_russia.30
+	title = ww1_russia.30.t
+	desc = ww1_russia.30.d
+	picture = ww1_russia_2
+
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_russia.30.a
+		add_political_power = -25
+		add_stability = -0.05
+		add_war_support = -0.1
+		add_timed_idea = {
+			idea = Army_collapse
+			days = 360
+		}
+	}
+}

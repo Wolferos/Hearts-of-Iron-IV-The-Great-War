@@ -1,0 +1,47 @@
+political_actions = {
+
+	Leave_Antalya = {
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		visible = {
+			controls_state = 342
+		}
+
+		available = {
+			TUK = {
+				exists = yes
+			}
+			TUR = {
+				exists = no
+			}
+			date > 1921.6.21
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			if = {
+			    limit = {
+				    TUK = {
+			            controls_state = 343
+					}
+				}
+				TUK = {
+			        transfer_state = 342
+			    }
+				else = {
+				    GRE = {
+			            transfer_state = 342
+			        }
+				}
+			}
+		}
+	}
+}

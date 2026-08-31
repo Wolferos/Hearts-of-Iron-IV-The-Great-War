@@ -1,5 +1,7 @@
 default_unit_production = {
+	# If adding country-unique ones, bear in mind that they STACK unless excluding countries in the enable
 	enable = {
+		always = yes
 		NOT = {
 			original_tag = GER
 			original_tag = RUS
@@ -469,7 +471,7 @@ convoy_voy_voy_voy = {
 	ai_strategy = {
 		type = unit_ratio
 		id = convoy
-		value = 25
+		value = 50
 	}
 }
 
@@ -569,7 +571,10 @@ default_paratroopers_production = {
 default_major_SF_para = {
 	enable = {
 		is_major = yes
-		has_tech = special_forces_paratroopers
+		OR = {
+			has_doctrine = paratroopers_1
+			has_doctrine = paratroopers_2
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
@@ -582,7 +587,10 @@ default_major_SF_para = {
 default_major_SF_marines = {
 	enable = {
 		is_major = yes
-		has_tech = special_forces_marines
+		OR = {
+			has_doctrine = marines_1
+			has_doctrine = marines_2
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
@@ -752,7 +760,7 @@ slightly_naval_focused_nation = {
 	ai_strategy = {
 		type = unit_ratio
 		id = screen_ship
-		value = 1
+		value = 4
 	}
 
 	ai_strategy = {
@@ -769,7 +777,7 @@ more_naval_focused_nation = {
 			tag = USA
 			tag = ENG
 		}
-		date > "1914.1.1" #Delaying it by a couple of years
+		date > "1914.1.1"  # Delaying it by a couple of years
 	}
 	abort_when_not_enabled = yes
 
@@ -788,7 +796,7 @@ more_naval_focused_nation = {
 	ai_strategy = {
 		type = unit_ratio
 		id = screen_ship
-		value = 1
+		value = 4
 	}
 
 	ai_strategy = {
@@ -924,7 +932,7 @@ default_stockpile_management = {
 
 	ai_strategy = {
 		type = equipment_stockpile_surplus_ratio
-		value = 35 # double base stockpile #from 25 to 35
+		value = 35 # add this to default PRODUCTION_EQUIPMENT_SURPLUS_FACTOR
 	}
 }
 
@@ -1470,12 +1478,17 @@ default_build_a_nl_facility = {
 		num_of_civilian_factories > 25
 		num_of_military_factories > 25 # Even if we have the base tech, let's wait until we have some kind of capacity
 		nuclear_facility < 1  # one is enough
+		NOT = {
+			any_controlled_state = {
+				nuclear_facility > 0
+			}
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = build_building
 		id = nuclear_facility
-		value = 100
+		value = 10
 	}
 }
 
@@ -1483,12 +1496,17 @@ default_build_a_nav_facility = {
 	enable = {
 		num_of_naval_factories > 25 # Only Naval Powers should bother with these unless specifically told to do otherwise
 		naval_facility < 1 # one is enough
+		NOT = {
+			any_controlled_state = {
+				naval_facility > 0
+			}
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = build_building
 		id = naval_facility
-		value = 100
+		value = 10
 	}
 }
 
@@ -1496,12 +1514,20 @@ default_build_a_nav_facility = {
 default_build_a_gun_emplacement = {
 	enable = {
 		is_major = yes
+		has_tech = land_multi_charge_large_caliber_gun_tech
+		num_of_military_factories > 50
+		mega_gun_emplacement < 1
+		NOT = {
+			any_controlled_state = {
+				mega_gun_emplacement > 0
+			}
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = build_building
 		id = mega_gun_emplacement
-		value = 1
+		value = 10
 	}
 }
 
@@ -1516,12 +1542,17 @@ default_build_a_lw_facility = {
 			has_tech = improved_heavy_tank_chassis
 		}
 		land_facility < 1 # one is enough
+		NOT = {
+			any_controlled_state = {
+				land_facility > 0
+			}
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = build_building
 		id = land_facility
-		value = 1
+		value = 10
 	}
 }
 
@@ -1530,7 +1561,6 @@ default_build_an_air_facility = {
 		NOT = { original_tag = GER } # Germany uses own strat
 	}
 	enable = {
-		always = no #TEMP TODO: SYNC BBA DESIGNER
 
 		is_major = yes # Minors don't bother until strong enough to be considered major
 		num_of_military_factories > 40 # We should first build up our military industry
@@ -1541,18 +1571,26 @@ default_build_an_air_facility = {
 		#	has_tech = basic_large_airframe
 		#}
 		air_facility < 1 # one is enough
+		NOT = {
+			any_controlled_state = {
+				air_facility > 0
+			}
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = build_building
 		id = air_facility
-		value = 1
+		value = 10
 	}
 }
 
-default_become_spymaster = {
+default_become_spymaster_major = {
+	allowed = {	
+		has_dlc = "La Resistance"
+	}
 	enable = {
-		always = yes
+		is_major = yes 
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
@@ -1560,10 +1598,144 @@ default_become_spymaster = {
 		value = 30
 	}
 }
+default_become_spymaster_minor = {
+	allowed = {	
+		has_dlc = "La Resistance"
+	}
+	enable = {
+		is_major = no 
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = become_spymaster
+		value = 2
+	}
+}
+
+default_become_head_of_crypto = {
+	allowed = {	
+		has_dlc = "No Compromise, No Surrender"
+		has_dlc = "La Resistance"
+	}
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = become_head_of_crypto
+		value = 2
+	}
+}
+
+default_become_head_of_operations = {
+	allowed = {	
+		has_dlc = "No Compromise, No Surrender"
+		has_dlc = "La Resistance"
+	}
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = become_head_of_operations
+		value = 2
+	}
+}
+
+default_become_counter_intel = {
+	allowed = {	
+		has_dlc = "No Compromise, No Surrender"
+		has_dlc = "La Resistance"
+	}
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = become_head_of_counter_intel
+		value = 2
+	}
+}
+
+default_become_supreme_commander = {
+	allowed = {	
+		has_dlc = "No Compromise, No Surrender"
+		has_dlc = "La Resistance"
+	}
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = spent_faction_initiative_priority
+		id = unlock_faction_commander
+		value = 2
+	}
+}
+
+default_become_faction_leader = {
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = pp_spend_priority
+		id = become_faction_leader
+		value = 100
+	}
+}
+
+
+default_add_faction_facility = {
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = spent_faction_initiative_priority
+		id = program
+		value = 5
+	}
+}
+
+default_unlock_doctrine_sharing = {
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = spent_faction_initiative_priority
+		id = unlock_doctrine_sharing
+		value = 10
+	}
+}
+
+default_assign_supportive_scientist = {
+
+	enable = {
+		OR = { 
+			can_assign_supportive_scientist_to_faction = specialization_land
+			can_assign_supportive_scientist_to_faction = specialization_nuclear
+			can_assign_supportive_scientist_to_faction = specialization_naval
+			can_assign_supportive_scientist_to_faction = specialization_naval
+		}
+		has_political_power > 74 # mainly to add some time padding for the player to react, and to not spend pp on it if there are cheaper things that we could want to do 
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = pp_spend_priority
+		id = supportive_scientist
+		value = 25
+	}
+}
 
 default_recruit_land_scientist = {
 	enable = {
-		land_facility > 0
+		OR = {
+			can_assign_supportive_scientist_to_faction = specialization_land
+			land_facility > 0
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
@@ -1575,7 +1747,10 @@ default_recruit_land_scientist = {
 
 default_recruit_nuclear_scientist = {
 	enable = {
-		nuclear_facility > 0
+		OR = {
+			can_assign_supportive_scientist_to_faction = specialization_nuclear
+			nuclear_facility > 0
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
@@ -1587,7 +1762,10 @@ default_recruit_nuclear_scientist = {
 
 default_recruit_naval_scientist = {
 	enable = {
-		naval_facility > 0
+		OR = {
+			can_assign_supportive_scientist_to_faction = specialization_naval
+			naval_facility > 0
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
@@ -1599,7 +1777,10 @@ default_recruit_naval_scientist = {
 
 default_recruit_air_scientist = {
 	enable = {
-		air_facility > 0
+		OR = {
+			can_assign_supportive_scientist_to_faction = specialization_air
+			air_facility > 0
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {

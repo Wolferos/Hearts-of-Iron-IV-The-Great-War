@@ -100,65 +100,75 @@ news_event = {
 	immediate = {
 		set_global_flag = interwar_lenin_is_dead
 		hidden_effect = {
-			SOV = {
-				kill_country_leader = yes
-				# create_country_leader = {
-				# 	name = "Josef Stalin"
-				# 	desc = SOV_josef_stalin_DESC
-				# 	picture = "gfx/leaders/SOV_josef_stalin.dds"
-				# 	expire = "1935.1.1"
-				# 	ideology = stalinism
-				# 	traits = {
-				# 	}
-				# }
-				add_country_leader_role = {
-					character = SOV_iosif_stalin
-					country_leader = {
-						desc = SOV_josef_stalin_DESC
-						ideology = stalinism
-						expire = "1935.1.1.1"
-						traits = {
+			if = {
+				limit = {
+					tag = SOV
+				}
+				SOV = {
+					retire_character = SOV_vladimir_lenin
+					# create_country_leader = {
+					# 	name = "Josef Stalin"
+					# 	desc = SOV_josef_stalin_DESC
+					# 	picture = "gfx/leaders/SOV_josef_stalin.dds"
+					# 	expire = "1935.1.1"
+					# 	ideology = stalinism
+					# 	traits = {
+					# 	}
+					# }
+					add_country_leader_role = {
+						character = SOV_iosif_stalin
+						country_leader = {
+							desc = SOV_josef_stalin_DESC
+							ideology = stalinism
+							expire = "1935.1.1.1"
+							traits = {
+							}
 						}
 					}
-				}
-				promote_character = SOV_iosif_stalin
-				set_politics = {
-					ruling_party = communism
-					last_election = "1911.7.1"
-					election_frequency = 48
-					elections_allowed = no
-				}
-				set_popularities = {
-					neutrality = 0
-					fascism = 0
-					democratic = 0
-					communism = 100
+					promote_character = SOV_iosif_stalin
+					set_politics = {
+						ruling_party = communism
+						last_election = "1911.7.1"
+						election_frequency = 48
+						elections_allowed = no
+					}
+					set_popularities = {
+						neutrality = 0
+						fascism = 0
+						democratic = 0
+						communism = 100
+					}
 				}
 			}
-			RUS = {
-				kill_country_leader = yes
-				add_country_leader_role = {
-					character = SOV_iosif_stalin
-					country_leader = {
-						desc = SOV_josef_stalin_DESC
-						ideology = stalinism
-						expire = "1953.1.1.1"
-						traits = {
+			if = {
+				limit = {
+					tag = RUS
+				}
+				RUS = {
+					retire_character = RUS_vladimir_lenin
+					add_country_leader_role = {
+						character = RUS_iosif_stalin
+						country_leader = {
+							desc = SOV_josef_stalin_DESC
+							ideology = stalinism
+							expire = "1953.1.1.1"
+							traits = {
+							}
 						}
 					}
-				}
-				promote_character = RUS_iosif_stalin
-				set_politics = {
-					ruling_party = communism
-					last_election = "1911.7.1"
-					election_frequency = 48
-					elections_allowed = no
-				}
-				set_popularities = {
-					neutrality = 0
-					fascism = 0
-					democratic = 0
-					communism = 100
+					promote_character = RUS_iosif_stalin
+					set_politics = {
+						ruling_party = communism
+						last_election = "1911.7.1"
+						election_frequency = 48
+						elections_allowed = no
+					}
+					set_popularities = {
+						neutrality = 0
+						fascism = 0
+						democratic = 0
+						communism = 100
+					}
 				}
 			}
 		}
@@ -166,7 +176,7 @@ news_event = {
 	option = {
 		name = interwar_news.4.a
 		ai_chance = {
-			factor = 100
+			base = 1
 		}
 	}
 }
@@ -776,5 +786,85 @@ news_event = {
 		}
 	}
 }
+
+#____________________________________________________________
+# France Leaves Rhineland
+#____________________________________________________________
+news_event = {
+	id = interwar_news.19
+	title = interwar_news.19.title
+	desc = interwar_news.19.desc
+	picture = GFX_news_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = interwar_news.19.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+#____________________________________________________________
+# France Stays In Rhineland
+#____________________________________________________________
+news_event = {
+	id = interwar_news.20
+	title = interwar_news.20.title
+	desc = interwar_news.20.desc
+	picture = GFX_news_event_german_volunteers
+
+	is_triggered_only = yes
+
+	option = {
+		name = interwar_news.20.a
+		ai_chance = {
+			base = 1
+		}
+		trigger = {
+			NOT = {
+				tag = FRA
+			}
+		}
+	}
+
+	option = {
+		name = interwar_news.20.b
+		ai_chance = {
+			base = 1
+		}
+		trigger = {
+			tag = FRA
+		}
+	}
+}
+
+#____________________________________________________________
+# France Stays In Rhineland
+#____________________________________________________________
+news_event = {
+	id = interwar_news.21
+	title = interwar_news.21.title
+	desc = interwar_news.21.desc
+	picture = GFX_news_event_001
+
+	is_triggered_only = yes
+
+	option = {
+		name = interwar_news.21.a
+		trigger = {
+			NOT = {
+				tag = GER
+			}
+		}
+	}
+
+	option = {
+		name = interwar_news.21.b
+		trigger = { tag = GER }
+	}
+}
+
 
 #____________________________________________________________

@@ -4,32 +4,32 @@
 #	id = ww1_ottoman.21
 #	title = ww1_ottoman.21.t
 #	desc = ww1_ottoman.21.d
-
+#
 #	picture=EVENT_hoi4tgw_asir_revolt
-	
+#
 #	major = no
-	
+#
 #	trigger = {
 #		TAG = TUR
 #		date > 1910.5.1
 #		NOT = { has_global_flag = asir_revolt_1910 }
 #	}
-#	
+#
 #	mean_time_to_happen = {
 #		days = 0
 #	}
-
+#
 #	immediate = {
 #		747 = { set_border_war = yes } # Asir Region will be striped
 #		293 = { set_border_war = yes } # Yemen Region will be striped
 #		set_global_flag = asir_revolt_1910
 #	}
-	
+#
 #	option = {
 #		name = ww1_ottoman.21.a
 #		ai_chance = {
-#            factor = 100
-#        }
+#			base = 100
+#		}
 #	}
 #}
 
@@ -50,11 +50,11 @@ country_event = {
 
 		TUR = {
 			add_opinion_modifier = {
-				target = ENG 
-				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+				target = ENG
+				modifier = HOI4TGW_Opinion_improved_diplomatic_relations
 			}
 		}
-		
+
 		ENG = {
 			puppet = KUW
 			give_guarantee = KUW
@@ -108,27 +108,27 @@ country_event = {
 
 		TUR = {
 			add_opinion_modifier = {
-				target = ENG 
-				modifier =  HOI4TGW_Opinion_hostile_diplomatic_relations
+				target = ENG
+				modifier = HOI4TGW_Opinion_hostile_diplomatic_relations
 			}
 		}
 
 		TUR = {
-	        declare_war_on = {
-	            type = annex_everything
-	            target = KUW
-	        }
-	        declare_war_on = {
-	            type = annex_everything
-	            target = QAT
-	        }
+			declare_war_on = {
+				type = annex_everything
+				target = KUW
+			}
+			declare_war_on = {
+				type = annex_everything
+				target = QAT
+			}
 		}
 
 	}
 }
 #____________________________________________________________
 
-# When Ottoman is asked to join the Central Powers 
+# When Ottoman is asked to join the Central Powers
 #____________________________________________________________
 country_event = {
 	id = ww1_ottoman.100
@@ -142,16 +142,16 @@ country_event = {
 	option = {
 		name = ww1_ottoman.100.a
 		ai_chance = { factor = 100 }
-		
-		GER = { 
-			add_to_faction = TUR 
+
+		GER = {
+			add_to_faction = TUR
 		}
 
 		hidden_effect = {
 			TUR = {
-				remove_opinion_modifier = { 
-					target = BUL 
-					modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
+				remove_opinion_modifier = {
+					target = BUL
+					modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war
 				}
 			}
 		}
@@ -162,3 +162,327 @@ country_event = {
 	}
 }
 #____________________________________________________________
+
+country_event = {
+	id = ww1_ottoman.23
+	title = ww1_ottoman.23.t
+	desc = ww1_ottoman.23.d
+	picture = ww1_chile_1
+	fire_only_once = yes
+	is_triggered_only = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = ww1_ottoman.23.a
+		ai_chance = {
+			factor = 50
+		}
+		TUR = {
+			country_event = {
+				days = 5
+				id = ww1_ottoman.24
+			}
+		}
+	}
+	option = {
+		name = ww1_ottoman.23.b
+		ai_chance = {
+			factor = 50
+		}
+		TUR = {
+			country_event = {
+				days = 5
+				id = ww1_ottoman.25
+			}
+		}
+	}
+}
+
+country_event = {
+	id = ww1_ottoman.24
+	title = ww1_ottoman.24.t
+	desc = ww1_ottoman.24.d
+	picture = ww1_ottoman_100
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_ottoman.24.a
+		ai_chance = { factor = 100 }
+
+		set_autonomy = {
+			target = JBS
+			autonomous_state = autonomy_integrated_puppet
+		}
+
+		JBS = {
+			add_ideas = { TUR_treaty_of_hail_ns }
+		}
+
+		JBS = {
+			add_state_core = 678
+			add_state_core = 820
+			add_state_core = 819
+			add_state_core = 818
+		}
+	}
+}
+
+country_event = {
+	id = ww1_ottoman.25
+	title = ww1_ottoman.25.t
+	desc = ww1_ottoman.25.d
+	picture = ww1_ottoman_100
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_ottoman.25.a
+		ai_chance = { factor = 50 }
+	}
+	option = {
+		name = ww1_ottoman.25.b
+		ai_chance = { factor = 50 }
+
+			end_puppet = HJZ
+
+			create_wargoal = {
+				type = annex_everything
+				target = JBS
+			}
+	}
+}
+
+country_event = {
+	id = ww1_ottoman.26
+	title = ww1_ottoman.26.t
+	desc = ww1_ottoman.26.d
+	picture = ww1_ottoman_100
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_ottoman.26.a
+		ai_chance = { factor = 0 }
+		ARM = {
+			transfer_state = 354
+			transfer_state = 353
+		}
+		ENG = {
+			transfer_state = 352
+		}
+	}
+	option = {
+		name = ww1_ottoman.26.b
+		ai_chance = { factor = 100 }
+
+		custom_effect_tooltip = Historical_choice
+		custom_effect_tooltip = "This is going to anger the Entente Powers but makes us stronger in a event like independence war."
+		hidden_effect = {
+			ENG = {
+				add_opinion_modifier = {
+					target = TUR
+					modifier = ww1_violated_the_sevres
+				}
+			}
+			FRA = {
+				add_opinion_modifier = {
+					target = TUR
+					modifier = ww1_violated_the_sevres
+				}
+			}
+			ITA = {
+				add_opinion_modifier = {
+					target = TUR
+					modifier = ww1_violated_the_sevres
+				}
+			}
+
+			#TNM için
+
+			ENG = {
+				add_opinion_modifier = {
+					target = TUK
+					modifier = ww1_violated_the_sevres
+				}
+			}
+			FRA = {
+				add_opinion_modifier = {
+					target = TUK
+					modifier = ww1_violated_the_sevres
+				}
+			}
+			ITA = {
+				add_opinion_modifier = {
+					target = TUK
+					modifier = ww1_violated_the_sevres
+				}
+			}
+
+		}
+	}
+}
+
+country_event = {
+	id = ww1_ottoman.27
+	title = ww1_ottoman.27.t
+	desc = ww1_ottoman.27.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_ottoman.27.a
+		ai_chance = { base = 0 }
+		add_political_power = -50
+		add_war_support = -0.05
+		add_stability = -0.05
+	}
+	option = {
+		name = ww1_ottoman.27.b
+		ai_chance = { base = 100 }
+
+		custom_effect_tooltip = Historical_choice
+		custom_effect_tooltip = "Mustafa Kemal will be sent to Samsun to disarm the rebels."
+		hidden_effect = {
+			set_country_flag = Ataturk_in_samsun
+		}
+	}
+}
+
+country_event = {
+	id = ww1_ottoman.28
+	title = ww1_ottoman.28.t
+	desc = ww1_ottoman.28.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_ottoman.28.a
+		ai_chance = { factor = 100 }
+		custom_effect_tooltip = Historical_choice
+		custom_effect_tooltip = "Turkish National Movement will began!"
+		custom_effect_tooltip = "Changes country to Turkish National Movement"
+		hidden_effect = {
+			TUK = {
+				change_tag_from = ROOT
+			}
+			TUK = {
+				transfer_state = 348
+				transfer_state = 349
+				transfer_state = 355
+				transfer_state = 356
+
+				add_state_core = 348
+				add_state_core = 349
+				add_state_core = 355
+				add_state_core = 356
+				add_state_core = 354
+				add_state_core = 353
+				add_state_core = 352
+				add_state_core = 815
+				add_state_core = 350
+				add_state_core = 344
+				add_state_core = 339
+				add_state_core = 340
+				add_state_core = 341
+				add_state_core = 756
+				add_state_core = 342
+				add_state_core = 347
+				add_state_core = 343
+				add_state_core = 49
+				add_state_core = 345
+				add_state_core = 346
+				load_oob = "TUK_1919"
+				declare_war_on = {
+					target = TUR
+					type = take_state
+					generator = {
+						341
+					}
+				}
+
+				set_cosmetic_tag = TUR_WAR
+			}
+			if = {
+				limit = {
+					TUR = {
+						controls_state = 354
+						controls_state = 353
+						controls_state = 352
+					}
+				}
+				TUK = {
+					transfer_state = 354
+					transfer_state = 353
+					transfer_state = 352
+				}
+			}
+		}
+	}
+
+	option = {
+		name = ww1_ottoman.28.b
+		ai_chance = { factor = 0 }
+		custom_effect_tooltip = "Turkish National Movement will began!"
+		custom_effect_tooltip = "You will be still in charge of the Ottomans"
+		hidden_effect = {
+			TUK = {
+				transfer_state = 348
+				transfer_state = 349
+				transfer_state = 355
+				transfer_state = 356
+
+				add_state_core = 348
+				add_state_core = 349
+				add_state_core = 355
+				add_state_core = 356
+				add_state_core = 354
+				add_state_core = 353
+				add_state_core = 352
+				add_state_core = 815
+				add_state_core = 350
+				add_state_core = 344
+				add_state_core = 339
+				add_state_core = 340
+				add_state_core = 341
+				add_state_core = 756
+				add_state_core = 342
+				add_state_core = 347
+				add_state_core = 49
+				add_state_core = 343
+				add_state_core = 356
+				add_state_core = 345
+				load_oob = "TUK_1919"
+				declare_war_on = {
+					target = TUR
+					type = take_state
+					generator = {
+						341
+					}
+				}
+
+				set_cosmetic_tag = TUR_WAR
+			}
+			if = {
+				limit = {
+					TUR = {
+						controls_state = 354
+						controls_state = 353
+						controls_state = 352
+					}
+				}
+				TUK = {
+					transfer_state = 354
+					transfer_state = 353
+					transfer_state = 352
+				}
+			}
+		}
+	}
+}

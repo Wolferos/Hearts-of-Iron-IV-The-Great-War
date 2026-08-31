@@ -1,4 +1,5 @@
 ﻿add_namespace = interwar_turkey
+
 news_event = {
 	id = interwar_turkey.1
 	title = interwar_turkey.1.t
@@ -9,22 +10,22 @@ news_event = {
 	option = {
 		name = interwar_turkey.1.a
 		ai_chance = {
-			factor = 100
+			base = 100
 		}
 	}
 }
 
 news_event = {
 	id = interwar_turkey.2
-	title = interwar_turkey.2
-	desc = interwar_turkey.2
+	title = interwar_turkey.2.t
+	desc = interwar_turkey.2.d
 	picture = EVENT_hoi4tgw_interwar_turkish_shameful_compromise
 	major = yes
 	is_triggered_only = yes
 	option = {
-		name = interwar_turkey.2
+		name = interwar_turkey.2.a
 		ai_chance = {
-			factor = 100
+			base = 100
 		}
 	}
 }
@@ -41,7 +42,7 @@ country_event = {
 	option = {
 		name = interwar_turkey.3.a
 		ai_chance = {
-			factor = 100
+			base = 100
 		}
 		TUK = {
 			white_peace = GRE
@@ -69,7 +70,7 @@ country_event = {
 	option = {
 		name = interwar_turkey.3.b
 		ai_chance = {
-			factor = 0
+			base = 0
 		}
 	}
 }
@@ -87,9 +88,460 @@ news_event = {
 	option = {
 		name = interwar_turkey.4.a
 		ai_chance = {
-			factor = 100
+			base = 100
 		}
 	}
 }
 
 #____________________________________________________________
+
+#Azerbejyan Sorusu
+country_event = {
+	id = interwar_turkey.5
+	title = interwar_turkey.5.t
+	desc = interwar_turkey.5.d
+	picture = GFX_report_event_PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = interwar_turkey.5.a
+		ai_chance = {
+			base = 0
+		}
+		annex_country = {
+			target = AZR
+			transfer_troops = yes
+		}
+		add_state_core = 229
+	}
+	option = {
+		name = interwar_turkey.5.b
+		ai_chance = {
+			base = 0
+		}
+		set_autonomy = {
+			target = AZR
+			autonomy_state = autonomy_dominion
+			freedom_level = 0.55
+		}
+	}
+	option = {
+		name = interwar_turkey.5.c
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = AZR
+			relation = non_aggression_pact
+		}
+		AZR = {
+			diplomatic_relation = {
+				country = TUR
+				relation = non_aggression_pact
+			}    
+		}
+	}
+}
+
+#Treaty of Kars
+country_event = {
+	id = interwar_turkey.6
+	title = interwar_turkey.6.t
+	desc = interwar_turkey.6.d
+	picture = GFX_report_event_PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = interwar_turkey.6.a
+		ai_chance = {
+			base = 100
+		}
+		TUK = {
+			country_event = { id = interwar_turkey.7 }
+		}
+	}
+	option = {
+		name = interwar_turkey.6.b
+		ai_chance = {
+			base = 0
+		}
+		TUK = {
+			country_event = { id = interwar_turkey.8 }
+		}
+	}
+}
+
+#Treaty of Kars Kabul
+country_event = {
+	id = interwar_turkey.7
+	title = interwar_turkey.7.t
+	desc = interwar_turkey.7.d
+	picture = GFX_report_event_PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = interwar_turkey.7.a
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = SOV
+			relation = non_aggression_pact
+		}
+		SOV = {
+			diplomatic_relation = {
+				country = TUR
+				relation = non_aggression_pact
+			}    
+		}
+		hidden_effect = {
+			SOV = {
+				declare_war_on = {
+					target = ARM
+					type = annex_everything	
+				}
+				declare_war_on = {
+					target = AZR
+					type = annex_everything		
+				}
+				declare_war_on = {
+					target = GEO
+					type = annex_everything		
+				}
+			}
+		}
+	}
+}
+
+#Treaty of Kars Red
+country_event = {
+	id = interwar_turkey.8
+	title = interwar_turkey.8.t
+	desc = interwar_turkey.8.d
+	picture = GFX_report_event_PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = interwar_turkey.8.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#Trakya için Ultimatom
+country_event = {
+	id = interwar_turkey.9
+	title = interwar_turkey.9.t
+	desc = interwar_turkey.9.d
+	picture = GFX_report_event_PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = interwar_turkey.9.a
+		ai_chance = {
+			base = 50
+		}
+		TUK = {
+			country_event = { id = interwar_turkey.10 }
+		}
+		
+	}
+	option = {
+		name = interwar_turkey.9.b
+		ai_chance = {
+			base = 50
+		}
+		TUK = {
+			country_event = { id = interwar_turkey.11 }
+		}
+		
+	}
+}
+
+#Trakya için Ultimatom Kabul
+country_event = {
+	id = interwar_turkey.10
+	title = interwar_turkey.10.t
+	desc = interwar_turkey.10.d
+	picture = GFX_report_event_PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = interwar_turkey.10.a
+		ai_chance = {
+			base = 50
+		}
+		TUR = {
+			transfer_state = 757
+			transfer_state = 790
+			add_state_core = 757
+			add_state_core = 790
+		}
+		
+	}
+}
+
+#Trakya için Ultimatom Red
+country_event = {
+	id = interwar_turkey.11
+	title = interwar_turkey.11.t
+	desc = interwar_turkey.11.d
+	picture = GFX_report_event_PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = interwar_turkey.11.a
+		ai_chance = {
+			base = 50
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = GRE
+		}
+		
+	}
+	option = {
+		name = interwar_turkey.11.b
+		ai_chance = {
+			base = 50
+		}
+		
+	}
+}
+
+#Ankara Anlaşması
+country_event = {
+	id = interwar_turkey.12
+	title = interwar_turkey.12.t
+	desc = interwar_turkey.12.d
+	picture = GFX_report_event_PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = interwar_turkey.12.a
+		ai_chance = {
+			base = 100
+		}
+		TUK = {
+			transfer_state = 344
+			transfer_state = 350
+		}
+		
+	}
+	option = {
+		name = interwar_turkey.12.b
+		ai_chance = {
+			base = 0
+		}
+		
+	}
+}
+
+#Suriyeye Talep
+country_event = {
+	id = interwar_turkey.13
+	title = interwar_turkey.13.t
+	desc = interwar_turkey.13.d
+	picture = GFX_report_event_PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = interwar_turkey.13.a
+		ai_chance = {
+			base = 60
+		}
+		TUK = {
+			add_state_core = 677
+			add_state_core = 680
+			add_state_core = 554
+		}
+		TUK = {
+			annex_country = {
+				target = SYR
+				transfer_troops = no
+			}
+		}
+		
+	}
+	option = {
+		name = interwar_turkey.13.b
+		ai_chance = {
+			base = 40
+		}
+		TUK = {
+			add_state_core = 677
+			add_state_core = 680
+			add_state_core = 554
+		}
+		TUK = {
+			create_wargoal = {
+				type = annex_everything
+				target = SYR
+			}
+		}
+	}
+}
+
+#Fransaya Talep
+country_event = {
+	id = interwar_turkey.14
+	title = interwar_turkey.14.t
+	desc = interwar_turkey.14.d
+	picture = GFX_report_event_PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = interwar_turkey.14.a
+		ai_chance = {
+			base = 60
+		}
+		TUK = {
+			add_state_core = 677
+			add_state_core = 680
+		}
+		TUK = {
+			transfer_state = 670
+			transfer_state = 680
+		}
+		
+	}
+	option = {
+		name = interwar_turkey.14.b
+		ai_chance = {
+			base = 40
+		}
+		TUK = {
+			add_state_core = 677
+			add_state_core = 680
+		}
+		TUK = {
+			create_wargoal = {
+				type = annex_everything
+				target = FRA
+			}
+		}
+	}
+}
+
+#Musul Talebi
+country_event = {
+	id = interwar_turkey.15
+	title = interwar_turkey.15.t
+	desc = interwar_turkey.15.d
+	picture = GFX_report_event_PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = interwar_turkey.15.a
+		ai_chance = {
+			base = 60
+		}
+		TUK = {
+			add_state_core = 676
+		}
+		TUK = {
+			transfer_state = 676
+		}
+		
+	}
+	option = {
+		name = interwar_turkey.15.b
+		ai_chance = {
+			base = 40
+		}
+		TUK = {
+			add_state_core = 676
+		}
+		TUK = {
+			create_wargoal = {
+				type = annex_everything
+				target = ENG
+			}
+		}
+	}
+}
+
+#Ermenilerle Barış
+country_event = {
+	id = interwar_turkey.20
+	title = interwar_turkey.20.t
+	desc = interwar_turkey.20.d
+	picture = GFX_report_event_PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = interwar_turkey.20.a
+		ai_chance = {
+			base = 100
+		}
+		if = {
+			limit = {
+				ARM = {
+					owns_state = 353
+					owns_state = 354
+				}
+			}
+			TUK = {
+				transfer_state = 353
+				transfer_state = 354
+			}
+		}
+		TUK = {
+			transfer_state = 815
+			white_peace = ARM
+		}
+		
+	}
+	option = {
+		name = interwar_turkey.20.b
+		ai_chance = {
+			base = 0
+		}
+		
+	}
+}
+
+#____________________________________________________________
+#Sultancı Türkiye
+news_event = {
+	id = interwar_turkey.500
+	title = interwar_turkey.500.t
+	desc = interwar_turkey.500.d
+	picture = EVENT_hoi4tgw_interwar_turkish_republic
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = interwar_turkey.500.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
