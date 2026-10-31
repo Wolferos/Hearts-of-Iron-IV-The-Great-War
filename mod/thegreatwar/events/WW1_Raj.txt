@@ -474,3 +474,67 @@ country_event = {
 	}
 }
 
+# Simla Convention (To China)
+country_event = {
+	title = ww1_raj.14.t
+	desc = ww1_raj.14.d
+	id = ww1_raj.14
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_raj.14.a
+		ai_chance = { base = 100 }
+		RAJ = {
+		    country_event = { id = ww1_raj.15 hours = 10 }
+		}
+	}
+	option = {
+		name = ww1_raj.14.b
+		ai_chance = { base = 0 }
+		RAJ = {
+		    country_event = { id = ww1_raj.16 hours = 10 }
+		}
+	}
+}
+
+# Simla Convention China Accepts
+country_event = {
+	title = ww1_raj.15.t
+	desc = ww1_raj.15.d
+	id = ww1_raj.15
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_raj.15.a
+		ai_chance = { base = 100 }
+		add_political_power = 25
+		remove_state_claim = 434
+		add_core_state = 434
+		transfer_state = 434
+	}
+}
+
+# Simla Convention China Rejects
+country_event = {
+	title = ww1_raj.16.t
+	desc = ww1_raj.16.d
+	id = ww1_raj.16
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_raj.16.a
+		ai_chance = { base = 100 }
+		add_political_power = -25
+		add_opinion_modifier = {
+			target = FROM
+			modifier = HOI4TGW_Opinion_diplomats_malus
+		}
+	}
+}
+
