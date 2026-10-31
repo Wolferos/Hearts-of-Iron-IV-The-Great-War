@@ -610,20 +610,49 @@ TUR_illiteracy = {
 				    check_variable = { TUR_illitirate_population_research_speed_factor = 0 compare = equals }
 				}
 				remove_dynamic_modifier = {
-				    TUR_illitirate_population
-				}
-				else_if = {
-				    limit = {
-				        check_variable = { var = TUR_opda_debt_var value = 45 compare = less_than }
-				    }
-					swap_ideas = {
-				        remove_idea = TUR_ottoman_public_debt_administration_1_ns
-			            add_idea =  TUR_ottoman_public_debt_administration_2_ns
-			        }
+				    modifier = TUR_illitirate_population
 				}
 				else = {
 				}
 			}
+		}
+	}
+}
+
+TUR_Elections = {
+
+    TUR_election_timer = {
+
+		icon = GFX_decision_generic_train
+
+		priority = 3
+
+		allowed = {
+			original_tag = TUR
+		}
+
+		days_mission_timeout = 100
+		is_good = no
+
+		activation = {
+			has_completed_focus = TUR_ww1_begin_calls_for_election
+		}
+
+		fire_only_once = yes
+
+		available = {
+			always = no
+		}
+
+		ai_will_do = {
+		}
+
+		visible = {
+			has_completed_focus = TUR_ww1_begin_calls_for_election
+		}
+
+		timeout_effect = {
+			country_event = { id = ww1_ottoman.49 }
 		}
 	}
 }

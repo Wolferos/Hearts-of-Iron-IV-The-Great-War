@@ -794,7 +794,11 @@ focus_tree = {
 		}
 		x = 10
 		y = 4
-
+        completion_reward = {
+		    add_political_power = 75
+		    add_stability = 0.05
+			add_war_support = 0.05
+		}
 	}
 	focus = {
 		id = RAJ_all_indian_education_program
@@ -863,10 +867,40 @@ focus_tree = {
 	}
 	focus = {
 		id = RAJ_simla_accord
-		icon = GFX_focus_chi_cooperation_with_the_nationalists
+		icon = GFX_goal_generic_position_armies
 		cost = 10
+		available = {
+		    has_war = no
+		    OR = {
+			    QIN = {
+					exists = yes
+					has_war = no
+				}
+				CHI = {
+					exists = yes
+					has_war = no
+				}
+			}
+		}
 		prerequisite = {
 			focus = RAJ_reunification_of_bengal
+		}
+		completion_reward = {
+			if = {
+			    limit = {
+				    QIN = {
+					    exists = yes
+					}
+				}
+				QIN = {
+				    country_event = { id = ww1_raj.14 hours = 10 }
+				}
+			}
+			else = {
+			    CHI = {
+				    country_event = { id = ww1_raj.14 hours = 10 }
+				}
+			}
 		}
 		x = 7
 		y = 5
@@ -876,8 +910,18 @@ focus_tree = {
 		id = RAJ_defense_of_india_law
 		icon = GFX_focus_RAJ_british_investors
 		cost = 10
+		available = {
+		    ENG = {
+			    has_war = yes
+			}
+		}
 		prerequisite = {
 			focus = RAJ_consolidate_princely_states
+		}
+		completion_reward = {
+		    add_ideas = {
+			    RAJ_defense_of_india_law_ns
+			}
 		}
 		x = 13
 		y = 5
@@ -885,10 +929,23 @@ focus_tree = {
 	}
 	focus = {
 		id = RAJ_tibet_expedition
-		icon = GFX_goal_generic_military_deal
+		icon = GFX_goal_generic_occupy_states_ongoing_war
 		cost = 10
+		available = {
+		    TIB = {
+			    exists = yes
+				is_subject = no
+				has_war = no
+			}
+		}
 		prerequisite = {
 			focus = RAJ_simla_accord
+		}
+		completion_reward = {
+		    create_wargoal = {
+			    target = TIB
+				type = take_state_focus
+			}
 		}
 		x = 7
 		y = 7
@@ -898,8 +955,18 @@ focus_tree = {
 		id = RAJ_raj_expedition_forces
 		icon = GFX_focus_generic_commonwealth_build_infantry
 		cost = 10
+		available = {
+		    ENG = {
+			    has_war = yes
+			}
+		}
 		prerequisite = {
 			focus = RAJ_defense_of_india_law
+		}
+		completion_reward = {
+		    add_ideas = {
+			    RAJ_indian_expeditionary_forces_ns
+			}
 		}
 		x = 13
 		y = 6
@@ -980,6 +1047,12 @@ focus_tree = {
 		prerequisite = {
 			focus = RAJ_indian_empire
 		}
+		completion_reward = {
+		    annex_country = {
+			    target = NEP
+				transfer_troops = yes
+			}
+		}
 		x = 11
 		y = 9
 
@@ -990,6 +1063,12 @@ focus_tree = {
 		cost = 10
 		prerequisite = {
 			focus = RAJ_indian_empire
+		}
+		completion_reward = {
+		    annex_country = {
+			    target = MAL
+				transfer_troops = yes
+			}
 		}
 		x = 13
 		y = 9
@@ -1002,9 +1081,15 @@ focus_tree = {
 		prerequisite = {
 			focus = RAJ_indian_empire
 		}
+		completion_reward = {
+		    create_wargoal = {
+				type = puppet_wargoal_focus
+				target = PER
+			}
+		}
 		x = 9
 		y = 9
-
+		
 	}
 
 }
