@@ -1318,3 +1318,51 @@ country_event = {
 		complete_national_focus = TUR_ww1_liberals
 	}
 }
+
+#Germans Offer a Secret Friendship Treaty
+country_event = {
+	id = ww1_ottoman.50
+	title = ww1_ottoman.50.t
+	desc = ww1_ottoman.50.d
+	picture = GFX_report_event_tur_soviets
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option =  {
+		name = ww1_ottoman.50.a
+		ai_chance = { base = 100 }
+		set_country_flag = TUR_accepted_the_german_secret_treaty_cflg
+		complete_national_focus = TUR_ww1_secret_german_ottoman_alliance
+	}
+}
+
+#Ottomans Buys Germans Ships of Goben and Breslau
+country_event = {
+	id = ww1_ottoman.51
+	title = ww1_ottoman.51.t
+	desc = ww1_ottoman.51.d
+	picture = GFX_report_event_tur_soviets
+
+	fire_only_once = yes
+	
+	trigger = {
+	    tag = TUR
+		date > 1914.7.7
+		GER = {
+		    has_war_with = ENG
+		}
+	}
+	
+	mean_time_to_happen = { days = 1 }
+
+	option =  {
+		name = ww1_ottoman.51.a
+		ai_chance = { base = 100 }
+		set_global_flag = ottomans_bought_german_ships_gflg
+	}
+	option =  {
+		name = ww1_ottoman.51.b
+		ai_chance = { base = 0 }
+	}
+}

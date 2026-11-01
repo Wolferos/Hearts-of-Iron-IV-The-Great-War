@@ -2136,7 +2136,7 @@ focus_tree = {
 	}
 	focus = {
 		id = TUR_ww1_autonmy_for_slavs
-		icon = GFX_focus_generic_attack_yugoslavia
+		icon = GFX_focus_invite_yugoslavia
 		prerequisite = { focus = TUR_ww1_autonmy_for_georgians }
 		completion_reward = {
 			swap_ideas = {
@@ -2154,7 +2154,7 @@ focus_tree = {
 	}
 	focus = {
 		id = TUR_ww1_autonmy_for_greeks
-		icon = GFX_focus_generic_attack_greece
+		icon = GFX_focus_generic_befriend_greece
 		prerequisite = { focus = TUR_ww1_autonmy_for_slavs}
 		completion_reward = {
 		    remove_ideas = {
@@ -2476,13 +2476,23 @@ focus_tree = {
 	focus = {
 		id = TUR_ww1_help_central_asia_to_rebel
 		prerequisite = { focus = TUR_ww1_integrate_border_provinces }
-		icon = GFX_focus_generic_befriend_basmachi
+		icon = GFX_focus_SOV_bukharan_republic
 		available = {
-		    controls_state = 266
-			controls_state = 1004
-			controls_state = 416
+			has_war_with = RUS
+			BUK = {
+			    exists = yes
+			}
+			KHI = {
+			    exists = yes
+			}
 		}
 		completion_reward = {
+		    BUK = {
+			    country_event = { id = ww1_ottoman.44 hours = 18 } 
+			}
+			KHI = {
+			    country_event = { id = ww1_ottoman.44 hours = 18 }
+			}
 		}
 		ai_will_do = {
 			factor = 0
@@ -2729,8 +2739,15 @@ focus_tree = {
 		id = TUR_ww1_secret_german_ottoman_alliance
 		icon = GFX_goal_generic_dangerous_deal
 		prerequisite = { focus = TUR_ww1_new_german_allies }
+		available = {
+		    custom_trigger_tooltip = {
+			    tooltip = TUR_accepted_the_german_secret_treaty_tt
+				has_country_flag = TUR_accepted_the_german_secret_treaty_cflg
+			}
+		}
 		completion_reward = {
-			
+			add_war_support = 0.05
+			add_political_power = 50
 		}
 		ai_will_do = {
 			factor = 0
@@ -2746,7 +2763,7 @@ focus_tree = {
 		prerequisite = { focus = TUR_ww1_secret_german_ottoman_alliance }
 		available = {
 		    custom_trigger_tooltip = {
-			    tooltip = has_bought_german_ships_tt
+			    tooltip = TUR_has_bought_german_ships_tt
 				has_global_flag = ottomans_bought_german_ships_gflg
 			}
 		}
