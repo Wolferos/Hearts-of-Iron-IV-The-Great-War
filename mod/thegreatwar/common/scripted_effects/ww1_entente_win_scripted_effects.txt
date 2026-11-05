@@ -458,6 +458,138 @@ ww1_versailles_setup_vojvodina = {
 	}
 }
 
+# Transfer Galicia Script
+ww1_versailles_setup_galicia = {
+	if = {
+		limit = {
+			any_enemy_country = {
+				owns_state = 88
+			}
+		}
+		POL = {
+			transfer_state = 88
+		}
+	}
+	if = {
+		limit = {
+			any_country_with_original_tag_of = {
+				target = { RUS SOV }
+				has_country_flag = great_war_winner
+			}
+		}
+		if = {
+			limit = {
+				any_enemy_country = {
+					owns_state = 89
+				}
+			}
+			POL = {
+				transfer_state = 89
+			}
+		}
+		if = {
+			limit = {
+				any_enemy_country = {
+					owns_state = 91
+				}
+			}
+			POL = {
+				transfer_state = 91
+			}
+		}
+	}
+	if = {
+		limit = {
+			any_country_with_original_tag_of = {
+				target = { RUS SOV }
+				has_country_flag = great_war_loser
+			}
+		}
+		if = {
+			limit = {
+				any_enemy_country = {
+					owns_state = 89
+				}
+			}
+			UKR = {
+				transfer_state = 89
+			}
+		}
+		if = {
+			limit = {
+				any_enemy_country = {
+					owns_state = 91
+				}
+			}
+			UKR = {
+				transfer_state = 91
+			}
+		}
+	}
+	if = {
+		limit = {
+			ROM = {
+				NOT = {
+					has_country_flag = great_war_loser
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_enemy_country = {
+					owns_state = 80
+				}
+			}
+			ROM = {
+				transfer_state = 80
+			}
+		}
+	}
+	if = {
+		limit = {
+			ROM = {
+				has_country_flag = great_war_loser
+			}
+		}
+		if = {
+			limit = {
+				any_country_with_original_tag_of = {
+					target = { RUS SOV }
+					has_country_flag = great_war_winner
+				}
+			}
+			if = {
+				limit = {
+					any_enemy_country = {
+						owns_state = 80
+					}
+				}
+				POL = {
+					transfer_state = 80
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_country_with_original_tag_of = {
+					target = { RUS SOV }
+					has_country_flag = great_war_loser
+				}
+			}
+			if = {
+				limit = {
+					any_enemy_country = {
+						owns_state = 80
+					}
+				}
+				UKR = {
+					transfer_state = 80
+				}
+			}
+		}
+	}
+}
+
 #################################
 #### OTTOMAN RELATED SCRIPTS ####
 #################################
