@@ -487,330 +487,172 @@ TUR_the_opda = {
 	}
 }
 
-TUR_bop_decisions_cat = {
-	TUR_bop_military_parade = {
-		icon = GFX_decision_generic_military
+TUR_illiteracy = {
+
+	
+    TUR_lower_illiteracy = {
+
+		icon = GFX_decision_generic_research
+
+        priority = 3
 
 		allowed = {
 			original_tag = TUR
 		}
-
-		visible = {
-		}
-
+		
 		available = {
-		    has_war = no
-			power_balance_value = {
-			    id = TUR_power_balance
-				value > 0.1
+			FROM = {
+				is_fully_controlled_by = ROOT
 			}
-		}
-
-		cost = 100
-
-		days_remove = 5
-
-		days_re_enable = 385
-
-		remove_effect = {
-			add_power_balance_value = {
-			    id = TUR_power_balance
-				value = 0.05
+			num_of_civilian_factories_available_for_projects > 0
+			custom_trigger_tooltip = { 
+			    tooltip = TUR_not_lowering_illeteracy_tt
+				NOT = {
+				    has_country_flag = TUR_lowering_illeteracy_cflg
+				}
 			}
-			army_experience = 50
-			add_stability = -0.05
-			add_war_support = 0.1
-		}
-
-		ai_will_do = {
-			base = 10
-		}
-	}
-	TUR_bop_tour_with_the_sultan = {
-		icon = GFX_decision_generic_political_discourse
-
-		allowed = {
-			original_tag = TUR
 		}
 
 		visible = {
-		}
-
-		available = {
-		    has_war = no
-			power_balance_value = {
-			    id = TUR_power_balance
-				value > 0.45
+			has_dynamic_modifier = TUR_illitirate_population
+			NOT = {
+			    check_variable = { TUR_illitirate_population_research_speed_factor = 0 compare = equals }
 			}
 		}
+		
+		target_trigger = {
+			FROM = {
+				is_fully_controlled_by = ROOT
+				OR = {
+					state = 1089
+					state = 1106
+					state = 341
+					state = 340
+					state = 347
+					state = 356
+					state = 355
+					state = 354
+					state = 353
+					state = 800
+					state = 349
+					state = 798
+					state = 49
+					state = 343
+					state = 339
+					state = 342
+					state = 346
+					state = 345
+					state = 344
+					state = 350
+					state = 352
+					state = 799
+					state = 677
+					state = 1010
+					state = 680
+					state = 676
+					state = 553
+					state = 554
+					state = 454
+					state = 455
+					state = 291
+					state = 1011
+					state = 1094
+					state = 184
+					state = 731
+					state = 1091
+					state = 106
+					state = 970
+					state = 802
+					state = 1093
+					state = 934
+					state = 44
+					state = 805
+					state = 1090
+				}
+			}
+		}
+		
+		state_target = yes
 
-		cost = 350
+		on_map_mode = map_only
 
-		days_remove = 20
+		days_remove = 2
+
+		cost = 40
 
 		fire_only_once = yes
 
-		remove_effect = {
-			add_power_balance_value = {
-			    id = TUR_power_balance
-				value = 0.2
-			}
-			add_stability = 0.1
-		}
-
 		ai_will_do = {
-			base = 10
-		}
-	}
-	TUR_bop_spread_pro_turkish_nationalism = {
-		icon = GFX_decision_generic_nationalism
-
-		allowed = {
-			original_tag = TUR
-		}
-
-		visible = {
+			factor = 5
+			modifier = {
+				factor = 10
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 5
+				date > 1911.01.01
+			}
 		}
 
-		available = {
+        complete_effect = {
+			set_country_flag = TUR_lowering_illeteracy_cflg
 		}
 
-		cost = 100
-
-		days_remove = 70
-
-		days_re_enable = 100
+        modifier = {
+			civilian_factory_use = 2
+		}
 
 		remove_effect = {
-			add_power_balance_value = {
-			    id = TUR_power_balance
-				value = 0.05
+			add_to_variable = { TUR_illitirate_population_research_speed_factor = 0.02 tooltip = research_speed_factor_tt }
+			clr_country_flag = TUR_lowering_illeteracy_cflg
+			if = {
+			    limit = {
+				    check_variable = { TUR_illitirate_population_research_speed_factor = 0 compare = equals }
+				}
+				remove_dynamic_modifier = {
+				    modifier = TUR_illitirate_population
+				}
+				else = {
+				}
 			}
 		}
-
-		ai_will_do = {
-			base = 10
-		}
 	}
-	TUR_bop_open_turkish_schools = {
-		icon = GFX_decision_generic_factory
+}
+
+TUR_Elections = {
+
+    TUR_election_timer = {
+
+		icon = GFX_decision_generic_political_address
+
+		priority = 3
 
 		allowed = {
 			original_tag = TUR
 		}
 
-		visible = {
+		days_mission_timeout = 100
+		is_good = no
+
+		activation = {
+			has_completed_focus = TUR_ww1_begin_calls_for_election
 		}
-
-		available = {
-		    has_completed_focus = TUR_ww1_education_reform
-		}
-
-		cost = 50
-
-		days_remove = 100
-
-		days_re_enable = 200
-
-		remove_effect = {
-			add_power_balance_value = {
-			    id = TUR_power_balance
-				value = 0.1
-			}
-			add_timed_idea = {
-			    idea = TUR_nationalist_education_ns
-				days = 180
-			}
-		}
-
-		ai_will_do = {
-			base = 10
-		}
-	}
-	TUR_bop_push_for_reclamation_of_the_old_lands = {
-		icon = GFX_decision_generic_form_nation
-
-		allowed = {
-			original_tag = TUR
-		}
-
-		visible = {
-		    NOT = {
-				controls_state = 183
-				controls_state = 212
-				controls_state = 1105
-			}
-			EGY = {
-			    exists = yes
-			}
-			BUL = {
-			    exists = yes
-			}
-			GRE = {
-			    exists = yes
-			}
-			MNT = {
-			    exists = yes
-			}
-			BOS = {
-			    exists = yes
-			}
-			SER = {
-			    exists = yes
-			}
-		}
-
-		available = {
-		}
-
-		cost = 100
-
-		days_re_enable = 250
-
-		complete_effect = {
-			add_power_balance_value = {
-			    id = TUR_power_balance
-				value = 0.1
-			}
-			add_war_support = 0.1
-		}
-
-		ai_will_do = {
-			base = 10
-		}
-	}
-	TUR_bop_adopt_friendly_foreign_policy = {
-		icon = GFX_decision_generic_protection
-
-		allowed = {
-			original_tag = TUR
-		}
-
-		visible = {
-		}
-
-		available = {
-		    has_war = no
-			power_balance_value = {
-			    id = TUR_power_balance
-				value < -0.05
-			}
-		}
-
-		cost = 100
 
 		fire_only_once = yes
 
-		complete_effect = {
-			add_power_balance_value = {
-			    id = TUR_power_balance
-				value = -0.1
-			}
-			add_stability = 0.1
-			add_war_support = -0.1
+		available = {
+			always = no
 		}
 
 		ai_will_do = {
-			base = 0
-		}
-	}
-	TUR_bop_push_for_ottomanism = {
-		icon = GFX_decision_faction_tur_traditionalist
-
-		allowed = {
-			original_tag = TUR
 		}
 
 		visible = {
+			has_completed_focus = TUR_ww1_begin_calls_for_election
 		}
 
-		available = {
-		    has_war = no
-			power_balance_value = {
-			    id = TUR_power_balance
-				value < -0.15
-			}
-		}
-
-		cost = 50
-
-		days_remove = 50
-
-		days_re_enable = 120
-
-		remove_effect = {
-			add_power_balance_value = {
-			    id = TUR_power_balance
-				value = -0.05
-			}
-		}
-
-		ai_will_do = {
-			base = 0
-		}
-	}
-	TUR_bop_increase_minority_rights = {
-		icon = GFX_decision_generic_civil_support
-
-		allowed = {
-			original_tag = TUR
-		}
-
-		visible = {
-		}
-
-		available = {
-			power_balance_value = {
-			    id = TUR_power_balance
-				value < -0.2
-			}
-		}
-
-		cost = 220
-
-		fire_only_once = yes
-
-		complete_effect = {
-			add_power_balance_value = {
-			    id = TUR_power_balance
-				value = -0.15
-			}
-			add_stability = 0.1
-		}
-
-		ai_will_do = {
-			base = 0
-		}
-	}
-	TUR_bop_increase_the_parliements_power = {
-		icon = GFX_decision_generic_speech
-
-		allowed = {
-			original_tag = TUR
-		}
-
-		visible = {
-		}
-
-		available = {
-		    has_war = no
-		}
-
-		cost = 50
-
-		days_re_enable = 180
-
-		complete_effect = {
-			add_power_balance_value = {
-			    id = TUR_power_balance
-				value = -0.15
-			}
-			add_stability = 0.05
-			add_political_power = -50
-		}
-
-		ai_will_do = {
-			base = 0
+		timeout_effect = {
+			country_event = { id = ww1_ottoman.49 }
 		}
 	}
 }

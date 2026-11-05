@@ -1,15 +1,4 @@
-#Power Struggle Mechanic
-TUR_bop_decisions_cat = {
-	icon = GFX_decision_category_power_struggle
-	priority = 90
-	allowed = {
-		original_tag = TUR
-	}
-	visible = {
-		has_country_flag = TUR_start_of_the_struggle_cflg
-	}
-}
-
+#Ottoman Public Debt Administration Decision Category
 TUR_the_opda = {
 	icon = generic_political_actions
 	priority = 30
@@ -22,5 +11,32 @@ TUR_the_opda = {
 			has_idea = TUR_ottoman_public_debt_administration_1_ns
 			has_idea = TUR_ottoman_public_debt_administration_2_ns
 		}
+	}
+}
+
+#Illiteracy Decision Category
+TUR_illiteracy = {
+	icon = generic_political_actions
+	priority = 29
+	allowed = {
+		original_tag = TUR
+	}
+	visible = {
+		OR = {
+			has_completed_focus = TUR_ww1_education_reform
+			has_completed_focus = TUR_ww1_reform_the_education
+		}
+	}
+}
+
+#Ottoman Elections Decision Category
+TUR_Elections = {
+	icon = GFX_decision_category_generic_democracy
+	priority = 25
+	allowed = {
+		original_tag = TUR
+	}
+	visible = {
+	    has_completed_focus = TUR_ww1_begin_calls_for_election
 	}
 }
