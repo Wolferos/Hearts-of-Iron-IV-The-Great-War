@@ -28,12 +28,14 @@ country_event = {
 				is_in_faction_with = CPL
 			}
 			set_country_flag = great_war_loser
+			save_global_event_target_as = great_war_loser
 		}
 		every_country = {
 			limit = {
 				is_in_faction_with = ENT
 			}
 			set_country_flag = great_war_winner
+			save_global_event_target_as = great_war_winner
 		}
 		hidden_effect = {
 			set_global_flag = kis_great_war_german_surrender
@@ -237,12 +239,6 @@ news_event = {
 					}
 				}
 			}
-			ENG = {
-				transfer_state = 656
-				transfer_state = 676
-				add_state_core = 656
-				add_state_core = 676
-			}
 			DNZ = {
 				transfer_state = 85
 			}
@@ -294,14 +290,7 @@ news_event = {
 				}
 			}
 			BUL = {
-				retire_country_leader = yes #stop killing historical leaders( Ferdinand lived until 1945!
-				create_country_leader = { 
-					name = "Boris III" 
-					picture="gfx/hoi4tgw_portraits/BUL/country_leaders/BUL_boris_iii.dds" 
-					expire="1935.1.1" 
-					ideology = despotism
-					traits = { }
-				}
+				promote_character = BUL_boris_iii #stop killing historical leaders - Ferdinand lived until 1945!
 			}
 			AUH = {
 				drop_cosmetic_tag = yes # Open Beta 0.1.8
@@ -318,65 +307,8 @@ news_event = {
 				add_state_core = 152
 				add_state_core = 4
 			}
-			BUL = {
-				kill_country_leader = yes
-				recruit_character = BUL_boris_iii
-				promote_character = BUL_boris_iii
-			}
-			LUX = {
-				transfer_state = 8
-				add_state_core = 8
-			}
-			#Dirty Code but only way for now...
-			AUH = {
-				white_peace = SER
-			}
-			GER = {
-				white_peace = SER
-			}
-			#More appropriate, logical and less buggy code (MasterWaifuman)
-			# Updated by Wolferos
-			every_country = {
-				limit = {
-					has_war_with = GER
-					is_in_faction_with = FRA
-				}
-				white_peace = GER
-			}
-			every_country = {
-				limit = {
-					has_war_with = AUH
-					is_in_faction_with = FRA
-				}
-				white_peace = AUH
-			}
-			if = {
-				limit = {
-					BUL = {
-						is_in_faction_with = GER
-					}
-				}
-				every_country = {
-					limit = {
-						has_war_with = BUL
-						is_in_faction_with = FRA
-					}
-					white_peace = BUL
-				}
-			}
-			if = {
-				limit = {
-					TUR = {
-						is_in_faction_with = GER
-					}
-				}
-				every_country = {
-					limit = {
-						has_war_with = TUR
-						is_in_faction_with = FRA
-					}
-					white_peace = TUR
-				}
+			event_target:great_war_loser = {
+				white_peace = event_target:great_war_winner
 			}
 			news_event = {
 				days = 3
