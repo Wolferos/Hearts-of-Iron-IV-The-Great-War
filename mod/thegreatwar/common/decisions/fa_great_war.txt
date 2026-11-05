@@ -16,7 +16,18 @@ foreign_affairs = {
 
 		available = {
 			great_war_ongoing = yes
-			surrender_progress > 0.15
+			OR = {
+				AND = {
+					has_idea = GER_famine_4
+					NOT = {
+						controls_state = 6
+					}
+				}
+				surrender_progress > 0.15
+				NOT = {
+					controls_state = 64
+				}
+			}
 		}
 
 		fire_only_once = yes
