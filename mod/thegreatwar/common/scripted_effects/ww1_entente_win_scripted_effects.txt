@@ -59,6 +59,34 @@ ww1_versailles_setup_liberation_brest_litovsk_puppets = {
 	}
 }
 
+# Transfer Danzig Script
+ww1_versailles_setup_danzig = {
+	if = {
+		limit = {
+			any_country_with_original_tag_of = {
+				target = { RUS SOV }
+				has_country_flag = great_war_loser
+			}
+		}
+		if = {
+			limit = {
+				any_enemy_country = {
+					owns_state = 85
+				}
+			}
+			DNZ = {
+				transfer_state = 85
+			}
+		}
+		POL = {
+			set_autonomy = {
+				target = DNZ
+				autonomy_state = autonomy_supervised_state
+			}
+		}
+	}
+}
+
 ##########################################
 #### AUSTRO-HUNGARIAN RELATED SCRIPTS ####
 ##########################################
@@ -788,6 +816,102 @@ ww1_versailles_setup_palestine = {
 		}
 		PAL = {
 			load_oob = "PAL_1919"
+		}
+	}
+}
+
+################################
+#### RUSSIA RELATED SCRIPTS ####
+################################
+
+# Setup Polish Autonomy Script
+ww1_versailles_setup_polish_autonomy = {
+	if = {
+		limit = {
+			any_country_with_original_tag_of = {
+				target = { RUS SOV }
+				has_country_flag = great_war_winner
+			}
+			has_completed_focus = RUS_ww1_polish_corps
+		}
+		if = {
+			limit = {
+				owns_state = 10
+			}
+			POL = {
+				transfer_state = 10
+			}
+		}
+		if = {
+			limit = {
+				owns_state = 87
+			}
+			POL = {
+				transfer_state = 87
+			}
+		}
+		if = {
+			limit = {
+				owns_state = 90
+			}
+			POL = {
+				transfer_state = 90
+			}
+		}
+		if = {
+			limit = {
+				owns_state = 92
+			}
+			POL = {
+				transfer_state = 92
+			}
+		}
+		if = {
+			limit = {
+				owns_state = 98
+			}
+			POL = {
+				transfer_state = 98
+			}
+		}
+		set_autonomy = {
+			target = POL
+			autonomy_state = autonomy_personal_union
+		}
+		if = {
+			limit = {
+				controls_state = 64
+			}
+			if = {
+				limit = {
+					any_enemy_country = {
+						owns_state = 762
+					}
+				}
+				POL = {
+					transfer_state = 762
+				}
+			}
+			if = {
+				limit = {
+					any_enemy_country = {
+						owns_state = 67
+					}
+				}
+				POL = {
+					transfer_state = 67
+				}
+			}
+			if = {
+				limit = {
+					any_enemy_country = {
+						owns_state = 86
+					}
+				}
+				POL = {
+					transfer_state = 86
+				}
+			}
 		}
 	}
 }
