@@ -18,9 +18,9 @@ country_event = {
 		}
 		custom_effect_tooltip = treaty_of_versailles_goes_into_effect_green_tt
 		GER = {
-			country_event = {
-				days = 1
-				id = ww1_armistice.503
+			news_event = {
+				hours = 6
+				id = ww1_armistice.1
 			}
 		}
 		every_country = {
@@ -39,143 +39,6 @@ country_event = {
 		}
 		hidden_effect = {
 			set_global_flag = kis_great_war_german_surrender
-		}
-	}
-
-	# No
-	option = {
-		name = ww1_armistice.500.b
-		ai_chance = {
-			base = 0
-		}
-		custom_effect_tooltip = no_scripted_peace_deal_tt
-		custom_effect_tooltip = generic_skip_one_line_tt
-		add_war_support = -0.25
-		add_stability = -0.1
-	}
-}
-
-#____________________________________________________________
-#____________________________________________________________
-country_event = {
-	id = ww1_armistice.503
-	title = ww1_armistice.503.t
-	desc = ww1_armistice.503.d
-	picture = GFX_report_event_generic_read_write
-	fire_only_once = yes
-	is_triggered_only = yes
-	immediate = {
-		set_global_flag = kis_great_war_german_surrender
-	}
-	option = {
-		name = ww1_armistice.503.a
-		ai_chance = {
-			base = 100
-		}
-		hidden_effect = {
-			HUN = {
-				transfer_state = 43
-				transfer_state = 155
-				transfer_state = 974
-				transfer_state = 154
-				transfer_state = 973
-				kill_country_leader = yes
-				recruit_character = AUH_miklos_horthy
-				add_country_leader_role = {
-					character = AUH_miklos_horthy
-					country_leader = {
-						ideology = despotism
-						expire = "1935.1.1.1"
-						#traits = {
-						#}
-					}
-				}
-				promote_character = AUH_miklos_horthy
-				# create_country_leader = {
-				# 	name = "Miklós Horthy"
-				# 	desc = HUN_miklos_horothy_DESC
-				# 	picture = "gfx/hoi4tgw_portraits/HUN/country_leaders/HUN_miklos_horthy.dds"
-				# 	expire = "1935.1.1"
-				# 	ideology = despotism
-				# 	traits = {
-				# 	}
-				# }
-			}
-			CZE = {
-				transfer_state = 69
-				transfer_state = 972
-				transfer_state = 9
-				transfer_state = 75
-				transfer_state = 74
-				transfer_state = 70
-				transfer_state = 72
-			}
-			SWI = {
-				transfer_state = 3
-				transfer_state = 151
-				transfer_state = 845
-				transfer_state = 846
-				transfer_state = 847
-			}
-			BEL = {
-				transfer_state = 768
-				transfer_state = 6
-				transfer_state = 977
-				transfer_state = 34
-				transfer_state = 980
-			}
-			HOL = {
-				transfer_state = 35
-				transfer_state = 7
-				transfer_state = 36
-			}
-			news_event = {
-				days = 3
-				id = ww1_armistice.1
-			}
-		}
-	}
-}
-
-#____________________________________________________________
-# Armistice
-#____________________________________________________________
-news_event = {
-	id = ww1_armistice.1
-	title = ww1_armistice.1.t
-	desc = ww1_armistice.1.d
-	picture = EVENT_hoi4tgw_armistice
-	major = yes
-	fire_only_once = yes
-	is_triggered_only = yes
-	# GER Accepts - The German Empire fall and Democratic Germany is
-	option = {
-		name = ww1_armistice.1.a
-		ai_chance = {
-			base = 100
-		}
-		if = {
-			limit = {
-				has_country_flag = great_war_winner
-			}
-			custom_effect_tooltip = armistice_of_compiegne_goes_into_effect_green_tt
-		}
-		if = {
-			limit = {
-				has_country_flag = great_war_loser
-			}
-			custom_effect_tooltip = armistice_of_compiegne_goes_into_effect_red_tt
-		}
-		if = {
-			limit = {
-				NOT = {
-					has_country_flag = great_war_winner
-					has_country_flag = great_war_loser
-				}
-			}
-			custom_effect_tooltip = armistice_of_compiegne_goes_into_effect_yellow_tt
-		}
-		hidden_effect = {
 			add_named_threat = {
 				threat = -50
 				name = the_great_war_armistice
@@ -209,6 +72,8 @@ news_event = {
 				ww1_versailles_setup_bosnia = yes
 				ww1_versailles_setup_vojvodina = yes
 				ww1_versailles_setup_galicia = yes
+				ww1_versailles_setup_hungary = yes
+				ww1_versailles_setup_czechoslovakia = yes
 
 				ww1_versailles_setup_danzig = yes
 			}
@@ -246,16 +111,23 @@ news_event = {
 				}
 			}
 			if = {
-				limit = { AUH = { has_war_together_with = GER } }
+				limit = {
+					AUH = {
+						has_country_flag = great_war_loser
+					}
+				}
 				AUH = {
-					drop_cosmetic_tag = yes # Open Beta 0.1.8
-					country_event = { days = 1 id = ww1_armistice.100 }
-
-					transfer_state = 153
-					transfer_state = 152
-					transfer_state = 4
-
+					AUH_miklos_horthy = {
+						set_nationality = HUN
+					}
+				}
+				AUS = {
+					annex_country = {
+						target = AUH
+					}
+					load_oob = "AUS_1919"
 					add_state_core = 153
+					add_state_core = 848
 					add_state_core = 152
 					add_state_core = 4
 				}
@@ -263,20 +135,16 @@ news_event = {
 			BUL = {
 				promote_character = BUL_boris_iii #stop killing historical leaders - Ferdinand lived until 1945!
 			}
-			AUH = {
-				drop_cosmetic_tag = yes # Open Beta 0.1.8
-				country_event = {
-					days = 1
-					id = ww1_armistice.100
+			HUN = {
+				add_country_leader_role = {
+					character = AUH_miklos_horthy
+					country_leader = {
+						ideology = despotism
+						expire = "1935.1.1.1"
+						#traits = {
+						#}
+					}
 				}
-				transfer_state = 153
-				transfer_state = 848
-				transfer_state = 152
-				transfer_state = 4
-				add_state_core = 153
-				add_state_core = 848
-				add_state_core = 152
-				add_state_core = 4
 			}
 			event_target:great_war_loser = {
 				white_peace = event_target:great_war_winner
@@ -285,6 +153,61 @@ news_event = {
 				days = 3
 				id = ww1_armistice.2
 			}
+		}
+	}
+
+	# No
+	option = {
+		name = ww1_armistice.500.b
+		ai_chance = {
+			base = 0
+		}
+		custom_effect_tooltip = no_scripted_peace_deal_tt
+		custom_effect_tooltip = generic_skip_one_line_tt
+		add_war_support = -0.25
+		add_stability = -0.1
+	}
+}
+
+#____________________________________________________________
+# Armistice
+#____________________________________________________________
+news_event = {
+	id = ww1_armistice.1
+	title = ww1_armistice.1.t
+	desc = ww1_armistice.1.d
+	picture = EVENT_hoi4tgw_armistice
+	major = yes
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	# GER Accepts - The German Empire fall and Democratic Germany is
+	option = {
+		name = ww1_armistice.1.a
+		ai_chance = {
+			base = 100
+		}
+		if = {
+			limit = {
+				has_country_flag = great_war_winner
+			}
+			custom_effect_tooltip = armistice_of_compiegne_goes_into_effect_green_tt
+		}
+		if = {
+			limit = {
+				has_country_flag = great_war_loser
+			}
+			custom_effect_tooltip = armistice_of_compiegne_goes_into_effect_red_tt
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = great_war_winner
+					has_country_flag = great_war_loser
+				}
+			}
+			custom_effect_tooltip = armistice_of_compiegne_goes_into_effect_yellow_tt
 		}
 	}
 }
@@ -579,55 +502,6 @@ news_event = {
 	}
 	option = {
 		name = ww1_armistice.2.a
-		ai_chance = {
-			base = 100
-		}
-	}
-}
-
-#____________________________________________________________
-# AUH - AUH needs to change itself it politics in order to have the right name on map
-#____________________________________________________________
-country_event = {
-	id = ww1_armistice.100
-	title = ww1_armistice.100.t
-	desc = ww1_armistice.100.d
-	picture = GFX_report_event_generic_read_write
-	fire_only_once = yes
-	is_triggered_only = yes
-	immediate = {
-		hidden_effect = {
-			# The Entente is dead after the Great War ### OPEN BETA 0.1.6
-			FRA = {
-				dismantle_faction = yes
-			}
-			AUH = {
-				#	kill_country_leader = yes
-				#	create_country_leader = {
-				#		name = "Kurt Schuschnigg"
-				#		desc = "POLITICS_KURT_SCHUSCHNIGG_DESC"
-				#		picture = "Portrait_Austria_Kurt_Schuschnigg.dds"
-				#		expire = "1965.1.1"
-				#		ideology = conservatism
-				#		traits = { }
-				#	}
-				set_politics = {
-					ruling_party = democratic
-					last_election = "1911.7.1"
-					election_frequency = 48
-					elections_allowed = yes
-				}
-				set_popularities = {
-					neutrality = 10
-					fascism = 5
-					democratic = 80
-					communism = 5
-				}
-			}
-		}
-	}
-	option = {
-		name = ww1_armistice.100.a
 		ai_chance = {
 			base = 100
 		}
