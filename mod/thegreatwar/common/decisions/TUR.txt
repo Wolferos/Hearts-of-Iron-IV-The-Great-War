@@ -576,7 +576,7 @@ TUR_illiteracy = {
 
 		on_map_mode = map_only
 
-		days_remove = 2
+		days_remove = 40
 
 		cost = 40
 
@@ -653,6 +653,270 @@ TUR_Elections = {
 
 		timeout_effect = {
 			country_event = { id = ww1_ottoman.49 }
+		}
+	}
+}
+
+TUR_Turkic_Integration = {
+
+    TUR_integrate_turkic_nation_azr = {
+
+		icon = GFX_decision_generic_confiscation
+
+        priority = 3
+
+		allowed = {
+			original_tag = TUR
+		}
+		
+		available = {
+			OR = {
+			    AZR = {
+				    is_subject_of = TUR
+			        exists = yes
+			    }
+			}
+			NOT = {
+			    has_country_flag = TUR_integrating_nation_cflg
+			}
+		}
+		
+		target_trigger = {
+			FROM = {
+				tag = AZR
+			}
+		}
+
+		visible = {
+		    OR = {
+			    AZR = {
+				    is_subject_of = TUR
+				    exists = yes
+			    }
+			}
+		}
+
+		days_remove = 100
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 5
+			}
+		}
+
+        complete_effect = {
+			set_country_flag = TUR_integrating_nation_cflg
+		}
+
+        modifier = {
+		}
+
+		remove_effect = {
+		    clr_country_flag = TUR_integrating_nation_cflg
+			annex_country = {
+				target = AZR
+				transfer_troops = yes
+			}
+		}
+	}
+	TUR_integrate_turkic_nation_per = {
+
+		icon = GFX_decision_generic_confiscation
+
+        priority = 3
+
+		allowed = {
+			original_tag = TUR
+		}
+		
+		available = {
+			OR = {
+			    PER = {
+				    is_subject_of = TUR
+				    exists = yes
+			    }
+			}
+			NOT = {
+			    has_country_flag = TUR_integrating_nation_cflg
+			}
+		}
+		
+		target_trigger = {
+			FROM = {
+				tag = PER
+			}
+		}
+
+		visible = {
+		    OR = {
+			    PER = {
+				    is_subject_of = TUR
+				    exists = yes
+			    }
+			}
+		}
+
+		days_remove = 200
+
+		cost = 100
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 5
+			}
+		}
+
+        complete_effect = {
+			set_country_flag = TUR_integrating_nation_cflg
+		}
+
+        modifier = {
+		}
+
+		remove_effect = {
+		    clr_country_flag = TUR_integrating_nation_cflg
+			annex_country = {
+				target = PER
+				transfer_troops = yes
+			}
+		}
+	}
+	TUR_integrate_turkic_nation_buk = {
+
+		icon = GFX_decision_generic_confiscation
+
+        priority = 3
+
+		allowed = {
+			original_tag = TUR
+		}
+		
+		available = {
+			OR = {
+			    BUK = {
+				    is_subject_of = TUR
+				    exists = yes
+			    }
+			}
+			NOT = {
+			    has_country_flag = TUR_integrating_nation_cflg
+			}
+		}
+		
+		target_trigger = {
+			FROM = {
+				tag = BUK
+			}
+		}
+
+		visible = {
+		    OR = {
+			    BUK = {
+				    is_subject_of = TUR
+				    exists = yes
+			    }
+			}
+		}
+
+		days_remove = 200
+
+		cost = 100
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 5
+			}
+		}
+
+        complete_effect = {
+			set_country_flag = TUR_integrating_nation_cflg
+		}
+
+        modifier = {
+		}
+
+		remove_effect = {
+		    clr_country_flag = TUR_integrating_nation_cflg
+			annex_country = {
+				target = BUK
+				transfer_troops = yes
+			}
+		}
+	}
+	TUR_integrate_turkic_nation_khi = {
+
+		icon = GFX_decision_generic_confiscation
+
+        priority = 3
+
+		allowed = {
+			original_tag = TUR
+		}
+		
+		available = {
+			OR = {
+			    KHI = {
+				    is_subject_of = TUR
+				    exists = yes
+			    }
+			}
+			NOT = {
+			    has_country_flag = TUR_integrating_nation_cflg
+			}
+		}
+		
+		target_trigger = {
+			FROM = {
+				tag = KHI
+			}
+		}
+
+		visible = {
+		    OR = {
+			    KHI = {
+				    is_subject_of = TUR
+				    exists = yes
+			    }
+			}
+		}
+
+		days_remove = 200
+
+		cost = 100
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 5
+			}
+		}
+
+        complete_effect = {
+			set_country_flag = TUR_integrating_nation_cflg
+		}
+
+        modifier = {
+		}
+
+		remove_effect = {
+		    clr_country_flag = TUR_integrating_nation_cflg
+			annex_country = {
+				target = KHI
+				transfer_troops = yes
+			}
 		}
 	}
 }

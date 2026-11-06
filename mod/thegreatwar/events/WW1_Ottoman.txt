@@ -1,38 +1,5 @@
 ﻿add_namespace = ww1_ottoman
 
-#country_event = {
-#	id = ww1_ottoman.21
-#	title = ww1_ottoman.21.t
-#	desc = ww1_ottoman.21.d
-#
-#	picture=EVENT_hoi4tgw_asir_revolt
-#
-#	major = no
-#
-#	trigger = {
-#		TAG = TUR
-#		date > 1910.5.1
-#		NOT = { has_global_flag = asir_revolt_1910 }
-#	}
-#
-#	mean_time_to_happen = {
-#		days = 0
-#	}
-#
-#	immediate = {
-#		856 = { set_border_war = yes } # Asir Region will be striped
-#		293 = { set_border_war = yes } # Yemen Region will be striped
-#		set_global_flag = asir_revolt_1910
-#	}
-#
-#	option = {
-#		name = ww1_ottoman.21.a
-#		ai_chance = {
-#			base = 100
-#		}
-#	}
-#}
-
 # British offer Anglo-Ottoman Convention of 1913
 country_event = {
 	id = ww1_ottoman.22
@@ -46,76 +13,27 @@ country_event = {
 		name = ww1_ottoman.22.a
 		ai_chance = { base = 100 }
 
-		TUR = {
-			add_opinion_modifier = {
-				target = ENG
+        ENG = {
+		    add_opinion_modifier = {
+				target = TUR
 				modifier = HOI4TGW_Opinion_improved_diplomatic_relations
 			}
-		}
-
-		ENG = {
-			puppet = KUW
-			give_guarantee = KUW
-
 			puppet = QAT
-			give_guarantee = QAT
 		}
 
-		hidden_effect = {
-			KUW = {
-				add_popularity = {
-					ideology = neutrality
-					popularity = 1.0
-				}
-				set_politics = {
-					ruling_party = neutrality
-					elections_allowed = no
-				}
-			}
-
-			QAT = {
-				add_popularity = {
-					ideology = neutrality
-					popularity = 1.0
-				}
-				set_politics = {
-					ruling_party = neutrality
-					elections_allowed = no
-				}
-				transfer_state = 765
-			}
+		TUR = {
+			give_guarantee = KUW
 		}
-
-
+		
 	}
 	option = {
 		name = ww1_ottoman.22.b
 		ai_chance = { base = 0 }
 
-		hidden_effect = {
-			ENG = {
-				end_puppet = KUW
-			}
-			KUW = {
-				load_oob = "KUW_19XX"
-			}
-		}
-
-		TUR = {
+		ENG = {
 			add_opinion_modifier = {
-				target = ENG
+				target = TUR
 				modifier = HOI4TGW_Opinion_hostile_diplomatic_relations
-			}
-		}
-
-		TUR = {
-			declare_war_on = {
-				type = annex_everything
-				target = KUW
-			}
-			declare_war_on = {
-				type = annex_everything
-				target = QAT
 			}
 		}
 
@@ -1360,6 +1278,7 @@ country_event = {
 		name = ww1_ottoman.51.a
 		ai_chance = { base = 100 }
 		set_global_flag = ottomans_bought_german_ships_gflg
+        #Needs two light cruisers named Yavuz and Midilli
 	}
 	option =  {
 		name = ww1_ottoman.51.b
