@@ -1,0 +1,49 @@
+add_namespace = int_serbia
+
+country_event = {
+	id = int_serbia.1
+	title = int_serbia.1.title
+	desc = int_serbia.1.desc
+	picture = GFX_report_event_COG_force_publique_marching_to_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = int_serbia.1.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0.5
+				is_historical_focus_on = no
+			}
+		}
+		FROM = {
+			annex_country = {
+				target = PREV
+				transfer_troops = yes
+			}
+			PREV = {
+				every_core_state = {
+					add_core_of = FROM
+				}
+			}
+		}
+	}
+
+	option = {
+		name = int_serbia.1.b
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 50
+				is_historical_focus_on = no
+			}
+		}
+		FROM = {
+			create_wargoal = {
+				target = PREV
+				type = annex_everything
+			}
+		}
+	}
+}
