@@ -1,6 +1,81 @@
 ﻿add_namespace = ww1_ottoman
 
-# British offer Anglo-Ottoman Convention of 1913
+#Asking Germany to Send a Military Mission
+country_event = {
+	id = ww1_ottoman.2
+	title = ww1_ottoman.2.t
+	desc = ww1_ottoman.2.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_ottoman.2.a
+		ai_chance = { base = 100 }
+		
+		effect_tooltip = {
+		    GER = {
+		        GER_erich_von_falkenhayn = {
+		            set_nationality = TUR
+		        }
+		        GER_von_der_goltz_c = {
+		            set_nationality = TUR
+		        }
+		        GER_liman_von_sanders = {
+		            set_nationality = TUR
+		        }
+		    }
+			TUR = {
+			    swap_ideas = {
+				    remove_idea = TUR_foreign_military_advisors_ns
+					add_idea = TUR_foreign_military_advisors_2_ns
+				}
+			}
+		}
+		
+        TUR = {
+		    country_event = { id = ww1_ottoman.3 days = 3 }
+		}
+		
+	}
+}
+
+#Germany Accepts the Military Mision Offer (To Ottomans)
+country_event = {
+	id = ww1_ottoman.3
+	title = ww1_ottoman.3.t
+	desc = ww1_ottoman.3.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_ottoman.3.a
+		ai_chance = { base = 100 }
+        
+		GER = {
+		    GER_erich_von_falkenhayn = {
+		        set_nationality = TUR
+		    }
+		    GER_von_der_goltz_c = {
+		        set_nationality = TUR
+		    }
+		    GER_liman_von_sanders = {
+		        set_nationality = TUR
+		    }
+		}
+		
+		TUR = {
+		    swap_ideas = {
+			    remove_idea = TUR_foreign_military_advisors_ns
+				add_idea = TUR_foreign_military_advisors_2_ns
+			}
+		}
+		
+	}
+}
+
+#British offer Anglo-Ottoman Convention of 1913
 country_event = {
 	id = ww1_ottoman.22
 	title = ww1_ottoman.22.t
@@ -134,6 +209,7 @@ country_event = {
 	}
 }
 
+#Turkish War of Independence/Question of the Eastern Vilayets
 country_event = {
 	id = ww1_ottoman.26
 	title = ww1_ottoman.26.t
@@ -204,6 +280,7 @@ country_event = {
 	}
 }
 
+#Turkish War of Independence/Disarming the Rebel Groups
 country_event = {
 	id = ww1_ottoman.27
 	title = ww1_ottoman.27.t
@@ -231,6 +308,8 @@ country_event = {
 	}
 }
 
+
+#Start of the Turkish War of Independence
 country_event = {
 	id = ww1_ottoman.28
 	title = ww1_ottoman.28.t
@@ -374,6 +453,37 @@ country_event = {
 	}
 }
 
+#Officers resign(This will lead to Young Turk Uprising)
+country_event = {
+	id = ww1_ottoman.30
+	title = ww1_ottoman.30.t
+	desc = ww1_ottoman.30.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_ottoman.30.a
+		ai_chance = { base = 100 }
+		custom_effect_tooltip = Young_turks_resign_tt
+		hidden_effect = {
+			TUR_Enver = {
+				set_nationality = MAC
+			}
+			TUR_Djemal = {
+				set_nationality = MAC
+			}
+			TUR_Cevat = {
+				set_nationality = MAC
+			}
+			TUR_Shevket = {
+				set_nationality = MAC
+			}
+			retire_character = TUR_ismail_enver
+		}
+	}
+}
+
 #Second Young Turk Rebellion
 country_event = {
 	id = ww1_ottoman.29
@@ -443,36 +553,6 @@ country_event = {
 				}
 				
 			}
-		}
-	}
-}
-#Officers resign(This will lead to Young Turk Uprising)
-country_event = {
-	id = ww1_ottoman.30
-	title = ww1_ottoman.30.t
-	desc = ww1_ottoman.30.d
-
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-		name = ww1_ottoman.30.a
-		ai_chance = { base = 100 }
-		custom_effect_tooltip = Young_turks_resign_tt
-		hidden_effect = {
-			TUR_Enver = {
-				set_nationality = MAC
-			}
-			TUR_Djemal = {
-				set_nationality = MAC
-			}
-			TUR_Cevat = {
-				set_nationality = MAC
-			}
-			TUR_Shevket = {
-				set_nationality = MAC
-			}
-			retire_character = TUR_ismail_enver
 		}
 	}
 }

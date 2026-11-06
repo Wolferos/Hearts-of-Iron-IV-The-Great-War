@@ -2224,7 +2224,7 @@ focus_tree = {
 	# DIPLOMATIC
 	###########################################################################################################################
 	focus = {
-		id = TUR_ww1_stop_ottoman_isolation
+		id = TUR_ww1_healing_the_sick_man
 		icon = GFX_focus_TUR_reconfigure_turkish_foreign_policy
 		completion_reward = {
 			add_political_power = 50
@@ -2237,523 +2237,9 @@ focus_tree = {
 		y = 0
 	}
 	focus = {
-		id = TUR_ww1_arabian_policy #In game name: Middle Eastern Policy
-		icon = GFX_goal_generic_military_sphere
-		prerequisite = { focus = TUR_ww1_stop_ottoman_isolation }
-		completion_reward = {
-			add_political_power = 100
-			add_war_support = 0.03
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = -5
-		y = 1
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_help_the_rashids
-		icon = GFX_focus_generic_agricultural_subsidies
-		prerequisite = { focus = TUR_ww1_arabian_policy }
-		completion_reward = {
-			JBS = {
-			    add_ideas = {
-				    JBS_help_to_rashids_ns
-				}
-			}
-			add_opinion_modifier = {
-				target = JBS
-				modifier = HOI4TGW_Opinion_improved_diplomatic_relations
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = -7
-		y = 2
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_destroy_the_saudi_state
-		icon = GFX_goal_generic_occupy_states_ongoing_war
-		prerequisite = { focus = TUR_ww1_arabian_policy }
-		available = {
-		    JBS = {
-			    is_subject_of = TUR
-			}
-			custom_trigger_tooltip = {
-			    tooltip = TUR_nejd_seizes_dammam_tt
-				has_country_flag = TUR_nejd_seizes_dammam_cflg
-			}
-		}
-		completion_reward = {
-		    TUR = {
-			    declare_war_on = {
-					target = SAU
-					type = take_state
-					generator = {
-						292
-					}
-				}
-			}
-			JBS = {
-			    declare_war_on = {
-					target = SAU
-					type = take_state
-					generator = {
-						292
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = -7
-		y = 3
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_treaty_with_rashids
-		prerequisite = { focus = TUR_ww1_destroy_the_saudi_state }
-		icon = GFX_goal_generic_military_deal
-		available = {
-			country_exists = JBS
-			JBS = {
-				controls_state = 292
-			}
-			SAU = {
-				exists = no
-			}
-			NOT = {
-				has_war_with = JBS
-			}
-		}
-		completion_reward = {
-			JBS = {
-				country_event = { id = ww1_ottoman.23 }
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = -7
-		y = 4
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_demands_to_qatar
-		prerequisite = { focus = TUR_ww1_arabian_policy }
-		icon = GFX_focus_generic_subjugation
-		available = {
-			country_exists = QAT
-		}
-		completion_reward = {
-			QAT = {
-				country_event = { id = ww1_ottoman.43 }
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = -5
-		y = 2
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_strip_the_autonmy_of_the_hejaz
-		prerequisite = { focus = TUR_ww1_demands_to_qatar }
-		icon = GFX_goal_generic_territory_or_war
-		completion_reward = {
-			add_stability = -0.1
-			add_war_support = -0.1
-			add_political_power = -70
-			custom_effect_tooltip = arab_revolt_will_not_happen
-			set_global_flag = sheriff_husein_has_been_kicked_gflg
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = -5
-		y = 3
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_claims_on_arabia
-		prerequisite = { focus = TUR_ww1_strip_the_autonmy_of_the_hejaz }
-		icon = GFX_focus_TUR_taking_over_defense_of_the_gulf
-		completion_reward = {
-			add_state_claim = 1014
-			add_state_claim = 658
-			add_state_claim = 656
-			add_state_claim = 992
-			add_state_claim = 659
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = -5
-		y = 4
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_secret_letter_to_oman
-		prerequisite = { focus = TUR_ww1_claims_on_arabia }
-		icon = GFX_goal_generic_forceful_treaty
-		available = {
-		    country_exists = OMA
-			has_war_with = ENG
-		}
-		completion_reward = {
-			OMA = {
-				country_event = { id = ww1_ottoman.44 hours = 18 }
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = -6
-		y = 5
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_secret_letter_to_egypt
-		prerequisite = { focus = TUR_ww1_claims_on_arabia }
-		icon = GFX_goal_generic_forceful_treaty
-		available = {
-		    country_exists = EGY
-			has_war_with = ENG
-		}
-		completion_reward = {
-			EGY = {
-				country_event = { id = ww1_ottoman.44 hours = 18 }
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = -4
-		y = 5
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_secret_letter_to_afghanistan
-		prerequisite = { focus = TUR_ww1_arabian_policy }
-		icon = GFX_focus_JAP_ally_afghanistan
-		available = {
-		    country_exists = AFG
-			has_war_with = ENG
-		}
-		completion_reward = {
-			AFG = {
-				country_event = { id = ww1_ottoman.44 hours = 18 }
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = -3
-		y = 2
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_attack_persia
-		prerequisite = { focus = TUR_ww1_secret_letter_to_afghanistan }
-		icon = GFX_focus_generic_attack_iran
-		available = {
-		    country_exists = PER
-			OR = {
-			    has_war_with = ENG
-				has_war_with = RUS
-			}
-		}
-		completion_reward = {
-			create_wargoal = {
-				type = take_state_focus
-				target = PER
-				generator = {
-					266
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = -3
-		y = 3
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_integrate_border_provinces
-		prerequisite = { focus = TUR_ww1_attack_persia }
-		icon = GFX_goal_generic_improve_relations
-		available = {
-		    controls_state = 419
-			controls_state = 420
-			controls_state = 1000
-			controls_state = 1001
-			controls_state = 421
-			controls_state = 413
-		}
-		completion_reward = {
-			add_state_core = 419
-			add_state_core = 420
-			add_state_core = 1000
-			add_state_core = 1001
-			add_state_core = 421
-			add_state_core = 413
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = -3
-		y = 4
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_help_central_asia_to_rebel
-		prerequisite = { focus = TUR_ww1_integrate_border_provinces }
-		icon = GFX_focus_SOV_bukharan_republic
-		available = {
-			has_war_with = RUS
-			BUK = {
-			    exists = yes
-			}
-			KHI = {
-			    exists = yes
-			}
-		}
-		completion_reward = {
-		    BUK = {
-			    country_event = { id = ww1_ottoman.44 hours = 18 } 
-			}
-			KHI = {
-			    country_event = { id = ww1_ottoman.44 hours = 18 }
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = -2
-		y = 5
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_balkan_policy
-		icon = GFX_hoi4tgw_balkans_policy
-		prerequisite = { focus = TUR_ww1_stop_ottoman_isolation }
-		completion_reward = {
-			add_political_power = 50
-			add_war_support = 0.03
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = 1
-		y = 1
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_question_of_albania
-		icon = GFX_hoi4tgw_ww1_tur_question_of_albania
-		prerequisite = { focus = TUR_ww1_balkan_policy }
-		available = {
-		    controls_state = 934
-			controls_state = 44
-			controls_state = 805
-		}
-		completion_reward = {
-			country_event = { id = ww1_ottoman.45 }
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = -1
-		y = 2
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_prepare_defence_lines
-		icon = GFX_goal_generic_defence
-		prerequisite = { focus = TUR_ww1_balkan_policy }
-		available = {
-		    controls_state = 802
-			controls_state = 1091
-			controls_state = 1094
-			controls_state = 1093
-		}
-		completion_reward = {
-		    custom_effect_tooltip = TUR_builds_balkand_defence_lines_tt
-		    hidden_effect = {
-			    1094 = {
-					add_building_construction = {
-						type = bunker
-						level = 2
-						province = {
-							id = 9902
-							id = 9888
-							id = 9862
-							id = 893
-							id = 11813
-							id = 9818
-							id = 6857
-						}
-						instant_build = yes
-					}
-				}
-				1093 = {
-					add_building_construction = {
-						type = bunker
-						level = 2
-						province = {
-							id = 6886
-							id = 907
-						}
-						instant_build = yes
-					}
-				}
-				1091 = {
-					add_building_construction = {
-						type = bunker
-						level = 2
-						province = {
-							id = 6940
-							id = 9874
-							id = 11832
-						}
-						instant_build = yes
-					}
-				}
-				802 = {
-					add_building_construction = {
-						type = bunker
-						level = 2
-						province = {
-							id = 1093
-						}
-						instant_build = yes
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = 1
-		y = 2
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_victory_in_the_balkan_war
-		icon = GFX_focus_generic_support_the_left_right
-		prerequisite = { focus = TUR_ww1_prepare_defence_lines }
-		available = {
-		    custom_trigger_tooltip = { 
-			    tooltip = ottomans_won_the_balkan_war_tt
-				has_global_flag = ottomans_won_the_balkan_war_glfg
-			}
-		}
-		completion_reward = {
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = 0
-		y = 3
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_reunite_the_rumelia
-		icon = GFX_focus_generic_worker_administration
-		prerequisite = { focus = TUR_ww1_victory_in_the_balkan_war }
-		available = {
-		    controls_state = 212
-		}
-		completion_reward = {
-		    add_state_core = 212
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = 0
-		y = 4
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_defeat_in_the_balkan_war
-		icon = GFX_focus_CZE_german_puppet
-		prerequisite = { focus = TUR_ww1_prepare_defence_lines }
-		available = {
-		    custom_trigger_tooltip = { 
-			    tooltip = ottomans_lost_the_balkan_war_tt
-				has_global_flag = balkan_league_won_the_balkan_war_glfg
-			}
-		}
-		completion_reward = {
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = 2
-		y = 3
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_retake_edirne
-		icon = GFX_focus_generic_attack_bulgaria
-		prerequisite = { focus = TUR_ww1_prepare_defence_lines }
-		available = {
-		    custom_trigger_tooltip = { 
-			    tooltip = second_balkan_war_has_started_tt
-				has_global_flag = second_balkan_war_has_started_glfg
-			}
-			BUL = {
-				exists = yes
-			}
-			BUL = {
-				has_war_with = SER
-			}
-		}
-		completion_reward = {
-		    create_wargoal = {
-				type = take_state_focus
-				target = BUL
-				generator = {
-					341
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 2
-		y = 4
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
-	}
-	focus = {
-		id = TUR_ww1_european_policy
+		id = TUR_ww1_stop_ottoman_isolation
 		icon = GFX_focus_usa_focus_on_europe
-		prerequisite = { focus = TUR_ww1_stop_ottoman_isolation }
+		prerequisite = { focus = TUR_ww1_healing_the_sick_man }
 		completion_reward = {
 			add_political_power = 50
 			add_war_support = 0.03
@@ -2762,14 +2248,14 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 5
+		x = 3
 		y = 1
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
+		relative_position_id = TUR_ww1_healing_the_sick_man
 	}
 	focus = {
 		id = TUR_ww1_new_german_allies
 		icon = GFX_focus_GER_german_hegemony_in_the_middle_east_neutrality
-		prerequisite = { focus = TUR_ww1_european_policy }
+		prerequisite = { focus = TUR_ww1_stop_ottoman_isolation }
 		completion_reward = {
 			add_opinion_modifier = {
 				target = GER
@@ -2782,12 +2268,53 @@ focus_tree = {
 		cost = 10
 		x = 6
 		y = 2
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
+		relative_position_id = TUR_ww1_healing_the_sick_man
+	}
+	focus = {
+		id = TUR_ww1_extend_the_german_military_mission
+		icon = GFX_focus_GER_german_hegemony_in_the_middle_east_neutrality
+		prerequisite = { focus = TUR_ww1_new_german_allies }
+		completion_reward = {
+			GER = {
+			    country_event = { id = ww1_ottoman.2 days = 3 }
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = 5
+		y = 3
+		relative_position_id = TUR_ww1_healing_the_sick_man
+	}
+	focus = {
+		id = TUR_ww1_berlin_baghdad_railway
+		relative_position_id = TUR_ww1_continue_modernization
+		icon = GFX_focus_generic_railroad
+		prerequisite = {
+		    focus = TUR_ww1_new_german_allies
+		}
+		available = {
+			controls_state = 291
+		}
+		completion_reward = {
+		    GER = {
+			    country_event = { id = ww1_germany.33 hours = 6 }
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = 7
+		y = 3
+		relative_position_id = TUR_ww1_healing_the_sick_man
 	}
 	focus = {
 		id = TUR_ww1_secret_german_ottoman_alliance
 		icon = GFX_goal_generic_dangerous_deal
-		prerequisite = { focus = TUR_ww1_new_german_allies }
+		prerequisite = { focus = TUR_ww1_berlin_baghdad_railway }
+		prerequisite = { focus = TUR_ww1_extend_the_german_military_mission }
 		available = {
 		    custom_trigger_tooltip = {
 			    tooltip = TUR_accepted_the_german_secret_treaty_tt
@@ -2803,8 +2330,8 @@ focus_tree = {
 		}
 		cost = 10
 		x = 6
-		y = 3
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
+		y = 4
+		relative_position_id = TUR_ww1_healing_the_sick_man
 	}
 	focus = {
 		id = TUR_ww1_secret_attack_on_russian_ports
@@ -2826,8 +2353,31 @@ focus_tree = {
 		}
 		cost = 10
 		x = 6
-		y = 4
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
+		y = 5
+		relative_position_id = TUR_ww1_healing_the_sick_man
+	}
+	focus = {
+		id = TUR_ww1_call_for_jihad
+		icon = GFX_focus_generic_battleship_guns
+		prerequisite = { focus = TUR_ww1_secret_german_ottoman_alliance }
+		available = {
+		    OR = {
+			    has_war_with = RUS
+				has_war_with = ENG
+				has_war_with = FRA
+			}
+		}
+		completion_reward = {
+			add_ideas = {
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = 6
+		y = 5
+		relative_position_id = TUR_ww1_healing_the_sick_man
 	}
 	focus = {
 		id = TUR_ww1_claim_the_entente_land
@@ -2845,13 +2395,13 @@ focus_tree = {
 		}
 		cost = 10
 		x = 6
-		y = 5
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
+		y = 6
+		relative_position_id = TUR_ww1_healing_the_sick_man
 	}
 	focus = {
-		id = TUR_ww1_turko_french_heritage
+		id = TUR_ww1_turko_french_ties
 		icon = GFX_focus_chi_reach_out_to_france
-		prerequisite = { focus = TUR_ww1_european_policy }
+		prerequisite = { focus = TUR_ww1_stop_ottoman_isolation }
 		completion_reward = {
 			add_opinion_modifier = {
 				target = FRA
@@ -2862,14 +2412,14 @@ focus_tree = {
 			factor = 0
 		}
 		cost = 10
-		x = 4
+		x = 0
 		y = 2
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
+		relative_position_id = TUR_ww1_healing_the_sick_man
 	}
 	focus = {
 		id = TUR_ww1_border_treaty_with_the_russians
 		icon = GFX_goal_generic_position_armies
-		prerequisite = { focus = TUR_ww1_turko_french_heritage }
+		prerequisite = { focus = TUR_ww1_turko_french_ties }
 		completion_reward = {
 			RUS = {
 			    country_event = { id = ww1_russia.35 hours = 18}
@@ -2879,9 +2429,9 @@ focus_tree = {
 			factor = 0
 		}
 		cost = 10
-		x = 4
+		x = 0
 		y = 3
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
+		relative_position_id = TUR_ww1_healing_the_sick_man
 	}
 	focus = {
 		id = TUR_ww1_join_the_entente
@@ -2896,9 +2446,9 @@ focus_tree = {
 			factor = 0
 		}
 		cost = 10
-		x = 4
+		x = 0
 		y = 4
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
+		relative_position_id = TUR_ww1_healing_the_sick_man
 	}
 	focus = {
 		id = TUR_ww1_claim_bosnia
@@ -2912,9 +2462,9 @@ focus_tree = {
 			factor = 0
 		}
 		cost = 10
-		x = 4
+		x = 0
 		y = 5
-		relative_position_id = TUR_ww1_stop_ottoman_isolation
+		relative_position_id = TUR_ww1_healing_the_sick_man
 	}
 	#===============================
 	focus = {
@@ -5393,33 +4943,11 @@ focus_tree = {
 		y = 4
 	}
 	focus = {
-		id = TUR_ww1_berlin_baghdad_railway
-		relative_position_id = TUR_ww1_continue_modernization
-		icon = GFX_focus_generic_railroad
-		prerequisite = {
-		    focus = TUR_ww1_petroleum_effort
-		}
-		available = {
-			controls_state = 291
-		}
-		completion_reward = {
-		    GER = {
-			    country_event = { id = ww1_germany.33 hours = 6 }
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 0
-		y = 5
-	}
-	focus = {
 		id = TUR_ww1_improve_hejaz_railway
 		relative_position_id = TUR_ww1_continue_modernization
 		icon = GFX_goal_generic_construct_infrastructure
 		prerequisite = {
-		    focus = TUR_ww1_berlin_baghdad_railway
+		    focus = TUR_ww1_petroleum_effort
 		}
 		available = {
 			controls_state = 454
@@ -5454,7 +4982,7 @@ focus_tree = {
 		relative_position_id = TUR_ww1_continue_modernization
 		icon = GFX_focus_generic_railroad
 		prerequisite = {
-		    focus = TUR_ww1_berlin_baghdad_railway
+		    focus = TUR_ww1_petroleum_effort
 		}
 		available = {
 			controls_state = 454
@@ -5497,9 +5025,6 @@ focus_tree = {
 		id = TUR_ww1_modern_economy
 		relative_position_id = TUR_ww1_continue_modernization
 		icon = GFX_focus_generic_economic_recovery
-		prerequisite = {
-		    focus = TUR_ww1_berlin_baghdad_railway
-		}
 		prerequisite = {
 		    focus = TUR_ww1_new_bank
 			focus = TUR_ww1_invite_ford
