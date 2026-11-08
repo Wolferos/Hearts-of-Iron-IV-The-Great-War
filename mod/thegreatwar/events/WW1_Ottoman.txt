@@ -1133,7 +1133,7 @@ country_event = {
 	
 }
 
-#Asks British Protectorate for a pro Ottoman Rebellion
+#Asks a Muslim puppet State for a pro Ottoman Rebellion
 country_event = {
 	id = ww1_ottoman.44
 	title = ww1_ottoman.44.t
@@ -1154,7 +1154,7 @@ country_event = {
 				autonomous_state = autonomy_puppet
 			}
 		}
-		ENG = {
+		OVERLORD = {
 			declare_war_on = {
 				target = ROOT
 				type = annex_everything
@@ -1182,8 +1182,23 @@ country_event = {
 	option =  {
 		name = ww1_ottoman.45.a
 		ai_chance = { base = 100 }
-		add_stability = -0.05
-		add_war_support = 0.05
+		add_stability = 0.05
+		add_war_support = -0.05
+		934 = {
+    	    add_dynamic_modifier = { modifier = TUR_autonomus_ottoman_vilayet }
+        }
+        44 = {
+        	add_dynamic_modifier = { modifier = TUR_autonomus_ottoman_vilayet }
+        }
+        805 = {
+        	add_dynamic_modifier = { modifier = TUR_autonomus_ottoman_vilayet }
+        }
+        802 = {
+        	add_dynamic_modifier = { modifier = TUR_autonomus_ottoman_vilayet }
+        }
+        970 = {
+        	add_dynamic_modifier = { modifier = TUR_autonomus_ottoman_vilayet }
+        }
 	}
 	option =  {
 		name = ww1_ottoman.45.b
@@ -1363,5 +1378,188 @@ country_event = {
 	option =  {
 		name = ww1_ottoman.51.b
 		ai_chance = { base = 0 }
+	}
+}
+
+#Status of Egypt
+country_event = {
+	id = ww1_ottoman.52
+	title = ww1_ottoman.52.t
+	desc = ww1_ottoman.52.d
+	picture = GFX_report_event_tur_soviets
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option =  {
+		name = ww1_ottoman.52.a
+		ai_chance = { base = 50 }
+		every_state = {
+		    limit = {
+			    OR = {
+				    is_core_of = EGY
+					is_core_of = SUD
+				}
+			}
+			add_core_of = TUR
+		}
+	}
+	option =  {
+		name = ww1_ottoman.52.b
+		ai_chance = { base = 50 }
+		EGY = {
+		    white_peace = TUR
+			every_state = {
+		        limit = {
+			        is_core_of = SUD
+			    }
+			    add_core_of = EGY
+		    }
+		}
+		set_autonomy = {
+			target = EGY
+			autonomous_state = autonomy_puppet
+		}
+	}
+}
+
+#Allying with a Muslim State
+country_event = {
+	id = ww1_ottoman.53
+	title = ww1_ottoman.53.t
+	desc = ww1_ottoman.53.d
+	picture = GFX_report_event_tur_soviets
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option =  {
+		name = ww1_ottoman.53.a
+		ai_chance = { base = 60 }
+		TUR = {
+		    add_to_faction = ROOT
+		}
+	}
+	option =  {
+		name = ww1_ottoman.53.b
+		ai_chance = { base = 40 }
+	}
+}
+
+#Offer to Purchase Kuwait (To UK)
+country_event = {
+	id = ww1_ottoman.54
+	title = ww1_ottoman.54.t
+	desc = ww1_ottoman.54.d
+	picture = GFX_report_event_tur_soviets
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option =  {
+		name = ww1_ottoman.54.a
+		ai_chance = { base = 100 }
+		TUR = {
+		    country_event = { id = ww1_ottoman.55 hours = 16 }
+		}
+	}
+}
+
+#British Accept the Purchase
+country_event = {
+	id = ww1_ottoman.55
+	title = ww1_ottoman.55.t
+	desc = ww1_ottoman.55.d
+	picture = GFX_report_event_tur_soviets
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option =  {
+		name = ww1_ottoman.55.a
+		ai_chance = { base = 100 }
+		transfer_state = 656
+		add_timed_idea = {
+		    idea = TUR_land_purchase_ns
+			days = 180
+		}
+	}
+}
+
+#Ottomans Demand the Arabian Coast
+country_event = {
+	id = ww1_ottoman.56
+	title = ww1_ottoman.56.t
+	desc = ww1_ottoman.56.d
+	picture = GFX_report_event_tur_soviets
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option =  {
+		name = ww1_ottoman.56.a
+		ai_chance = { base = 100 }
+		TUR = {
+		    country_event = { id = ww1_ottoman.57 hours = 16 }
+		}
+	}
+}
+
+#Ottomans Demand are Accepted
+country_event = {
+	id = ww1_ottoman.57
+	title = ww1_ottoman.57.t
+	desc = ww1_ottoman.57.d
+	picture = GFX_report_event_tur_soviets
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option =  {
+		name = ww1_ottoman.57.a
+		ai_chance = { base = 100 }
+		transfer_state = 659
+		transfer_state = 658
+		transfer_state = 1014
+	}
+}
+
+#Offer to Purchase Cyprus (To UK)
+country_event = {
+	id = ww1_ottoman.58
+	title = ww1_ottoman.58.t
+	desc = ww1_ottoman.58.d
+	picture = GFX_report_event_tur_soviets
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option =  {
+		name = ww1_ottoman.58.a
+		ai_chance = { base = 100 }
+		TUR = {
+		    country_event = { id = ww1_ottoman.59 hours = 16 }
+		}
+	}
+}
+
+#British Accept the Purchase
+country_event = {
+	id = ww1_ottoman.59
+	title = ww1_ottoman.59.t
+	desc = ww1_ottoman.59.d
+	picture = GFX_report_event_tur_soviets
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option =  {
+		name = ww1_ottoman.59.a
+		ai_chance = { base = 100 }
+		transfer_state = 183
+		add_timed_idea = {
+		    idea = TUR_land_purchase_ns
+			days = 180
+		}
 	}
 }
