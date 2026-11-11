@@ -104,9 +104,14 @@ focus_tree = {
 	focus = {
 		id = BEL_adios_1839_agreement		# The Treaty of London is too Restrictive
 		icon = GFX_focus_renounce_the_treaty_of_trianon
+
 		available = {
 			is_ai = no
+			NOT = {
+				has_global_flag = kis_treaty_of_versailles
+			}
 		}
+
 		prerequisite = {
 			focus = BEL_ww1_diplomatic_effort
 		}
@@ -195,6 +200,9 @@ focus_tree = {
 		icon = GFX_goal_generic_alliance
 		available = {
 			is_ai = no
+			NOT = {
+				has_global_flag = kis_treaty_of_versailles
+			}
 		}
 		prerequisite = {
 			focus = BEL_ww1_benilux_focus
@@ -242,9 +250,14 @@ focus_tree = {
 	focus = {
 		id = BEL_ww1_conquer_benilux
 		icon = GFX_goal_generic_attack_allies
+
 		available = {
 			is_ai = no
+			NOT = {
+				has_global_flag = kis_treaty_of_versailles
+			}
 		}
+
 		prerequisite = {
 			focus = BEL_ww1_benilux_focus
 		}
@@ -290,6 +303,13 @@ focus_tree = {
 	focus = {
 		id = BEL_ww1_major_alliance
 		icon = GFX_goal_generic_major_alliance
+
+		available = {
+			NOT = {
+				has_global_flag = kis_treaty_of_versailles
+			}
+		}
+
 		prerequisite = {
 			focus = BEL_ww1_entente_focus
 			focus = BEL_ww1_germany_focus
