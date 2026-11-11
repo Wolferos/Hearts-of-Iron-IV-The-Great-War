@@ -1,4 +1,575 @@
 ideas = {
+	country = {
+		german_advisors = {
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					has_government = communism
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				land_doctrine_cost_factor = -0.10
+			}
+		}
+
+		CHI_civil_war_deserters = {
+
+			picture = generic_morale_bonus
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					OR = {
+						has_government = communism
+						has_government = fascism
+					}
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_morale_factor = -0.2
+			}
+
+		}
+
+		# Communist uprisings may cause states to defect to PRC
+		CHI_communist_uprisings = {
+
+			picture = FRA_scw_intervention_republicans_focus
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					has_government = communism
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+			}
+
+		}
+
+		#####################
+		##### WTT IDEAS #####
+		#####################
+
+		CHI_nine_power_treaty = {
+
+			picture = HUN_treaty_of_triannon
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes			
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+
+			}
+
+		}
+
+		CHI_army_corruption_1 = {
+
+			picture = chi_army_corruption
+
+			name = CHI_army_corruption
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_attack_factor = -0.3
+				army_defence_factor = -0.3
+				mobilization_speed = -0.35
+			}
+
+		}
+
+		CHI_army_corruption_2 = {
+
+			picture = chi_army_corruption2
+		
+			name = CHI_army_corruption
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_attack_factor = -0.2
+				army_defence_factor = -0.2
+				mobilization_speed = -0.25
+			}
+
+		}
+		
+		CHI_army_corruption_3 = {
+
+			picture = chi_army_corruption3
+		
+			name = CHI_army_corruption
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_attack_factor = -0.1
+				army_defence_factor = -0.1
+				mobilization_speed = -0.15
+			}
+
+		}
+
+		CHI_ineffective_bureaucracy = {
+
+			picture = generic_disjointed_gov
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				conscription_factor = -0.35
+			}
+
+		}
+
+		CHI_incompetent_officers = {
+
+			picture = chi_incompetent_officers
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				command_power_gain_mult = -0.7
+			}
+
+		}
+
+		#Chinese Unity levels
+
+		CHI_chinese_unity_1 = {
+
+			picture = chi_chinese_unity
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes			
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				surrender_limit = 0.05
+			}
+
+		}
+
+		CHI_chinese_unity_2 = {
+
+			name = CHI_chinese_unity_1
+			picture = chi_chinese_unity
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes			
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				surrender_limit = 0.1
+			}
+
+		}
+
+		CHI_chinese_unity_3 = {
+
+			picture = chi_chinese_unity
+			name = CHI_chinese_unity_1
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes			
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				surrender_limit = 0.15
+			}
+
+		}
+
+		CHI_chinese_unity_4 = {
+
+			picture = chi_chinese_unity
+			name = CHI_chinese_unity_1
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes			
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				surrender_limit = 0.2
+			}
+
+		}
+
+		CHI_chinese_unity_5 = {
+
+			picture = chi_chinese_unity
+			name = CHI_chinese_unity_1
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes			
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				surrender_limit = 0.25
+			}
+
+		}
+
+		################################
+		##### Hyper inflation level ####
+		################################
+
+		CHI_hyper_inflation_none = {
+
+			picture = chi_hyper_inflation
+		
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+
+			}
+		}
+
+		CHI_hyper_inflation_1 = {
+
+			picture = chi_hyper_inflation
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.10
+				industrial_capacity_factory = -0.05
+			}
+		}
+
+		
+		CHI_hyper_inflation_2 = {
+
+			picture = chi_hyper_inflation2
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.20
+				industrial_capacity_factory = -0.10
+			}
+		}
+		
+		CHI_hyper_inflation_3 = {
+
+			picture = chi_hyper_inflation3
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.30
+				industrial_capacity_factory = -0.15
+			}
+		}
+		
+		CHI_hyper_inflation_4 = {
+
+			picture = chi_hyper_inflation4
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.40
+				industrial_capacity_factory = -0.20
+			}
+		}
+
+		CHI_hyper_inflation_5 = {
+
+			picture = chi_hyper_inflation5
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.50
+				industrial_capacity_factory = -0.25
+			}
+		}		
+
+		#####################
+		##### From focus ####
+		#####################
+
+		CHI_executive_yuan = {
+
+			picture = generic_constitutional_guarantees
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_gain = 0.25
+			}
+		}
+
+		CHI_legislative_yuan = {
+
+			picture = generic_democratic_drift_bonus
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_gain = 0.25
+				democratic_drift = 0.02
+			}
+		}
+
+		CHI_inter_party_coordination_council = {
+
+			picture = generic_neutrality_drift_bonus
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				neutrality_drift = -0.02
+			}
+		}
+
+		CHI_forced_conscription = {
+
+			picture = chi_forced_conscription
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				conscription = 0.02
+				war_support_factor = -0.1
+			}
+		}
+
+		CHI_military_affairs_commission = {
+
+			picture = generic_army_war_college		
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				max_command_power = 10
+				experience_gain_army = 0.05
+			}
+		}
+		
+		CHI_whampoa_military_academy = {
+
+			picture = chi_whampoa_military_academy		
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_leader_cost_factor = -0.3
+				army_leader_start_planning_level = 1
+			}
+		}
+
+		CHI_grain_tax = {
+
+			picture = generic_agrarian_society			
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = -0.30
+				war_support_factor = -0.07
+				stability_factor = -0.07
+			}
+		}
+
+	}
+
 	political_advisor = {
 		CHI_kuo_sung_ling = { allowed = { tag=CHI } traits={ compassionate_gentleman } ai_will_do={ factor=1 } }
 		CHI_ch_eng_te_ch_uan = { allowed = { tag=CHI } traits={ prince_of_terror } ai_will_do={ factor=1 } }
@@ -137,10 +708,4 @@ ideas = {
 							    
 							   } traits={ industrial_concern } picture=generic_tank_manufacturer_3 }
 			}
-	country={
-			german_advisors={ allowed={ always=no } allowed_civil_war={ NOT={ has_government=communism } } removal_cost=-1 research_bonus={ land_doctrine=0.07 } }
-			CHI_civil_war_deserters={ picture=generic_morale_bonus allowed={ always=no } allowed_civil_war={ NOT={ OR={ has_government=communism has_government=fascism } } } removal_cost=-1 modifier={ army_morale_factor=-0.2 } }
-			CHI_communist_uprisings={ picture=FRA_scw_intervention_republicans_focus allowed={ always=no } allowed_civil_war={ NOT={ has_government=communism } } removal_cost=-1 modifier={ } }
-			CHI_nine_power_treaty={ picture=FRA_scw_intervention_republicans_focus allowed={ always=no } allowed_civil_war={ NOT={ has_government=communism } } removal_cost=-1 modifier={ } } #TEMPORARY - TODO: REPLACE DURING QING REWORK
-			}
-	}
+}
