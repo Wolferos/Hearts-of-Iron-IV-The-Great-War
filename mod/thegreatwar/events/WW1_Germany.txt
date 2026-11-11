@@ -332,3 +332,310 @@ country_event = {
 	}
 }
 #____________________________________________________________
+# Austria Asks for Peace
+country_event = {
+	id =  ww1_germany.25
+	title = ww1_germany.25.t
+	desc = ww1_germany.25.d
+	picture = GFX_report_event_generic_read_write
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.25.a
+		ai_chance = { factor = 100 }
+		
+		custom_effect_tooltip = "Austria Hungary is going to divided according to everybodys claims and cores."
+		
+		hidden_effect = {
+		    annex_country = {
+		    	target = AUH
+		    	transfer_troops = no
+		    }
+		    ITA = {
+		    	transfer_state = 39
+		    	transfer_state = 736
+		    	transfer_state = 163
+		    }
+		    RUS = {
+		    	transfer_state = 88
+		    	transfer_state = 89
+		    	transfer_state = 91
+		    	add_state_core = 89
+		    	add_state_core = 88
+		    	add_state_core = 91
+		    }
+		    ROM = {
+		    	transfer_state = 82
+		    	transfer_state = 83
+		    	transfer_state = 84
+		    	transfer_state = 80
+		    	transfer_state = 76
+		    }
+		    HUN = {
+		    	transfer_state = 155
+		    	transfer_state = 43
+		    	transfer_state = 154
+		    	transfer_state = 45
+		    	transfer_state = 664
+		    	transfer_state = 70
+		    	transfer_state = 71
+		    	transfer_state = 73
+		    	puppet = CRO
+		    	create_country_leader = {
+	                name = "Franz Ferdinand von Habsburg"
+	                picture = "gfx/hoi4tgw_portraits/AUH/country_leaders/AUH_franz_ferdinand.dds"
+	                expire = "1965.1.1"
+	                ideology = centrism
+	                traits = {
+	                }
+                }
+		    	load_oob = "HUN_Trialism"
+		    }
+			FRA = {
+			    give_guarantee = HUN
+			}
+		    CRO = {
+		    	transfer_state = 109
+		    	transfer_state = 103
+		    	transfer_state = 104
+		    	add_state_core = 109
+		    	add_state_core = 103
+		    	add_state_core = 104
+		    	create_country_leader = {
+	                name = "Karl I"
+	                picture = "gfx/hoi4tgw_portraits/AUH/country_leaders/AUH_karl_i.dds"
+	                expire = "1965.1.1"
+	                ideology = centrism
+	                traits = {
+	                }
+                }
+		    	load_oob = "CRO_Trialism"
+		    }
+		    CZE = {
+		    	transfer_state = 69
+		    	transfer_state = 9
+		    	transfer_state = 75
+		    	transfer_state = 74
+		    	transfer_state = 72
+				load_oob = "CZE_brothers_war"
+				set_cosmetic_tag = czech_republic
+		    }
+		    SER = {
+		    	transfer_state = 764
+		    }
+		    AUH = {
+		        end_puppet = BOS
+		    }
+			
+			news_event = {
+			    id = ww1_germany.30
+				hours = 12
+			}
+		}
+
+	}
+}
+# Germany Demands Czech Annexation
+country_event = {
+	id = ww1_germany.26
+	title = ww1_germany.26.t
+	desc = ww1_germany.26.d
+	picture = ww1_chile_1
+	fire_only_once = yes
+	is_triggered_only = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = ww1_germany.26.a
+		ai_chance = {
+			base = 50
+		}
+		GER = {
+			country_event = {
+				days = 5
+				id = ww1_germany.27
+			}
+		}
+	}
+	option = {
+		name = ww1_germany.26.b
+		ai_chance = {
+			base = 50
+		}
+		GER = {
+			country_event = {
+				days = 5
+				id = ww1_germany.28
+			}
+		}
+	}
+}
+
+#Czechs Accepted Our Demands
+country_event = {
+	id = ww1_germany.27
+	title = ww1_germany.27.t
+	desc = ww1_germany.27.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.27.a
+		annex_country = {
+			target = CZE
+			transfer_troops = no
+		}
+		GER = {
+		    add_state_core = 75
+		    add_state_core = 74
+		    add_state_core = 72
+		    add_state_core = 9
+		    add_state_core = 69	
+		}
+		
+	}
+}
+#Czechs Refused Our Demands
+country_event = {
+	id = ww1_germany.28
+	title = ww1_germany.28.t
+	desc = ww1_germany.28.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.28.a
+		GER = {
+			create_wargoal = {
+				type = annex_everything
+				target = CZE
+			}
+			add_state_core = 75
+			add_state_core = 74
+			add_state_core = 72
+			add_state_core = 9
+			add_state_core = 69
+		}
+	}
+}
+#Eastern Question
+country_event = {
+	id = ww1_germany.29
+	title = ww1_germany.29.t
+	desc = ww1_germany.29.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.29.a
+		GER = {
+			create_wargoal = {
+				type = annex_everything
+				target = RUS
+			}
+		}
+	}
+	
+	option = {
+		name = ww1_germany.29.b
+	}
+}
+
+#Collapse of Austria-Hungary
+news_event = {
+	id = ww1_germany.30
+	title = ww1_germany.30.t
+	desc = ww1_germany.30.d
+	picture = hoi4_collapse_of_austria
+
+	major = yes
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.30.a
+	}
+}
+
+#Crimean Question
+country_event = {
+	id = ww1_germany.31
+	title = ww1_germany.31.t
+	desc = ww1_germany.31.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.31.a
+		hidden_effect = {
+			set_autonomy = { 
+				target = CRI
+				autonomy_state = autonomy_integrated_puppet
+			}
+		}
+	}
+	
+	option = {
+		name = ww1_germany.31.b
+		hidden_effect = {
+			UKR = {
+			    transfer_state = 137
+				add_state_core = 137
+			}
+		}
+	}
+	
+	option = {
+		name = ww1_germany.31.c
+	}
+}
+
+# Germany Offers Protection (Ukraine)
+country_event = {
+	id = ww1_germany.32
+	title = ww1_germany.32.t
+	desc = ww1_germany.32.d
+	picture = COUNTRY_hoi4tgw_report_austria_hungary
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.32.a
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = -50
+		add_stability = -0.03
+		GER = { puppet = UKR }
+	}
+
+	option = {
+		name = ww1_germany.32.b
+		ai_chance = {
+			factor = 0
+		}
+		add_political_power = 100
+		add_war_support = 0.1
+		GER = {
+			create_wargoal = {
+				target = UKR
+				type = puppet_wargoal_focus
+			}
+		}
+	}
+}

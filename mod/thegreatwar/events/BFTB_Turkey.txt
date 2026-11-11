@@ -1,0 +1,243 @@
+###########################
+# Turkish Events
+###########################
+
+add_namespace = bftb_turkey
+
+#The Oniki Islands - Turkey Compensation Event
+country_event = {
+	id = bftb_turkey.30
+	title = bftb_turkey.30.t
+	desc = bftb_turkey.30.desc
+	picture = GFX_report_event_tur_the_montreux_convention
+
+	is_triggered_only = yes
+	
+	option = {
+		name = bftb_turkey.30.b #we shall offer factories
+		ai_chance = {
+			base = 30
+		}
+		effect_tooltip = {
+			add_offsite_building = { type = industrial_complex level = -3 }
+			ITA = { add_offsite_building = { type = industrial_complex level = 4 } }
+		}
+		hidden_effect = {
+			ITA = { 
+				country_event = { id = bftb_turkey.32 hours = 6 }
+			}
+		}
+	}
+	option = {
+		name = bftb_turkey.30.c #our friendship should be reward enough!
+		ai_chance = {
+			base = 5
+		}
+		hidden_effect = {
+			ITA = { 
+				country_event = { id = bftb_turkey.33 hours = 6 }
+			}
+		}
+	}
+}
+
+#The Oniki Islands - Turkey offers Factories
+country_event = {
+	id = bftb_turkey.32
+	title = bftb_turkey.32.t
+	desc = bftb_turkey.32.desc
+	picture = GFX_report_event_tur_industry
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = {
+		name = bftb_turkey.32.a #a worthy offer
+		ai_chance = {
+			base = 10
+		}
+		add_offsite_building = { type = industrial_complex level = 4 }
+		hidden_effect = { 
+			TUK = { country_event = { id = bftb_turkey.35 hours = 6 } }
+		}
+	}
+	option = {
+		name = bftb_turkey.32.b #we shall never surrender an inch of territory!
+		ai_chance = {
+			base = 0.5
+			modifier = { 
+				factor = 30
+				has_opinion = {
+					target = TUR
+					value < -50
+				}
+			}
+		}
+		add_war_support = 0.05
+		hidden_effect = { 
+			TUK = { 
+				country_event = { id = bftb_turkey.37 hours = 6 }
+			}
+		}
+	}
+}
+
+#The Oniki Islands - Turkey offers Pact of Friendship
+country_event = {
+	id = bftb_turkey.33
+	title = bftb_turkey.33.t
+	desc = bftb_turkey.33.desc
+	picture = GFX_report_event_tur_inonu_diplomacy
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = {
+		name = bftb_turkey.33.a #hmmph, we will see the worth of their friendship soon
+		ai_chance = {
+			base = 5
+			modifier = { 
+				factor = 30
+				has_opinion = {
+					target = TUR
+					value > 75
+				}
+			}
+		}
+		TUK = { 
+			add_opinion_modifier = {
+				target = ITA
+				modifier = TUR_pact_of_power
+			}
+		}
+		hidden_effect = { 
+			TUK = { country_event = { id = bftb_turkey.36 hours = 6 } }
+		}
+	}
+	option = {
+		name = bftb_turkey.33.b #this insult does not even merit response
+		ai_chance = {
+			base = 10
+			modifier = { 
+				factor = 100
+				has_opinion = {
+					target = TUR
+					value < 15
+				}
+			}
+		}
+		add_war_support = 0.1
+		hidden_effect = { 
+			ITA = { 
+				add_opinion_modifier = {
+					target = TUK
+					modifier = TUR_insulted_our_honour
+				}
+			}
+			TUK = { 
+				country_event = { id = bftb_turkey.37 hours = 6 }
+			}
+		}
+	}
+}
+
+#The Oniki Islands - Italy Accepts Factories
+country_event = {
+	id = bftb_turkey.35
+	title = bftb_turkey.35.t
+	desc = bftb_turkey.35.desc
+	picture = GFX_report_event_tur_industry
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = {
+		name = bftb_turkey.35.a #Rhodes returned at last
+		add_stability = 0.1
+		transfer_state = 164
+		custom_effect_tooltip = TUR_three_factories_sacrificed
+		hidden_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+	}
+}
+
+#The Oniki Islands - Italy Accepts Pact of Power
+country_event = {
+	id = bftb_turkey.36
+	title = bftb_turkey.36.t
+	desc = bftb_turkey.36.desc
+	picture = GFX_report_event_tur_inonu_diplomacy
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = {
+		name = bftb_turkey.36.a #of course they did!
+		add_stability = 0.15
+		transfer_state = 164
+	}
+}
+
+#The Oniki Islands - Italy Rejects Our Offer!
+country_event = {
+	id = bftb_turkey.37
+	title = bftb_turkey.37.t
+	desc = bftb_turkey.37.desc
+	picture = GFX_report_event_tur_kemalist_officers
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = {
+		name = bftb_turkey.37.a #The Oniki Islands are ours by right!
+		add_stability = -0.05
+		add_state_claim = 164
+	}
+}
