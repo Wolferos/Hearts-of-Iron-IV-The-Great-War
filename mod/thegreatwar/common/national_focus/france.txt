@@ -4548,7 +4548,11 @@ focus_tree = {
 			add_war_support = -0.1
 		}
 		ai_will_do = {
-			base = 1
+			base = 10
+			modifier = {
+				add = 125
+				date > 1919.5.1
+			}
 		}
 	}
 	#----------------------------------------------------------------------- 
@@ -4850,25 +4854,71 @@ focus_tree = {
 			is_subject = no
 		}
 		completion_reward = {
-			42 = {
-				set_demilitarized_zone = yes
-			}
-			51 = {
-				set_demilitarized_zone = yes
-			}
-			add_political_power = 250
-			if = {
-				limit = {
-					has_start_date < 1919.1.1
-				}
-				add_named_threat = {
-					threat = -25
-					name = ww1_Allied_Occupation_Rhineland_war_threat
-				}
+			country_event = {
+				id = int_france.4
+				days = 120
 			}
 		}
 		ai_will_do = {
 			factor = 200
+		}
+	}
+	focus = {
+		id = FRA_interwar_france_interwantion_in_syria
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		prerequisite = { focus = FRA_interwar_PeaceAfterVersailles }
+		x = 6
+		y = 1
+		relative_position_id = FRA_interwar_PeaceAfterVersailles
+		cost = 10
+		available = {
+			has_global_flag = kis_treaty_of_versailles
+			has_war = no
+			is_subject = no
+		}
+		will_lead_to_war_with = SYR
+		completion_reward = {
+			SYR = {
+				country_event = {
+					days = 2
+					id = int_france.1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 100
+				date > 1920.1.1
+			}
+		}
+	}
+	focus = {
+		id = FRA_interwar_war_with_syria
+		icon = GFX_focus_generic_attack_syria
+		prerequisite = { focus = FRA_interwar_france_interwantion_in_syria }
+		x = 1
+		y = 1
+		relative_position_id = FRA_interwar_france_interwantion_in_syria
+		cost = 10
+		available = {
+			has_global_flag = kis_treaty_of_versailles
+			has_war = no
+			is_subject = no
+		}
+		will_lead_to_war_with = SYR
+		completion_reward = {
+			create_wargoal = {
+				target = SYR
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 100
+				date > 1920.7.1
+			}
 		}
 	}
 	focus = {

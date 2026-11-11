@@ -1,0 +1,187 @@
+add_namespace = int_france
+
+country_event = {
+	id = int_france.1
+	title = int_france.1.title
+	desc = int_france.1.desc
+	picture = GFX_report_event_COG_force_publique_marching_to_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = int_france.1.a
+		ai_chance = {
+			base = 50
+		}
+		FRA = {
+			transfer_state = 553
+		}
+		country_event = {
+			days = 60
+			id = int_france.2
+		}
+	}
+}
+
+country_event = {
+	id = int_france.2
+	title = int_france.2.title
+	desc = int_france.2.desc
+	picture = GFX_report_event_canada_treaty
+
+	is_triggered_only = yes
+
+	option = {
+		name = int_france.2.a
+		set_politics = {
+			ruling_party = neutrality
+			elections_allowed = no
+		}
+	}
+}
+
+country_event = {
+	id = int_france.3
+	title = int_france.3.title
+	desc = int_france.3.desc
+	picture = GFX_report_event_saf_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = int_france.3.a
+		ai_chance = {
+			base = 100
+		}
+		FRA = {
+			transfer_state = 823
+		}
+	}
+
+	option = {
+		name = int_france.3.b
+		ai_chance = {
+			base = 0
+		}
+		FRA = {
+			create_wargoal = {
+				target = JBS
+				type = puppet_wargoal_focus
+			}
+		}
+	}
+}
+
+country_event = {
+	id = int_france.4
+	title = int_france.4.title
+	desc = int_france.4.desc
+	picture = GFX_report_event_NOR_nygaardsvold_cabinet
+
+	is_triggered_only = yes
+
+	option = {
+		name = int_france.4.a
+		ai_chance = {
+			base = 90
+		}
+		GER = {
+			transfer_state = 42
+		}
+		news_event = {
+			id = interwar_news.19
+			days = 1
+		}
+	}
+
+	option = {
+		name = int_france.4.b
+		ai_chance = {
+			base = 5
+		}
+		42 = {
+			add_resistance = 40
+			add_compliance = -40
+		}
+		news_event = {
+  		  	id = interwar_news.20
+   			days = 1
+		}
+		FRA = {
+			country_event = {
+				id = int_france.4
+				days = 200
+			}
+		}
+	}
+}
+
+country_event = {
+	id = int_france.5
+	title = int_france.5.title
+	desc = int_france.5.desc
+	picture = GFX_report_event_NOR_nygaardsvold_cabinet
+
+	is_triggered_only = yes
+
+	option = {
+		name = int_france.5.a
+		ai_chance = {
+			base = 90
+		}
+		add_ideas = GER_int_forced_demilitarization
+		51 = {
+			set_demilitarized_zone = yes
+		}
+		55 = {
+			set_demilitarized_zone = yes
+		}
+		42 = {
+			set_demilitarized_zone = yes
+		}
+	}
+
+	option = {
+		name = int_france.5.b
+		ai_chance = {
+			base = 5
+		}
+		news_event = {
+			id = interwar_news.20
+			days = 1
+		}
+		FRA = {
+			country_event = {
+				id = int_france.6
+				days = 5
+			}
+		}
+	}
+}
+
+country_event = {
+	id = int_france.6
+	title = int_france.6.title
+	desc = int_france.6.desc
+	picture = GFX_report_event_NOR_nygaardsvold_cabinet
+
+	is_triggered_only = yes
+
+	option = {
+		name = int_france.6.a
+		create_wargoal = {
+			target = GER
+			type = puppet_wargoal_focus
+		}
+		ai_chance = {
+			base = 85
+		}
+	}
+
+	option = {
+		name = int_france.6.b
+		ai_chance = {
+			base = 15
+		}
+	}
+}

@@ -281,3 +281,38 @@ russian_war_with_japan = {
 		value = 25
 	}
 }
+
+RUS_attack_SOV = {
+	allowed = {
+		original_tag = RUS
+	}
+	enable = {
+		has_war_with = SOV
+		NOT = {
+			has_war_with = POL
+		}
+	}
+	abort = {
+		NOT = { has_war_with = SOV }
+	}
+	
+	ai_strategy = {
+		type = conquer
+		id = "SOV"
+		value = 1000
+	}
+	ai_strategy = {
+		type = front_control
+		tag = SOV
+		priority = 600
+		execution_type = rush
+		execute_order = yes
+		manual_attack = yes
+	}
+	ai_strategy = {
+		type = front_unit_request
+		tag = SOV
+		value = 600
+	}
+}
+

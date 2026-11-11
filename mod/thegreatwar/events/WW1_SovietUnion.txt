@@ -164,3 +164,38 @@ country_event = {
 		}
 	}
 }
+
+#-> Soviets Demand Armenia! <><>
+country_event = {
+	id = ww1_soviet.4
+	title = ww1_soviet.4.title
+	desc = ww1_soviet.4.desc
+	picture = GFX_report_event_german_reichstag_gathering
+
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_soviet.4.a
+		ai_chance = {
+			base = 90
+		}
+		SOV = {
+			transfer_state = 230
+		}
+	}
+
+	option = {
+		name = ww1_soviet.4.b
+		ai_chance = {
+			base = 10
+		}
+		SOV = {
+			create_wargoal = {
+				type = take_state_focus
+				target = ROOT
+				generator = { 230 }
+			}
+		}
+	}
+}
+
