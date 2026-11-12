@@ -312,6 +312,18 @@ set_technology = {
 }
 
 1914.1.1 = {
+
+    kill_country_leader = yes
+    create_country_leader = {
+		name = "Said Halim Pasha"
+		picture = "gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_Said_Halim_Pasha.dds"
+		expire = 1937.8.1
+		ideology = despotism
+		traits = {
+		    TUR_ww1_grand_vizier
+		}
+	}
+
 	set_character_name = { # Mustafa Kemal Paşa #1910 (promoted -> Field Marshal)
 		character = TUR_mustafa_kemal
 		name = TUR_mustafa_kemal_pasa
@@ -334,6 +346,7 @@ set_technology = {
 	complete_national_focus = TUR_ww1_trade_focused_policy
 	complete_national_focus = TUR_ww1_western_investments
 	complete_national_focus = TUR_ww1_german_investment
+	complete_national_focus = TUR_ww1_french_investment
 
 	#Political
 	complete_national_focus = TUR_ww1_legacy_of_abdulhamid_ii
@@ -349,11 +362,19 @@ set_technology = {
 	complete_national_focus = TUR_ww1_ban_other_parties
 
 	#Diplomatic
-	complete_national_focus = TUR_ww1_stop_ottoman_isolation
+	complete_national_focus = TUR_ww1_healing_the_sick_man
+	complete_national_focus = TUR_ww1_protect_the_empire
 	complete_national_focus = TUR_ww1_balkan_policy
+	complete_national_focus = TUR_ww1_question_of_albania
 	complete_national_focus = TUR_ww1_prepare_defence_lines
 	complete_national_focus = TUR_ww1_defeat_in_the_balkan_war
-	unlock_national_focus = TUR_ww1_retake_edirne
+	complete_national_focus = TUR_ww1_retake_edirne
+	complete_national_focus = TUR_ww1_stop_ottoman_isolation
+	complete_national_focus = TUR_ww1_european_policy
+	complete_national_focus = TUR_ww1_new_german_allies
+	complete_national_focus = TUR_ww1_berlin_baghdad_railway
+	complete_national_focus = TUR_ww1_secret_german_ottoman_alliance
+	unlock_national_focus = TUR_ww1_secret_attack_on_russian_ports
 
 	#-------------------------------------------------------
 
@@ -442,50 +463,45 @@ set_technology = {
 	    communism = 1
 	    neutrality = 75
 	}
-
-	add_ideas = {
-		ww1_sharia_law
-		limited_conscription
-		partial_economic_mobilisation
-		limited_exports
-		german_advisors
-	}
-
-	add_timed_idea = { idea = ww1_dreadnought_buildup days = 200 }
 }
 
 1919.1.1 = {
-	TUR_mustafa_kemal = { # Mustafa Kemal (in the Turkish National Movement)
-		set_nationality = TUK
+
+    #LEADER
+	kill_country_leader = yes
+	create_country_leader = {
+		name = "Damat Ferid Pasha"
+		picture = "gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_damat_ferid_pasha.dds"
+		expire = 1937.8.1
+		ideology = despotism
+		traits = {
+		    TUR_ww1_grand_vizier
+		}
 	}
-	TUR_fevzi_cakmak_pasa = { # Fevzi Çakmak (in the Turkish National Movement)
-		set_nationality = TUK
-	}
+	
 	retire_character = TUR_Hasan_Tahsin # Hasan Tahsin (He died in Lausanne in 1918)
 	retire_character = TUR_Liman_von_Sanders # Otto Liman von Sanders (Arrested in Malta in February 1919, retired from the German army in 1919)
 
 	oob = "TUR_1919"
 
-	diplomatic_relation = {
-		country = TUK
-		relation = military_access
-		active = yes
-	}
+	#remove_all_ideas = yes
 
-	remove_ideas = {
-		ww1_dreadnought_buildup
-		german_advisors
+	add_ideas = { 
+	    volunteer_only
+		civilian_economy
+		free_trade
+		
+	    ww1_sharia_law
+	    ww1_shame_of_defeat
+		TUR_capitulations_ns
 	}
-
-	add_ideas = { ww1_shame_of_defeat }
-	
-	#remove_ideas = { }
 
 	set_country_flag = said_halim_pasha_has_resigned_cflg
 
 	#-------------------------------------------------------
 	#							NF
 	#-------------------------------------------------------
+	
 	#Army
 	complete_national_focus = TUR_ww1_equipment_effort
 	complete_national_focus = TUR_ww1_doctrine_effort
@@ -494,13 +510,10 @@ set_technology = {
 	complete_national_focus = TUR_ww1_trenchwarfare
 	complete_national_focus = TUR_ww1_artillery_effort_3
 	
-	# Air
-	
 	# Industry
 	complete_national_focus = TUR_ww1_factory_construction
 	complete_national_focus = TUR_ww1_mining_effort
 	complete_national_focus = TUR_ww1_petroleum_effort
-	unlock_national_focus = TUR_ww1_berlin_baghdad_railway
 
 	#Political
 	complete_national_focus = TUR_ww1_question_of_capitulations
@@ -509,14 +522,27 @@ set_technology = {
 	complete_national_focus = TUR_ww1_centralize_the_empire
 	complete_national_focus = TUR_ww1_ethnic_consolidation
 	complete_national_focus = TUR_ww1_secularization1
-	complete_national_focus = TUR_ww1_pan_turkic_schools
-	complete_national_focus = TUR_ww1_curtail_westernisation
-	complete_national_focus = TUR_ww1_enver_pashas_leadership
+	
 	#Diplomatic
+	complete_national_focus = TUR_ww1_healing_the_sick_man
+	complete_national_focus = TUR_ww1_protect_the_empire
+	complete_national_focus = TUR_ww1_balkan_policy
+	complete_national_focus = TUR_ww1_question_of_albania
+	complete_national_focus = TUR_ww1_prepare_defence_lines
+	complete_national_focus = TUR_ww1_defeat_in_the_balkan_war
+	complete_national_focus = TUR_ww1_retake_edirne
+	complete_national_focus = TUR_ww1_stop_ottoman_isolation
 	complete_national_focus = TUR_ww1_european_policy
 	complete_national_focus = TUR_ww1_new_german_allies
+	complete_national_focus = TUR_ww1_berlin_baghdad_railway
 	complete_national_focus = TUR_ww1_secret_german_ottoman_alliance
-	unlock_national_focus = TUR_ww1_secret_attack_on_russian_ports
+	complete_national_focus = TUR_ww1_secret_attack_on_russian_ports
+	complete_national_focus = TUR_ww1_declare_jihad
+	complete_national_focus = TUR_ww1_sinai_campaign
+	complete_national_focus = TUR_ww1_ally_with_the_senussis
+	complete_national_focus = TUR_ww1_yemen_campaign
+	complete_national_focus = TUR_ww1_caucasian_campaign
+	complete_national_focus = TUR_ww1_caucasus_Islam_army
 
 	#Interwar
 	complete_national_focus = TUR_interwar_ParisPeaceConference

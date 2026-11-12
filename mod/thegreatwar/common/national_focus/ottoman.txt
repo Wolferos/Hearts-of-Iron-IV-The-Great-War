@@ -23,6 +23,19 @@ focus_tree = {
 			add_political_power = 25
 			add_stability = 0.03
 		}
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = {
+				    has_global_flag = kis_treaty_of_versailles
+				}
+			}
+		}
 		ai_will_do = {
 			factor = 10
 		}
@@ -408,9 +421,20 @@ focus_tree = {
 			    name = "Ismail Enver Pasha"
 	            picture = "gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_enver_pasha.dds"
 	            expire = 1937.8.1
-	            ideology = despotism
+	            ideology = fascism_ideology
 	            traits = {
+				    TUR_ww1_pan_turkism_supporter
 	            }
+			}
+			set_politics = {
+				ruling_party = fascism
+				last_election = "1910.1.1"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			add_popularity = {
+			    ideology = fascism
+				popularity = 0.5
 			}
 		}
 		ai_will_do = {
@@ -955,6 +979,10 @@ focus_tree = {
 		prerequisite = { focus = TUR_ww1_seats_for_minorities_in_parliement } 
 		prerequisite = { focus = TUR_ww1_expand_bureacracy } 
 		completion_reward = {
+		    set_cosmetic_tag = TUR_sublime_federation
+			add_ideas = {
+			    TUR_ottoman_federation_ns
+			}
 		}
 		ai_will_do = {
 			factor = 10
@@ -2226,6 +2254,19 @@ focus_tree = {
 	focus = {
 		id = TUR_ww1_healing_the_sick_man
 		icon = GFX_goal_generic_improve_relations
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = {
+				    has_global_flag = kis_treaty_of_versailles
+				}
+			}
+		}
 		completion_reward = {
 			add_political_power = 50
 		}
@@ -3444,7 +3485,7 @@ focus_tree = {
 	}
 	focus = {
 		id = TUR_ww1_purhcase_cyprus
-		icon = GFX_focus_chi_british_cooperation
+		icon = GFX_focus_generic_befriend_cyprus
 		prerequisite = { focus = TUR_ww1_purhcase_kuwait }
 		available = {
 		    is_in_faction_with = ENG
@@ -3489,6 +3530,19 @@ focus_tree = {
 	focus = {
 		id = TUR_ww1_army_effort
 		icon = GFX_hoi4tgw_sway_officers
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = {
+				    has_global_flag = kis_treaty_of_versailles
+				}
+			}
+		}
 		completion_reward = {
 			army_experience = 15
 			add_doctrine_cost_reduction = {
@@ -3955,6 +4009,19 @@ focus_tree = {
 	focus = {
 		id = TUR_ww1_aviation_effort
 		icon = GFX_hoi4tgw_tur_aviation_effort
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = {
+				    has_global_flag = kis_treaty_of_versailles
+				}
+			}
+		}
 		completion_reward = {
 			air_experience = 25
 			if = {
@@ -4450,6 +4517,19 @@ focus_tree = {
 		available = {
 			any_controlled_state = {
 				is_coastal = yes
+			}
+		}
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = {
+				    has_global_flag = kis_treaty_of_versailles
+				}
 			}
 		}
 		completion_reward = {
@@ -5065,7 +5145,18 @@ focus_tree = {
 	###########################################################################################################################
 	focus = {
 		id = TUR_ww1_continue_modernization
-		available = {
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = {
+				    has_global_flag = kis_treaty_of_versailles
+				}
+			}
 		}
 		icon = GFX_focus_CHI_planned_economy
 		completion_reward = {
@@ -6107,8 +6198,8 @@ focus_tree = {
 			factor = 100
 		}
 		cost = 10
-		x = 18
-		y = 14
+		x = 20
+		y = 0
 	}
 	focus = {
 		id = TUR_interwar_allow_for_british_landings
@@ -6165,10 +6256,7 @@ focus_tree = {
 			focus = TUR_interwar_allow_for_italian_landings
 		}
 		completion_reward = {
-			country_event = {
-				days = 1
-				id = ww1_ottoman.26
-			}
+			country_event = { id = ww1_tnm.1 }
 		}
 		ai_will_do = {
 			factor = 100
@@ -6188,10 +6276,7 @@ focus_tree = {
 			add_political_power = -50
 			add_war_support = -0.1
 			add_stability = -0.1
-			country_event = {
-				days = 1
-				id = ww1_ottoman.27
-			}
+			country_event = { id = ww1_tnm.2 }
 		}
 		ai_will_do = {
 			factor = 100
