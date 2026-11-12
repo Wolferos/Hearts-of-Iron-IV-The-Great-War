@@ -2407,10 +2407,7 @@ focus_tree = {
 		prerequisite = { focus = TUR_ww1_prepare_defence_lines }
 		mutually_exclusive = { focus = TUR_ww1_victory_in_the_balkan_war }
 		available = {
-		    custom_trigger_tooltip = { 
-			    tooltip = ottomans_lost_the_balkan_war_tt
-				has_global_flag = balkan_league_won_the_balkan_war_glfg
-			}
+			has_global_flag = kis_firstbalkanwar_victory 
 		}
 		completion_reward = {
 		}
@@ -2427,19 +2424,13 @@ focus_tree = {
 		icon = GFX_focus_generic_attack_bulgaria
 		prerequisite = { focus = TUR_ww1_defeat_in_the_balkan_war }
 		available = {
-		    custom_trigger_tooltip = { 
-			    tooltip = second_balkan_war_has_started_tt
-				has_global_flag = second_balkan_war_has_started_glfg
-			}
-			BUL = {
-				exists = yes
-			}
+			has_global_flag = kis_firstbalkanwar_victory 
 			BUL = {
 				has_war_with = SER
 			}
 		}
 		completion_reward = {
-		    create_wargoal = {
+			create_wargoal = {
 				type = take_state_focus
 				target = BUL
 				generator = {
@@ -2700,7 +2691,6 @@ focus_tree = {
 	}
 	focus = {
 		id = TUR_ww1_berlin_baghdad_railway
-		relative_position_id = TUR_ww1_continue_modernization
 		icon = GFX_focus_generic_railroad
 		prerequisite = {
 		    focus = TUR_ww1_new_german_allies
@@ -2717,9 +2707,9 @@ focus_tree = {
 			factor = 0
 		}
 		cost = 10
-		x = 6
-		y = 3
-		relative_position_id = TUR_ww1_healing_the_sick_man
+		x = 1
+		y = 1
+		relative_position_id = TUR_ww1_new_german_allies
 	}
 	focus = {
 		id = TUR_ww1_secret_german_ottoman_alliance
@@ -3468,11 +3458,14 @@ focus_tree = {
 		icon = GFX_focus_chi_british_cooperation
 		prerequisite = { focus = TUR_ww1_join_the_entente }
 		available = {
-		    is_in_faction_with = KUW
+			is_in_faction_with = KUW
+			NOT = {
+				has_idea = TUR_land_purchase_ns
+			}
 		}
 		completion_reward = {
 			ENG = {
-			    country_event = { id = ww1_ottoman.54 hours = 18 }
+				country_event = { id = ww1_ottoman.54 hours = 18 }
 			}
 		}
 		ai_will_do = {
@@ -3488,17 +3481,17 @@ focus_tree = {
 		icon = GFX_focus_generic_befriend_cyprus
 		prerequisite = { focus = TUR_ww1_purhcase_kuwait }
 		available = {
-		    is_in_faction_with = ENG
-			ENG = {
-			    controls_state = 183
+			is_in_faction_with = ENG
+			NOT = {
+				controls_state = 183
 			}
 			NOT = {
-			    has_idea = TUR_purchase_of_kuwait_ns
+				has_idea = TUR_land_purchase_ns
 			}
 		}
 		completion_reward = {
-			ENG = {
-			    country_event = { id = ww1_ottoman.58 hours = 18 }
+			183.owner = {
+				country_event = { id = ww1_ottoman.58 hours = 18 }
 			}
 		}
 		ai_will_do = {
