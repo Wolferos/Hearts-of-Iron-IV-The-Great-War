@@ -117,6 +117,7 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - dungeon-slave
    - Benjacho
    - Xaelor
+   - thyablik
    - Dr. Labgames
    - Perdem Dayi
    - Brunswick325
