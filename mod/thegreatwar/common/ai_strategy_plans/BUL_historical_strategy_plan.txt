@@ -1,0 +1,68 @@
+BUL_historical_plan = {
+	name = "Bulgaria Historical Plan"
+	desc = ""
+
+	allowed = {
+		original_tag = BUL
+	}
+	enable = {
+		OR = {
+			AND = {
+				is_historical_focus_on = yes
+				has_game_rule = {
+					rule = BUL_ai_behavior
+					option = DEFAULT
+				}
+			}
+			#has_country_flag = BUL_AI_RANDOM_HISTORICAL
+			has_game_rule = {
+				rule = BUL_ai_behavior
+				option = HISTORICAL
+			}
+		}
+	}
+
+	ai_national_focuses = {
+		### 1910 ###
+		BUL_ww1_diplomatic_effort
+		BUL_ww1_industrial_effort
+		BUL_ww1_army_effort
+		BUL_ww1_infrastructure_effort
+		### 1911 ###
+		BUL_ww1_production_effort
+		BUL_ww1_assert_position_west
+		BLL_balkan_politics
+		BUL_ww1_assert_position_east
+		BLL_anti_ottoman_policy
+		BUL_ww1_construction_effort
+		BUL_ww1_doctrine_effort
+		### 1912 ###
+		BUL_ww1_develop_the_country
+		BUL_ww1_naval_effort
+		BUL_ww1_bulgaria_first
+		BUL_ww1_reinforce_ottoman_border
+		BUL_ww1_infrastructure_effort_2
+		BUL_ww1_production_effort_2
+		### 1913 ###
+		#Note: last focus is completed Jan 5 1913
+	}
+
+	#focus_factors = {
+	#}
+
+	#research = {
+	#}
+
+	#ideas = {
+	#}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}

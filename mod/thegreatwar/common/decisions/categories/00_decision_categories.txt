@@ -2,6 +2,7 @@ debug_decisions = {
 	icon = generic_research
 	visible = {
 		is_debug = yes
+		is_ai = no
 	}
 }
 propaganda_efforts = {
@@ -297,4 +298,47 @@ nato_decisions = {
 		date > 1944.1.1
 	}
 	priority = 100
+}
+
+foreign_mio_decisions_category = {
+	picture = generic_economy
+	allowed = {
+		has_dlc = "Arms Against Tyranny"
+	}
+	priority = 5
+}
+
+
+generic_purchase_old_ships_category = {
+	icon = GFX_decision_category_MTG_naval_treaties
+	picture = GFX_decision_cat_picture_naval_treaties
+	
+	allowed = { #Add tags here with first an OR then an AND
+		always = no
+	}
+	visible = {
+		has_country_flag = generic_purchase_old_ships_flag
+	}
+	
+	priority = {
+		base = 8
+	}
+	visible_when_empty = no
+}
+
+generic_refit_civilian_ships_category = {
+	icon = GFX_decision_category_MTG_naval_treaties
+	picture = GFX_decision_cat_picture_generic_shipbuilding
+	
+	allowed = { #Add tags here with first an OR then an AND
+		always = no
+	}
+	visible = {
+		has_country_flag = refit_convoy_ships_flag
+	}
+	
+	priority = {
+		base = 8
+	}
+	visible_when_empty = no
 }

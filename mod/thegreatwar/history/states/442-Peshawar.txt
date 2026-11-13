@@ -1,23 +1,44 @@
-state = {
+
+state={
 	id=442
 	name="STATE_442"
-	local_supplies = 1.0 manpower = 4684400
-	state_category=rural
-	provinces={ 1978 2084 4558 4998 12717 12763 }
+	manpower = 4684400
 	resources={
-		wood=0
-		}
+		steel=3
+	}
+	state_category = rural
+
 	history={
-		owner=RAJ
-		1936.1.1={ 
-			owner=RAJ
-			buildings={
-				infrastructure=2
-				air_base=3
-				}
-			}
-		buildings={
-			infrastructure=2
+		victory_points = {
+			12763 3
+		}
+		owner = RAJ
+		buildings = {
+			infrastructure = 1
+		}
+		add_core_of = RAJ
+		add_core_of = NWF
+		add_core_of = PAK
+		add_core_of = KHL
+
+		add_dynamic_modifier = {
+			modifier = RAJ_ww1_local_unrest
+		}
+
+		add_dynamic_modifier = {
+			modifier = RAJ_ww1_princely_autonomy
+		}
+
+		1936.1.1 = {
+			buildings = {
+				air_base = 1
 			}
 		}
 	}
+
+	provinces={
+		2084 4558 12717 12763 
+	}
+
+	local_supplies=5.0 
+}

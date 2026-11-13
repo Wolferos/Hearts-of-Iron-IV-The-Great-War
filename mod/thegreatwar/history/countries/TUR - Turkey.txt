@@ -1,34 +1,26 @@
-﻿capital = 341
+﻿capital = 797
 
 #-------------------------------------------------------
 #					GENERIC VALUES
 #-------------------------------------------------------
 set_fuel_ratio = 0.19
-set_research_slots = 3
+set_research_slots = 2
 
-set_stability = 0.65
-set_war_support = 0.70
-set_convoys = 100
+set_stability = 0.4
+set_war_support = 0.45
+set_convoys = 10
 
 if = {
 	limit = {
 		has_start_date < 1919.01.01
 	}
 	set_autonomy = {
-		target = HJZ
-		autonomous_state = autonomy_integrated_puppet
-	}
-	set_autonomy = {
 		target = JBS
 		autonomous_state = autonomy_dominion
 	}
 	set_autonomy = {
-		target = ASR
-		autonomous_state = autonomy_integrated_puppet
-	}
-	set_autonomy = {
-		target = YEM
-		autonomous_state = autonomy_integrated_puppet
+		target = QAT
+		autonomous_state = autonomy_ww1_protectorate
 	}
 }
 
@@ -36,20 +28,114 @@ if = {
 
 #LEADERS
 recruit_character = TUR_mehmed_v
-#recruit_character = TUR_mehmed_v_2
 recruit_character = TUR_mehmed_vi
 recruit_character = TUR_abdulhamid_ii
 recruit_character = TUR_mustafa_kemal
+recruit_character = TUR_ibrahim_hakki_pasha
 recruit_character = TUR_damat_ferid_pasha
+recruit_character = TUR_ismail_enver
+recruit_character = TUR_refik_nevzat
 
-#create_country_leader={ name = TUR_mustafa_suphi desc = TUR_mustafa_suphi_DESC picture="gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_mustafa_suphi.dds" expire="1935.1.1" ideology=leninism traits = { } }
+#Albanian States
+if = {
+    limit = {
+		has_start_date < 1914.01.01
+	}
+    934 = {
+    	start_resistance = yes
+    	set_compliance = 10
+    	set_resistance = 55
+    	set_garrison_strength = 0.25
+    }
+    44 = {
+    	start_resistance = yes
+    	set_compliance = 10
+    	set_resistance = 30
+    	set_garrison_strength = 0.50
+    }
+    805 = {
+    	start_resistance = yes
+    	set_compliance = 10
+    	set_resistance = 30
+    	set_garrison_strength = 0.50
+    }
+    802 = {
+    	start_resistance = yes
+    	set_compliance = 10
+    	set_resistance = 55
+    	set_garrison_strength = 0.25
+    }
+    970 = {
+    	start_resistance = yes
+    	set_compliance = 10
+    	set_resistance = 30
+    	set_garrison_strength = 0.50
+    }
+}
+#Albanian Revolt
+if = {
+	limit = {
+		has_start_date < 1914.01.01
+	}
+    934 = {
+    	add_dynamic_modifier = { modifier = TUR_albanian_revolt }
+    }
+    44 = {
+    	add_dynamic_modifier = { modifier = TUR_albanian_revolt }
+    }
+    805 = {
+    	add_dynamic_modifier = { modifier = TUR_albanian_revolt }
+    }
+    802 = {
+    	add_dynamic_modifier = { modifier = TUR_albanian_revolt }
+    }
+    970 = {
+    	add_dynamic_modifier = { modifier = TUR_albanian_revolt }
+    }
+}
+#Autonomy of Hejaz
+if = {
+	limit = {
+		has_start_date < 1919.01.01
+	}
+    855 = {
+	    add_dynamic_modifier = { modifier = TUR_hejaz_autonomous_state }
+    }
+    679 = {
+    	add_dynamic_modifier = { modifier = TUR_hejaz_autonomous_state }
+    }
+}
 
+
+#IDEAS
+add_ideas = {
+	limited_conscription
+	partial_economic_mobilisation
+	limited_exports
+	TUR_army_of_bygone_era_ns
+	TUR_ottoman_public_debt_administration_ns
+	TUR_outdated_industry_ns
+	TUR_Mehmed_V_ns
+	TUR_separatist_movements_ns
+	TUR_capitulations_ns
+	ww1_sharia_law
+}
+
+#Illiteracy Dynamic Modifier
+
+add_dynamic_modifier= {
+	modifier = TUR_illitirate_population 
+}	
+add_to_variable = { TUR_illitirate_population_research_speed_factor = -0.7 }
+
+#DEBT MECHANIC
+
+set_variable = { var = TUR_opda_debt_var value = 130 }
 
 #ARMY
 1914.1.1 = {
 	recruit_character = TUR_Liman_von_Sanders
 }
-recruit_character = TUR_Enver
 recruit_character = TUR_Esad
 recruit_character = TUR_Hasan_Tahsin
 recruit_character = TUR_Shevket
@@ -83,7 +169,6 @@ recruit_character = TUR_ethem_nejat
 recruit_character = TUR_ahmed_cemal
 recruit_character = TUR_mehmet_nazim
 recruit_character = TUR_huseyin_rauf
-recruit_character = TUR_ismail_enver
 recruit_character = TUR_huseyin_hilmi
 recruit_character = TUR_ahmed_izzet
 recruit_character = TUR_mustafa_ismet
@@ -95,6 +180,7 @@ if = {
 	country_event = { id = ww1_albania.6 days = 36 } # Albanian Insurrection!
 }
 
+set_country_flag = foreign_affairs_sick_man_of_europe_button_enabled_cflg
 
 set_technology = {
 
@@ -210,28 +296,34 @@ set_technology = {
 	    neutrality = 75
 	}
 
-	add_ideas = {
-		ww1_Faith_Allah
-		limited_conscription
-		partial_economic_mobilisation
-		limited_exports
-		TUR_army_of_bygone_era_ns
-	}
+	promote_character = TUR_ibrahim_hakki_pasha
 
 	create_equipment_variant={ name="Assari Tewfik Class" type=heavy_cruiser_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=1 ship_armor_upgrade=4 ship_engine_upgrade=0 ship_reliability_upgrade=5           } }
 	create_equipment_variant={ name="Assari Shevket Class" type=heavy_cruiser_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
 	create_equipment_variant={ name="Avni Illah Class" type=heavy_cruiser_1890 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
 	create_equipment_variant={ name="İclaliye Class" type=heavy_cruiser_1890 parent_version = 3 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
 	create_equipment_variant={ name="Feth-i Bülend Class" type=heavy_cruiser_1890 parent_version = 4 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=5 ship_engine_upgrade=0 ship_reliability_upgrade=5           } }
-	create_equipment_variant={ name="Hamidieh Class" type=heavy_cruiser_1900 parent_version = 0 obsolete=no upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
+	create_equipment_variant={ name="Hamidieh Class" type=heavy_cruiser_1900 parent_version = 0 upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=0 ship_reliability_upgrade=0           } }
 	create_equipment_variant={ name="Heibetnuma Class" type=light_cruiser_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
 	create_equipment_variant={ name="Lutfi Humayun Class" type=light_cruiser_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=0 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
-	create_equipment_variant={ name="Medjidieh Class" type=light_cruiser_1900 parent_version = 0 obsolete=no upgrades={ ship_gun_upgrade=1  ship_engine_upgrade=3 ship_reliability_upgrade=4 ship_anti_air_upgrade=0          } }
-	create_equipment_variant={ name="S165 Class" type=destroyer_1906 parent_version = 0 obsolete=no upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=1 } }
+	create_equipment_variant={ name="Medjidieh Class" type=light_cruiser_1900 parent_version = 0 upgrades={ ship_gun_upgrade=1  ship_engine_upgrade=3 ship_reliability_upgrade=4 ship_anti_air_upgrade=0          } }
+	create_equipment_variant={ name="S165 Class" type=destroyer_1906 parent_version = 0 upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=2    ship_torpedo_upgrade=1 } }
 
 }
 
 1914.1.1 = {
+
+    kill_country_leader = yes
+    create_country_leader = {
+		name = "Said Halim Pasha"
+		picture = "gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_Said_Halim_Pasha.dds"
+		expire = 1937.8.1
+		ideology = despotism
+		traits = {
+		    TUR_ww1_grand_vizier
+		}
+	}
+
 	set_character_name = { # Mustafa Kemal Paşa #1910 (promoted -> Field Marshal)
 		character = TUR_mustafa_kemal
 		name = TUR_mustafa_kemal_pasa
@@ -239,43 +331,51 @@ set_technology = {
 
 	oob = "TUR_1914"
 
+	set_country_flag = Succes_of_the_RSP
+
 	#-------------------------------------------------------
 	#							NF
 	#-------------------------------------------------------
 	#Army
-	complete_national_focus = TUR_ww1_equipment_effort
-	complete_national_focus = TUR_ww1_artillery_effort_1
-	complete_national_focus = TUR_ww1_doctrine_effort
-	complete_national_focus = TUR_ww1_trenchwarfare
+	complete_national_focus = TUR_ww1_army_effort
 	
 	# Air
-	complete_national_focus = TUR_ww1_aviation_effort
-	complete_national_focus = TUR_ww1_aviation_effort_2
 	
 	# Industry
-	complete_national_focus = TUR_ww1_infrastructure_effort
-	complete_national_focus = TUR_ww1_airfield_expansion_1
-	complete_national_focus = TUR_ww1_construction_effort
-	complete_national_focus = TUR_ww1_production_effort
-	complete_national_focus = TUR_ww1_dockyard_effort_1
+	complete_national_focus = TUR_ww1_continue_modernization
+	complete_national_focus = TUR_ww1_trade_focused_policy
+	complete_national_focus = TUR_ww1_western_investments
+	complete_national_focus = TUR_ww1_german_investment
+	complete_national_focus = TUR_ww1_french_investment
 
 	#Political
-	complete_national_focus = TUR_ww1_political_effort
-	complete_national_focus = TUR_ww1_SupportYoungTurksReforms
+	complete_national_focus = TUR_ww1_legacy_of_abdulhamid_ii
+	complete_national_focus = TUR_ww1_power_to_the_young_turks
+	complete_national_focus = TUR_ww1_modernize_the_state
+	complete_national_focus = TUR_ww1_europineaze_the_empire
+	complete_national_focus = TUR_ww1_extend_central_governemnt_to_anatolia
+	complete_national_focus = TUR_ww1_education_reform
+	complete_national_focus = TUR_ww1_lessons_of_the_picardie_manuvers
+	complete_national_focus = TUR_ww1_foreign_military_experts
+	complete_national_focus = TUR_ww1_ITF_victorius
+	complete_national_focus = TUR_ww1_three_pashas_governement
+	complete_national_focus = TUR_ww1_ban_other_parties
 
 	#Diplomatic
-	complete_national_focus = TUR_ww1_BalkansPolitics
-	complete_national_focus = TUR_ww1_anti_serb
-	unlock_national_focus = TUR_ww1_AntiBulgaria
-	unlock_national_focus = TUR_ww1_BalkanLeagueMenace
-	unlock_national_focus = TUR_ww1_SecondBalkanWarOpportunity
-	complete_national_focus = TUR_ww1_assert_position_west
-	complete_national_focus = TUR_ww1_anti_ita
-	complete_national_focus = TUR_ww1_anti_uk
-	complete_national_focus = TUR_ww1_anti_ru
-	complete_national_focus = TUR_ww1_assert_position_east
-	complete_national_focus = TUR_ww1_develop_arab
-	complete_national_focus = TUR_ww1_fight_arab_revolt
+	complete_national_focus = TUR_ww1_healing_the_sick_man
+	complete_national_focus = TUR_ww1_protect_the_empire
+	complete_national_focus = TUR_ww1_balkan_policy
+	complete_national_focus = TUR_ww1_question_of_albania
+	complete_national_focus = TUR_ww1_prepare_defence_lines
+	complete_national_focus = TUR_ww1_defeat_in_the_balkan_war
+	complete_national_focus = TUR_ww1_retake_edirne
+	complete_national_focus = TUR_ww1_stop_ottoman_isolation
+	complete_national_focus = TUR_ww1_european_policy
+	complete_national_focus = TUR_ww1_new_german_allies
+	complete_national_focus = TUR_ww1_berlin_baghdad_railway
+	complete_national_focus = TUR_ww1_secret_german_ottoman_alliance
+	unlock_national_focus = TUR_ww1_secret_attack_on_russian_ports
+
 	#-------------------------------------------------------
 
 	set_technology = {
@@ -363,63 +463,88 @@ set_technology = {
 	    communism = 1
 	    neutrality = 75
 	}
-
-	add_ideas = {
-		ww1_Faith_Allah
-		limited_conscription
-		partial_economic_mobilisation
-		limited_exports
-		german_advisors
-	}
-
-	add_timed_idea = { idea = building_dreadnoughts days = 200 }
 }
 
 1919.1.1 = {
-	TUR_mustafa_kemal = { # Mustafa Kemal (in the Turkish National Movement)
-		set_nationality = TUK
+
+    #LEADER
+	kill_country_leader = yes
+	create_country_leader = {
+		name = "Damat Ferid Pasha"
+		picture = "gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_damat_ferid_pasha.dds"
+		expire = 1937.8.1
+		ideology = despotism
+		traits = {
+		    TUR_ww1_grand_vizier
+		}
 	}
-	TUR_fevzi_cakmak_pasa = { # Fevzi Çakmak (in the Turkish National Movement)
-		set_nationality = TUK
-	}
-	remove_unit_leader = 90138 # Hasan Tahsin (He died in Lausanne in 1918)
-	remove_unit_leader = 90147 # Otto Liman von Sanders (Arrested in Malta in February 1919, retired from the German army in 1919)
+	
+	retire_character = TUR_Hasan_Tahsin # Hasan Tahsin (He died in Lausanne in 1918)
+	retire_character = TUR_Liman_von_Sanders # Otto Liman von Sanders (Arrested in Malta in February 1919, retired from the German army in 1919)
 
 	oob = "TUR_1919"
 
-	TUR = {
-		diplomatic_relation = {
-			country = TUK
-			relation = military_access
-			active = yes
-		}
+	add_ideas = { 
+	    volunteer_only
+		civilian_economy
+		free_trade
+		
+		TUR_Mehmed_VI_ns
+	    ww1_shame_of_defeat
 	}
 
-	remove_ideas = {
-		building_dreadnoughts
-		german_advisors
-	}
-
-	add_ideas = { interwar_spirit_TheGreatWar_Loser }
-
-	kill_country_leader = yes
+	set_country_flag = said_halim_pasha_has_resigned_cflg
 
 	#-------------------------------------------------------
 	#							NF
 	#-------------------------------------------------------
-	complete_national_focus = TUR_ww1_reorganization_act
-	complete_national_focus = TUR_ww1_centralizedpower
-	complete_national_focus = TUR_ww1_limited_rearmament
-	complete_national_focus = TUR_ww1_full_rearmament
-	complete_national_focus = TUR_interwar_ParisPeaceConference
+	
+	#Army
+	complete_national_focus = TUR_ww1_equipment_effort
+	complete_national_focus = TUR_ww1_doctrine_effort
+	complete_national_focus = TUR_ww1_artillery_effort_1
+	complete_national_focus = TUR_ww1_artillery_effort_2
+	complete_national_focus = TUR_ww1_trenchwarfare
+	complete_national_focus = TUR_ww1_artillery_effort_3
+	
+	# Industry
+	complete_national_focus = TUR_ww1_factory_construction
+	complete_national_focus = TUR_ww1_mining_effort
+	complete_national_focus = TUR_ww1_petroleum_effort
 
+	#Political
+	complete_national_focus = TUR_ww1_question_of_capitulations
+	complete_national_focus = TUR_ww1_talat_pasha_as_grand_vizier
+	complete_national_focus = TUR_ww1_embrace_pan_turkism
+	complete_national_focus = TUR_ww1_centralize_the_empire
+	complete_national_focus = TUR_ww1_ethnic_consolidation
+	complete_national_focus = TUR_ww1_secularization1
+	
 	#Diplomatic
-	unlock_national_focus = TUR_ww1_war_hejaz
-	unlock_national_focus = TUR_ww1_war_yemen
-	unlock_national_focus = TUR_ww1_support_oman
-	complete_national_focus = TUR_ww1_ready_country
-	unlock_national_focus = TUR_ww1_join_centralpowers
-	unlock_national_focus = TUR_russian_ports
+	complete_national_focus = TUR_ww1_healing_the_sick_man
+	complete_national_focus = TUR_ww1_protect_the_empire
+	complete_national_focus = TUR_ww1_balkan_policy
+	complete_national_focus = TUR_ww1_question_of_albania
+	complete_national_focus = TUR_ww1_prepare_defence_lines
+	complete_national_focus = TUR_ww1_defeat_in_the_balkan_war
+	complete_national_focus = TUR_ww1_retake_edirne
+	complete_national_focus = TUR_ww1_stop_ottoman_isolation
+	complete_national_focus = TUR_ww1_european_policy
+	complete_national_focus = TUR_ww1_new_german_allies
+	complete_national_focus = TUR_ww1_berlin_baghdad_railway
+	complete_national_focus = TUR_ww1_secret_german_ottoman_alliance
+	complete_national_focus = TUR_ww1_secret_attack_on_russian_ports
+	complete_national_focus = TUR_ww1_declare_jihad
+	complete_national_focus = TUR_ww1_sinai_campaign
+	complete_national_focus = TUR_ww1_ally_with_the_senussis
+	complete_national_focus = TUR_ww1_yemen_campaign
+	complete_national_focus = TUR_ww1_caucasian_campaign
+	complete_national_focus = TUR_ww1_caucasus_Islam_army
+
+	#Interwar
+	complete_national_focus = TUR_interwar_ParisPeaceConference
+	complete_national_focus = TUR_interwar_allow_for_italian_landings
+
 	#-------------------------------------------------------
 
 	set_technology = {

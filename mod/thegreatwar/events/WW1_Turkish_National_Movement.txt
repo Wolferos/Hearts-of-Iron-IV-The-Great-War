@@ -1,0 +1,245 @@
+add_namespace = ww1_tnm
+
+#Turkish War of Independence/Question of the Eastern Vilayets
+country_event = {
+	id = ww1_tnm.1
+	title = ww1_tnm.1.t
+	desc = ww1_tnm.1.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_tnm.1.a
+		ai_chance = { base = 0 }
+		ARM = {
+			transfer_state = 354
+			transfer_state = 800
+		}
+		ENG = {
+			transfer_state = 352
+		}
+	}
+	option = {
+		name = ww1_tnm.1.b
+		ai_chance = { base = 100 }
+
+		custom_effect_tooltip = Historical_choice
+		ENG = {
+			add_opinion_modifier = {
+				target = TUR
+				modifier = ww1_violated_the_sevres
+			}
+		}
+		FRA = {
+			add_opinion_modifier = {
+				target = TUR
+				modifier = ww1_violated_the_sevres
+			}
+		}
+		ITA = {
+			add_opinion_modifier = {
+				target = TUR
+				modifier = ww1_violated_the_sevres
+			}
+		}
+
+		ENG = {
+			add_opinion_modifier = {
+				target = TUK
+				modifier = ww1_violated_the_sevres
+			}
+		}
+		FRA = {
+			add_opinion_modifier = {
+				target = TUK
+				modifier = ww1_violated_the_sevres
+			}
+		}
+		ITA = {
+			add_opinion_modifier = {
+				target = TUK
+				modifier = ww1_violated_the_sevres
+			}
+		}
+
+	}
+}
+
+#Turkish War of Independence/Disarming the Rebel Groups
+country_event = {
+	id = ww1_tnm.2
+	title = ww1_tnm.2.t
+	desc = ww1_tnm.2.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_tnm.2.a
+		ai_chance = { base = 0 }
+		add_political_power = -50
+		add_war_support = -0.05
+		add_stability = -0.05
+	}
+	option = {
+		name = ww1_tnm.2.b
+		ai_chance = { base = 100 }
+
+		custom_effect_tooltip = Historical_choice
+		custom_effect_tooltip = "Mustafa Kemal Pasha will be sent to Samsun to disarm the rebels."
+		hidden_effect = {
+			set_country_flag = Ataturk_in_samsun
+			TUR_mustafa_kemal = {
+		        set_nationality = TUK
+	        }
+			country_event = { id = ww1_tnm.3 days = 30 }
+		}
+	}
+}
+
+
+#Start of the Turkish War of Independence
+country_event = {
+	id = ww1_tnm.3
+	title = ww1_tnm.3.t
+	desc = ww1_tnm.3.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_tnm.3.a
+		ai_chance = { base = 100 }
+		custom_effect_tooltip = Historical_choice
+		custom_effect_tooltip = "Turkish National Movement will began!"
+		custom_effect_tooltip = "Changes country to Turkish National Movement"
+		hidden_effect = {
+			TUK = {
+				change_tag_from = ROOT
+			}
+			TUK = {
+				transfer_state = 348
+				transfer_state = 798
+				transfer_state = 349
+				transfer_state = 355
+				transfer_state = 356
+
+				add_state_core = 348
+				add_state_core = 798
+				add_state_core = 349
+				add_state_core = 355
+				add_state_core = 356
+				add_state_core = 354
+				add_state_core = 353
+				add_state_core = 800
+				add_state_core = 352
+				add_state_core = 1105
+				add_state_core = 350
+				add_state_core = 344
+				add_state_core = 339
+				add_state_core = 340
+				add_state_core = 797
+				add_state_core = 341
+				add_state_core = 342
+				add_state_core = 347
+				add_state_core = 343
+				add_state_core = 49
+				add_state_core = 345
+				add_state_core = 346
+				load_oob = "TUK_1919"
+				declare_war_on = {
+					target = TUR
+					type = take_state
+					generator = {
+						797
+					}
+				}
+
+                promote_character = TUR_mustafa_kemal
+				set_cosmetic_tag = TUR_WAR
+			}
+			if = {
+				limit = {
+					TUR = {
+						controls_state = 354
+						controls_state = 353
+						controls_state = 800
+						controls_state = 352
+					}
+				}
+				TUK = {
+					transfer_state = 354
+					transfer_state = 353
+					transfer_state = 800
+					transfer_state = 352
+				}
+			}
+		}
+	}
+
+	option = {
+		name = ww1_tnm.3.b
+		ai_chance = { base = 0 }
+		custom_effect_tooltip = "Turkish National Movement will began!"
+		custom_effect_tooltip = "You will be still in charge of the Ottomans"
+		hidden_effect = {
+			TUK = {
+				transfer_state = 348
+				transfer_state = 798
+				transfer_state = 349
+				transfer_state = 355
+				transfer_state = 356
+
+				add_state_core = 348
+				add_state_core = 798
+				add_state_core = 349
+				add_state_core = 355
+				add_state_core = 356
+				add_state_core = 354
+				add_state_core = 353
+				add_state_core = 800
+				add_state_core = 352
+				add_state_core = 1105
+				add_state_core = 350
+				add_state_core = 344
+				add_state_core = 339
+				add_state_core = 340
+				add_state_core = 797
+				add_state_core = 341
+				add_state_core = 342
+				add_state_core = 347
+				add_state_core = 49
+				add_state_core = 343
+				add_state_core = 356
+				add_state_core = 345
+				load_oob = "TUK_1919"
+				declare_war_on = {
+					target = TUR
+					type = take_state
+					generator = {
+						797
+					}
+				}
+
+				set_cosmetic_tag = TUR_WAR
+			}
+			if = {
+				limit = {
+					TUR = {
+						controls_state = 354
+						controls_state = 353
+						controls_state = 800
+						controls_state = 352
+					}
+				}
+				TUK = {
+					transfer_state = 354
+					transfer_state = 353
+					transfer_state = 800
+					transfer_state = 352
+				}
+			}
+		}
+	}
+}

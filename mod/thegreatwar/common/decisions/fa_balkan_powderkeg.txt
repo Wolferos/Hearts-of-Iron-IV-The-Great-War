@@ -1,0 +1,287 @@
+foreign_affairs = {
+
+	BLL_mobilize_the_country_1bw = {
+
+		icon = GFX_decision_generic_ignite_civil_war
+
+		allowed = {
+			OR = {
+				original_tag = SER
+				original_tag = BUL
+				original_tag = MNT
+				original_tag = GRE
+				original_tag = ROM
+				original_tag = ALB
+			}
+		}
+
+		visible = {
+			foreign_affairs_balkan_powderkeg_visible = yes
+			has_faction_template = faction_template_balkan_league
+		}
+		cancel_if_not_visible = no
+
+		available = {
+			has_faction_template = faction_template_balkan_league
+		}
+
+		days_remove = 30
+
+		cost = 50
+
+		fire_only_once = yes
+
+		remove_effect = {
+			army_experience = 25
+			add_manpower = 20000
+			add_stability = 0.01
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10
+				date > 1912.6.1
+			}
+			modifier = {
+				add = 10
+				is_historical_focus_on = no
+			}
+		}
+	}
+
+	BLL_mobilize_the_country_2bw = {
+
+		icon = GFX_decision_generic_ignite_civil_war
+
+		allowed = {
+			OR = {
+				original_tag = SER
+				original_tag = GRE
+			}
+		}
+
+		visible = {
+			foreign_affairs_balkan_powderkeg_visible = yes
+			has_global_flag = kis_firstbalkanwar_victory
+			has_faction_template = faction_template_balkan_league
+			has_war_with = BUL
+		}
+		cancel_if_not_visible = no
+
+		available = {
+			has_faction_template = faction_template_balkan_league
+			has_war_with = BUL
+		}
+
+		days_remove = 10
+
+		cost = 30
+
+		fire_only_once = yes
+
+		remove_effect = {
+			add_manpower = 10000
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10
+				date > 1913.3.1
+			}
+			modifier = {
+				add = 10
+				is_historical_focus_on = no
+			}
+		}
+	}
+
+	BLL_strike_the_ottomans = {
+
+		icon = GFX_decision_generic_ignite_civil_war
+
+		allowed = {
+			OR = {
+				original_tag = SER
+				original_tag = BUL
+				original_tag = MNT
+				original_tag = GRE
+				original_tag = ROM
+				original_tag = ALB
+			}
+		}
+
+		visible = {
+			foreign_affairs_balkan_powderkeg_visible = yes
+			has_faction_template = faction_template_balkan_league
+			tag = BLL
+		}
+		cancel_if_not_visible = no
+
+		available = {
+			has_faction_template = faction_template_balkan_league
+			is_faction_leader = yes
+		}
+
+		days_remove = 90
+
+		fire_only_once = yes
+
+		remove_effect = {
+			declare_war_on = {
+				target = TUR
+				type = annex_everything
+			}
+			add_named_threat = {
+				threat = 10
+				name = ww1_firstbalkan.100.t
+			}
+			every_allied_country = {
+				add_timed_idea = {
+					idea = BLL_liberation_of_the_balkans_ns
+					days = 360
+				}
+			}
+			set_global_flag = kis_firstbalkan_war
+			hidden_effect = {
+				news_event = { id = ww1_firstbalkan.100 hours = 6 }
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10
+				date > 1912.10.8
+			}
+			modifier = {
+				add = 10
+				is_historical_focus_on = no
+			}
+		}
+	}
+
+	TUR_sue_for_peace_1bw = {
+
+		icon = GFX_decision_generic_form_nation
+
+		allowed = {
+			original_tag = TUR
+		}
+
+		visible = {
+			foreign_affairs_balkan_powderkeg_visible = yes
+			1bw_ongoing = yes
+		}
+		cancel_if_not_visible = no
+
+		available = {
+			1bw_ongoing = yes
+			any_controlled_state = {
+				turkish_balkan_states = no
+			}
+		}
+
+		fire_only_once = yes
+
+		remove_effect = {
+			BLL = {
+				country_event = ww1_firstbalkan.6
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	BUL_sue_for_peace_2bw = {
+
+		icon = GFX_decision_generic_form_nation
+
+		allowed = {
+			original_tag = BUL
+		}
+
+		visible = {
+			foreign_affairs_balkan_powderkeg_visible = yes
+			2bw_ongoing = yes
+		}
+		cancel_if_not_visible = no
+
+		available = {
+			2bw_ongoing = yes
+			surrender_progress > 0.25
+		}
+
+		fire_only_once = yes
+
+		remove_effect = {
+			BLL = {
+				country_event = ww1_secondbalkan.3
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	ROM_intervene_in_the_2bw = {
+
+		icon = GFX_decision_generic_ignite_civil_war
+
+		allowed = {
+			original_tag = ROM
+		}
+
+		visible = {
+			foreign_affairs_balkan_powderkeg_visible = yes
+			2bw_ongoing = yes
+			NOT = {
+				is_in_faction_with = BLL
+			}
+		}
+		cancel_if_not_visible = no
+
+		available = {
+			2bw_ongoing = yes
+			NOT = {
+				is_in_faction_with = BLL
+			}
+		}
+
+		fire_only_once = yes
+
+		remove_effect = {
+			set_country_flag = kis_secondbalkanwar_romanian_intervention
+			create_wargoal = {
+				type = take_state_focus 
+				target = BUL 
+				generator = {
+					77
+				}
+			}
+			add_to_war = {
+				targeted_alliance = BLL
+				enemy = BUL
+			}
+			BLL = {
+				add_to_faction = ROOT
+			}
+			hidden_effect = {
+				news_event = { days = 1 id = ww1_secondbalkan.102 }
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_country_flag = ROM_2bw_intervention_historical_timer_cflg
+			}
+		}
+	}
+
+}

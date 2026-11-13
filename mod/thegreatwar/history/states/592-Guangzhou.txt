@@ -1,34 +1,69 @@
-state = {
+state={
 	id=592
 	name="STATE_592"
-	local_supplies = 1.0 manpower = 17835200
-	state_category=city
-	provinces={ 1047 1087 1131 1187 4092 7039 7152 9963 11938 11941 12077 }
-	resources={
-		wood=0
-		coal=6
-		chromium=0
-		steel=1
-		tungsten=0
-		}
+	manpower = 17835200
+	state_category = city
+
 	history={
-		victory_points={ 1047 5 }
-		owner=QIN
-		add_core_of=QIN
-		add_core_of=CHI
-		#add_core_of=PRC
-		1912.2.12={ owner=CHI }
+		owner = QIN
+		add_core_of = QIN
+		add_core_of = CHI
+		
+		buildings = {
+			infrastructure = 2
+			arms_factory = 1
+			industrial_complex = 1
+			1047 = { # Guangzhou
+				naval_base = 5
+				coastal_bunker = 1
+				bunker = 1
+			}
+
+		}
+
+		victory_points = {
+			1047 10 # Guangzhou
+		}
+
+		victory_points = {
+			12077 1 # Maoming
+		}
+
+		1912.2.12 = {
+			owner = CHI
+			controller = CHI
+		}
 
 		1919.1.1 = {
 			owner = CPM
 			add_core_of = CPM
 		}
 
-		buildings={
-			infrastructure=2
-			industrial_complex=5
-			arms_factory=1
-			1047={ naval_base=5 coastal_bunker=1 bunker=1 }
+		1936.1.1 = {
+			owner = GDC
+			controller = GDC
+			add_core_of = GDC
+			buildings = {
+				arms_factory = 2
+				industrial_complex = 2
+				air_base = 3
+			}
+		}
+
+		1938.10.25 = {
+			JAP = {
+				set_province_controller = 1047
+				set_province_controller = 7152
+				set_province_controller = 11938
+				set_province_controller = 11941
 			}
 		}
 	}
+
+	provinces={
+		1047 1087 1131 1187 4092 7039 7152 9963 11938 11941 12077 
+	}
+
+	local_supplies=1.0 
+}
+

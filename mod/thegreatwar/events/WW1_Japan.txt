@@ -1,35 +1,4 @@
 ﻿add_namespace = ww1_japan
- 
-# Korea Annexation
-country_event = {
-	id = ww1_japan.700
-	title = ww1_japan.100.t
-	desc = ww1_japan.100.d
-	picture = EVENT_hoi4tgw_korea_annexation
-	is_triggered_only = yes
- 	
-	option = {
-		name =  ww1_japan.700.a
-		ai_chance = { factor = 100 }
-		JAP = {
-			annex_country = {
-				target = KOR
-				transfer_troops = yes
-			}
-		}
-	}	
-	option = {
-		name = ww1_japan.700.b
-		ai_chance = { factor = 0 }
-		JAP = {
-			end_puppet = KOR
-			declare_war_on = {
-				target = KOR
-				type = annex_everything
-			}
-		}
-	}
-}
 
 country_event = {
 	title = ww1_japan.1.t#Ultimatum on Germany
@@ -69,9 +38,8 @@ country_event = {
 		ENG = {
 			add_to_faction = ROOT
 			}
-		every_country = {
+		if = {
 			limit = {
-				tag = THIS
 				has_global_flag = JAP_ultimatum_extended
 				}
 			clr_global_flag = JAP_ultimatum_extended
@@ -83,9 +51,8 @@ country_event = {
 			factor = 1
 			}
 		add_political_power = -5
-		every_country = {
+		if = {
 			limit = {
-				tag = THIS
 				has_global_flag = JAP_ultimatum_extended
 				}
 			clr_global_flag = JAP_ultimatum_extended
@@ -173,48 +140,40 @@ country_event = {
 			}
 			JAP = { transfer_state = PREV }
 		}
-		every_country = {
-			limit = {
-				tag = GER
-				has_global_flag = JAP_ultimatum_extended
+		GER = {
+			if = {
+				limit = {
+					has_global_flag = JAP_ultimatum_extended
+				}
 			}
 		}
 	}
 }
 
+# Emperor Meiji dies
 country_event = {
-	title = ww1_japan.5.t#Emperor Meiji dies
-	desc = ww1_japan.5.d#On 30 June 1912 Emperor Meiji died and Yoshihito became Emperor.
 	id = ww1_japan.5
+	title = ww1_japan.5.t
+	desc = ww1_japan.5.d
 	picture = ww1_japan_5
-	fire_only_once = yes
-	is_triggered_only = no
-	mean_time_to_happen = { days = 1 }
 
-	trigger = {
-		tag = JAP
-		has_government = democratic
-		not = {
-			has_country_flag = king_death_meiji
-		}
-		date > 1912.6.30
-	}
+	is_triggered_only = yes
 
 	option = {
 		name = ww1_japan.5.a
-		ai_chance = {
-			factor = 100
+		retire_character = JAP_emperor_meiji
+		JAP_yoshihito = {
+			add_country_leader_role = {
+				country_leader = {
+					ideology = autocracy
+					traits = {  }
+				}
+			}
 		}
-		kill_country_leader = yes
-		create_country_leader = {
-			name = "Yoshihito"
-			desc = JAP_yoshihito_DESC
-			picture = "gfx/hoi4tgw_portraits/JAP/country_leaders/JAP_yoshihito.dds"
-			expire = "1935.1.1"
-			ideology = liberalism
-			traits = { }
+		set_country_flag = meiji_dead
+		hidden_effect = {
+			news_event = ww1_japan.103
 		}
-		set_country_flag = king_death_meiji
 	}
 }
 
@@ -236,9 +195,6 @@ country_event = {
 	}
 }
 #____________________________________________________________
-
-
-
 # Japan–Korea Annexation Treaty
 #____________________________________________________________
 # Korea Empire's choice
@@ -253,19 +209,25 @@ country_event = {
 	option = {
 		name = ww1_japan.90.a
 		ai_chance = {
-			factor = 100
+			base = 100
 		}
 		JAP = {
 			annex_country = {
 				target = KOR
 				transfer_troops = yes
 			}
+			hidden_effect = {
+				news_event = ww1_japan.100
+				set_global_flag = kis_japankorea_annexation
+			}
 		}
 	}
 
 	option = {
 		name = ww1_japan.90.b
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			base = 0
+		}
 		JAP = {
 			end_puppet = KOR
 			declare_war_on = {
@@ -276,37 +238,22 @@ country_event = {
 	}
 }
 #____________________________________________________________
-
-
 # Korea Annexation
 #____________________________________________________________
 news_event = {
 	id = ww1_japan.100
 	title = ww1_japan.100.t
 	desc = ww1_japan.100.d
-
 	picture = EVENT_hoi4tgw_korea_annexation
 
+	is_triggered_only = yes
+
 	major = yes
-
-	trigger = {
-		JAP = { has_completed_focus = JAP_ww1_Japan_Korea_Treaty }
-		NOT = { has_global_flag = kis_japankorea_annexation }
-	}
-
-	mean_time_to_happen = {
-		days = 0
-	}
-
-	immediate = {
-		set_global_flag = kis_japankorea_annexation
-
-	}
 
 	option = {
 		name = ww1_japan.100.a
 		ai_chance = {
-			factor = 100
+			base = 100
 		}
 		trigger = {
 			NOT = {
@@ -317,7 +264,7 @@ news_event = {
 	option = {
 		name = ww1_japan.100.b
 		ai_chance = {
-			factor = 100
+			base = 100
 		}
 		trigger = {
 			TAG = JAP
@@ -325,9 +272,6 @@ news_event = {
 	}
 }
 #____________________________________________________________
-
-
-
 # Fascist Take Power
 #____________________________________________________________
 country_event = {
@@ -338,11 +282,6 @@ country_event = {
 
 	fire_only_once = yes
 	is_triggered_only = yes
-
-	mean_time_to_happen = {
-		days = 1
-	}
-
 
 	option = {
 		name = ww1_japan.101.a
@@ -358,9 +297,6 @@ country_event = {
 	}
 }
 #____________________________________________________________
-
-
-
 # Democrat Take Power
 #____________________________________________________________
 country_event = {
@@ -371,10 +307,6 @@ country_event = {
 
 	fire_only_once = yes
 	is_triggered_only = yes
-
-	mean_time_to_happen = {
-		days = 1
-	}
 
 	option = {
 		name = ww1_japan.102.a
@@ -389,51 +321,23 @@ country_event = {
 	}
 }
 #____________________________________________________________
-
-
-
-#####Emperor Meji Dies###
+# Emperor Meji Dies
+#____________________________________________________________
 news_event = {
-    id = ww1_japan.103
-    title = ww1_japan.103.t
-    desc = ww1_japan.103.d
-    picture = EVENT_hoi4tgw_meiji_dead
+	id = ww1_japan.103
+	title = ww1_japan.103.t
+	desc = ww1_japan.103.d
+	picture = EVENT_hoi4tgw_meiji_dead
 
-    major = yes
+	is_triggered_only = yes
 
-    mean_time_to_happen = {
-        days = 0
-    }
-    trigger = {
-        date > 1912.7.29
-        JAP = {
-	        has_government = neutrality
-	        not = {
-	            has_country_flag = Meiji_dead
-	        }
-        }
-    }
-    immediate = {
-        hidden_effect = {
-        	JAP = {
-				retire_character = JAP_emperor_meiji
-				JAP_yoshihito = {
-					add_country_leader_role = {
-						country_leader = {
-							ideology = autocracy
-							traits = {  }					
-						}
-					}
-				}
-    	        set_country_flag = Meiji_dead
-        	}
-        }
-    }
-    option = {
-        name = ww1_japan.103.a
-        ai_chance = {
-            factor = 100
-        }
-    }
+	major = yes
+
+	option = {
+		name = ww1_japan.103.a
+		ai_chance = {
+			base = 100
+		}
+	}
 }
 #____________________________________________________________

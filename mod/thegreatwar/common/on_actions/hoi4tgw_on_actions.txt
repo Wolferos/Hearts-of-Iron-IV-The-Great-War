@@ -1,5 +1,63 @@
-
 on_actions = {
+
+    on_startup = {
+		#Changing the Ottoman Codes in 1919 Start Date
+		effect = {
+			IF = {
+				limit = {
+					date > 1919.1.1
+				}
+				TUR = {
+					remove_ideas = {
+					    TUR_Mehmed_V_ns
+					    TUR_secularization_ns
+					    TUR_westernization_ns
+					    TUR_foreign_military_advisors_ns
+	                    TUR_separatist_movements_ns
+                        TUR_nationalist_education_ns
+                        TUR_three_pashas_ns
+                        TUR_one_party_state_ns
+                        TUR_pan_turkism_ns
+                        TUR_one_nation_one_religion_one_country_ns
+                        TUR_jihad_ns
+                        TUR_sinai_campaign_ns
+                        TUR_yemen_campaign_ns
+                        TUR_sarikamish_operation_ns
+	                }
+					
+					add_political_power = -700
+					
+					remove_state_claim = 659
+			        remove_state_claim = 658
+					remove_state_claim = 656
+			        remove_state_claim = 182
+					remove_state_claim = 229
+			        remove_state_claim = 232
+					remove_state_claim = 821
+			        remove_state_claim = 828
+					remove_state_claim = 827
+				}
+				every_state = {
+				    limit = {
+					    OR = {
+						    region = 127
+							region = 28
+							region = 237
+							region = 225
+							region = 232
+							region = 225
+							region = 26
+							region = 24
+							state = 184
+							state = 731
+							state = 164
+						}
+					}
+					remove_core_of = TUR
+				}
+			}
+		}
+	}
 
 	on_release_as_free = {
 		effect = {
@@ -119,7 +177,7 @@ on_actions = {
 					original_tag = ITA
 					ITA = {
 						OR = {
-							controls_state = 826
+							controls_state = 1104
 							controls_state = 273
 							controls_state = 662
 							controls_state = 663
@@ -138,15 +196,109 @@ on_actions = {
 		}
 	}
 
+	on_capitulation_immediate = {
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_global_flag = kis_xinhai_revolution_ended
+					}
+					has_global_flag = kis_xinhai_revolution
+					original_tag = CHI
+					FROM = {
+						original_tag = QIN
+					}
+				}
+				FROM = {
+					annex_country = {
+						target = CHI
+						transfer_troops = no
+					}
+				}
+				set_global_flag = kis_xinhai_revolution_ended
+				news_event = { id = kis_news.123 hours = 6 }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_global_flag = kis_xinhai_revolution_ended
+					}
+					has_global_flag = kis_xinhai_revolution
+					original_tag = QIN
+					FROM = {
+						original_tag = CHI
+					}
+				}
+				FROM = {
+					annex_country = {
+						target = QIN
+						transfer_troops = no
+					}
+				}
+				set_global_flag = kis_xinhai_revolution_ended
+				news_event = { id = kis_news.119 hours = 6 }
+			}
+		}
+		#Unlock focus when Ottomans Recapture Selanik From the Second Action Army
+        effect = {
+			if = {
+				limit = {
+					original_tag = TUR
+					FROM = {
+						original_tag = MAC
+					}
+				}
+				TUR = {
+				    set_country_flag = TUR_beated_the_second_action_army_cflg
+				}
+			}
+		}
+	}
+
+	on_state_control_changed = {
+
+		# German Core States Loss for AI
+		effect = {
+			if = {
+				limit = {
+					great_war_ongoing = yes
+					NOT = {
+						original_tag = GER
+					}
+					FROM.FROM = {
+						is_core_of = GER
+					}
+				}
+				add_to_variable = {
+					GER_lost_core_states = 1
+				}
+			}
+
+			if = {
+				limit = {
+					great_war_ongoing = yes
+					FROM = {
+						NOT = {
+							original_tag = GER
+						}
+					}
+					FROM.FROM = {
+						is_core_of = GER
+					}
+				}
+				add_to_variable = {
+					GER_lost_core_states = -1
+				}
+			}
+		}
+	}
+
 	on_peaceconference_ended = {
 
 		# Italy Annexes Senussi
 		effect = {
 			if = {
 				limit = {
-					NOT = {
-						has_global_flag = hoi4tgw_setting_scripted_peace_conferences_disabled
-					}
 					ROOT = {
 						original_tag = ITA
 					}
@@ -166,9 +318,6 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					NOT = {
-						has_global_flag = hoi4tgw_setting_scripted_peace_conferences_disabled
-					}
 					ROOT = {
 						OR = {
 							original_tag = SOV
@@ -194,9 +343,6 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					NOT = {
-						has_global_flag = hoi4tgw_setting_scripted_peace_conferences_disabled
-					}
 					ROOT = {
 						OR = {
 							original_tag = HUN
@@ -222,9 +368,6 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					NOT = {
-						has_global_flag = hoi4tgw_setting_scripted_peace_conferences_disabled
-					}
 					ROOT = {
 						OR = {
 							original_tag = TUR
@@ -246,7 +389,7 @@ on_actions = {
 			}
 		}
 
-		#French Invasion of Syria End
+		# French Invasion of Syria End
 		effect = {
 			if = {
 				limit = {
@@ -271,6 +414,33 @@ on_actions = {
 			}
 		}
 
+		# Great War End - No Scripted Deal
+		effect = {
+			if = {
+				limit = {
+					original_tag = FRA
+					FROM = {
+						original_tag = GER
+					}
+					great_war_ongoing = yes
+				}
+				set_global_flag = kis_great_war_german_surrender
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					original_tag = GER
+					FROM = {
+						original_tag = FRA
+					}
+					great_war_ongoing = yes
+				}
+				set_global_flag = kis_great_war_french_surrender
+			}
+		}
+
 	}
 
 	on_state_control_changed = {
@@ -279,9 +449,6 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					NOT = {
-						has_global_flag = hoi4tgw_setting_scripted_peace_conferences_disabled
-					}
 					FROM.FROM = { state = 4 }
 					ROOT = { tag = GER }
 					FROM = { tag = AUH }
@@ -298,10 +465,7 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					NOT = {
-						has_global_flag = hoi4tgw_setting_scripted_peace_conferences_disabled
-					}
-					FROM.FROM = { state = 815 }
+					FROM.FROM = { state = 1105 }
 					ROOT = { tag = TUK }
 					FROM = { tag = ARM }
 					FROM.FROM = { is_controlled_by = ROOT }
@@ -317,9 +481,6 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					NOT = {
-						has_global_flag = hoi4tgw_setting_scripted_peace_conferences_disabled
-					}
 					FROM.FROM = { state = 43 }
 					ROOT = {
 						OR = {
@@ -361,77 +522,6 @@ on_actions = {
 		}
 	}
 
-	on_weekly = {
-
-		# Russian Army collapse!
-		effect = {
-			if = {
-				limit = {
-					RUS = {
-						OR = {
-							has_war_with = GER
-							has_war_with = AUH
-						}
-						NOT = {
-							has_country_flag = dual_power
-							has_government = communism
-						}
-						NOT = {	controls_state = 98 }
-						NOT = {	controls_state = 10 }
-						NOT = {	controls_state = 90 }
-						NOT = { controls_state = 87 }
-						NOT = { controls_state = 92 }
-					}
-				}
-				RUS = {
-					country_event = { id = ww1_russia.30 }
-				}
-			}
-		}
-
-		# Soviet Revolution
-		effect = {
-			if = {
-				limit = {
-					RUS = {
-						OR = {
-							has_war_with = GER
-							has_war_with = AUH
-						}
-						NOT = {
-							has_government = communism
-						}
-						has_country_flag = dual_power
-
-						has_stability < 0.5
-						has_war_support < 0.5
-
-						NOT = {	controls_state = 98 }
-						NOT = {	controls_state = 10 }
-						NOT = {	controls_state = 90 }
-						NOT = { controls_state = 97 }
-						NOT = { controls_state = 92 }
-						NOT = { controls_state = 93 }
-						NOT = { controls_state = 199 }
-						NOT = { controls_state = 11 }
-						NOT = { controls_state = 87 }
-						NOT = { controls_state = 95 }
-						NOT = { controls_state = 784 }
-						NOT = { controls_state = 96 }
-						NOT = { controls_state = 11 }
-						NOT = { controls_state = 189 }
-						NOT = { controls_state = 190 }
-					}
-				}
-
-				news_event = {
-					id = ww1_russia.4
-					hours = 12
-				}
-			}
-		}
-	}
-
 	on_monthly = {
 
 		# The Finish Civil War
@@ -457,21 +547,6 @@ on_actions = {
 				news_event = {
 					id = ww1_finland.1
 					hours = 12
-				}
-			}
-		}
-
-		# Mustafa Kemal Uprising
-		effect = {
-			if = {
-				limit ={
-					TUR = {
-						has_country_flag = Ataturk_in_samsun
-					}
-				}
-
-				TUR = {
-					country_event = { id = ww1_ottoman.28 }
 				}
 			}
 		}

@@ -1,143 +1,5 @@
 ﻿add_namespace = ww1_secondbalkan
 
-# BUL declares war Second Balkan War
-#____________________________________________________________
-country_event = {
-	id = ww1_secondbalkan.1
-	title = ww1_secondbalkan.1.t
-	desc = ww1_secondbalkan.1.d
-	#picture = ww1_secondbalkan_1
-
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-		name = ww1_secondbalkan.1.a
-		ai_chance = { factor = 100 }
-
-		hidden_effect = {
-			set_country_flag = kis_secondbalkan_war
-			# Factions
-			SER = {
-				create_faction = anti_bulg_league
-				# If Greece did not participate in the First Balkan War or left the alliance before the Second Balkan War, it will not invite to the Anti-Bulgarian League
-				if = {
-					limit = {
-						GRE = {
-							is_in_faction = yes				# Check for participation of Greece in the Balkan League
-						}
-					}
-					add_to_faction = GRE	
-				}
-				add_to_faction = MNT
-			}
-			BUL = {
-				create_faction = greater_builgaria
-				add_named_threat = {
-					threat = 5
-					name = ww1_secondbalkan.100.t
-				}
-			}
-
-			BUL = {
-			    declare_war_on = {
-			        target = SER
-			        type = take_claimed_state
-			        generator = {
-			            106 758
-			        }
-			    }
-			    set_country_flag = kis_secondbalkanwar_start
-			}
-
-			# If Greece did not participate in the First Balkan War or left the Anti-Bulgarian League before the Second Balkan War, it will not participate in the Second Balkan War
-			if = {
-				limit = {
-					GRE = {
-						is_in_faction_with = SER				# Check for participation of Greece in the Anti-Bulgarian League
-					}
-				}
-				GRE = {
-					add_to_war = {
-						targeted_alliance = SER enemy = BUL
-					}
-				}
-			}	
-			MNT = {
-			    add_to_war = {
-		            targeted_alliance = SER enemy = BUL
-		        }
-			}
-			ROM = {
-                country_event = { days = 7 id = ww1_secondbalkan.2 }
-            }
-			news_event = { days = 1 id = ww1_secondbalkan.100 }
-		}
-
-		effect_tooltip = {
-			BUL = {
-			    declare_war_on = {
-			        target = SER
-			        type = take_claimed_state
-			        generator = {
-			            106 758
-			        }
-			    }
-			    create_wargoal = {
-			        target = GRE
-			        type = take_claimed_state
-			        generator = {
-			            731
-			        }
-			    }
-			}
-		}		
-	}
-}
-#____________________________________________________________
-
-# Romanian Intervention
-#____________________________________________________________
-country_event = {
-	id = ww1_secondbalkan.2
-	title = ww1_secondbalkan.2.t
-	desc = ww1_secondbalkan.2.d
-	#picture = ww1_secondbalkan_2
-
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-		name = ww1_secondbalkan.2.a
-		ai_chance = { factor = 100 }
-		SER = {
-			add_to_faction = ROM
-		}
-		ROM = {
-			set_country_flag = kis_secondbalkanwar_romanian_intervention
-			create_wargoal = {
-	            type = take_state_focus 
-	            target = BUL 
-	            generator = {
-	                77
-	            }
-	        }
-	        add_to_war = {
-	            targeted_alliance = SER enemy = BUL
-	        }
-		}
-		hidden_effect = {
-			news_event = { days = 1 id = ww1_secondbalkan.102 }
-		}
-	}
-
-	option = {
-		name = ww1_secondbalkan.2.b
-		ai_chance = { factor = 0 }
-	}
-}
-#____________________________________________________________
-
 # Bulgaria Offers Peace
 #____________________________________________________________
 country_event = {
@@ -160,17 +22,20 @@ country_event = {
 
 	option = { 
 		name = ww1_secondbalkan.3.a
-		ai_chance = { factor = 100 }
-
+		ai_chance = {
+			base = 100
+		}
+		custom_effect_tooltip = historical_tt
 		hidden_effect = {
 			set_global_flag = kis_secondbalkanwar_victory
 			BUL = {
 				transfer_state = 48
 				transfer_state = 211
 				transfer_state = 212
-				transfer_state = 756
-				transfer_state = 757
-				transfer_state = 788
+				transfer_state = 801
+				transfer_state = 341
+				transfer_state = 1089
+				transfer_state = 1094
 				remove_opinion_modifier = { 
 					target = TUR 
 					modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war 
@@ -239,8 +104,10 @@ country_event = {
 				}
 				TUR = { 
 					white_peace = BUL
-					transfer_state = 756
-					add_state_core = 756
+					transfer_state = 341
+					transfer_state = 1106
+					add_state_core = 341
+					add_state_core = 1106
 					diplomatic_relation = {
 						country = BUL
 						relation = non_aggression_pact
@@ -271,8 +138,8 @@ country_event = {
 				}
 				SER = { 
 					white_peace = BUL
-					transfer_state = 759
-					add_state_core = 759
+					transfer_state = 1091
+					add_state_core = 1091
 					diplomatic_relation = {
 						country = BUL
 						relation = non_aggression_pact
@@ -315,7 +182,7 @@ country_event = {
 				}
 				SER = { 
 					white_peace = BUL
-					transfer_state = 759
+					transfer_state = 1091
 					diplomatic_relation = {
 						country = BUL
 						relation = non_aggression_pact
@@ -374,7 +241,8 @@ country_event = {
 				}
 				TUR = { 
 					white_peace = BUL
-					transfer_state = 756
+					transfer_state = 341
+					transfer_state = 1106
 					diplomatic_relation = {
 						country = BUL
 						relation = non_aggression_pact
@@ -392,7 +260,8 @@ country_event = {
 					
 				}
 				TUR = {
-					transfer_state = 756
+					transfer_state = 341
+					transfer_state = 1106
 					diplomatic_relation = {
 						country = BUL
 						relation = non_aggression_pact
@@ -400,6 +269,14 @@ country_event = {
 				}
 			}
 		}
+	}
+
+	option = {
+		name = ww1_secondbalkan.3.b
+		ai_chance = {
+			base = 0
+		}
+		custom_effect_tooltip = no_scripted_peace_deal_tt
 	}
 }
 #____________________________________________________________

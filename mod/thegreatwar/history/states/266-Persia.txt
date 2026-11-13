@@ -1,31 +1,49 @@
-state = {
+
+state={
 	id=266
 	name="STATE_266" # Tehran
-	local_supplies = 1.0 manpower = 3446250
-	state_category=town
-	provinces={ 4580 7602 10385 10768 10837 }
-	resources={
-		wood=0
-		}
+	manpower = 3446250
+	resources = {
+		aluminium = 2
+		tungsten = 2
+	}
+
+	state_category = city
+
 	history={
-		victory_points={ 10837 10 }
-		owner=PER
-		add_core_of=PER
-		1936.1.1={ 
-			owner=PER
-			add_core_of=PER
-			victory_points={ 10837 10 }
-			buildings={
-				infrastructure=3
-				industrial_complex=2
-				air_base=3
-				arms_factory=1
+		owner = PER
+		buildings = {
+			infrastructure = 2
+			arms_factory = 1
+			industrial_complex = 2
+			
+			10837 = {
+				landmark_sadabad_complex = {
+					level = 1
+					allowed = {
+						has_dlc = "Graveyard of Empires"
+					}
 				}
 			}
-		buildings={
-			infrastructure=3
-			industrial_complex=2
-			arms_factory=1
+		}
+		victory_points = {
+			10837 15 # Tehran 
+		}
+		victory_points = {
+			7602 2 # Esterabad 
+		}
+		add_core_of = PER
+
+		1936.1.1 = {
+			buildings = {
+				air_base = 3
 			}
 		}
 	}
+
+	provinces={
+		4580 7602 10385 10768 10837 
+	}
+
+	local_supplies=5.0 
+}

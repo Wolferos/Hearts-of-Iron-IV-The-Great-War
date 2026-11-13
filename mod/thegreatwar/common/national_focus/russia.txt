@@ -1,5 +1,5 @@
 focus_tree = {
-	id = rus_focus
+	id = russian_focus
 	default = no
 	country = {
 		factor = 0
@@ -14,361 +14,686 @@ focus_tree = {
 	shared_focus = industrial_effort
 	shared_focus = naval_effort
 
+	continuous_focus_position = { x = 2000 y = 1500 }
+
 	###########################################################################################################################
 	# POLITICAL
 	###########################################################################################################################
 	focus = {
-		id = RUS_ww1_political_effort
-		icon = GFX_goal_generic_demand_territory
-		completion_reward = {
-			add_political_power = 80
-		}
-		ai_will_do = {
-			factor = 20
-		}
-		cost = 10
-		x = 3
-		y = 0
-	}
-	focus = {
-		id = RUS_ww1_reject_reforms
-		icon = GFX_goal_molotov_ribbentrop_pact
+		id = RUS_support_duma
+		icon = GFX_focus_ETH_re-convene_the_parliament
 		mutually_exclusive = {
-			focus = RUS_ww1_adopt_reforms
-		}
-		prerequisite = {
-			focus = RUS_ww1_political_effort
+			focus = RUS_status_quo
+			focus = RUS_resist_duma
 		}
 		cost = 10
 		x = 2
-		y = 1
+		y = 0
 		completion_reward = {
-			add_ideas = RUS_aleksei_brusilov
-			army_experience = 25
-			add_tech_bonus = {
-				name = land_doc_bonus
-				bonus = 0.1
-				uses = 1
-				category = land_doctrine
+			swap_ideas = {
+				remove_idea = RUS_political_deadlock
+				add_idea = RUS_duma_1
 			}
 		}
 		ai_will_do = {
-			factor = 0
+			base = 1
 		}
 	}
 	focus = {
-		id = RUS_ww1_adopt_reforms
-		icon = GFX_goal_generic_national_unity
-		mutually_exclusive = {
-			focus = RUS_ww1_reject_reforms
-		}
+		id = RUS_independent_courts
+		icon = GFX_focus_generic_court
 		prerequisite = {
-			focus = RUS_ww1_political_effort
+			focus = RUS_support_duma
 		}
-		x = 4
+		cost = 10
+		x = 0
 		y = 1
-		cost = 10
+		relative_position_id = RUS_support_duma
 		completion_reward = {
-			army_experience = 100
+			swap_ideas = {
+				remove_idea = RUS_duma_1
+				add_idea = RUS_duma_2
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.2
+			}
 		}
 		ai_will_do = {
-			factor = 30
+			base = 1
 		}
 	}
 	focus = {
-		id = RUS_ww1_condemn_marxist_ideas
-		icon = GFX_goal_generic_forceful_treaty
+		id = RUS_election
+		dynamic = yes
+		icon = GFX_goal_generic_demand_territory
 		prerequisite = {
-			focus = RUS_ww1_reject_reforms
-			focus = RUS_ww1_adopt_reforms
+			focus = RUS_independent_courts
 		}
-		mutually_exclusive = {
-			focus = RUS_ww1_discuss_tsar_authority
-			focus = RUS_ww1_adopt_marxist_ideas
-		}
-		available = {
-			#date > 1917.6.1
-		}
-		x = 1
-		y = 2
 		cost = 10
-		completion_reward = {
-			add_ideas = FRA_communism_banned
-		}
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	focus = {
-		id = RUS_ww1_crush_strikes
-		icon = GFX_goal_generic_secret_weapon
-		prerequisite = {
-			focus = RUS_ww1_condemn_marxist_ideas
-		}
-		available = {
-		}
 		x = 0
-		y = 3
-		cost = 10
+		y = 1
+		relative_position_id = RUS_independent_courts
 		completion_reward = {
-			add_political_power = -100
-			add_stability = -0.05
+			country_event = ww1_russia.22
 		}
 		ai_will_do = {
-			factor = 0
+			base = 1
 		}
 	}
 	focus = {
-		id = RUS_ww1_discuss_tsar_authority
-		icon = GFX_goal_generic_propaganda
+		id = RUS_aladin
+		icon = GFX_goal_support_democracy
 		prerequisite = {
-			focus = RUS_ww1_reject_reforms
-			focus = RUS_ww1_adopt_reforms
+			focus = RUS_election
 		}
 		mutually_exclusive = {
-			focus = RUS_ww1_condemn_marxist_ideas
-			focus = RUS_ww1_adopt_marxist_ideas
+			focus = RUS_lvov
 		}
 		available = {
-			date > 1917.1.1
+			hidden_trigger = {
+				always = no
+			}
 		}
-		x = 3
-		y = 2
-		cost = 10
+		cost = 0
+		x = -1
+		y = 1
+		relative_position_id = RUS_election
 		completion_reward = {
-			add_stability = 0.1
-		}
-		ai_will_do = {
-			factor = 30
-		}
-	}
-	focus = {
-		id = RUS_ww1_reinforce_tsar_authority
-		icon = GFX_hoi4tgw_russianempire
-		prerequisite = {
-			focus = RUS_ww1_discuss_tsar_authority
-		}
-		mutually_exclusive = {
-			focus = RUS_ww1_parliamentary_immunity
-		}
-		available = {
-			date > 1917.1.1
-		}
-		x = 2
-		y = 3
-		cost = 10
-		completion_reward = {
-			add_stability = 0.1
-		}
-		ai_will_do = {
-			factor = 30
-		}
-	}
-	focus = {
-		id = RUS_ww1_purge_imperial_guard
-		icon = GFX_goal_generic_political_pressure
-		prerequisite = {
-			focus = RUS_ww1_reinforce_tsar_authority
-		}
-		available = {
-			date > 1917.1.1
-		}
-		x = 2
-		y = 4
-		cost = 10
-		completion_reward = {
-			add_stability = 0.1
-		}
-		ai_will_do = {
-			factor = 30
-		}
-	}
-	focus = {
-		id = RUS_ww1_arrest_opposition_leaders
-		icon = GFX_goal_generic_attack_allies
-		prerequisite = {
-			focus = RUS_ww1_crush_strikes
-		}
-		available = {
-		}
-		x = 0
-		y = 4
-		cost = 10
-		completion_reward = {
-			add_ideas = nationalism
-			add_ideas = fascist_influence
-		}
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	focus = {
-		id = RUS_ww1_dissolve_imperial_duma
-		icon = GFX_goal_anti_comintern_pact
-		prerequisite = {
-			focus = RUS_ww1_arrest_opposition_leaders
-		}
-		available = {
-		}
-		x = 0
-		y = 5
-		cost = 10
-		completion_reward = {
-			add_political_power = -200
-			add_stability = 0.03
-		}
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	focus = {
-		id = RUS_ww1_parliamentary_immunity
-		icon = GFX_goal_tripartite_pact
-		prerequisite = {
-			focus = RUS_ww1_discuss_tsar_authority
-		}
-		mutually_exclusive = {
-			focus = RUS_ww1_reinforce_tsar_authority
-		}
-		available = {
-		}
-		x = 4
-		y = 3
-		cost = 10
-		completion_reward = {
-			add_country_leader_role = {
-				character = RUS_georgy_lvov
-				promote_leader = yes
-				country_leader = {
-					ideology = conservatism
-					expire = "1935.1.1.1"
+			add_ideas = RUS_nikolay_ii
+			custom_effect_tooltip = generic_skip_one_line_tt
+			promote_character = RUS_aleksei_aladin
+			hidden_effect = {
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = no
+					last_election = "1911.1.1"
+					election_frequency = 48
 				}
 			}
 		}
 		ai_will_do = {
-			factor = 0
+			base = 1
 		}
 	}
 	focus = {
-		id = RUS_ww1_fifth_duma
-		icon = GFX_goal_anschluss
+		id = RUS_decommunalization
+		icon = GFX_goal_generic_improve_relations
 		prerequisite = {
-			focus = RUS_ww1_parliamentary_immunity
+			focus = RUS_aladin
 		}
 		available = {
 		}
-		x = 4
-		y = 4
 		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = RUS_aladin
 		completion_reward = {
-			add_ideas = democratic_influence
+			remove_ideas = RUS_rural_communities
 		}
 		ai_will_do = {
-			factor = 0
+			base = 1
 		}
 	}
 	focus = {
-		id = RUS_ww1_legitimate_power
-		icon = GFX_goal_generic_position_armies
+		id = RUS_welfare
+		icon = GFX_focus_FIN_socialist_welfare
 		prerequisite = {
-			focus = RUS_ww1_fifth_duma
-			focus = RUS_ww1_purge_imperial_guard
+			focus = RUS_decommunalization
+		}
+		prerequisite = {
+			focus = RUS_freeing_political_opponents
 		}
 		available = {
 		}
-		x = 3
-		y = 5
 		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = RUS_decommunalization
 		completion_reward = {
-			country_event = {
-				id = election.1
+			add_ideas = RUS_aladincare_1
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_protect_labor
+		icon = GFX_focus_ITA_workers_unions
+		prerequisite = {
+			focus = RUS_welfare
+		}
+		available = {
+		}
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = RUS_welfare
+		completion_reward = {
+			swap_ideas = {
+				add_idea = RUS_aladincare_2
+				remove_idea = RUS_aladincare_1
 			}
+			custom_effect_tooltip = RUS_remove_revolution_tt
 		}
 		ai_will_do = {
-			factor = 0
+			base = 1
 		}
 	}
 	focus = {
-		id = RUS_ww1_adopt_marxist_ideas
-		icon = GFX_goal_support_communism
+		id = RUS_lvov
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
 		prerequisite = {
-			focus = RUS_ww1_reject_reforms
-			focus = RUS_ww1_adopt_reforms
+			focus = RUS_election
 		}
 		mutually_exclusive = {
-			focus = RUS_ww1_discuss_tsar_authority
-			focus = RUS_ww1_condemn_marxist_ideas
+			focus = RUS_aladin
 		}
 		available = {
-			OR = {
-				has_country_flag = kis_tsarnicholasabdicated
-				has_government = communism
+			hidden_trigger = {
+				always = no
 			}
 		}
-		x = 5
-		y = 2
-		cost = 10
+		cost = 0
+		x = 1
+		y = 1
+		relative_position_id = RUS_election
 		completion_reward = {
-			add_ideas = communist_influence
+			add_ideas = RUS_nikolay_ii
+			custom_effect_tooltip = generic_skip_one_line_tt
+			promote_character = RUS_georgy_lvov
+			hidden_effect = {
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = no
+					last_election = "1911.1.1"
+					election_frequency = 48
+				}
+			}
 		}
 		ai_will_do = {
-			factor = 0
+			base = 1
 		}
 	}
 	focus = {
-		id = RUS_ww1_legitimate_bolsheviks
-		icon = GFX_goal_generic_soviet_construction
+		id = RUS_freeing_political_opponents
+		icon = GFX_focus_BRA_reach_out_to_military_dem
 		prerequisite = {
-			focus = RUS_ww1_adopt_marxist_ideas
+			focus = RUS_aladin
+			focus = RUS_lvov
 		}
 		available = {
 		}
+		cost = 7.2
+		x = 1
+		y = 1
+		relative_position_id = RUS_aladin
+		completion_reward = {
+			add_political_power = 120
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_reckless_industrialization
+		icon = GFX_focus_ITA_workers_unions
+		prerequisite = {
+			focus = RUS_lvov
+		}
+		available = {
+		}
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = RUS_lvov
+		completion_reward = {
+			add_timed_idea = {
+				idea = RUS_reckless_industrialization
+				days = 360
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			unlock_decision_tooltip = RUS_expand_the_putilov_factory
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_decommunalization_lvov
+		text = RUS_decommunalization
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = {
+			focus = RUS_reckless_industrialization
+		}
+		prerequisite = {
+			focus = RUS_freeing_political_opponents
+		}
+		available = {
+		}
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = RUS_reckless_industrialization
+		completion_reward = {
+			remove_ideas = RUS_rural_communities
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_champion_of_conservatism
+		icon = GFX_focus_hol_the_foundations_of_defense
+		prerequisite = {
+			focus = RUS_decommunalization_lvov
+		}
+		available = {
+		}
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = RUS_decommunalization_lvov
+		completion_reward = {
+			add_ideas = RUS_champion_of_conservatism
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = RUS_status_quo
+		icon = GFX_goal_molotov_ribbentrop_pact
+		mutually_exclusive = {
+			focus = RUS_resist_duma
+			focus = RUS_support_duma
+		}
+		cost = 10
 		x = 6
-		y = 3
+		y = 0
+		relative_position_id = RUS_support_duma
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = RUS_political_deadlock
+				add_idea = RUS_political_deadlock_2
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = RUS_discuss_tsar_authority
+		icon = GFX_goal_generic_propaganda
+		prerequisite = {
+			focus = RUS_status_quo
+		}
+		x = -1
+		y = 1
+		relative_position_id = RUS_status_quo
+		cost = 10
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = RUS_political_deadlock_2
+				add_idea = RUS_political_deadlock_3
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_parliamentary_immunity
+		icon = GFX_goal_tripartite_pact
+		prerequisite = {
+			focus = RUS_discuss_tsar_authority
+		}
+		x = 0
+		y = 1
+		relative_position_id = RUS_discuss_tsar_authority
+		cost = 10
+		completion_reward = {
+			add_political_power = 150
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_fifth_duma
+		icon = GFX_goal_anschluss
+		prerequisite = {
+			focus = RUS_parliamentary_immunity
+		}
+		mutually_exclusive = {
+			focus = RUS_adopt_marxist_ideas
+		}
+		x = -1
+		y = 1
+		relative_position_id = RUS_parliamentary_immunity
+		cost = 10
+		completion_reward = {
+			remove_ideas = RUS_political_deadlock_3
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_legitimate_power
+		icon = GFX_goal_generic_position_armies
+		prerequisite = {
+			focus = RUS_fifth_duma
+		}
+		x = 0
+		y = 1
+		relative_position_id = RUS_fifth_duma
+		cost = 10
+		completion_reward = {
+			add_stability = 0.1
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = RUS_remove_revolution_tt
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_adopt_marxist_ideas
+		icon = GFX_goal_support_communism
+		prerequisite = {
+			focus = RUS_parliamentary_immunity
+		}
+		mutually_exclusive = {
+			focus = RUS_fifth_duma
+		}
+		available = {
+			NOT = {
+				has_completed_focus = RUS_the_stolypin_reforms
+				has_completed_focus = RUS_condemn_marxist_ideas
+			}
+		}
+		x = 1
+		y = 1
+		relative_position_id = RUS_parliamentary_immunity
+		cost = 10
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = RUS_political_deadlock_3
+				add_idea = communist_influence
+			}
+			custom_effect_tooltip = RUS_remove_revolution_tt
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_legitimate_bolsheviks
+		icon = GFX_goal_generic_soviet_construction
+		prerequisite = {
+			focus = RUS_adopt_marxist_ideas
+		}
+		x = 0
+		y = 1
+		relative_position_id = RUS_adopt_marxist_ideas
 		cost = 10
 		completion_reward = {
 			add_ideas = idea_political_correctness
 		}
 		ai_will_do = {
-			factor = 0
+			base = 1
 		}
 	}
 	focus = {
-		id = RUS_ww1_disarm_the_cossacks
+		id = RUS_disarm_the_cossacks
 		icon = GFX_goal_generic_war_with_comintern
 		prerequisite = {
-			focus = RUS_ww1_legitimate_bolsheviks
+			focus = RUS_legitimate_bolsheviks
 		}
 		available = {
 			has_government = communism
 		}
-		x = 6
-		y = 4
+		x = 0
+		y = 1
+		relative_position_id = RUS_legitimate_bolsheviks
 		cost = 10
 		completion_reward = {
 			add_ideas = ideological_fanaticism_focus
 		}
 		ai_will_do = {
-			factor = 0
+			base = 1
 		}
 	}
 	focus = {
-		id = RUS_ww1_right_of_the_people
+		id = RUS_right_of_the_people
 		icon = GFX_goal_generic_national_unity
 		prerequisite = {
-			focus = RUS_ww1_disarm_the_cossacks
+			focus = RUS_disarm_the_cossacks
 		}
 		available = {
 			has_government = communism
 		}
-		x = 6
-		y = 5
+		x = 0
+		y = 1
+		relative_position_id = RUS_disarm_the_cossacks
 		cost = 10
 		completion_reward = {
-			add_ideas = political_commissars_focus
+			swap_ideas = {
+				remove_idea = RUS_rural_communities
+				add_idea = political_commissars_focus
+			}
 		}
 		ai_will_do = {
-			factor = 0
+			base = 1
+		}
+	}
+
+	focus = {
+		id = RUS_the_stolypin_reforms
+		icon = GFX_focus_RAJ_special_economic_zones
+		prerequisite = {
+			focus = RUS_status_quo
+			focus = RUS_resist_duma
+		}
+		available = {
+			NOT = {
+				has_completed_focus = RUS_adopt_marxist_ideas
+			}
+		}
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = RUS_status_quo
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = RUS_rural_communities
+				add_idea = RUS_the_stolypin_reforms_1
+			}
+			unlock_decision_tooltip = RUS_expand_the_putilov_factory
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_invite_foreign_investors
+		icon = GFX_goal_generic_foreign_investments
+		prerequisite = {
+			focus = RUS_the_stolypin_reforms
+		}
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = RUS_the_stolypin_reforms
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = RUS_the_stolypin_reforms_1
+				add_idea = RUS_the_stolypin_reforms_2
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_incentivize_urbanization
+		icon = GFX_focus_SWE_urbanization
+		prerequisite = {
+			focus = RUS_invite_foreign_investors
+		}
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = RUS_invite_foreign_investors
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = RUS_the_stolypin_reforms_2
+				add_idea = RUS_the_stolypin_reforms_3
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_condemn_marxist_ideas
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = {
+			focus = RUS_status_quo
+			focus = RUS_resist_duma
+		}
+		available = {
+			NOT = {
+				has_completed_focus = RUS_adopt_marxist_ideas
+			}
+		}
+		cost = 10
+		x = 4
+		y = 1
+		relative_position_id = RUS_status_quo
+		completion_reward = {
+			activate_decision = ban_communist_party
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_crush_strikes
+		icon = GFX_goal_generic_secret_weapon
+		prerequisite = {
+			focus = RUS_condemn_marxist_ideas
+		}
+		x = 0
+		y = 2
+		relative_position_id = RUS_condemn_marxist_ideas
+		cost = 10
+		completion_reward = {
+			add_political_power = 200
+			add_stability = -0.05
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = RUS_resist_duma
+		icon = GFX_focus_generic_strike_at_democracy2
+		mutually_exclusive = {
+			focus = RUS_status_quo
+			focus = RUS_support_duma
+		}
+		cost = 10
+		x = 6
+		y = 0
+		relative_position_id = RUS_status_quo
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_reinforce_tsar_authority
+		icon = GFX_hoi4tgw_russianempire
+		prerequisite = {
+			focus = RUS_resist_duma
+		}
+		x = 0
+		y = 1
+		relative_position_id = RUS_resist_duma
+		cost = 10
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = RUS_political_deadlock
+				add_idea = RUS_tsars_authority_1
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_purge_imperial_guard
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = {
+			focus = RUS_reinforce_tsar_authority
+		}
+		x = 1
+		y = 1
+		relative_position_id = RUS_reinforce_tsar_authority
+		cost = 10
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_arrest_opposition_leaders
+		icon = GFX_goal_generic_attack_allies
+		prerequisite = {
+			focus = RUS_reinforce_tsar_authority
+		}
+		x = -1
+		y = 1
+		relative_position_id = RUS_reinforce_tsar_authority
+		cost = 10
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = RUS_tsars_authority_1
+				add_idea = RUS_tsars_authority_2
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = RUS_dissolve_imperial_duma
+		icon = GFX_goal_anti_comintern_pact
+		prerequisite = {
+			focus = RUS_arrest_opposition_leaders
+		}
+		x = 1
+		y = 1
+		relative_position_id = RUS_arrest_opposition_leaders
+		cost = 10
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = RUS_tsars_authority_2
+				add_idea = RUS_tsars_authority_3
+			}
+			custom_effect_tooltip = RUS_remove_revolution_tt
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 	###########################################################################################################################
@@ -384,7 +709,7 @@ focus_tree = {
 			factor = 2000
 		}
 		cost = 10
-		x = 13
+		x = 25
 		y = 0
 	}
 	focus = {
@@ -392,7 +717,7 @@ focus_tree = {
 		prerequisite = {
 			focus = RUS_ww1_diplomatic_effort
 		}
-		icon = GFX_goal_generic_territory_or_war
+		icon = GFX_hoi4tgw_balkans_policy
 		completion_reward = {
 			add_stability = 0.05
 			add_political_power = 100
@@ -401,8 +726,9 @@ focus_tree = {
 			factor = 2000
 		}
 		cost = 10
-		x = 9
+		x = -4
 		y = 1
+		relative_position_id = RUS_ww1_diplomatic_effort
 	}
 	focus = {
 		id = RUS_ww1_support_serbia
@@ -422,11 +748,12 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 2000
+			base = 150
 		}
 		cost = 10
-		x = 8
-		y = 2
+		x = -1
+		y = 1
+		relative_position_id = RUS_ww1_BalkansPolitics
 		mutually_exclusive = {
 			focus = RUS_ww1_ApeasementBalkans
 		}
@@ -444,16 +771,41 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = -80
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_ideas = isolation
 		}
 		ai_will_do = {
-			factor = 0
+			base = 0
+			modifier = {
+				add = 150
+				is_historical_focus_on = no
+			}
 		}
 		cost = 10
-		x = 10
-		y = 2
+		x = 1
+		y = 1
+		relative_position_id = RUS_ww1_BalkansPolitics
 		mutually_exclusive = {
 			focus = RUS_ww1_support_serbia
+		}
+	}
+	focus = {
+		id = RUS_european_focus
+		icon = GFX_goal_generic_major_war
+		prerequisite = {
+			focus = RUS_ww1_diplomatic_effort
+		}
+		available = {
+		}
+		x = 0
+		y = 1
+		relative_position_id = RUS_ww1_diplomatic_effort
+		cost = 10
+		ai_will_do = {
+			factor = 200
+		}
+		completion_reward = {
+			add_political_power = 100
 		}
 	}
 	focus = {
@@ -470,8 +822,9 @@ focus_tree = {
 				has_global_flag = kis_treaty_of_versailles
 			}
 		}
-		x = 12
-		y = 2
+		x = -1
+		y = 1
+		relative_position_id = RUS_european_focus
 		cost = 10
 		completion_reward = {
 			diplomatic_relation = {
@@ -480,7 +833,11 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 0
+			base = 0
+			modifier = {
+				add = 100
+				is_historical_focus_on = no
+			}
 		}
 		mutually_exclusive = {
 			focus = RUS_ww1_pro_fra
@@ -499,11 +856,12 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 300
+			base = 100
 		}
 		cost = 10
-		x = 14
-		y = 2
+		x = 1
+		y = 1
+		relative_position_id = RUS_european_focus
 		mutually_exclusive = {
 			focus = RUS_wilhlems_deal
 		}
@@ -539,8 +897,9 @@ focus_tree = {
 			factor = 100
 		}
 		cost = 10
-		x = 11
-		y = 3
+		x = -1
+		y = 1
+		relative_position_id = RUS_wilhlems_deal
 	}
 	focus = {
 		id = RUS_ww1_add_fuel_to_the_fire
@@ -553,87 +912,32 @@ focus_tree = {
 				}
 			}
 			NOT = {
-				SER = {
-					is_in_faction_with = RUS
-				}
+				is_in_faction_with = SER
 			}
 			NOT = {
 				has_global_flag = kis_treaty_of_versailles
 			}
 		}
 		bypass = {
-			has_war_with = AUH
+			is_in_faction_with = SER
 		}
 		prerequisite = {
 			focus = RUS_ww1_support_serbia
 		}
 		completion_reward = {
-			ENG = {
-				add_to_faction = SER
+			SER = {
+				country_event = generic.5
 			}
 		}
-		x = 8
-		y = 3
-		cost = 10
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	focus = {
-		id = RUS_european_focus
-		icon = GFX_goal_generic_major_war
-		prerequisite = {
-			focus = RUS_ww1_diplomatic_effort
-		}
-		available = {
-		}
-		x = 13
+		x = 0
 		y = 1
+		relative_position_id = RUS_ww1_support_serbia
 		cost = 10
 		ai_will_do = {
-			factor = 200
-		}
-		completion_reward = {
-			add_political_power = 100
-		}
-	}
-	focus = {
-		id = RUS_ww1_scandinavia_focus
-		icon = GFX_goal_generic_position_armies
-		prerequisite = {
-			focus = RUS_ww1_diplomatic_effort
-		}
-		available = {
-		}
-		x = 15
-		y = 1
-		cost = 10
-		ai_will_do = {
-			factor = 10
-		}
-		completion_reward = {
-			add_political_power = 50
-			111 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-			}
-			145 = {
-				add_building_construction = {
-					type = naval_base
-					province = 9228
-					level = 3
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = coastal_bunker
-					level = 2
-					province = 9228
-					instant_build = yes
-				}
+			base = 0
+			modifier = {
+				add = 10
+				is_historical_focus_on = no
 			}
 		}
 	}
@@ -645,39 +949,15 @@ focus_tree = {
 		}
 		available = {
 		}
-		x = 17
+		x = 4
 		y = 1
+		relative_position_id = RUS_ww1_diplomatic_effort
 		cost = 10
 		ai_will_do = {
 			factor = 100
 		}
 		completion_reward = {
 			add_political_power = 50
-		}
-	}
-	focus = {
-		id = RUS_ww1_Tungsten_Nerchinsk		# Search Wolfram ore near Nerchinsk
-		icon = GFX_focus_generic_tungsten
-		prerequisite = {
-			focus = RUS_ww1_diplomatic_effort
-		}
-		available = {
-			date > 1911.1.1
-			has_full_control_of_state = 563
-		}
-		x = 19
-		y = 1
-		cost = 10
-		ai_will_do = {
-			factor = 100
-		}
-		completion_reward = {
-			563 = {
-				add_resource = {
-					type = tungsten
-					amount = 2
-				}
-			}
 		}
 	}
 
@@ -696,8 +976,9 @@ focus_tree = {
 		prerequisite = {
 			focus = RUS_asian_focus
 		}
-		x = 18
-		y = 2
+		x = 1
+		y = 1
+		relative_position_id = RUS_asian_focus
 		cost = 10
 		completion_reward = {
 			266 = {
@@ -724,8 +1005,9 @@ focus_tree = {
 		prerequisite = {
 			focus = RUS_ww1_Reinforce_Northern_Persia
 		}
-		x = 19
-		y = 3
+		x = 1
+		y = 1
+		relative_position_id = RUS_ww1_Reinforce_Northern_Persia
 		cost = 10
 		completion_reward = {
 			add_political_power = -300
@@ -775,8 +1057,9 @@ focus_tree = {
 		prerequisite = {
 			focus = RUS_ww1_Reinforce_Northern_Persia
 		}
-		x = 17
-		y = 3
+		x = -1
+		y = 1
+		relative_position_id = RUS_ww1_Reinforce_Northern_Persia
 		cost = 10
 		completion_reward = {
 			add_political_power = 120
@@ -829,8 +1112,9 @@ focus_tree = {
 		prerequisite = {
 			focus = RUS_ww1_Support_Persia_Convention
 		}
-		x = 17
-		y = 5
+		x = 0
+		y = 2
+		relative_position_id = RUS_ww1_Support_Persia_Convention
 		cost = 10
 		completion_reward = {
 			add_manpower = 15000
@@ -855,8 +1139,9 @@ focus_tree = {
 		prerequisite = {
 			focus = RUS_ww1_Persian_Cossack_Brigade
 		}
-		x = 17
-		y = 7
+		x = 0
+		y = 2
+		relative_position_id = RUS_ww1_Persian_Cossack_Brigade
 		cost = 10
 		completion_reward = {
 			PER = {
@@ -892,8 +1177,9 @@ focus_tree = {
 		prerequisite = {
 			focus = RUS_ww1_Revoke_Persia_Convention
 		}
-		x = 19
-		y = 5
+		x = 0
+		y = 2
+		relative_position_id = RUS_ww1_Revoke_Persia_Convention
 		cost = 10
 		completion_reward = {
 			PEN = {
@@ -929,11 +1215,20 @@ focus_tree = {
 					}
 					transfer_state = 416
 				}
+				if = {
+					limit = {
+						PER = {
+							controls_state = 1004
+						}
+					}
+					transfer_state = 1004
+				}
 				hidden_effect = {
 					add_state_core = 420
 					add_state_core = 266
 					add_state_core = 418
 					add_state_core = 416
+					add_state_core = 1004
 					kill_country_leader = yes
 				}
 				promote_character = RUS_vladimir_liakhov
@@ -985,9 +1280,10 @@ focus_tree = {
 		prerequisite = {
 			focus = RUS_ww1_Puppet_Persia
 		}
-		x = 19
-		y = 7
-		cost = 10
+		x = 0
+		y = 2
+		relative_position_id = RUS_ww1_Puppet_Persia
+		cost = 5
 		completion_reward = {
 			send_equipment = {
 				type = infantry_equipment
@@ -1008,8 +1304,9 @@ focus_tree = {
 		prerequisite = {
 			focus = RUS_asian_focus
 		}
-		x = 16
-		y = 2
+		x = -1
+		y = 1
+		relative_position_id = RUS_asian_focus
 		cost = 10
 		completion_reward = {
 			408 = {
@@ -1063,13 +1360,26 @@ focus_tree = {
 		id = RUS_ww1_invest_west
 		icon = GFX_goal_generic_construction
 		available = {
+			controls_state = 90
+			controls_state = 221
+			controls_state = 227
+			controls_state = 95
+			controls_state = 96
+			controls_state = 97
+			controls_state = 12
+			controls_state = 192
+			controls_state = 834
+			controls_state = 197
+			controls_state = 226
+			controls_state = 240
 		}
 		prerequisite = {
 			focus = RUS_wilhlems_deal
 			focus = RUS_ww1_pro_fra
 		}
-		x = 13
-		y = 3
+		x = 1
+		y = 1
+		relative_position_id = RUS_wilhlems_deal
 		cost = 10
 		completion_reward = {
 			add_resource = {
@@ -1092,6 +1402,7 @@ focus_tree = {
 				amount = 34
 				state = 227
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			95 = {
 				add_building_construction = {
 					type = infrastructure
@@ -1121,6 +1432,13 @@ focus_tree = {
 				}
 			}
 			192 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			834 = {
 				add_building_construction = {
 					type = infrastructure
 					level = 1
@@ -1182,8 +1500,9 @@ focus_tree = {
 			factor = 100
 		}
 		cost = 10
-		x = 9
-		y = 4
+		x = 1
+		y = 1
+		relative_position_id = RUS_ww1_add_fuel_to_the_fire
 	}
 	#-----------------------------------------
 	focus = {
@@ -1193,23 +1512,19 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_trade
 		completion_reward = {
-			add_opinion_modifier = {
+			send_embargo = ENG
+			reverse_add_opinion_modifier = {
 				target = ENG
-				modifier = minor_sanctions
-			}
-			ENG = {
-				add_opinion_modifier = {
-					target = RUS
-					modifier = HOI4TGW_Opinion_Russia_Leave_Entente
-				}
+				modifier = HOI4TGW_Opinion_Russia_Leave_Entente
 			}
 		}
 		ai_will_do = {
 			factor = 10
 		}
 		cost = 10
-		x = 11
-		y = 4
+		x = 0
+		y = 1
+		relative_position_id = RUS_ww1_friend_with_auh
 	}
 	#-----------------------------------------
 	#-----------------------------------------
@@ -1229,15 +1544,16 @@ focus_tree = {
 		icon = GFX_hoi4tgw_knifeintheback
 		completion_reward = {
 			GER = {
-				add_to_faction = RUS
+				country_event = generic.2
 			}
 		}
 		ai_will_do = {
 			factor = 10
 		}
 		cost = 10
-		x = 11
-		y = 5
+		x = 0
+		y = 1
+		relative_position_id = RUS_ww1_EmbargoUK
 	}
 	#-----------------------------------------
 	focus = {
@@ -1255,13 +1571,14 @@ focus_tree = {
 		completion_reward = {
 			send_equipment = {
 				target = SER
-				type = infantry_equipment_1
+				type = infantry_equipment
 				amount = 2000
 			}
 		}
-		x = 8
-		y = 5
-		cost = 10
+		x = 0
+		y = 2
+		relative_position_id = RUS_ww1_add_fuel_to_the_fire
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
@@ -1279,38 +1596,15 @@ focus_tree = {
 			factor = 1
 		}
 		cost = 10
-		x = 7
+		x = -6
 		y = 1
-	}
-	focus = {
-		id = RUS_ww1_BakuInvest # Invest in Baku
-		icon = GFX_goal_generic_oil_refinery
-		prerequisite = {
-			focus = RUS_ww1_CaucasusFocus
-		}
-		available = {
-			controls_state = 229
-		}
-		x = 7
-		y = 6
-		ai_will_do = {
-			factor = 1
-		}
-		cost = 10
-		completion_reward = {
-			229 = {
-				add_resource = {
-					type = oil
-					amount = 38
-				}
-			}
-		}
+		relative_position_id = RUS_ww1_diplomatic_effort
 	}
 	focus = {
 		id = RUS_ww1_RussoTurkishBorder		# Strengthen Russo-Turkish Border # Open Beta 0.8.1
 		icon = GFX_goal_generic_construct_military
 		prerequisite = {
-			focus = RUS_ww1_BakuInvest
+			focus = RUS_ww1_CaucasusFocus
 		}
 		ai_will_do = {
 			factor = 0
@@ -1319,8 +1613,9 @@ focus_tree = {
 			controls_state = 230
 			controls_state = 231
 		}
-		x = 8
-		y = 7
+		x = 0
+		y = 6
+		relative_position_id = RUS_ww1_CaucasusFocus
 		cost = 10
 		completion_reward = {
 			230 = {
@@ -1363,16 +1658,14 @@ focus_tree = {
 		id = RUS_ww1_AzerbaijanisRights		# Recognize Azerbaijanis Rights # Open Beta 0.8.1
 		icon = GFX_focus_generic_treaty
 		prerequisite = {
-			focus = RUS_ww1_BakuInvest
-		}
-		prerequisite = {
-			focus = RUS_ww1_right_of_the_people
+			focus = RUS_ww1_CaucasusFocus
 		}
 		available = {
 			controls_state = 229
 		}
-		x = 6
-		y = 7
+		x = -1
+		y = 1
+		relative_position_id = RUS_ww1_CaucasusFocus
 		ai_will_do = {
 			factor = 0
 		}
@@ -1394,8 +1687,9 @@ focus_tree = {
 			has_war_with = GER
 			controls_state = 188
 		}
-		x = 9
-		y = 6
+		x = 0
+		y = 1
+		relative_position_id = RUS_ww1_support_serbia_weapons
 		cost = 10
 		ai_will_do = {
 			factor = 0
@@ -1415,15 +1709,16 @@ focus_tree = {
 		}
 		available = {
 			RUS = {
-				controls_state = 341
+				controls_state = 797
 			}
 			any_country = {
 				is_in_faction_with = RUS
-				controls_state = 341
+				controls_state = 797
 			}
 		}
-		x = 9
-		y = 8
+		x = 1
+		y = 1
+		relative_position_id = RUS_ww1_RussoTurkishBorder
 		cost = 10
 		ai_will_do = {
 			factor = 0
@@ -1433,17 +1728,19 @@ focus_tree = {
 			add_state_claim = 339
 			add_state_claim = 344
 			add_state_claim = 340
-			add_state_claim = 341
+			add_state_claim = 797
 			add_state_claim = 342
 			add_state_claim = 343
 			add_state_claim = 345
 			add_state_claim = 346
 			add_state_claim = 347
 			add_state_claim = 348
+			add_state_claim = 798
 			add_state_claim = 349
 			add_state_claim = 350
 			add_state_claim = 352
 			add_state_claim = 353
+			add_state_claim = 800
 			add_state_claim = 354
 			add_state_claim = 355
 			add_state_claim = 356
@@ -1456,9 +1753,12 @@ focus_tree = {
 			focus = RUS_ww1_pro_fra
 		}
 		available = {
+			controls_state = 98
+			controls_state = 11
 		}
-		x = 14
-		y = 4
+		x = 0
+		y = 2
+		relative_position_id = RUS_ww1_pro_fra
 		cost = 10
 		completion_reward = {
 			98 = {
@@ -1508,8 +1808,9 @@ focus_tree = {
 		icon = GFX_hoi4tgw_wggrus
 		available = {
 		}
-		x = 13
-		y = 5
+		x = -1
+		y = 1
+		relative_position_id = RUS_ww1_reinforce_western_forts
 		cost = 10
 		completion_reward = {
 			give_guarantee = FRA
@@ -1530,11 +1831,13 @@ focus_tree = {
 		available = {
 			has_global_flag = kis_brestlitovsk
 		}
-		x = 12
-		y = 6
+		x = -1
+		y = 1
+		relative_position_id = RUS_ww1_defy_germany
 		cost = 10
 		completion_reward = {
 			add_manpower = 100000
+			custom_effect_tooltip = RUS_ww1_polish_corps_effect_tt
 		}
 	}
 	#-----------------------------------------
@@ -1564,7 +1867,7 @@ focus_tree = {
 				QIN = {
 					has_civil_war = yes
 				}
-				has_global_flag = kis_xinhairenews
+				has_global_flag = kis_xinhai_revolution
 			}
 		}
 		completion_reward = {
@@ -1574,8 +1877,9 @@ focus_tree = {
 			factor = 20
 		}
 		cost = 10
-		x = 15
-		y = 3
+		x = -1
+		y = 1
+		relative_position_id = RUS_around_manchuria
 	}
 	#-----------------------------------------
 	focus = {
@@ -1587,19 +1891,20 @@ focus_tree = {
 		available = {
 			MON = {
 				exists = yes
+				is_subject = no
 			}
 			NOT = {
 				has_war_with = MON
 			}
 		}
-		x = 16
-		y = 4
+		x = 1
+		y = 1
+		relative_position_id = RUS_ww1_Xinhai_Revolution_Opportunity
 		cost = 10
 		completion_reward = {
 			RUS = {
 				puppet = MON
 			}
-			transfer_state = 329
 		}
 		ai_will_do = {
 			factor = 200
@@ -1612,10 +1917,12 @@ focus_tree = {
 			focus = RUS_mongolian_protectorate
 		}
 		available = {
-			date > 1914.9.1
+			has_war_with_major = yes
+			controls_state = 408
 		}
-		x = 15
-		y = 5
+		x = -1
+		y = 1
+		relative_position_id = RUS_mongolian_protectorate
 		cost = 10
 		completion_reward = {
 			408 = {
@@ -1670,8 +1977,9 @@ focus_tree = {
 			factor = 0
 		}
 		cost = 10
-		x = 14
-		y = 6
+		x = -1
+		y = 1
+		relative_position_id = RUS_reinforce_vladivostok
 		mutually_exclusive = {
 			focus = RUS_annex_manchurian_sphere
 		}
@@ -1685,11 +1993,13 @@ focus_tree = {
 		available = {
 			is_in_faction = no
 		}
-		x = 16
-		y = 6
+		x = 1
+		y = 1
+		relative_position_id = RUS_reinforce_vladivostok
 		cost = 10
 		completion_reward = {
 			transfer_state = 714
+			transfer_state = 761
 			transfer_state = 717
 			transfer_state = 328
 			transfer_state = 716
@@ -1713,8 +2023,9 @@ focus_tree = {
 				is_in_faction = no
 			}
 		}
-		x = 15
-		y = 7
+		x = -1
+		y = 1
+		relative_position_id = RUS_annex_manchurian_sphere
 		cost = 10
 		completion_reward = {
 			create_wargoal = {
@@ -1722,7 +2033,7 @@ focus_tree = {
 				type = take_state_focus
 				generator = {
 					537
-					744
+					745
 				}
 			}
 			swap_ideas = {
@@ -1730,6 +2041,156 @@ focus_tree = {
 				add_idea = RUS_ww1_tsushima_humiliation_counter
 			}
 		}
+	}
+	focus = {
+		id = RUS_second_russo_japanese_war_defeat
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = {
+			focus = RUS_ww1_treaty_portsmouth
+		}
+		mutually_exclusive = {
+			focus = RUS_second_russo_japanese_war_victory
+		}
+		available = {
+			always = no
+		}
+		x = -2
+		y = 1
+		relative_position_id = RUS_ww1_treaty_portsmouth
+		cost = 10
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = RUS_ww1_tsushima_humiliation_counter
+				add_idea = RUS_ww1_tsushima_humiliation
+			}
+		}
+	}
+	focus = {
+		id = RUS_second_russo_japanese_war_victory
+		icon = GFX_goal_generic_propaganda
+		prerequisite = {
+			focus = RUS_ww1_treaty_portsmouth
+		}
+		mutually_exclusive = {
+			focus = RUS_second_russo_japanese_war_defeat
+		}
+		available = {
+			always = no
+		}
+		x = 0
+		y = 1
+		relative_position_id = RUS_ww1_treaty_portsmouth
+		cost = 10
+		completion_reward = {
+			add_political_power = 300
+			add_war_support = 0.15
+		}
+	}
+	focus = {
+		id = RUS_manchurian_policy
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = {
+			focus = RUS_second_russo_japanese_war_victory
+		}
+		available = {
+			controls_state = 714
+			controls_state = 761
+			controls_state = 717
+			controls_state = 328
+			controls_state = 716
+		}
+		x = 1
+		y = 1
+		relative_position_id = RUS_second_russo_japanese_war_victory
+		cost = 10
+		completion_reward = {
+			add_political_power = 50
+		}
+		ai_will_do = { factor = 0 }
+	}
+	focus = {
+		id = RUS_manchurian_puppet
+		icon = GFX_focus_jap_manchurian_project
+		prerequisite = {
+			focus = RUS_manchurian_policy
+		}
+		available = {
+			controls_state = 714
+			controls_state = 761
+			controls_state = 717
+			controls_state = 328
+			controls_state = 716
+		}
+		mutually_exclusive = { focus = RUS_manchurian_russification }
+		x = 1
+		y = 1
+		relative_position_id = RUS_manchurian_policy
+		cost = 10
+		completion_reward = {
+			country_event = ww1_russia.30
+		}
+		ai_will_do = { factor = 0 }
+	}
+	focus = {
+		id = RUS_manchurian_russification
+		icon = GFX_hoi4tgw_russianempire
+		prerequisite = {
+			focus = RUS_manchurian_policy
+		}
+		available = {
+			controls_state = 714
+			controls_state = 761
+			controls_state = 717
+			controls_state = 328
+			controls_state = 716
+		}
+		mutually_exclusive = { focus = RUS_manchurian_puppet }
+		x = -1
+		y = 1
+		relative_position_id = RUS_manchurian_policy
+		cost = 10
+		completion_reward = {
+			custom_effect_tooltip = rusmanchu
+		}
+		ai_will_do = { factor = 0 }
+	}
+	focus = {
+		id = RUS_expand_dalniy_naval_base
+		icon = GFX_goal_generic_build_navy
+		prerequisite = {
+			focus = RUS_manchurian_policy
+		}
+		available = {
+			controls_state = 745
+		}
+		x = 3
+		y = 1
+		relative_position_id = RUS_manchurian_policy
+		cost = 10
+		completion_reward = {
+			add_state_core = 745
+			745 = {
+				add_manpower = 15000
+				set_building_level = {
+					type = naval_base
+					level = 10
+					province = 1150
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 1150
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		ai_will_do = { factor = 0 }
 	}
 	#######################
 	focus = {
@@ -1780,7 +2241,7 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			111 = {
+			808 = {
 				add_building_construction = {
 					type = naval_base
 					level = 2
@@ -1788,7 +2249,7 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			13 = {
+			926 = {
 				add_building_construction = {
 					type = naval_base
 					level = 2
@@ -1897,7 +2358,7 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			base = 0
+			base = 1
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -1921,7 +2382,7 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			base = 0
+			base = 1
 		}
 	}
 
@@ -1948,7 +2409,7 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			base = 0
+			base = 1
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -1976,7 +2437,7 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			base = 0
+			base = 1
 		}
 
 		search_filters = { FOCUS_FILTER_STABILITY }
@@ -1997,7 +2458,7 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			base = 0
+			base = 1
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -2019,7 +2480,7 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			base = 0
+			base = 1
 		}
 
 		search_filters = { FOCUS_FILTER_STABILITY }
@@ -2043,7 +2504,7 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			base = 0
+			base = 1
 		}
 	}
 	
@@ -2071,7 +2532,7 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			base = 0
+			base = 1
 		}
 	}
 
@@ -2090,7 +2551,7 @@ focus_tree = {
 			set_cosmetic_tag = RUS_EMPIRE
 		}
 		ai_will_do = {
-			base = 0
+			base = 1
 		}
 	}
 
@@ -2110,7 +2571,7 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			base = 0
+			base = 1
 		}
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
@@ -2142,7 +2603,7 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			base = 0
+			base = 1
 		}
 
 		search_filters = { FOCUS_FILTER_ANNEXATION }
@@ -2174,7 +2635,7 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			base = 0
+			base = 1
 		}
 
 		search_filters = { FOCUS_FILTER_ANNEXATION }
@@ -2198,7 +2659,7 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			base = 0
+			base = 1
 		}
 
 		search_filters = { FOCUS_FILTER_ANNEXATION }
@@ -2222,7 +2683,7 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			base = 0
+			base = 1
 		}
 
 		search_filters = { FOCUS_FILTER_ANNEXATION }
@@ -2250,7 +2711,7 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			base = 0
+			base = 1
 		}
 
 		search_filters = { FOCUS_FILTER_ANNEXATION }
@@ -2278,7 +2739,7 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			base = 0
+			base = 1
 		}
 
 		search_filters = { FOCUS_FILTER_ANNEXATION }

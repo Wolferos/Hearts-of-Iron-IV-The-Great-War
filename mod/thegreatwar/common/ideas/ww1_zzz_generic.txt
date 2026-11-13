@@ -1,24 +1,19 @@
 ideas = {
-	country={
-	
-		kis_auh_unifyrealm_focus = {
+	country = {
 
-			modifier = {
-				conscription = 0.02
-				army_morale_factor = 0.05
-				army_core_attack_factor = 0.04
-				army_core_defence_factor = 0.04
+		ww1_legacy_of_the_scramble_for_africa = {
+
+			allowed = {
+				always = no
 			}
 
-		}
-
-		ww1_Scramble_for_Africa = {
-
-			allowed = { 
-				always = no
-			} 
-
 			removal_cost = -1
+
+			allowed_civil_war = {
+				any_controlled_state = {
+					is_on_continent = africa
+				}
+			}
 
 			modifier = {
 				justify_war_goal_time = -0.02
@@ -26,29 +21,36 @@ ideas = {
 			}
 		}
 
-		ww1_Faith_Allah = {
+		ww1_sharia_law = {
 
-			allowed = { 
+			allowed = {
 				always = no
-			} 
-
-			allowed_civil_war = { 
-				NOT = { 
-					has_government = communism 
-				} 
-			} 
+			}
+			
+			picture = sharia_law
 
 			removal_cost = -1
 
+			allowed_civil_war = {
+				NOT = {
+					has_government = communism
+				}
+			}
+
 			modifier = {
-				army_org_factor = 0.02
-				communism_drift = -0.05
+			    stability_factor = 0.05
+			    war_support_factor = 0.05
+				army_org_factor = 0.03
+				conscription = 0.001
+				communism_drift = -0.03
 			}
 		}
 
-		ww1_Christmas_Truth_Repressed = {
-			
-			allowed = { 
+		ww1_christmas_truce_repressed = {
+
+			picture = generic_army_problems
+
+			allowed = {
 				always = no
 			}
 
@@ -58,8 +60,6 @@ ideas = {
 				always = yes
 			}
 
-			picture = generic_army_problems
-			
 			modifier = {
 				army_attack_factor = -0.05
 				experience_gain_army = -0.1
@@ -67,9 +67,11 @@ ideas = {
 			}
 		}
 
-		ww1_Christmas_Truth_Ignored = {
-			
-			allowed = { 
+		ww1_christmas_truce_ignored = {
+
+			picture = SPR_disbanded_army
+
+			allowed = {
 				always = no
 			}
 
@@ -78,8 +80,6 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-
-			picture = generic_army_problems
 
 			modifier = {
 				army_morale_factor = -0.35
@@ -90,9 +90,11 @@ ideas = {
 			}
 		}
 
-		ww1_ENG_APOC = {
-			
-			allowed = { 
+		ww1_assured_oil_supply = {
+
+			picture = MEX_oil_concessions
+
+			allowed = {
 				always = no
 			}
 
@@ -101,28 +103,6 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-
-			picture = generic_research_bonus
-
-			modifier = {
-				max_fuel_factor = 0.04
-				fuel_gain_factor = 0.02
-			}
-		}
-
-		interwar_AssuredOilSupply = {
-			
-			allowed = { 
-				always = no
-			}
-
-			removal_cost = -1
-
-			allowed_civil_war = {
-				always = yes
-			}
-
-			picture = generic_research_bonus
 
 			modifier = {
 				max_fuel_factor = 0.02
@@ -131,32 +111,37 @@ ideas = {
 		}
 
 		authoritarianism = {
-			
+
+			picture = generic_intel_bonus
+
 			allowed = {
 				always = no
 			}
+
+			removal_cost = -1
 
 			allowed_civil_war = {
 				has_government = neutrality
 			}
 
-			removal_cost = -1
-
-			picture = generic_infantry_bonus
-
-			
 			modifier = {
 				neutrality_drift = 0.1
 			}
 		}
 
-		interwar_spirit_TheGreatWar_Winner = {
+		ww1_victoror_of_the_great_war = {
 
 			picture = ROM_king_carol_ii_hedonist
 
-			allowed={ always = no }
-			allowed_civil_war={ always = no }
-			removal_cost=-1
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
 
 			modifier = {
 				stability_factor = 0.05
@@ -164,26 +149,35 @@ ideas = {
 			}
 		}
 
-		interwar_spirit_TheGreatWar_Loser = {
+		ww1_shame_of_defeat = {
 
 			picture = generic_army_problems
 
-			allowed={ always = no }
-			allowed_civil_war={ always = no }
-			removal_cost=-1
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
 			modifier = {
 				consumer_goods_factor = -0.3
 				political_power_gain = -1.0
 			}
 		}
 
-		ww1_soviet_republic = {
+		ww1_revolutionary_republic = {
 
 			picture = trotskyite_plot_purged
 
 			allowed = {
 				always = no
 			}
+
+			removal_cost = -1
 
 			allowed_civil_war = {
 				has_government = communism
@@ -199,8 +193,6 @@ ideas = {
 				}
 			}
 
-			removal_cost = -1
-
 			modifier = {
 				army_morale_factor = 0.05
 			}
@@ -210,5 +202,119 @@ ideas = {
 				can_create_factions = no
 			}
 		}
+
+		ww1_spanish_flu = {
+
+			picture = ENG_the_war_to_end_all_wars
+
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				conscription_factor = -0.15
+				army_morale_factor = -0.1
+				war_support_factor = -0.05
+			}
+		}
+
+		ww1_zeppelin_bombing_campaign = {
+
+			picture = combined_bomber_offensive
+
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				stability_weekly = -0.002
+			}
+		}
+
+		ww1_superior_enemy = {
+
+			picture = FRA_army_of_aggression_focus
+
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			modifier = {
+				army_morale_factor = -0.15
+				army_defence_factor = -0.15
+				army_org_factor = -0.15
+			}
+		}
+
+		ww1_revolution = {
+
+			picture = generic_morale_bonus
+
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				army_org_factor = 0.1
+				army_morale_factor = 0.1
+				army_speed_factor = 0.05
+				org_loss_when_moving = -0.05
+			}
+		}
+
+		ww1_dreadnought_buildup = {
+
+			picture = generic_navy_bonus
+
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			research_bonus = {
+				naval_doctrine = 0.02
+			}
+
+			equipment_bonus = {
+				destroyer = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+			}
+
+			modifier = {
+				consumer_goods_factor = 0.1
+			}
+		}
+
 	}
 }

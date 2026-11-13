@@ -906,6 +906,12 @@ shared_focus = {
 			has_focus_tree = mexico_focus_tree
 		}
 	}
+	offset = {
+		x = -2
+		trigger = {
+			has_focus_tree = portugal_focus
+		}
+	}
 	ai_will_do = {
 		factor = 100
 	}
@@ -1576,7 +1582,12 @@ shared_focus = {
 }
 shared_focus = {
 	id = army_effort
-	icon = GFX_goal_generic_allies_build_infantry
+	icon = {
+		GFX_focus_RAJ_lions_of_the_great_war = {
+			has_focus_tree = raj_focus
+		}
+		GFX_goal_generic_allies_build_infantry = yes
+	}
 	completion_reward = {
 		army_experience = 15
 		add_doctrine_cost_reduction = {
@@ -1614,9 +1625,15 @@ shared_focus = {
 		}
 	}
 	offset = {
-		x = 6
+		x = -2
 		trigger = {
-			has_focus_tree = rus_focus
+			has_focus_tree = portugal_focus
+		}
+	}
+	offset = {
+		x = 19
+		trigger = {
+			has_focus_tree = russian_focus
 		}
 	}
 	offset = {
@@ -2043,7 +2060,7 @@ shared_focus = {
 			has_focus_tree = auh_focus
 		}
 		GFX_hoi4tgw_rus_aviation_effort = {
-			has_focus_tree = rus_focus
+			has_focus_tree = russian_focus
 		}
 		GFX_goal_generic_build_airforce = yes
 	}
@@ -2151,9 +2168,15 @@ shared_focus = {
 		}
 	}
 	offset = {
-		x = 6
+		x = -2
 		trigger = {
-			has_focus_tree = rus_focus
+			has_focus_tree = portugal_focus
+		}
+	}
+	offset = {
+		x = 19
+		trigger = {
+			has_focus_tree = russian_focus
 		}
 	}
 	offset = {
@@ -2274,7 +2297,7 @@ shared_focus = {
 	}
 	icon = {
 		GFX_goal_generic_build_airforce = {
-			has_focus_tree = rus_focus
+			has_focus_tree = russian_focus
 		}
 		GFX_goal_generic_air_doctrine = yes
 	}
@@ -2485,7 +2508,7 @@ shared_focus = {
 	}
 	icon = {
 		GFX_goal_generic_air_fighter = {
-			has_focus_tree = rus_focus
+			has_focus_tree = russian_focus
 		}
 		GFX_goal_generic_air_doctrine = yes
 	}
@@ -2597,9 +2620,15 @@ shared_focus = {
 		}
 	}
 	offset = {
-		x = 6
+		x = -2
 		trigger = {
-			has_focus_tree = rus_focus
+			has_focus_tree = portugal_focus
+		}
+	}
+	offset = {
+		x = 19
+		trigger = {
+			has_focus_tree = russian_focus
 		}
 	}
 	ai_will_do = {
@@ -3803,7 +3832,7 @@ shared_focus = {
 	}
 	icon = {
 		GFX_hoi4tgw_rusacademy = {
-			has_focus_tree = rus_focus
+			has_focus_tree = russian_focus
 		}
 		GFX_focus_research = yes
 	}
@@ -3814,7 +3843,7 @@ shared_focus = {
 		add_research_slot = 1
 		if = {
 			limit = {
-				has_focus_tree = rus_focus
+				has_focus_tree = russian_focus
 			}
 			capital = {
 				add_extra_state_shared_building_slots = 2
@@ -3999,9 +4028,21 @@ shared_focus = {
 		}
 	}
 	offset = {
-		x = 6
+		x = -2
 		trigger = {
-			has_focus_tree = rus_focus
+			has_focus_tree = portugal_focus
+		}
+	}
+	offset = {
+		x = -1
+		trigger = {
+			has_focus_tree = qing_focus
+		}
+	}
+	offset = {
+		x = 19
+		trigger = {
+			has_focus_tree = russian_focus
 		}
 	}
 	offset = {
@@ -4531,6 +4572,9 @@ shared_focus = {
 shared_focus = {
 	id = ww1_interwar_Aftermath
 	icon = GFX_focus_generic_treaty
+	mutually_exclusive = {
+		focus = BRI_the_restored_kingdom
+	}
 	available = {
 		has_global_flag = kis_treaty_of_versailles
 	}
@@ -4541,9 +4585,21 @@ shared_focus = {
 	x = 9
 	y = 9
 	offset = {
+		x = -1
+		trigger = {
+			has_focus_tree = balkan_generic_focus
+		}
+	}
+	offset = {
 		y = 2
 		trigger = {
 			has_focus_tree = belgium_focus
+		}
+	}
+	offset = {
+		y = 2
+		trigger = {
+			has_focus_tree = brittany_focus
 		}
 	}
 	offset = {
@@ -4558,6 +4614,19 @@ shared_focus = {
 		y = 3
 		trigger = {
 			has_focus_tree = mexico_focus_tree
+		}
+	}
+	offset = {
+		x = -2
+		trigger = {
+			has_focus_tree = portugal_focus
+		}
+	}
+	offset = {
+		x = -2
+		y = 1
+		trigger = {
+			has_focus_tree = raj_focus
 		}
 	}
 	offset = {
@@ -4658,6 +4727,8 @@ shared_focus = {
 	prerequisite = {
 		focus = ww1_SovietFriend
 		focus = mex_political_commissars
+		focus = POR_ww1_iberian_union_formation
+		focus = RAJ_spread_anti_colonial_spirit
 		focus = SWE_ww1_SpreadRevolution
 	}
 	prerequisite = {
@@ -4783,9 +4854,9 @@ shared_focus = {
 	completion_reward = {
 		create_wargoal = {
 			type = take_state_focus
-			target = 341.owner
+			target = 797.owner
 			generator = {
-				341
+				797
 			}
 			expire = 0
 		}
@@ -4887,6 +4958,12 @@ shared_focus = {
 	x = 4
 	y = 1
 	relative_position_id = ww1_interwar_Aftermath
+	offset = {
+		x = -2
+		trigger = {
+			has_focus_tree = balkan_generic_focus
+		}
+	}
 	offset = {
 		x = -1
 		trigger = {

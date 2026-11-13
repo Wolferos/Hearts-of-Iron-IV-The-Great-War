@@ -1,382 +1,131 @@
 ﻿add_namespace = ww1_firstbalkan
-# BUL propose SER to form the Balkan League
-#____________________________________________________________
-country_event = {
-	id = ww1_firstbalkan.1
-	title = ww1_firstbalkan.1.t
-	desc = ww1_firstbalkan.1.d
-	#picture = ww1_firstbalkan_1
-	is_triggered_only = yes
-	# SER Yes
-	option = {
-		name = ww1_firstbalkan.1.a
-		ai_chance = {
-			factor = 100
-		}
-		SER = {
-			country_event = {
-				id = ww1_firstbalkan.2
-				days = 1
-			}
-		}
-	}
-	# SER No
-	option = {
-		name = ww1_firstbalkan.1.b
-		ai_chance = {
-			factor = 0
-		}
-	}
-}
 
 #____________________________________________________________
-# SER forms the Balkan League and sends invitation to others
-#____________________________________________________________
-country_event = {
-	id = ww1_firstbalkan.2
-	title = ww1_firstbalkan.2.t
-	desc = ww1_firstbalkan.2.d
-	#picture = ww1_firstbalkan_2
-	fire_only_once = yes
-	is_triggered_only = yes
-	# SER Yes
-	option = {
-		name = ww1_firstbalkan.2.a
-		ai_chance = {
-			factor = 100
-		}
-		SER = {
-			set_rule = {
-				can_create_factions = yes
-			}
-			create_faction = balkan_league
-			# Bulgaria
-			BUL = {
-				country_event = ww1_firstbalkan.3
-			}
-			# Greece
-			GRE = {
-				country_event = ww1_firstbalkan.3
-			}
-			# Montenegro
-			MNT = {
-				country_event = ww1_firstbalkan.3
-			}
-		}
-		hidden_effect = {
-			news_event = {
-				days = 1
-				id = kis_news.108
-			}
-		}
-	}
-}
-
-#____________________________________________________________
-# Invitation to join the Balkan League sent by SER
+# Invitation to join the Balkan League sent by FROM
 #____________________________________________________________
 country_event = {
 	id = ww1_firstbalkan.3
 	title = ww1_firstbalkan.3.t
 	desc = ww1_firstbalkan.3.d
-	#picture = ww1_firstbalkan_3
+	picture = ww1_firstbalkan_3
+
 	is_triggered_only = yes
-	# ROOT Yes
+
+	immediate = {
+		hidden_effect = {
+			FROM = { save_event_target_as = alliance_inviter }
+			save_event_target_as = alliance_applicant
+		}
+	}
+
+	# PREV Yes
 	option = {
 		name = ww1_firstbalkan.3.a
 		ai_chance = {
-			factor = 100
-		}
-		SER = {
-			add_to_faction = ROOT
-		}
-		hidden_effect = {
-			ROOT = {
-				add_opinion_modifier = {
-					target = SER
-					modifier = HOI4TGW_Opinion_improved_diplomatic_relations
+			base = 100
+			modifier = { # Historical AI Fallback
+				factor = 0
+				is_historical_focus_on = yes
+				OR = {
+					original_tag = ROM
+					original_tag = ALB
 				}
 			}
-			SER = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = HOI4TGW_Opinion_improved_diplomatic_relations
+		}
+		if = {
+			limit = {
+				NOT = {
+					original_tag = ROM
+					original_tag = ALB
 				}
+			}
+			custom_effect_tooltip = historical_tt
+		}
+		FROM = {
+			faction_leader = {
+				add_to_faction = ROOT
+			}
+			country_event = { id = generic.6 hours = 6 }
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = FROM
+			value = 200
+		}
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+			reverse_add_opinion_modifier = {
+				target = FROM
+				modifier = HOI4TGW_Opinion_improved_diplomatic_relations
 			}
 		}
 	}
-	# ROOT No
+
+	# PREV No
 	option = {
 		name = ww1_firstbalkan.3.b
 		ai_chance = {
-			factor = 0
+			base = 0
+			modifier = { # Historical AI Fallback
+				add = 100
+				is_historical_focus_on = yes
+				OR = {
+					original_tag = ROM
+					original_tag = ALB
+				}
+			}
+		}
+		FROM = {
+			country_event = { id = generic.7 hours = 6 }
+		}
+		if = {
+			limit = {
+				OR = {
+					original_tag = ROM
+					original_tag = ALB
+				}
+			}
+			custom_effect_tooltip = historical_tt
 		}
 	}
 }
 
 #____________________________________________________________
-# Declaration of War - Triggered by SER
-#____________________________________________________________
-country_event = {
-	id = ww1_firstbalkan.4
-	title = ww1_firstbalkan.4.t
-	desc = ww1_firstbalkan.4.d
-	#picture = ww1_firstbalkan_4
-	is_triggered_only = yes
-	# SER Yes
-	option = {
-		name = ww1_firstbalkan.4.a
-		ai_chance = {
-			factor = 100
-		}
-		# Serbia
-		SER = {
-			declare_war_on = {
-				type = take_state_focus
-				target = TUR
-				generator = {
-					106
-					757
-					758
-				}
-			}
-		}
-		hidden_effect = {
-			SER = {
-				add_named_threat = {
-					threat = 10
-					name = ww1_firstbalkan.100.t
-				}
-			}
-			set_global_flag = kis_firstbalkan_war
-			news_event = {
-				days = 1
-				id = ww1_firstbalkan.100
-			}
-			44 = {
-				set_border_war = no
-			}
-			SER = {
-				add_manpower = 15000
-			}
-			BUL = {
-				add_manpower = 15000
-			}
-			GRE = {
-				add_manpower = 15000
-			}
-			MNT = {
-				add_manpower = 3500
-			}
-		}
-		# Bulgaria
-		if = {
-			limit = {
-				OR = {
-					BUL = {
-						is_in_faction_with = SER
-					}
-					BUL = {
-						is_in_faction_with = GRE
-					}	
-					BUL = {
-						is_in_faction_with = MNT
-					}
-				}
-			}
-			BUL = {
-				create_wargoal = {
-					type = take_state_focus
-					target = TUR
-					generator = {
-						757
-						754
-						755
-						760
-					}
-				}
-				add_to_war = {
-					targeted_alliance = SER
-					enemy = TUR
-				}
-			}
-		}
-		# Greece
-		if = {
-			limit = {
-				OR = {
-					GRE = {
-						is_in_faction_with = SER
-					}
-					GRE = {
-						is_in_faction_with = BUL
-					}
-					GRE = {
-						is_in_faction_with = MNT
-					}
-				}
-				# Greece participates in a war with Turkey only if Turkey did not return the occupied states (731, 184, 756, 757, 790) to it before the start of the war
-				TUR = {
-					owns_state = 731 
-				}	
-				TUR = {
-					owns_state = 184 
-				}	
-				TUR = {
-					owns_state = 756
-				}
-				TUR = {
-					owns_state = 757
-				}
-				TUR = {
-					owns_state = 790
-				}
-			}
-			GRE = {
-				create_wargoal = {
-					type = take_state_focus
-					target = TUR
-					generator = {
-						731
-						756
-						184
-					}
-				}
-				add_to_war = {
-					targeted_alliance = SER
-					enemy = TUR
-				}
-			}
-		}
-		# If Turkey returned Greece to its national states before the start of the war, then Greece leaves the Balkan League and does not participate in the war
-		if = {
-			limit = {
-				GRE = {
-					owns_state = 731 
-				}	
-				GRE = {
-					owns_state = 184 
-				}	
-				GRE = {
-					owns_state = 756
-				}
-				GRE = {
-					owns_state = 757
-				}
-				GRE = {
-					owns_state = 790
-				}				
-			}
-			SER = {
-				remove_from_faction = GRE
-			}
-		}		
-		# Montenegro
-		if = {
-			limit = {
-				OR = {
-					MNT = {
-						is_in_faction_with = SER
-					}
-					MNT = {
-						is_in_faction_with = BUL
-					}	
-					MNT = {
-						is_in_faction_with = GRE
-					}
-				}
-			}
-			MNT = {
-				create_wargoal = {
-					type = take_state_focus
-					target = TUR
-					generator = {
-						759
-					}
-				}
-				add_to_war = {
-					targeted_alliance = SER
-					enemy = TUR
-				}
-			}
-		}
-	}
-}
-
-#____________________________________________________________
-# Ottoman Offer Peace to Serbia
-#____________________________________________________________
-country_event = {
-	id = ww1_firstbalkan.5
-	title = ww1_firstbalkan.5.t
-	desc = ww1_firstbalkan.5.d
-	#picture = ww1_firstbalkan_5
-	fire_only_once = yes
-	trigger = {
-		date < 1915.5.5
-		tag = TUR
-		NOT = {
-			has_global_flag = kis_war
-			has_global_flag = hoi4tgw_SchlieffenSecurity
-			has_global_flag = kis_firstbalkanwar_victory
-		}
-		TUR = {
-			has_war_with = SER
-			NOT = {
-				controls_state = 44
-				controls_state = 106
-				controls_state = 184
-				controls_state = 731
-				controls_state = 788
-				controls_state = 766
-				controls_state = 759
-				controls_state = 757
-				controls_state = 760
-				controls_state = 761
-				controls_state = 758
-			}
-		}
-	}
-	# ROOT Yes
-	option = {
-		name = ww1_firstbalkan.5.a
-		ai_chance = {
-			factor = 100
-		}
-		SER = {
-			country_event = {
-				days = 1
-				id = ww1_firstbalkan.6
-			}
-		}
-		hidden_effect = {
-			SER = {
-				country_event = {
-					days = 1
-					id = ww1_firstbalkan.6
-				}
-			}
-		}
-	}
-}
-
-#____________________________________________________________
-# Serbia receive Peace Offer from Ottoman
+# Balkan League Leader receive Peace Offer from Ottoman
 #____________________________________________________________
 country_event = {
 	id = ww1_firstbalkan.6
 	title = ww1_firstbalkan.6.t
 	desc = ww1_firstbalkan.6.d
-	#picture = ww1_firstbalkan_6
+	picture = ww1_firstbalkan_6
+
 	fire_only_once = yes
 	is_triggered_only = yes
-	# SER Yes
+
+	# BLL Yes
 	option = {
 		name = ww1_firstbalkan.6.a
 		ai_chance = {
-			factor = 100
+			base = 95
 		}
-		# If Greece did not participate in the First Balkan War, then region 758 (Central Epirus) will not go to it, but to Albania
+		custom_effect_tooltip = historical_tt
+		custom_effect_tooltip = generic_skip_one_line_tt
+		every_collection_element = {
+			input = {
+				input = collection:ww1_balkan_countries
+			}
+			if = {
+				limit = {
+					has_idea = BLL_liberation_of_the_balkans_ns
+				}
+				remove_ideas = BLL_liberation_of_the_balkans_ns
+			}
+		}
+		custom_effect_tooltip = generic_skip_one_line_tt
+		# If Greece did not participate in the First Balkan War, then region 1090 (Central Epirus) will not go to it, but to Albania
 		if = {
 			limit = {
 				NOT = {
@@ -386,8 +135,8 @@ country_event = {
 				}
 			}	
 			ALB = {
-				transfer_state = 758
-				add_state_core = 758
+				transfer_state = 1090
+				add_state_core = 1090
 			}		
 		}	
 		# If Greece did not participate in the First Balkan War, then region 731 (West Macedonia) will not go to it, but to Bulgaria
@@ -408,7 +157,7 @@ country_event = {
 				add_state_core = 731
 			}			
 		}			
-		# If Greece participate in the First Balkan War, then region 731 (West Macedonia), 758 (Central Epirus) and 790 (North Aegean islands) will go to it
+		# If Greece participate in the First Balkan War, then region 731 (West Macedonia), 1090 (Central Epirus) and 1096 (North Aegean islands) will go to it
 		if = {
 			limit = {
 				GRE = {
@@ -418,18 +167,18 @@ country_event = {
 			GRE = {
 				white_peace = TUR
 				transfer_state = 731
-				transfer_state = 758
-				transfer_state = 790
+				transfer_state = 1090
+				transfer_state = 1096
 				add_state_core = 731
-				add_state_core = 758
-				add_state_core = 790
+				add_state_core = 1090
+				add_state_core = 1096
 				diplomatic_relation = {
 					country = TUR
 					relation = non_aggression_pact
 				}
 			}	
 		}	
-		# If Bulgaria did not participate in the First Balkan War, then regions 184 (East Macedonia) and 759 (Nordeastern Macedonia) will not go to it, but to Greece and Serbia
+		# If Bulgaria did not participate in the First Balkan War, then regions 184 (East Macedonia) and 1091 (Nordeastern Macedonia) will not go to it, but to Greece and Serbia
 		if = {
 			limit = {
 				NOT = {
@@ -443,11 +192,11 @@ country_event = {
 				add_state_core = 184
 			}	
 			SER = {
-				transfer_state = 759
-				add_state_core = 759
+				transfer_state = 1091
+				add_state_core = 1091
 			}			
 		}	
-		# If Bulgaria participate in the First Balkan War, then regions 788 (East Rumelia) and 759 (Nordeastern Macedonia) will go to it
+		# If Bulgaria participate in the First Balkan War, then regions 1094 (East Rumelia) and 1091 (Nordeastern Macedonia) will go to it
 		if = {
 			limit = {
 				BUL = {
@@ -456,36 +205,36 @@ country_event = {
 			}		
 			BUL = {
 				white_peace = TUR
-				transfer_state = 788
-				transfer_state = 759
-				add_state_core = 788
-				add_state_core = 759
+				transfer_state = 1094
+				transfer_state = 1091
+				add_state_core = 1094
+				add_state_core = 1091
 				diplomatic_relation = {
 					country = TUR
 					relation = non_aggression_pact
 				}
 			}	
 		}	
-		# If Turkey returned Greece to its national states (184, 756, 757) before the start of the war, then it remains with Greece and not transferred to Bulgaria
+		# If Turkey returned Greece to its national states (184, 341, 1089) before the start of the war, then it remains with Greece and not transferred to Bulgaria
 		if = {
 			limit = {
 				TUR = {
 					owns_state = 184 
 				}	
 				TUR = {
-					owns_state = 756
+					owns_state = 341
 				}
 				TUR = {
-					owns_state = 757
+					owns_state = 1089
 				}	
 			}		
 			BUL = {
 				transfer_state = 184
-				transfer_state = 756
-				transfer_state = 757
+				transfer_state = 341
+				transfer_state = 1089
 				add_state_core = 184
-				add_state_core = 756
-				add_state_core = 757
+				add_state_core = 341
+				add_state_core = 1089
 			}	
 		}	
 
@@ -493,8 +242,8 @@ country_event = {
 			white_peace = TUR
 		}		
 		MNT = {
-			transfer_state = 761
-			add_state_core = 761
+			transfer_state = 1093
+			add_state_core = 1093
 			diplomatic_relation = {
 				country = TUR
 				relation = non_aggression_pact
@@ -502,9 +251,9 @@ country_event = {
 		}
 		ALB = {
 			transfer_state = 44
-			transfer_state = 803
+			transfer_state = 805
 			add_state_core = 44
-			add_state_core = 803
+			add_state_core = 805
 			diplomatic_relation = {
 				country = TUR
 				relation = non_aggression_pact
@@ -515,9 +264,9 @@ country_event = {
 		}		
 		SER = {
 			transfer_state = 106
-			transfer_state = 760
+			transfer_state = 802
 			add_state_core = 106
-			add_state_core = 760
+			add_state_core = 802
 			diplomatic_relation = {
 				country = TUR
 				relation = non_aggression_pact
@@ -527,7 +276,7 @@ country_event = {
 		hidden_effect = {
 			set_global_flag = kis_firstbalkanwar_victory
 			news_event = {
-				days = 1
+				hours = 6
 				id = ww1_firstbalkan.101
 			}
 			# Diplomatics relations changed to avoid AI to do stupid stuff
@@ -594,6 +343,30 @@ country_event = {
 					target = MNT
 					modifier = HOI4TGW_Opinion_hostile_relations_post_balkan_war
 				}
+			}
+		}
+	}
+
+	# BLL No
+	option = {
+		name = ww1_firstbalkan.6.b
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		custom_effect_tooltip = no_scripted_peace_deal_tt
+		every_collection_element = {
+			input = {
+				input = collection:ww1_balkan_countries
+			}
+			if = {
+				limit = {
+					has_idea = BLL_liberation_of_the_balkans_ns
+				}
+				remove_ideas = BLL_liberation_of_the_balkans_ns
 			}
 		}
 	}

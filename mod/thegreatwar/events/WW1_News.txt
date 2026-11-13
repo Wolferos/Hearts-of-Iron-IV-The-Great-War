@@ -1,5 +1,5 @@
 ﻿###########################
-# News Events
+# WW1 News Events
 ###########################
 
 add_namespace = ww1_news
@@ -30,7 +30,7 @@ news_event = {
 		name = ww1_news.1.a
 		trigger = {
 			NOT = {
-				TAG = TUR
+				tag = TUR
 			}
 		}
 	}
@@ -38,8 +38,33 @@ news_event = {
 	option = {
 		name = ww1_news.1.b
 		trigger = {
-			TAG = TUR
+			tag = TUR
 		}
+	}
+}
+
+#-> Hitler Writes Mein Kampf <><>
+news_event = {
+	id = ww1_news.2
+	title = ww1_news.2.t
+	desc = ww1_news.2.desc
+	picture = GFX_news_event_hitler_speech
+
+	fire_only_once = yes
+
+	trigger = {
+		date > 1925.7.18
+		NOT = {
+			has_global_flag = mein_kampf_written
+		}
+	}
+
+	immediate = {
+		set_global_flag = mein_kampf_written
+	}
+
+	option = {
+		name = ww1_news.2.a
 	}
 }
 
@@ -79,6 +104,34 @@ news_event = {
 			NOT = {
 				tag = SOV
 			}
+		}
+	}
+}
+
+#Raid on the Sublime Porte
+news_event = {
+	id = ww1_news.4
+	title = ww1_news.4.t
+	desc = ww1_news.4.d
+	picture = ww1_raid_on_the_sublime_porte
+
+	major = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ww1_news.4.a
+		trigger = {
+		    NOT = {
+			    tag = TUR
+			}
+		}
+	}
+	
+	option = {
+		name = ww1_news.4.b
+		trigger = {
+		    tag = TUR
 		}
 	}
 }

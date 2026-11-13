@@ -1,254 +1,46 @@
-﻿# Beta 0.1.6
-add_namespace = ww1_armistice
-# Let the Player choose for the Treaty of Versailles or the Peace Conference Mechanism
+﻿add_namespace = ww1_armistice
+
+# Germans Offer Peace (For France)
 #____________________________________________________________
 country_event = {
 	id = ww1_armistice.500
 	title = ww1_armistice.500.t
 	desc = ww1_armistice.500.d
 	picture = GFX_report_event_generic_read_write
-	fire_only_once = yes
-	mean_time_to_happen = {
-		days = 0
-	}
-	trigger = {
-		GER = {
-			surrender_progress > 0.55
-			has_war_with = ENG
-			has_war_with = FRA
-			has_global_flag = kis_brestlitovsk			# Open Beta 0.1.8 - Temporary Solution
-			NOT = {
-				has_global_flag = kis_ask_ger_surrend #
-				has_global_flag = kis_player_decided_ger_surrend #
-			}
-		}
-		# If Player is one of the Main
-		if = {
-			limit = {
-				FRA = {
-					is_ai = no
-				}
-			}
-			TAG = FRA
-			else = {
-				if = {
-					limit = {
-						ENG = {
-							is_ai = no
-							is_in_faction_with = FRA
-							has_war_with = GER
-						}
-					}
-					TAG = ENG
-					else = {
-						if = {
-							limit = {
-								ITA = {
-									is_ai = no
-									is_in_faction_with = FRA
-									has_war_with = GER
-								}
-							}
-							TAG = ITA
-							else = {
-								if = {
-									limit = {
-										SER = {
-											is_ai = no
-											is_in_faction_with = FRA
-											has_war_with = GER
-										}
-									}
-									TAG = SER
-									else = {
-										if = {
-											limit = {
-												USA = {
-													is_ai = no
-													is_in_faction_with = FRA
-													has_war_with = GER
-												}
-											}
-											TAG = USA
-											else = {
-												# If Player is not one of the Main
-												if = {
-													limit = {
-														FRA = {
-															is_ai = yes
-														}
-													}
-													TAG = FRA
-													else = {
-														if = {
-															limit = {
-																ENG = {
-																	is_ai = yes
-																	is_in_faction_with = FRA
-																	has_war_with = GER
-																}
-															}
-															TAG = ENG
-															else = {
-																if = {
-																	limit = {
-																		USA = {
-																			is_ai = yes
-																			is_in_faction_with = FRA
-																			has_war_with = GER
-																		}
-																	}
-																	TAG = USA
-																	else = {
-																		if = {
-																			limit = {
-																				ITA = {
-																					is_ai = yes
-																					is_in_faction_with = FRA
-																					has_war_with = GER
-																				}
-																			}
-																			TAG = ITA
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	# The Player chooses the Treaty of Versailles
+
+	is_triggered_only = yes
+
+	# Yes
 	option = {
 		name = ww1_armistice.500.a
 		ai_chance = {
 			base = 100
 		}
+		custom_effect_tooltip = treaty_of_versailles_goes_into_effect_green_tt
 		GER = {
-			country_event = {
-				days = 1
-				id = ww1_armistice.503
-			}
-		}
-		hidden_effect = {
-			set_global_flag = kis_player_decided_ger_surrend
-		}
-	}
-	# The Player chooses the Peace Conference Mechanism
-	option = {
-		name = ww1_armistice.500.b
-		ai_chance = {
-			base = 0
-		}
-		hidden_effect = {
-			set_global_flag = kis_player_decided_ger_surrend
-		}
-	}
-}
-
-#____________________________________________________________
-#____________________________________________________________
-country_event = {
-	id = ww1_armistice.503
-	title = ww1_armistice.503.t
-	desc = ww1_armistice.503.d
-	picture = GFX_report_event_generic_read_write
-	fire_only_once = yes
-	is_triggered_only = yes
-	immediate = {
-		set_global_flag = kis_ask_ger_surrend
-	}
-	option = {
-		name = ww1_armistice.503.a
-		ai_chance = {
-			base = 100
-		}
-		hidden_effect = {
-			HUN = {
-				transfer_state = 43
-				transfer_state = 155
-				transfer_state = 154
-				kill_country_leader = yes
-				recruit_character = AUH_miklos_horthy
-				add_country_leader_role = {
-					character = AUH_miklos_horthy
-					country_leader = {
-						ideology = despotism
-						expire = "1935.1.1.1"
-						#traits = {
-						#}
-					}
-				}
-				promote_character = AUH_miklos_horthy
-				# create_country_leader = {
-				# 	name = "Miklós Horthy"
-				# 	desc = HUN_miklos_horothy_DESC
-				# 	picture = "gfx/hoi4tgw_portraits/HUN/country_leaders/HUN_miklos_horthy.dds"
-				# 	expire = "1935.1.1"
-				# 	ideology = despotism
-				# 	traits = {
-				# 	}
-				# }
-			}
-			CZE = {
-				transfer_state = 69
-				transfer_state = 9
-				transfer_state = 75
-				transfer_state = 74
-				transfer_state = 70
-				transfer_state = 72
-			}
-			SWI = {
-				transfer_state = 3
-				transfer_state = 151
-			}
-			BEL = {
-				transfer_state = 768
-				transfer_state = 6
-				transfer_state = 34
-			}
-			HOL = {
-				transfer_state = 35
-				transfer_state = 7
-				transfer_state = 36
-			}
 			news_event = {
-				days = 3
+				hours = 6
 				id = ww1_armistice.1
 			}
 		}
-	}
-}
-
-#____________________________________________________________
-# Armistice
-#____________________________________________________________
-news_event = {
-	id = ww1_armistice.1
-	title = ww1_armistice.1.t
-	desc = ww1_armistice.1.d
-	picture = EVENT_hoi4tgw_armistice
-	major = yes
-	fire_only_once = yes
-	is_triggered_only = yes
-	# GER Accepts - The German Empire fall and Democratic Germany is
-	option = {
-		name = ww1_armistice.1.a
-		ai_chance = {
-			base = 100
+		every_country = {
+			limit = {
+				is_in_faction_with = CPL
+			}
+			set_country_flag = great_war_loser
+			save_global_event_target_as = great_war_loser
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = ENT
+			}
+			set_country_flag = great_war_winner
+			save_global_event_target_as = great_war_winner
 		}
 		hidden_effect = {
+			set_global_flag = kis_great_war_german_surrender
 			add_named_threat = {
-				threat = -15
+				threat = -50
 				name = the_great_war_armistice
 			}
 			GER = {
@@ -264,269 +56,164 @@ news_event = {
 					democratic = 80
 					communism = 5
 				}
-				set_autonomy = {
-					target = LIT
-					autonomy_state = autonomy_free
-				}
-				set_autonomy = {
-					target = EST
-					autonomy_state = autonomy_free
-				}
-				set_autonomy = {
-					target = POL
-					autonomy_state = autonomy_free
-				}
+				ww1_versailles_setup_liberation_brest_litovsk_puppets = yes
 			}
-			if = {
-				limit = {
-					TUR = {
-						is_in_faction_with = GER
-						has_war_with = FRA
-					}
-				}
-				SYR = {
-					transfer_state = 553
-					transfer_state = 554
-					transfer_state = 680
-					transfer_state = 677
-					add_state_core = 553
-					add_state_core = 554
-					add_state_core = 680
-					add_state_core = 677
-					load_oob = "SYR_1919"
-				}
-				SAU = {
-					transfer_state = 747
-					add_state_core = 747
-				}
+			ENT = {
+				ww1_versailles_setup_syria = yes
+				ww1_versailles_setup_asir = yes
+				ww1_versailles_setup_iraq = yes
+				ww1_versailles_setup_jordan = yes
+				ww1_versailles_setup_palestine = yes
+
+				ww1_versailles_setup_transylvania_transfer = yes
+				ww1_versailles_setup_south_tyrol = yes
+				ww1_versailles_setup_istria = yes
+				ww1_versailles_setup_dalmatia = yes
+				ww1_versailles_setup_bosnia = yes
+				ww1_versailles_setup_vojvodina = yes
+				ww1_versailles_setup_galicia = yes
+				ww1_versailles_setup_hungary = yes
+				ww1_versailles_setup_czechoslovakia = yes
+
+				ww1_versailles_setup_danzig = yes
+
+				ww1_versailles_setup_togoland = yes
+				ww1_versailles_setup_cameroon = yes
+				ww1_versailles_setup_rwanda_burundi = yes
+				ww1_versailles_setup_tanganyika = yes
+				ww1_versailles_setup_namibia = yes
 			}
-			if = {
-				limit = {
-					TUR = {
-						is_in_faction_with = GER
-						has_war_with = ENG
-					}
-				}
-				QAT = {
-					transfer_state = 765
-				}
-				KUW = {
-					transfer_state = 656
-				}
-				ENG = {
-					transfer_state = 291
-					transfer_state = 455
-					transfer_state = 454
-					add_state_core = 291
-					add_state_core = 455
-					add_state_core = 454
-					set_autonomy = {
-						target = QAT
-						autonomous_state = autonomy_colony
-					}
-					set_autonomy = {
-						target = KUW
-						autonomous_state = autonomy_colony
-					}
-				}
+			RUS = {
+				ww1_versailles_setup_polish_autonomy = yes
 			}
 			FRA = {
-				transfer_state = 28
-				#transfer_state = 667
-				add_state_core = 28
-			}
-			if = {
-				limit = {
-					ROM = {
-						has_war_with = AUH
-						is_in_faction_with = FRA
+				if = {
+					limit = {
+						has_country_flag = great_war_winner
+						any_enemy_country = {
+							owns_state = 28
+						}
 					}
-				}
-				ROM = {
-					transfer_state = 80
-					transfer_state = 79
-					transfer_state = 46
-					transfer_state = 77
-					transfer_state = 81
-					transfer_state = 82
-					transfer_state = 83
-					transfer_state = 84
-					transfer_state = 76
-					add_state_core = 80
-					add_state_core = 79
-					add_state_core = 46
-					add_state_core = 77
-					add_state_core = 81
-					add_state_core = 82
-					add_state_core = 83
-					add_state_core = 84
-					add_state_core = 76
+					transfer_state = 28
 				}
 			}
-			if = {
-				limit = {
-					ITA = {
-						has_war_with = AUH
-						is_in_faction_with = FRA
+			SER = {
+				if = {
+					limit = {
+						has_country_flag = great_war_winner
 					}
-				}
-				ITA = {
-					transfer_state = 39
-					transfer_state = 736
-					add_state_core = 39
-					add_state_core = 736
-				}
-				# Can be removed with ITA NF
-				39 = {
-					set_demilitarized_zone = yes
-				}
-			}
-			if = {
-				limit = {
-					SER = {
-						is_in_faction_with = FRA
+					add_ideas = {
+						YUG_int_a_divided_kingdom
+						YUG_int_scars_of_the_great_war
 					}
-				}
-				SER = {
-					transfer_state = 107
-					transfer_state = 108
-					transfer_state = 760
-					transfer_state = 106
-					transfer_state = 759
-					transfer_state = 104
-					transfer_state = 103
-					transfer_state = 109
-					transfer_state = 764 # https://en.wikipedia.org/wiki/Banat#The_Banat_Question_at_the_end_of_First_World_War
-					add_state_core = 107
-					add_state_core = 108
-					add_state_core = 760
-					add_state_core = 106
-					add_state_core = 759
-					add_state_core = 104
-					add_state_core = 103
-					add_state_core = 109
-					add_state_core = 764
 					if = {
 						limit = {
-							MNT = {
-								is_ai = yes
-							}
+							country_exists = CRO
 						}
-						transfer_state = 105
-						transfer_state = 761
-						add_state_core = 105
-						add_state_core = 761
-					}
-					country_event = {
-						days = 1
-						id = ww1_armistice.101
+						CRO = {
+							set_cosmetic_tag = CRO_dshs
+						}
 					}
 				}
 			}
-			ENG = {
-				transfer_state = 656
-				transfer_state = 676
-				add_state_core = 656
-				add_state_core = 676
-			}
-			DNZ = {
-				transfer_state = 85
-			}
-			POL = {
-				transfer_state = 807
-				transfer_state = 86
-				transfer_state = 87
-				transfer_state = 98
-				transfer_state = 10
-				transfer_state = 90
-				add_state_core = 807
-				add_state_core = 86
-				add_state_core = 87
-				add_state_core = 98
-				add_state_core = 10
-				add_state_core = 90
-				set_autonomy = {
-					target = DNZ
-					autonomy_state = autonomy_supervised_state
+			if = {
+				limit = {
+					AUH = {
+						has_country_flag = great_war_loser
+					}
 				}
-			}
-			AUH = {
-				drop_cosmetic_tag = yes # Open Beta 0.1.8
-				country_event = {
-					days = 1
-					id = ww1_armistice.100
+				AUH = {
+					AUH_miklos_horthy = {
+						set_nationality = HUN
+					}
 				}
-				transfer_state = 153
-				transfer_state = 152
-				transfer_state = 4
-				add_state_core = 153
-				add_state_core = 152
-				add_state_core = 4
+				AUS = {
+					annex_country = {
+						target = AUH
+					}
+					load_oob = "AUS_1919"
+					add_state_core = 153
+					add_state_core = 848
+					add_state_core = 152
+					add_state_core = 4
+				}
 			}
 			BUL = {
-				kill_country_leader = yes
-				recruit_character = BUL_boris_iii
-				promote_character = BUL_boris_iii
+				promote_character = BUL_boris_iii #stop killing historical leaders - Ferdinand lived until 1945!
 			}
-			LUX = {
-				transfer_state = 8
-				add_state_core = 8
-			}
-			#Dirty Code but only way for now...
-			AUH = {
-				white_peace = SER
-			}
-			GER = {
-				white_peace = SER
-			}
-			#More appropriate, logical and less buggy code (MasterWaifuman)
-			# Updated by Wolferos
-			every_country = {
-				limit = {
-					has_war_with = GER
-					is_in_faction_with = FRA
-				}
-				white_peace = GER
-			}
-			every_country = {
-				limit = {
-					has_war_with = AUH
-					is_in_faction_with = FRA
-				}
-				white_peace = AUH
-			}
-			if = {
-				limit = {
-					BUL = {
-						is_in_faction_with = GER
+			HUN = {
+				add_country_leader_role = {
+					character = AUH_miklos_horthy
+					country_leader = {
+						ideology = despotism
+						expire = "1935.1.1.1"
+						#traits = {
+						#}
 					}
 				}
-				every_country = {
-					limit = {
-						has_war_with = BUL
-						is_in_faction_with = FRA
-					}
-					white_peace = BUL
-				}
 			}
-			if = {
-				limit = {
-					TUR = {
-						is_in_faction_with = GER
-					}
-				}
-				every_country = {
-					limit = {
-						has_war_with = TUR
-						is_in_faction_with = FRA
-					}
-					white_peace = TUR
-				}
+			event_target:great_war_loser = {
+				white_peace = event_target:great_war_winner
 			}
 			news_event = {
 				days = 3
 				id = ww1_armistice.2
 			}
+		}
+	}
+
+	# No
+	option = {
+		name = ww1_armistice.500.b
+		ai_chance = {
+			base = 0
+		}
+		custom_effect_tooltip = no_scripted_peace_deal_tt
+		custom_effect_tooltip = generic_skip_one_line_tt
+		add_war_support = -0.25
+		add_stability = -0.1
+	}
+}
+
+#____________________________________________________________
+# Armistice
+#____________________________________________________________
+news_event = {
+	id = ww1_armistice.1
+	title = ww1_armistice.1.t
+	desc = ww1_armistice.1.d
+	picture = EVENT_hoi4tgw_armistice
+	major = yes
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	# GER Accepts - The German Empire fall and Democratic Germany is
+	option = {
+		name = ww1_armistice.1.a
+		ai_chance = {
+			base = 100
+		}
+		if = {
+			limit = {
+				has_country_flag = great_war_winner
+			}
+			custom_effect_tooltip = armistice_of_compiegne_goes_into_effect_green_tt
+		}
+		if = {
+			limit = {
+				has_country_flag = great_war_loser
+			}
+			custom_effect_tooltip = armistice_of_compiegne_goes_into_effect_red_tt
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = great_war_winner
+					has_country_flag = great_war_loser
+				}
+			}
+			custom_effect_tooltip = armistice_of_compiegne_goes_into_effect_yellow_tt
 		}
 	}
 }
@@ -545,7 +232,7 @@ news_event = {
 		set_global_flag = kis_treaty_of_versailles
 		hidden_effect = {
 			DEN = {
-				transfer_state = 751
+				transfer_state = 912
 			}
 			CZE = {
 				transfer_state = 664
@@ -585,39 +272,22 @@ news_event = {
 			}
 			SER = {
 				transfer_state = 102
+				transfer_state = 853
 				transfer_state = 45
 				add_state_core = 102
+				add_state_core = 853
 				add_state_core = 45
 			}
 			ENG = {
-				transfer_state = 770
-				transfer_state = 749
-				transfer_state = 546
 				transfer_state = 725
-				add_state_core = 770
-				add_state_core = 749
-				add_state_core = 546
-				add_state_core = 725
-			}
-			FRA = {
-				transfer_state = 769
-				transfer_state = 539
-				transfer_state = 755
-				transfer_state = 774				# Entenschnabel
-				add_state_core = 769
-				add_state_core = 539
-				add_state_core = 755
-				add_state_core = 774				# Entenschnabel
-			}
-			SAF = {
-				transfer_state = 541
-				add_state_core = 541
 			}
 			AST = {
-				transfer_state = 523
+				transfer_state = 979
 				transfer_state = 737
-				add_state_core = 523
-				add_state_core = 737
+				transfer_state = 1070
+			}
+			NZL = {
+				transfer_state = 726
 			}
 			JAP = {
 				transfer_state = 684
@@ -625,17 +295,13 @@ news_event = {
 				transfer_state = 648
 				transfer_state = 633
 				transfer_state = 647
-				add_state_core = 684
-				add_state_core = 646
-				add_state_core = 648
-				add_state_core = 633
-				add_state_core = 647
 			}
 			EST = {
 				transfer_state = 13
+				transfer_state = 811
+				transfer_state = 812
 				transfer_state = 191
-				add_state_core = 13
-				add_state_core = 191
+				transfer_state = 813
 			}
 			LAT = {
 				transfer_state = 12
@@ -648,19 +314,11 @@ news_event = {
 				transfer_state = 188
 				transfer_state = 11
 				transfer_state = 784
-				add_state_core = 189
-				add_state_core = 188
-				add_state_core = 11
-				add_state_core = 784
 			}
 			GRE = {
 				transfer_state = 184
-				transfer_state = 757
-				add_state_core = 184
-				add_state_core = 757
-			}
-			DNZ = {
-				transfer_state = 85
+				transfer_state = 1089
+				transfer_state = 1106
 			}
 			WLK = {
 				transfer_state = 86
@@ -791,7 +449,7 @@ news_event = {
 			}
 			every_country = {
 				mark_focus_tree_layout_dirty = yes
-				#remove_ideas = superior_enemy 
+				#remove_ideas = ww1_superior_enemy 
 				#remove_ideas = even_worse 
 				#remove_ideas = absolute_defence 
 			}
@@ -804,77 +462,3 @@ news_event = {
 		}
 	}
 }
-
-#____________________________________________________________
-# AUH - AUH needs to change itself it politics in order to have the right name on map
-#____________________________________________________________
-country_event = {
-	id = ww1_armistice.100
-	title = ww1_armistice.100.t
-	desc = ww1_armistice.100.d
-	picture = GFX_report_event_generic_read_write
-	fire_only_once = yes
-	is_triggered_only = yes
-	immediate = {
-		hidden_effect = {
-			# The Entente is dead after the Great War ### OPEN BETA 0.1.6
-			FRA = {
-				dismantle_faction = yes
-			}
-			AUH = {
-				#	kill_country_leader = yes
-				#	create_country_leader = {
-				#		name = "Kurt Schuschnigg"
-				#		desc = "POLITICS_KURT_SCHUSCHNIGG_DESC"
-				#		picture = "Portrait_Austria_Kurt_Schuschnigg.dds"
-				#		expire = "1965.1.1"
-				#		ideology = conservatism
-				#		traits = { }
-				#	}
-				set_politics = {
-					ruling_party = democratic
-					last_election = "1911.7.1"
-					election_frequency = 48
-					elections_allowed = yes
-				}
-				set_popularities = {
-					neutrality = 10
-					fascism = 5
-					democratic = 80
-					communism = 5
-				}
-			}
-		}
-	}
-	option = {
-		name = ww1_armistice.100.a
-		ai_chance = {
-			base = 100
-		}
-	}
-}
-
-#____________________________________________________________
-# SER - SER needs to change itself it politics in order to have the right name on map
-#____________________________________________________________
-country_event = {
-	id = ww1_armistice.101
-	title = ww1_armistice.101.t
-	desc = ww1_armistice.101.d
-	picture = GFX_report_event_generic_read_write
-	fire_only_once = yes
-	is_triggered_only = yes
-	immediate = {
-		hidden_effect = {
-			# Set Correct Country Tag and Name with the TFV
-		}
-	}
-	option = {
-		name = ww1_armistice.101.a
-		ai_chance = {
-			base = 100
-		}
-	}
-}
-
-#____________________________________________________________

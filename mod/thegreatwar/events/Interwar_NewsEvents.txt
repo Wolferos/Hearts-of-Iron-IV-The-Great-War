@@ -209,7 +209,7 @@ news_event = {
 		set_global_flag = interwar_revolution_egypt
 		hidden_effect = {
 			EGY = {
-				transfer_state = 446
+				transfer_state = 907
 				transfer_state = 447
 			}
 			ENG = {
@@ -387,6 +387,16 @@ news_event = {
 				}
 				TUK = {
 					transfer_state = 348
+				}
+			}
+			if = {
+				limit = {
+					TUR = {
+						controls_state = 798
+					}
+				}
+				TUK = {
+					transfer_state = 798
 				}
 			}
 			if = {
@@ -599,6 +609,8 @@ news_event = {
 		}
 		ENG = {
 			controls_state = 291
+			controls_state = 1010
+			controls_state = 1011
 			controls_state = 676
 		}
 	}
@@ -633,41 +645,12 @@ news_event = {
 	id = interwar_news.15
 	title = interwar_news.15.t
 	desc = interwar_news.15.d
-	picture = EVENT_hoi4tgw_interwar_mehmed_vi_succeeded_mehmed_v	# hoi4tgw_mehmed_vi_succeeded_mehmed_v.dds
+	picture = EVENT_hoi4tgw_interwar_mehmed_vi_succeeded_mehmed_v
+	
 	major = yes
-	trigger = {
-		date > 1919.7.2
-		has_global_flag = kis_treaty_of_versailles
-		NOT = {
-			has_global_flag = interwar_turkish_national_movement
-		}
-		NOT = {
-			has_global_flag = interwar_mehmed_vi_succeeded_mehmed_v
-		}
-	}
-	mean_time_to_happen = {
-		days = 2
-	}
-	immediate = {
-		set_global_flag = interwar_mehmed_vi_succeeded_mehmed_v
-		hidden_effect = {
-			TUR = {
-				promote_character = {
-					character = TUR_mehmed_vi
-					ideology = liberalism
-				}
-				# create_country_leader = {
-				# 	name = "Mehmed VI"
-				# 	desc = TUR_mehmed_vi_DESC
-				# 	picture = "gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_mehmed_vi.dds"
-				# 	expire = "1935.1.1"
-				# 	ideology = liberalism
-				# 	traits = {
-				# 	}
-				# }
-			}
-		}
-	}
+	is_triggered_only = yes
+	fire_only_once = yes
+	
 	option = {
 		name = interwar_news.15.a
 		ai_chance = {

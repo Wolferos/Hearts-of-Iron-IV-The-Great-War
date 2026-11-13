@@ -1,0 +1,922 @@
+foreign_affairs = {
+
+	TUR_railway_construction_timer = {
+
+		icon = GFX_decision_generic_train
+
+		priority = 3
+
+		allowed = {
+			OR = {
+				original_tag = TUR
+				original_tag = GER
+			}
+		}
+
+		days_mission_timeout = 240
+		is_good = no
+
+		visible = {
+			foreign_affairs_sick_man_of_europe_visible = yes
+		}
+
+		activation = {
+			has_global_flag = BB_railway_accepted_gflg
+			NOT = {
+				has_global_flag = BB_railway_canceled_gflg
+			}
+		}
+
+		fire_only_once = yes
+
+		available = {
+			always = no
+		}
+
+		ai_will_do = {
+		}
+
+		visible = {
+			has_global_flag = BB_railway_accepted_gflg
+			NOT = {
+				has_global_flag = BB_railway_canceled_cflg
+			}
+		}
+
+		cancel_trigger = {
+			has_global_flag = BB_railway_canceled_gflg
+		}
+
+		timeout_effect = {
+			build_railway = {
+				path = { 11746 806 3889 12473 }
+			}
+			build_railway = {
+				path = { 1549 10804 10106 1600 3795 12046 2097 }
+			}
+		}
+	}
+
+	TUR_build_support_for_the_sultan = {
+
+		icon = GFX_decision_generic_political_discourse
+
+		priority = 10
+
+		allowed = {
+			original_tag = TUR
+		}
+
+		visible = {
+			foreign_affairs_sick_man_of_europe_visible = yes
+			has_completed_focus = TUR_ww1_power_the_sultan
+			NOT = {
+				has_completed_focus = TUR_ww1_dismantle_the_parliement
+			}
+		}
+
+		available = {
+			NOT = {
+				check_variable = { var = TUR_monarchy_support_var value = 100 compare = equals tooltip = sultan_support_less_than_tt }
+				has_completed_focus = TUR_ww1_dismantle_the_parliement
+			}
+		}
+
+		days_remove = 70
+
+		cost = 75
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 10
+				is_historical_focus_on = no
+			}
+		}
+
+		visible = {
+		}
+
+		remove_effect = {
+			add_to_variable = {
+				TUR_monarchy_support_var = 5
+				tooltip = sultan_support_tt
+			}
+		}
+	}
+
+}
+
+TUR_the_opda = {
+
+	TUR_small_debt_payment = {
+
+		icon = hol_attract_foreign_investors
+
+        priority = 3
+
+		allowed = {
+			original_tag = TUR
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = TUR_paying_debt_cflg
+			}
+			OR = {
+			    has_completed_focus = TUR_ww1_pay_debts
+				has_completed_focus = TUR_ww1_trade_focused_policy
+			}
+		}
+
+		days_remove = 30
+
+		cost = 50
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 10
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 5
+				date > 1911.01.01
+			}
+		}
+
+		visible = {
+			OR = {
+				has_idea = TUR_ottoman_public_debt_administration_ns
+				has_idea = TUR_ottoman_public_debt_administration_1_ns
+				has_idea = TUR_ottoman_public_debt_administration_2_ns
+			}
+			NOT = {
+				check_variable = { var = TUR_opda_debt_var value = 0 compare = less_than }
+			}
+		}
+
+		complete_effect = {
+			add_ideas = TUR_small_debt_payment_ns
+			set_country_flag = TUR_paying_debt_cflg
+		}
+
+		remove_effect = {
+			add_to_variable = {
+				TUR_opda_debt_var = -10
+				tooltip = debt_balance_tt
+			}
+			remove_ideas = TUR_small_debt_payment_ns
+			clr_country_flag = TUR_paying_debt_cflg
+			if = {
+			    limit = {
+				    check_variable = { var = TUR_opda_debt_var value = 80 compare = less_than }
+				}
+				swap_ideas = {
+				    remove_idea = TUR_ottoman_public_debt_administration_ns
+			        add_idea =  TUR_ottoman_public_debt_administration_1_ns
+			    }
+				else_if = {
+				    limit = {
+				        check_variable = { var = TUR_opda_debt_var value = 45 compare = less_than }
+				    }
+					swap_ideas = {
+				        remove_idea = TUR_ottoman_public_debt_administration_1_ns
+			            add_idea =  TUR_ottoman_public_debt_administration_2_ns
+			        }
+				}
+				else = {
+				}
+			}
+		}
+	}
+	TUR_large_debt_payment = {
+
+		icon = gre_investment_decisions
+
+		priority = 2
+
+		allowed = {
+			original_tag = TUR
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = TUR_paying_debt_cflg
+			}
+			has_completed_focus = TUR_ww1_fiscal_responsibilty
+		}
+
+		days_remove = 60
+
+		cost = 100
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 5
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 0
+				date > 1914.06.01
+			}
+		}
+
+		visible = {
+			OR = {
+				has_idea = TUR_ottoman_public_debt_administration_ns
+				has_idea = TUR_ottoman_public_debt_administration_1_ns
+				has_idea = TUR_ottoman_public_debt_administration_2_ns
+			}
+			NOT = {
+				check_variable = { var = TUR_opda_debt_var value = 0 compare = equals }
+			}
+			has_completed_focus = TUR_ww1_fiscal_responsibilty
+		}
+
+		complete_effect = {
+			add_ideas = TUR_large_debt_payment_ns
+			set_country_flag = TUR_paying_debt_cflg
+		}
+
+		remove_effect = {
+			add_to_variable = {
+				TUR_opda_debt_var = -20
+				tooltip = debt_balance_tt
+			}
+			remove_ideas = TUR_large_debt_payment_ns
+			clr_country_flag = TUR_paying_debt_cflg
+			if = {
+			    limit = {
+				    check_variable = { var = TUR_opda_debt_var value = 80 compare = less_than }
+				}
+				swap_ideas = {
+				    remove_idea = TUR_ottoman_public_debt_administration_ns
+			        add_idea =  TUR_ottoman_public_debt_administration_1_ns
+			    }
+				else_if = {
+				    limit = {
+				        check_variable = { var = TUR_opda_debt_var value = 45 compare = less_than }
+				    }
+					swap_ideas = {
+				        remove_idea = TUR_ottoman_public_debt_administration_1_ns
+			            add_idea =  TUR_ottoman_public_debt_administration_2_ns
+			        }
+				}
+				else = {
+				}
+			}
+		}
+	}
+	TUR_ask_germany_for_loan_forgivness = {
+
+		icon = hol_attract_foreign_investors
+
+        priority = 	4
+
+		allowed = {
+			original_tag = TUR
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = TUR_paying_debt_cflg
+			}
+			is_in_faction_with = GER
+		}
+
+		days_remove = 60
+
+		cost = 100
+
+		targets = { GER }
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 10
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 100
+				date > 1915.01.01
+			}
+		}
+
+		visible = {
+		    is_in_faction_with = GER
+			OR = {
+				has_idea = TUR_ottoman_public_debt_administration_ns
+				has_idea = TUR_ottoman_public_debt_administration_1_ns
+				has_idea = TUR_ottoman_public_debt_administration_2_ns
+			}
+			NOT = {
+				check_variable = { var = TUR_opda_debt_var value = 0 compare = equals }
+			}
+		}
+
+		remove_effect = {
+			add_to_variable = {
+				TUR_opda_debt_var = -40
+				tooltip = debt_balance_tt
+			}
+		    FROM = { add_political_power = 100 }
+			if = {
+			    limit = {
+				    check_variable = { var = TUR_opda_debt_var value = 80 compare = less_than }
+				}
+				swap_ideas = {
+				    remove_idea = TUR_ottoman_public_debt_administration_ns
+			        add_idea =  TUR_ottoman_public_debt_administration_1_ns
+			    }
+				else_if = {
+				    limit = {
+				        check_variable = { var = TUR_opda_debt_var value = 45 compare = less_than }
+				    }
+					swap_ideas = {
+				        remove_idea = TUR_ottoman_public_debt_administration_1_ns
+			            add_idea =  TUR_ottoman_public_debt_administration_2_ns
+			        }
+				}
+				else = {
+				}
+			}
+		}
+	}
+	TUR_dissolve_the_opda = {
+
+		icon = generic_break_treaty
+
+		priority = 1
+
+		allowed = {
+			original_tag = TUR
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = TUR_paying_debt_cflg
+			}
+			check_variable = { var = TUR_opda_debt_var value = 0 compare = less_than tooltip = debt_balance_is_less_than_tt }
+		}
+
+		cost = 200
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 100
+				has_war_with = ENG
+			    has_war_with = FRA
+			}
+			modifier = {
+				factor = 30
+			}
+		}
+
+		visible = {
+			OR = {
+				has_idea = TUR_ottoman_public_debt_administration_ns
+				has_idea = TUR_ottoman_public_debt_administration_1_ns
+				has_idea = TUR_ottoman_public_debt_administration_2_ns
+			}
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_idea = TUR_ottoman_public_debt_administration_ns
+				}
+				remove_ideas = TUR_ottoman_public_debt_administration_ns
+				else_if = {
+					limit = {
+						has_idea = TUR_ottoman_public_debt_administration_1_ns
+					}
+					remove_ideas = TUR_ottoman_public_debt_administration_1_ns
+				}
+				else = {
+					remove_ideas = TUR_ottoman_public_debt_administration_2_ns
+				}
+			}
+			set_country_flag = OPDA_dissolved_cflg
+		}
+	}
+    TUR_illegally_dissolve_the_opda = {
+
+		icon = generic_break_treaty
+
+		priority = 1
+
+		allowed = {
+			original_tag = TUR
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = TUR_paying_debt_cflg
+			}
+			has_war_with = ENG
+			has_war_with = FRA
+			check_variable = { var = TUR_opda_debt_var value = 60 compare = equals tooltip = debt_balance_is_less_than_tt }
+		}
+
+		cost = 120
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 100
+				has_war_with = ENG
+			    has_war_with = FRA
+			}
+			modifier = {
+				factor = 30
+
+			}
+		}
+
+		visible = {
+			OR = {
+				has_idea = TUR_ottoman_public_debt_administration_ns
+				has_idea = TUR_ottoman_public_debt_administration_1_ns
+				has_idea = TUR_ottoman_public_debt_administration_2_ns
+			}
+			has_war_with = ENG
+			has_war_with = FRA
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_idea = TUR_ottoman_public_debt_administration_ns
+				}
+				remove_ideas = TUR_ottoman_public_debt_administration_ns
+				else_if = {
+					limit = {
+						has_idea = TUR_ottoman_public_debt_administration_1_ns
+					}
+					remove_ideas = TUR_ottoman_public_debt_administration_1_ns
+				}
+				else = {
+					remove_ideas = TUR_ottoman_public_debt_administration_2_ns
+				}
+			}
+			set_country_flag = OPDA_dissolved_cflg
+		}
+	}
+}
+
+TUR_illiteracy = {
+
+	
+    TUR_lower_illiteracy = {
+
+		icon = GFX_decision_generic_research
+
+        priority = 3
+
+		allowed = {
+			original_tag = TUR
+		}
+		
+		available = {
+			FROM = {
+				is_fully_controlled_by = ROOT
+			}
+			num_of_civilian_factories_available_for_projects > 0
+			custom_trigger_tooltip = { 
+			    tooltip = TUR_not_lowering_illeteracy_tt
+				NOT = {
+				    has_country_flag = TUR_lowering_illeteracy_cflg
+				}
+			}
+		}
+
+		visible = {
+			has_dynamic_modifier = TUR_illitirate_population
+			NOT = {
+			    check_variable = { TUR_illitirate_population_research_speed_factor = 0 compare = equals }
+			}
+		}
+		
+		target_trigger = {
+			FROM = {
+				is_fully_controlled_by = ROOT
+				OR = {
+					state = 1089
+					state = 1106
+					state = 341
+					state = 340
+					state = 347
+					state = 356
+					state = 355
+					state = 354
+					state = 353
+					state = 800
+					state = 349
+					state = 798
+					state = 49
+					state = 343
+					state = 339
+					state = 342
+					state = 346
+					state = 345
+					state = 344
+					state = 350
+					state = 352
+					state = 799
+					state = 677
+					state = 1010
+					state = 680
+					state = 676
+					state = 553
+					state = 554
+					state = 454
+					state = 455
+					state = 291
+					state = 1011
+					state = 1094
+					state = 184
+					state = 731
+					state = 1091
+					state = 106
+					state = 970
+					state = 802
+					state = 1093
+					state = 934
+					state = 44
+					state = 805
+					state = 1090
+				}
+			}
+		}
+		
+		state_target = yes
+
+		on_map_mode = map_only
+
+		days_remove = 40
+
+		cost = 40
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 10
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 5
+				date > 1911.01.01
+			}
+		}
+
+        complete_effect = {
+			set_country_flag = TUR_lowering_illeteracy_cflg
+		}
+
+        modifier = {
+			civilian_factory_use = 2
+		}
+
+		remove_effect = {
+			add_to_variable = { TUR_illitirate_population_research_speed_factor = 0.02 tooltip = research_speed_factor_tt }
+			clr_country_flag = TUR_lowering_illeteracy_cflg
+			if = {
+			    limit = {
+				    check_variable = { TUR_illitirate_population_research_speed_factor = 0 compare = equals }
+				}
+				remove_dynamic_modifier = {
+				    modifier = TUR_illitirate_population
+				}
+				else = {
+				}
+			}
+		}
+	}
+}
+
+TUR_Elections = {
+
+    TUR_election_timer = {
+
+		icon = GFX_decision_generic_political_address
+
+		priority = 3
+
+		allowed = {
+			original_tag = TUR
+		}
+
+		days_mission_timeout = 100
+		is_good = no
+
+		activation = {
+			has_completed_focus = TUR_ww1_begin_calls_for_election
+		}
+
+		fire_only_once = yes
+
+		available = {
+			always = no
+		}
+
+		ai_will_do = {
+		}
+
+		visible = {
+			has_completed_focus = TUR_ww1_begin_calls_for_election
+		}
+
+		timeout_effect = {
+			country_event = { id = ww1_ottoman.49 }
+		}
+	}
+}
+
+TUR_Turkic_Integration = {
+
+    TUR_integrate_turkic_nation_azr = {
+
+		icon = GFX_decision_generic_confiscation
+
+        priority = 3
+
+		allowed = {
+			original_tag = TUR
+		}
+		
+		available = {
+			OR = {
+			    AZR = {
+				    is_subject_of = TUR
+			        exists = yes
+			    }
+			}
+			NOT = {
+			    has_country_flag = TUR_integrating_nation_cflg
+			}
+		}
+		
+		target_trigger = {
+			FROM = {
+				tag = AZR
+			}
+		}
+
+		visible = {
+		    OR = {
+			    AZR = {
+				    is_subject_of = TUR
+				    exists = yes
+			    }
+			}
+		}
+
+		days_remove = 100
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 5
+			}
+		}
+
+        complete_effect = {
+			set_country_flag = TUR_integrating_nation_cflg
+		}
+
+        modifier = {
+		}
+
+		remove_effect = {
+		    clr_country_flag = TUR_integrating_nation_cflg
+			annex_country = {
+				target = AZR
+				transfer_troops = yes
+			}
+		}
+	}
+	TUR_integrate_turkic_nation_per = {
+
+		icon = GFX_decision_generic_confiscation
+
+        priority = 3
+
+		allowed = {
+			original_tag = TUR
+		}
+		
+		available = {
+			OR = {
+			    PER = {
+				    is_subject_of = TUR
+				    exists = yes
+			    }
+			}
+			NOT = {
+			    has_country_flag = TUR_integrating_nation_cflg
+			}
+		}
+		
+		target_trigger = {
+			FROM = {
+				tag = PER
+			}
+		}
+
+		visible = {
+		    OR = {
+			    PER = {
+				    is_subject_of = TUR
+				    exists = yes
+			    }
+			}
+		}
+
+		days_remove = 200
+
+		cost = 100
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 5
+			}
+		}
+
+        complete_effect = {
+			set_country_flag = TUR_integrating_nation_cflg
+		}
+
+        modifier = {
+		}
+
+		remove_effect = {
+		    clr_country_flag = TUR_integrating_nation_cflg
+			annex_country = {
+				target = PER
+				transfer_troops = yes
+			}
+		}
+	}
+	TUR_integrate_turkic_nation_buk = {
+
+		icon = GFX_decision_generic_confiscation
+
+        priority = 3
+
+		allowed = {
+			original_tag = TUR
+		}
+		
+		available = {
+			OR = {
+			    BUK = {
+				    is_subject_of = TUR
+				    exists = yes
+			    }
+			}
+			NOT = {
+			    has_country_flag = TUR_integrating_nation_cflg
+			}
+		}
+		
+		target_trigger = {
+			FROM = {
+				tag = BUK
+			}
+		}
+
+		visible = {
+		    OR = {
+			    BUK = {
+				    is_subject_of = TUR
+				    exists = yes
+			    }
+			}
+		}
+
+		days_remove = 200
+
+		cost = 100
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 5
+			}
+		}
+
+        complete_effect = {
+			set_country_flag = TUR_integrating_nation_cflg
+		}
+
+        modifier = {
+		}
+
+		remove_effect = {
+		    clr_country_flag = TUR_integrating_nation_cflg
+			annex_country = {
+				target = BUK
+				transfer_troops = yes
+			}
+		}
+	}
+	TUR_integrate_turkic_nation_khi = {
+
+		icon = GFX_decision_generic_confiscation
+
+        priority = 3
+
+		allowed = {
+			original_tag = TUR
+		}
+		
+		available = {
+			OR = {
+			    KHI = {
+				    is_subject_of = TUR
+				    exists = yes
+			    }
+			}
+			NOT = {
+			    has_country_flag = TUR_integrating_nation_cflg
+			}
+		}
+		
+		target_trigger = {
+			FROM = {
+				tag = KHI
+			}
+		}
+
+		visible = {
+		    OR = {
+			    KHI = {
+				    is_subject_of = TUR
+				    exists = yes
+			    }
+			}
+		}
+
+		days_remove = 200
+
+		cost = 100
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 5
+			}
+		}
+
+        complete_effect = {
+			set_country_flag = TUR_integrating_nation_cflg
+		}
+
+        modifier = {
+		}
+
+		remove_effect = {
+		    clr_country_flag = TUR_integrating_nation_cflg
+			annex_country = {
+				target = KHI
+				transfer_troops = yes
+			}
+		}
+	}
+}

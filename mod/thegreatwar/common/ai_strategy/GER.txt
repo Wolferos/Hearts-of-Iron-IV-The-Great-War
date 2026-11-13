@@ -1,51 +1,3 @@
-no_one_gets_our_troops = {
-	enable = {
-		original_tag = GER
-		is_historical_focus_on = yes
-		date < 1914.1.1
-	}
-	
-	abort = {
-	is_historical_focus_on = no
-	date > 1914.4.5
-	}
-	
-	ai_strategy = {
-		type = send_volunteers_desire
-		id = "QIN"
-		value = 0
-	}
-	ai_strategy = {
-		type = send_volunteers_desire
-		id = "BUL"
-		value = 0
-	}
-}
-
-invading_france_through_to_benelux_so_we_can_make_it_historical = {
-	enable = {
-		tag = GER
-		date > 1914.2.4
-	}
-	abort = {
-		date < 1914.1.1
-	}
-
-	ai_strategy = {
-		type = invade
-		id = "FRA"			
-		value = -1000 
-	}
-
-	# If Germany invades liege it can be a possiblity to make it historical
-	ai_strategy = {
-		type = invade
-		id = "BEL"			
-		value = 1000 
-	}
-}
-
-
 centralpowers_stay_away_from_the_royal_navy = {
 	enable = {
 		has_war_with = ENG
@@ -66,6 +18,7 @@ centralpowers_stay_away_from_the_royal_navy = {
 			divisions_in_state = { state = 129 size > 0 }
 			divisions_in_state = { state = 130 size > 0 }
 			divisions_in_state = { state = 131 size > 0 }
+			divisions_in_state = { state = 931 size > 0 }
 			divisions_in_state = { state = 123 size > 0 }
 			divisions_in_state = { state = 122 size > 0 }
 			divisions_in_state = { state = 132 size > 0 }
@@ -93,6 +46,7 @@ centralpowers_stay_away_from_the_royal_navy = {
 				divisions_in_state = { state = 129 size < 1 }
 				divisions_in_state = { state = 130 size < 1 }
 				divisions_in_state = { state = 131 size < 1 }
+				divisions_in_state = { state = 931 size < 1 }
 				divisions_in_state = { state = 123 size < 1 }
 				divisions_in_state = { state = 122 size < 1 }
 				divisions_in_state = { state = 132 size < 1 }
@@ -255,22 +209,35 @@ GER_unit_production = {
 	}
 }
 
-german_strike_against_belgium = {
-	enable = {
+GER_schlieffen_plan = {
+	allowed = {
 		original_tag = GER
-		is_historical_focus_on = yes
-		has_global_flag = kis_franzferdinand_murdered
-		date > 1914.07.01
-		has_war_with = BEL
 	}
-	abort = {
-		OR = {
-			NOT = { has_war_with = BEL }
-			BEL = { has_capitulated = yes }
-			date > 1915.03.01
-		}
+	enable = {
+		great_war_ongoing = yes
+		has_idea = GER_ww1_schlieffen_plan_ns
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = invade
+		id = "FRA"
+		value = -1000 
 	}
 
+	# If Germany invades liege it can be a possiblity to make it historical
+	ai_strategy = {
+		type = invade
+		id = "BEL"
+		value = 1000 
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = BEL
+		value = 1000
+	}
+
+	# Prio
 	ai_strategy = {
 		type = area_priority
 		id = hoi4tgw_greater_benelux
@@ -281,16 +248,27 @@ german_strike_against_belgium = {
 		id = hoi4tgw_germany
 		value = 100
 	}
-	
+}
+
+GER_no_one_gets_our_troops = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		is_historical_focus_on = yes
+		has_idea = GER_ww1_schlieffen_plan_ns
+	}
+	abort_when_not_enabled = yes
+
 	ai_strategy = {
-		type = consider_weak
-		id = BEL
-		value = 100
+		type = send_volunteers_desire
+		id = "QIN"
+		value = 0
 	}
 	ai_strategy = {
-		type = invade
-		id = BEL
-		value = 400
+		type = send_volunteers_desire
+		id = "BUL"
+		value = 0
 	}
 }
 
@@ -308,13 +286,11 @@ german_defense_of_elsass = {
 			FRA = { has_capitulated = yes }
 			GER = { controls_state = 34 }
 			any_country = {
-				AND = {
-					OR = {
-						is_in_faction_with = GER
-						is_subject_of = GER
-					}
-					controls_state = 34
+				OR = {
+					is_in_faction_with = GER
+					is_subject_of = GER
 				}
+				controls_state = 34
 			}
 			date > 1915.01.01
 		}

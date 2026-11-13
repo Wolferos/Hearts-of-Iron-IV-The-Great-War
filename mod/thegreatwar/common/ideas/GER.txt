@@ -2,67 +2,66 @@ ideas = {
 
 	naval_manufacturer = {
 		designer = yes
-		blohm_und_voss={ allowed={ TAG = GER } research_bonus={ naval_equipment=0.10 } traits={ raiding_fleet_naval_manufacturer } }
-		kaiserliche_werft_wilhelmshaven={ allowed={ TAG = GER } research_bonus={ naval_equipment=0.10 } traits={ atlantic_fleet_naval_manufacturer } picture=GER_kaiserliche_wilhelmshaven }
-		#vulcan_werke_ag={ allowed={ TAG = GER } research_bonus={ naval_equipment=0.10 } traits={ convoy_escort_naval_manufacturer } picture=generic_naval_manufacturer_1 }
+		blohm_und_voss={ allowed={ original_tag = GER } research_bonus={ naval_equipment=0.10 } traits={ raiding_fleet_naval_manufacturer } }
+		kaiserliche_werft_wilhelmshaven={ allowed={ original_tag = GER } research_bonus={ naval_equipment=0.10 } traits={ atlantic_fleet_naval_manufacturer } picture=GER_kaiserliche_wilhelmshaven }
+		#vulcan_werke_ag={ allowed={ original_tag = GER } research_bonus={ naval_equipment=0.10 } traits={ convoy_escort_naval_manufacturer } picture=generic_naval_manufacturer_1 }
 	}
 
 	aircraft_manufacturer = {
 			designer = yes
-			#junkers={ allowed={ TAG = GER } research_bonus={ air_equipment=0.10 } traits={ CAS_manufacturer } }
-			#messerschmitt={ allowed={ TAG = GER } research_bonus={ air_equipment=0.10 } traits={ light_aircraft_manufacturer } }
-			#focke_wulf={ allowed={ TAG = GER } research_bonus={ air_equipment=0.10 } traits={ medium_aircraft_manufacturer } }
+			#junkers={ allowed={ original_tag = GER } research_bonus={ air_equipment=0.10 } traits={ CAS_manufacturer } }
+			#messerschmitt={ allowed={ original_tag = GER } research_bonus={ air_equipment=0.10 } traits={ light_aircraft_manufacturer } }
+			#focke_wulf={ allowed={ original_tag = GER } research_bonus={ air_equipment=0.10 } traits={ medium_aircraft_manufacturer } }
 
 			#Fokker Aeroplanbau
 			fokker = {
-				allowed = { tag = GER }
+				allowed = { original_tag = GER }
 				available = { has_completed_focus = GER_ww1_fokker_aeroplanbau }
 				research_bonus = { air_equipment = 0.10 }
 				traits = { light_aircraft_manufacturer }
 			}
 
 			#Luftschiffbau Zeppelin
-			luftschiffbau_zeppelin={ allowed={ TAG=GER } research_bonus={ air_equipment=0.10 } traits={ heavy_aircraft_manufacturer } }
+			luftschiffbau_zeppelin={ allowed={ original_tag=GER } research_bonus={ air_equipment=0.10 } traits={ heavy_aircraft_manufacturer } }
 
 			#Allgemeine Elektricitäts-Gesellschaft
-			allgemeine_elektricitats_gesellschaft={ allowed={ TAG=GER } research_bonus={ air_equipment=0.10 } traits={ medium_aircraft_manufacturer } }
+			allgemeine_elektricitats_gesellschaft={ allowed={ original_tag=GER } research_bonus={ air_equipment=0.10 } traits={ medium_aircraft_manufacturer } }
 
 			#Albatros Flugzeugwerke GmbH
 			albatros_flugzeugwerke_gmbh_ger = {
-				allowed = { tag = GER }
+				allowed = { original_tag = GER }
 				picture = generic_industrial_concern_2
 				research_bonus = { air_equipment = 0.08 }
 				traits = { naval_aircraft_manufacturer }
 			}
 
 			#Gothaer Waggonfabrik
-			gothaer_waggonfabrik={ allowed={ TAG=GER } research_bonus={ air_equipment=0.15 } traits={ medium_aircraft_manufacturer } }
+			gothaer_waggonfabrik={ allowed={ original_tag=GER } research_bonus={ air_equipment=0.15 } traits={ medium_aircraft_manufacturer } }
 			}
 
 	materiel_manufacturer = {
 			designer = yes
-			mauser={ allowed={ TAG=GER } research_bonus={ infantry_weapons=0.10 } traits={ infantry_equipment_manufacturer } }
-			rheinmetall={ allowed={ TAG=GER } research_bonus={ artillery=0.10 } traits={ artillery_manufacturer } }
+			mauser={ allowed={ original_tag=GER } research_bonus={ infantry_weapons=0.10 } traits={ infantry_equipment_manufacturer } }
+			rheinmetall={ allowed={ original_tag=GER } research_bonus={ artillery=0.10 } traits={ artillery_manufacturer } }
 			}
 	industrial_concern = {
-			designer = yes
-			krupp={ allowed={ TAG=GER }    research_bonus = {
+			krupp={ allowed={ original_tag=GER }    research_bonus = {
 							    industry = 0.10
 
 							   } traits={ industrial_concern } }
 
 
-			#oberschlesien_eisen_industrie_ag={ allowed={ TAG=GER }    research_bonus = {  industry = 0.10    } traits={ industrial_concern } picture=generic_tank_manufacturer_3 }
+			#oberschlesien_eisen_industrie_ag={ allowed={ original_tag=GER }    research_bonus = {  industry = 0.10    } traits={ industrial_concern } picture=generic_tank_manufacturer_3 }
 
-			siemens={ allowed={ TAG=GER }    research_bonus = {
+			siemens={ allowed={ original_tag=GER }    research_bonus = {
 							    electronics = 0.10
 							   } traits={ electronics_concern } }
 			}
 	tank_manufacturer={
 			designer = yes
-			#MAN={ allowed={ TAG=GER } research_bonus={ armor=0.10 } traits={ medium_tank_manufacturer } }
-			opel={ allowed={ TAG=GER } research_bonus={ armor=0.10 } traits={ fast_tank_manufacturer } picture=generic_tank_manufacturer_3 }
-			daimler_motoren_gesellschaft={ allowed={ TAG=GER } research_bonus={ armor=0.10 } traits={ medium_tank_manufacturer } }
+			#MAN={ allowed={ original_tag=GER } research_bonus={ armor=0.10 } traits={ medium_tank_manufacturer } }
+			opel={ allowed={ original_tag=GER } research_bonus={ armor=0.10 } traits={ fast_tank_manufacturer } picture=generic_tank_manufacturer_3 }
+			daimler_motoren_gesellschaft={ allowed={ original_tag=GER } research_bonus={ armor=0.10 } traits={ medium_tank_manufacturer } }
 			}
 
 	country = {
@@ -228,6 +227,52 @@ ideas = {
 			modifier = {
 				navy_submarine_attack_factor = 0.1
 				convoy_raiding_efficiency_factor = 0.25
+			}
+		}
+
+		GER_ww1_schlieffen_plan_ns = {
+
+			picture = FRA_army_of_aggression_focus 
+
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				army_org = 5
+				army_morale_factor = 0.1
+			}
+
+			targeted_modifier = {
+				tag = BEL
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.05
+				attack_bonus_against = 0.15
+			}
+		}
+
+		GER_ww1_lys_offensive_ns = {
+
+			picture = generic_infantry_bonus
+
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				army_org = 7 army_morale_factor = 0.2
 			}
 		}
 
@@ -449,6 +494,163 @@ ideas = {
 				army_morale_factor = -0.15
 				production_speed_arms_factory_factor = -0.35
 				production_factory_start_efficiency_factor = -0.2
+			}
+		}
+
+		### WW2 ###
+
+		rhineland_challenge_met = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+			
+			picture = generic_democratic_drift_bonus
+
+			modifier = {
+				stability_factor = -0.1
+				war_support_factor = -0.1 
+				drift_defence_factor = -0.5
+				political_power_cost = 0.2
+			}
+		}
+
+		GER_communist_influence = {
+			name = GER_communist_influence
+
+			picture = generic_communism_drift_bonus
+
+			removal_cost = -1
+
+			cancel = {
+				communism > 0.4
+			}
+
+			on_remove = {
+				IF = {
+					limit = {
+						is_subject = no
+						communism > 0.39 # It needs to be 40% or higher
+					}
+					country_event = {
+						id = wuw_GER_diplomacy.75
+						hours = 6
+					}
+				}
+			}
+
+			modifier = {
+				communism_drift = 0.1
+				custom_modifier_tooltip = GER_communist_influence_tt
+			}
+		}
+
+		GER_neutrality_influence = {
+
+			picture = generic_monarchist_uprising
+
+			removal_cost = -1
+
+			cancel = {
+				neutrality > 0.45
+			}
+
+			on_remove = {
+				IF = {
+					limit = {
+						is_subject = no
+					}
+					country_event = {
+						id = wuw_GER_realpolitik.27
+						hours = 6
+					}
+				}
+			}
+
+			modifier = {
+				neutrality_drift = 0.1
+				custom_modifier_tooltip = GER_neutrality_influence_tt
+			}
+		}
+
+		GER_democratic_influence = {
+
+			picture = generic_democratic_opposition
+
+			removal_cost = -1
+
+			cancel = {
+				democratic > 0.45
+			}
+
+			on_remove = {
+				IF = {
+					limit = {
+						is_subject = no
+					}
+					country_event = {
+						id = wuw_GER_realpolitik.28
+						hours = 6
+					}
+				}
+			}
+
+			modifier = {
+				democratic_drift = 0.1
+				custom_modifier_tooltip = GER_democratic_influence_tt
+			}
+		}
+
+		GER_fascism_influence = {
+
+			picture = generic_fascism_rising
+
+			removal_cost = -1
+
+			cancel = {
+				fascism > 0.45
+			}
+
+			on_remove = {
+				IF = {
+					limit = {
+						is_subject = no
+					}
+					country_event = {
+						id = wuw_GER_realpolitik.29
+						hours = 6
+					}
+				}
+			}
+
+			modifier = {
+				fascism_drift = 0.1
+				custom_modifier_tooltip = GER_fascism_influence_tt
+			}
+		}
+		
+		GER_BB_railway_ns = {
+
+            allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			picture = generic_build_infrastructure
+
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = 0.25
 			}
 		}
 

@@ -1,0 +1,79 @@
+add_namespace = ww1_brittany
+
+#An Independent Brittany!
+country_event = {
+	id =  ww1_brittany.1
+	title = ww1_brittany.1.t
+	desc = ww1_brittany.1.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_brittany.1.a
+	}
+}
+
+#Cultural Exchange with Brittany?
+country_event = {
+	id =  ww1_brittany.2
+	title = ww1_brittany.2.t
+	desc = ww1_brittany.2.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_brittany.2.a
+		ai_chance = { base = 100 }
+		add_political_power = 25
+		add_offsite_building = { type = industrial_complex level = 1 }
+		BRI = {
+			add_political_power = 25
+			add_offsite_building = { type = industrial_complex level = 1 }
+			set_country_flag = BRI_irish_exchange_cflg
+			country_event = {
+				id = ww1_brittany.3
+				days = 1
+			}
+		}
+	}
+	option = {
+		name = ww1_brittany.2.b
+		ai_chance = { base = 0 }
+	}
+}
+
+#Cultural Exchange with Ireland Response
+country_event = {
+	id =  ww1_brittany.3
+	title = ww1_brittany.3.t
+	desc = ww1_brittany.3.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_brittany.3.a
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_flag = BRI_irish_exchange_cflg
+		}
+		effect_tooltip = {
+			add_political_power = 25
+			add_offsite_building = { type = industrial_complex level = 1 }
+			IRE = {
+				add_political_power = 25
+				add_offsite_building = { type = industrial_complex level = 1 }
+			}
+		}
+	}
+	option = {
+		name = ww1_brittany.3.b
+		ai_chance = { base = 100 }
+		trigger = {
+			NOT = {
+				has_country_flag = BRI_irish_exchange_cflg
+			}
+		}
+	}
+}

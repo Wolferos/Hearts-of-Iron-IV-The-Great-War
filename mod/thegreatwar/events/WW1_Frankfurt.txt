@@ -15,7 +15,6 @@ country_event = {
 			surrender_progress > 0.55
 			has_war_with = GER
 			has_war_with = AUH
-			has_global_flag = kis_brestlitovsk			# Open Beta 0.1.8 - Temporary Solution
 			NOT = {
 				has_global_flag = kis_ask_fra_surrend				#
 				has_global_flag = kis_player_decided_fra_surrend				#
@@ -138,6 +137,18 @@ country_event = {
 				id = ww1_frankfurt.3
 			}
 		}
+		every_country = {
+			limit = {
+				is_in_faction_with = ENT
+			}
+			set_country_flag = great_war_loser
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = CPL
+			}
+			set_country_flag = great_war_winner
+		}
 		hidden_effect = {
 			set_global_flag = kis_player_decided_fra_surrend
 		}
@@ -165,7 +176,7 @@ country_event = {
 	fire_only_once = yes
 	is_triggered_only = yes
 	immediate = {
-		set_global_flag = kis_ask_ger_surrend
+		set_global_flag = kis_great_war_german_surrender
 	}
 	option = {
 		name = ww1_frankfurt.3.a
@@ -173,13 +184,19 @@ country_event = {
 			factor = 100
 		}
 		hidden_effect = {
+			add_named_threat = {
+				threat = -50
+				name = the_great_war_armistice
+			}
 			#Germany is in Central Powers
 			if = {
 				limit = {
 					GER = {
 						has_war_with = BEL
 						controls_state = 34
+						controls_state = 980
 						controls_state = 6
+						controls_state = 977
 					}
 				}
 				BEL = {
@@ -213,13 +230,13 @@ country_event = {
 				GER = {
 					transfer_state = 6					# Vlaanderen
 					transfer_state = 295
+					transfer_state = 888
+					transfer_state = 889
+					transfer_state = 890
 					transfer_state = 538
 					transfer_state = 718
 					add_to_faction = BEL
 					add_state_core = 6
-					add_state_core = 295
-					add_state_core = 538
-					add_state_core = 718
 					set_autonomy = {
 						target = BEL
 						autonomous_state = autonomy_integrated_puppet
@@ -253,8 +270,8 @@ country_event = {
 					transfer_state = 461					# Casablanca
 					transfer_state = 462					# Marrakech
 					transfer_state = 539					# Cameroon
-					transfer_state = 755					# Cameroon
-					transfer_state = 752					# Cameroon
+					transfer_state = 1087					# Cameroon
+					transfer_state = 1085					# Gabon
 					transfer_state = 774					# Entenschnabel
 				}
 			}
@@ -310,9 +327,9 @@ country_event = {
 					else = {
 						AUH = {
 							transfer_state = 105							# MONTENEGRO
-							transfer_state = 761							# MONTENEGRO
+							transfer_state = 1093							# MONTENEGRO
 							add_state_core = 105
-							add_state_core = 761
+							add_state_core = 1093
 						}
 					}
 				}
@@ -348,13 +365,13 @@ country_event = {
 					transfer_state = 658					# ABU DHABI
 					transfer_state = 659					# ADEN
 					transfer_state = 765					# QATAR
-					transfer_state = 828					# BAHRAIN
+					transfer_state = 1014					# BAHRAIN
 					add_state_core = 184
 					add_state_core = 656
 					add_state_core = 658
 					add_state_core = 659
 					add_state_core = 765
-					add_state_core = 828
+					add_state_core = 1014
 					#Maybe Puppet or free Egypt?
 					if = {
 						limit = {
@@ -365,7 +382,7 @@ country_event = {
 						}
 						set_autonomy = {
 							target = EGY
-							autonomous_state = autonomy_integrated_puppet
+							autonomous_state = autonomy_ww1_integrated_protectorate
 						}
 					}
 				}
@@ -396,7 +413,7 @@ country_event = {
 						transfer_state = 661						# LIBYA
 						transfer_state = 662						# LIBYA
 						transfer_state = 663						# LIBYA
-						transfer_state = 826						# LIBYA
+						transfer_state = 1104						# LIBYA
 					}
 				}
 				else = {
@@ -413,7 +430,7 @@ country_event = {
 					}
 				}
 				BUL = {
-					transfer_state = 759					# EAST MACEDONIA
+					transfer_state = 1091					# EAST MACEDONIA
 				}
 			}
 			if = {
@@ -482,6 +499,7 @@ country_event = {
 				POR = {
 					transfer_state = 770
 					transfer_state = 771
+					transfer_state = 981
 					transfer_state = 545
 				}
 			}
@@ -576,13 +594,13 @@ country_event = {
 						is_in_faction_with = GER
 						NOT = {
 							JAP = {
-								owns_state = 746
+								owns_state = 1083
 							}
 						}
 					}
 				}
 				JAP = {
-					transfer_state = 746					# Weihaiwei
+					transfer_state = 1083					# Weihaiwei
 				}
 			}
 			if = {

@@ -18,7 +18,7 @@ recruit_character = RUS_vladimir_kokovtsov
 recruit_character = RUS_nikolai_golitsyn
 recruit_character = RUS_pavel_ryabushinsky
 recruit_character = RUS_vasily_shulgin
-recruit_character = RUS_alexei_putilov
+recruit_character = RUS_aleksei_putilov
 recruit_character = RUS_pyotr_struve
 recruit_character = RUS_grigori_rasputin
 recruit_character = RUS_konstantin_rodzaevsky
@@ -39,7 +39,6 @@ recruit_character = RUS_ivan_grigorovich
 recruit_character = RUS_pyotr_nesterov
 # ======================================================================
 ### High Command ###
-recruit_character = RUS_mikhail_alexeev
 recruit_character = RUS_stepan_voevodsky
 recruit_character = RUS_aleksandr_lukomsky
 recruit_character = RUS_pyotr_krasnov
@@ -52,13 +51,15 @@ recruit_character = RUS_andrei_shkuro
 recruit_character = RUS_nikolay_ii
 recruit_character = RUS_vladimir_lenin
 recruit_character = RUS_georgy_lvov
+recruit_character = RUS_aleksei_aladin 
+recruit_character = RUS_aleksandr_kerensky
 recruit_character = RUS_aleksandr_kolchak # Also Admiral & Advisor
 recruit_character = RUS_iosif_stalin
 recruit_character = RUS_vladimir_liakhov
 recruit_character = RUS_kirill_i
 recruit_character = RUS_mikhail_ii
 ### ARMY ###
-recruit_character = RUS_mikhail_alexeyev
+recruit_character = RUS_mikhail_alexeyev # Also Advisor
 recruit_character = RUS_nikolay_rouzski
 recruit_character = RUS_vladimir_sukhomlinov # Also Advisor
 recruit_character = RUS_nikolay_baratov
@@ -73,7 +74,7 @@ recruit_character = RUS_pavel_karlovitch_rennenkampf
 recruit_character = RUS_aleksandr_samsonov
 recruit_character = RUS_vladimir_sakharov
 recruit_character = RUS_dmitry_shcherbachev
-recruit_character = RUS_piotr_wrangel
+recruit_character = RUS_pyotr_wrangel
 recruit_character = RUS_nikolai_yudenich
 #recruit_character = RUS_franz_albert_seyn #Recruited in GD Finland, transfers to Russia if Finland is independent
 ### NAVY ###
@@ -83,17 +84,6 @@ recruit_character = RUS_grand_duke_alexander
 recruit_character = RUS_aleksandr_rusin # Also Advisor
 
 oob = "RUS_1910"
-
-#-------------------------------------------------------
-#							NF
-#-------------------------------------------------------
-#Army
-#complete_national_focus = RUS_ww1_army_effort
-#complete_national_focus = RUS_ww1_industrial_effort
-#complete_national_focus = RUS_ww1_naval_effort
-#Diplomatic
-#complete_national_focus = RUS_ww1_diplomatic_effort
-#-------------------------------------------------------
 
 set_technology = {
 	# Train
@@ -198,6 +188,8 @@ add_ideas = {
 	limited_conscription
 	partial_economic_mobilisation
 	limited_exports
+	RUS_rural_communities
+	RUS_political_deadlock
 	RUS_ww1_orthodox_church
 	RUS_ww1_tsushima_humiliation
 	RUS_ww1_mixed_railways
@@ -206,6 +198,14 @@ add_ideas = {
 set_autonomy = {
 	target = FIN
 	autonomy_state = autonomy_personal_union
+}
+set_autonomy = {
+	target = BUK
+	autonomy_state = autonomy_ww1_integrated_protectorate
+}
+set_autonomy = {
+	target = KHI
+	autonomy_state = autonomy_ww1_integrated_protectorate
 }
 
 create_equipment_variant = {
@@ -709,28 +709,28 @@ create_equipment_variant = {
 	#							NF
 	#-------------------------------------------------------
 	#Army
-	complete_national_focus = RUS_ww1_army_effort
-	complete_national_focus = RUS_ww1_equipment_effort
-	complete_national_focus = RUS_ww1_artillery_effort_1
-	complete_national_focus = RUS_ww1_doctrine_effort
-	complete_national_focus = RUS_ww1_trenchwarfare
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = ww1_artillery_effort_1
+	complete_national_focus = doctrine_effort
+	complete_national_focus = ww1_trenchwarfare
 	# Air
-	complete_national_focus = RUS_ww1_aviation_effort
-	complete_national_focus = RUS_ww1_aviation_effort_2
+	complete_national_focus = aviation_effort
+	complete_national_focus = aviation_effort_2
 	# Industry
-	complete_national_focus = RUS_ww1_industrial_effort
-	complete_national_focus = RUS_ww1_infrastructure_effort
-	complete_national_focus = RUS_ww1_airfield_expansion_1
-	complete_national_focus = RUS_ww1_construction_effort
-	complete_national_focus = RUS_ww1_production_effort
-	complete_national_focus = RUS_ww1_dockyard_effort_1
+	complete_national_focus = industrial_effort
+	complete_national_focus = infrastructure_effort
+	complete_national_focus = airfield_expansion_1
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	complete_national_focus = ww1_dockyard_effort_1
 	# Naval
-	complete_national_focus = RUS_ww1_naval_effort
+	complete_national_focus = naval_effort
 	complete_national_focus = RUS_ww1_european_seas_focus
 	#Political
-	complete_national_focus = RUS_ww1_political_effort
-	complete_national_focus = RUS_ww1_adopt_reforms
-	complete_national_focus = RUS_ww1_discuss_tsar_authority
+	complete_national_focus = RUS_status_quo
+	complete_national_focus = RUS_the_stolypin_reforms
+	complete_national_focus = RUS_discuss_tsar_authority
 	#Diplomatic
 	complete_national_focus = RUS_ww1_diplomatic_effort
 	complete_national_focus = RUS_ww1_BalkansPolitics
@@ -944,28 +944,28 @@ create_equipment_variant = {
 	#							NF
 	#-------------------------------------------------------
 	#Army
-	complete_national_focus = RUS_ww1_army_effort
-	complete_national_focus = RUS_ww1_equipment_effort
-	complete_national_focus = RUS_ww1_artillery_effort_1
-	complete_national_focus = RUS_ww1_doctrine_effort
-	complete_national_focus = RUS_ww1_trenchwarfare
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = ww1_artillery_effort_1
+	complete_national_focus = doctrine_effort
+	complete_national_focus = ww1_trenchwarfare
 	# Air
-	complete_national_focus = RUS_ww1_aviation_effort
-	complete_national_focus = RUS_ww1_aviation_effort_2
+	complete_national_focus = aviation_effort
+	complete_national_focus = aviation_effort_2
 	# Industry
-	complete_national_focus = RUS_ww1_industrial_effort
-	complete_national_focus = RUS_ww1_infrastructure_effort
-	complete_national_focus = RUS_ww1_airfield_expansion_1
-	complete_national_focus = RUS_ww1_construction_effort
-	complete_national_focus = RUS_ww1_production_effort
-	complete_national_focus = RUS_ww1_dockyard_effort_1
+	complete_national_focus = industrial_effort
+	complete_national_focus = infrastructure_effort
+	complete_national_focus = airfield_expansion_1
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	complete_national_focus = ww1_dockyard_effort_1
 	# Naval
-	complete_national_focus = RUS_ww1_naval_effort
+	complete_national_focus = naval_effort
 	complete_national_focus = RUS_ww1_european_seas_focus
 	#Political
-	complete_national_focus = RUS_ww1_political_effort
-	complete_national_focus = RUS_ww1_adopt_reforms
-	complete_national_focus = RUS_ww1_discuss_tsar_authority
+	complete_national_focus = RUS_status_quo
+	complete_national_focus = RUS_the_stolypin_reforms
+	complete_national_focus = RUS_discuss_tsar_authority
 	#Diplomatic
 	complete_national_focus = RUS_ww1_diplomatic_effort
 	complete_national_focus = RUS_ww1_BalkansPolitics

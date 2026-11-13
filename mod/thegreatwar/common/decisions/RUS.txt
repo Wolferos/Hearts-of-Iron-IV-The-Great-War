@@ -1,62 +1,16 @@
-political_actions = {
+foreign_affairs = {
 
-	RUS_move_capital_to_moscow = {
-
-		allowed = {
-			original_tag = RUS
-		}
-
-		cost = 10
-
-		highlight_states = {
-			highlight_state_targets = {
-				state = 219
-			}
-		}
-
-		visible = {
-			219 = {
-				is_capital = no
-			}
-		}
-
-		available = {
-			controls_state = 219
-			219 = {
-				is_capital = no
-			}
-		}
-
-		ai_will_do = {
-			base = 5
-		}
-
-		fire_only_once = yes
-
-		complete_effect = {
-			set_capital = { state = 219 }
-		}
-	}
-
-}
-
-operations = {
+	### foreign_affairs_great_war ###
 
 	RUS_launch_the_brusilov_offensive = {
+
 		allowed = {
 			original_tag = RUS
 		}
 
-		highlight_states = {
-			highlight_state_targets = {
-				state = 219
-			}
-		}
-
 		visible = {
-			219 = {
-				is_capital = no
-			}
+			foreign_affairs_great_war_visible = yes
+			great_war_ongoing = yes
 		}
 
 		available = {
@@ -101,6 +55,277 @@ operations = {
 				idea = RUS_ww1_brusilov_offensive
 				days = 180
 			}
+			set_country_flag = RUS_brusilov_offensive_launched_cflg
+		}
+	}
+
+}
+
+political_actions = {
+
+	RUS_force_tsars_avdication = {
+
+		priority = 29
+
+		allowed = {
+			original_tag = RUS
+		}
+
+		cost = 50
+
+		visible = {
+			has_completed_focus = RUS_status_quo
+			has_war = yes
+		}
+
+		available = {
+			has_country_flag = RUS_brusilov_offensive_launched_cflg
+			surrender_progress > 0.05
+			OR = {
+				has_idea = RUS_nikolay_ii
+				has_country_leader = {
+					character = RUS_nikolay_ii
+					ruling_only = yes
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 5
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_idea = RUS_nikolay_ii
+				}
+				remove_ideas = RUS_nikolay_ii
+			}
+			hidden_effect = {
+				hold_election = ROOT
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.4
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.3
+			}
+			set_country_flag = kis_tsarnicholasabdicated
+		}
+	}
+
+	RUS_the_bolshevik_uprising = {
+
+		priority = 30
+
+		allowed = {
+			original_tag = RUS
+		}
+
+		is_good = no
+
+		activation = {
+			#has_country_flag = RUS_kornilov_affair_failed_cflg
+			has_country_flag = kis_tsarnicholasabdicated #TODO: Remove when adding some sort of prov gov legitimacy mechanic
+			NOT = {
+				has_global_flag = kis_treaty_of_versailles # Can't happened if Germany lost the WW1
+				has_completed_focus = RUS_protect_labor
+				has_completed_focus = RUS_legitimate_power
+				has_completed_focus = RUS_adopt_marxist_ideas
+				has_completed_focus = RUS_dissolve_imperial_duma
+			}
+		}
+
+		available = {
+			NOT = {
+				has_war_with = GER
+				has_war_with = AUH
+				has_country_flag = dual_power
+				has_government = communism
+			}
+			OR = {
+				has_completed_focus = RUS_protect_labor
+				has_completed_focus = RUS_legitimate_power
+				has_completed_focus = RUS_adopt_marxist_ideas
+				has_completed_focus = RUS_dissolve_imperial_duma
+			}
+		}
+
+		ai_will_do = {
+			base = 5
+		}
+
+		fire_only_once = yes
+		days_mission_timeout = 236
+
+		complete_effect = {
+			add_stability = 0.1
+			add_war_support = 0.1
+		}
+
+		timeout_effect = {
+			hidden_effect = {
+				set_country_flag = dual_power
+				set_country_flag = bolsheviks
+				add_political_power = -100
+				add_stability = -0.10
+				add_timed_idea = {
+					idea = RUS_ww1_dual_power_ns
+					days = 180
+				}
+				create_faction = white_movement
+				promote_character = RUS_georgy_lvov
+				set_politics = {
+					ruling_party = democratic 
+					last_election = "1912.9.1"
+					election_frequency = 60 
+					elections_allowed = no
+				}
+				set_popularities = { 
+					neutrality = 0
+					democratic = 70 
+					fascism = 0 
+					communism = 30 
+				}
+				news_event = ww1_russia.4
+				ENG = {
+					remove_from_faction = RUS
+					add_opinion_modifier = {
+						target = RUS
+						modifier = HOI4TGW_Opinion_Russia_Leave_Entente
+					}
+				}
+				SOV = {
+					create_faction_from_template = faction_template_comintern
+					set_global_flag = kis_october_revolution
+					load_oob = SOV_Revolt_01
+					transfer_state = 195
+					transfer_state = 219
+					transfer_state = 244
+					transfer_state = 263
+					transfer_state = 208
+					transfer_state = 246
+					transfer_state = 247
+					transfer_state = 248
+					transfer_state = 264
+					transfer_state = 253
+					transfer_state = 254
+					declare_war_on = {
+						type = civil_war
+						target = RUS
+					}
+				}
+			}
+		}
+	}
+
+	RUS_move_capital_to_moscow = {
+
+		allowed = {
+			original_tag = RUS
+		}
+
+		cost = 10
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 219
+			}
+		}
+
+		visible = {
+			219 = {
+				is_capital = no
+			}
+		}
+
+		available = {
+			controls_state = 219
+			219 = {
+				is_capital = no
+			}
+		}
+
+		ai_will_do = {
+			base = 5
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			set_capital = { state = 219 }
+		}
+	}
+
+}
+
+economy_decisions = {
+
+	RUS_expand_the_putilov_factory = {
+
+		icon = GFX_decision_generic_factory
+
+		allowed = {
+			original_tag = RUS
+		}
+
+		highlight_states = {
+			highlight_states_trigger = {
+				state = 400
+			}
+		}
+
+		visible = {
+			NOT = {
+				has_completed_focus = RUS_adopt_marxist_ideas
+				has_completed_focus = RUS_aladin
+			}
+		}
+
+		available = {
+			OR = {
+				has_completed_focus = RUS_the_stolypin_reforms
+				has_completed_focus = RUS_reckless_industrialization
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+		}
+
+		fire_only_once = yes
+		days_remove = 180
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = available_designer
+			show_ideas_tooltip = Putilov_design_bureau
+			custom_effect_tooltip = generic_skip_one_line_tt
+			400 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_country_flag = expanded_putilov_factory
 		}
 	}
 

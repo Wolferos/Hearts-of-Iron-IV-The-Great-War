@@ -1,0 +1,540 @@
+﻿add_namespace = ww1_raj
+
+# Aden lost
+country_event = {
+	title = ww1_raj.1.t
+	desc = ww1_raj.1.d
+	id = ww1_raj.1
+
+	mean_time_to_happen = { days = 30 }
+	fire_only_once = yes
+	
+	trigger = {
+		tag = RAJ
+		RAJ = { 
+			is_subject = yes
+			owns_state = 659 #Aden
+			has_completed_focus = RAJ_recalcitrance
+		}
+	}
+	immediate = {
+		hidden_effect = { OVERLORD = { transfer_state = 659 } }
+	}
+	
+	option = {
+		name = ww1_raj.1.a
+		hidden_effect = {
+			OVERLORD = {
+				country_event = { id = ww1_raj.2 }
+			}
+		}
+		effect_tooltip = {
+			OVERLORD = { transfer_state = 659 }
+		}
+		ai_chance = { base = 1 }
+	}
+}
+country_event = {
+	title = ww1_raj.2.t
+	desc = ww1_raj.2.d
+	id = ww1_raj.2
+
+	is_triggered_only = yes
+	
+	option = {
+		name = ww1_raj.2.a
+		effect_tooltip = { transfer_state = 659 }
+		ai_chance = { base = 1 }
+	}
+}
+# Independence Day
+news_event = {
+	id = ww1_raj.3
+	title = ww1_raj.3.t
+	desc = ww1_raj.3.d
+	picture = GFX_news_event_generic_sign_treaty2
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = ww1_raj.3.a
+		trigger = { has_country_flag = overlord_lost_india }
+		ai_chance = { base = 1 }
+	}
+	option = {
+		name = ww1_raj.3.b
+		trigger = { NOT = { has_country_flag = overlord_lost_india } NOT = { tag = RAJ } }
+		ai_chance = { base = 1 }
+	}
+	option = {
+		name = ww1_raj.3.c
+		trigger = { tag = RAJ }
+		ai_chance = { base = 1 }
+	}
+}
+# Constitution
+country_event = {
+	title = ww1_raj.4.t
+	desc = ww1_raj.4.d
+	id = ww1_raj.4
+
+	is_triggered_only = yes
+	
+	option = {
+		name = ww1_raj.4.a	#democratic Mahatma Gandhi
+		add_popularity = { 
+			ideology = democratic
+			popularity = 0.25
+		}
+		create_country_leader = {
+			name = "Mohandas Karamchand Gandhi"
+			picture = "gfx/hoi4tgw_portraits/RAJ/country_leaders/RAJ_Mahatma_Gandhi.dds"
+			expire = "1935.1.1"
+			ideology = conservatism
+			traits = { champion_of_peace_1 voice_of_restraint }
+		}
+		set_politics = {
+			ruling_party = democratic
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		ai_chance = { base = 5 }
+	}
+	option = {
+		name = ww1_raj.4.b	#socialist Jawaharlal Nehru
+		trigger = {
+			has_idea = RAJ_revolutionary_workers
+		}
+		add_popularity = { 
+			ideology = democratic
+			popularity = 0.25
+		}
+		create_country_leader = {
+			name = "Jawaharlal Nehru"
+			picture = "gfx/hoi4tgw_portraits/RAJ/country_leaders/RAJ_Jawaharlal_Nehru.dds"
+			expire = "1935.1.1"
+			ideology = socialism
+			traits = { industry_reformer }
+		}
+		set_politics = {
+			ruling_party = democratic
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		ai_chance = { base = 5 }
+	}
+	option = {
+		name = ww1_raj.4.c	#neutral Raja Mahendra Pratap
+		trigger = {
+			OR = {
+				has_completed_focus = RAJ_ottoman_mission
+				has_completed_focus = RAJ_enemy_of_the_enemy
+			}
+		}
+		add_popularity = { 
+			ideology = neutrality
+			popularity = 0.25
+		}
+		create_country_leader = {
+			name = "Mahendra Pratap"
+			picture = "gfx/hoi4tgw_portraits/RAJ/country_leaders/RAJ_Mahendra_Pratap.dds"
+			expire = "1935.1.1"
+			ideology = moderatism
+			traits = { socialite_connections }
+		}
+		set_politics = {
+			ruling_party = neutrality
+			election_frequency = 48
+			elections_allowed = no
+		}
+		ai_chance = { base = 5 }
+	}
+	option = {
+		name = ww1_raj.4.cc	#communist S.V.Ghate
+		trigger = {
+			has_idea = RAJ_revolutionary_workers
+			SOV = { exists = yes }
+			NOT = { has_global_flag = raj_bolshevik_conspiracy }
+		}
+		add_popularity = { 
+			ideology = communism
+			popularity = 0.25
+		}
+		create_country_leader = {
+			name = "Sachchidanand Vishnu Ghate"
+			picture = "gfx/hoi4tgw_portraits/RAJ/country_leaders/RAJ_sv_ghate.dds"
+			expire = "1935.1.1"
+			ideology = marxism
+			traits = { }
+		}
+		set_politics = {
+			ruling_party = communism
+			election_frequency = 48
+			elections_allowed = no
+		}
+		ai_chance = { base = 5 }
+	}
+}
+# Muslim Question
+country_event = {
+	title = ww1_raj.5.t
+	desc = ww1_raj.5.d
+	id = ww1_raj.5
+
+	is_triggered_only = yes
+	
+	option = {
+		name = ww1_raj.5.a	#Leave Baluchistan
+		trigger = { owns_state = 444 }
+		every_owned_state = {
+			limit = { is_core_of = PAK }
+			PAK = { transfer_state = PREV }
+		}
+		if = {
+			limit = { has_idea = RAJ_cooperation_with_muslim_community }
+			remove_ideas = RAJ_cooperation_with_muslim_community
+		}
+		if = {
+			limit = { has_idea = RAJ_muslim_community }
+			remove_ideas = RAJ_muslim_community
+		}
+		ai_chance = { base = 1 }
+	}
+	option = {
+		name = ww1_raj.5.b	#Confederation
+		trigger = { has_idea = RAJ_cooperation_with_muslim_community }
+		swap_ideas = {
+			remove_idea = RAJ_cooperation_with_muslim_community
+			add_idea = RAJ_muslim_community_happy
+		}
+		ai_chance = { base = 10 }
+	}
+	option = {
+		name = ww1_raj.5.c	#Expand representation
+		trigger = { has_idea = RAJ_muslim_community }
+		add_political_power = -200
+		swap_ideas = {
+			remove_idea = RAJ_muslim_community
+			add_idea = RAJ_muslim_community_discontent
+		}
+		ai_chance = { base = 10 }
+	}
+}
+# Nepal & Bhutan
+country_event = {
+	title = ww1_raj.6.t
+	desc = ww1_raj.6.d
+	id = ww1_raj.6
+
+	is_triggered_only = yes
+	
+	option = {
+		name = ww1_raj.6.a
+		OVERLORD = { 
+			country_event = ww1_raj.8 
+			end_puppet = ROOT 
+		}
+		RAJ = { give_guarantee = ROOT }
+		ROOT = { give_guarantee = RAJ }
+		
+		ai_chance = { base = 1 }
+	}
+}
+# Indian anti-colonial Uprising!
+country_event = {
+	title = ww1_raj.7.t
+	desc = ww1_raj.7.d
+	id = ww1_raj.7
+
+	trigger = {
+		tag = RAJ
+		is_subject = yes
+		NOT = { has_government = democratic }
+		democratic > 0.45
+		NOT = { has_completed_focus = RAJ_recalcitrance }
+	}
+	fire_only_once = yes
+	immediate = {
+		set_global_flag = raj_indian_congress_uprising
+	}
+	
+	option = {
+		name = ww1_raj.6.a
+		start_civil_war = {
+			ideology = democratic
+			size = 0.30
+		}
+		add_autonomy_score = {
+			value = -250
+			localization = ww1_raj.7.t
+		}
+		hidden_effect = {
+			random_other_country = {
+				limit = { original_tag = RAJ has_government = democratic }
+				set_cosmetic_tag = RAJ_FREE
+			}
+		}
+		ai_chance = { base = 1 }
+	}
+}
+# Nepal & Bhutan message to Overlord
+country_event = {
+	title = ww1_raj.8.t
+	desc = ww1_raj.8.d
+	id = ww1_raj.8
+
+	is_triggered_only = yes
+	
+	option = {
+		name = ww1_raj.8.a
+		effect_tooltip = { end_puppet = ROOT }
+		ai_chance = { base = 1 }
+	}
+}
+# Give cores back to India!
+country_event = {
+	title = ww1_raj.9.t
+	desc = ww1_raj.9.d
+	id = ww1_raj.9
+
+	is_triggered_only = yes
+	
+	option = {
+		name = ww1_raj.9.a
+		every_owned_state = {
+			limit = { is_core_of = RAJ }
+			RAJ = { transfer_state = PREV }
+		}
+		ai_chance = { base = 50 }
+	}
+	option = {
+		name = ww1_raj.9.b
+		RAJ = { country_event = ww1_raj.10 }
+		ai_chance = { base = 1 }
+	}
+}
+# Answer to India
+country_event = {
+	title = ww1_raj.10.t
+	desc = ww1_raj.10.d
+	id = ww1_raj.10
+
+	is_triggered_only = yes
+	
+	option = {
+		name = ww1_raj.10.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+		}
+		ai_chance = { base = 50 }
+	}
+	option = {
+		name = ww1_raj.10.b
+		add_war_support = -0.02
+		add_political_power = -50
+		ai_chance = { base = 1 }
+	}
+}
+# Afghan bands raid us
+country_event = {
+	id = ww1_raj.11
+	title = ww1_raj.11.t
+	desc = ww1_raj.11.d
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			set_temp_variable = {
+				var_name = raid_victims
+			}
+			randomize_temp_variable = { 
+				var = raid_victims
+				distribution = binomial 
+				min = -1000
+				max = -150
+			}
+		}
+	}
+	
+	option = {
+		name = ww1_raj.11.a
+		add_manpower = var:raid_victims
+		random_controlled_state = {
+			limit = { is_core_of = PAK }
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+			if = {
+				limit = { NOT = { is_core_of = RAJ } resistance < 50 }
+				add_resistance = 10
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = { has_completed_focus = RAJ_establish_the_order_on_durand_line }
+					is_neighbor_of = AFG
+					NOT = { has_war_with = AFG }
+				}
+				random_list = {
+					25 = { 
+						country_event = { id = ww1_raj.11 days = 60 } 
+					}
+					25 = { 
+						country_event = { id = ww1_raj.11 days = 90 } 
+					}
+					25 = { 
+						country_event = { id = ww1_raj.11 days = 120 } 
+					}
+					25 = { 
+						country_event = { id = ww1_raj.11 days = 180 } 
+					}
+				}
+			}
+		}
+	}
+}
+# Bolshevik Conspiracy
+country_event = {
+	title = ww1_raj.12.t
+	desc = ww1_raj.12.d
+	id = ww1_raj.12
+
+	trigger = {
+		tag = RAJ
+		is_subject = yes
+		NOT = { has_government = communism }
+		SOV = { exists = yes }
+		communism > 0.25
+		NOT = { has_completed_focus = RAJ_recalcitrance }
+	}
+	fire_only_once = yes
+	immediate = {
+		set_global_flag = raj_bolshevik_conspiracy
+	}
+
+	option = {
+		name = ww1_raj.12.a
+		start_civil_war = {
+			ideology = communism
+			size = 0.25
+		}
+		add_autonomy_score = {
+			value = -250
+			localization = ww1_raj.12.t
+		}
+		hidden_effect = {
+			random_country_with_original_tag = {
+				original_tag_to_check = RAJ
+				limit = {
+					NOT = {
+						tag = ROOT
+					}
+					has_government = communism
+				}
+				create_country_leader = {
+					name = "Sachchidanand Vishnu Ghate"
+					picture = "gfx/hoi4tgw_portraits/RAJ/country_leaders/RAJ_sv_ghate.dds"
+					expire = "1935.1.1"
+					ideology = marxism
+					traits = { }
+				}
+				set_cosmetic_tag = RAJ_FREE
+			}
+		}
+		ai_chance = { base = 1 }
+	}
+}
+# Ghadar Conspiracy
+country_event = {
+	title = ww1_raj.13.t
+	desc = ww1_raj.13.d
+	id = ww1_raj.13
+
+	trigger = {
+		tag = RAJ
+		is_subject = yes
+		NOT = { has_government = democratic }
+		democratic > 0.25
+		NOT = { has_completed_focus = RAJ_recalcitrance }
+		NOT = { has_completed_focus = RAJ_recalcitrance }
+	}
+	fire_only_once = yes
+	immediate = {
+		set_global_flag = raj_ghadar_conspiracy
+	}
+
+	option = {
+		name = ww1_raj.13.a
+		add_stability = -0.05
+		ai_chance = { base = 1 }
+	}
+}
+
+# Simla Convention (To China)
+country_event = {
+	title = ww1_raj.14.t
+	desc = ww1_raj.14.d
+	id = ww1_raj.14
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_raj.14.a
+		ai_chance = { base = 100 }
+		RAJ = {
+		    country_event = { id = ww1_raj.15 hours = 10 }
+		}
+	}
+	option = {
+		name = ww1_raj.14.b
+		ai_chance = { base = 0 }
+		RAJ = {
+		    country_event = { id = ww1_raj.16 hours = 10 }
+		}
+	}
+}
+
+# Simla Convention China Accepts
+country_event = {
+	title = ww1_raj.15.t
+	desc = ww1_raj.15.d
+	id = ww1_raj.15
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_raj.15.a
+		ai_chance = { base = 100 }
+		add_political_power = 25
+		remove_state_claim = 434
+		add_core_state = 434
+		transfer_state = 434
+	}
+}
+
+# Simla Convention China Rejects
+country_event = {
+	title = ww1_raj.16.t
+	desc = ww1_raj.16.d
+	id = ww1_raj.16
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_raj.16.a
+		ai_chance = { base = 100 }
+		add_political_power = -25
+		add_opinion_modifier = {
+			target = FROM
+			modifier = HOI4TGW_Opinion_diplomats_malus
+		}
+	}
+}
+

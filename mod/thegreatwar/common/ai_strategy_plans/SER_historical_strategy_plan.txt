@@ -1,0 +1,68 @@
+SER_historical_plan = {
+	name = "Serbia Historical Plan"
+	desc = ""
+
+	allowed = {
+		original_tag = SER
+	}
+	enable = {
+		OR = {
+			AND = {
+				is_historical_focus_on = yes
+				has_game_rule = {
+					rule = SER_ai_behavior
+					option = DEFAULT
+				}
+			}
+			#has_country_flag = SERL_AI_RANDOM_HISTORICAL
+			has_game_rule = {
+				rule = SER_ai_behavior
+				option = HISTORICAL
+			}
+		}
+	}
+
+	ai_national_focuses = {
+		### 1910 ###
+		SER_ww1_diplomatic_effort
+		SER_ww1_industrial_effort
+		SER_ww1_army_effort
+		SER_ww1_infrastructure_effort
+		### 1911 ###
+		SER_ww1_production_effort
+		SER_ww1_assert_position_west
+		BLL_balkan_politics
+		SER_ww1_assert_position_east
+		BLL_anti_ottoman_policy
+		SER_ww1_construction_effort
+		SER_ww1_doctrine_effort
+		### 1912 ###
+		BLL_form_the_balkan_league
+		SER_ww1_develop_serbia
+		SER_ww1_serbia_first
+		SER_ww1_reinforce_ottoman_border
+		SER_ww1_infrastructure_effort_2
+		SER_ww1_production_effort_2
+		### 1913 ###
+		#Note: last focus is completed Jan 5 1913
+	}
+
+	#focus_factors = {
+	#}
+
+	#research = {
+	#}
+
+	#ideas = {
+	#}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}

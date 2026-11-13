@@ -2,37 +2,36 @@ ideas = {
 
 	naval_manufacturer = {
 		designer = yes 
-		newport_news_shipbuilding={ allowed={ TAG=USA } research_bonus={ naval_equipment=0.10 } traits={ pacific_fleet_naval_manufacturer } }
-		brooklyn_naval_yard={ allowed={ TAG=USA } research_bonus={ naval_equipment=0.10 } traits={ atlantic_fleet_naval_manufacturer } }
-		norfolk_naval_yard={ allowed={ TAG=USA } research_bonus={ naval_equipment=0.10 } traits={ coastal_defence_naval_manufacturer } }
-		philadelphia_naval_shipyard={ allowed={ TAG=USA } research_bonus={ naval_equipment=0.10 } traits={ convoy_escort_naval_manufacturer } picture=generic_naval_manufacturer_2 }
+		newport_news_shipbuilding={ allowed={ original_tag=USA } research_bonus={ naval_equipment=0.10 } traits={ pacific_fleet_naval_manufacturer } }
+		brooklyn_naval_yard={ allowed={ original_tag=USA } research_bonus={ naval_equipment=0.10 } traits={ atlantic_fleet_naval_manufacturer } }
+		norfolk_naval_yard={ allowed={ original_tag=USA } research_bonus={ naval_equipment=0.10 } traits={ coastal_defence_naval_manufacturer } }
+		philadelphia_naval_shipyard={ allowed={ original_tag=USA } research_bonus={ naval_equipment=0.10 } traits={ convoy_escort_naval_manufacturer } picture=generic_naval_manufacturer_2 }
 	}
 
 	aircraft_manufacturer = {
 		designer = yes 
-		boeing={ allowed={ TAG=USA } research_bonus={ air_equipment=0.10 } traits={ heavy_aircraft_manufacturer } }
-		curtiss_wright={ allowed={ TAG=USA } research_bonus={ air_equipment=0.10 } traits={ naval_aircraft_manufacturer } picture=generic_air_manufacturer_3 }
-		douglas_aircraft_company={ allowed={ TAG=USA } research_bonus={ air_equipment=0.10 } traits={ CAS_manufacturer } }
-		consolidated_aircraft={ allowed={ TAG=USA } research_bonus={ air_equipment=0.10 } traits={ heavy_aircraft_manufacturer } }
+		boeing={ allowed={ original_tag=USA } research_bonus={ air_equipment=0.10 } traits={ heavy_aircraft_manufacturer } }
+		curtiss_wright={ allowed={ original_tag=USA } research_bonus={ air_equipment=0.10 } traits={ naval_aircraft_manufacturer } picture=generic_air_manufacturer_3 }
+		douglas_aircraft_company={ allowed={ original_tag=USA } research_bonus={ air_equipment=0.10 } traits={ CAS_manufacturer } }
+		consolidated_aircraft={ allowed={ original_tag=USA } research_bonus={ air_equipment=0.10 } traits={ heavy_aircraft_manufacturer } }
 	}
 
 	materiel_manufacturer = {
 		designer = yes 
-		springfield_armory={ allowed={ TAG=USA } research_bonus={ infantry_weapons=0.10 } traits={ infantry_equipment_manufacturer } }
-		winchester_repeating_arms_co={ allowed={ TAG=USA } research_bonus={ infantry_weapons=0.10 } traits={ infantry_equipment_manufacturer } picture=generic_infantry_equipment_manufacturer_1 }
+		springfield_armory={ allowed={ original_tag=USA } research_bonus={ infantry_weapons=0.10 } traits={ infantry_equipment_manufacturer } }
+		winchester_repeating_arms_co={ allowed={ original_tag=USA } research_bonus={ infantry_weapons=0.10 } traits={ infantry_equipment_manufacturer } picture=generic_infantry_equipment_manufacturer_1 }
 	}
 
-	industrial_concern = {
-			designer = yes 
-			standard_oil_california={ allowed={ TAG=USA }    research_bonus = {
+	industrial_concern = { 
+			standard_oil_california={ allowed={ original_tag=USA }    research_bonus = {
 							    industry = 0.10
 							    
 							   } traits={ industrial_concern } }
-			texas_oil_company={ allowed={ TAG=USA }    research_bonus = {
+			texas_oil_company={ allowed={ original_tag=USA }    research_bonus = {
 							    industry = 0.05
 							    synth_resources = 0.1
 							   } traits={ refinery_concern } picture=generic_tank_manufacturer_3 }
-			general_electric={ allowed={ TAG=USA }    research_bonus = {
+			general_electric={ allowed={ original_tag=USA }    research_bonus = {
 							    electronics = 0.10
 							   } traits={ electronics_concern } }
 			}
@@ -40,7 +39,7 @@ ideas = {
 
 	tank_manufacturer = {
 		designer = yes 
-		ford_motor_company={ allowed={ TAG=USA } research_bonus={ armor=0.10 } traits={ fast_tank_manufacturer } }
+		ford_motor_company={ allowed={ original_tag=USA } research_bonus={ armor=0.10 } traits={ fast_tank_manufacturer } }
 	}
 
 	country = {
@@ -51,6 +50,39 @@ ideas = {
 			removal_cost=-1
 			modifier = {
 				conscription_factor = 0.02
+			}
+		}
+
+		prohibition_accepted = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1 
+			modifier = {
+				consumer_goods_factor = -0.1 #Decreased demand as alcohol consumption "declines"
+				political_power_cost = 0.5 #That was a big change, new ones become extra expensive
+			}
+		}
+		prohibition_rejected = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1 
+			modifier = {
+				stability_weekly = -0.001 #Regular decline as women cause problems
+				consumer_goods_factor = 0.1 #Increased demand to account for miserable public
+			}
+		}
+		bootleggers = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1 
+			modifier = {
+				stability_weekly = -0.001 #Regular decline due to intense violence
+				consumer_goods_factor = 0.05 #Increased demand for consumer goods as bootleggers fill the void for liqour
+				political_power_cost = 0.5 #Corruption
+				
 			}
 		}
 		

@@ -59,7 +59,7 @@ faction_goal_undo_versailles = {
 		}
 		42 = { is_demilitarized_zone = no }
 		51 = { is_demilitarized_zone = no }
-		#978 = { is_demilitarized_zone = no }
+		978 = { is_demilitarized_zone = no }
 	}
 	complete_effect = {
 		add_faction_power_projection = 100
@@ -153,12 +153,7 @@ faction_goal_secure_north_africa = {
 		}
 	}
 	available = {
-		#OR = {
-		#	FROM = { has_completed_focus = ITA_italian_irredentism }
-		#	any_allied_country = {
-		#		has_completed_focus = ITA_italian_irredentism
-		#	}
-		#}
+		has_war_with = ENG
 	}
 	completed = {
 		AND = {
@@ -588,13 +583,13 @@ faction_goal_control_the_chinese_coast = {
 		every_state = {
 			limit = {
 				OR = {
-					#state = 1033
+					state = 1033
 					state = 592
 					state = 593
 					state = 595
 					state = 596
 					state = 613
-					#state = 1034
+					state = 1034
 					state = 598
 					state = 597
 				}
@@ -612,205 +607,6 @@ faction_goal_control_the_chinese_coast = {
 	}
 	ai_will_do = {
 		base = 10 # Pretty much everyone should want to do this
-	}
-}
-
-faction_goal_the_northern_mandate = {
-	name = faction_goal_the_northern_mandate_name
-	description = faction_goal_the_northern_mandate_desc
-	category = medium_term
-	group = FOCUS_FILTER_ANNEXATION
-	allowed = {
-	}
-	visible = {
-		FROM = {
-			original_tag = CHI
-			has_government = fascism
-		}
-	}
-	available = {
-		FROM = { has_completed_focus = CHI_the_northern_mandate }
-	}
-	ratio_progress = {
-		total_amount_collection = collection:the_northern_mandate_states
-		completed_amount_collection = {
-			input = collection:the_northern_mandate_states
-			operators = {
-				limit = {
-					is_controlled_by_ROOT_or_ally = yes
-				}
-			}
-			name = COLLECTION_FACTION_CONTROLS_NORTHERN_MANDATE
-		}
-	}
-	auto_complete = yes
-	complete_effect = {
-		add_faction_power_projection = 100
-		every_state = {
-			limit = {
-				CHI_northern_mandate_states = yes
-			}
-			add_dynamic_modifier = {
-				modifier = NORDIC_efficient_resource_extraction
-			}
-		}
-	}
-	ai_will_do = {
-		base = 1
-	}
-}
-
-faction_goal_the_southern_mandate = {
-	name = faction_goal_the_southern_mandate_name
-	description = faction_goal_the_southern_mandate_desc
-	category = medium_term
-	group = FOCUS_FILTER_ANNEXATION
-	allowed = {
-	}
-	visible = {
-		FROM = {
-			original_tag = CHI
-			has_government = fascism
-		}
-	}
-	available = {
-		FROM = { has_completed_focus = CHI_the_southern_mandate }
-	}
-	ratio_progress = {
-		total_amount_collection = collection:the_southern_mandate_states
-		completed_amount_collection = {
-			input = collection:the_southern_mandate_states
-			operators = {
-				limit = {
-					is_controlled_by_ROOT_or_ally = yes
-				}
-			}
-			name = COLLECTION_FACTION_CONTROLS_SOUTHERN_MANDATE
-		}
-	}
-	auto_complete = yes
-	complete_effect = {
-		add_faction_power_projection = 100
-		every_state = {
-			limit = {
-				CHI_southern_mandate_states = yes
-			}
-			add_dynamic_modifier = {
-				modifier = NORDIC_efficient_resource_extraction
-			}
-		}
-	}
-	ai_will_do = {
-		base = 1
-	}
-}
-
-faction_goal_the_greater_game = {
-	name = faction_goal_the_greater_game_name
-	description = faction_goal_the_greater_game_desc
-	category = medium_term
-	group = FOCUS_FILTER_ANNEXATION
-	allowed = {
-	}
-	visible = {
-		FROM = {
-			original_tag = CHI
-			has_government = fascism
-		}
-	}
-	available = {
-		FROM = { has_completed_focus = CHI_the_greater_game }
-	}
-	ratio_progress = {
-		total_amount_collection = collection:the_greater_game_states
-		completed_amount_collection = {
-			input = collection:the_greater_game_states
-			operators = {
-				limit = {
-					is_controlled_by_ROOT_or_ally = yes
-				}
-			}
-			name = COLLECTION_FACTION_CONTROLS_GREATER_GAME
-		}
-	}
-	auto_complete = yes
-	complete_effect = {
-		add_faction_power_projection = 50
-		every_state = {
-			limit = {
-				CHI_greater_game_states = yes
-			}
-			add_dynamic_modifier = {
-				modifier = NORDIC_efficient_resource_extraction
-			}
-		}
-	}
-	ai_will_do = {
-		base = 1
-	}
-}
-
-faction_goal_subjugate_the_faction = {
-	name = faction_goal_subjugate_the_faction_name
-	description = faction_goal_subjugate_the_faction_desc
-	category = medium_term
-	group = FOCUS_FILTER_POLITICAL
-	allowed = {
-		is_literally_china = yes
-	}
-	visible = {
-		FROM = { 
-			is_literally_china = yes
-			has_faction_template = faction_template_chinese_united_front 
-		}
-	}
-	available = {
-		FROM = {
-			is_faction_leader = yes
-			has_completed_focus = CHI_from_many_to_one
-		}
-	}
-	completed = {
-		collection_size = {
-			input = {
-				input = game:scope
-				operators = {
-					faction_members
-					limit = {
-						is_subject_of = ROOT # Should be checking faction leader
-					}
-				}
-				name = COLLECTION_AMOUNT_OF_SUBJECTS_TO_FACTION_LEADER
-			}
-			value > 7
-		}
-	}
-	complete_effect = {
-		add_faction_power_projection = 100
-		custom_effect_tooltip = generic_skip_one_line_tt
-		custom_effect_tooltip = THE_FACTION_LEADER
-		add_faction_initiative = 1
-		every_collection_element = {
-			input = {
-				input = game:scope
-				operators =  { 
-					faction_members 
-				}
-				
-				name = ALL_FACTION_MEMBERS
-			}
-			custom_effect_tooltip = ALL_FACTION_MEMBERS
-			add_war_support = 0.15
-			every_unit_leader = {
-				add_timed_unit_leader_trait = {
-					trait = motivated
-					days = 270
-				}
-			}
-		}
-	}
-	ai_will_do = {
-		base = 10 # Do itttt!
 	}
 }
 
@@ -2468,7 +2264,7 @@ faction_goal_control_lappland_metals = {
 	}
 	completed = {
 		666 = { is_controlled_by_ROOT_or_ally = yes }
-		#918 = {	is_controlled_by_ROOT_or_ally = yes }	
+		918 = {	is_controlled_by_ROOT_or_ally = yes }	
 	}
 	complete_effect = {
 		add_faction_power_projection = 100
@@ -2479,7 +2275,7 @@ faction_goal_control_lappland_metals = {
 			limit = {
 				OR = {
 					controls_state = 666
-					#controls_state = 918
+					controls_state = 918
 				}
 			}
 			add_faction_initiative = 1
@@ -2488,7 +2284,7 @@ faction_goal_control_lappland_metals = {
 			limit = {
 				OR = {
 					state = 666
-					#state = 918
+					state = 918
 				}
 			}
 			if = {
@@ -2849,7 +2645,7 @@ faction_goal_control_iraqi_oil = {
 				OR = {
 					state = 291
 					state = 676
-					#state = 1010
+					state = 1010
 				}
 			}
 			if = {
@@ -3227,8 +3023,8 @@ faction_goal_control_malayan_riches = {
 				OR = {
 					state = 333
 					state = 336
-					#state = 1021
-					#state = 1024
+					state = 1021
+					state = 1024
 				}
 			}
 			if = {
@@ -5797,17 +5593,17 @@ faction_goal_control_gulf_of_aden_bases = {
 				 operators = { faction_members controlled_states }
 				 name = FACTION_CONTROLLED_STATES
 			}
-			#distance_to = {
-			#	target = 992
-			#	value < 2000
-			#}
+			distance_to = {
+				target = 992
+				value < 2000
+			}
 		}
 	}
 	available = {
 
 	}
 	completed = {
-		#992 = { is_controlled_by_ROOT_or_ally = yes }
+		992 = { is_controlled_by_ROOT_or_ally = yes }
 	}
 	complete_effect = {
 		add_faction_power_projection = 100
@@ -5815,42 +5611,42 @@ faction_goal_control_gulf_of_aden_bases = {
 		custom_effect_tooltip = TARGET_STATE_CONTROLLERS
 		every_faction_member = { 
 			visible_when_empty = yes
-			#limit = {
-			#	controls_state = 992
-			#}
+			limit = {
+				controls_state = 992
+			}
 			add_faction_initiative = 1
 		}
-		#992 = {
-		#	add_building_construction = {
-		#		type = anti_air_building
-		#		level = 1
-		#		instant_build = yes
-		#	}
-		#	add_building_construction = {
-		#		type = air_base
-		#		level = 1
-		#		instant_build = yes
-		#	}
-		#	add_building_construction = {
-		#		type = naval_base
-		#		level = 1
-		#		instant_build = yes
-		#		province = {
-		#			all_provinces = yes
-		#			limit_to_naval_base = yes
-		#		}
-		#	}
-		#}
+		992 = {
+			add_building_construction = {
+				type = anti_air_building
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = air_base
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = naval_base
+				level = 1
+				instant_build = yes
+				province = {
+					all_provinces = yes
+					limit_to_naval_base = yes
+				}
+			}
+		}
 	}
 	ai_will_do = {
 		base = 0
 		modifier = {
 			factor = 2 # Target of opportunity - already at war anyway
-			#992 = {
-			#	owner = {
-			#		has_war_with = ROOT
-			#	}
-			#}
+			992 = {
+				owner = {
+					has_war_with = ROOT
+				}
+			}
 		}
 		modifier = {
 			add = 2 # If convoys being threatened try to secure the suez supply lines better
@@ -5915,10 +5711,10 @@ faction_goal_control_strait_of_hormuz = {
 				 operators = { faction_members controlled_states }
 				 name = FACTION_CONTROLLED_STATES
 			}
-			#distance_to = {
-			#	target = 1013
-			#	value < 2000
-			#}
+			distance_to = {
+				target = 1013
+				value < 2000
+			}
 		}
 	}
 	available = {
@@ -5926,7 +5722,7 @@ faction_goal_control_strait_of_hormuz = {
 	}
 	completed = {
 		412 = { is_controlled_by_ROOT_or_ally = yes }
-		#1013 = { is_controlled_by_ROOT_or_ally = yes }
+		1013 = { is_controlled_by_ROOT_or_ally = yes }
 	}
 	complete_effect = {
 		add_faction_power_projection = 100
@@ -5937,7 +5733,7 @@ faction_goal_control_strait_of_hormuz = {
 			limit = {
 				OR = {
 					controls_state = 412
-					#controls_state = 1013
+					controls_state = 1013
 				}
 			}
 			add_faction_initiative = 1
@@ -5975,49 +5771,49 @@ faction_goal_control_strait_of_hormuz = {
 				instant_build = yes
 			}
 		}
-		#1013 = {
-		#	add_building_construction = {
-		#		type = anti_air_building
-		#		level = 1
-		#		instant_build = yes
-		#	}
-		#	add_building_construction = {
-		#		type = air_base
-		#		level = 1
-		#		instant_build = yes
-		#	}
-		#	add_building_construction = {
-		#		type = naval_base
-		#		level = 1
-		#		instant_build = yes
-		#		province = {
-		#			all_provinces = yes
-		#			limit_to_naval_base = yes
-		#		}
-		#	}
-		#	add_building_construction = {
-		#		type = coastal_bunker
-		#		level = 1
-		#		province = 13369
-		#		instant_build = yes
-		#	}
-		#	add_building_construction = {
-		#		type = bunker
-		#		level = 1
-		#		province = 13369
-		#		instant_build = yes
-		#	}
-		#}
+		1013 = {
+			add_building_construction = {
+				type = anti_air_building
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = air_base
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = naval_base
+				level = 1
+				instant_build = yes
+				province = {
+					all_provinces = yes
+					limit_to_naval_base = yes
+				}
+			}
+			add_building_construction = {
+				type = coastal_bunker
+				level = 1
+				province = 13369
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				level = 1
+				province = 13369
+				instant_build = yes
+			}
+		}
 	}
 	ai_will_do = {
 		base = 0
 		modifier = {
 			factor = 2 # Target of opportunity - already at war anyway
-			#1013 = {
-			#	owner = {
-			#		has_war_with = ROOT
-			#	}
-			#}
+			1013 = {
+				owner = {
+					has_war_with = ROOT
+				}
+			}
 		}
 		modifier = {
 			add = 2 # If convoys being threatened try to secure the suez supply lines better

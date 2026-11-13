@@ -156,83 +156,6 @@ faction_goal_guerilla_expansion = {
 	}
 }
 
-faction_goal_north_subjugated = {
-	name = faction_goal_north_subjugated_name
-	description = faction_goal_north_subjugated_desc
-	category = short_term
-	group = FOCUS_FILTER_ANNEXATION
-	visible = {
-		FROM = {
-			original_tag = CHI
-			has_faction_template = faction_template_chinese_united_front 
-			NOT = {
-				has_country_flag = CHI_tour_the_south_flag
-				has_country_flag = CHI_tour_the_west_flag
-			}
-		}
-	}
-	available = {
-		FROM = { has_completed_focus = CHI_tour_the_north }
-	}
-	completed = {
-		NXM = {
-			all_core_state = {
-				is_owned_by = ROOT
-			}
-		}
-		SHX = {
-			all_core_state = {
-				is_owned_by = ROOT
-			}
-		}
-		GSM = {
-			all_core_state = {
-				is_owned_by = ROOT
-			}
-		}
-		HBC = {
-			all_core_state = {
-				is_owned_by = ROOT
-			}
-		}
-		XIC = {
-			all_core_state = {
-				is_owned_by = ROOT
-			}
-		}
-		SND = {
-			all_core_state = {
-				is_owned_by = ROOT
-			}
-		}
-
-	}
-	complete_effect = {
-		add_faction_power_projection = 50
-		every_collection_element = {
-			input = {
-				input = game:scope
-				operators =  { 
-					faction_members
-					limit = {
-						is_subject = yes
-					}
-				}
-				
-				name = ALL_FACTION_MEMBERS
-			}
-			custom_effect_tooltip = ALL_FACTION_MEMBERS
-			add_timed_idea = {
-				idea = idea_CHI_central_government_integration_pressure
-				days = 365
-			}
-		}
-	}
-	ai_will_do = {
-		base = 1
-	}
-}
-
 faction_goal_unlock_research = {
 	name = faction_goal_unlock_research_name
 	description = faction_goal_unlock_research_desc
@@ -518,133 +441,6 @@ faction_goal_unlock_military = {
 	}
 	ai_will_do = {
 		base = 1000 # They should always do this if they can
-	}
-}
-
-faction_goal_west_subjugated = {
-	name = faction_goal_west_subjugated_name
-	description = faction_goal_west_subjugated_desc
-	category = short_term
-	group = FOCUS_FILTER_ANNEXATION
-	visible = {
-		FROM = {
-			original_tag = CHI
-			has_faction_template = faction_template_chinese_united_front 
-			NOT = {
-				has_country_flag = CHI_tour_the_south_flag
-				has_country_flag = CHI_tour_the_north_flag
-			}
-		}
-	}
-	available = {
-		FROM = { has_completed_focus = CHI_tour_the_west }
-	}
-	completed = {
-		XSM = {
-			all_core_state = {
-				is_owned_by = ROOT
-			}
-		}
-		KHM = {
-			all_core_state = {
-				is_owned_by = ROOT
-			}
-		}
-		SIK = {
-			all_core_state = {
-				is_owned_by = ROOT
-			}
-		}
-		SIC = {
-			all_core_state = {
-				is_owned_by = ROOT
-			}
-		}
-	}
-	complete_effect = {
-		add_faction_power_projection = 50
-		every_collection_element = {
-			input = {
-				input = game:scope
-				operators =  { 
-					faction_members
-					limit = {
-						is_subject = yes
-					}
-				}
-				
-				name = ALL_FACTION_MEMBERS
-			}
-			custom_effect_tooltip = ALL_FACTION_MEMBERS
-			add_timed_idea = {
-				idea = idea_CHI_central_government_integration_pressure
-				days = 365
-			}
-		}
-	}
-	ai_will_do = {
-		base = 1
-	}
-}
-
-faction_goal_south_subjugated = {
-	name = faction_goal_south_subjugated_name
-	description = faction_goal_south_subjugated_desc
-	group = FOCUS_FILTER_ANNEXATION
-	category = short_term
-	visible = {
-		FROM = {
-			original_tag = CHI
-			has_faction_template = faction_template_chinese_united_front 
-			NOT = {
-				has_country_flag = CHI_tour_the_north_flag
-				has_country_flag = CHI_tour_the_west_flag
-			}
-		}
-	}
-	available = {
-		FROM = { has_completed_focus = CHI_tour_the_south }
-	}
-	completed = {
-		GDC = {
-			all_core_state = {
-				is_owned_by = ROOT
-			}
-		}
-		GXC = {
-			all_core_state = {
-				is_owned_by = ROOT
-			}
-		}
-		YUN = {
-			all_core_state = {
-				is_owned_by = ROOT
-			}
-		}
-	}
-	complete_effect = {
-		add_faction_power_projection = 50
-		every_collection_element = {
-			input = {
-				input = game:scope
-				operators =  { 
-					faction_members
-					limit = {
-						is_subject = yes
-					}
-				}
-				
-				name = ALL_FACTION_MEMBERS
-			}
-			custom_effect_tooltip = ALL_FACTION_MEMBERS
-			add_timed_idea = {
-				idea = idea_CHI_central_government_integration_pressure
-				days = 365
-			}
-		}
-	}
-	ai_will_do = {
-		base = 1
 	}
 }
 
@@ -1320,14 +1116,14 @@ faction_goal_a_great_fortress = {
 	}
 	completed = {
 		OR = {
-			#ROOT = {
-			#	has_tech = coastal_fort_tech_2
-			#	has_tech = land_fort_tech_2
-			#}
-			#any_allied_country = {
-			#	has_tech = coastal_fort_tech_2
-			#	has_tech = land_fort_tech_2
-			#}
+			ROOT = {
+				has_tech = coastal_fort_tech_2
+				has_tech = land_fort_tech_2
+			}
+			any_allied_country = {
+				has_tech = coastal_fort_tech_2
+				has_tech = land_fort_tech_2
+			}
 			count_in_collection = {
 				collection = {
 					input = game:scope
@@ -1355,10 +1151,10 @@ faction_goal_a_great_fortress = {
 	}
 	ai_will_do = {
 		base = 0
-		#modifier = {
-		#	add = 1
-		#	has_tech = basic_fortification_tech
-		#}
+		modifier = {
+			add = 1
+			has_tech = basic_fortification_tech
+		}
 	}
 }
 
@@ -1974,7 +1770,7 @@ faction_goal_develop_lappland_metals = {
 	visible = {
 		OR = {
 			666 = { is_controlled_by_ROOT_or_ally = yes }
-			#918 = {	is_controlled_by_ROOT_or_ally = yes }
+			918 = {	is_controlled_by_ROOT_or_ally = yes }
 		}
 	}
 	available = {
@@ -1983,17 +1779,17 @@ faction_goal_develop_lappland_metals = {
 			has_tech = excavation2
 		}
 		666 = { is_controlled_by_ROOT_or_ally = yes }
-		#918 = {	is_controlled_by_ROOT_or_ally = yes }
+		918 = {	is_controlled_by_ROOT_or_ally = yes }
 	}
 	completed = {
 		666 = {
 			CONTROLLER = { has_tech = excavation3 }
 			infrastructure > 4
 		}
-		#918 = {
-		#	CONTROLLER = { has_tech = excavation3 }
-		#	infrastructure > 4
-		#}
+		918 = {
+			CONTROLLER = { has_tech = excavation3 }
+			infrastructure > 4
+		}
 	}
 	complete_effect = {
 		add_faction_power_projection = 100
@@ -2011,20 +1807,20 @@ faction_goal_develop_lappland_metals = {
 			    amount = 8
 			}
 		}
-		#918 = {
-		#	add_resource = {
-		#	    type = tungsten
-		#	    amount = 10
-		#	}
-		#	add_resource = {
-		#	    type = steel
-		#	    amount = 10
-		#	}
-		#	add_resource = {
-		#	    type = chromium
-		#	    amount = 5
-		#	}
-		#}
+		918 = {
+			add_resource = {
+			    type = tungsten
+			    amount = 10
+			}
+			add_resource = {
+			    type = steel
+			    amount = 10
+			}
+			add_resource = {
+			    type = chromium
+			    amount = 5
+			}
+		}
 	}
 	ai_will_do = {
 		base = 0
@@ -2257,7 +2053,7 @@ faction_goal_develop_iraqi_oil = {
 		OR = {
 			291 = { is_controlled_by_ROOT_or_ally = yes }
 			676 = {	is_controlled_by_ROOT_or_ally = yes }
-			#1010 = { is_controlled_by_ROOT_or_ally = yes }	
+			1010 = { is_controlled_by_ROOT_or_ally = yes }	
 		}
 	}
 	available = {
@@ -2267,7 +2063,7 @@ faction_goal_develop_iraqi_oil = {
 		}
 		291 = { is_controlled_by_ROOT_or_ally = yes }
 		676 = {	is_controlled_by_ROOT_or_ally = yes }
-		#1010 = { is_controlled_by_ROOT_or_ally = yes }	
+		1010 = { is_controlled_by_ROOT_or_ally = yes }	
 	}
 	completed = {
 		291 = {
@@ -2278,10 +2074,10 @@ faction_goal_develop_iraqi_oil = {
 			CONTROLLER = { has_tech = excavation3 }
 			infrastructure > 4
 		}
-		#1010 = {
-		#	CONTROLLER = { has_tech = excavation3 }
-		#	infrastructure > 4
-		#}
+		1010 = {
+			CONTROLLER = { has_tech = excavation3 }
+			infrastructure > 4
+		}
 	}
 	complete_effect = {
 		add_faction_power_projection = 100
@@ -2297,12 +2093,12 @@ faction_goal_develop_iraqi_oil = {
 			    amount = 4
 			}
 		}
-		#1010 = {
-		#	add_resource = {
-		#	    type = oil
-		#	    amount = 2
-		#	}
-		#}
+		1010 = {
+			add_resource = {
+			    type = oil
+			    amount = 2
+			}
+		}
 	}
 	ai_will_do = {
 		base = 1 # Everyone should always kiiiinda care about oil
@@ -2673,26 +2469,26 @@ faction_goal_develop_malayan_riches = {
 			    amount = 4
 			}
 		}
-		#1021 = {
-		#	add_resource = {
-		#	    type = aluminium
-		#	    amount = 3
-		#	}
-		#	add_resource = {
-		#	    type = tungsten
-		#	    amount = 12
-		#	}
-		#	add_resource = {
-		#	    type = steel
-		#	    amount = 4
-		#	}
-		#}
-		#1024 = {
-		#	add_resource = {
-		#	    type = rubber
-		#	    amount = 8
-		#	}
-		#}
+		1021 = {
+			add_resource = {
+			    type = aluminium
+			    amount = 3
+			}
+			add_resource = {
+			    type = tungsten
+			    amount = 12
+			}
+			add_resource = {
+			    type = steel
+			    amount = 4
+			}
+		}
+		1024 = {
+			add_resource = {
+			    type = rubber
+			    amount = 8
+			}
+		}
 	}
 	ai_will_do = {
 		base = 0
@@ -2701,8 +2497,8 @@ faction_goal_develop_malayan_riches = {
 			OR = {
 				controls_state = 333
 				controls_state = 336
-				#controls_state = 1021
-				#controls_state = 1024
+				controls_state = 1021
+				controls_state = 1024
 			}
 		}
 		modifier = {
@@ -3788,13 +3584,13 @@ faction_goal_fortify_danish_belts = {
 	visible = {
 		OR = {
 			37 = { is_controlled_by_ROOT_or_ally = yes }
-			#911 = { is_controlled_by_ROOT_or_ally = yes }
+			911 = { is_controlled_by_ROOT_or_ally = yes }
 			99 = { is_controlled_by_ROOT_or_ally = yes }
 		}
 	}
 	available = {
 		37 = { is_controlled_by_ROOT_or_ally = yes }
-		#911 = { is_controlled_by_ROOT_or_ally = yes }
+		911 = { is_controlled_by_ROOT_or_ally = yes }
 		99 = { is_controlled_by_ROOT_or_ally = yes }
 	}
 	completed = {
@@ -3810,15 +3606,15 @@ faction_goal_fortify_danish_belts = {
 					level > 0
 				}
 			}
-			#911 = {
-			#	any_province_building_level = {
-			#		province = {
-			#			id = 3325
-			#		}
-			#		building = coastal_bunker
-			#		level > 0
-			#	}
-			#}
+			911 = {
+				any_province_building_level = {
+					province = {
+						id = 3325
+					}
+					building = coastal_bunker
+					level > 0
+				}
+			}
 			99 = {
 				any_province_building_level = {
 					province = {
@@ -3832,12 +3628,12 @@ faction_goal_fortify_danish_belts = {
 			OR = {
 				AND = {
 					divisions_in_state = { state = 37 size > 1 }
-					#divisions_in_state = { state = 911 size > 0 }
+					divisions_in_state = { state = 911 size > 0 }
 					divisions_in_state = { state = 99 size > 1 }
 				}
 				any_allied_country = {
 					divisions_in_state = { state = 37 size > 1 }
-					#divisions_in_state = { state = 911 size > 0 }
+					divisions_in_state = { state = 911 size > 0 }
 					divisions_in_state = { state = 99 size > 1 }
 				}
 			}
@@ -3852,7 +3648,7 @@ faction_goal_fortify_danish_belts = {
 			limit = {
 				OR = {
 					controls_state = 37
-					#controls_state = 911
+					controls_state = 911
 					controls_state = 99
 				}
 			}
@@ -4764,12 +4560,12 @@ faction_goal_fortify_strait_of_hormuz = {
 	visible = {
 		OR = {
 			412 = { is_controlled_by_ROOT_or_ally = yes }
-			#1013 = { is_controlled_by_ROOT_or_ally = yes }
+			1013 = { is_controlled_by_ROOT_or_ally = yes }
 		}
 	}
 	available = {
 		412 = { is_controlled_by_ROOT_or_ally = yes }
-		#1013 = { is_controlled_by_ROOT_or_ally = yes }
+		1013 = { is_controlled_by_ROOT_or_ally = yes }
 	}
 	completed = {
 		custom_trigger_tooltip = {
@@ -4790,30 +4586,30 @@ faction_goal_fortify_strait_of_hormuz = {
 					level > 0
 				}
 			}
-			#1013 = {
-			#	any_province_building_level = {
-			#		province = {
-			#			id = 13369
-			#		}
-			#		building = coastal_bunker
-			#		level > 0
-			#	}
-			#	any_province_building_level = {
-			#		province = {
-			#			id = 13369
-			#		}
-			#		building = bunker
-			#		level > 0
-			#	}
-			#}
+			1013 = {
+				any_province_building_level = {
+					province = {
+						id = 13369
+					}
+					building = coastal_bunker
+					level > 0
+				}
+				any_province_building_level = {
+					province = {
+						id = 13369
+					}
+					building = bunker
+					level > 0
+				}
+			}
 			OR = {
 				AND = {
 					divisions_in_state = { state = 412 size > 0 }
-					#divisions_in_state = { state = 1013 size > 0 }
+					divisions_in_state = { state = 1013 size > 0 }
 				}
 				any_allied_country = {
 					divisions_in_state = { state = 412 size > 0 }
-					#divisions_in_state = { state = 1013 size > 0 }
+					divisions_in_state = { state = 1013 size > 0 }
 				}
 			}
 		}
@@ -4851,25 +4647,25 @@ faction_goal_fortify_strait_of_hormuz = {
 				instant_build = yes
 			}
 		}
-		#1013 = {
-		#	add_building_construction = {
-		#		type = anti_air_building
-		#		level = 1
-		#		instant_build = yes
-		#	}
-		#	add_building_construction = {
-		#		type = coastal_bunker
-		#		level = 1
-		#		province = 13369
-		#		instant_build = yes
-		#	}
-		#	add_building_construction = {
-		#		type = bunker
-		#		level = 1
-		#		province = 13369
-		#		instant_build = yes
-		#	}
-		#}
+		1013 = {
+			add_building_construction = {
+				type = anti_air_building
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = coastal_bunker
+				level = 1
+				province = 13369
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				level = 1
+				province = 13369
+				instant_build = yes
+			}
+		}
 	}
 	ai_will_do = {
 		base = 1

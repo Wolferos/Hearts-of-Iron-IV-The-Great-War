@@ -28,6 +28,7 @@ recruit_character = JAP_yoshihito
 			}
 		}
 	}
+	set_country_flag = meiji_dead
 }
 
 # ARMY
@@ -237,6 +238,16 @@ recruit_character = JAP_ishii_kikujiro
 		state_shintoism
 		JAP_zaibatsus
 	}
+
+	if = {
+		limit = {
+			has_start_date < 1911.1.1
+		}
+		country_event = { # Meiji Dies - 30 July 1912
+			id = ww1_japan.5
+			days = 822
+		}
+	}
 	
 	create_equipment_variant={ name="Admiral Ushakov Class" type=battleship_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=0 ship_engine_upgrade=2 ship_reliability_upgrade=2           } }
 	create_equipment_variant={ name="Chin Yen Class" type=battleship_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=3 ship_engine_upgrade=0 ship_reliability_upgrade=5           } }
@@ -253,7 +264,7 @@ recruit_character = JAP_ishii_kikujiro
 	create_equipment_variant={ name="Yakumo Class" type=heavy_cruiser_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=2 ship_engine_upgrade=3 ship_reliability_upgrade=5           } }
 	create_equipment_variant={ name="Adzumo Class" type=heavy_cruiser_1890 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=2 ship_engine_upgrade=2 ship_reliability_upgrade=4           } }
 	create_equipment_variant={ name="Bayan Class" type=heavy_cruiser_1900 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=0 ship_armor_upgrade=5 ship_engine_upgrade=1 ship_reliability_upgrade=5           } }
-	create_equipment_variant={ name="Tsukuba Class" type=heavy_cruiser_1900 parent_version = 1 obsolete=no upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=5 ship_engine_upgrade=0 ship_reliability_upgrade=5           } }
+	create_equipment_variant={ name="Tsukuba Class" type=heavy_cruiser_1900 parent_version = 1 upgrades={ ship_gun_upgrade=5 ship_armor_upgrade=5 ship_engine_upgrade=0 ship_reliability_upgrade=5           } }
 	create_equipment_variant={ name="Matshushima Class" type=light_cruiser_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=1 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
 	create_equipment_variant={ name="Akitsushima Class" type=light_cruiser_1890 parent_version = 1 obsolete=yes upgrades={ ship_gun_upgrade=5  ship_engine_upgrade=4 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
 	create_equipment_variant={ name="Suma Class" type=light_cruiser_1890 parent_version = 2 obsolete=yes upgrades={ ship_gun_upgrade=4  ship_engine_upgrade=5 ship_reliability_upgrade=5 ship_anti_air_upgrade=0          } }
@@ -268,7 +279,7 @@ recruit_character = JAP_ishii_kikujiro
 	create_equipment_variant={ name="Shirakumo Class" type=destroyer_1890 parent_version = 2 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=3    ship_torpedo_upgrade=4 } }
 	create_equipment_variant={ name="Harusame Class" type=destroyer_1890 parent_version = 3 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=1    ship_torpedo_upgrade=4 } }
 	create_equipment_variant={ name="Boiki Class" type=destroyer_1900 parent_version = 0 obsolete=yes upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=2 } }
-	create_equipment_variant={ name="Asakaze Class" type=destroyer_1900 parent_version = 1 obsolete=no upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=1    ship_torpedo_upgrade=2 } }
+	create_equipment_variant={ name="Asakaze Class" type=destroyer_1900 parent_version = 1 upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=1    ship_torpedo_upgrade=2 } }
 	create_equipment_variant={ name="Kaigun-Holland Class" type=coastal_submarine_1900 parent_version = 0 obsolete=yes upgrades={    ship_reliability_upgrade=2       sub_torpedo_upgrade=1 sub_stealth_upgrade=2 sub_engine_upgrade=2  } }
 
 }
@@ -458,15 +469,14 @@ recruit_character = JAP_ishii_kikujiro
 	}
 
 	set_global_flag = kis_japankorea_annexation
-	set_country_flag = Meiji_dead
 	
-	create_equipment_variant={ name="Kaba Class" type=destroyer_1910 parent_version = 0 obsolete=no upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=0 } }
+	create_equipment_variant={ name="Kaba Class" type=destroyer_1910 parent_version = 0 upgrades={     ship_anti_air_upgrade=0    ship_ASW_upgrade=0 destroyer_engine_upgrade=0    ship_torpedo_upgrade=0 } }
 
 }
 
 1919.1.1 = {
 
-	add_ideas = { interwar_spirit_TheGreatWar_Winner }
+	add_ideas = { ww1_victoror_of_the_great_war }
 
 	set_technology = {
 		# Infantry

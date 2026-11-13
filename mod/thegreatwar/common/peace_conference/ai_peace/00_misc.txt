@@ -755,8 +755,8 @@ peace_ai_desires = {
             has_global_flag = spanish_civil_war             #And the spaindome is ongoing
             NOT = { has_global_flag = scw_over }            #But the spaindome has not yet been resolved
             ROOT.FROM.FROM = { original_tag = SPR }            #And it is being taken from an original spain
-            any_country = {                                    #Any country that was an original spain is on our side
-                original_tag = SPR
+            any_country_with_original_tag = {                  #Any country that was an original spain is on our side
+                original_tag_to_check = SPR
                 pc_is_on_same_side_as = ROOT
             }
         }
@@ -767,10 +767,10 @@ peace_ai_desires = {
         peace_action_type = take_states
         enable = {
             OR = {
-                any_country = {                                            #Any country that was an original spain is on our side
-                    original_tag = SPR
-                    pc_is_on_same_side_as = ROOT
-                }
+            any_country_with_original_tag = {                             #Any country that was an original spain is on our side
+                original_tag_to_check = SPR
+                pc_is_on_same_side_as = ROOT
+            }
                 original_tag = SPR                                        #Or we are a spain
             }
             ROOT.FROM = { original_tag = SPR }                            #A spain is the recipient

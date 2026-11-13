@@ -1,4 +1,4 @@
-﻿focus_tree = {
+focus_tree = {
 	id = POL_interwar_focus
 	country = {
 		factor = 0
@@ -570,6 +570,7 @@
 		available = {
 			POL = {
 				controls_state = 69
+				controls_state = 972
 			}
 			country_exists = GER
 			NOT = {
@@ -582,6 +583,9 @@
 				name = GER_demand_sudetenland_threat2
 			}
 			69 = {
+				add_claim_by = GER
+			}
+			972 = {
 				add_claim_by = GER
 			}
 		}
@@ -1179,7 +1183,16 @@
 			13 = {
 				add_claim_by = POL
 			}
+			811 = {
+				add_claim_by = POL
+			}
+			812 = {
+				add_claim_by = POL
+			}
 			191 = {
+				add_claim_by = POL
+			}
+			813 = {
 				add_claim_by = POL
 			}
 			201 = {
@@ -1463,10 +1476,7 @@
 			create_wargoal = {
 				target = HUN
 				type = take_state
-				generator = {
-					43
-					154
-				}
+				generator = { 43 154 973 155 974 }
 			}
 		}
 		ai_will_do = {
@@ -1523,7 +1533,7 @@
 				type = take_state_focus
 				target = TUR
 				generator = {
-					341
+					797
 				}
 				expire = 0
 			}
@@ -1531,7 +1541,7 @@
 				type = take_state_focus
 				target = TUK
 				generator = {
-					341
+					797
 				}
 				expire = 0
 			}
@@ -2423,5 +2433,253 @@
 			add_political_power = 30
 		}
 	}
+
+#	focus = {
+#		id = POL_interwar_under_the_russian_boot
+#		icon = GFX_focus_eng_move_to_secure_the_dominions
+#		x = 40
+#		y = 0
+#		cost = 10
+#		available = {has_global_flag = russian_versailles}
+#		ai_will_do = {
+#			factor = 10
+#		}
+#
+#		completion_reward = {
+#			add_stability = -0.03
+#		}
+#	}
+#	focus = {
+#		id = POL_interwar_zapadoslavia
+#		icon = GFX_goal_generic_propaganda
+#		prerequisite = {focus =POL_interwar_under_the_russian_boot}
+#		x = 0
+#		y = 1
+#		relative_position_id = POL_interwar_under_the_russian_boot
+#		cost = 10
+#		available = {NOT = {has_war_with = CZE} is_subject_of = RUS}
+#		ai_will_do = {
+#			factor = 10
+#		}
+#
+#		completion_reward = {
+#			RUS = {country_event = ww1_russia.33}
+#		}
+#	}
+#	focus = {
+#		id = POL_interwar_claim_old_slavic_lands
+#		icon = GFX_goal_generic_propaganda
+#		prerequisite = {focus = POL_interwar_zapadoslavia}
+#		x = 0
+#		y = 1
+#		relative_position_id = POL_interwar_zapadoslavia
+#		cost = 10
+#		ai_will_do = {
+#			factor = 10
+#		}
+#
+#		completion_reward = {
+#		add_state_claim = 67
+#		add_state_claim = 66
+#		add_state_claim = 63
+#		}
+#	}
+#	focus = {
+#		id = POL_interwar_choosing_a_king # given that the germans have won the war we should get around to deciding who will be king
+#		icon = GFX_focus_generic_treaty
+#		x = 34
+#		y = 0
+#		cost = 10
+#		available = {has_global_flag = kis_second_treaty_frankfort}
+#		ai_will_do = {
+#			factor = 10
+#		}
+#
+#		completion_reward = {
+#			add_stability = 0.05
+#			country_event = {
+#			id = interwar_alt_poland_events.1
+#			}
+#		}
+#	}
+#	focus = {
+#		id = POL_interwar_a_german_king 
+#		icon = GFX_hoi4tgw_ironcross
+#		prerequisite = {focus = POL_interwar_choosing_a_king}
+#		mutually_exclusive = {focus =POL_interwar_an_austrian_king}
+#		relative_position_id = POL_interwar_choosing_a_king
+#		x = -2
+#		y = 2
+#		cost = 10
+#		ai_will_do = {
+#			factor = 10
+#		}
+#
+#		completion_reward = {
+#		}
+#	}
+#	focus = {
+#		id = POL_interwar_an_austrian_king
+#		icon = GFX_hoi4tgw_austriahungary
+#		prerequisite = {focus = POL_interwar_choosing_a_king}
+#		mutually_exclusive = {focus =POL_interwar_a_german_king}
+#		relative_position_id = POL_interwar_choosing_a_king
+#		x = 2
+#		y = 2
+#		cost = 10
+#		ai_will_do = {
+#			factor = 10
+#		}
+#
+#		completion_reward = {
+#			}
+#		}
+#	focus = {
+#		id = POL_interwar_request_galicia
+#		icon = GFX_hoi4tgw_austriahungary
+#		prerequisite = {focus = POL_interwar_an_austrian_king}
+#		relative_position_id = POL_interwar_an_austrian_king
+#		x = 2
+#		y = 2
+#		cost = 10
+#		ai_will_do = {
+#			factor = 10
+#		}
+#
+#		completion_reward = {
+#			AUH =  {country_event = {id = interwar_alt_poland_events.4}}
+#			}
+#		}
+#	focus = {
+#		id = POL_interwar_frederick_augustus
+#		icon = GFX_hoi4tgw_ironcross
+#		prerequisite = {focus = POL_interwar_a_german_king}
+#		mutually_exclusive = {focus =POL_interwar_duke_albrecht}
+#		mutually_exclusive = {focus =POL_interwar_prince_leopold}
+#		relative_position_id = POL_interwar_a_german_king
+#		x = -2
+#		y = 1
+#		cost = 10
+#		ai_will_do = {
+#			factor = 10
+#		}
+#
+#		completion_reward = {
+#			}
+#		}
+#	focus = {
+#		id = POL_interwar_duke_albrecht
+#		icon = GFX_hoi4tgw_ironcross
+#		prerequisite = {focus = POL_interwar_a_german_king}
+#		mutually_exclusive = {focus =POL_interwar_frederick_augustus}
+#		mutually_exclusive = {focus =POL_interwar_prince_leopold}
+#		relative_position_id = POL_interwar_a_german_king
+#		x = 0
+#		y = 1
+#		cost = 10
+#		ai_will_do = {
+#			factor = 10
+#		}
+#
+#		completion_reward = {
+#			}
+#		}
+#	focus = {
+#		id = POL_interwar_prince_leopold
+#		icon = GFX_hoi4tgw_ironcross
+#		prerequisite = {focus = POL_interwar_a_german_king}
+#		mutually_exclusive = {focus =POL_interwar_frederick_augustus}
+#		mutually_exclusive = {focus =POL_interwar_duke_albrecht}
+#		relative_position_id = POL_interwar_a_german_king
+#		x = 2
+#		y = 1
+#		cost = 10
+#		ai_will_do = {
+#			factor = 10
+#		}
+#
+#		completion_reward = {
+#			}
+#		}
+#	focus = {
+#		id = POL_interwar_german_investment
+#		icon = GFX_hoi4tgw_germanempire
+#		prerequisite = {focus = POL_interwar_duke_albrecht focus = POL_interwar_frederick_augustus focus=POL_interwar_prince_leopold}
+#		relative_position_id = POL_interwar_a_german_king
+#		x = 0
+#		y = 2
+#		cost = 10
+#		ai_will_do = {
+#			factor = 10
+#		}
+#
+#		completion_reward = {
+#			random_owned_controlled_state = {
+#				prioritize = { 10 }
+#				limit = {									
+#					free_building_slots = {
+#						building = industrial_complex
+#						size > 0
+#						include_locked = yes
+#					}
+#				}
+#				add_extra_state_shared_building_slots = 3
+#				add_building_construction = {
+#					type = industrial_complex
+#					level = 3
+#					instant_build = yes
+#				}
+#			}
+#			random_owned_controlled_state = {
+#				prioritize = { 90 }
+#				limit = {									
+#					free_building_slots = {
+#						building = industrial_complex
+#						size > 0
+#						include_locked = yes
+#					}
+#				}
+#				add_extra_state_shared_building_slots = 3
+#				add_building_construction = {
+#					type = industrial_complex
+#					level = 3
+#					instant_build = yes
+#				}
+#			}
+#			random_owned_controlled_state = {
+#				prioritize = { 92 }
+#				limit = {									
+#					free_building_slots = {
+#						building = industrial_complex
+#						size > 0
+#						include_locked = yes
+#					}
+#				}
+#				add_extra_state_shared_building_slots = 3
+#				add_building_construction = {
+#					type = industrial_complex
+#					level = 3
+#					instant_build = yes
+#				}
+#			}
+#				random_owned_controlled_state = {
+#				prioritize = { 87 }
+#				limit = {									
+#					free_building_slots = {
+#						building = industrial_complex
+#						size > 0
+#						include_locked = yes
+#					}
+#				}
+#				add_extra_state_shared_building_slots = 3
+#				add_building_construction = {
+#					type = industrial_complex
+#					level = 3
+#					instant_build = yes
+#				}
+#			}
+#		}
+#			
+#	}
 
 }
