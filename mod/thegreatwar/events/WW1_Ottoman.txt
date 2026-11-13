@@ -253,6 +253,7 @@ country_event = {
 		name = ww1_ottoman.29.a
 		ai_chance = { base = 100 }
 		custom_effect_tooltip = Young_turk_rebellion_tt
+		set_country_flag = TUR_young_turk_rebellion_cflg
 		hidden_effect = {
 			MAC = {
 				transfer_state = 1093
@@ -738,6 +739,10 @@ country_event = {
 		
 		has_civil_war = no
 		
+		NOT = {
+			has_country_flag = TUR_young_turk_rebellion_cflg
+		}
+		
 		#Code that prevents this event from firing in 1919 start date 
 		NOT = {
 			has_global_flag = kis_treaty_of_versailles
@@ -802,6 +807,10 @@ country_event = {
 		
 		has_civil_war = no
 		
+		NOT = {
+			has_country_flag = TUR_young_turk_rebellion_cflg
+		}
+		
 		#Code that prevents this event from firing in 1919 start date 
 		NOT = {
 			has_global_flag = kis_treaty_of_versailles
@@ -858,6 +867,10 @@ country_event = {
 		has_country_flag = Succes_of_the_RSP
 		
 		has_civil_war = no
+		
+		NOT = {
+			has_country_flag = TUR_young_turk_rebellion_cflg
+		}
 		
 		#Code that prevents this event from firing in 1919 start date 
 		NOT = {
@@ -1379,15 +1392,24 @@ country_event = {
 	option =  {
 		name = ww1_ottoman.60.a
 		ai_chance = { base = 100 }
-		swap_ideas = {
-			remove_idea = TUR_Mehmed_V_ns
-			add_idea = TUR_Mehmed_VI_ns
-		}
 		hidden_effect = {
 			news_event = {
 				id = interwar_news.15
 				days = 1
 			}
+		}
+		if = {
+		    limit = {
+			    has_country_leader = { name = "Mehmed V" }
+			}
+			kill_country_leader = yes
+			promote_character = TUR_mehmed_vi
+		}
+		else = {
+		    swap_ideas = {
+			    remove_idea = TUR_Mehmed_V_ns
+			    add_idea = TUR_Mehmed_VI_ns
+		    }
 		}
 	}
 }

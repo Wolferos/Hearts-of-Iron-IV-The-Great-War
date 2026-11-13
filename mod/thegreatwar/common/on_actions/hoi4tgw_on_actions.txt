@@ -239,6 +239,20 @@ on_actions = {
 				news_event = { id = kis_news.119 hours = 6 }
 			}
 		}
+		#Unlock focus when Ottomans Recapture Selanik From the Second Action Army
+        effect = {
+			if = {
+				limit = {
+					original_tag = TUR
+					FROM = {
+						original_tag = MAC
+					}
+				}
+				TUR = {
+				    set_country_flag = TUR_beated_the_second_action_army_cflg
+				}
+			}
+		}
 	}
 
 	on_state_control_changed = {
@@ -277,7 +291,6 @@ on_actions = {
 				}
 			}
 		}
-
 	}
 
 	on_peaceconference_ended = {
