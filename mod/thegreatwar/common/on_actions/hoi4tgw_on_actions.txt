@@ -1,5 +1,63 @@
-
 on_actions = {
+
+    on_startup = {
+		#Changing the Ottoman Codes in 1919 Start Date
+		effect = {
+			IF = {
+				limit = {
+					date > 1919.1.1
+				}
+				TUR = {
+					remove_ideas = {
+					    TUR_Mehmed_V_ns
+					    TUR_secularization_ns
+					    TUR_westernization_ns
+					    TUR_foreign_military_advisors_ns
+	                    TUR_separatist_movements_ns
+                        TUR_nationalist_education_ns
+                        TUR_three_pashas_ns
+                        TUR_one_party_state_ns
+                        TUR_pan_turkism_ns
+                        TUR_one_nation_one_religion_one_country_ns
+                        TUR_jihad_ns
+                        TUR_sinai_campaign_ns
+                        TUR_yemen_campaign_ns
+                        TUR_sarikamish_operation_ns
+	                }
+					
+					add_political_power = -700
+					
+					remove_state_claim = 659
+			        remove_state_claim = 658
+					remove_state_claim = 656
+			        remove_state_claim = 182
+					remove_state_claim = 229
+			        remove_state_claim = 232
+					remove_state_claim = 821
+			        remove_state_claim = 828
+					remove_state_claim = 827
+				}
+				every_state = {
+				    limit = {
+					    OR = {
+						    region = 127
+							region = 28
+							region = 237
+							region = 225
+							region = 232
+							region = 225
+							region = 26
+							region = 24
+							state = 184
+							state = 731
+							state = 164
+						}
+					}
+					remove_core_of = TUR
+				}
+			}
+		}
+	}
 
 	on_release_as_free = {
 		effect = {

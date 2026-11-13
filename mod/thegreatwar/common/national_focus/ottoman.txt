@@ -1693,7 +1693,7 @@ focus_tree = {
 	focus = {
 		id = TUR_ww1_sultan_mehmet_v
 		icon = GFX_focus_generic_monarchy_2
-		prerequisite = { focus = TUR_ww1_question_for_the_new_sultan}
+		prerequisite = { focus = TUR_ww1_question_for_the_new_sultan }
 		available = {
 		    always = no
 		}
@@ -1887,6 +1887,7 @@ focus_tree = {
             }
 		    hidden_effect = {
 		        kill_country_leader = yes
+				set_country_flag = Mehmed_V_has_not_chosen
 		    }
 		}
 		ai_will_do = {
@@ -1985,6 +1986,7 @@ focus_tree = {
             }
 		    hidden_effect = {
 		        kill_country_leader = yes
+				set_country_flag = Mehmed_V_has_not_chosen
 		    }
 		}
 		ai_will_do = {
@@ -2699,8 +2701,15 @@ focus_tree = {
 			controls_state = 291
 		}
 		completion_reward = {
-		    GER = {
-			    country_event = { id = ww1_germany.33 hours = 6 }
+		    if = {
+			    limit = {
+				    NOT = {
+					    has_global_flag = kis_treaty_of_versailles
+					}
+				}
+			    GER = {
+			        country_event = { id = ww1_germany.33 hours = 6 }
+			    }
 			}
 		}
 		ai_will_do = {

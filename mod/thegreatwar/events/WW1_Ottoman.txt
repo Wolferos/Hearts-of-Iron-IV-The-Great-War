@@ -393,56 +393,56 @@ country_event = {
 	}
 }
 
-#Austria Rejects
-country_event = {
-	id = ww1_ottoman.33
-	title = ww1_ottoman.33.t
-	desc = ww1_ottoman.33.d
-	picture = GFX_report_event_tur_military_affair
-
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-		name = ww1_ottoman.33.a
-		ai_chance = { base = 50 }
-		add_political_power = -50
-		add_stability = -0.05
-		add_war_support = -0.05
-	}
-	option = {
-		name = ww1_ottoman.33.b
-		ai_chance = { base = 50 }
-		add_war_support = 0.05
-		create_wargoal = {
-			target = AUH
-			type = take_state
-			generator = {
-				104
-			}
-		}
-	}
-}
-
-#Austria Accepts
-country_event = {
-	id = ww1_ottoman.34
-	title = ww1_ottoman.34.t
-	desc = ww1_ottoman.34.d
-	picture = GFX_report_event_tur_military_affair
-
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-		name = ww1_ottoman.34.a
-		ai_chance = { base = 50 }
-		add_political_power = 50
-		add_stability = 0.05
-		add_war_support = 0.05
-		transfer_state = 104
-	}
-}
+##Austria Rejects
+#country_event = {
+#	id = ww1_ottoman.33
+#	title = ww1_ottoman.33.t
+#	desc = ww1_ottoman.33.d
+#	picture = GFX_report_event_tur_military_affair
+#
+#	fire_only_once = yes
+#	is_triggered_only = yes
+#
+#	option = {
+#		name = ww1_ottoman.33.a
+#		ai_chance = { base = 50 }
+#		add_political_power = -50
+#		add_stability = -0.05
+#		add_war_support = -0.05
+#	}
+#	option = {
+#		name = ww1_ottoman.33.b
+#		ai_chance = { base = 50 }
+#		add_war_support = 0.05
+#		create_wargoal = {
+#			target = AUH
+#			type = take_state
+#			generator = {
+#				104
+#			}
+#		}
+#	}
+#}
+#
+##Austria Accepts
+#country_event = {
+#	id = ww1_ottoman.34
+#	title = ww1_ottoman.34.t
+#	desc = ww1_ottoman.34.d
+#	picture = GFX_report_event_tur_military_affair
+#
+#	fire_only_once = yes
+#	is_triggered_only = yes
+#
+#	option = {
+#		name = ww1_ottoman.34.a
+#		ai_chance = { base = 50 }
+#		add_political_power = 50
+#		add_stability = 0.05
+#		add_war_support = 0.05
+#		transfer_state = 104
+#	}
+#}
 
 #Question of Capitulations
 country_event = {
@@ -596,6 +596,11 @@ country_event = {
 		date > 1911.5.1
 		
 		has_civil_war = no
+		
+		#Code that prevents this event from firing in 1919 start date 
+		NOT = {
+		    has_global_flag = kis_treaty_of_versailles
+		}
 	}
 
 	mean_time_to_happen = { days = 10 }
@@ -638,6 +643,11 @@ country_event = {
 		date > 1912.2.1
 		
 		has_civil_war = no
+		
+		#Code that prevents this event from firing in 1919 start date 
+		NOT = {
+		    has_global_flag = kis_treaty_of_versailles
+		}
 	}
 	
 	mean_time_to_happen = { days = 10 }
@@ -680,6 +690,11 @@ country_event = {
 		date > 1912.7.7
 		
 		has_civil_war = no
+		
+		#Code that prevents this event from firing in 1919 start date 
+		NOT = {
+		    has_global_flag = kis_treaty_of_versailles
+		}
 	}
 	
 	mean_time_to_happen = { days = 10 }
@@ -722,6 +737,11 @@ country_event = {
 		date > 1913.1.1
 		
 		has_civil_war = no
+		
+		#Code that prevents this event from firing in 1919 start date 
+		NOT = {
+		    has_global_flag = kis_treaty_of_versailles
+		}
 	}
 	
 	mean_time_to_happen = { days = 10 }
@@ -746,6 +766,10 @@ country_event = {
 		complete_national_focus = TUR_ww1_ITF_victorius
 		hidden_effect = {
 			kill_country_leader = yes
+			news_event = {
+			    id = ww1_news.4
+				days = 1
+			}
 		}
 	}
 	
@@ -777,6 +801,11 @@ country_event = {
 		has_country_flag = Succes_of_the_RSP
 		
 		has_civil_war = no
+		
+		#Code that prevents this event from firing in 1919 start date 
+		NOT = {
+		    has_global_flag = kis_treaty_of_versailles
+		}
 	}
 	
 	mean_time_to_happen = { days = 10 }
@@ -829,6 +858,11 @@ country_event = {
 		has_country_flag = Succes_of_the_RSP
 		
 		has_civil_war = no
+		
+		#Code that prevents this event from firing in 1919 start date 
+		NOT = {
+		    has_global_flag = kis_treaty_of_versailles
+		}
 	}
 	
 	mean_time_to_happen = { days = 10 }
@@ -1319,6 +1353,43 @@ country_event = {
 		add_timed_idea = {
 		    idea = TUR_land_purchase_ns
 			days = 180
+		}
+	}
+}
+
+#Death of the Mehmed the V
+country_event = {
+	id = ww1_ottoman.60
+	title = ww1_ottoman.60.t
+	desc = ww1_ottoman.60.d
+	picture = GFX_report_event_tur_soviets
+	
+	trigger = {
+	    tag = TUR
+		date > 1919.6.6
+		
+		NOT = {
+		    has_country_flag = Mehmed_V_has_not_chosen
+		}
+	}
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option =  {
+		name = ww1_ottoman.60.a
+		ai_chance = { base = 100 }
+		remove_ideas = {
+		    TUR_Mehmed_V_ns
+		}
+		add_ideas = {
+		    TUR_Mehmed_VI_ns
+		}
+		hidden_effect = {
+		    news_event = {
+			    id = interwar_news.15
+			    days = 1
+		    }
 		}
 	}
 }
