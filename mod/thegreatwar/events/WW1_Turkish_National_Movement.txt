@@ -210,6 +210,8 @@ country_event = {
 				transfer_state = 349
 				transfer_state = 355
 				transfer_state = 356
+				transfer_state = 1120
+				transfer_state = 1123
 
 				add_state_core = 348
 				add_state_core = 798
@@ -229,10 +231,12 @@ country_event = {
 				add_state_core = 341
 				add_state_core = 342
 				add_state_core = 347
-				add_state_core = 49
 				add_state_core = 343
-				add_state_core = 356
+				add_state_core = 49
 				add_state_core = 345
+				add_state_core = 346
+				add_state_core = 1120
+				add_state_core = 1123
 				load_oob = "TUK_1919"
 				declare_war_on = {
 					target = TUR
@@ -241,7 +245,24 @@ country_event = {
 						797
 					}
 				}
-
+                kill_country_leader = yes
+				remove_trait = {
+				    character = TUR_mustafa_kemal
+					ideology = autocracy
+					trait = TUR_ww1_grand_vizier
+				}
+				TUR_mustafa_kemal = {
+			        add_country_leader_role = {
+			        	promote_leader = yes
+			        	country_leader = {
+			        		ideology = autocracy
+			        		expire = "1938.1.1.1"
+			        		traits = {
+							    TUR_ww1_national_hero
+							}
+			        	}
+			        }
+		        }
 				set_cosmetic_tag = TUR_WAR
 			}
 			if = {

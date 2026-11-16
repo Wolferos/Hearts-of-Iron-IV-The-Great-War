@@ -697,14 +697,19 @@ focus_tree = {
 		}
 		completion_reward = {
 		    custom_effect_tooltip = focus_unlocked_event_tt
-		    create_country_leader = {
-	            name = "Mustafa Kemal Pasha"
-	            picture = "gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_mustafa_kemal.dds"
-	            expire = 1937.8.1
-	            ideology = liberalism
-	            traits = {
-	            }
-            }
+		    TUR_mustafa_kemal = {
+			    add_country_leader_role = {
+			      	promote_leader = yes
+			      	country_leader = {
+			            ideology = liberalism
+			            expire = "1935.1.1.1"
+			            traits = {
+			                TUR_ww1_grand_vizier
+			            }
+			            id = -1
+		            }
+			    }
+		    }
 			set_party_name = {
 			    ideology = democratic
 			    long_name = TUR_MLP
@@ -873,14 +878,19 @@ focus_tree = {
 		mutually_exclusive = { focus = TUR_ww1_grand_vizier_kemal_pasha }
 		completion_reward = {
 		    custom_effect_tooltip = focus_unlocked_event_tt
-		    create_country_leader = {
-	            name = "Mehmed Sabahaddin"
-	            picture = "gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_prince_sabahaddin.dds"
-	            expire = 1948.1.1
-	            ideology = liberalism
-	            traits = {
-	            }
-            }
+			TUR_damat_ferid_pasha = {
+			    add_country_leader_role = {
+			      	promote_leader = yes
+			      	country_leader = {
+			            ideology = liberalism
+			            expire = "1935.1.1.1"
+			            traits = {
+			                TUR_ww1_grand_vizier
+			            }
+			            id = -1
+		            }
+			    }
+		    }
 		    set_politics = {
 				ruling_party = democratic
 				last_election = "1910.1.1"
@@ -1668,17 +1678,20 @@ focus_tree = {
 		}
 		completion_reward = {
 		    custom_effect_tooltip = focus_unlocked_event_tt
-		    create_country_leader = {
-	            name = "Mehmed V"
-	            picture = "gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_mehmed_v.dds"
-	            expire = 1937.8.1
-	            ideology = despotism
-	            traits = {
-				    ww1_the_caliph
-	            }
-            }
-		    hidden_effect = {
+			hidden_effect = {
 		        kill_country_leader = yes
+		    }
+			TUR_mehmed_v = {
+			    add_country_leader_role = {
+			      	promote_leader = yes
+			      	country_leader = {
+			      		ideology = autocracy
+			      		expire = "1938.1.1.1"
+			      		traits = {
+					        ww1_the_caliph
+					    }
+			      	}
+			    }
 		    }
 		    remove_ideas = {
 			    TUR_Mehmed_V_ns
@@ -1847,19 +1860,25 @@ focus_tree = {
 		}
 		completion_reward = {
 		    custom_effect_tooltip = focus_unlocked_event_tt
-		    create_country_leader = {
-	            name = "Abdulhamid II"
-	            picture = "gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_Abdulhamid_II.dds"
-	            expire = 1937.8.1
-	            ideology = despotism
-	            traits = {
-				    ww1_the_caliph
-	            }
-            }
-		    hidden_effect = {
+			hidden_effect = {
 		        kill_country_leader = yes
 				set_country_flag = Mehmed_V_has_not_chosen
 		    }
+		    TUR_abdulhamid_ii = {
+			    add_country_leader_role = {
+			      	promote_leader = yes
+			      	country_leader = {
+			      		ideology = autocracy
+			      		expire = "1938.1.1.1"
+			      		traits = {
+					        ww1_the_caliph
+					    }
+			      	}
+			    }
+		    }
+			remove_ideas = {
+			    TUR_Mehmed_V_ns
+			}
 		}
 		ai_will_do = {
 			factor = 0
@@ -1947,19 +1966,25 @@ focus_tree = {
 		}
 		completion_reward = {
 		    custom_effect_tooltip = focus_unlocked_event_tt
-		    create_country_leader = {
-	            name = "Abdulmejid II"
-	            picture = "gfx/hoi4tgw_portraits/TUR/country_leaders/TUR_Abdulmejid_II.dds"
-	            expire = 1937.8.1
-	            ideology = despotism
-	            traits = {
-				    ww1_the_caliph
-	            }
-            }
 		    hidden_effect = {
 		        kill_country_leader = yes
 				set_country_flag = Mehmed_V_has_not_chosen
 		    }
+		    TUR_abdulmejid_ii = {
+			    add_country_leader_role = {
+			      	promote_leader = yes
+			      	country_leader = {
+			      		ideology = autocracy
+			      		expire = "1938.1.1.1"
+			      		traits = {
+					        ww1_the_caliph
+					    }
+			      	}
+			    }
+		    }
+			remove_ideas = {
+			    TUR_Mehmed_V_ns
+			}
 		}
 		ai_will_do = {
 			factor = 0
@@ -2443,6 +2468,7 @@ focus_tree = {
 			has_global_flag = kis_firstbalkanwar_victory 
 		}
 		completion_reward = {
+		    custom_effect_tooltip = focus_unlocked_event_tt
 		    add_timed_idea = {
 			    idea = TUR_turkish_refugees_ns
 				days = 90
@@ -2489,9 +2515,13 @@ focus_tree = {
 		prerequisite = { focus = TUR_ww1_prepare_defence_lines }
 		mutually_exclusive = { focus = TUR_ww1_defeat_in_the_balkan_war }
 		available = {
-		    custom_trigger_tooltip = { 
-			    tooltip = ottomans_won_the_balkan_war_tt
-				has_global_flag = ottomans_won_the_balkan_war_glfg
+		    OR = {
+			    BUL = {
+				    is_subject_of = TUR
+				}
+			    NOT = { 
+			        country_exists = BUL
+			    }
 			}
 		}
 		completion_reward = {
@@ -2510,10 +2540,14 @@ focus_tree = {
 		icon = GFX_focus_generic_worker_administration
 		prerequisite = { focus = TUR_ww1_victory_in_the_balkan_war }
 		available = {
-		    controls_state = 212
+		    controls_state = 48
 		}
 		completion_reward = {
 		    add_state_core = 212
+			add_state_core = 48
+			add_state_core = 801
+			add_state_core = 211
+			add_state_core = 77
 		}
 		ai_will_do = {
 			factor = 0
