@@ -1,33 +1,48 @@
 state = {
-	id=200
-	name="STATE_200" # Zaporozhe
-	local_supplies = 1.0 manpower = 1294082
-	state_category=town
-	provinces={ 429 588 3399 3767 6596 9571 9729 11405 11700 }
-	resources={
-		wood=0
+	id = 200
+	name = "STATE_200" # Zaporozhe
+	manpower = 1294082
+	state_category = town
+
+	history = {
+		owner = RUS
+		add_core_of = RUS
+		add_core_of = UKR
+		victory_points = {
+			11405 1 # Zaporozhe
 		}
-	history={
-		victory_points={ 11405 1 }
-		owner=RUS
-		add_core_of=RUS
-		1936.1.1={ 
-			owner=SOV
-			add_core_of=SOV
-			victory_points={ 11405 1 }
-			buildings={
-				infrastructure=3
-				air_base=3
-				}
-			}
-		1939.1.1={ buildings={ industrial_complex=1 } }
-		buildings={
-			infrastructure=3
-			}
+		buildings = {
+			infrastructure = 2
+		}
+
 		1919.1.1 = {
-            owner = UKR
-            add_core_of = UKR
-            add_core_of = SOV
-        }
+			owner = UKR
+			controller = RUS
+			add_core_of = SOV
+		}
+		1926.1.1 = {
+			owner = SOV
+			controller = SOV
+		}
+		1936.1.1 = {
+			buildings = {
+				infrastructure = 3 #was: 5
+				air_base = 3
+
+				# Dnieprostroi Hydroelectric Station
+				11405 = { dam = 1 }
+			}
+		}
+		1939.1.1 = {
+			buildings = {
+				industrial_complex = 1
+			}
 		}
 	}
+
+	provinces = {
+		429 588 3399 3767 6596 9571 9729 11405 11700 
+	}
+
+	local_supplies = 0.0 
+}

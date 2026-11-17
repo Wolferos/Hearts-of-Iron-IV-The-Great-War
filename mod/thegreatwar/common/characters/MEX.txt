@@ -1,28 +1,27 @@
 characters = {
-	MEX_emiliano_zapata = {
-		name = MEX_emiliano_zapata
+	MEX_porfirio_diaz = {
+		name = MEX_porfirio_diaz
 		portraits = {
 			civilian = {
-				large = GFX_Portrait_MEX_emiliano_zapata
+				large = GFX_Portrait_MEX_porfirio_diaz
+			}
+			army = {
+				large = GFX_Portrait_MEX_porfirio_diaz
+				#small = ""
 			}
 		}
 		country_leader = {
-			ideology = marxism
-			expire = "1935.1.1.1"
+			ideology = autocracy
+			expire = "1912.1.1.1"
 			id = -1
 		}
-	}
-	MEX_pancho_villa = {
-		name = MEX_pancho_villa
-		portraits = {
-			civilian = {
-				large = GFX_Portrait_MEX_pancho_villa
-			}
-		}
-		country_leader = {
-			ideology = falangism
-			expire = "1935.1.1.1"
-			id = -1
+		field_marshal = {
+			traits = { defensive_doctrine offensive_doctrine old_guard }
+			skill = 4
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
 		}
 	}
 	MEX_francisco_madero = {
@@ -33,31 +32,121 @@ characters = {
 			}
 		}
 		country_leader = {
-			ideology = moderatism
+			ideology = conservatism
 			expire = "1935.1.1.1"
 			id = -1
 		}
 	}
-	MEX_porfirio_diaz = {
-		name = MEX_porfirio_diaz
+	MEX_venustiano_carranza = {
+		name = MEX_venustiano_carranza
 		portraits = {
 			civilian = {
-				large = GFX_Portrait_MEX_porfirio_diaz
+				large = GFX_Portrait_MEX_venustiano_carranza
 			}
 		}
 		country_leader = {
-			ideology = autocracy
-			expire = "1912.1.1.1"
+			ideology = conservatism
+			expire = "1935.1.1.1"
 			id = -1
+		}
+		field_marshal = {
+			traits={ defensive_doctrine }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = {
+				has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+			}
+		}
+	}
+	MEX_emiliano_zapata = {
+		name = MEX_emiliano_zapata
+		portraits = {
+			civilian = {
+				large = GFX_Portrait_MEX_emiliano_zapata
+			}
+			army = {
+				large = GFX_Portrait_MEX_emiliano_zapata
+			}
+		}
+		country_leader = {
+			ideology = marxism
+			expire = "1935.1.1.1"
+			id = -1
+		}
+		field_marshal = {
+			traits={ defensive_doctrine inspirational_leader }
+			skill = 3
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = {
+				has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+			}
+		}
+	}
+	MEX_pancho_villa = {
+		name = MEX_pancho_villa
+		portraits = {
+			civilian = {
+				large = GFX_Portrait_MEX_pancho_villa
+			}
+			army = {
+				large = GFX_Portrait_MEX_pancho_villa
+				small = GFX_idea_MEX_pancho_villa
+			}
+		}
+		country_leader = {
+			ideology = falangism
+			expire = "1935.1.1.1"
+			id = -1
+		}
+		field_marshal = {
+			traits = { logistics_wizard offensive_doctrine inspirational_leader fast_planner }
+			skill = 4
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = {
+				has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+			}
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = MEX_pancho_villa
+			allowed = {
+				original_tag = MEX
+			}
+			traits = {
+				army_chief_morale_1
+			}
+			visible = {
+				has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+			}
+			ai_will_do = {
+				factor = 1
+			}
 		}
 	}
 	MEX_victoriano_huerta = {
 		name = MEX_victoriano_huerta
 		portraits = {
-			army = {
-				small = ""
+			civilian = {
 				large = GFX_Portrait_MEX_victoriano_huerta
 			}
+			army = {
+				large = GFX_Portrait_MEX_victoriano_huerta
+				#small = ""
+			}
+		}
+		country_leader = {
+			ideology = autocracy
+			expire = "1935.1.1"
+			id = -1
 		}
 		corps_commander = {
 			traits = {
@@ -71,11 +160,100 @@ characters = {
 			legacy_id = 55005
 		}
 	}
+	MEX_bernando_reyes = {
+		name = MEX_bernando_reyes
+		portraits = {
+			army = {
+				large = GFX_Portrait_MEX_bernando_reyes
+				#small = ""
+			}
+		}
+		corps_commander = {
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			legacy_id = -1
+		}
+	}
+	MEX_felix_diaz = {
+		name = MEX_felix_diaz
+		portraits = {
+			army = {
+				large = GFX_Portrait_MEX_felix_diaz
+				#small = ""
+			}
+		}
+		corps_commander = {
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			legacy_id = -1
+		}
+	}
+	MEX_alvaro_obregon = {
+		name = MEX_alvaro_obregon
+		portraits = {
+			army = {
+				large = GFX_Portrait_MEX_alvaro_obregon
+			}
+		}
+		corps_commander = {
+			traits={ trickster }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = {
+				has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+			}
+		}
+	}
+	MEX_pascual_orozco = {
+		name = MEX_pascual_orozco
+		portraits = {
+			army = {
+				large = GFX_Portrait_MEX_pascual_orozco
+				small = GFX_idea_MEX_pascual_orozco
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = MEX_pascual_orozco
+			ledger = army
+			allowed = {
+				tag = MEX
+			}
+			traits = {
+				army_artillery_1
+			}
+			visible = {
+				has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		corps_commander = {
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = {
+				has_global_flag = SUPER_GLOBAL_Mexican_Revolution_1910
+			}
+		}
+	}
 	MEX_blanquet = {
 		name = MEX_blanquet
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_blanquet
 			}
 		}
@@ -92,7 +270,7 @@ characters = {
 		name = MEX_bravo
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_bravo
 			}
 		}
@@ -109,7 +287,7 @@ characters = {
 		name = MEX_mercado
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_mercado
 			}
 		}
@@ -126,7 +304,7 @@ characters = {
 		name = MEX_mier
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_mier
 			}
 		}
@@ -143,7 +321,7 @@ characters = {
 		name = MEX_velasco
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_velasco
 			}
 		}
@@ -163,7 +341,7 @@ characters = {
 		name = MEX_chao
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_chao
 			}
 		}
@@ -183,7 +361,7 @@ characters = {
 		name = MEX_robles
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_robles
 			}
 		}
@@ -200,7 +378,7 @@ characters = {
 		name = MEX_vazquez_herrera_l
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_vazquez_herrera_l
 			}
 		}
@@ -217,7 +395,7 @@ characters = {
 		name = MEX_vergara_cs
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_vergara_cs
 			}
 		}
@@ -237,7 +415,7 @@ characters = {
 		name = MEX_farfan_campos_c
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_farfan_campos_c
 			}
 		}
@@ -257,7 +435,7 @@ characters = {
 		name = MEX_barrios_a
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_barrios_a
 			}
 		}
@@ -277,7 +455,7 @@ characters = {
 		name = MEX_aguirre_escobar
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_aguirre_escobar
 			}
 		}
@@ -294,7 +472,7 @@ characters = {
 		name = MEX_aguirre_santiago
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_aguirre_santiago
 			}
 		}
@@ -311,7 +489,7 @@ characters = {
 		name = MEX_amaro_dominguez
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_amaro_dominguez
 			}
 		}
@@ -328,7 +506,7 @@ characters = {
 		name = MEX_cabral
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_cabral
 			}
 		}
@@ -345,7 +523,7 @@ characters = {
 		name = MEX_carrasco
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_carrasco
 			}
 		}
@@ -362,7 +540,7 @@ characters = {
 		name = MEX_castro
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_castro
 			}
 		}
@@ -379,7 +557,7 @@ characters = {
 		name = MEX_dieguez
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_dieguez
 			}
 		}
@@ -396,7 +574,7 @@ characters = {
 		name = MEX_dominguez_suarez
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_dominguez_suarez
 			}
 		}
@@ -413,7 +591,7 @@ characters = {
 		name = MEX_garcia_alvarado
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_garcia_alvarado
 			}
 		}
@@ -430,7 +608,7 @@ characters = {
 		name = MEX_gonzalez_pena
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_gonzalez_pena
 			}
 		}
@@ -447,7 +625,7 @@ characters = {
 		name = MEX_herrero_hernandez
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_herrero_hernandez
 			}
 		}
@@ -464,7 +642,7 @@ characters = {
 		name = MEX_maycotte
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_maycotte
 			}
 		}
@@ -481,7 +659,7 @@ characters = {
 		name = MEX_mugica_velazquez
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_mugica_velazquez
 			}
 		}
@@ -498,7 +676,7 @@ characters = {
 		name = MEX_aguilar
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_aguilar
 			}
 		}
@@ -519,7 +697,7 @@ characters = {
 		name = MEX_azueta
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_azueta
 			}
 		}
@@ -547,7 +725,7 @@ characters = {
 		name = MEX_hilario
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_hilario
 			}
 		}
@@ -564,7 +742,7 @@ characters = {
 		name = MEX_Salinas
 		portraits = {
 			army = {
-				small = ""
+				#small = ""
 				large = GFX_Portrait_MEX_Salinas
 			}
 		}
@@ -851,27 +1029,6 @@ characters = {
 			}
 			traits = {
 				air_warfare_theorist
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	MEX_francisco__pancho__villa = {
-		name = MEX_francisco__pancho__villa
-		portraits = {
-			army = {
-				small = GFX_idea_MEX_francisco__pancho__villa
-			}
-		}
-		advisor = {
-			slot = army_chief
-			idea_token = MEX_francisco__pancho__villa
-			allowed = {
-				tag = MEX
-			}
-			traits = {
-				army_chief_morale_1
 			}
 			ai_will_do = {
 				factor = 1
@@ -1216,28 +1373,6 @@ characters = {
 			}
 			traits = {
 				army_chief_offensive_1
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	MEX_pascual_orozco = {
-		name = MEX_pascual_orozco
-		portraits = {
-			army = {
-				small = GFX_idea_MEX_pascual_orozco
-			}
-		}
-		advisor = {
-			slot = high_command
-			idea_token = MEX_pascual_orozco
-			ledger = army
-			allowed = {
-				tag = MEX
-			}
-			traits = {
-				army_artillery_1
 			}
 			ai_will_do = {
 				factor = 1

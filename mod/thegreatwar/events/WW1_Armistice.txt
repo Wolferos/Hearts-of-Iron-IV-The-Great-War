@@ -18,8 +18,8 @@ country_event = {
 			has_war_with = FRA
 			has_global_flag = kis_brestlitovsk			# Open Beta 0.1.8 - Temporary Solution
 			NOT = {
-				has_global_flag = kis_ask_ger_surrend				#
-				has_global_flag = kis_player_decided_ger_surrend				#
+				has_global_flag = kis_ask_ger_surrend #
+				has_global_flag = kis_player_decided_ger_surrend #
 			}
 		}
 		# If Player is one of the Main
@@ -131,7 +131,7 @@ country_event = {
 	option = {
 		name = ww1_armistice.500.a
 		ai_chance = {
-			factor = 100
+			base = 100
 		}
 		GER = {
 			country_event = {
@@ -147,7 +147,7 @@ country_event = {
 	option = {
 		name = ww1_armistice.500.b
 		ai_chance = {
-			factor = 0
+			base = 0
 		}
 		hidden_effect = {
 			set_global_flag = kis_player_decided_ger_surrend
@@ -170,7 +170,7 @@ country_event = {
 	option = {
 		name = ww1_armistice.503.a
 		ai_chance = {
-			factor = 100
+			base = 100
 		}
 		hidden_effect = {
 			HUN = {
@@ -184,8 +184,8 @@ country_event = {
 					country_leader = {
 						ideology = despotism
 						expire = "1935.1.1.1"
-						traits = {
-						}
+						#traits = {
+						#}
 					}
 				}
 				promote_character = AUH_miklos_horthy
@@ -244,7 +244,7 @@ news_event = {
 	option = {
 		name = ww1_armistice.1.a
 		ai_chance = {
-			factor = 100
+			base = 100
 		}
 		hidden_effect = {
 			add_named_threat = {
@@ -264,6 +264,18 @@ news_event = {
 					democratic = 80
 					communism = 5
 				}
+				set_autonomy = {
+					target = LIT
+					autonomy_state = autonomy_free
+				}
+				set_autonomy = {
+					target = EST
+					autonomy_state = autonomy_free
+				}
+				set_autonomy = {
+					target = POL
+					autonomy_state = autonomy_free
+				}
 			}
 			if = {
 				limit = {
@@ -272,7 +284,7 @@ news_event = {
 						has_war_with = FRA
 					}
 				}
-				FRA = {
+				SYR = {
 					transfer_state = 553
 					transfer_state = 554
 					transfer_state = 680
@@ -281,6 +293,7 @@ news_event = {
 					add_state_core = 554
 					add_state_core = 680
 					add_state_core = 677
+					load_oob = "SYR_1919"
 				}
 				SAU = {
 					transfer_state = 747
@@ -301,37 +314,19 @@ news_event = {
 					transfer_state = 656
 				}
 				ENG = {
-					transfer_state = 675
 					transfer_state = 291
 					transfer_state = 455
 					transfer_state = 454
-					add_state_core = 675
 					add_state_core = 291
 					add_state_core = 455
 					add_state_core = 454
-					if = {
-						limit = {
-							has_dlc = "Together for Victory"
-						}
-						set_autonomy = {
-							target = QAT
-							autonomous_state = autonomy_colony
-						}
-						else = {
-							puppet = QAT
-						}
+					set_autonomy = {
+						target = QAT
+						autonomous_state = autonomy_colony
 					}
-					if = {
-						limit = {
-							has_dlc = "Together for Victory"
-						}
-						set_autonomy = {
-							target = KUW
-							autonomous_state = autonomy_colony
-						}
-						else = {
-							puppet = KUW
-						}
+					set_autonomy = {
+						target = KUW
+						autonomous_state = autonomy_colony
 					}
 				}
 			}
@@ -401,7 +396,7 @@ news_event = {
 					transfer_state = 104
 					transfer_state = 103
 					transfer_state = 109
-					transfer_state = 764					# https://en.wikipedia.org/wiki/Banat#The_Banat_Question_at_the_end_of_First_World_War
+					transfer_state = 764 # https://en.wikipedia.org/wiki/Banat#The_Banat_Question_at_the_end_of_First_World_War
 					add_state_core = 107
 					add_state_core = 108
 					add_state_core = 760
@@ -413,7 +408,7 @@ news_event = {
 					add_state_core = 764
 					if = {
 						limit = {
-							MTN = {
+							MNT = {
 								is_ai = yes
 							}
 						}
@@ -434,22 +429,29 @@ news_event = {
 				add_state_core = 656
 				add_state_core = 676
 			}
-			POL = {
+			DNZ = {
 				transfer_state = 85
+			}
+			POL = {
+				transfer_state = 807
 				transfer_state = 86
 				transfer_state = 87
 				transfer_state = 98
 				transfer_state = 10
 				transfer_state = 90
-				add_state_core = 85
+				add_state_core = 807
 				add_state_core = 86
 				add_state_core = 87
 				add_state_core = 98
 				add_state_core = 10
 				add_state_core = 90
+				set_autonomy = {
+					target = DNZ
+					autonomy_state = autonomy_supervised_state
+				}
 			}
 			AUH = {
-				drop_cosmetic_tag = yes				# Open Beta 0.1.8
+				drop_cosmetic_tag = yes # Open Beta 0.1.8
 				country_event = {
 					days = 1
 					id = ww1_armistice.100
@@ -465,14 +467,6 @@ news_event = {
 				kill_country_leader = yes
 				recruit_character = BUL_boris_iii
 				promote_character = BUL_boris_iii
-				# create_country_leader = {
-				# 	name = "Boris III"
-				# 	picture = "gfx/hoi4tgw_portraits/BUL/country_leaders/BUL_boris_iii.dds"
-				# 	expire = "1935.1.1"
-				# 	ideology = despotism
-				# 	traits = {
-				# 	}
-				# }
 			}
 			LUX = {
 				transfer_state = 8
@@ -665,6 +659,46 @@ news_event = {
 				add_state_core = 184
 				add_state_core = 757
 			}
+			DNZ = {
+				transfer_state = 85
+			}
+			WLK = {
+				transfer_state = 86
+				add_state_core = 86
+				GER = {
+					set_state_controller = 86
+				}
+				set_province_controller = 11232
+				set_province_controller = 9532
+				set_province_controller = 3460
+				set_province_controller = 3295
+				declare_war_on = {
+					target = GER
+					type = independence_wargoal
+				}
+				division_template = {
+					name = "Polish Militia"
+					division_names_group = POL_INF_RESERVE_01
+					is_locked = yes
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+
+						militia = { x = 1 y = 0 }
+						militia = { x = 1 y = 1 }
+					}
+				}
+				86 = {
+					create_unit = { division = "name = \"Polish Militia\" division_template = \"Polish Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.5" owner = ROOT allow_spawning_on_enemy_provs = no }
+					create_unit = { division = "name = \"Polish Militia\" division_template = \"Polish Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.5" owner = ROOT allow_spawning_on_enemy_provs = no }
+					create_unit = { division = "name = \"Polish Militia\" division_template = \"Polish Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.5" owner = ROOT allow_spawning_on_enemy_provs = no }
+					create_unit = { division = "name = \"Polish Militia\" division_template = \"Polish Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.5" owner = ROOT allow_spawning_on_enemy_provs = no }
+					create_unit = { division = "name = \"Polish Militia\" division_template = \"Polish Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.5" owner = ROOT allow_spawning_on_enemy_provs = no }
+				}
+				807 = {
+					create_unit = { division = "name = \"Polish Militia\" division_template = \"Polish Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.5" owner = ROOT allow_spawning_on_enemy_provs = no prioritize_location = 3295 }
+				}
+			}
 			POL = {
 				transfer_state = 90
 				transfer_state = 89
@@ -686,9 +720,57 @@ news_event = {
 				add_state_core = 97
 				add_state_core = 95
 				add_state_core = 96
+				set_autonomy = {
+					target = DNZ
+					autonomy_state = autonomy_supervised_state
+				}
+			}
+			BAY = {
+				transfer_state = 52
 			}
 			GER = {
 				dismantle_faction = yes
+				transfer_units_fraction= {
+					target = BAY
+					size = 0.5
+					stockpile_ratio = 0
+					army_ratio = 1
+					navy_ratio = 0
+					air_ratio = 0
+					keep_unit_leaders_trigger = {
+						always = yes
+					}
+				}
+				annex_country = {
+					target = BAY
+				}
+				transfer_units_fraction= {
+					target = ENG
+					size = 0.5
+					stockpile_ratio = 0.5
+					army_ratio = 0
+					navy_ratio = 0.3
+					air_ratio = 0.5
+					keep_unit_leaders_trigger = {
+						always = yes
+					}
+				}
+				transfer_units_fraction= {
+					target = ENG
+					size = 0.5
+					stockpile_ratio = 1
+					army_ratio = 0
+					navy_ratio = 0.5
+					air_ratio = 1
+					keep_unit_leaders_trigger = {
+						always = yes
+					}
+				}
+				add_ideas = {
+					GER_interwar_spirit_BannedConscription
+					disarmed_nation
+					civilian_economy
+				}
 			}
 			FRA = {
 				dismantle_faction = yes
@@ -708,6 +790,7 @@ news_event = {
 				}
 			}
 			every_country = {
+				mark_focus_tree_layout_dirty = yes
 				#remove_ideas = superior_enemy 
 				#remove_ideas = even_worse 
 				#remove_ideas = absolute_defence 
@@ -717,7 +800,7 @@ news_event = {
 	option = {
 		name = ww1_armistice.2.a
 		ai_chance = {
-			factor = 100
+			base = 100
 		}
 	}
 }
@@ -766,7 +849,7 @@ country_event = {
 	option = {
 		name = ww1_armistice.100.a
 		ai_chance = {
-			factor = 100
+			base = 100
 		}
 	}
 }
@@ -789,7 +872,7 @@ country_event = {
 	option = {
 		name = ww1_armistice.101.a
 		ai_chance = {
-			factor = 100
+			base = 100
 		}
 	}
 }

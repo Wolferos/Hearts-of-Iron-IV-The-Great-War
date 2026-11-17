@@ -45,7 +45,7 @@ focus_tree = {
 			date > 1920.1.1
 			country_exists = DOM
 			DOM = {
-				is_puppet = yes
+				is_subject = yes
 			}
 		}
 		completion_reward = {
@@ -73,7 +73,7 @@ focus_tree = {
 			date > 1920.1.1
 			country_exists = DOM
 			DOM = {
-				is_puppet = yes
+				is_subject = yes
 			}
 		}
 		completion_reward = {
@@ -569,19 +569,19 @@ focus_tree = {
 			add_political_power = 50
 			add_stability = 0.05
 			add_doctrine_cost_reduction = {
-				name = unitedpeople_a_bonus
+				name = land_doc_bonus
 				cost_reduction = 0.15
 				uses = 1
 				category = land_doctrine
 			}
 			add_doctrine_cost_reduction = {
-				name = unitedpeople_a_bonus
+				name = naval_doc_bonus
 				cost_reduction = 0.15
 				uses = 1
 				category = naval_doctrine
 			}
 			add_doctrine_cost_reduction = {
-				name = unitedpeople_a_bonus
+				name = air_doc_bonus
 				cost_reduction = 0.15
 				uses = 1
 				category = air_doctrine
@@ -1275,7 +1275,7 @@ focus_tree = {
 		available = {
 			CAN = {
 				exists = yes
-				#is_puppet_of = ENG
+				#is_subject_of = ENG
 			}
 		}
 		completion_reward = {
@@ -1310,7 +1310,7 @@ focus_tree = {
 		icon = GFX_goal_generic_major_alliance
 		will_lead_to_war_with = ENG
 		available = {
-			is_puppet = no
+			is_subject = no
 			NOT = {
 				has_war_with = GER
 			}
@@ -1450,7 +1450,7 @@ focus_tree = {
 		icon = GFX_goal_generic_major_war
 		will_lead_to_war_with = GER
 		available = {
-			is_puppet = no
+			is_subject = no
 			NOT = {
 				has_war_with = FRA
 			}
@@ -1653,7 +1653,7 @@ focus_tree = {
 		icon = GFX_goal_generic_small_arms
 		available = {
 			RAJ = {
-				is_puppet_of = ENG
+				is_subject_of = ENG
 			}
 		}
 		completion_reward = {
@@ -1917,7 +1917,7 @@ focus_tree = {
 		completion_reward = {
 			army_experience = 10
 			add_tech_bonus = {
-				name = trenchwarfare_bonus
+				name = trench_warfare_bonus
 				bonus = 0.15
 				uses = 1
 				technology = support_weapons
@@ -1944,7 +1944,7 @@ focus_tree = {
 		completion_reward = {
 			army_experience = 15
 			add_tech_bonus = {
-				name = gasmask_bonus
+				name = gas_mask_bonus
 				bonus = 0.15
 				uses = 1
 				technology = infantry_gasmask
@@ -2425,13 +2425,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_CAS
 		completion_reward = {
-			add_tech_bonus = {
-				name = pilotformation1_bonus
-				bonus = 0.15
-				uses = 1
-				technology = dogfighting_experience
-				technology = fighter_ace_initiative
-				technology = dispersed_fighting
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = formations_bonus
+			#	bonus = 0.15
+			#	uses = 1
+			#	technology = dogfighting_experience
+			#	technology = fighter_ace_initiative
+			#	technology = dispersed_fighting
+			#}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 		ai_will_do = {
@@ -2452,7 +2456,7 @@ focus_tree = {
 		icon = GFX_goal_generic_air_production
 		completion_reward = {
 			add_tech_bonus = {
-				name = aircraftprod_1_bonus
+				name = air_bonus
 				bonus = 0.15
 				uses = 1
 				category = air_equipment
@@ -2475,13 +2479,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_poland_goal
 		completion_reward = {
-			add_tech_bonus = {
-				name = pilotformation2_bonus
-				bonus = 0.15
-				uses = 1
-				technology = infrastructure_destruction
-				technology = dive_bombing
-				technology = operational_destruction
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = formations_bonus
+			#	bonus = 0.15
+			#	uses = 1
+			#	technology = infrastructure_destruction
+			#	technology = dive_bombing
+			#	technology = operational_destruction
+			#}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 		ai_will_do = {
@@ -2528,13 +2536,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_CAS
 		completion_reward = {
-			add_tech_bonus = {
-				name = pilotformation2_bonus
-				bonus = 0.15
-				uses = 1
-				technology = multialtitude_flying
-				technology = hunt_and_destroy
-				technology = fighter_veteran_initiative
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = formations_bonus
+			#	bonus = 0.15
+			#	uses = 1
+			#	technology = multialtitude_flying
+			#	technology = hunt_and_destroy
+			#	technology = fighter_veteran_initiative
+			#}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 		ai_will_do = {
@@ -2555,7 +2567,7 @@ focus_tree = {
 		icon = GFX_goal_generic_air_production
 		completion_reward = {
 			add_tech_bonus = {
-				name = aircraftprod_2_bonus
+				name = air_bonus
 				bonus = 0.2
 				uses = 1
 				category = air_equipment
@@ -2578,13 +2590,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_occupy_start_war
 		completion_reward = {
-			add_tech_bonus = {
-				name = pilotformation2_bonus
-				bonus = 0.2
-				uses = 1
-				technology = logistical_bombing
-				technology = strategic_destruction
-				technology = infiltration_bombing
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = formations_bonus
+			#	bonus = 0.15
+			#	uses = 1
+			#	technology = multialtitude_flying
+			#	technology = hunt_and_destroy
+			#	technology = fighter_veteran_initiative
+			#}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 		ai_will_do = {
@@ -3962,9 +3978,8 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_build_navy
 		available = {
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 		completion_reward = {
@@ -4185,14 +4200,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_occupy_states_coastal
 		completion_reward = {
-			add_tech_bonus = {
-				name = sub_op_bonus
-				bonus = 0.2
-				uses = 1
-				technology = convoy_interdiction_ti
-				technology = unrestricted_submarine_warfare
-				technology = wolfpacks
-				technology = advanced_submarine_warfare
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = sub_op_bonus
+			#	bonus = 0.2
+			#	uses = 1
+			#	technology = convoy_interdiction_ti
+			#	technology = unrestricted_submarine_warfare
+			#	technology = advanced_submarine_warfare
+			#}
+			add_mastery = {
+				amount = 75
+				folder = naval
 			}
 		}
 		ai_will_do = {

@@ -11,9 +11,16 @@ set_convoys = 30
 #-------------------------------------------------------
 #					POLITICS & ARMY
 #-------------------------------------------------------
-create_country_leader={ name = FIN_pehr_evind_svinhufvud desc = FIN_pehr_evind_svinhufvud_DESC picture="gfx/leaders/FIN_pehr_evind_svinhufvud.dds" expire="1935.1.1" ideology=conservatism traits = { } }
-create_corps_commander={  name = FIN_mexmontan id=31002 portrait_path="gfx/generals/FIN_mexmontan.dds" traits={ winter_specialist  } skill=2 }
-create_corps_commander={  name = FIN_theslof id=31003 portrait_path="gfx/generals/FIN_theslof.dds" traits={ winter_specialist  } skill=2 }
+# LEADERS
+recruit_character = RUS_franz_albert_seyn #ARMY
+recruit_character = FIN_pehr_evind_svinhufvud
+recruit_character = FIN_kaarlo_stahlberg
+
+# ARMY
+recruit_character = FIN_nikolai_mexmontan
+recruit_character = FIN_wilhelm_thesleff
+
+set_cosmetic_tag = FIN_RUS_neutrality_subject
 
 1910.1.1 = {
 	
@@ -80,21 +87,21 @@ create_corps_commander={  name = FIN_theslof id=31003 portrait_path="gfx/general
 	}
 
 	set_politics = {
-	    ruling_party = democratic
-	    last_election = "1919.1.1"
-	    election_frequency = 36
-	    elections_allowed = yes
+		ruling_party = neutrality
+		last_election = "1908.1.1"
+		election_frequency = 36
+		elections_allowed = no
 	}
 	set_popularities = {
-	    democratic = 79
-	    fascism = 19
-	    communism = 1
-	    neutrality = 1
+		democratic = 40
+		fascism = 10
+		communism = 5
+		neutrality = 45
 	}
 
 	add_ideas = {
 
-	}	
+	}
 }
 
 1914.1.1 = {
@@ -184,16 +191,16 @@ create_corps_commander={  name = FIN_theslof id=31003 portrait_path="gfx/general
 	}
 
 	set_politics = {
-	    ruling_party = democratic
-	    last_election = "1915.1.1"
-	    election_frequency = 36
-	    elections_allowed = yes
+		ruling_party = democratic
+		last_election = "1915.1.1"
+		election_frequency = 36
+		elections_allowed = yes
 	}
 	set_popularities = {
-	    democratic = 79
-	    fascism = 19
-	    communism = 1
-	    neutrality = 1
+		democratic = 79
+		fascism = 19
+		communism = 1
+		neutrality = 1
 	}
 
 	add_ideas = {
@@ -205,24 +212,27 @@ create_corps_commander={  name = FIN_theslof id=31003 portrait_path="gfx/general
 	
 	oob = "FIN_1919"
 
-	create_country_leader = { 
-		name = FIN_kaarlo_stahlberg 
-		picture="gfx/hoi4tgw_portraits/FIN/country_leaders/FIN_kaarlo_stahlberg.dds" 
-		expire="1935.1.1" 
-		ideology = liberalism
-		traits = { }
+	promote_character = FIN_kaarlo_stahlberg
+
+	RUS_franz_albert_seyn = {
+		set_nationality = RUS
+		remove_country_leader_role = {
+			ideology = despotism
+		}
 	}
 
+	drop_cosmetic_tag = yes
+
 	set_politics = {
-	    ruling_party = democratic
-	    last_election = "1919.1.1"
-	    election_frequency = 36
-	    elections_allowed = yes
+		ruling_party = democratic
+		last_election = "1919.1.1"
+		election_frequency = 36
+		elections_allowed = yes
 	}
 	set_popularities = {
-	    democratic = 79
-	    fascism = 11
-	    communism = 6
-	    neutrality = 4
+		democratic = 79
+		fascism = 11
+		communism = 6
+		neutrality = 4
 	}
 }

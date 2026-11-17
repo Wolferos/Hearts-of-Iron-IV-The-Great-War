@@ -1,31 +1,40 @@
-state = {
+state={
 	id=228
 	name="STATE_228" # Voroshilovgrad
-	local_supplies = 1.0 manpower = 2167411
-	state_category=town
-	provinces={ 523 547 570 6505 6519 9446 9461 9476 11487 11513 }
-	resources={
-		wood=0
-		}
+	manpower = 2167411
+	
+	state_category = large_town
+
+	resources = {
+		wood = 7
+		coal = 5
+	}
+
 	history={
-		victory_points={ 9461 1 }
-		owner=RUS
-		add_core_of=RUS
-		1936.1.1={ 
-			owner=SOV
-			add_core_of=SOV
-			victory_points={ 9461 1 }
-			buildings={
-				infrastructure=3
-				}
-			}
-		buildings={
-			infrastructure=3
-			}
+		owner = RUS
+		victory_points = {
+			9461 5
+		}
+		buildings = {
+			infrastructure = 3 #was: 5
+		}
+		add_core_of = RUS
+		add_core_of = UKR
+
 		1919.1.1 = {
-            owner = UKR
-            add_core_of = UKR
-            add_core_of = SOV
-        }
+			owner = UKR
+			controller = RUS
+			add_core_of = SOV
+		}
+		1926.1.1 = {
+			owner = SOV
+			controller = SOV
 		}
 	}
+
+	provinces={
+		523 547 570 6505 6519 9446 9461 9476 11487 11513 
+	}
+
+	local_supplies=0.0 
+}

@@ -172,19 +172,19 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = militarism_focus
 			add_doctrine_cost_reduction = {
-				name = unitedpeople_a_bonus
+				name = land_doc_bonus
 				cost_reduction = 0.15
 				uses = 1
 				category = land_doctrine
 			}
 			add_doctrine_cost_reduction = {
-				name = unitedpeople_a_bonus
+				name = naval_doc_bonus
 				cost_reduction = 0.15
 				uses = 1
 				category = naval_doctrine
 			}
 			add_doctrine_cost_reduction = {
-				name = unitedpeople_a_bonus
+				name = air_doc_bonus
 				cost_reduction = 0.15
 				uses = 1
 				category = air_doctrine
@@ -494,8 +494,8 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			release_puppet = VNM
-			VNM = {
+			release_puppet = VIN
+			VIN = {
 				transfer_state = 286
 				transfer_state = 671
 			}
@@ -768,13 +768,13 @@ focus_tree = {
 		available = {
 			date > 1917.5.1
 			has_war_with = GER
-			is_puppet = no
+			is_subject = no
 			NOT = {
 				has_war_with = GRE
 			}
 			GRE = {
 				exists = yes
-				is_puppet = no
+				is_subject = no
 				NOT = {
 					has_war_with = GER
 				}
@@ -816,7 +816,7 @@ focus_tree = {
 								is_in_faction = yes
 							}
 							NOT = {
-								is_puppet = yes
+								is_subject = yes
 							}
 						}
 						#FRA = {
@@ -873,7 +873,7 @@ focus_tree = {
 			OR = {
 				is_in_faction_with = GRE
 				GRE = {
-					is_puppet_of = FRA
+					is_subject_of = FRA
 				}
 			}
 			has_war_with = GER
@@ -1073,7 +1073,7 @@ focus_tree = {
 								is_in_faction = yes
 							}
 							NOT = {
-								is_puppet = yes
+								is_subject = yes
 							}
 						}
 					}
@@ -1314,7 +1314,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 2000
 		}
-		x = 9
+		x = 10
 		y = 8
 		cost = 2
 	}
@@ -1379,50 +1379,6 @@ focus_tree = {
 		cost = 10
 		x = 12
 		y = 3
-	}
-	# Mission Berthelot -> Send Henri Berthelot in Romania
-	focus = {
-		id = FRA_ww1_HenriBerthelotRomania
-		prerequisite = {
-			focus = FRA_ww1_support_romania
-		}
-		icon = GFX_focus_generic_military_mission
-		available = {
-			NOT = {
-				has_global_flag = kis_treaty_of_versailles
-			}
-			ROM = {
-				is_in_faction_with = FRA
-				controls_state = 46
-				has_war_with = GER
-				has_war_with = AUH
-			}
-		}
-		completion_reward = {
-			remove_unit_leader = 78000
-			ROM = {
-				recruit_character = ROM_henri_berthelot
-				# create_corps_commander = {
-				# 	name = "Henri Berthelot"
-				# 	id = 78001
-				# 	portrait_path = "gfx/hoi4tgw_portraits/FRA/army_generals/FRA_henri_berthelot.dds"
-				# 	traits = {
-				# 		trickster
-				# 	}
-				# 	skill = 5
-				# 	attack_skill = 2
-				# 	defense_skill = 1
-				# 	planning_skill = 3
-				# 	logistics_skill = 2
-				# }
-			}
-		}
-		ai_will_do = {
-			factor = 1
-		}
-		cost = 10
-		x = 13
-		y = 6
 	}
 	focus = {
 		id = FRA_ww1_help_serbia
@@ -1911,7 +1867,7 @@ focus_tree = {
 		completion_reward = {
 			army_experience = 10
 			add_tech_bonus = {
-				name = trenchwarfare_bonus
+				name = trench_warfare_bonus
 				bonus = 0.15
 				uses = 1
 				technology = support_weapons
@@ -1938,7 +1894,7 @@ focus_tree = {
 		completion_reward = {
 			army_experience = 15
 			add_tech_bonus = {
-				name = gasmask_bonus
+				name = gas_mask_bonus
 				bonus = 0.15
 				uses = 1
 				technology = infantry_gasmask
@@ -2419,13 +2375,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_CAS
 		completion_reward = {
-			add_tech_bonus = {
-				name = pilotformation1_bonus
-				bonus = 0.15
-				uses = 1
-				technology = dogfighting_experience
-				technology = fighter_ace_initiative
-				technology = dispersed_fighting
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = formations_bonus
+			#	bonus = 0.15
+			#	uses = 1
+			#	technology = dogfighting_experience
+			#	technology = fighter_ace_initiative
+			#	technology = dispersed_fighting
+			#}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 		ai_will_do = {
@@ -2446,7 +2406,7 @@ focus_tree = {
 		icon = GFX_goal_generic_air_production
 		completion_reward = {
 			add_tech_bonus = {
-				name = aircraftprod_1_bonus
+				name = air_bonus
 				bonus = 0.15
 				uses = 1
 				category = air_equipment
@@ -2469,13 +2429,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_poland_goal
 		completion_reward = {
-			add_tech_bonus = {
-				name = pilotformation2_bonus
-				bonus = 0.15
-				uses = 1
-				technology = infrastructure_destruction
-				technology = dive_bombing
-				technology = operational_destruction
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = formations_bonus
+			#	bonus = 0.15
+			#	uses = 1
+			#	technology = infrastructure_destruction
+			#	technology = dive_bombing
+			#	technology = operational_destruction
+			#}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 		ai_will_do = {
@@ -2522,13 +2486,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_CAS
 		completion_reward = {
-			add_tech_bonus = {
-				name = pilotformation2_bonus
-				bonus = 0.15
-				uses = 1
-				technology = multialtitude_flying
-				technology = hunt_and_destroy
-				technology = fighter_veteran_initiative
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = formations_bonus
+			#	bonus = 0.15
+			#	uses = 1
+			#	technology = multialtitude_flying
+			#	technology = hunt_and_destroy
+			#	technology = fighter_veteran_initiative
+			#}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 		ai_will_do = {
@@ -2549,7 +2517,7 @@ focus_tree = {
 		icon = GFX_goal_generic_air_production
 		completion_reward = {
 			add_tech_bonus = {
-				name = aircraftprod_2_bonus
+				name = air_bonus
 				bonus = 0.2
 				uses = 1
 				category = air_equipment
@@ -2572,13 +2540,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_occupy_start_war
 		completion_reward = {
-			add_tech_bonus = {
-				name = pilotformation2_bonus
-				bonus = 0.2
-				uses = 1
-				technology = logistical_bombing
-				technology = strategic_destruction
-				technology = infiltration_bombing
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = formations_bonus
+			#	bonus = 0.15
+			#	uses = 1
+			#	technology = multialtitude_flying
+			#	technology = hunt_and_destroy
+			#	technology = fighter_veteran_initiative
+			#}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 		ai_will_do = {
@@ -4156,14 +4128,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_occupy_states_coastal
 		completion_reward = {
-			add_tech_bonus = {
-				name = sub_op_bonus
-				bonus = 0.2
-				uses = 1
-				technology = convoy_interdiction_ti
-				technology = unrestricted_submarine_warfare
-				technology = wolfpacks
-				technology = advanced_submarine_warfare
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = sub_op_bonus
+			#	bonus = 0.2
+			#	uses = 1
+			#	technology = convoy_interdiction_ti
+			#	technology = unrestricted_submarine_warfare
+			#	technology = advanced_submarine_warfare
+			#}
+			add_mastery = {
+				amount = 75
+				folder = naval
 			}
 		}
 		ai_will_do = {
@@ -4544,16 +4519,55 @@ focus_tree = {
 		x = 39
 		y = 9
 	}
-	################ INTERWAR START
-	#Treaty of Lausanne
+	###########################################################################################################################
+	# INTERWAR - VICTORY
+	###########################################################################################################################
+	focus = {
+		id = FRA_interwar_PeaceAfterVersailles
+		icon = GFX_goal_generic_national_unity
+		#mutually_exclusive = { focus = FRA_int_beaten_and_defeated } #Post GW Defeat WIP
+		x = 5
+		y = 11
+		cost = 5
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				has_global_flag = kis_treaty_of_versailles
+			}
+		}
+		available = {
+			has_global_flag = kis_treaty_of_versailles
+		}
+		completion_reward = {
+			remove_ideas = militarism_focus
+			add_war_support = -0.1
+		}
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 125
+				date > 1919.5.1
+			}
+		}
+	}
+	#----------------------------------------------------------------------- 
+	# Turkish Policy
+	#-----------------------------------------------------------------------
 	focus = {
 		id = FRA_interwar_treaty_of_lausanne
-		mutually_exclusive = {
-			focus = FRA_interwar_invade_constantinople
-		}
 		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = FRA_interwar_PeaceAfterVersailles }
+		mutually_exclusive = { focus = FRA_interwar_invade_constantinople }
+		x = -5
+		y = 1
+		relative_position_id = FRA_interwar_PeaceAfterVersailles
+		cost = 5
 		available = {
-			date>1923.7.7
 			has_global_flag = interwar_greco_turkish_war
 			not = {
 				has_global_flag = interwar_treaty_of_lausanne
@@ -4561,9 +4575,7 @@ focus_tree = {
 			ENG = {
 				has_war = no
 			}
-			FRA = {
-				has_war = no
-			}
+			has_war = no
 			OR = {
 				GRE = {
 					has_war_with = TUR
@@ -4573,16 +4585,8 @@ focus_tree = {
 				}
 			}
 		}
-		x = 14
-		y = 7
-		cost = 3
-		ai_will_do = {
-			factor = 0
-		}
 		completion_reward = {
-			news_event = {
-				id = interwar_news.10
-			}			#Treaty of Lausanne
+			news_event = { id = interwar_news.10 }
 			hidden_effect = {
 				GRE = {
 					white_peace = TUR
@@ -4598,16 +4602,20 @@ focus_tree = {
 				}
 			}
 		}
+		ai_will_do = {
+			base = 0
+		}
 	}
-	#Invade Constantinople
 	focus = {
 		id = FRA_interwar_invade_constantinople
-		mutually_exclusive = {
-			focus = FRA_interwar_treaty_of_lausanne
-		}
 		icon = GFX_goal_generic_territory_or_war
+		prerequisite = { focus = FRA_interwar_PeaceAfterVersailles }
+		mutually_exclusive = { focus = FRA_interwar_treaty_of_lausanne }
+		x = -3
+		y = 1
+		relative_position_id = FRA_interwar_PeaceAfterVersailles
+		cost = 10
 		available = {
-			date > 1920.1.1
 			has_global_flag = interwar_greco_turkish_war
 			NOT = {
 				has_global_flag = interwar_treaty_of_lausanne
@@ -4621,9 +4629,6 @@ focus_tree = {
 				}
 			}
 		}
-		x = 16
-		y = 7
-		cost = 10
 		ai_will_do = {
 			factor = 0
 		}
@@ -4638,30 +4643,21 @@ focus_tree = {
 			}
 		}
 	}
-	focus = {
-		id = FRA_interwar_PeaceAfterVersailles
-		icon = GFX_goal_generic_national_unity
-		available = {
-			has_global_flag = kis_treaty_of_versailles
-		}
-		completion_reward = {
-			remove_ideas = militarism_focus
-			add_war_support = -0.1
-		}
-		ai_will_do = {
-			factor = 3
-		}
-		cost = 10
-		x = 7
-		y = 8
-	}
+	#----------------------------------------------------------------------- 
+	# Russian Policy
+	#-----------------------------------------------------------------------
 	focus = {
 		id = FRA_interwar_SupportWhiteRussia
 		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = FRA_interwar_PeaceAfterVersailles }
+		x = -1
+		y = 1
+		relative_position_id = FRA_interwar_PeaceAfterVersailles
+		cost = 4
 		available = {
 			has_global_flag = kis_treaty_of_versailles
 			has_war = no
-			is_puppet = no
+			is_subject = no
 			NOT = {
 				has_war_with = RUS
 			}
@@ -4672,27 +4668,144 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_equipment_to_stockpile = {
+			send_equipment = {
+				amount = 3000
 				type = infantry_equipment
-				amount = -3000
-			}
-			RUS = {
-				add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 3000
-				}
+				target = RUS
 			}
 		}
-		cost = 3
-		x = 11
-		y = 8
 		ai_will_do = {
 			factor = 1
 		}
 	}
 	focus = {
+		id = FRA_interwar_SupportKoltchak
+		icon = GFX_hoi4tgw_wggrus
+		mutually_exclusive = { focus = FRA_interwar_BetrayKoltchak }
+		prerequisite = { focus = FRA_interwar_SupportWhiteRussia }
+		x = 0
+		y = 1
+		relative_position_id = FRA_interwar_SupportWhiteRussia
+		cost = 5
+		available = {
+			is_subject = no
+			NOT = {
+				has_war_with = RUS
+			}
+			SOV = {
+				has_war_with = RUS
+			}
+		}
+		completion_reward = {
+			send_equipment = {
+				amount = 8000
+				type = infantry_equipment
+				target = RUS
+			}
+			add_opinion_modifier = {
+				target = RUS
+				modifier = HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	focus = {
+		id = FRA_interwar_WarWithSoviet
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = FRA_interwar_SupportKoltchak }
+		x = 0
+		y = 1
+		relative_position_id = FRA_interwar_SupportKoltchak
+		cost = 10
+		available = {
+			NOT = {
+				has_government = communism
+				has_war_with = RUS
+			}
+			country_exists = SOV
+			country_exists = RUS
+			RUS = {
+				is_subject = no
+				has_war_with = SOV
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = SOV
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	focus = {
+		id = FRA_interwar_BetrayKoltchak
+		icon = GFX_focus_eng_expose_the_belly_of_the_bear
+		mutually_exclusive = { focus = FRA_interwar_SupportKoltchak }
+		prerequisite = { focus = FRA_interwar_PeaceAfterVersailles }
+		x = 1
+		y = 2
+		relative_position_id = FRA_interwar_PeaceAfterVersailles
+		cost = 4
+		available = {
+			NOT = {
+				has_war_with = SOV
+			}
+			country_exists = RUS
+			country_exists = SOV
+			SOV = {
+				is_subject = no
+				has_war_with = RUS
+			}
+		}
+		completion_reward = {
+			add_war_support = -0.1
+			add_political_power = -150
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	focus = {
+		id = FRA_interwar_DealWithSoviet
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = FRA_interwar_BetrayKoltchak }
+		x = 0
+		y = 1
+		relative_position_id = FRA_interwar_BetrayKoltchak
+		cost = 10
+		available = {
+			NOT = {
+				has_war_with = SOV
+			}
+			country_exists = SOV
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_political_power = -30
+			add_stability = 0.05
+			add_opinion_modifier = {
+				target = SOV
+				modifier = HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	focus = {
 		id = FRA_interwar_HelpPoland
 		icon = GFX_focus_generic_polish_deal
+		prerequisite = { focus = FRA_interwar_PeaceAfterVersailles }
+		x = 2
+		y = 1
+		relative_position_id = FRA_interwar_PeaceAfterVersailles
 		available = {
 			has_global_flag = kis_treaty_of_versailles
 			NOT = {
@@ -4720,198 +4833,105 @@ focus_tree = {
 				modifier = HOI4TGW_Opinion_improved_diplomatic_relations
 			}
 		}
-		cost = 3
-		x = 8
-		y = 9
 		ai_will_do = {
 			factor = 1
 		}
 	}
-	focus = {
-		id = FRA_interwar_SupportKoltchak
-		icon = GFX_hoi4tgw_wggrus
-		mutually_exclusive = {
-			focus = FRA_interwar_BetrayKoltchak
-		}
-		prerequisite = {
-			focus = FRA_interwar_SupportWhiteRussia
-		}
-		available = {
-			is_puppet = no
-			NOT = {
-				has_war_with = RUS
-			}
-			country_exists = RUS
-			country_exists = SOV
-			SOV = {
-				has_war_with = RUS
-			}
-		}
-		completion_reward = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -8000
-			}
-			RUS = {
-				add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 8000
-				}
-			}
-			add_opinion_modifier = {
-				target = RUS
-				modifier = HOI4TGW_Opinion_improved_diplomatic_relations
-			}
-		}
-		cost = 3
-		x = 10
-		y = 9
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	focus = {
-		id = FRA_interwar_WarWithSoviet
-		icon = GFX_goal_generic_demand_territory
-		prerequisite = {
-			focus = FRA_interwar_SupportKoltchak
-		}
-		available = {
-			NOT = {
-				has_government = communism
-				has_war_with = RUS
-			}
-			country_exists = SOV
-			country_exists = RUS
-			RUS = {
-				is_puppet = no
-				has_war_with = SOV
-			}
-		}
-		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = SOV
-			}
-		}
-		cost = 10
-		x = 10
-		y = 10
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	focus = {
-		id = FRA_interwar_BetrayKoltchak
-		icon = GFX_focus_eng_expose_the_belly_of_the_bear
-		mutually_exclusive = {
-			focus = FRA_interwar_SupportKoltchak
-		}
-		available = {
-			NOT = {
-				has_war_with = SOV
-			}
-			country_exists = RUS
-			country_exists = SOV
-			SOV = {
-				is_puppet = no
-				has_war_with = RUS
-			}
-		}
-		completion_reward = {
-			add_war_support = -0.1
-			add_political_power = -150
-		}
-		cost = 3
-		x = 12
-		y = 9
-		ai_will_do = {
-			factor = 1
-		}
-	}
-	focus = {
-		id = FRA_interwar_DealWithSoviet
-		icon = GFX_goal_generic_forceful_treaty
-		prerequisite = {
-			focus = FRA_interwar_BetrayKoltchak
-		}
-		available = {
-			NOT = {
-				has_war_with = SOV
-			}
-			country_exists = SOV
-		}
-		completion_reward = {
-			add_popularity = {
-				ideology = communism
-				popularity = 0.05
-			}
-			add_political_power = -30
-			add_stability = 0.05
-			add_opinion_modifier = {
-				target = SOV
-				modifier = HOI4TGW_Opinion_improved_diplomatic_relations
-			}
-		}
-		cost = 10
-		x = 12
-		y = 10
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	#Allied Occupation of the Rhineland
+	#----------------------------------------------------------------------- 
+	# German Policy
+	#-----------------------------------------------------------------------
 	focus = {
 		id = FRA_interwar_allied_occupation_rhineland
 		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = FRA_interwar_PeaceAfterVersailles }
+		x = 4
+		y = 1
+		relative_position_id = FRA_interwar_PeaceAfterVersailles
+		cost = 10
 		available = {
 			has_global_flag = kis_treaty_of_versailles
 			has_war = no
-			is_puppet = no
+			is_subject = no
 		}
-		x = 5
-		y = 8
-		cost = 10
+		completion_reward = {
+			country_event = {
+				id = int_france.4
+				days = 120
+			}
+		}
 		ai_will_do = {
 			factor = 200
 		}
+	}
+	focus = {
+		id = FRA_interwar_france_interwantion_in_syria
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		prerequisite = { focus = FRA_interwar_PeaceAfterVersailles }
+		x = 6
+		y = 1
+		relative_position_id = FRA_interwar_PeaceAfterVersailles
+		cost = 10
+		available = {
+			has_global_flag = kis_treaty_of_versailles
+			has_war = no
+			is_subject = no
+		}
+		will_lead_to_war_with = SYR
 		completion_reward = {
-			42 = {
-				set_demilitarized_zone = yes
-			}
-			51 = {
-				set_demilitarized_zone = yes
-			}
-			add_political_power = 250
-			if = {
-				limit = {
-					has_start_date < 1919.1.1
+			SYR = {
+				country_event = {
+					days = 2
+					id = int_france.1
 				}
-				add_named_threat = {
-					threat = -25
-					name = ww1_Allied_Occupation_Rhineland_war_threat
-				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 100
+				date > 1920.1.1
 			}
 		}
 	}
-	# Les Années Folles
+	focus = {
+		id = FRA_interwar_war_with_syria
+		icon = GFX_focus_generic_attack_syria
+		prerequisite = { focus = FRA_interwar_france_interwantion_in_syria }
+		x = 1
+		y = 1
+		relative_position_id = FRA_interwar_france_interwantion_in_syria
+		cost = 10
+		available = {
+			has_global_flag = kis_treaty_of_versailles
+			has_war = no
+			is_subject = no
+		}
+		will_lead_to_war_with = SYR
+		completion_reward = {
+			create_wargoal = {
+				target = SYR
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 100
+				date > 1920.7.1
+			}
+		}
+	}
 	focus = {
 		id = FRA_interwar_annees_folles
 		icon = GFX_goal_generic_national_unity
-		prerequisite = {
-			focus = FRA_interwar_allied_occupation_rhineland
-			focus = FRA_interwar_PeaceAfterVersailles
-		}
-		available = {
-			date > 1920.1.1
-			has_war = no
-			is_puppet = no
-		}
-		x = 6
-		y = 9
+		prerequisite = { focus = FRA_interwar_allied_occupation_rhineland }
+		x = -1
+		y = 1
+		relative_position_id = FRA_interwar_allied_occupation_rhineland
 		cost = 10
-		ai_will_do = {
-			factor = 200
+		available = {
+			has_war = no
+			is_subject = no
 		}
 		completion_reward = {
 			add_stability = 0.5
@@ -4920,24 +4940,21 @@ focus_tree = {
 				popularity = 0.2
 			}
 		}
+		ai_will_do = {
+			factor = 200
+		}
 	}
-	# Occupation of the Ruhr
 	focus = {
 		id = FRA_interwar_occupation_ruhr
 		icon = GFX_goal_generic_political_pressure
-		prerequisite = {
-			focus = FRA_interwar_allied_occupation_rhineland
-		}
-		available = {
-			date > 1923.1.1
-			has_war = no
-			is_puppet = no
-		}
-		x = 4
-		y = 9
+		prerequisite = { focus = FRA_interwar_allied_occupation_rhineland }
+		x = 1
+		y = 1
+		relative_position_id = FRA_interwar_allied_occupation_rhineland
 		cost = 10
-		ai_will_do = {
-			factor = 200
+		available = {
+			has_war = no
+			is_subject = no
 		}
 		completion_reward = {
 			add_political_power = 120
@@ -4949,24 +4966,29 @@ focus_tree = {
 			}
 			add_named_threat = {
 				threat = 3
-				name = "Occupation of the Ruhr"
+				name = FRA_interwar_occupation_ruhr
 			}
 		}
-	}
-	# Great Depression (Wall Street Crash of 1929)
-	focus = {
-		id = FRA_interwar_great_depression
-		icon = GFX_hoi4tgw_fra_franc
-		#prerequisite = { focus = FRA_interwar_allied_occupation_rhineland }
-		available = {
-			date > 1929.10.24
-			has_global_flag = interwar_wall_street_crash_1929
-		}
-		x = 15
-		y = 10
-		cost = 10
 		ai_will_do = {
 			factor = 200
+		}
+	}
+	#----------------------------------------------------------------------- 
+	# Great Depression
+	#-----------------------------------------------------------------------
+	focus = {
+		id = FRA_interwar_great_depression
+		icon = GFX_focus_fra_devalue_the_franc
+		prerequisite = { focus = FRA_interwar_PeaceAfterVersailles }
+		x = 8
+		y = 1
+		relative_position_id = FRA_interwar_PeaceAfterVersailles
+		cost = 0
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+			has_global_flag = interwar_wall_street_crash_1929
 		}
 		completion_reward = {
 			add_political_power = -500
@@ -4975,2423 +4997,8 @@ focus_tree = {
 				popularity = 0.1
 			}
 		}
-	}
-	################ INTERWAR END
-	################ VANILLA START
-	focus = {
-		id = FRA_metropolitan_france
-		icon = GFX_goal_generic_construct_infrastructure
-		prerequisite = {
-			focus = FRA_interwar_great_depression
-		}		# hoi4tgw
-		available = {
-		}
-		x = 0
-		y = 11
-		cost = 10
 		ai_will_do = {
-			factor = 1
-		}
-		bypass = {
-			custom_trigger_tooltip = {
-				tooltip = FRA_metropolitan_france_tt
-				NOT = {
-					any_owned_state = {
-						free_building_slots = {
-							building = infrastructure
-							size > 2
-						}
-						OR = {
-							region = 19
-							region = 20
-						}
-					}
-				}
-			}
-		}
-		complete_tooltip = {
-			every_state = {
-				limit = {
-					has_state_flag = FRA_french_focus_3Inf
-				}
-				add_building_construction = {
-					type = infrastructure
-					level = 3
-					instant_build = yes
-				}
-			}
-		}
-		completion_reward = {
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = infrastructure
-						size > 2
-					}
-					OR = {
-						region = 19
-						region = 20
-					}
-				}
-				add_building_construction = {
-					type = infrastructure
-					level = 3
-					instant_build = yes
-				}
-				set_state_flag = FRA_french_focus_3Inf
-			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = infrastructure
-						size > 2
-					}
-					OR = {
-						region = 19
-						region = 20
-					}
-				}
-				add_building_construction = {
-					type = infrastructure
-					level = 3
-					instant_build = yes
-				}
-				set_state_flag = FRA_french_focus_3Inf
-			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = infrastructure
-						size > 2
-					}
-					OR = {
-						region = 19
-						region = 20
-					}
-				}
-				add_building_construction = {
-					type = infrastructure
-					level = 3
-					instant_build = yes
-				}
-				set_state_flag = FRA_french_focus_3Inf
-			}
+			factor = 200
 		}
 	}
-	focus = {
-		id = FRA_industrial_expansion
-		icon = GFX_goal_generic_construct_civ_factory
-		available = {
-		}
-		prerequisite = {
-			focus = FRA_metropolitan_france
-		}
-		x = 0
-		y = 12
-		cost = 10
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		bypass = {
-			custom_trigger_tooltip = {
-				tooltip = FRA_industrial_expansion_tt
-				NOT = {
-					any_owned_state = {
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-						OR = {
-							region = 19
-							region = 20
-						}
-					}
-				}
-			}
-		}
-		complete_tooltip = {
-			every_state = {
-				limit = {
-					has_state_flag = FRA_industrial_expansion_2IC
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-			}
-			every_state = {
-				limit = {
-					has_state_flag = FRA_industrial_expansion_1IC
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-		completion_reward = {
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 1
-						include_locked = yes
-					}
-					OR = {
-						region = 19
-						region = 20
-					}
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-				set_state_flag = FRA_industrial_expansion_2IC
-			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
-					}
-					OR = {
-						region = 19
-						region = 20
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-				set_state_flag = FRA_industrial_expansion_1IC
-			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
-					}
-					OR = {
-						region = 19
-						region = 20
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-				set_state_flag = FRA_industrial_expansion_1IC
-			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
-					}
-					OR = {
-						region = 19
-						region = 20
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-				set_state_flag = FRA_industrial_expansion_1IC
-			}
-		}
-	}
-	focus = {
-		id = FRA_military_factories
-		icon = GFX_goal_generic_construct_mil_factory
-		available = {
-		}
-		prerequisite = {
-			focus = FRA_industrial_expansion
-		}
-		x = 0
-		y = 13
-		cost = 10
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		bypass = {
-			custom_trigger_tooltip = {
-				tooltip = FRA_military_factories_tt
-				NOT = {
-					any_owned_state = {
-						free_building_slots = {
-							building = arms_factory
-							size > 1
-							include_locked = yes
-						}
-						OR = {
-							region = 19
-							region = 20
-						}
-					}
-				}
-			}
-		}
-		complete_tooltip = {
-			every_state = {
-				limit = {
-					has_state_flag = FRA_military_factories_2MF
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-			}
-			every_state = {
-				limit = {
-					has_state_flag = FRA_military_factories_1MF
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-		completion_reward = {
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = arms_factory
-						size > 1
-						include_locked = yes
-					}
-					OR = {
-						region = 19
-						region = 20
-					}
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-				set_state_flag = FRA_military_factories_2MF
-			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = arms_factory
-						size > 0
-						include_locked = yes
-					}
-					OR = {
-						region = 19
-						region = 20
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-				set_state_flag = FRA_military_factories_1MF
-			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = arms_factory
-						size > 0
-						include_locked = yes
-					}
-					OR = {
-						region = 19
-						region = 20
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-				set_state_flag = FRA_military_factories_1MF
-			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = arms_factory
-						size > 0
-						include_locked = yes
-					}
-					OR = {
-						region = 19
-						region = 20
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-				set_state_flag = FRA_military_factories_1MF
-			}
-		}
-	}
-	focus = {
-		id = FRA_algerie_france
-		icon = GFX_goal_generic_construct_civilian
-		prerequisite = {
-			focus = FRA_interwar_great_depression
-		}		# hoi4tgw
-		available = {
-		}
-		x = 2
-		y = 11
-		cost = 10
-		ai_will_do = {
-			factor = 0.2
-		}
-		available_if_capitulated = yes
-		bypass = {
-			custom_trigger_tooltip = {
-				tooltip = FRA_algerie_france_tt
-				NOT = {
-					any_owned_state = {
-						free_building_slots = {
-							building = infrastructure
-							size > 1
-						}
-						NOT = {
-							is_on_continent = europe
-						}
-					}
-				}
-			}
-		}
-		complete_tooltip = {
-			every_state = {
-				limit = {
-					has_state_flag = FRA_algerie_france_2Inf
-				}
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			every_state = {
-				limit = {
-					has_state_flag = FRA_algerie_france_4Inf
-				}
-				add_building_construction = {
-					type = infrastructure
-					level = 4
-					instant_build = yes
-				}
-			}
-		}
-		completion_reward = {
-			if = {
-				limit = {
-					NOT = {
-						AND = {
-							459 = {
-								free_building_slots = {
-									building = infrastructure
-									size > 1
-								}
-							}
-							460 = {
-								free_building_slots = {
-									building = infrastructure
-									size > 1
-								}
-							}
-						}
-					}
-					AND = {
-						NOT = {
-							459 = {
-								free_building_slots = {
-									building = infrastructure
-									size > 3
-								}
-							}
-						}
-						460 = {
-							NOT = {
-								free_building_slots = {
-									building = infrastructure
-									size > 3
-								}
-							}
-						}
-					}
-				}
-				random_owned_controlled_state = {
-					limit = {
-						free_building_slots = {
-							building = infrastructure
-							size > 1
-						}
-						NOT = {
-							is_on_continent = europe
-						}
-					}
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					set_state_flag = FRA_algerie_france_2Inf
-				}
-				random_owned_controlled_state = {
-					limit = {
-						free_building_slots = {
-							building = infrastructure
-							size > 1
-						}
-						NOT = {
-							is_on_continent = europe
-						}
-					}
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					set_state_flag = FRA_algerie_france_2Inf
-				}
-			}
-			if = {
-				limit = {
-					OR = {
-						NOT = {
-							459 = {
-								free_building_slots = {
-									building = infrastructure
-									size > 1
-								}
-							}
-						}
-						NOT = {
-							460 = {
-								free_building_slots = {
-									building = infrastructure
-									size > 1
-								}
-							}
-						}
-					}
-					OR = {
-						459 = {
-							free_building_slots = {
-								building = infrastructure
-								size > 3
-							}
-						}
-						460 = {
-							free_building_slots = {
-								building = infrastructure
-								size > 3
-							}
-						}
-					}
-				}
-				every_owned_state = {
-					limit = {
-						is_controlled_by = ROOT
-						free_building_slots = {
-							building = infrastructure
-							size > 3
-						}
-						OR = {
-							state = 459
-							state = 460
-						}
-					}
-					add_building_construction = {
-						type = infrastructure
-						level = 4
-						instant_build = yes
-					}
-					set_state_flag = FRA_algerie_france_4Inf
-				}
-			}
-			if = {
-				limit = {
-					459 = {
-						free_building_slots = {
-							building = infrastructure
-							size > 1
-						}
-					}
-					460 = {
-						free_building_slots = {
-							building = infrastructure
-							size > 1
-						}
-					}
-				}
-				459 = {
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					set_state_flag = FRA_algerie_france_2Inf
-				}
-				460 = {
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					set_state_flag = FRA_algerie_france_2Inf
-				}
-			}
-		}
-	}
-	focus = {
-		id = FRA_colonial_industry
-		icon = GFX_goal_generic_construct_civ_factory
-		available = {
-		}
-		prerequisite = {
-			focus = FRA_algerie_france
-		}
-		x = 2
-		y = 12
-		cost = 10
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		available_if_capitulated = yes
-		bypass = {
-			custom_trigger_tooltip = {
-				tooltip = FRA_colonial_industry_tt
-				NOT = {
-					any_owned_state = {
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-						NOT = {
-							is_on_continent = europe
-						}
-					}
-				}
-			}
-		}
-		complete_tooltip = {
-			every_state = {
-				limit = {
-					has_state_flag = FRA_colonial_industry_4IC
-				}
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = industrial_complex
-					level = 4
-					instant_build = yes
-				}
-			}
-			every_state = {
-				limit = {
-					has_state_flag = FRA_colonial_industry_2IC
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-			}
-		}
-		completion_reward = {
-			if = {
-				limit = {
-					NOT = {
-						459 = {
-							free_building_slots = {
-								building = industrial_complex
-								size > 3
-								include_locked = yes
-							}
-						}
-					}
-				}
-				random_owned_controlled_state = {
-					limit = {
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-						NOT = {
-							is_on_continent = europe
-						}
-					}
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-					set_state_flag = FRA_colonial_industry_2IC
-				}
-				random_owned_controlled_state = {
-					limit = {
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-						NOT = {
-							is_on_continent = europe
-						}
-					}
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-					set_state_flag = FRA_colonial_industry_2IC
-				}
-			}
-			if = {
-				limit = {
-					459 = {
-						free_building_slots = {
-							building = industrial_complex
-							size > 3
-							include_locked = yes
-						}
-					}
-				}
-				459 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = industrial_complex
-						level = 4
-						instant_build = yes
-					}
-					set_state_flag = FRA_colonial_industry_4IC
-				}
-			}
-		}
-	}
-	focus = {
-		id = FRA_colonial_military_factories
-		icon = GFX_goal_generic_construct_mil_factory
-		available = {
-		}
-		prerequisite = {
-			focus = FRA_colonial_industry
-		}
-		x = 2
-		y = 13
-		cost = 10
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		available_if_capitulated = yes
-		bypass = {
-			custom_trigger_tooltip = {
-				tooltip = FRA_colonial_military_factories_tt
-				NOT = {
-					any_owned_state = {
-						free_building_slots = {
-							building = arms_factory
-							size > 1
-							include_locked = yes
-						}
-						NOT = {
-							is_on_continent = europe
-						}
-					}
-				}
-			}
-		}
-		complete_tooltip = {
-			every_state = {
-				limit = {
-					has_state_flag = FRA_colonial_military_factories_4MF
-				}
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = arms_factory
-					level = 4
-					instant_build = yes
-				}
-			}
-			every_state = {
-				limit = {
-					has_state_flag = FRA_colonial_military_factories_2MF
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-			}
-		}
-		completion_reward = {
-			if = {
-				limit = {
-					NOT = {
-						459 = {
-							free_building_slots = {
-								building = arms_factory
-								size > 3
-								include_locked = yes
-							}
-						}
-					}
-				}
-				random_owned_controlled_state = {
-					limit = {
-						free_building_slots = {
-							building = arms_factory
-							size > 1
-							include_locked = yes
-						}
-						NOT = {
-							is_on_continent = europe
-						}
-					}
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = arms_factory
-						level = 2
-						instant_build = yes
-					}
-					set_state_flag = FRA_colonial_military_factories_2MF
-				}
-				random_owned_controlled_state = {
-					limit = {
-						free_building_slots = {
-							building = arms_factory
-							size > 1
-							include_locked = yes
-						}
-						NOT = {
-							is_on_continent = europe
-						}
-					}
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = arms_factory
-						level = 2
-						instant_build = yes
-					}
-					set_state_flag = FRA_colonial_military_factories_2MF
-				}
-			}
-			if = {
-				limit = {
-					459 = {
-						free_building_slots = {
-							building = arms_factory
-							size > 3
-							include_locked = yes
-						}
-					}
-				}
-				459 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = arms_factory
-						level = 4
-						instant_build = yes
-					}
-					set_state_flag = FRA_colonial_military_factories_4MF
-				}
-			}
-		}
-	}
-	focus = {
-		id = FRA_extra_research_slot
-		icon = GFX_focus_research
-		available = {
-		}
-		prerequisite = {
-			focus = FRA_colonial_military_factories
-			focus = FRA_military_factories
-		}
-		x = 1
-		y = 14
-		cost = 10
-		available_if_capitulated = yes
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			add_research_slot = 1
-		}
-	}
-	focus = {
-		id = FRA_nuclear_effort
-		icon = GFX_focus_wonderweapons
-		mutually_exclusive = {
-			focus = FRA_jet_effort
-		}
-		available = {
-		}
-		prerequisite = {
-			focus = FRA_extra_research_slot
-		}
-		x = 0
-		y = 15
-		cost = 10
-		available_if_capitulated = yes
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			add_tech_bonus = {
-				name = FRA_nuclear_effort
-				bonus = 0.5
-				category = nuclear
-				category = rocketry
-			}
-			news_event = {
-				id = news.174
-			}
-		}
-	}
-	focus = {
-		id = FRA_jet_effort
-		mutually_exclusive = {
-			focus = FRA_nuclear_effort
-		}
-		icon = GFX_focus_rocketry
-		available = {
-		}
-		prerequisite = {
-			focus = FRA_extra_research_slot
-		}
-		x = 2
-		y = 15
-		cost = 10
-		available_if_capitulated = yes
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			air_experience = 25
-			add_tech_bonus = {
-				name = FRA_jet_effort
-				bonus = 0.5
-				uses = 4
-				category = jet_technology
-			}
-		}
-	}
-	focus = {
-		id = FRA_extra_research_slot_2
-		icon = GFX_focus_research
-		prerequisite = {
-			focus = FRA_jet_effort
-			focus = FRA_nuclear_effort
-		}
-		available = {
-			num_of_factories > 75
-		}
-		x = 1
-		y = 16
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_research_slot = 1
-		}
-	}
-	#### END ####
-	focus = {
-		id = FRA_defensive_focus
-		icon = GFX_goal_generic_defence
-		prerequisite = {
-			focus = FRA_interwar_great_depression
-		}		# hoi4tgw
-		mutually_exclusive = {
-			focus = FRA_aggressive_focus
-		}
-		x = 6
-		y = 11
-		cost = 10
-		available_if_capitulated = yes
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			#add_ideas = maxime_weygand
-			custom_effect_tooltip = available_chief_of_army
-			#show_ideas_tooltip = maxime_weygand
-		}
-	}
-	focus = {
-		id = FRA_fortification_focus
-		icon = GFX_goal_generic_construction2
-		prerequisite = {
-			focus = FRA_defensive_focus
-		}
-		x = 4
-		y = 12
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = FRA_fortification_focus
-		}
-	}
-	focus = {
-		id = FRA_alpine_forts
-		icon = GFX_goal_generic_construct_military
-		prerequisite = {
-			focus = FRA_fortification_focus
-		}
-		x = 4
-		y = 13
-		cost = 10
-		available = {
-			735 = {
-				is_controlled_by = FRA
-			}
-		}
-		completion_reward = {
-			ROOT = {
-				country_event = {
-					id = france.3
-				}
-			}
-			ITA = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = FRA_alpine_forts
-				}
-			}
-		}
-	}
-	focus = {
-		id = FRA_extend_the_maginot_line
-		icon = GFX_goal_generic_fortify_city
-		prerequisite = {
-			focus = FRA_alpine_forts
-		}
-		x = 4
-		y = 14
-		cost = 10
-		available = {
-			18 = {
-				is_controlled_by = FRA
-			}
-			29 = {
-				is_controlled_by = FRA
-			}
-		}
-		completion_reward = {
-			ROOT = {
-				country_event = {
-					id = france.2
-				}
-			}
-			BEL = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = FRA_extend_the_maginot_line_focus_neg
-				}
-				add_opinion_modifier = {
-					target = GER
-					modifier = FRA_extend_the_maginot_line_focus_pos
-				}
-			}
-		}
-	}
-	focus = {
-		id = FRA_infantry_focus
-		icon = GFX_goal_generic_allies_build_infantry
-		prerequisite = {
-			focus = FRA_defensive_focus
-		}
-		x = 6
-		y = 12
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			army_experience = 5
-			add_ideas = FRA_infantry_focus
-		}
-	}
-	focus = {
-		id = FRA_artillery_focus
-		icon = GFX_goal_generic_army_artillery2
-		prerequisite = {
-			focus = FRA_infantry_focus
-		}
-		x = 6
-		y = 13
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			army_experience = 5
-			add_tech_bonus = {
-				name = FRA_artillery_focus
-				bonus = 0.5
-				uses = 1
-				category = artillery
-			}
-		}
-	}
-	focus = {
-		id = FRA_heavy_armor_focus
-		icon = GFX_goal_generic_army_tanks
-		prerequisite = {
-			focus = FRA_artillery_focus
-		}
-		x = 6
-		y = 14
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			army_experience = 5
-			add_tech_bonus = {
-				name = FRA_heavy_armor_focus
-				bonus = 0.5
-				uses = 1
-				category = cat_heavy_armor
-			}
-		}
-	}
-	focus = {
-		id = FRA_aggressive_focus
-		icon = GFX_goal_generic_major_war
-		prerequisite = {
-			focus = FRA_interwar_great_depression
-		}		# hoi4tgw
-		mutually_exclusive = {
-			focus = FRA_defensive_focus
-		}
-		x = 8
-		y = 11
-		cost = 10
-		available_if_capitulated = yes
-		ai_will_do = {
-			factor = 0.2
-		}
-		completion_reward = {
-			# add_ideas = maurice_gamelin
-			custom_effect_tooltip = available_chief_of_army
-			# show_ideas_tooltip = maurice_gamelin
-		}
-	}
-	focus = {
-		id = FRA_motorized_focus
-		icon = GFX_goal_generic_army_motorized
-		prerequisite = {
-			focus = FRA_aggressive_focus
-		}
-		x = 8
-		y = 12
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			army_experience = 5
-			add_ideas = FRA_motorized_focus
-		}
-	}
-	focus = {
-		id = FRA_mechanized_focus
-		icon = GFX_goal_generic_build_tank
-		prerequisite = {
-			focus = FRA_motorized_focus
-		}
-		x = 8
-		y = 13
-		cost = 10
-		completion_reward = {
-			army_experience = 5
-			add_tech_bonus = {
-				name = FRA_mechanized_focus
-				bonus = 0.5
-				uses = 1
-				category = cat_mechanized_equipment
-			}
-		}
-	}
-	focus = {
-		id = FRA_light_medium_armor
-		icon = GFX_goal_generic_army_tanks
-		prerequisite = {
-			focus = FRA_mechanized_focus
-		}
-		x = 8
-		y = 14
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			army_experience = 5
-			add_tech_bonus = {
-				name = FRA_light_medium_armor
-				bonus = 0.5
-				uses = 1
-				category = cat_light_armor
-				category = cat_medium_armor
-			}
-		}
-	}
-	focus = {
-		id = FRA_army_reform
-		icon = GFX_goal_generic_army_doctrines
-		prerequisite = {
-			focus = FRA_light_medium_armor
-			focus = FRA_heavy_armor_focus
-		}
-		x = 7
-		y = 15
-		cost = 10
-		available_if_capitulated = yes
-		available = {
-			NOT = {
-				has_idea = FRA_disjointed_government
-			}
-		}
-		completion_reward = {
-			remove_ideas = FRA_victors_of_wwi
-			army_experience = 10
-			add_tech_bonus = {
-				name = FRA_army_reform
-				bonus = 0.5
-				uses = 2
-				category = land_doctrine
-			}
-			custom_effect_tooltip = available_designer
-			# show_ideas_tooltip = FRA_AMX
-		}
-	}
-	#### END ####
-	focus = {
-		id = FRA_initiate_government_reform
-		icon = GFX_goal_generic_national_unity
-		prerequisite = {
-			focus = FRA_interwar_great_depression
-		}		# hoi4tgw
-		x = 14
-		y = 11
-		cost = 10
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		available = {
-			date > 1934.1.1
-		}
-		completion_reward = {
-			add_political_power = 120
-		}
-	}
-	focus = {
-		id = FRA_support_the_left
-		icon = GFX_goal_support_communism
-		mutually_exclusive = {
-			focus = FRA_support_the_right
-		}
-		available = {
-		}
-		prerequisite = {
-			focus = FRA_revise_versailles
-		}
-		x = 16
-		y = 13
-		cost = 10
-		ai_will_do = {
-			factor = 1
-		}
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = {
-				FRA_support_the_left_focus
-			}
-			hidden_effect = {
-				news_event = {
-					hours = 6
-					id = news.178
-				}
-			}
-		}
-	}
-	focus = {
-		id = FRA_scw_intervention_republicans
-		icon = GFX_goal_generic_military_deal
-		available = {
-			AND = {
-				SPR = {
-					has_civil_war = yes
-				}
-				has_global_flag = spanish_civil_war
-			}
-		}
-		prerequisite = {
-			focus = FRA_support_the_left
-		}
-		x = 16
-		y = 14
-		cost = 10
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			SPR = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = FRA_scw_intervention_republicans_SPR
-				}
-			}
-			random_other_country = {
-				limit = {
-					original_tag = SPR
-					has_government = fascism
-				}
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = FRA_scw_intervention_republicans_SPA
-				}
-			}
-			set_rule = {
-				can_send_volunteers = yes
-			}
-			add_ideas = {
-				FRA_scw_intervention_republicans_focus
-			}
-		}
-	}
-	focus = {
-		id = FRA_leftist_rhetoric
-		icon = GFX_goal_generic_propaganda
-		available = {
-		}
-		prerequisite = {
-			focus = FRA_support_the_left
-		}
-		x = 14
-		y = 14
-		cost = 10
-		available_if_capitulated = yes
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			#add_ideas = maurice_thorez
-			every_other_country = {
-				limit = {
-					has_government = communism
-					num_of_factories > 30
-				}
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = FRA_leftist_rhetoric_communism
-				}
-			}
-			every_other_country = {
-				limit = {
-					has_government = democratic
-					num_of_factories > 30
-				}
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = FRA_leftist_rhetoric_democratic
-				}
-			}
-			every_other_country = {
-				limit = {
-					has_government = fascism
-					num_of_factories > 30
-				}
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = FRA_leftist_rhetoric_fascism
-				}
-			}
-		}
-	}
-	focus = {
-		id = FRA_national_mobilization
-		icon = GFX_goal_generic_allies_build_infantry
-		available = {
-			OR = {
-				has_government = communism
-				communism > 0.4
-			}
-		}
-		prerequisite = {
-			focus = FRA_leftist_rhetoric
-		}
-		x = 14
-		y = 15
-		cost = 10
-		available_if_capitulated = yes
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			remove_ideas = FRA_disjointed_government
-			add_ideas = FRA_national_mobilization_focus
-		}
-	}
-	focus = {
-		id = FRA_join_comintern
-		icon = GFX_goal_support_communism
-		mutually_exclusive = {
-			focus = FRA_humanite_unie
-		}
-		available = {
-			is_puppet = no
-			is_in_faction = no
-			OR = {
-				has_government = communism
-				communism > 0.4
-			}
-			has_war = no
-			SOV = {
-				exists = yes
-				has_government = communism
-				is_faction_leader = yes
-			}
-		}
-		prerequisite = {
-			focus = FRA_national_mobilization
-		}
-		bypass = {
-			is_in_faction_with = SOV
-		}
-		x = 15
-		y = 16
-		cost = 10
-		available_if_capitulated = yes
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			SOV = {
-				country_event = {
-					id = soviet.29
-					days = 1
-				}
-			}
-		}
-	}
-	focus = {
-		id = FRA_humanite_unie
-		icon = GFX_goal_generic_dangerous_deal
-		mutually_exclusive = {
-			focus = FRA_join_comintern
-		}
-		available = {
-			is_puppet = no
-		}
-		prerequisite = {
-			focus = FRA_national_mobilization
-		}
-		x = 13
-		y = 16
-		cost = 10
-		available_if_capitulated = yes
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			set_rule = {
-				can_create_factions = yes
-			}
-		}
-	}
-	focus = {
-		id = FRA_support_status_quo
-		icon = GFX_goal_support_democracy
-		mutually_exclusive = {
-			focus = FRA_revise_versailles
-		}
-		available = {
-		}
-		prerequisite = {
-			focus = FRA_initiate_government_reform
-		}
-		x = 13
-		y = 12
-		cost = 10
-		available_if_capitulated = yes
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 2
-				ai_irrationality < 20
-			}
-			modifier = {
-				factor = 0.5
-				ai_irrationality > 30
-			}
-		}
-		completion_reward = {
-			#add_ideas = {	FRA_support_the_centre_focus }
-			add_stability = 0.05
-		}
-	}
-	focus = {
-		id = FRA_little_entente
-		icon = GFX_goal_generic_alliance
-		available = {
-			is_puppet = no
-			is_in_faction = no
-		}
-		prerequisite = {
-			focus = FRA_support_status_quo
-		}
-		mutually_exclusive = {
-			focus = FRA_go_with_britain
-		}
-		bypass = {
-			is_in_faction_with = CZE
-			is_faction_leader = yes
-		}
-		x = 11
-		y = 13
-		cost = 10
-		ai_will_do = {
-			factor = 0.1
-			modifier = {
-				factor = 10
-				ai_irrationality > 20
-			}
-			modifier = {
-				factor = 2
-				ai_irrationality > 30
-			}
-		}
-		completion_reward = {
-			add_stability = 0.05
-			set_rule = {
-				can_create_factions = yes
-			}
-			create_faction = french_entente_alliance
-			if = {
-				limit = {
-					CZE = {
-						is_puppet = no
-						NOT = {
-							has_war_with = FRA
-						}
-					}
-				}
-				CZE = {
-					country_event = france.17
-				}
-				hidden_effect = {
-					news_event = {
-						hours = 6
-						id = news.177
-					}
-				}
-			}
-		}
-	}
-	focus = {
-		id = FRA_go_with_britain
-		icon = GFX_goal_anschluss
-		available = {
-			is_puppet = no
-			has_government = democratic
-			ENG = {
-				exists = yes
-				has_government = democratic
-			}
-			NOT = {
-				has_war_with = ENG
-			}
-		}
-		bypass = {
-			is_in_faction_with = FRA
-			NOT = {
-				has_completed_focus = FRA_little_entente
-			}
-		}
-		prerequisite = {
-			focus = FRA_support_status_quo
-		}
-		mutually_exclusive = {
-			focus = FRA_little_entente
-		}
-		x = 13
-		y = 13
-		cost = 10
-		available_if_capitulated = yes
-		ai_will_do = {
-			factor = 0.9
-			modifier = {
-				factor = 2
-				ai_irrationality < 15
-			}
-			modifier = {
-				factor = 2
-				ai_irrationality < 20
-			}
-			modifier = {
-				factor = 0.5
-				ai_irrationality > 30
-			}
-		}
-		completion_reward = {
-			ENG = {
-				country_event = {
-					id = britain.13
-				}
-			}
-		}
-	}
-	focus = {
-		id = FRA_strengthen_government_support
-		icon = GFX_goal_generic_demand_territory
-		available = {
-		}
-		prerequisite = {
-			focus = FRA_little_entente
-			focus = FRA_go_with_britain
-		}
-		x = 12
-		y = 14
-		cost = 10
-		available_if_capitulated = yes
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			set_country_flag = FRA_strengthen_government_support_focus_flag
-			add_timed_idea = {
-				idea = FRA_strengthen_government_support_focus
-				days = 365
-			}
-		}
-	}
-	focus = {
-		id = FRA_defensive_strategems
-		icon = GFX_goal_generic_fortify_city
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = FRA_strengthen_government_support_tooltip
-				NOT = {
-					has_idea = FRA_strengthen_government_support_focus
-				}
-				has_country_flag = FRA_strengthen_government_support_focus_flag
-			}
-		}
-		prerequisite = {
-			focus = FRA_strengthen_government_support
-		}
-		x = 12
-		y = 15
-		cost = 10
-		available_if_capitulated = yes
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			remove_ideas = FRA_disjointed_government
-			set_rule = {
-				can_send_volunteers = yes
-			}
-		}
-	}
-	focus = {
-		id = FRA_invite_yugoslavia
-		icon = GFX_goal_generic_major_alliance
-		available = {
-			is_puppet = no
-		}
-		prerequisite = {
-			focus = FRA_little_entente
-		}
-		bypass = {
-			SER = {
-				OR = {
-					exists = no
-					is_puppet = yes
-					has_war_with = FRA
-				}
-			}
-		}
-		x = 10
-		y = 14
-		cost = 10
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			SER = {
-				country_event = france.17
-			}
-		}
-	}
-	focus = {
-		id = FRA_invite_romania
-		icon = GFX_goal_generic_major_alliance
-		available = {
-			is_puppet = no
-		}
-		prerequisite = {
-			focus = FRA_invite_yugoslavia
-		}
-		bypass = {
-			ROM = {
-				OR = {
-					exists = no
-					is_puppet = yes
-					has_war_with = FRA
-				}
-			}
-		}
-		x = 10
-		y = 15
-		cost = 10
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			ROM = {
-				country_event = france.17
-			}
-		}
-	}
-	focus = {
-		id = FRA_polish_guarantee
-		icon = GFX_goal_generic_improve_relations
-		available = {
-			POL = {
-				exists = yes
-			}
-			is_puppet = no
-			NOT = {
-				has_war_with = POL
-			}
-		}
-		prerequisite = {
-			focus = FRA_invite_romania
-		}
-		x = 10
-		y = 16
-		cost = 10
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			give_guarantee = POL
-		}
-	}
-	focus = {
-		id = FRA_revise_versailles
-		icon = GFX_goal_generic_forceful_treaty
-		mutually_exclusive = {
-			focus = FRA_support_status_quo
-		}
-		available = {
-		}
-		prerequisite = {
-			focus = FRA_initiate_government_reform
-		}
-		x = 15
-		y = 12
-		cost = 10
-		available_if_capitulated = yes
-		ai_will_do = {
-			factor = 0.1
-			modifier = {
-				factor = 10
-				ai_irrationality > 20
-			}
-			modifier = {
-				factor = 2
-				ai_irrationality > 30
-			}
-			modifier = {
-				factor = 2
-				ai_irrationality > 40
-			}
-		}
-		completion_reward = {
-			add_tech_bonus = {
-				name = FRA_revise_versailles
-				bonus = 0.5
-				uses = 2
-				category = land_doctrine
-			}
-		}
-	}
-	focus = {
-		id = FRA_support_the_right
-		icon = GFX_goal_support_fascism
-		mutually_exclusive = {
-			focus = FRA_support_the_left
-		}
-		available = {
-		}
-		prerequisite = {
-			focus = FRA_revise_versailles
-		}
-		x = 18
-		y = 13
-		cost = 10
-		available_if_capitulated = yes
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			add_ideas = FRA_support_the_right_focus
-			hidden_effect = {
-				news_event = {
-					hours = 6
-					id = news.179
-				}
-			}
-		}
-	}
-	focus = {
-		id = FRA_scw_intervention_nationalists
-		icon = GFX_goal_generic_military_deal
-		available = {
-			AND = {
-				SPR = {
-					has_civil_war = yes
-				}
-				has_global_flag = spanish_civil_war
-			}
-		}
-		prerequisite = {
-			focus = FRA_support_the_right
-		}
-		x = 18
-		y = 14
-		cost = 10
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			random_other_country = {
-				limit = {
-					original_tag = SPR
-					has_government = fascism
-				}
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = FRA_scw_intervention_nationalists_SPA
-				}
-			}
-			SPR = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = FRA_scw_intervention_nationalists_SPR
-				}
-			}
-			set_rule = {
-				can_send_volunteers = yes
-			}
-			add_ideas = {
-				FRA_scw_intervention_nationalists_focus
-			}			## does not seem to work. ask someone
-		}
-	}
-	focus = {
-		id = FRA_right_wing_rhetoric
-		icon = GFX_goal_generic_propaganda
-		prerequisite = {
-			focus = FRA_support_the_right
-		}
-		x = 20
-		y = 14
-		cost = 10
-		available_if_capitulated = yes
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			#add_ideas = marcel_bucard
-			every_other_country = {
-				limit = {
-					has_government = fascism
-					num_of_factories > 30
-				}
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = FRA_right_wing_rhetoric_fascism
-				}
-			}
-			every_other_country = {
-				limit = {
-					has_government = democratic
-					num_of_factories > 30
-				}
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = FRA_right_wing_rhetoric_democratic
-				}
-			}
-			every_other_country = {
-				limit = {
-					has_government = communism
-					num_of_factories > 30
-				}
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = FRA_right_wing_rhetoric_communism
-				}
-			}
-		}
-	}
-	focus = {
-		id = FRA_army_of_aggression
-		icon = GFX_goal_generic_occupy_states_ongoing_war
-		available = {
-			OR = {
-				has_government = fascism
-				fascism > 0.4
-			}
-		}
-		prerequisite = {
-			focus = FRA_right_wing_rhetoric
-		}
-		x = 20
-		y = 15
-		cost = 10
-		available_if_capitulated = yes
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			remove_ideas = FRA_protected_by_the_maginot_line
-			remove_ideas = FRA_disjointed_government
-			add_ideas = FRA_army_of_aggression_focus
-			if = {
-				limit = {
-					ENG = {
-						is_in_faction_with = FRA
-						is_faction_leader = yes
-					}
-				}
-				ENG = {
-					remove_from_faction = FRA
-				}
-			}
-		}
-	}
-	focus = {
-		id = FRA_france_first
-		icon = GFX_goal_generic_attack_allies
-		mutually_exclusive = {
-			focus = FRA_join_germany
-			focus = FRA_woo_italy
-		}
-		available = {
-			is_puppet = no
-		}
-		prerequisite = {
-			focus = FRA_army_of_aggression
-		}
-		x = 18
-		y = 16
-		cost = 10
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			set_rule = {
-				can_create_factions = yes
-			}
-		}
-	}
-	focus = {
-		id = FRA_woo_italy
-		icon = GFX_goal_tripartite_pact
-		mutually_exclusive = {
-			focus = FRA_join_germany
-			focus = FRA_france_first
-		}
-		available = {
-			is_puppet = no
-			NOT = {
-				has_war_with = ITA
-			}
-			OR = {
-				has_government = fascism
-				fascism > 0.4
-			}
-			OR = {
-				is_faction_leader = yes
-				is_in_faction = no
-			}
-			ITA = {
-				exists = yes
-				is_in_faction = no
-				has_government = fascism
-				is_puppet = no
-			}
-		}
-		prerequisite = {
-			focus = FRA_army_of_aggression
-		}
-		x = 20
-		y = 16
-		cost = 10
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			ITA = {
-				country_event = {
-					id = italy.8
-					days = 1
-				}
-			}
-			### Fires event to ITA asking them to join your faction - creates faction if you don't already lead one.
-		}
-	}
-	focus = {
-		id = FRA_join_germany
-		icon = GFX_goal_support_fascism
-		mutually_exclusive = {
-			focus = FRA_woo_italy
-			focus = FRA_france_first
-		}
-		available = {
-			is_puppet = no
-			is_in_faction = no
-			NOT = {
-				has_war_with = GER
-			}
-			OR = {
-				has_government = fascism
-				fascism > 0.4
-			}
-			GER = {
-				exists = yes
-				has_government = fascism
-				is_faction_leader = yes
-			}
-		}
-		prerequisite = {
-			focus = FRA_army_of_aggression
-		}
-		x = 22
-		y = 16
-		cost = 10
-		available_if_capitulated = yes
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		completion_reward = {
-			### EVENT ASKING GERMANY TO JOIN FACTION
-			GER = {
-				country_event = {
-					id = germany.91
-					days = 1
-				}
-			}
-		}
-	}
-	##### END ###########
-	focus = {
-		id = FRA_navy_focus
-		icon = GFX_goal_generic_build_navy
-		prerequisite = {
-			focus = FRA_interwar_great_depression
-		}		# hoi4tgw
-		x = 23
-		y = 11
-		cost = 10
-		available_if_capitulated = yes
-		complete_tooltip = {
-			navy_experience = 25
-			every_state = {
-				limit = {
-					has_state_flag = FRA_navy_focus_2NB
-				}
-			}
-		}
-		completion_reward = {
-			navy_experience = 25
-			21 = {
-				if = {
-					limit = {
-						is_controlled_by = ROOT
-					}
-					add_building_construction = {
-						type = naval_base
-						province = 11834
-						level = 2
-						instant_build = yes
-					}
-					set_state_flag = FRA_navy_focus_2NB
-				}
-			}
-			459 = {
-				if = {
-					limit = {
-						is_controlled_by = ROOT
-					}
-					add_building_construction = {
-						type = naval_base
-						province = 1145
-						level = 2
-						instant_build = yes
-					}
-					set_state_flag = FRA_navy_focus_2NB
-				}
-			}
-			286 = {
-				if = {
-					limit = {
-						is_controlled_by = ROOT
-					}
-					add_building_construction = {
-						type = naval_base
-						province = 4401
-						level = 2
-						instant_build = yes
-					}
-					set_state_flag = FRA_navy_focus_2NB
-				}
-			}
-		}
-	}
-	focus = {
-		id = FRA_improved_screen_ships
-		icon = GFX_goal_generic_navy_cruiser
-		prerequisite = {
-			focus = FRA_navy_focus
-		}
-		x = 20
-		y = 12
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			navy_experience = 25
-			add_tech_bonus = {
-				name = FRA_improved_screen_ships
-				bonus = 0.5
-				uses = 2
-				category = dd_tech
-				category = cl_tech
-			}
-		}
-	}
-	focus = {
-		id = FRA_capital_ship_focus
-		icon = GFX_goal_generic_navy_battleship
-		mutually_exclusive = {
-			focus = FRA_carrier_focus
-		}
-		prerequisite = {
-			focus = FRA_navy_focus
-		}
-		x = 22
-		y = 12
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_tech_bonus = {
-				name = FRA_capital_ship_focus
-				bonus = 0.5
-				uses = 1
-				category = bb_tech
-				category = bc_tech
-			}
-		}
-	}
-	focus = {
-		id = FRA_carrier_focus
-		icon = GFX_goal_generic_navy_carrier
-		mutually_exclusive = {
-			focus = FRA_capital_ship_focus
-		}
-		prerequisite = {
-			focus = FRA_navy_focus
-		}
-		x = 24
-		y = 12
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_tech_bonus = {
-				name = FRA_carrier_focus
-				bonus = 0.5
-				uses = 2
-				category = cv_tech
-			}
-		}
-	}
-	focus = {
-		id = FRA_naval_doctrine
-		icon = GFX_goal_generic_navy_doctrines_tactics
-		prerequisite = {
-			focus = FRA_carrier_focus
-			focus = FRA_capital_ship_focus
-			focus = FRA_improved_screen_ships
-		}
-		x = 23
-		y = 13
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			navy_experience = 25
-			add_tech_bonus = {
-				name = FRA_naval_doctrine
-				bonus = 0.5
-				uses = 2
-				category = naval_doctrine
-			}
-		}
-	}
-	focus = {
-		id = FRA_cas_focus
-		icon = GFX_goal_generic_CAS
-		prerequisite = {
-			focus = FRA_carrier_focus
-			focus = FRA_fighter_focus
-		}
-		x = 25
-		y = 13
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_tech_bonus = {
-				name = FRA_cas_focus
-				bonus = 0.5
-				uses = 2
-				category = cas_bomber
-			}
-		}
-	}
-	focus = {
-		id = FRA_air_focus
-		icon = GFX_goal_generic_build_airforce
-		prerequisite = {
-			focus = FRA_interwar_great_depression
-		}		# hoi4tgw
-		prerequisite = {
-		}
-		x = 29
-		y = 11
-		cost = 10
-		available_if_capitulated = yes
-		bypass = {
-			custom_trigger_tooltip = {
-				tooltip = air_focus_bypass_tt
-				NOT = {
-					any_owned_state = {
-						free_building_slots = {
-							building = air_base
-							size > 1
-						}
-					}
-				}
-			}
-		}
-		complete_tooltip = {
-			air_experience = 25
-			every_state = {
-				limit = {
-					has_state_flag = FRA_air_focus_2air
-				}
-				add_building_construction = {
-					type = air_base
-					level = 2
-					instant_build = yes
-				}
-			}
-		}
-		completion_reward = {
-			air_experience = 25
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = air_base
-						size > 1
-					}
-				}
-				add_building_construction = {
-					type = air_base
-					level = 2
-					instant_build = yes
-				}
-				set_state_flag = FRA_air_focus_2air
-			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = air_base
-						size > 1
-					}
-				}
-				add_building_construction = {
-					type = air_base
-					level = 2
-					instant_build = yes
-				}
-				set_state_flag = FRA_air_focus_2air
-			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = air_base
-						size > 1
-					}
-				}
-				add_building_construction = {
-					type = air_base
-					level = 2
-					instant_build = yes
-				}
-				set_state_flag = FRA_air_focus_2air
-			}
-		}
-	}
-	focus = {
-		id = FRA_fighter_focus
-		icon = GFX_hoi4tgw_ww2_air_fighter
-		mutually_exclusive = {
-			focus = FRA_bomber_focus
-		}
-		prerequisite = {
-			focus = FRA_air_focus
-		}
-		x = 28
-		y = 12
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_tech_bonus = {
-				name = FRA_fighter_focus
-				bonus = 0.5
-				uses = 1
-				category = light_fighter
-			}
-		}
-	}
-	focus = {
-		id = FRA_heavy_fighter_focus
-		icon = GFX_goal_generic_air_fighter2
-		prerequisite = {
-			focus = FRA_fighter_focus
-		}
-		x = 27
-		y = 13
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_tech_bonus = {
-				name = FRA_heavy_fighter_focus
-				bonus = 0.5
-				uses = 2
-				category = cat_heavy_fighter
-			}
-		}
-	}
-	focus = {
-		id = FRA_bomber_focus
-		icon = GFX_hoi4tgw_ww2_air_bomber
-		mutually_exclusive = {
-			focus = FRA_fighter_focus
-		}
-		prerequisite = {
-			focus = FRA_air_focus
-		}
-		x = 30
-		y = 12
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_tech_bonus = {
-				name = FRA_bomber_focus
-				bonus = 0.5
-				uses = 1
-				category = tactical_bomber
-			}
-		}
-	}
-	focus = {
-		id = FRA_air_doctrine
-		icon = GFX_goal_generic_air_doctrine
-		prerequisite = {
-			focus = FRA_fighter_focus
-			focus = FRA_bomber_focus
-		}
-		x = 29
-		y = 13
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			air_experience = 50
-			add_tech_bonus = {
-				name = FRA_air_doctrine
-				bonus = 0.5
-				uses = 2
-				category = air_doctrine
-			}
-		}
-	}
-	focus = {
-		id = FRA_heavy_bomber_focus
-		icon = GFX_goal_generic_occupy_start_war
-		prerequisite = {
-			focus = FRA_bomber_focus
-		}
-		x = 31
-		y = 13
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_tech_bonus = {
-				name = FRA_heavy_bomber_focus
-				bonus = 0.5
-				uses = 2
-				category = cat_strategic_bomber
-			}
-		}
-	}
-	focus = {
-		id = FRA_naval_bomber_focus
-		icon = GFX_goal_generic_air_naval_bomber
-		prerequisite = {
-			focus = FRA_bomber_focus
-		}
-		x = 33
-		y = 13
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_tech_bonus = {
-				name = FRA_naval_bomber_focus
-				bonus = 0.5
-				uses = 2
-				category = naval_bomber
-			}
-		}
-	}
-	################ VANILLA END
 }
-
-# END OF FRANCE TREE

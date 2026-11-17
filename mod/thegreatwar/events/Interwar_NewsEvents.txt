@@ -57,8 +57,18 @@ news_event = {
 	}
 	option = {
 		name = interwar_news.3.a
-		ai_chance = {
-			factor = 100
+		if = {
+			limit = {
+				has_focus_tree = france_focus
+			}
+			complete_national_focus = FRA_interwar_great_depression
+			effect_tooltip = {
+				add_political_power = -500
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.1
+				}
+			}
 		}
 	}
 }
@@ -90,65 +100,75 @@ news_event = {
 	immediate = {
 		set_global_flag = interwar_lenin_is_dead
 		hidden_effect = {
-			SOV = {
-				kill_country_leader = yes
-				# create_country_leader = {
-				# 	name = "Josef Stalin"
-				# 	desc = SOV_josef_stalin_DESC
-				# 	picture = "gfx/leaders/SOV_josef_stalin.dds"
-				# 	expire = "1935.1.1"
-				# 	ideology = stalinism
-				# 	traits = {
-				# 	}
-				# }
-				add_country_leader_role = {
-					character = SOV_iosif_stalin
-					country_leader = {
-						desc = SOV_josef_stalin_DESC
-						ideology = stalinism
-						expire = "1935.1.1.1"
-						traits = {
+			if = {
+				limit = {
+					tag = SOV
+				}
+				SOV = {
+					retire_character = SOV_vladimir_lenin
+					# create_country_leader = {
+					# 	name = "Josef Stalin"
+					# 	desc = SOV_josef_stalin_DESC
+					# 	picture = "gfx/leaders/SOV_josef_stalin.dds"
+					# 	expire = "1935.1.1"
+					# 	ideology = stalinism
+					# 	traits = {
+					# 	}
+					# }
+					add_country_leader_role = {
+						character = SOV_iosif_stalin
+						country_leader = {
+							desc = SOV_josef_stalin_DESC
+							ideology = stalinism
+							expire = "1935.1.1.1"
+							traits = {
+							}
 						}
 					}
-				}
-				promote_character = SOV_iosif_stalin
-				set_politics = {
-					ruling_party = communism
-					last_election = "1911.7.1"
-					election_frequency = 48
-					elections_allowed = no
-				}
-				set_popularities = {
-					neutrality = 0
-					fascism = 0
-					democratic = 0
-					communism = 100
+					promote_character = SOV_iosif_stalin
+					set_politics = {
+						ruling_party = communism
+						last_election = "1911.7.1"
+						election_frequency = 48
+						elections_allowed = no
+					}
+					set_popularities = {
+						neutrality = 0
+						fascism = 0
+						democratic = 0
+						communism = 100
+					}
 				}
 			}
-			RUS = {
-				kill_country_leader = yes
-				add_country_leader_role = {
-					character = SOV_iosif_stalin
-					country_leader = {
-						desc = SOV_josef_stalin_DESC
-						ideology = stalinism
-						expire = "1953.1.1.1"
-						traits = {
+			if = {
+				limit = {
+					tag = RUS
+				}
+				RUS = {
+					retire_character = RUS_vladimir_lenin
+					add_country_leader_role = {
+						character = RUS_iosif_stalin
+						country_leader = {
+							desc = SOV_josef_stalin_DESC
+							ideology = stalinism
+							expire = "1953.1.1.1"
+							traits = {
+							}
 						}
 					}
-				}
-				promote_character = RUS_iosif_stalin
-				set_politics = {
-					ruling_party = communism
-					last_election = "1911.7.1"
-					election_frequency = 48
-					elections_allowed = no
-				}
-				set_popularities = {
-					neutrality = 0
-					fascism = 0
-					democratic = 0
-					communism = 100
+					promote_character = RUS_iosif_stalin
+					set_politics = {
+						ruling_party = communism
+						last_election = "1911.7.1"
+						election_frequency = 48
+						elections_allowed = no
+					}
+					set_popularities = {
+						neutrality = 0
+						fascism = 0
+						democratic = 0
+						communism = 100
+					}
 				}
 			}
 		}
@@ -156,7 +176,7 @@ news_event = {
 	option = {
 		name = interwar_news.4.a
 		ai_chance = {
-			factor = 100
+			base = 1
 		}
 	}
 }
@@ -313,90 +333,99 @@ news_event = {
 }
 
 #____________________________________________________________
-# The Turkish National Movement # Open Beta 0.5
+# The Turkish National Movement (Turkey declares war on Greece and the Ottoman Empire)
 #____________________________________________________________
+
 news_event = {
 	id = interwar_news.8
 	title = interwar_news.8.t
 	desc = interwar_news.8.d
 	picture = EVENT_hoi4tgw_turkish_national_movement
 	major = yes
-	trigger = {
-		date > 1919.5.5
-		has_global_flag = kis_treaty_of_versailles
-		NOT = {
-			has_global_flag = interwar_turkish_national_movement
-		}
-	}
-	mean_time_to_happen = {
-		days = 2
-	}
+	is_triggered_only = yes
 	immediate = {
 		set_global_flag = interwar_turkish_national_movement
+		set_global_flag = interwar_greco_turkish_war
 		hidden_effect = {
-			# Started in 1910 or 1914 
+			TUR_mustafa_kemal = {
+				set_nationality = TUK
+			}
+			TUR_fevzi_cakmak_pasa = {
+				set_nationality = TUK
+			}
+			TUK = {
+				set_politics = {
+					ruling_party = neutrality
+					last_election = "1919.7.1"
+					election_frequency = 48
+					elections_allowed = yes
+				}
+				set_popularities = {
+					democratic = 14
+					fascism = 6
+					communism = 12
+					neutrality = 68
+				} 	
+			}
+
+			# Territorial changes
 			if = {
 				limit = {
-					has_start_date < 1919.1.1
-				}
-				# Territorial changes
-				if = {
-					limit = {
-						TUR = {
-							controls_state = 49
-						}
-					}
-					TUK = {
-						transfer_state = 49
+					TUR = {
+						controls_state = 49
 					}
 				}
-				if = {
-					limit = {
-						TUR = {
-							controls_state = 348
-						}
-					}
-					TUK = {
-						transfer_state = 348
-					}
-				}
-				if = {
-					limit = {
-						TUR = {
-							controls_state = 349
-						}
-					}
-					TUK = {
-						transfer_state = 349
-					}
-				}
-				# Loading OOB for TUK
 				TUK = {
-					load_oob = "TUK_1919"
-				}
-				# Start of the War
-				TUK = {
-					declare_war_on = {
-						target = TUR
-						type = annex_everything
-					}
-				}
-				# For the Greco-Turkish War
-				GRE = {
-					country_event = {
-						days = 13
-						id = ww1_greece.6
-					}
+					transfer_state = 49
 				}
 			}
-			else = {
-				news_event = {
-					days = 4
-					id = interwar_news.9
+			if = {
+				limit = {
+					TUR = {
+						controls_state = 348
+					}
 				}
+				TUK = {
+					transfer_state = 348
+				}
+			}
+			if = {
+				limit = {
+					TUR = {
+						controls_state = 349
+					}
+				}
+				TUK = {
+					transfer_state = 349
+				}
+			}
+			# Loading OOB for TUK
+			TUK = {
+				load_oob = "TUK_1919"
+			}
+			# Start of the War against Ottoman Empire
+			TUK = {
+				declare_war_on = {
+					target = TUR
+					type = annex_everything # https://en.wikipedia.org/wiki/Turkish_War_of_Independence
+				}
+			}
+			# Start of the War against Greece
+			TUK = {
+				declare_war_on = {
+					target = GRE
+					type = take_state
+					generator = { 339 } # https://en.wikipedia.org/wiki/Greco-Turkish_War_(1919%E2%80%931922)
+				}
+			}
+
+			add_named_threat = {
+				threat = 7
+				name = interwar_news.8.t
 			}
 		}
 	}
+
 	option = {
 		name = interwar_news.8.a
 		ai_chance = {
@@ -406,7 +435,7 @@ news_event = {
 }
 
 #____________________________________________________________
-# The Greco-Turkish War # Open Beta 0.5
+# Occupation of Smyrna
 #____________________________________________________________
 news_event = {
 	id = interwar_news.9
@@ -415,13 +444,12 @@ news_event = {
 	picture = EVENT_hoi4tgw_greco_turkish_war
 	major = yes
 	is_triggered_only = yes
-	trigger = {
-		NOT = {
-			has_global_flag = interwar_greco_turkish_war
-		}
-	}
 	immediate = {
-		set_global_flag = interwar_greco_turkish_war
+		hidden_effect = {
+			GRE = {
+				transfer_state = 339 # Smyrna # https://en.wikipedia.org/wiki/Occupation_of_Smyrna
+			}
+		}
 	}
 	option = {
 		name = interwar_news.9.a
@@ -432,7 +460,7 @@ news_event = {
 }
 
 #____________________________________________________________
-# Treaty of Lausanne # Open Beta 0.5
+# Treaty of Lausanne
 #____________________________________________________________
 news_event = {
 	id = interwar_news.10
@@ -758,5 +786,85 @@ news_event = {
 		}
 	}
 }
+
+#____________________________________________________________
+# France Leaves Rhineland
+#____________________________________________________________
+news_event = {
+	id = interwar_news.19
+	title = interwar_news.19.title
+	desc = interwar_news.19.desc
+	picture = GFX_news_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = interwar_news.19.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+#____________________________________________________________
+# France Stays In Rhineland
+#____________________________________________________________
+news_event = {
+	id = interwar_news.20
+	title = interwar_news.20.title
+	desc = interwar_news.20.desc
+	picture = GFX_news_event_german_volunteers
+
+	is_triggered_only = yes
+
+	option = {
+		name = interwar_news.20.a
+		ai_chance = {
+			base = 1
+		}
+		trigger = {
+			NOT = {
+				tag = FRA
+			}
+		}
+	}
+
+	option = {
+		name = interwar_news.20.b
+		ai_chance = {
+			base = 1
+		}
+		trigger = {
+			tag = FRA
+		}
+	}
+}
+
+#____________________________________________________________
+# France Stays In Rhineland
+#____________________________________________________________
+news_event = {
+	id = interwar_news.21
+	title = interwar_news.21.title
+	desc = interwar_news.21.desc
+	picture = GFX_news_event_001
+
+	is_triggered_only = yes
+
+	option = {
+		name = interwar_news.21.a
+		trigger = {
+			NOT = {
+				tag = GER
+			}
+		}
+	}
+
+	option = {
+		name = interwar_news.21.b
+		trigger = { tag = GER }
+	}
+}
+
 
 #____________________________________________________________

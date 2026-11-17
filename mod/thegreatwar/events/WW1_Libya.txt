@@ -1,0 +1,41 @@
+﻿add_namespace = ww1_libya
+
+#-> Sanusiyya Uprising <><>
+country_event = {
+	id = ww1_libya.1
+	title = ww1_libya.1.t
+	desc = ww1_libya.1.desc
+	picture = GFX_report_event_gathering_protest
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			declare_war_on = {
+				target = LBA
+				type = annex_everything
+			}
+			662 = {
+				set_demilitarized_zone = no
+			}
+			663 = {
+				set_demilitarized_zone = no
+			}
+			826 = {
+				set_demilitarized_zone = no
+			}
+		}
+	}
+
+	option = {
+		name = ww1_libya.1.a
+	}
+
+	option = {
+		name = ww1_libya.1.b
+		LBA = {
+			change_tag_from = ROOT
+		}
+	}
+}

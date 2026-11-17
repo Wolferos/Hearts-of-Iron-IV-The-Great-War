@@ -1,55 +1,21 @@
-﻿add_namespace = ww1_albania
-country_event = {
-	title = ww1_albania.6.t
-	desc = ww1_albania.6.d
-	id = ww1_albania.kis1
-	picture = ww1_albania_1
-	fire_only_once = yes
-	is_triggered_only = no
-	mean_time_to_happen = {
-		days = 1
-	}
-	trigger = {
-		tag = TUR
-		controls_state = 44
-		NOT = {
-			country_exists = ALB
-		}
-		date > 1910.6.5
-	}
-	option = {
-		name = ww1_albania.kis1.a
-		ai_chance = {
-			factor = 100
-		}
-		44 = {
-			set_border_war = yes
-		}
-		if = {
-			limit = {
-				TUR = {
-					controls_state = 766
-				}
-			}
-			766 = {
-				set_border_war = yes
-			}
-		}
-	}
-}
+﻿###########################
+# Albanian Events
+###########################
 
+add_namespace = ww1_albania
+
+#-> Assembly of Vlorë <><>
 country_event = {
-	title = ww1_albania.4.t	#Assembly of Vlorë
-	desc = ww1_albania.4.d	#The Albanian Declaration of Independence was the declaration of independence of the Albanian Vilayet from the Ottoman Empire. Albania was proclaimed independent in Vlorë on November 28 1912.
 	id = ww1_albania.4
-	picture = ww1_albania_4
+	title = ww1_albania.4.t
+	desc = ww1_albania.4.desc
+	picture = GFX_report_event_SWI_assembly_hall
+
 	fire_only_once = yes
 	is_triggered_only = yes
+
 	option = {
 		name = ww1_albania.4.a
-		ai_chance = {
-			factor = 100
-		}
 		TUR = {
 			set_country_flag = form_albania
 			set_country_flag = alb_peace
@@ -94,20 +60,21 @@ country_event = {
 	}
 }
 
+#-> Greece proclaimed the annexation of Northern Epirus <><>
 country_event = {
-	title = ww1_albania.5.t	#Greece proclaimed the annexation of Northern Epirus
-	desc = ww1_albania.5.d	#Greece decided to proclaim the annexation of Northern Epirus and formally incorporate it within the Greek state.
 	id = ww1_albania.5
-	picture = ww1_albania_5
-	fire_only_once = yes
+	title = ww1_albania.5.t
+	desc = ww1_albania.5.desc
+	picture = GFX_ww1_report_event_GRE_annex_north_epirus
+
 	is_triggered_only = yes
+	fire_only_once = yes
+
 	option = {
 		name = ww1_albania.5.a
-		GRE = {
-			add_opinion_modifier = {
-				target = ALB
-				modifier = medium_decrease
-			}
+		reverse_add_opinion_modifier = {
+			target = GRE
+			modifier = medium_decrease
 		}
 		ALB = {
 			GRE = {
@@ -117,48 +84,37 @@ country_event = {
 	}
 }
 
-# 
-#____________________________________________________________
-news_event = {
-	id = ww1_albania.100
-	title = ww1_albania.100.t
-	desc = ww1_albania.100.d
-	picture = EVENT_hoi4tgw_albanian_revolt
-	major = yes
+#-> Albanian Insurrection! <><>
+country_event = {
+	id = ww1_albania.6
+	title = ww1_albania.6.t
+	desc = ww1_albania.6.desc
+	picture = GFX_ww1_report_event_ALB_insurrection
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
 	trigger = {
-		date > 1911.4.6
+		controls_state = 44
 		NOT = {
-			has_global_flag = kis_albanian_revolt_1911
+			country_exists = ALB
 		}
 	}
-	mean_time_to_happen = {
-		days = 0
-	}
-	immediate = {
-		set_global_flag = kis_albanian_revolt_1911
-		hidden_effect = {
-		}
-	}
+
 	option = {
-		name = ww1_albania.100.a
-		ai_chance = {
-			factor = 100
+		name = ww1_albania.6.a
+		44 = {
+			set_border_war = yes
 		}
-		trigger = {
-			NOT = {
-				TAG = TUR
+		if = {
+			limit = {
+				TUR = {
+					controls_state = 766
+				}
+			}
+			766 = {
+				set_border_war = yes
 			}
 		}
 	}
-	option = {
-		name = ww1_albania.100.b
-		ai_chance = {
-			factor = 100
-		}
-		trigger = {
-			TAG = TUR
-		}
-	}
 }
-
-#____________________________________________________________

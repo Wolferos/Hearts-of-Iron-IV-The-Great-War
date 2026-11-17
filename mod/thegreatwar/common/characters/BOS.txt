@@ -4,10 +4,36 @@ characters = {
 		portraits = {
 			civilian = {
 				large = GFX_Portrait_BOS_marijan_varesanin
+				#small = #TODO advisor portrait
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			cost = 150
+			allowed = {
+				OR = {
+					original_tag = BOS
+					original_tag = CRO
+				}
+			}
+			visible = {
+				is_country_leader = no
+			}
+			available = {
+				NOT = {
+					has_government = communism
+				}
+			}
+			traits = {
+				noble_beurocrat
+			}
+			ai_will_do = {
+				base = 1
 			}
 		}
 		country_leader = {
 			ideology = autocracy
+			traits = { noble_beurocrat }
 			expire = "1945.1.1.1"
 			id = -1
 		}

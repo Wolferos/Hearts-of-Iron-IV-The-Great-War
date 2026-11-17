@@ -7,10 +7,6 @@ focus_tree = {
 			add = 10
 			tag = BUL
 		}
-		modifier = {
-			add = 10
-			original_tag = BUL
-		}
 	}
 	###########################################################################################################################
 	# POLITICAL
@@ -268,19 +264,19 @@ focus_tree = {
 			add_political_power = 50
 			add_stability = 0.05
 			add_doctrine_cost_reduction = {
-				name = unitedpeople_a_bonus
+				name = land_doc_bonus
 				cost_reduction = 0.15
 				uses = 1
 				category = land_doctrine
 			}
 			add_doctrine_cost_reduction = {
-				name = unitedpeople_a_bonus
+				name = naval_doc_bonus
 				cost_reduction = 0.15
 				uses = 1
 				category = naval_doctrine
 			}
 			add_doctrine_cost_reduction = {
-				name = unitedpeople_a_bonus
+				name = air_doc_bonus
 				cost_reduction = 0.15
 				uses = 1
 				category = air_doctrine
@@ -660,6 +656,69 @@ focus_tree = {
 		x = 6
 		y = 6
 	}
+	focus = {
+		id = BUL_peace_and_neutrality
+		prerequisite = { focus = BUL_ww1_remove_claims_on_ottoman focus = BUL_ww1_balkan_war_propaganda }
+		mutually_exclusive = { focus = BUL_second_balkan }
+		icon = GFX_goal_generic_neutrality_focus
+		available = {
+			has_global_flag = kis_firstbalkanwar_victory
+			has_war = no
+		}
+
+		completion_reward = {
+			add_political_power = -150
+			army_experience = -15
+			add_ideas = neutrality_idea
+			hidden_effect = { set_global_flag = kis_secondbalkanwar_victory }
+			if = {
+				limit = {
+					has_country_leader = { ruling_only = yes name = "Ferdinand I" }
+				}
+				hidden_effect = {
+					remove_country_leader_trait = ba_balkan_maximalist
+				}
+				add_country_leader_trait = ba_balkan_hegemonist
+			}
+			
+			SER = { dismantle_faction = yes }
+		}
+
+		ai_will_do = { factor = 0 }
+		cost = 2
+		x = 6
+		y = 8
+	}
+	
+	focus = {
+		id = BUL_deterrence_policy
+		prerequisite = { focus = BUL_peace_and_neutrality focus = BUL_second_balkan_victory }
+		mutually_exclusive = { focus = BUL_expansionist_policy }
+		icon = GFX_goal_generic_defence
+		available = {
+			has_global_flag = kis_firstbalkanwar_victory
+			NOT = {
+				OR = {
+					has_war_with = GER
+					has_war_with = FRA
+				}
+			}
+		}
+
+		completion_reward = {
+			add_political_power = 50
+			army_experience = 10
+			navy_experience = 10
+			air_experience = 10
+			add_ideas = deterrence
+			add_war_support = -0.05
+		}
+
+		ai_will_do = { factor = 20 }
+		cost = 6
+		x = 5
+		y = 10
+	}
 	#-----------------------------------------
 	#War in Balkans Focus
 	focus = {
@@ -725,19 +784,19 @@ focus_tree = {
 			date > 1912.1.1
 			SER = {
 				exists = yes
-				is_puppet = no
+				is_subject = no
 			}
 			BUL = {
 				exists = yes
-				is_puppet = no
+				is_subject = no
 			}
 			GRE = {
 				exists = yes
-				is_puppet = no
+				is_subject = no
 			}
-			MTN = {
+			MNT = {
 				exists = yes
-				is_puppet = no
+				is_subject = no
 			}
 		}
 		bypass = {
@@ -780,10 +839,10 @@ focus_tree = {
 				}
 			}
 			SER = {
-				is_puppet = no
+				is_subject = no
 			}
 			BUL = {
-				is_puppet = no
+				is_subject = no
 				is_in_faction_with = SER
 			}
 		}
@@ -840,40 +899,456 @@ focus_tree = {
 		x = 8
 		y = 6
 	}
+
 	focus = {
 		id = BUL_second_balkan
-		prerequisite = {
-			focus = BUL_ww1_balkan_war_propaganda
-		}
 		icon = GFX_goal_generic_occupy_states_ongoing_war
+		prerequisite = { focus = BUL_ww1_balkan_war_propaganda }
+		mutually_exclusive = { focus = BUL_peace_and_neutrality }
+		x = 0
+		y = 2
+		relative_position_id = BUL_ww1_balkan_war_propaganda
+
+		cost = 10
+
+		ai_will_do = {
+			base = 200
+		}
+
 		available = {
-			date < 1914.3.1
 			country_exists = SER
-			BUL = {
-				has_war = no
-			}
-			SER = {
+			has_war = no 
+			SER = { 
 				NOT = {
 					has_war_with = AUH
 				}
 			}
-			has_global_flag = kis_firstbalkanwar_victory
+			has_global_flag = kis_firstbalkanwar_victory 
 			NOT = {
-				has_global_flag = kis_franzferdinand_murdered
+				has_global_flag = kis_franzferdinand_murdered 
 			}
 		}
+		
+		bypass = {
+
+		}
+
 		completion_reward = {
-			BUL = {
-				country_event = ww1_secondbalkan.1
+			country_event = ww1_secondbalkan.1
+			custom_effect_tooltip = BUL_second_balkan_tt
+		}
+	}
+
+	focus = {
+		id = BUL_second_balkan_victory
+		icon = GFX_focus_generic_the_giant_wakes
+		prerequisite = { focus = BUL_second_balkan }
+		mutually_exclusive = { focus = BUL_second_balkan_defeat }
+		x = -1
+		y = 1
+		relative_position_id = BUL_second_balkan
+
+		cost = 5
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+			country_exists = SER
+			has_global_flag = kis_secondbalkanwar_victory
+			owns_state = 106
+			has_war = no 
+		}
+		
+		bypass = {
+			has_completed_focus = BUL_second_balkan
+			has_global_flag = kis_secondbalkanwar_victory
+			owns_state = 106
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = BUL_second_balkan_victory_tt
+		}
+	}
+
+	focus = {
+		id = BUL_expansionist_policy
+		icon = GFX_focus_generic_little_entente
+		prerequisite = { focus = BUL_second_balkan_victory }
+		mutually_exclusive = { focus = BUL_deterrence_policy }
+		x = 0
+		y = 1
+		relative_position_id = BUL_second_balkan_victory
+
+		cost = 6
+
+		ai_will_do = {
+			base = 2
+		}
+
+		available = {
+			has_global_flag = kis_secondbalkanwar_victory
+			owns_state = 106
+			has_war = no
+			country_exists = ROM
+		}
+		
+		bypass = {
+
+		}
+
+		completion_reward = {
+			if = {
+				limit = { has_non_aggression_pact_with = ROM }
+				diplomatic_relation = {
+					country = ROM
+					relation = non_aggression_pact
+					active = no
+				}
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ROM
+			}
+			if = {
+				limit = {
+					815 = { is_claimed_by = ROOT }
+				}
+				remove_state_claim = 815
+			}
+			if = {
+				limit = {
+					815 = {
+						NOT = { is_core_of = ROOT }
+					}
+				}
+				add_state_core = 815
+			}
+			add_manpower = 10000
+			army_experience = 10
+			navy_experience = 10
+			air_experience = 10
+		}
+	}
+
+	focus = {
+		id = BUL_tsargrad
+		icon = GFX_focus_generic_little_entente
+		prerequisite = { focus = BUL_expansionist_policy }
+		x = 1
+		y = 1
+		relative_position_id = BUL_expansionist_policy
+
+		cost = 6
+
+		ai_will_do = {
+			base = 2
+		}
+
+		available = {
+			owns_state = 756
+		}
+		
+		bypass = {
+
+		}
+
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						341 = {
+							is_claimed_by = ROOT
+						}
+					}
+				}
+				add_state_claim = 341
 			}
 		}
-		ai_will_do = {
-			factor = 2000
-		}
-		cost = 2
-		x = 8
-		y = 7
 	}
+
+	focus = {
+		id = BUL_making_amends
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = BUL_expansionist_policy }
+		x = -1
+		y = 1
+		relative_position_id = BUL_expansionist_policy
+
+		cost = 5
+
+		ai_will_do = {
+			base = 2
+		}
+
+		available = {
+			NOT = {
+				has_war_with = SER
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						341 = {
+							is_claimed_by = ROOT
+						}
+					}
+				}
+				add_state_claim = 341
+			}
+		}
+	}
+
+	focus = {
+		id = BUL_pact_with_montenegro
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = BUL_making_amends }
+		x = -1
+		y = 1
+		relative_position_id = BUL_making_amends
+
+		cost = 5
+
+		ai_will_do = {
+			base = 2
+		}
+
+		available = {
+			NOT = {
+				has_war_with = MNT
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		completion_reward = {
+			MNT = {
+				country_event = ww1_bulgaria.2
+			}
+		}
+	}
+
+	focus = {
+		id = BUL_pact_with_serbia
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = BUL_making_amends }
+		x = 1
+		y = 1
+		relative_position_id = BUL_making_amends
+
+		cost = 5
+
+		ai_will_do = {
+			base = 2
+		}
+
+		available = {
+			NOT = {
+				has_war_with = SER
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		completion_reward = {
+			SER = {
+				country_event = ww1_bulgaria.3
+			}
+		}
+	}
+
+	focus = {
+		id = BUL_pact_with_greece
+		icon = GFX_focus_generic_befriend_greece
+		prerequisite = { focus = BUL_making_amends }
+		x = 3
+		y = 1
+		relative_position_id = BUL_making_amends
+
+		cost = 5
+
+		ai_will_do = {
+			base = 2
+		}
+
+		available = {
+			NOT = {
+				has_war_with = GRE
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		completion_reward = {
+			GRE = {
+				country_event = ww1_bulgaria.4
+			}
+		}
+	}
+
+	focus = {
+		id = BUL_leader_of_south_slavs
+		icon = GFX_focus_invite_yugoslavia
+		prerequisite = { focus = BUL_pact_with_montenegro }
+		prerequisite = { focus = BUL_pact_with_serbia }
+		x = 1
+		y = 1
+		relative_position_id = BUL_pact_with_montenegro
+
+		cost = 10
+
+		ai_will_do = {
+			base = 10
+		}
+
+		available = {
+			NOT = {
+				has_war_with = SER
+				has_war_with = MNT
+				#has_war_with = SCS
+			}
+			country_exists = SER
+			country_exists = MNT
+			#country_exists = SCS
+		}
+		
+		bypass = {
+
+		}
+
+		completion_reward = {
+			set_autonomy = {
+				target = SER
+				autonomy_state = autonomy_colony
+			}
+			set_autonomy = {
+				target = MNT
+				autonomy_state = autonomy_colony
+			}
+			#set_autonomy = {
+			#	target = SCS
+			#	autonomy_state = autonomy_colony
+			#}
+		}
+	}
+
+	focus = {
+		id = BUL_partition_of_albania
+		icon = GFX_goal_generic_territory_or_war
+		prerequisite = { focus = BUL_pact_with_serbia }
+		prerequisite = { focus = BUL_pact_with_greece }
+		x = 1
+		y = 1
+		relative_position_id = BUL_pact_with_serbia
+
+		cost = 10
+
+		ai_will_do = {
+			base = 5
+		}
+
+		available = {
+			NOT = {
+				has_war_with = SER
+				has_war_with = GRE
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		completion_reward = {
+			ALB = {
+				country_event = ww1_bulgaria.5
+			}
+		}
+	}
+
+	focus = {
+		id = BUL_second_balkan_defeat
+		icon = GFX_focus_CZE_german_puppet
+		prerequisite = { focus = BUL_second_balkan }
+		mutually_exclusive = { focus = BUL_second_balkan_victory }
+		x = 1
+		y = 1
+		relative_position_id = BUL_second_balkan
+
+		cost = 5
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+			country_exists = SER
+			has_global_flag = kis_secondbalkanwar_victory
+			SER = {
+				owns_state = 759
+			}
+			has_completed_focus = BUL_second_balkan
+			has_war = no
+		}
+		
+		bypass = {
+			has_completed_focus = BUL_second_balkan
+			has_global_flag = kis_secondbalkanwar_victory
+			SER = { owns_state = 759 }
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = BUL_second_balkan_defeat_tt
+		}
+	}
+
+	focus = {
+		id = BUL_revanchist_policy
+		icon = GFX_focus_generic_strike_at_democracy1
+		prerequisite = { focus = BUL_second_balkan_defeat }
+		x = 0
+		y = 1
+		relative_position_id = BUL_second_balkan_defeat
+
+		cost = 6
+
+		ai_will_do = {
+			base = 20
+		}
+
+		available = {
+			has_global_flag = kis_secondbalkanwar_victory
+			NOT = {
+				owns_state = 759
+				owns_state = 106
+			}
+			country_exists = SER
+		}
+		
+		bypass = {
+
+		}
+
+		completion_reward = {
+			add_manpower = 30000
+			army_experience = 10
+			navy_experience = 10
+			air_experience = 10
+		}
+	}
+
 	#----------------------------------------------------------------------- 
 	# Bloc 2
 	#-----------------------------------------------------------------------
@@ -1102,7 +1577,7 @@ focus_tree = {
 			is_in_faction_with = FRA
 		}
 		available = {
-			is_puppet = no
+			is_subject = no
 			NOT = {
 				has_war_with = FRA
 			}
@@ -1181,7 +1656,7 @@ focus_tree = {
 			is_in_faction_with = GER
 		}
 		available = {
-			is_puppet = no
+			is_subject = no
 			NOT = {
 				has_war_with = GER
 			}
@@ -1275,7 +1750,7 @@ focus_tree = {
 		y = 1
 	}
 	focus = {
-		id = BUL_ww1_develop_serbia
+		id = BUL_ww1_develop_the_country
 		prerequisite = {
 			focus = BUL_ww1_assert_position_east
 		}
@@ -1362,9 +1837,9 @@ focus_tree = {
 		y = 2
 	}
 	focus = {
-		id = BUL_ww1_serbia_first
+		id = BUL_ww1_bulgaria_first
 		prerequisite = {
-			focus = BUL_ww1_develop_serbia
+			focus = BUL_ww1_develop_the_country
 		}
 		icon = GFX_goal_generic_demand_territory
 		available = {
@@ -1385,7 +1860,7 @@ focus_tree = {
 	focus = {
 		id = BUL_ww1_reinforce_ottoman_border
 		prerequisite = {
-			focus = BUL_ww1_serbia_first
+			focus = BUL_ww1_bulgaria_first
 		}
 		icon = GFX_goal_generic_construct_military
 		available = {
@@ -1728,7 +2203,7 @@ focus_tree = {
 		completion_reward = {
 			army_experience = 10
 			add_tech_bonus = {
-				name = trenchwarfare_bonus
+				name = trench_warfare_bonus
 				bonus = 0.15
 				uses = 1
 				technology = support_weapons
@@ -1755,7 +2230,7 @@ focus_tree = {
 		completion_reward = {
 			army_experience = 15
 			add_tech_bonus = {
-				name = gasmask_bonus
+				name = gas_mask_bonus
 				bonus = 0.15
 				uses = 1
 				technology = infantry_gasmask
@@ -2236,13 +2711,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_CAS
 		completion_reward = {
-			add_tech_bonus = {
-				name = pilotformation1_bonus
-				bonus = 0.15
-				uses = 1
-				technology = dogfighting_experience
-				technology = fighter_ace_initiative
-				technology = dispersed_fighting
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = formations_bonus
+			#	bonus = 0.15
+			#	uses = 1
+			#	technology = dogfighting_experience
+			#	technology = fighter_ace_initiative
+			#	technology = dispersed_fighting
+			#}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 		ai_will_do = {
@@ -2263,7 +2742,7 @@ focus_tree = {
 		icon = GFX_goal_generic_air_production
 		completion_reward = {
 			add_tech_bonus = {
-				name = aircraftprod_1_bonus
+				name = air_bonus
 				bonus = 0.15
 				uses = 1
 				category = air_equipment
@@ -2286,13 +2765,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_poland_goal
 		completion_reward = {
-			add_tech_bonus = {
-				name = pilotformation2_bonus
-				bonus = 0.15
-				uses = 1
-				technology = infrastructure_destruction
-				technology = dive_bombing
-				technology = operational_destruction
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = formations_bonus
+			#	bonus = 0.15
+			#	uses = 1
+			#	technology = infrastructure_destruction
+			#	technology = dive_bombing
+			#	technology = operational_destruction
+			#}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 		ai_will_do = {
@@ -2339,13 +2822,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_CAS
 		completion_reward = {
-			add_tech_bonus = {
-				name = pilotformation2_bonus
-				bonus = 0.15
-				uses = 1
-				technology = multialtitude_flying
-				technology = hunt_and_destroy
-				technology = fighter_veteran_initiative
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = formations_bonus
+			#	bonus = 0.15
+			#	uses = 1
+			#	technology = multialtitude_flying
+			#	technology = hunt_and_destroy
+			#	technology = fighter_veteran_initiative
+			#}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 		ai_will_do = {
@@ -2366,7 +2853,7 @@ focus_tree = {
 		icon = GFX_goal_generic_air_production
 		completion_reward = {
 			add_tech_bonus = {
-				name = aircraftprod_2_bonus
+				name = air_bonus
 				bonus = 0.2
 				uses = 1
 				category = air_equipment
@@ -2389,13 +2876,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_occupy_start_war
 		completion_reward = {
-			add_tech_bonus = {
-				name = pilotformation2_bonus
-				bonus = 0.2
-				uses = 1
-				technology = logistical_bombing
-				technology = strategic_destruction
-				technology = infiltration_bombing
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = formations_bonus
+			#	bonus = 0.15
+			#	uses = 1
+			#	technology = multialtitude_flying
+			#	technology = hunt_and_destroy
+			#	technology = fighter_veteran_initiative
+			#}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 		ai_will_do = {
@@ -3754,9 +4245,8 @@ focus_tree = {
 		id = BUL_ww1_naval_effort
 		icon = GFX_goal_generic_build_navy
 		available = {
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 		completion_reward = {
@@ -3973,14 +4463,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_occupy_states_coastal
 		completion_reward = {
-			add_tech_bonus = {
-				name = sub_op_bonus
-				bonus = 0.2
-				uses = 1
-				technology = convoy_interdiction_ti
-				technology = unrestricted_submarine_warfare
-				technology = wolfpacks
-				technology = advanced_submarine_warfare
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = sub_op_bonus
+			#	bonus = 0.2
+			#	uses = 1
+			#	technology = convoy_interdiction_ti
+			#	technology = unrestricted_submarine_warfare
+			#	technology = advanced_submarine_warfare
+			#}
+			add_mastery = {
+				amount = 75
+				folder = naval
 			}
 		}
 		ai_will_do = {

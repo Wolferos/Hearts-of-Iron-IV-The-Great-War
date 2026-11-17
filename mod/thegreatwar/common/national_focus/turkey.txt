@@ -61,8 +61,7 @@ focus_tree = {
 			factor = 0
 		}
 		available = {
-			is_puppet = no
-			country_exists = TUR
+			is_subject = no
 			NOT = {
 				has_war_with = TUR
 			}
@@ -71,7 +70,7 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.05
 			remove_ideas = {
-				TUK_interwar_spirit_TurkishNationalMovement
+				TUK_turkish_national_movement
 			}
 		}
 	}
@@ -88,8 +87,7 @@ focus_tree = {
 			factor = 0
 		}
 		available = {
-			is_puppet = no
-			country_exists = TUR
+			is_subject = no
 			NOT = {
 				has_war_with = TUR
 			}
@@ -144,14 +142,20 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		available = {
-			is_puppet = no
-			country_exists = TUR
+			is_subject = no
 			NOT = {
 				has_war_with = TUR
 			}
 		}
 		completion_reward = {
-			kill_country_leader = yes
+			add_country_leader_role = {
+				character = TUK_mehmed_vi
+				country_leader = {
+					ideology = autocracy
+					expire = "1935.1.1.1"
+					id = -1
+				}
+			}
 			add_stability = -0.25
 		}
 	}
@@ -172,22 +176,13 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			hidden_effect = {
-				kill_country_leader = yes
-			}
-			# create_country_leader = {
-			# 	name = "Mustafa V"
-			# 	picture = "gfx/hoi4tgw_portraits/TUK/country_leaders/TUK_MustafaV.dds"
-			# 	expire = "1935.1.1"
-			# 	ideology = autocracy
-			# 	traits = {
-			# 	}
-			# }
-			recruit_character = TUK_mustafa_v
-			promote_character = TUK_mustafa_v
 			add_political_power = 120
 		}
 		completion_reward = {
+			set_character_name = {
+				character = TUR_mustafa_kemal
+				name = TUR_mustafa_v
+			}
 			add_stability = 0.05
 		}
 	}
@@ -204,8 +199,14 @@ focus_tree = {
 			factor = 0
 		}
 		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 1
+				date > 1921.1.1
+			}
+		}
 		available = {
-			date > 1921.1.1
 			has_government = neutrality
 		}
 		completion_reward = {
@@ -274,9 +275,7 @@ focus_tree = {
 			factor = 1000
 		}
 		available = {
-			TUK = {
-				owns_state = 49
-			}
+			owns_state = 49
 			TUR = {
 				owns_state = 346
 			}
@@ -289,10 +288,8 @@ focus_tree = {
 			TUR = {
 				add_stability = -0.1
 			}
-			TUK = {
-				transfer_state = 346
-				transfer_state = 356
-			}
+			transfer_state = 346
+			transfer_state = 356
 		}
 	}
 	focus = {
@@ -308,20 +305,16 @@ focus_tree = {
 			factor = 200
 		}
 		available = {
-			TUK = {
-				owns_state = 49
-			}
+			owns_state = 49
 		}
 		completion_reward = {
 			add_stability = -0.1
-			TUK = {
-				load_oob = "TUK_Natio"
-				declare_war_on = {
-					target = TUR
-					type = take_state
-					generator = {
-						341
-					}
+			load_oob = "TUK_Natio"
+			declare_war_on = {
+				target = TUR
+				type = take_state
+				generator = {
+					341
 				}
 			}
 			TUR = {
@@ -348,15 +341,9 @@ focus_tree = {
 			factor = 25
 		}
 		available = {
-			TUK = {
-				owns_state = 341
-			}
-			TUK = {
-				owns_state = 49
-			}
-			TUK = {
-				owns_state = 347
-			}
+			owns_state = 341
+			owns_state = 49
+			owns_state = 347
 		}
 		completion_reward = {
 			add_timed_idea = {
@@ -379,60 +366,24 @@ focus_tree = {
 		}
 		available = {
 			has_government = neutrality
-			TUK = {
-				owns_state = 341
-			}
-			TUK = {
-				owns_state = 340
-			}
-			TUK = {
-				owns_state = 339
-			}
-			TUK = {
-				owns_state = 342
-			}
-			TUK = {
-				owns_state = 343
-			}
-			TUK = {
-				owns_state = 347
-			}
-			TUK = {
-				owns_state = 49
-			}
-			TUK = {
-				owns_state = 345
-			}
-			TUK = {
-				owns_state = 346
-			}
-			TUK = {
-				owns_state = 356
-			}
-			TUK = {
-				owns_state = 348
-			}
-			TUK = {
-				owns_state = 344
-			}
-			TUK = {
-				owns_state = 349
-			}
-			TUK = {
-				owns_state = 355
-			}
-			TUK = {
-				owns_state = 354
-			}
-			TUK = {
-				owns_state = 353
-			}
-			TUK = {
-				owns_state = 350
-			}
-			TUK = {
-				owns_state = 352
-			}
+			owns_state = 341
+			owns_state = 340
+			owns_state = 339
+			owns_state = 342
+			owns_state = 343
+			owns_state = 347
+			owns_state = 49
+			owns_state = 345
+			owns_state = 346
+			owns_state = 356
+			owns_state = 348
+			owns_state = 344
+			owns_state = 349
+			owns_state = 355
+			owns_state = 354
+			owns_state = 353
+			owns_state = 350
+			owns_state = 352
 		}
 		completion_reward = {
 			news_event = {
@@ -444,8 +395,8 @@ focus_tree = {
 		}
 	}
 	focus = {
-		id = TUK_interwar_ClaimtheBalkans		# Claim the Balkans
-		icon = GFX_focus_BUL_bulgaria_on_the_three_seas
+		id = TUK_interwar_push_for_misak_i_milli
+		icon = GFX_focus_TUR_misak_i_milli
 		prerequisite = {
 			focus = TUK_interwar_ANewSultanForTheEmpire
 			focus = TUK_interwar_ProclamationRepublicTurkey
@@ -459,41 +410,48 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
+			add_war_support = 0.1
+		}
+	}
+	focus = {
+		id = TUK_interwar_demand_thrace_and_the_agean_islands
+		icon = GFX_focus_generic_attack_greece
+		prerequisite = {
+			focus = TUK_interwar_push_for_misak_i_milli
+		}
+		x = -1
+		y = 1
+		relative_position_id = TUK_interwar_push_for_misak_i_milli
+		cost = 10
+		ai_will_do = {
+			factor = 0
+		}
+		available_if_capitulated = yes
+		completion_reward = {
 			add_named_threat = {
-				threat = 5
+				name = TUK_interwar_demand_thrace_and_the_agean_islands
+				threat = 2
 			}
-			TUK = {
-				create_wargoal = {
-					type = annex_everything
-					target = BUL
-				}
-				create_wargoal = {
-					type = annex_everything
-					target = GRE
-				}
-				create_wargoal = {
-					type = annex_everything
-					target = ALB
-				}
+			GRE = {
+			    country_event = { id = interwar_turkey.9 days = 5 }
 			}
 		}
 	}
 	focus = {
 		id = TUK_interwar_Adriatic
-		icon = GFX_focus_generic_adriatic_sea_focus
+		icon = GFX_focus_generic_aegean_sea_focus
 		prerequisite = {
-			focus = TUK_interwar_ClaimtheBalkans
+			focus = TUK_interwar_demand_thrace_and_the_agean_islands
 		}
 		x = 0
-		y = 10
+		y = 2
+		relative_position_id = TUK_interwar_demand_thrace_and_the_agean_islands
 		cost = 10
 		ai_will_do = {
 			factor = 0
 		}
 		completion_reward = {
-			TUK = {
-				add_state_claim = 164
-			}
+			country_event = { id = bftb_turkey.30 }
 		}
 	}
 	focus = {
@@ -503,7 +461,8 @@ focus_tree = {
 			focus = TUK_interwar_Adriatic
 		}
 		x = 0
-		y = 11
+		y = 1
+		relative_position_id = TUK_interwar_Adriatic
 		cost = 10
 		ai_will_do = {
 			factor = 0
@@ -514,25 +473,24 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			TUK = {
-				create_wargoal = {
-					target = ITA
-					type = take_state
-					generator = {
-						164
-					}
+			create_wargoal = {
+				target = ITA
+				type = take_state
+				generator = {
+					164
 				}
 			}
 		}
 	}
 	focus = {
-		id = TUK_interwar_ClaimtheOttomanLands		# Claim the Ottoman Lands
-		icon = GFX_focus_TUR_taking_over_defense_of_the_gulf
+		id = TUK_interwar_ClaimtheBalkans		# Claim the Balkans
+		icon = GFX_focus_BUL_bulgaria_on_the_three_seas
 		prerequisite = {
-			focus = TUK_interwar_ClaimtheBalkans
+			focus = TUK_interwar_demand_thrace_and_the_agean_islands
 		}
-		x = 2
-		y = 12
+		x = 1
+		y = 1
+		relative_position_id = TUK_interwar_demand_thrace_and_the_agean_islands
 		cost = 10
 		ai_will_do = {
 			factor = 0
@@ -540,6 +498,93 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			add_named_threat = {
+				name = TUK_interwar_ClaimtheBalkans
+				threat = 5
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = BUL
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = GRE
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = ALB
+			}
+		}
+	}
+	focus = {
+		id = TUK_interwar_demand_syria
+		icon = GFX_focus_attack_france
+		prerequisite = {
+			focus = TUK_interwar_push_for_misak_i_milli
+		}
+		x = 1
+		y = 3
+		relative_position_id = TUK_interwar_push_for_misak_i_milli
+		cost = 10
+		ai_will_do = {
+			factor = 0
+		}
+		available_if_capitulated = yes
+		completion_reward = {
+			if = {
+			    limit = {
+				    SYR = {
+				        exists = yes
+			        }
+					
+				}
+				SYR = {
+			        country_event = { id = interwar_turkey.13 }
+			    }
+				else = {
+				    FRA = {
+			            country_event = { id = interwar_turkey.14 }
+			        }
+				}
+			}
+			
+		}
+	}
+	focus = {
+		id = TUK_interwar_demand_mosul_and_kirkuk
+		icon = GFX_focus_attack_britain
+		prerequisite = {
+			focus = TUK_interwar_demand_syria
+		}
+		x = 0
+		y = 1
+		relative_position_id = TUK_interwar_demand_syria
+		cost = 10
+		ai_will_do = {
+			factor = 0
+		}
+		completion_reward = {
+			ENG = {
+			    country_event = { id = interwar_turkey.15 }
+			}
+		}
+	}
+	focus = {
+		id = TUK_interwar_ClaimtheOttomanLands		# Claim the Ottoman Lands
+		icon = GFX_focus_TUR_taking_over_defense_of_the_gulf
+		prerequisite = {
+			focus = TUK_interwar_demand_mosul_and_kirkuk
+		}
+		x = 0
+		y = 1
+		relative_position_id = TUK_interwar_demand_mosul_and_kirkuk
+		cost = 10
+		ai_will_do = {
+			factor = 0
+		}
+		available_if_capitulated = yes
+		completion_reward = {
+			add_named_threat = {
+				name = TUK_interwar_ClaimtheOttomanLands
 				threat = 10
 			}
 			create_wargoal = {
@@ -595,20 +640,21 @@ focus_tree = {
 		}
 		icon = GFX_hoi4tgw_allah
 		available = {
-			is_puppet = no
+			is_subject = no
 			is_in_faction = no
 		}
 		completion_reward = {
-			TUK = {
-				set_politics = {
-					ruling_party = fascism
-					elections_allowed = yes
-				}
-				add_popularity = {
-					ideology = fascism
-					popularity = 0.55
-				}
-				create_faction = caliphate_faction
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = yes
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.55
+			}
+			create_faction_from_template = {
+				template = faction_template_PER_islamic_faction
+				name = caliphate_faction
 			}
 		}
 		ai_will_do = {
@@ -749,11 +795,14 @@ focus_tree = {
 		y = 11
 		cost = 15
 		ai_will_do = {
-			factor = 25
+			factor = 0
+			modifier = {
+				factor = 25
+				date > 1922.1.1
+			}
 		}
 		available_if_capitulated = yes
 		available = {
-			date > 1922.1.1
 			has_government = neutrality
 		}
 		completion_reward = {
@@ -775,16 +824,29 @@ focus_tree = {
 		y = 12
 		cost = 12
 		ai_will_do = {
-			factor = 1
+			factor = 0
+			modifier = {
+				factor = 1
+				date > 1924.1.1
+			}
 		}
 		available_if_capitulated = yes
 		available = {
 			has_government = neutrality
-			date > 1924.1.1
 		}
 		completion_reward = {
 			add_political_power = -20
 			add_stability = -0.03
+			hidden_effect = {
+				set_character_name = {
+					character = TUR_mustafa_kemal
+					name = TUR_mustafa_kemal_ataturk
+				}
+				set_character_name = {
+					character = TUK_mustafa_ismet
+					name = TUK_ismet_inonu
+				}
+			}
 		}
 	}
 	focus = {
@@ -796,16 +858,22 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_NewTurkishAlphabet
 		}
-		x = 3
+		x = 4
 		y = 13
 		cost = 10
 		ai_will_do = {
 			factor = 1
 		}
 		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 1
+				date > 1930.1.1
+			}
+		}
 		available = {
 			has_government = neutrality
-			date > 1930.1.1
 		}
 		completion_reward = {
 			add_stability = 0.1
@@ -821,7 +889,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_NewTurkishAlphabet
 		}
-		x = 5
+		x = 6
 		y = 13
 		cost = 10
 		ai_will_do = {
@@ -831,7 +899,7 @@ focus_tree = {
 			has_government = neutrality
 			ITA = {
 				has_government = fascism
-				is_puppet = no
+				is_subject = no
 			}
 		}
 		completion_reward = {
@@ -882,11 +950,9 @@ focus_tree = {
 			country_exists = USA
 		}
 		completion_reward = {
-			TUK = {
-				add_opinion_modifier = {
-					target = USA
-					modifier = HOI4TGW_Opinion_diplomats_malus
-				}
+			add_opinion_modifier = {
+				target = USA
+				modifier = HOI4TGW_Opinion_diplomats_malus
 			}
 		}
 	}
@@ -928,15 +994,13 @@ focus_tree = {
 			factor = 0
 		}
 		completion_reward = {
-			TUK = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = yes
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.55
-				}
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = yes
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.55
 			}
 		}
 	}
@@ -956,11 +1020,9 @@ focus_tree = {
 			country_exists = SOV
 		}
 		completion_reward = {
-			TUK = {
-				add_opinion_modifier = {
-					target = SOV
-					modifier = HOI4TGW_Opinion_diplomats_bonus
-				}
+			add_opinion_modifier = {
+				target = SOV
+				modifier = HOI4TGW_Opinion_diplomats_bonus
 			}
 		}
 	}
@@ -1001,9 +1063,7 @@ focus_tree = {
 		}
 		available = {
 			has_government = neutrality
-			TUK = {
-				owns_state = 349
-			}
+			owns_state = 349
 		}
 		available_if_capitulated = yes
 		completion_reward = {
@@ -1046,16 +1106,14 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		available = {
-			is_puppet = no
+			is_subject = no
 			country_exists = GRE
 			has_war_with = GRE
 		}
 		completion_reward = {
-			TUK = {
-				add_opinion_modifier = {
-					target = GRE
-					modifier = HOI4TGW_Opinion_SendDiplomats_bonus
-				}
+			add_opinion_modifier = {
+				target = GRE
+				modifier = HOI4TGW_Opinion_SendDiplomats_bonus
 			}
 			add_political_power = -50
 		}
@@ -1088,7 +1146,7 @@ focus_tree = {
 			GRE = {
 				controls_state = 340
 			}
-			is_puppet = no
+			is_subject = no
 			has_war_with = GRE
 			has_army_manpower = {
 				size < 12001
@@ -1096,7 +1154,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			remove_ideas = {
-				TUK_interwar_spirit_TurkishNationalMovement
+				TUK_turkish_national_movement
 			}
 			add_political_power = -300
 			GRE = {
@@ -1208,7 +1266,7 @@ focus_tree = {
 			}
 		}
 		available = {
-			is_puppet = no
+			is_subject = no
 			country_exists = GRE
 			has_war_with = GRE
 		}
@@ -1225,7 +1283,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_DenyAlliedDemands
 		}
-		x = 19
+		x = 20
 		y = 1
 		cost = 5
 		ai_will_do = {
@@ -1242,7 +1300,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_EasternFront
 		}
-		x = 21
+		x = 22
 		y = 2
 		cost = 5
 		ai_will_do = {
@@ -1276,7 +1334,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_SupportAntiColonial
 		}
-		x = 23
+		x = 24
 		y = 4
 		cost = 5
 		ai_will_do = {
@@ -1289,9 +1347,7 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			TUK = {
-				add_ideas = volunteer_corps_focus
-			}
+			add_ideas = volunteer_corps_focus
 		}
 	}
 	focus = {
@@ -1300,7 +1356,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_SupportAntiColonial
 		}
-		x = 22
+		x = 23
 		y = 5
 		cost = 10
 		ai_will_do = {
@@ -1327,7 +1383,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_RaiseTensions
 		}
-		x = 19
+		x = 21
 		y = 8
 		cost = 10
 		ai_will_do = {
@@ -1352,7 +1408,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_MiddleEastRelations
 		}
-		x = 21
+		x = 23
 		y = 8
 		cost = 10
 		ai_will_do = {
@@ -1363,11 +1419,9 @@ focus_tree = {
 			country_exists = PER
 		}
 		completion_reward = {
-			TUK = {
-				add_opinion_modifier = {
-					target = PER
-					modifier = HOI4TGW_Opinion_diplomats_bonus
-				}
+			add_opinion_modifier = {
+				target = PER
+				modifier = HOI4TGW_Opinion_diplomats_bonus
 			}
 		}
 	}
@@ -1377,7 +1431,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_MiddleEastRelations
 		}
-		x = 23
+		x = 24
 		y = 6
 		cost = 10
 		ai_will_do = {
@@ -1401,7 +1455,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_ArabWorld
 		}
-		x = 23
+		x = 24
 		y = 7
 		cost = 10
 		ai_will_do = {
@@ -1421,7 +1475,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_EasternFront
 		}
-		x = 18
+		x = 19
 		y = 3
 		cost = 10
 		ai_will_do = {
@@ -1429,11 +1483,9 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			TUK = {
-				add_opinion_modifier = {
-					target = SYR
-					modifier = HOI4TGW_Opinion_diplomats_malus
-				}
+			add_opinion_modifier = {
+				target = SYR
+				modifier = HOI4TGW_Opinion_diplomats_malus
 			}
 		}
 	}
@@ -1443,7 +1495,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_AntiSyria
 		}
-		x = 18
+		x = 19
 		y = 4
 		cost = 10
 		ai_will_do = {
@@ -1464,7 +1516,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_SupportAntiColonial
 		}
-		x = 20
+		x = 21
 		y = 3
 		cost = 10
 		ai_will_do = {
@@ -1472,11 +1524,9 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			TUK = {
-				add_opinion_modifier = {
-					target = SYR
-					modifier = HOI4TGW_Opinion_diplomats_bonus
-				}
+			add_opinion_modifier = {
+				target = SYR
+				modifier = HOI4TGW_Opinion_diplomats_bonus
 			}
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
@@ -1490,7 +1540,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_ProSyria
 		}
-		x = 20
+		x = 21
 		y = 4
 		cost = 10
 		ai_will_do = {
@@ -1525,7 +1575,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_SupportSyrianRebels
 		}
-		x = 20
+		x = 21
 		y = 5
 		cost = 5
 		ai_will_do = {
@@ -1534,20 +1584,14 @@ focus_tree = {
 		available = {
 			SYR = {
 				owns_state = 677
-			}
-			SYR = {
 				owns_state = 680
-			}
-			SYR = {
 				owns_state = 554
 			}
 		}
 		completion_reward = {
-			TUK = {
-				add_opinion_modifier = {
-					target = SYR
-					modifier = HOI4TGW_Opinion_SendDiplomats_bonus
-				}
+			add_opinion_modifier = {
+				target = SYR
+				modifier = HOI4TGW_Opinion_SendDiplomats_bonus
 			}
 		}
 	}
@@ -1557,7 +1601,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_EasternFront
 		}
-		x = 17
+		x = 18
 		y = 5
 		cost = 5
 		ai_will_do = {
@@ -1577,7 +1621,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_TheCaucasusQuestion
 		}
-		x = 16
+		x = 17
 		y = 6
 		cost = 10
 		ai_will_do = {
@@ -1597,7 +1641,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_TheCaucasusQuestion
 		}
-		x = 20
+		x = 22
 		y = 6
 		cost = 10
 		ai_will_do = {
@@ -1607,11 +1651,9 @@ focus_tree = {
 			country_exists = AZR
 		}
 		completion_reward = {
-			TUK = {
-				add_opinion_modifier = {
-					target = AZR
-					modifier = HOI4TGW_Opinion_diplomats_bonus
-				}
+			add_opinion_modifier = {
+				target = AZR
+				modifier = HOI4TGW_Opinion_diplomats_bonus
 			}
 		}
 	}
@@ -1621,7 +1663,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_Azerbaijan
 		}
-		x = 20
+		x = 22
 		y = 7
 		cost = 10
 		ai_will_do = {
@@ -1631,23 +1673,11 @@ focus_tree = {
 		available = {
 			country_exists = AZR
 			AZR = {
-				is_puppet = no
-				has_war_with = SOV
+				is_subject = no
 			}
 		}
 		completion_reward = {
-			TUK = {
-				puppet = AZR
-			}
-			TUK = {
-				declare_war_on = {
-					target = SOV
-					type = take_state
-					generator = {
-						229
-					}
-				}
-			}
+			country_event = { id = interwar_turkey.5 }
 		}
 	}
 	focus = {
@@ -1659,7 +1689,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_TheCaucasusQuestion
 		}
-		x = 18
+		x = 19
 		y = 6
 		cost = 10
 		ai_will_do = {
@@ -1668,9 +1698,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			add_political_power = 25
-			add_named_threat = {
-				threat = 5
-			}
+			add_threat = 5
 		}
 	}
 	focus = {
@@ -1682,7 +1710,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_TrenchWarfare
 		}
-		x = 24
+		x = 25
 		y = 3
 		cost = 5
 		ai_will_do = {
@@ -1711,7 +1739,7 @@ focus_tree = {
 			}
 		}
 		available = {
-			is_puppet = no
+			is_subject = no
 			country_exists = GRE
 			has_war_with = GRE
 		}
@@ -1742,17 +1770,13 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = 100
-			TUK = {
-				add_opinion_modifier = {
-					target = ENG
-					modifier = HOI4TGW_Opinion_diplomats_malus
-				}
+			add_opinion_modifier = {
+				target = ENG
+				modifier = HOI4TGW_Opinion_diplomats_malus
 			}
-			TUK = {
-				add_opinion_modifier = {
-					target = FRA
-					modifier = HOI4TGW_Opinion_diplomats_malus
-				}
+			add_opinion_modifier = {
+				target = FRA
+				modifier = HOI4TGW_Opinion_diplomats_malus
 			}
 		}
 	}
@@ -1772,11 +1796,9 @@ focus_tree = {
 			country_exists = BUL
 		}
 		completion_reward = {
-			TUK = {
-				add_opinion_modifier = {
-					target = BUL
-					modifier = HOI4TGW_Opinion_hostile_diplomatic_relations
-				}
+			add_opinion_modifier = {
+				target = BUL
+				modifier = HOI4TGW_Opinion_hostile_diplomatic_relations
 			}
 		}
 	}
@@ -1816,17 +1838,13 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			TUK = {
-				add_opinion_modifier = {
-					target = ENG
-					modifier = HOI4TGW_Opinion_hostile_diplomatic_relations
-				}
+			add_opinion_modifier = {
+				target = ENG
+				modifier = HOI4TGW_Opinion_hostile_diplomatic_relations
 			}
-			TUK = {
-				add_opinion_modifier = {
-					target = FRA
-					modifier = HOI4TGW_Opinion_hostile_diplomatic_relations
-				}
+			add_opinion_modifier = {
+				target = FRA
+				modifier = HOI4TGW_Opinion_hostile_diplomatic_relations
 			}
 		}
 	}
@@ -1900,7 +1918,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_TreatyofSevres
 		}
-		x = 15
+		x = 16
 		y = 7
 		cost = 10
 		ai_will_do = {
@@ -1909,6 +1927,25 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			remove_ideas = interwar_spirit_TheGreatWar_Loser
+		}
+	}
+	focus = {
+		id = TUK_interwar_treaty_of_ankara
+		icon = GFX_focus_chi_reach_out_to_france
+		prerequisite = {
+			focus = TUK_interwar_RefuseTheDismembermentOfTheEmpire
+		}
+		x = -1
+		y = 1
+		relative_position_id = TUK_interwar_RefuseTheDismembermentOfTheEmpire
+		cost = 9
+		ai_will_do = {
+			factor = 30
+		}
+		completion_reward = {
+			FRA = {
+			    country_event = { id = interwar_turkey.12 }
+            }
 		}
 	}
 	focus = {
@@ -1924,7 +1961,6 @@ focus_tree = {
 			factor = 0
 		}
 		available = {
-			country_exists = ENG
 			ENG = {
 				owns_state = 676
 			}
@@ -1934,13 +1970,11 @@ focus_tree = {
 				target = ENG
 				modifier = HOI4TGW_Opinion_anti_uk_policy_malus
 			}
-			TUK = {
-				create_wargoal = {
-					target = ENG
-					type = take_state
-					generator = {
-						676
-					}
+			create_wargoal = {
+				target = ENG
+				type = take_state
+				generator = {
+					676
 				}
 			}
 		}
@@ -1968,13 +2002,11 @@ focus_tree = {
 				target = FRA
 				modifier = HOI4TGW_Opinion_anti_fr_policy_malus
 			}
-			TUK = {
-				create_wargoal = {
-					target = FRA
-					type = take_state
-					generator = {
-						677
-					}
+			create_wargoal = {
+				target = FRA
+				type = take_state
+				generator = {
+					677
 				}
 			}
 		}
@@ -2002,23 +2034,17 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			TUK = {
-				add_opinion_modifier = {
-					target = FRA
-					modifier = HOI4TGW_Opinion_diplomats_bonus
-				}
+			add_opinion_modifier = {
+				target = FRA
+				modifier = HOI4TGW_Opinion_diplomats_bonus
 			}
-			TUK = {
-				add_opinion_modifier = {
-					target = ENG
-					modifier = HOI4TGW_Opinion_diplomats_bonus
-				}
+			add_opinion_modifier = {
+				target = ENG
+				modifier = HOI4TGW_Opinion_diplomats_bonus
 			}
-			TUK = {
-				add_opinion_modifier = {
-					target = ITA
-					modifier = HOI4TGW_Opinion_diplomats_bonus
-				}
+			add_opinion_modifier = {
+				target = ITA
+				modifier = HOI4TGW_Opinion_diplomats_bonus
 			}
 		}
 	}
@@ -2054,9 +2080,11 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {
 			factor = 0
-		}
-		available = {
-			date > 1920.1.1
+			modifier = {
+				factor = 1
+				date > 1920.1.1
+				surrender_progress > 0.8
+			}
 		}
 		completion_reward = {
 			add_political_power = 50
@@ -2076,10 +2104,14 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {
 			factor = 0
+			modifier = {
+				factor = 1
+				date > 1923.1.1
+				surrender_progress > 0.8
+			}
 		}
 		available_if_capitulated = yes
 		available = {
-			date>1923.1.1
 			NOT = {
 				country_exists = TUR
 			}
@@ -2115,9 +2147,7 @@ focus_tree = {
 				GRE = {
 					white_peace = TUK
 				}
-				TUK = {
-					white_peace = GRE
-				}
+				white_peace = GRE
 			}
 		}
 	}
@@ -2130,7 +2160,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_RaiseTensions
 		}
-		x = 16
+		x = 17
 		y = 8
 		cost = 5
 		ai_will_do = {
@@ -2156,8 +2186,9 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_RaiseTensions
 		}
-		x = 17
-		y = 7
+		x = -1
+		y = 1
+		relative_position_id = TUK_interwar_RaiseTensions
 		cost = 10
 		ai_will_do = {
 			factor = 0
@@ -2169,6 +2200,31 @@ focus_tree = {
 			create_wargoal = {
 				type = annex_everything
 				target = SOV
+			}
+		}
+	}
+	focus = {
+		id = TUK_interwar_sign_the_treaty_of_kars
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+		prerequisite = {
+			focus = TUK_interwar_RaiseTensions
+		}
+		mutually_exclusive = {
+			focus = TUK_interwar_FightTheBolsheviks
+		}
+		x = 1
+		y = 1
+		relative_position_id = TUK_interwar_RaiseTensions
+		cost = 10
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+			country_exists = SOV
+		}
+		completion_reward = {
+			SOV = {
+				country_event = { id = interwar_turkey.6 }
 			}
 		}
 	}
@@ -2190,7 +2246,7 @@ focus_tree = {
 			}
 		}
 		available = {
-			is_puppet = no
+			is_subject = no
 			country_exists = GRE
 			GRE = {
 				owns_state = 339
@@ -2318,11 +2374,9 @@ focus_tree = {
 			focus = TUK_interwar_DenyAlliedDemands
 		}
 		completion_reward = {
-			TUK = {
-				add_opinion_modifier = {
-					target = ENG
-					modifier = HOI4TGW_Opinion_SendDiplomats_bonus
-				}
+			add_opinion_modifier = {
+				target = ENG
+				modifier = HOI4TGW_Opinion_SendDiplomats_bonus
 			}
 		}
 		cost = 10
@@ -2348,7 +2402,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 16
+		x = 17
 		y = 1
 		ai_will_do = {
 			factor = 1
@@ -2443,7 +2497,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 15
+		x = 16
 		y = 2
 		ai_will_do = {
 			factor = 1
@@ -2508,7 +2562,7 @@ focus_tree = {
 			}
 		}
 		cost = 10
-		x = 14
+		x = 15
 		y = 1
 		ai_will_do = {
 			factor = 1
@@ -2586,7 +2640,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_DenyAlliedDemands
 		}
-		x = 27
+		x = 28
 		y = 1
 		cost = 10
 		ai_will_do = {
@@ -2609,7 +2663,7 @@ focus_tree = {
 		icon = GFX_goal_generic_military_sphere
 		completion_reward = {
 			add_tech_bonus = {
-				name = trenchwarfare_bonus
+				name = trench_warfare_bonus
 				bonus = 0.15
 				uses = 1
 				technology = support_weapons
@@ -2621,7 +2675,7 @@ focus_tree = {
 			factor = 1
 		}
 		cost = 10
-		x = 26
+		x = 27
 		y = 2
 	}
 	focus = {
@@ -2632,7 +2686,7 @@ focus_tree = {
 		icon = GFX_hoi4tgw_gasmask
 		completion_reward = {
 			add_tech_bonus = {
-				name = gasmask_bonus
+				name = gas_mask_bonus
 				bonus = 0.15
 				uses = 1
 				technology = infantry_gasmask
@@ -2644,7 +2698,7 @@ focus_tree = {
 			factor = 1
 		}
 		cost = 10
-		x = 25
+		x = 26
 		y = 4
 	}
 	focus = {
@@ -2653,7 +2707,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_gasmask_focus
 		}
-		x = 25
+		x = 26
 		y = 6
 		cost = 10
 		ai_will_do = {
@@ -2674,7 +2728,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_Turkish_Artilley
 		}
-		x = 26
+		x = 27
 		y = 8
 		cost = 10
 		ai_will_do = {
@@ -2698,7 +2752,7 @@ focus_tree = {
 			focus = TUK_interwar_FRARenaultFT
 		}
 		icon = GFX_goal_generic_army_tanks
-		x = 24
+		x = 25
 		y = 9
 		cost = 10
 		ai_will_do = {
@@ -2723,7 +2777,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_Turkish_Artilley
 		}
-		x = 27
+		x = 28
 		y = 7
 		cost = 10
 		ai_will_do = {
@@ -2739,7 +2793,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_DuzenliOrdu
 		}
-		x = 27
+		x = 28
 		y = 3
 		cost = 10
 		ai_will_do = {
@@ -2755,7 +2809,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_TurkishAirForce
 		}
-		x = 27
+		x = 28
 		y = 4
 		cost = 10
 		ai_will_do = {
@@ -2786,7 +2840,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_AirBase
 		}
-		x = 26
+		x = 27
 		y = 5
 		cost = 10
 		ai_will_do = {
@@ -2806,9 +2860,6 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_PilotSchool
 		}
-		available = {
-			date > 1920.1.1
-		}
 		icon = GFX_goal_generic_air_fighter
 		completion_reward = {
 			add_tech_bonus = {
@@ -2822,10 +2873,14 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
+			modifier = {
+				factor = 10
+				date > 1920.1.1
+			}
 		}
 		cost = 10
-		x = 27
+		x = 28
 		y = 6
 	}
 	focus = {
@@ -2846,7 +2901,7 @@ focus_tree = {
 			factor = 1
 		}
 		cost = 10
-		x = 28
+		x = 29
 		y = 5
 		cost = 10
 	}
@@ -2856,7 +2911,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_DuzenliOrdu
 		}
-		x = 28
+		x = 29
 		y = 2
 		cost = 10
 		ai_will_do = {
@@ -2872,7 +2927,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_Restore_The_Turkish_Navy
 		}
-		x = 29
+		x = 30
 		y = 3
 		cost = 10
 		ai_will_do = {
@@ -2922,7 +2977,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_Shipyard
 		}
-		x = 29
+		x = 30
 		y = 6
 		cost = 10
 		available_if_capitulated = yes
@@ -2939,7 +2994,7 @@ focus_tree = {
 			focus = TUK_interwar_Shipyard
 		}
 		icon = GFX_focus_generic_destroyer
-		x = 30
+		x = 31
 		y = 4
 		cost = 10
 		ai_will_do = {
@@ -2964,7 +3019,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_destroyer_effort
 		}
-		x = 30
+		x = 31
 		y = 5
 		cost = 10
 		ai_will_do = {
@@ -2988,7 +3043,7 @@ focus_tree = {
 		prerequisite = {
 			focus = TUK_interwar_CompeteOnTheSeas
 		}
-		x = 30
+		x = 31
 		y = 7
 		cost = 10
 		ai_will_do = {
@@ -3024,7 +3079,7 @@ focus_tree = {
 			factor = 1
 		}
 		cost = 10
-		x = 28
+		x = 29
 		y = 8
 	}
 }

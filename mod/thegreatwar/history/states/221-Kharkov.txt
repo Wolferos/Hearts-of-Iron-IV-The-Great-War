@@ -1,37 +1,59 @@
-state = {
+state={
 	id=221
 	name="STATE_221"
-	local_supplies = 1.0 manpower = 2227520
-	state_category=city
-	provinces={ 418 3409 3508 3531 6530 6554 9531 9556 11397 11461 11541 }
+	manpower = 2227520
+	
+	state_category = city
+	
 	resources={
-		wood=0
-		steel=17
-		}
+		steel=15
+	}
+
 	history={
-		victory_points={ 418 10 }
-		owner=RUS
-		add_core_of=RUS
-		1936.1.1={ 
-			owner=SOV
-			add_core_of=SOV
-			victory_points={ 418 10 }
-			buildings={
-				infrastructure=3
-				air_base=5
-				arms_factory=2
+		owner = RUS
+		victory_points = {
+			418 20
+		}
+		buildings = {
+			infrastructure = 3
+			industrial_complex = 1
+			arms_factory = 1
+		}
+		add_core_of = RUS
+		add_core_of = UKR
+
+		1919.1.1 = {
+			owner = UKR
+			controller = RUS
+			add_core_of = SOV
+		}
+		1926.1.1 = {
+			owner = SOV
+			controller = SOV
+		}
+		1936.1.1 = {
+			buildings = {
+				infrastructure = 4 #was: 7
+				air_base = 5
+			}
+			221.owner = {
+				add_resource = {
+					type = steel
+					amount = 18 # was: 41
+					state = 221
 				}
 			}
-		1939.1.1={ buildings={ arms_factory=3 } }
-		buildings={
-			infrastructure=3
-			industrial_complex=1
-			arms_factory=1
+		}
+		1939.1.1 = {
+			buildings = {
+				arms_factory = 2
 			}
-		1919.1.1 = {
-            owner = UKR
-            add_core_of = UKR
-            add_core_of = SOV
-        }
 		}
 	}
+
+	provinces={
+		418 3409 3508 3531 6530 6554 9531 9556 11397 11461 11541 
+	}
+
+	local_supplies=0.0 
+}

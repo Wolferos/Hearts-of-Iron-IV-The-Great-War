@@ -1,0 +1,60 @@
+autonomy_state = {
+	id = autonomy_wtt_imperial_subject
+	
+	default = yes
+	is_puppet = no
+	
+	min_freedom_level = 0.8
+	
+	manpower_influence = 0.5
+	
+	rule = {
+		desc = "RULE_DESC_IS_A_SUBJECT"
+		
+		can_not_declare_war = no
+		can_decline_call_to_war = yes
+		units_deployed_to_overlord = no
+		can_be_spymaster = no
+		can_create_collaboration_government = no
+	}
+	
+	modifier = {
+		autonomy_manpower_share = 0.5
+		can_master_build_for_us = 1
+		extra_trade_to_overlord_factor = 0.25
+		overlord_trade_cost_factor = -0.25
+		cic_to_overlord_factor = 0.1
+		mic_to_overlord_factor = 0.25
+		peace_score_ratio_transferred_to_overlord = 0.1
+		lend_lease_tension_with_overlord = -0.3
+	}
+	
+	ai_subject_wants_higher = {
+		factor = 1.0
+	}
+	
+	ai_overlord_wants_lower = {
+		factor = 0.0
+	}
+
+	ai_overlord_wants_garrison = {
+		always = no
+	}
+
+	allowed = {
+		always = no
+		OR = {
+			OVERLORD = { has_government = fascism }
+			OVERLORD = { has_government = neutrality }
+		}
+		OVERLORD = { original_tag = JAP }
+	}
+	
+	can_take_level = {
+		always = no
+	}
+
+	can_lose_level = {
+		#trigger here
+	}
+}

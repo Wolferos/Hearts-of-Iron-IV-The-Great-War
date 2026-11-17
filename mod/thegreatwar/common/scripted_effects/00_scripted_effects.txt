@@ -1,5 +1,5 @@
 #	Example:
-# 
+#
 #	example_effect = {
 #		add_political_power = 66
 #		add_popularity = {
@@ -22,7 +22,7 @@
 
 #This is going to give misleading and ugly tooltips. Making it nice will take effort. TODO_WTT_CD make nice or ignore and remove comment. Easiest solution is just making a custom tooltip that says "5 civilian factories will be converted to military factories" and ignore telling the player the states where it will happen.
 
-replace_civ_with_arms_factories = {	
+replace_civ_with_arms_factories = {
 
 	random_owned_controlled_state = {
 		limit = {
@@ -39,7 +39,7 @@ replace_civ_with_arms_factories = {
 			instant_build = yes
 		}
 	}
-	
+
 	random_owned_controlled_state = {
 		limit = {
 			is_fully_controlled_by = ROOT
@@ -108,7 +108,7 @@ replace_civ_with_arms_factories = {
 #Country scope
 ROOT_inherit_current_scope_wars_effect = {
 	custom_effect_tooltip = ROOT_inherit_current_scope_wars_effect
-	hidden_effect = {	
+	hidden_effect = {
 		every_country = {
 			limit = {
 				has_defensive_war_with = PREV
@@ -483,164 +483,162 @@ print_variable_log_effect = {
 }
 
 get_best_alliance_match_democratic_effect = { #arguably a trigger, but it does stuff so we keep it in here. If this is your first time seeing this, welcome to my personal hell.
-	if = {
+	every_other_country = {
 		limit = {
-			any_other_country = {
-				is_faction_leader = yes
-				is_major = yes
-				has_government = democratic
-				not = { has_war_with = ROOT }
-				set_temp_variable = { ROOT.best_leader = this }
-				set_temp_variable = { ROOT.best_leader_score = 0 }
-			}
+			is_faction_leader = yes
+			is_major = yes
+			has_government = democratic
+			not = { has_war_with = ROOT }
 		}
+		set_temp_variable = { ROOT.best_leader = this }
+		set_temp_variable = { ROOT.best_leader_score = 0 }
 	}
-	if = {
+	every_other_country = {
 		limit = {
-			all_other_country = {
-				is_faction_leader = yes
-				is_major = yes
-				has_government = democratic
-				not = { has_war_with = ROOT }
-				set_temp_variable = { this.leader_score = num_of_factories }
-				add_to_temp_variable = { this.leader_score = num_battalions }
+			is_faction_leader = yes
+			is_major = yes
+			has_government = democratic
+			not = { has_war_with = ROOT }
+		}
+		set_temp_variable = { this.leader_score = num_of_factories }
+		add_to_temp_variable = { this.leader_score = num_battalions }
+		if = {
+			limit = {
 				all_of_scopes = {
 					array = allies
-					add_to_temp_variable = { PREV.leader_score = num_of_factories }
-					add_to_temp_variable = { PREV.leader_score = num_battalions }
-				}
-				if = {
-					limit = {
-						capital_scope = {
-							is_on_continent = ROOT
-						}
-					}
-					multiply_temp_variable = { leader_score = 2 }
-				}
-				if = {
-					limit = {
-						any_neighbor_country = { tag = ROOT }
-					}
-					multiply_temp_variable = { leader_score = 1.25 }
-				}
-				if = {
-					limit = {
-						check_variable = { ROOT.best_leader_score < leader_score }
-						set_temp_variable = { ROOT.best_leader = this }
-						set_temp_variable = { ROOT.best_leader_score = leader_score }
-					}
 				}
 			}
+			add_to_temp_variable = { PREV.leader_score = num_of_factories }
+			add_to_temp_variable = { PREV.leader_score = num_battalions }
 		}
-	}		
+		if = {
+			limit = {
+				capital_scope = {
+					is_on_continent = ROOT
+				}
+			}
+			multiply_temp_variable = { leader_score = 2 }
+		}
+		if = {
+			limit = {
+				any_neighbor_country = { tag = ROOT }
+			}
+			multiply_temp_variable = { leader_score = 1.25 }
+		}
+		if = {
+			limit = {
+				check_variable = { ROOT.best_leader_score < leader_score }
+			}
+			set_temp_variable = { ROOT.best_leader = this }
+			set_temp_variable = { ROOT.best_leader_score = leader_score }
+		}
+	}
 }
 
 get_best_alliance_match_fascism_effect = { #arguably a trigger, but it does stuff so we keep it in here. If this is your first time seeing this, welcome to my personal hell.
-	if = {
+	every_other_country = {
 		limit = {
-			any_other_country = {
-				is_faction_leader = yes
-				is_major = yes
-				has_government = fascism
-				not = { has_war_with = ROOT }
-				set_temp_variable = { ROOT.best_leader = this }
-				set_temp_variable = { ROOT.best_leader_score = 0 }
-			}
+			is_faction_leader = yes
+			is_major = yes
+			has_government = fascism
+			not = { has_war_with = ROOT }
 		}
+		set_temp_variable = { ROOT.best_leader = this }
+		set_temp_variable = { ROOT.best_leader_score = 0 }
 	}
-	if = {
+	every_other_country = {
 		limit = {
-			all_other_country = {
-				
-				is_faction_leader = yes
-				is_major = yes
-				has_government = fascism
-				not = { has_war_with = ROOT }
-				
-				set_temp_variable = { this.leader_score = num_of_factories }
-				add_to_temp_variable = { this.leader_score = num_battalions }
+			is_faction_leader = yes
+			is_major = yes
+			has_government = fascism
+			not = { has_war_with = ROOT }
+		}
+		set_temp_variable = { this.leader_score = num_of_factories }
+		add_to_temp_variable = { this.leader_score = num_battalions }
+		if = {
+			limit = {
 				all_of_scopes = {
 					array = allies
-					add_to_temp_variable = { PREV.leader_score = num_of_factories }
-					add_to_temp_variable = { PREV.leader_score = num_battalions }
-				}
-				if = {
-					limit = {
-						capital_scope = {
-							is_on_continent = ROOT
-						}
-					}
-					multiply_temp_variable = { this.leader_score = 2 }
-				}
-				if = {
-					limit = {
-						any_neighbor_country = { tag = ROOT }
-					}
-					multiply_temp_variable = { this.leader_score = 1.25 }
-				}
-				if = {
-					limit = {
-						check_variable = { ROOT.best_leader_score < this.leader_score }
-					}
-					set_temp_variable = { ROOT.best_leader = this }
-					set_temp_variable = { ROOT.best_leader_score = this.leader_score }
 				}
 			}
+			add_to_temp_variable = { PREV.leader_score = num_of_factories }
+			add_to_temp_variable = { PREV.leader_score = num_battalions }
 		}
-	}		
+		if = {
+			limit = {
+				capital_scope = {
+					is_on_continent = ROOT
+				}
+			}
+			multiply_temp_variable = { leader_score = 2 }
+		}
+		if = {
+			limit = {
+				any_neighbor_country = { tag = ROOT }
+			}
+			multiply_temp_variable = { leader_score = 1.25 }
+		}
+		if = {
+			limit = {
+				check_variable = { ROOT.best_leader_score < leader_score }
+			}
+			set_temp_variable = { ROOT.best_leader = this }
+			set_temp_variable = { ROOT.best_leader_score = leader_score }
+		}
+	}
 }
 
 get_best_alliance_match_communism_effect = { #arguably a trigger, but it does stuff so we keep it in here. If this is your first time seeing this, welcome to my personal hell.
-	if = {
+	every_other_country = {
 		limit = {
-			any_other_country = {
-				is_faction_leader = yes
-				is_major = yes
-				has_government = communism
-				not = { has_war_with = ROOT }
-				set_temp_variable = { ROOT.best_leader = this }
-				set_temp_variable = { ROOT.best_leader_score = 0 }
-			}
+			is_faction_leader = yes
+			is_major = yes
+			has_government = communism
+			not = { has_war_with = ROOT }
 		}
+		set_temp_variable = { ROOT.best_leader = this }
+		set_temp_variable = { ROOT.best_leader_score = 0 }
 	}
-	if = {
+	every_other_country = {
 		limit = {
-			all_other_country = {
-				is_faction_leader = yes
-				is_major = yes
-				has_government = communism
-				not = { has_war_with = ROOT }
-				set_temp_variable = { this.leader_score = num_of_factories }
-				add_to_temp_variable = { this.leader_score = num_battalions }
+			is_faction_leader = yes
+			is_major = yes
+			has_government = communism
+			not = { has_war_with = ROOT }
+		}
+		set_temp_variable = { this.leader_score = num_of_factories }
+		add_to_temp_variable = { this.leader_score = num_battalions }
+		if = {
+			limit = {
 				all_of_scopes = {
 					array = allies
-					add_to_temp_variable = { PREV.leader_score = num_of_factories }
-					add_to_temp_variable = { PREV.leader_score = num_battalions }
-				}
-				if = {
-					limit = {
-						capital_scope = {
-							is_on_continent = ROOT
-						}
-					}
-					multiply_temp_variable = { leader_score = 2 }
-				}
-				if = {
-					limit = {
-						any_neighbor_country = { tag = ROOT }
-					}
-					multiply_temp_variable = { leader_score = 1.25 }
-				}
-				if = {
-					limit = {
-						check_variable = { ROOT.best_leader_score < leader_score }
-						set_temp_variable = { ROOT.best_leader = this }
-						set_temp_variable = { ROOT.best_leader_score = leader_score }
-					}
 				}
 			}
+			add_to_temp_variable = { PREV.leader_score = num_of_factories }
+			add_to_temp_variable = { PREV.leader_score = num_battalions }
 		}
-	}		
+		if = {
+			limit = {
+				capital_scope = {
+					is_on_continent = ROOT
+				}
+			}
+			multiply_temp_variable = { leader_score = 2 }
+		}
+		if = {
+			limit = {
+				any_neighbor_country = { tag = ROOT }
+			}
+			multiply_temp_variable = { leader_score = 1.25 }
+		}
+		if = {
+			limit = {
+				check_variable = { ROOT.best_leader_score < leader_score }
+			}
+			set_temp_variable = { ROOT.best_leader = this }
+			set_temp_variable = { ROOT.best_leader_score = leader_score }
+		}
+	}
 }
 
 remove_naval_treaty_effect = {
@@ -688,11 +686,11 @@ civil_war_anti_exploiter_punitive_action = {
 				infantry = { x = 0 y = 0 }
 				infantry = { x = 0 y = 1 }
 				infantry = { x = 0 y = 2 }
-	
+
 		   	   	infantry = { x = 1 y = 0 }
 				infantry = { x = 1 y = 1 }
 				infantry = { x = 1 y = 2 }
-	
+
 		   	   	infantry = { x = 2 y = 0 }
 				artillery_brigade = { x = 2 y = 1 }
 				artillery_brigade = { x = 2 y = 2 }
@@ -825,13 +823,14 @@ clear_sabotaged_resources_if_necesary = {
 				}
 			}
 		}
-		
+
 		clear_variable = sabotaged_oil
 		clear_variable = sabotaged_aluminium
 		clear_variable = sabotaged_rubber
 		clear_variable = sabotaged_tungsten
 		clear_variable = sabotaged_steel
 		clear_variable = sabotaged_chromium
+		clear_variable = sabotaged_coal
 	}
 }
 
@@ -859,10 +858,10 @@ instantiate_collaboration_government = {
 	custom_effect_tooltip = compliance_80_effect_tooltip
 	hidden_effect = {
 		set_variable = { collaboration_formed@var:country_to_initiate = 1 }
-		
+
 		if = {
 			# if country_to_initiate does not exist, simply release it as a puppet
-			limit = { 
+			limit = {
 				var:country_to_initiate = {
 					exists = no
 				}
@@ -877,24 +876,24 @@ instantiate_collaboration_government = {
 		}
 		else = {
 			# if country_to_initiate exists, create a dynamic country as our new puppet
-			
+
 			create_dynamic_country = {
 				original_tag = country_to_initiate
-			
+
 				set_variable = { collaboration_formed_by = PREV }
 				set_temp_variable = { new_country = this }
-				
+
 				PREV = {
 					every_controlled_state = {
 						limit = { occupied_country_tag = country_to_initiate }
-						
+
 						var:new_country = {
 							transfer_state = PREV
 						}
 					}
-					
+
 					puppet = new_country
-					
+
 					set_autonomy = {
 						target = new_country
 						autonomy_state = autonomy_collaboration_government
@@ -907,6 +906,7 @@ instantiate_collaboration_government = {
 }
 
 abandon_colony_tag = {
+
 	if = {
 		limit = {
 			is_subject = yes
@@ -915,7 +915,7 @@ abandon_colony_tag = {
 			limit = {
 				original_tag = CAN
 			}
-			if = { 
+			if = {
 				limit = { NOT = { has_dlc = "Together for Victory" } }
 				set_cosmetic_tag = CAN_ALY
 			}
@@ -942,17 +942,242 @@ abandon_colony_tag = {
 			set_cosmetic_tag = INS_HOL
 		}
 	}
+	else_if = {
+		limit = {
+			OR = {
+				has_cosmetic_tag = united_polynesia
+				has_cosmetic_tag = MAJ_UNIFIED
+			}
+		}
+		if = {
+			limit = { NOT = { has_dlc = "Graveyard of Empires" } }
+			drop_cosmetic_tag = yes
+		}
+	}
+}
+
+upgrade_economy_law = {
+	if = {
+		limit = {
+			has_idea = civilian_economy
+		}
+		add_ideas = low_economic_mobilisation
+	}
+	else_if = {
+		limit = {
+			has_idea = low_economic_mobilisation
+		}
+		add_ideas = partial_economic_mobilisation
+	}
+	else_if = {
+		limit = {
+			has_idea = partial_economic_mobilisation
+		}
+		add_ideas = war_economy
+	}
+	else_if = {
+		limit = {
+			has_idea = war_economy
+		}
+		add_ideas = tot_economic_mobilisation
+	}
 	else = {
+		add_political_power = 150
+	}
+}
+
+gain_random_agency_upgrade = { #Gives a random agency upgrade or grants a free agency if one has not yet been established
+	custom_effect_tooltip = free_agency_upgrade_tt
+	hidden_effect = {
 		if = {
 			limit = {
-				OR = {
-					has_cosmetic_tag = united_polynesia
-					has_cosmetic_tag = MAJ_UNIFIED
+				has_intelligence_agency = no
+			}
+			create_intelligence_agency = yes
+		}
+		else = {
+			random_list = {
+				1 = {
+					upgrade_intelligence_agency = upgrade_economy_civilian
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_economy_civilian
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_army_department
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_army_department
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_naval_department
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_naval_department
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_airforce_department
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_airforce_department
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_passive_defense
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_passive_defense
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_anti_partisan
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_anti_partisan
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_blueprint_stealing
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_blueprint_stealing
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_portable_radios
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_portable_radios
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_invisible_ink
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_invisible_ink
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_plastic_explosives
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_plastic_explosives
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_suicide_pills
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_suicide_pills
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_training_centers
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_training_centers
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_commando_training
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_commando_training
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_interrogation_techniques
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_interrogation_techniques
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_diplo_training
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_diplo_training
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_psycho_warfare
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_psycho_warfare
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_form_department
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_form_department
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_decryption_boost
+					modifier = {
+						factor = 0
+						OR = {
+							has_done_agency_upgrade = upgrade_decryption_boost
+							NOT = { has_done_agency_upgrade = upgrade_form_department }
+						}
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_decryption_boost_2
+					modifier = {
+						factor = 0
+						OR = {
+							has_done_agency_upgrade = upgrade_decryption_boost_2
+							NOT = { has_done_agency_upgrade = upgrade_form_department }
+							NOT = { has_done_agency_upgrade = upgrade_decryption_boost }
+						}
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_crypto_strength
+					modifier = {
+						factor = 0
+						OR = {
+							has_done_agency_upgrade = upgrade_crypto_strength
+							NOT = { has_done_agency_upgrade = upgrade_form_department }
+						}
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_crypto_strength_2
+					modifier = {
+						factor = 0
+						OR = {
+							has_done_agency_upgrade = upgrade_crypto_strength_2
+							NOT = { has_done_agency_upgrade = upgrade_form_department }
+							NOT = { has_done_agency_upgrade = upgrade_crypto_strength }
+						}
+					}
 				}
 			}
 		}
-		else = {
-			drop_cosmetic_tag = yes
+	}
+}
+
+join_allies_effect = {
+	if = {
+		limit = {
+			ENG = {
+				is_faction_leader = yes
+				has_government = democratic
+				not = { has_war_with = ROOT }
+			}
+		}
+		ENG = { country_event = generic.2 }
+	}
+	else = {
+		get_best_alliance_match_democratic_effect = yes
+		var:best_leader = {
+			country_event = generic.2
 		}
 	}
 }
@@ -980,6 +1205,10 @@ remove_fascist_spirits_effect = {
 #Should remove any and all communist foreign influence
 remove_communist_spirits_effect = {
 	if = {
+		limit = { has_idea = communist_pressure }
+		remove_ideas = communist_pressure
+	}
+	if = {
 		limit = { has_idea = american_influence_drift_communism }
 		remove_ideas = american_influence_drift_communism
 	}
@@ -991,14 +1220,417 @@ remove_communist_spirits_effect = {
 	#	limit = { has_idea = pan_slavic_propaganda }
 	#	remove_ideas = pan_slavic_propaganda
 	#}
+	if = {
+		limit = { has_idea = agitated_peasants }
+		remove_ideas = agitated_peasants
+	}
+	if = {
+		limit = { has_idea = armed_communist_militants }
+		remove_ideas = armed_communist_militants
+	}
+	if = {
+		limit = { has_idea = BALTIC_communist_propaganda }
+		remove_ideas = BALTIC_communist_propaganda
+	}
+	if = {
+		limit = { has_idea = BALTIC_communist_militancy }
+		remove_ideas = BALTIC_communist_militancy
+	}
+
 	#if = {
-	#	limit = { has_idea = agitated_peasants }
-	#	remove_ideas = agitated_peasants
+	#	limit = { has_idea = SWE_foreign_communist_influence }
+	#	remove_ideas = SWE_foreign_communist_influence
 	#}
-	#if = {
-	#	limit = { has_idea = armed_communist_militants }
-	#	remove_ideas = armed_communist_militants
-	#}
+}
+
+#Should remove any and all democratic foreign influence
+remove_democratic_spirits_effect = {
+	if = {
+		limit = { has_idea = democratic_influence }
+		remove_ideas = democratic_influence
+	}
+}
+
+#Adds current ruling popularity to a new ideology - useful to represent ideological shifts within the same party
+add_ruling_to_dem = {
+	custom_effect_tooltip = add_ruling_to_dem_tt
+	hidden_effect = {
+		if = {
+			limit = {
+				has_government = neutrality
+			}
+			set_variable = {
+				var = neutrality_support_var
+				value = party_popularity_100@neutrality
+			}
+			set_variable = {
+				var = democratic_support_var
+				value = party_popularity_100@democratic
+			}
+			set_variable = {
+				var = communism_support_var
+				value = party_popularity_100@communism
+			}
+			set_variable = {
+				var = fascism_support_var
+				value = party_popularity_100@fascism
+			}
+			add_to_variable = {
+				democratic_support_var = neutrality_support_var
+			}
+			set_variable = {
+				var = neutrality_support_var
+				value = 0
+			}
+		}
+		if = {
+			limit = {
+				has_government = communism
+			}
+			set_variable = {
+				var = neutrality_support_var
+				value = party_popularity_100@neutrality
+			}
+			set_variable = {
+				var = democratic_support_var
+				value = party_popularity_100@democratic
+			}
+			set_variable = {
+				var = communism_support_var
+				value = party_popularity_100@communism
+			}
+			set_variable = {
+				var = fascism_support_var
+				value = party_popularity_100@fascism
+			}
+			add_to_variable = {
+				democratic_support_var = communism_support_var
+			}
+			set_variable = {
+				var = communism_support_var
+				value = 0
+			}
+		}
+		if = {
+			limit = {
+				has_government = fascism
+			}
+			set_variable = {
+				var = neutrality_support_var
+				value = party_popularity_100@neutrality
+			}
+			set_variable = {
+				var = democratic_support_var
+				value = party_popularity_100@democratic
+			}
+			set_variable = {
+				var = communism_support_var
+				value = party_popularity_100@communism
+			}
+			set_variable = {
+				var = fascism_support_var
+				value = party_popularity_100@fascism
+			}
+			add_to_variable = {
+				democratic_support_var = fascism_support_var
+			}
+			set_variable = {
+				var = fascism_support_var
+				value = 0
+			}
+		}
+		set_popularities = {
+			democratic = democratic_support_var
+			neutrality = neutrality_support_var
+			fascism = fascism_support_var
+			communism = communism_support_var
+		}
+	}
+}
+add_ruling_to_fas = {
+	custom_effect_tooltip = add_ruling_to_fas_tt
+	hidden_effect = {
+		if = {
+			limit = {
+				has_government = neutrality
+			}
+			set_variable = {
+				var = neutrality_support_var
+				value = party_popularity_100@neutrality
+			}
+			set_variable = {
+				var = democratic_support_var
+				value = party_popularity_100@democratic
+			}
+			set_variable = {
+				var = communism_support_var
+				value = party_popularity_100@communism
+			}
+			set_variable = {
+				var = fascism_support_var
+				value = party_popularity_100@fascism
+			}
+			add_to_variable = {
+				fascism_support_var = neutrality_support_var
+			}
+			set_variable = {
+				var = neutrality_support_var
+				value = 0
+			}
+		}
+		if = {
+			limit = {
+				has_government = communism
+			}
+			set_variable = {
+				var = neutrality_support_var
+				value = party_popularity_100@neutrality
+			}
+			set_variable = {
+				var = democratic_support_var
+				value = party_popularity_100@democratic
+			}
+			set_variable = {
+				var = communism_support_var
+				value = party_popularity_100@communism
+			}
+			set_variable = {
+				var = fascism_support_var
+				value = party_popularity_100@fascism
+			}
+			add_to_variable = {
+				fascism_support_var = communism_support_var
+			}
+			set_variable = {
+				var = communism_support_var
+				value = 0
+			}
+		}
+		if = {
+			limit = {
+				has_government = democratic
+			}
+			set_variable = {
+				var = neutrality_support_var
+				value = party_popularity_100@neutrality
+			}
+			set_variable = {
+				var = democratic_support_var
+				value = party_popularity_100@democratic
+			}
+			set_variable = {
+				var = communism_support_var
+				value = party_popularity_100@communism
+			}
+			set_variable = {
+				var = fascism_support_var
+				value = party_popularity_100@fascism
+			}
+			add_to_variable = {
+				fascism_support_var = democratic_support_var
+			}
+			set_variable = {
+				var = democratic_support_var
+				value = 0
+			}
+		}
+		set_popularities = {
+			democratic = democratic_support_var
+			neutrality = neutrality_support_var
+			fascism = fascism_support_var
+			communism = communism_support_var
+		}
+	}
+}
+add_ruling_to_com = {
+	custom_effect_tooltip = add_ruling_to_com_tt
+	hidden_effect = {
+		if = {
+			limit = {
+				has_government = neutrality
+			}
+			set_variable = {
+				var = neutrality_support_var
+				value = party_popularity_100@neutrality
+			}
+			set_variable = {
+				var = democratic_support_var
+				value = party_popularity_100@democratic
+			}
+			set_variable = {
+				var = communism_support_var
+				value = party_popularity_100@communism
+			}
+			set_variable = {
+				var = fascism_support_var
+				value = party_popularity_100@fascism
+			}
+			add_to_variable = {
+				communism_support_var = neutrality_support_var
+			}
+			set_variable = {
+				var = neutrality_support_var
+				value = 0
+			}
+		}
+		if = {
+			limit = {
+				has_government = fascism
+			}
+			set_variable = {
+				var = neutrality_support_var
+				value = party_popularity_100@neutrality
+			}
+			set_variable = {
+				var = democratic_support_var
+				value = party_popularity_100@democratic
+			}
+			set_variable = {
+				var = communism_support_var
+				value = party_popularity_100@communism
+			}
+			set_variable = {
+				var = fascism_support_var
+				value = party_popularity_100@fascism
+			}
+			add_to_variable = {
+				communism_support_var = fascism_support_var
+			}
+			set_variable = {
+				var = fascism_support_var
+				value = 0
+			}
+		}
+		if = {
+			limit = {
+				has_government = democratic
+			}
+			set_variable = {
+				var = neutrality_support_var
+				value = party_popularity_100@neutrality
+			}
+			set_variable = {
+				var = democratic_support_var
+				value = party_popularity_100@democratic
+			}
+			set_variable = {
+				var = communism_support_var
+				value = party_popularity_100@communism
+			}
+			set_variable = {
+				var = fascism_support_var
+				value = party_popularity_100@fascism
+			}
+			add_to_variable = {
+				communism_support_var = democratic_support_var
+			}
+			set_variable = {
+				var = democratic_support_var
+				value = 0
+			}
+		}
+		set_popularities = {
+			democratic = democratic_support_var
+			neutrality = neutrality_support_var
+			fascism = fascism_support_var
+			communism = communism_support_var
+		}
+	}
+}
+add_ruling_to_neu = {
+	custom_effect_tooltip = add_ruling_to_neu_tt
+	hidden_effect = {
+		if = {
+			limit = {
+				has_government = communism
+			}
+			set_variable = {
+				var = neutrality_support_var
+				value = party_popularity_100@neutrality
+			}
+			set_variable = {
+				var = democratic_support_var
+				value = party_popularity_100@democratic
+			}
+			set_variable = {
+				var = communism_support_var
+				value = party_popularity_100@communism
+			}
+			set_variable = {
+				var = fascism_support_var
+				value = party_popularity_100@fascism
+			}
+			add_to_variable = {
+				neutrality_support_var = communism_support_var
+			}
+			set_variable = {
+				var = communism_support_var
+				value = 0
+			}
+		}
+		if = {
+			limit = {
+				has_government = fascism
+			}
+			set_variable = {
+				var = neutrality_support_var
+				value = party_popularity_100@neutrality
+			}
+			set_variable = {
+				var = democratic_support_var
+				value = party_popularity_100@democratic
+			}
+			set_variable = {
+				var = communism_support_var
+				value = party_popularity_100@communism
+			}
+			set_variable = {
+				var = fascism_support_var
+				value = party_popularity_100@fascism
+			}
+			add_to_variable = {
+				neutrality_support_var = fascism_support_var
+			}
+			set_variable = {
+				var = fascism_support_var
+				value = 0
+			}
+		}
+		if = {
+			limit = {
+				has_government = democratic
+			}
+			set_variable = {
+				var = neutrality_support_var
+				value = party_popularity_100@neutrality
+			}
+			set_variable = {
+				var = democratic_support_var
+				value = party_popularity_100@democratic
+			}
+			set_variable = {
+				var = communism_support_var
+				value = party_popularity_100@communism
+			}
+			set_variable = {
+				var = fascism_support_var
+				value = party_popularity_100@fascism
+			}
+			add_to_variable = {
+				neutrality_support_var = democratic_support_var
+			}
+			set_variable = {
+				var = democratic_support_var
+				value = 0
+			}
+		}
+		set_popularities = {
+			democratic = democratic_support_var
+			neutrality = neutrality_support_var
+			fascism = fascism_support_var
+			communism = communism_support_var
+		}
+	}
 }
 
 
@@ -1009,3 +1641,504 @@ on_daily = {
 #on_daily_USA = {
 #	# you can specify an on daily action for a specific country
 #}
+
+###Game weight variables for faction load balancing.
+###We store these on germany because ... we have to
+
+set_add_fascist_game_weight_large = {
+	GER = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = fascist_game_weight
+				}
+			}
+			set_variable = { var = fascist_game_weight value = 20 }
+		}
+		else = {
+			add_to_variable = { var = fascist_game_weight value = 20 }
+		}
+	}
+}
+
+set_add_democratic_game_weight_large = {
+	GER = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = democratic_game_weight
+				}
+			}
+			set_variable = { var = democratic_game_weight value = 20 }
+		}
+		else = {
+			add_to_variable = { var = democratic_game_weight value = 20 }
+		}
+	}
+}
+
+set_add_unaligned_game_weight_large = {
+	GER = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = unaligned_game_weight
+				}
+			}
+			set_variable = { var = unaligned_game_weight value = 20 }
+		}
+		else = {
+			add_to_variable = { var = unaligned_game_weight value = 20 }
+		}
+	}
+}
+
+set_add_communist_weight_large = {
+	GER = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = communist_game_weight
+				}
+			}
+			set_variable = { var = communist_game_weight value = 20 }
+		}
+		else = {
+			add_to_variable = { var = communist_game_weight value = 20 }
+		}
+	}
+}
+
+set_add_fascist_weight_small = {
+	GER = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = fascist_game_weight
+				}
+			}
+			set_variable = { var = fascist_game_weight value = 8 }
+		}
+		else = {
+			add_to_variable = { var = fascist_game_weight value = 8 }
+		}
+	}
+}
+
+set_add_democratic_weight_small = {
+	GER = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = democratic_game_weight
+				}
+			}
+			set_variable = { var = democratic_game_weight value = 8 }
+		}
+		else = {
+			add_to_variable = { var = democratic_game_weight value = 8 }
+		}
+	}
+}
+
+set_add_unaligned_weight_small = {
+	GER = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = unaligned_game_weight
+				}
+			}
+			set_variable = { var = unaligned_game_weight value = 8 }
+		}
+		else = {
+			add_to_variable = { var = unaligned_game_weight value = 8 }
+		}
+	}
+}
+
+set_add_communist_weight_small = {
+	GER = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = communist_game_weight
+				}
+			}
+			set_variable = { var = communist_game_weight value = 8 }
+		}
+		else = {
+			add_to_variable = { var = communist_game_weight value = 8 }
+		}
+	}
+}
+
+leave_the_league_of_nations = {
+	custom_effect_tooltip = leave_the_league_of_nations_tt
+	hidden_effect = { remove_ideas = league_of_nations_member_idea }
+}
+
+remove_any_country_role_from_character = { #Expected to be used inside the character scope
+	#log = "I am [THIS.GetName]"
+	if = {
+		limit = {
+			is_character_slot = air_chief
+		}
+		remove_advisor_role = { slot = air_chief }
+	}
+	if = {
+		limit = {
+			is_character_slot = army_chief
+		}
+		remove_advisor_role = { slot = army_chief }
+	}
+	if = {
+		limit = {
+			is_character_slot = navy_chief
+		}
+		remove_advisor_role = { slot = navy_chief }
+	}
+	if = {
+		limit = {
+			is_character_slot = high_command
+		}
+		remove_advisor_role = { slot = high_command }
+	}
+	if = {
+		limit = {
+			is_character_slot = theorist
+		}
+		remove_advisor_role = { slot = theorist }
+	}
+	if = {
+		limit = {
+			is_character_slot = political_advisor
+		}
+		remove_advisor_role = { slot = political_advisor }
+	}
+}
+
+### Paratroopers
+SF_PARA_sabotage_effect = { #When changing this, update the research tooltip
+	damage_building = {
+		type = infrastructure
+		damage = 2
+	}
+	damage_building = {
+		type = industrial_complex
+		damage = 1
+	}
+	damage_building = {
+		type = arms_factory
+		damage = 1
+	}
+	set_state_flag = {
+		flag = para_drop_effect
+		days = 30
+	}
+}
+
+SF_PARA_combat_effect = { #When changing this, update the research tooltip
+	every_state_division = {
+		limit = { 
+			OWNER = { has_war_with = FROM }
+		}
+		set_unit_organization = 0.50
+	}
+	set_state_flag = {
+		flag = para_drop_effect
+		days = 30
+	}
+}
+
+### Muuuurrrriiinnnnneeeeessssss
+SF_marine_demoliton_effect = { #When changing this, update the research tooltip
+	damage_building = {
+		type = radar_station
+		damage = 1
+	}
+	damage_building = {
+		type = naval_base
+		damage = 1
+	}
+	damage_building = {
+		type = dockyard
+		damage = 1
+	}
+	damage_building = {
+		type = nuclear_reactor
+		damage = 1
+	}
+	damage_building = {
+		type = rocket_site
+		damage = 1
+	}
+	damage_building = {
+		type = fuel_silo
+		damage = 1
+	}
+	set_state_flag = {
+		flag = marines_commando_effect
+		days = 30
+	}
+}
+
+###########################################################################################
+###########################################################################################
+###########################################################################################
+
+							########    ###       ###    ######## 
+							   ##      ## ##     ## ##      ##    
+							   ##     ##   ##   ##   ##     ##    
+							   ##    ##     ## ##     ##    ##    
+							   ##    ######### #########    ##    
+							   ##    ##     ## ##     ##    ##    
+							   ##    ##     ## ##     ##    ##    
+
+###########################################################################################
+###########################################################################################
+###########################################################################################
+
+find_global_platonic_countries = { # Look for the countries that meet the best criteria for the different platonic countries we expect in HoI 
+	find_biggest_fascist = yes
+	find_biggest_democrat = yes
+	find_biggest_communist = yes
+	find_biggest_non_aligned = yes
+	find_biggest_fascist_bully = yes
+	find_best_democratic_ally_leader = yes
+	find_democratic_sleeping_giant = yes
+	find_local_dangerous_fascist = yes 
+}
+
+
+find_biggest_fascist_bully = { # Finds the biggest and/or meanest fascist country 
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_fascist_bully
+		scorer = fascist_bully_scorer
+	}
+}
+
+find_best_democratic_ally_leader = { # Finds the most suitable democratic country to lead a faction
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_democratic_ally_leader
+		scorer = democratic_faction_leader_scorer
+	}
+}
+
+find_democratic_sleeping_giant = { # Finds biggest desarmed democratic nation. Expected to be USA 
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_democratic_sleeping_giant
+		scorer = democratic_sleeping_giant_scorer
+	}
+}
+
+find_biggest_fascist = { # Finds Nazi Germany, or the closest to it 
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_big_fascist
+		scorer = fascist_major_scorer
+	}
+}
+
+find_biggest_democrat = { # Finds biggest Democratic Nation
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_big_democratic
+		scorer = democratic_major_scorer
+	}
+}
+
+find_biggest_communist = { # Finds biggest Communist
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_big_communist
+		scorer = communist_major_scorer
+	}
+}
+
+find_biggest_non_aligned = { # Finds biggest... anything else
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_big_non_aligned
+		scorer = non_aligned_major_scorer
+	}
+}
+# There are ideology scorers for each continent. If you need more check the generic_platonic_scorers file and make a new scripted effect 
+
+find_local_dangerous_fascist = {
+	get_highest_scored_country = {
+		var = platonic_local_dangerous_fascist
+		scorer = local_fascist_country
+	}
+}
+
+
+# The idea is that you can use these effects to store the party popularities (and, if desired, the ruling party) when puppeting or possibly when starting civil wars, and then use the "restore" effects to reset it after the puppeting has happened, so that you don't have to use the overlord's ideology if you don't want to. 
+get_current_ideology_popularities = {
+	set_variable = { ROOT.communist_support_before_change = ROOT.party_popularity_100@communism }
+	set_variable = { ROOT.democratic_support_before_change = ROOT.party_popularity_100@democratic }
+	set_variable = { ROOT.fascist_support_before_change = ROOT.party_popularity_100@fascism }
+	set_variable = { ROOT.neutrality_support_before_change = ROOT.party_popularity_100@neutrality }
+}
+get_current_ruling_party = {
+	set_variable = { ROOT.ruling_ideology_before_change = ROOT.current_party_ideology_group }
+}
+restore_ideology_popularities = {
+	hidden_effect = {
+		# Reset popluarities to what they were before puppeting 
+		set_popularities = {
+			communism = ROOT.communist_support_before_change
+			democratic = ROOT.democratic_support_before_change
+			fascism = ROOT.fascist_support_before_change
+			neutrality = ROOT.neutrality_support_before_change
+		}
+		clear_variable = ROOT.communist_support_before_change
+		clear_variable = ROOT.democratic_support_before_change
+		clear_variable = ROOT.fascist_support_before_change
+		clear_variable = ROOT.neutrality_support_before_change
+	}
+}
+restore_ruling_party = {
+	ROOT = {
+		set_politics = {
+			ruling_party = var:ROOT.ruling_ideology_before_change
+		}
+	}
+}
+
+
+#Upgrades state cat to the next valid level. Called from state scope
+increase_state_category = {
+	if = {
+		limit = {
+			has_state_category = tiny_island
+		}
+		set_state_category = small_island
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+	}
+
+	if = {
+		limit = {
+			has_state_category = small_island
+		}
+		set_state_category = large_island
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+	}
+
+	if = {
+		limit = {
+			OR = {
+				has_state_category = wasteland
+				has_state_category = enclave
+			}
+		}
+		set_state_category = pastoral
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+	}
+	else_if = {
+		limit = {
+			has_state_category = pastoral
+		}
+		set_state_category = rural
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+	}
+	else_if = {
+		limit = {
+			has_state_category = rural
+		}
+		set_state_category = town
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 2
+		}
+	}
+	else_if = {
+		limit = {
+			has_state_category = town
+		}
+		set_state_category = large_town
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+	}
+	else_if = {
+		limit = {
+			has_state_category = large_town
+		}
+		set_state_category = city
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+	}
+	else_if = {
+		limit = {
+			has_state_category = city
+		}
+		set_state_category = large_city
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 2
+		}
+	}
+
+	else_if = {
+		limit = {
+			has_state_category = large_city
+		}
+		set_state_category = metropolis
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 2
+		}
+	}
+
+	else_if = {
+		limit = {
+			has_state_category = metropolis
+		} 
+		set_state_category = megalopolis
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 2
+		}
+	}
+
+}
+
+add_potential_special_forces_tree = {
+	custom_effect_tooltip = add_potential_special_forces_tree_tt
+	if = {
+		limit = { NOT = { has_variable = sf_trees } }
+		set_variable = { sf_trees = 2 }
+	}
+	else = {
+		add_to_variable = { sf_trees = 1 }
+	}
+}
+
+remove_potential_special_forces_tree = {
+	if = {
+		limit = { NOT = { has_variable = sf_trees } }
+		set_variable = { sf_trees = 0 }
+	}
+	else = {
+		subtract_from_variable = { sf_trees = 1 }
+	}
+}
+
+store_core_states_on_game_start = { #Should be called from history file
+	every_core_state = {
+		ROOT = {
+			add_to_array = {
+				array = core_states_at_game_start
+				value = PREV
+			}
+		}
+	}
+}
+
+set_african_central_bank_variables = {
+	set_variable = { org_africa_central_bank_stability_factor = 0.05}
+	set_variable = { org_africa_central_bank_industrial_complex_factor = 0.1}
+	set_variable = { org_africa_central_bank_infrastructure_factor = 0.1}
+}

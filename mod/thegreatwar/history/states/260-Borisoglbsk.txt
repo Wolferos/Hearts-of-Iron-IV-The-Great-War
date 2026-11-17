@@ -1,32 +1,67 @@
-state = {
+state={
 	id=260
 	name="STATE_260" # Voronezh
-	local_supplies = 1.0 manpower = 2567983
-	state_category=town
-	provinces={ 413 437 510 3469 3504 3527 3566 3567 6428 6477 6494 6553 6587 6591 9448 9529 9552 11396 11412 11475 11540 }
+	manpower = 2567983
+	
+	state_category = town
+
 	resources={
-		wood=0
-		}
+		wood = 7
+	}
+
 	history={
-		victory_points={ 413 5 }
-		owner=RUS
-		add_core_of=RUS
-		1936.1.1={ 
-			owner=SOV
-			add_core_of=SOV
-			victory_points={ 413 5 }
-			buildings={
-				infrastructure=3
-				arms_factory=1
+		owner = RUS
+		buildings = {
+			infrastructure = 3 #was: 5
+			industrial_complex = 1
+		}
+		victory_points = {
+			413 10
+		}
+		victory_points = {
+			11475 1
+		}
+		add_core_of = RUS
+		1919.1.1 = {
+			owner = SOV
+			controller = SOV
+			add_core_of = SOV
+			RUS = {
+				set_province_controller = 6591
+				set_province_controller = 3567
+				set_province_controller = 11412
+				set_province_controller = 3469
+				set_province_controller = 437
+				set_province_controller = 6494
+				set_province_controller = 3504
+				set_province_controller = 11475
+				set_province_controller = 9529
+				set_province_controller = 3566
+				set_province_controller = 6587
+			}
+		}
+		1926.1.1 = {
+			owner = SOV
+			controller = SOV
+		}
+		1936.1.1 = {
+			buildings = {
+				arms_factory = 1
+				synthetic_refinery = 1 #NSB
+			}
+		}
+		1939.1.1 = {
+			buildings = {
+				9448 = {
+					air_facility = 1
 				}
 			}
-		buildings={
-			infrastructure=3
-			industrial_complex=1
-			}
-		1919.1.1 = {
-            owner = SOV
-            add_core_of = SOV
-        }
 		}
 	}
+
+	provinces={
+		413 437 510 3469 3504 3527 3566 3567 6428 6477 6494 6553 6587 6591 9448 9529 9552 11396 11412 11475 11540 
+	}
+
+	local_supplies=9.0 
+}

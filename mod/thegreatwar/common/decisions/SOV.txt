@@ -1,28 +1,94 @@
-SOV_CustomDecision = {
+political_actions = {
+
 	SOV_move_capital_to_moscow = {
-		available = {
+
+		allowed = {
 			original_tag = SOV
-			owns_state = 219
-			has_full_control_of_state = 219
+		}
+
+		cost = 10
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 219
+			}
+		}
+
+		visible = {
+			219 = {
+				is_capital = no
+			}
+		}
+
+		available = {
+			controls_state = 219
+			219 = {
+				is_capital = no
+			}
 		}
 
 		ai_will_do = {
-			factor = 0
-			modifier = {
-				has_government = communism
+			base = 5
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			set_capital = { state = 219 }
+		}
+	}
+
+}
+
+foreign_politics = {
+
+	SOV_coup_chukotka = {
+
+		icon = GFX_decision_infiltrate_state
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		cost = 70
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 822
+			}
+		}
+
+		visible = {
+			country_exists = CKK
+			CKK = {
+				controls_state = 822
+			}
+		}
+
+		available = {
+			country_exists = CKK
+			CKK = {
+				controls_state = 822
 				NOT = {
-					owns_state = 219
-					has_full_control_of_state = 219
+					has_government = communism
 				}
-				factor = 1
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 30
+				is_neighbor_of = CKK
 			}
 		}
 
 		fire_only_once = yes
 
 		complete_effect = {
-			SOV = {
-				set_capital = { state = 219 }
+			declare_war_on = {
+				target = CKK
+				type = topple_government
 			}
 		}
 	}

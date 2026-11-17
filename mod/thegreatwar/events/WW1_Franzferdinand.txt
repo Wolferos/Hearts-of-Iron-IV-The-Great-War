@@ -20,12 +20,12 @@ news_event = {
 		#country_exists = SER
 		SER = {
 			exists = yes
-			is_puppet = no
+			is_subject = no
 			has_war = no
 		}
 		GER = {
 			exists = yes
-			is_puppet = no
+			is_subject = no
 		}
 		AUH = {
 			has_war = no
@@ -43,20 +43,20 @@ news_event = {
 			if = {
 				limit = {
 					country_exists = HUN
-					HUN = {
-						kill_country_leader = yes
-						recruit_character = AUH_karl_i
-						promote_character = AUH_karl_i
-						# create_country_leader = {
-						# 	name = "Karl I"
-						# 	desc = AUH_karl_i_DESC
-						# 	picture = "gfx/hoi4tgw_portraits/AUH/country_leaders/AUH_karl_i.dds"
-						# 	expire = "1935.1.1"
-						# 	ideology = autocracy
-						# 	traits = {
-						# 	}
-						# }
-					}
+				}
+				HUN = {
+					kill_country_leader = yes
+					recruit_character = AUH_karl_i
+					promote_character = AUH_karl_i
+					# create_country_leader = {
+					# 	name = "Karl I"
+					# 	desc = AUH_karl_i_DESC
+					# 	picture = "gfx/hoi4tgw_portraits/AUH/country_leaders/AUH_karl_i.dds"
+					# 	expire = "1935.1.1"
+					# 	ideology = autocracy
+					# 	traits = {
+					# 	}
+					# }
 				}
 			}
 			SER = {
@@ -78,7 +78,7 @@ news_event = {
 					add_to_faction = SER
 				}
 				FRA = {
-					add_to_faction = MTN
+					add_to_faction = MNT
 				}
 			}
 			if = {
@@ -91,7 +91,7 @@ news_event = {
 					add_to_faction = SER
 				}
 				ENG = {
-					add_to_faction = MTN
+					add_to_faction = MNT
 				}
 			}
 		}
@@ -207,22 +207,22 @@ country_event = {
 		if = {
 			limit = {
 				country_exists = HUN
-				HUN = {
-					add_to_war = {
-						targeted_alliance = AUH
-						enemy = SER
-					}
+			}
+			HUN = {
+				add_to_war = {
+					targeted_alliance = AUH
+					enemy = SER
 				}
 			}
 		}
 		if = {
 			limit = {
 				country_exists = CRO
-				CRO = {
-					add_to_war = {
-						targeted_alliance = AUH
-						enemy = SER
-					}
+			}
+			CRO = {
+				add_to_war = {
+					targeted_alliance = AUH
+					enemy = SER
 				}
 			}
 		}
@@ -378,7 +378,7 @@ country_event = {
 			SER = {
 				dismantle_faction = yes
 			}
-			MTN = {
+			MNT = {
 				dismantle_faction = yes
 			}
 			GRE = {
@@ -403,13 +403,13 @@ country_event = {
 			}
 			if = {
 				limit = {
-					country_exists = MTN
+					country_exists = MNT
 					FRA = {
 						is_faction_leader = yes
 					}
 				}
 				FRA = {
-					add_to_faction = MTN
+					add_to_faction = MNT
 				}
 			}
 			if = {
@@ -425,13 +425,13 @@ country_event = {
 			}
 			if = {
 				limit = {
-					country_exists = MTN
+					country_exists = MNT
 					ENG = {
 						is_faction_leader = yes
 					}
 				}
 				ENG = {
-					add_to_faction = MTN
+					add_to_faction = MNT
 				}
 			}
 		}
@@ -455,7 +455,7 @@ country_event = {
 		hidden_effect = {
 			add_named_threat = {
 				threat = 30
-				name = "The Great War"
+				name = the_great_war_started
 			}
 			#GER = {
 			#	create_wargoal = {
@@ -510,7 +510,7 @@ country_event = {
 		hidden_effect = {
 			add_named_threat = {
 				threat = 30
-				name = "The Great War"
+				name = the_great_war_started
 			}
 			#GER = {
 			#	create_wargoal = {

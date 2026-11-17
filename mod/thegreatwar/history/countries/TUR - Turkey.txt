@@ -14,9 +14,23 @@ if = {
 	limit = {
 		has_start_date < 1919.01.01
 	}
-	puppet = HJZ 
+	set_autonomy = {
+		target = HJZ
+		autonomous_state = autonomy_integrated_puppet
+	}
+	set_autonomy = {
+		target = JBS
+		autonomous_state = autonomy_dominion
+	}
+	set_autonomy = {
+		target = ASR
+		autonomous_state = autonomy_integrated_puppet
+	}
+	set_autonomy = {
+		target = YEM
+		autonomous_state = autonomy_integrated_puppet
+	}
 }
-#puppet = YEM
 
 #-------------------------------------------------------
 
@@ -46,7 +60,7 @@ recruit_character = TUR_Djemal
 recruit_character = TUR_Abdulkerim
 recruit_character = TUR_Izzet
 recruit_character = TUR_Nihat
-recruit_character = TUR_Fevzi
+recruit_character = TUR_fevzi_cakmak_pasa
 recruit_character = TUR_Cevat
 recruit_character = TUR_Halil
 
@@ -73,6 +87,13 @@ recruit_character = TUR_ismail_enver
 recruit_character = TUR_huseyin_hilmi
 recruit_character = TUR_ahmed_izzet
 recruit_character = TUR_mustafa_ismet
+
+if = {
+	limit = {
+		has_start_date < 1911.1.1
+	}
+	country_event = { id = ww1_albania.6 days = 36 } # Albanian Insurrection!
+}
 
 
 set_technology = {
@@ -194,6 +215,7 @@ set_technology = {
 		limited_conscription
 		partial_economic_mobilisation
 		limited_exports
+		TUR_army_of_bygone_era_ns
 	}
 
 	create_equipment_variant={ name="Assari Tewfik Class" type=heavy_cruiser_1890 parent_version = 0 obsolete=yes upgrades={ ship_gun_upgrade=1 ship_armor_upgrade=4 ship_engine_upgrade=0 ship_reliability_upgrade=5           } }
@@ -210,8 +232,10 @@ set_technology = {
 }
 
 1914.1.1 = {
-	remove_unit_leader = 90013 # Mustafa Kemal Paşa #1910 (promoted -> Field Marshal)
-	recruit_character = TUR_mustafa_kemal_2
+	set_character_name = { # Mustafa Kemal Paşa #1910 (promoted -> Field Marshal)
+		character = TUR_mustafa_kemal
+		name = TUR_mustafa_kemal_pasa
+	}
 
 	oob = "TUR_1914"
 
@@ -288,8 +312,8 @@ set_technology = {
 		bonus_bertha1 = 1
 
 		# Land Doctrine
-		ww1_landdoctrine = 1
-		ww1_directfire = 1
+		#ww1_landdoctrine = 1
+		#ww1_directfire = 1
 
 		# Air
 		ww1_fighter1 = 1
@@ -300,14 +324,14 @@ set_technology = {
 			bba_ww1_zeppelin1 = 1
 
 		# Air Doctrine
-		ww1_airdoctrine = 1
-		ww1_airdoctrine_2 = 1
-		ww1_airdoctrine_3 = 1
+		#ww1_airdoctrine = 1
+		#ww1_airdoctrine_2 = 1
+		#ww1_airdoctrine_3 = 1
 
 		# Navy Doctrine
-		ww1_navaldoctrine = 1
-		ww1_navaldoctrine_2 = 1
-		ww1_navaldoctrine_3 = 1
+		#ww1_navaldoctrine = 1
+		#ww1_navaldoctrine_2 = 1
+		#ww1_navaldoctrine_3 = 1
 
 		# Engineering
 		electronic_mechanical_engineering = 1
@@ -352,11 +376,12 @@ set_technology = {
 }
 
 1919.1.1 = {
-	remove_unit_leader = 90013 # Mustafa Kemal
-	remove_unit_leader = 90014 # Mustafa Kemal 2 #1914 (in the Turkish National Movement)
-	remove_unit_leader = 90015 # Mustafa Kemal 3 (Country Leader ID)
-	remove_unit_leader = 90016 # Mustafa Kemal 4 (Country Leader ID)
-	remove_unit_leader = 90515 # Fevzi Çakmak (in the Turkish National Movement)
+	TUR_mustafa_kemal = { # Mustafa Kemal (in the Turkish National Movement)
+		set_nationality = TUK
+	}
+	TUR_fevzi_cakmak_pasa = { # Fevzi Çakmak (in the Turkish National Movement)
+		set_nationality = TUK
+	}
 	remove_unit_leader = 90138 # Hasan Tahsin (He died in Lausanne in 1918)
 	remove_unit_leader = 90147 # Otto Liman von Sanders (Arrested in Malta in February 1919, retired from the German army in 1919)
 
@@ -399,111 +424,111 @@ set_technology = {
 
 	set_technology = {
 
-        # Infantry
-        infantry_weapons = 1
-        ww1infantry_weapons1 = 1
-        ww1infantry_weapons2 = 1
-        ww1_infantry_equip1 = 1
-        ww1_infantry2_equip = 1
-        support_weapons = 1
-        support_weapons2 = 1
-        infantry_binoculars = 1
-        infantry_grenade = 1
-        motorised_infantry = 1
-        ww1_ambulance1 = 1
-        tech_mountaineers = 1
-        infantry_gasmask = 1
-        infantry_ww1_machinegun1 = 1
+		# Infantry
+		infantry_weapons = 1
+		ww1infantry_weapons1 = 1
+		ww1infantry_weapons2 = 1
+		ww1_infantry_equip1 = 1
+		ww1_infantry2_equip = 1
+		support_weapons = 1
+		support_weapons2 = 1
+		infantry_binoculars = 1
+		infantry_grenade = 1
+		motorised_infantry = 1
+		ww1_ambulance1 = 1
+		tech_mountaineers = 1
+		infantry_gasmask = 1
+		infantry_ww1_machinegun1 = 1
 
-        # Support
-        tech_support = 1
-        tech_engineers = 1
-        tech_recon = 1
-        tech_military_police = 1
-        tech_maintenance_company = 1
-        tech_field_hospital = 1
-        tech_logistics_company = 1
+		# Support
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
 
-        tech_signal_company = 1
+		tech_signal_company = 1
 
-        tech_engineers2 = 1
-        tech_recon2 = 1
-        tech_military_police2 = 1
-        tech_maintenance_company2 = 1
-        tech_field_hospital2 = 1
-        tech_logistics_company2 = 1
-        tech_signal_company2 = 1
+		tech_engineers2 = 1
+		tech_recon2 = 1
+		tech_military_police2 = 1
+		tech_maintenance_company2 = 1
+		tech_field_hospital2 = 1
+		tech_logistics_company2 = 1
+		tech_signal_company2 = 1
 
-        # Armor
-        gwtank=1 # 1910 Armored Car
-        ww1_armored_car_2 = 1
-        ww1_armored_car_3 = 1
+		# Armor
+		gwtank=1 # 1910 Armored Car
+		ww1_armored_car_2 = 1
+		ww1_armored_car_3 = 1
 
-        # Artillery
-        light_field_gun1 = 1
-        bonus_artillery1 = 1
-        heavy_field_gun1 = 1
-        bonus_bertha1 = 1
-        light_field_gun2 = 1
-        heavy_field_gun2 = 1
+		# Artillery
+		light_field_gun1 = 1
+		bonus_artillery1 = 1
+		heavy_field_gun1 = 1
+		bonus_bertha1 = 1
+		light_field_gun2 = 1
+		heavy_field_gun2 = 1
 
-        # Land Doctrine
-        ww1_landdoctrine = 1
-        ww1_directfire = 1
-        ww1_rifle_ammo = 1
-        ww1_long_march = 1
-        ww1_battlefield = 1
-        ww1_target = 1
+		# Land Doctrine
+		#ww1_landdoctrine = 1
+		#ww1_directfire = 1
+		#ww1_rifle_ammo = 1
+		#ww1_long_march = 1
+		#ww1_battlefield = 1
+		#ww1_target = 1
 
-        # Air
-        ww1_fighter1 = 1
-        ww1_fighter1b = 1
-        ww1_fighter2 = 1
-        ww1_fighter2b = 1
-        ww1_bomber1 = 1
-	        bba_ww1_fighter1 = 1
-	        bba_ww1_fighter1b = 1
-	        bba_ww1_fighter2 = 1
-	        bba_ww1_fighter2b = 1
-	        bba_ww1_bomber1 = 1
+		# Air
+		ww1_fighter1 = 1
+		ww1_fighter1b = 1
+		ww1_fighter2 = 1
+		ww1_fighter2b = 1
+		ww1_bomber1 = 1
+			bba_ww1_fighter1 = 1
+			bba_ww1_fighter1b = 1
+			bba_ww1_fighter2 = 1
+			bba_ww1_fighter2b = 1
+			bba_ww1_bomber1 = 1
 
-        # Air Doctrine
-        ww1_airdoctrine = 1
-        ww1_airdoctrine_2 = 1
-        ww1_airdoctrine_3 = 1
+		# Air Doctrine
+		#ww1_airdoctrine = 1
+		#ww1_airdoctrine_2 = 1
+		#ww1_airdoctrine_3 = 1
 
-        # Navy Doctrine
-        ww1_navaldoctrine = 1
-        ww1_navaldoctrine_2 = 1
-        ww1_navaldoctrine_3 = 1
+		# Navy Doctrine
+		#ww1_navaldoctrine = 1
+		#ww1_navaldoctrine_2 = 1
+		#ww1_navaldoctrine_3 = 1
 
-        # Engineering
-        electronic_mechanical_engineering = 1
-        mechanical_computing = 1
-        chemical_research = 1
-        tank_unlocker1 = 1
-        radio = 1
-        supertech1 = 1
-        tankaircraft1 = 1
-        torpedotech1 = 1
+		# Engineering
+		electronic_mechanical_engineering = 1
+		mechanical_computing = 1
+		chemical_research = 1
+		tank_unlocker1 = 1
+		radio = 1
+		supertech1 = 1
+		tankaircraft1 = 1
+		torpedotech1 = 1
 
-        # Industry
-        ww1_tools1 = 1
-        ww1_medicine1 = 1
-        ww1_fortification1 = 1
-        ww1_fortification2 = 1
-        ww1_tools2 = 1
-        ww1_tools3 = 1
-        ww1_camera1 = 1
-        ww1_industry1 = 1
-        ww1_industry2 = 1
-        ww1_medicine2 = 1
-        ww1_construction1 = 1
-        ww1_construction2 = 1
-        ww1_mining1 = 1
-        ww1_oil1 = 1
-        ww1_oil2 = 1
-        ww1_fortification3 = 1
-        ww1_fortification3b = 1
-    }
+		# Industry
+		ww1_tools1 = 1
+		ww1_medicine1 = 1
+		ww1_fortification1 = 1
+		ww1_fortification2 = 1
+		ww1_tools2 = 1
+		ww1_tools3 = 1
+		ww1_camera1 = 1
+		ww1_industry1 = 1
+		ww1_industry2 = 1
+		ww1_medicine2 = 1
+		ww1_construction1 = 1
+		ww1_construction2 = 1
+		ww1_mining1 = 1
+		ww1_oil1 = 1
+		ww1_oil2 = 1
+		ww1_fortification3 = 1
+		ww1_fortification3b = 1
+	}
 }

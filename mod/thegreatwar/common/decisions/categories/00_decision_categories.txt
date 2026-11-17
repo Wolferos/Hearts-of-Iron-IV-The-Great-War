@@ -13,9 +13,6 @@ propaganda_efforts = {
 }
 MTG_naval_treaties = {
 	picture = GFX_decision_cat_picture_naval_treaties
-	allowed = {
-		has_dlc = "Man the Guns"
-	}
 	visible = {
 		OR = {
 			has_naval_treaty_trigger = yes
@@ -37,7 +34,6 @@ war_measures = {
 	icon = generic_propaganda
 
 	visible = {
-		has_war = yes
 		has_war_with_non_exiled_country = yes  
 	}
 }
@@ -70,16 +66,6 @@ political_actions = {
 	allowed = {
 		always = yes
 	}
-
-	visible = {
-		if = {
-			limit = {
-				has_dlc = "By Blood Alone"
-			}
-			NOT = { original_tag = SWI }
-			NOT = { has_country_flag = SWI_can_use_political_actions }
-		}
-	}
 }
 
 foreign_influence = {
@@ -90,55 +76,7 @@ fascism_on_the_rise = {
 	icon = generic_fascism
 
 	allowed = {
-		NOT = {
-			AND = {
-				has_dlc = "Man the Guns"
-				OR = {
-					original_tag = USA
-					original_tag = MEX
-					original_tag = ENG
-				}
-			}
-			AND = {
-				has_dlc = "No Step Back"
-				OR = {
-					original_tag = EST
-					original_tag = LAT
-					original_tag = LIT
-					original_tag = POL
-				}
-			}
-			AND = {
-				has_dlc = "By Blood Alone"
-				OR = {
-					original_tag = SWI
-					original_tag = ITA
-				}
-			}
-		}
-	}
-	
-	visible = {
-		NOT = {
-			AND = {
-				original_tag = FIN
-				is_ai = yes
-				EST = { has_completed_focus = EST_national_pride_in_finland }
-			}
-		}
-		NOT = {
-			AND = {
-				has_dlc = "La Resistance"
-				POR = { has_completed_focus = POR_the_empire_of_brazil }
-				tag = BRA
-				has_government = neutrality
-				has_civil_war = yes
-				AND = { #Already committed to monarchism
-					has_country_flag = POR_brazil_supports_monarchism_flag
-					has_cosmetic_tag = EOB_empire_brazil_neutrality
-				}
-			}
-		}
+		always = yes
 	}
 }
 
@@ -146,25 +84,7 @@ democratic_on_the_rise = {
 	icon = generic_democracy
 
 	allowed = {
-		NOT = {
-			AND = {
-				has_dlc = "No Step Back"
-				OR = {
-					original_tag = EST
-					original_tag = LAT
-					original_tag = LIT
-					original_tag = POL
-				}
-			}
-
-			AND = {
-				has_dlc = "By Blood Alone"
-				OR = {
-					original_tag = SWI
-					original_tag = ITA
-				}
-			}
-		}
+		always = yes
 	}
 	
 	#visible = {
@@ -177,29 +97,7 @@ communism_on_the_rise = {
 	icon = generic_communism
 
 	allowed = {
-		NOT = {
-			AND = {
-				has_dlc = "Man the Guns"
-				OR = {
-					original_tag = USA
-					original_tag = MEX
-					original_tag = ENG
-				}
-			}
-			AND = {
-				has_dlc = "No Step Back"
-				OR = {
-					original_tag = EST
-					original_tag = LAT
-					original_tag = LIT
-					original_tag = POL
-				}
-			}
-			AND = {
-				has_dlc = "By Blood Alone"
-				original_tag = ITA
-			}
-		}
+		always = yes
 	}
 	
 	#visible = {
@@ -236,31 +134,18 @@ economy_decisions = {
 
 prospect_for_resources = {
 	icon = generic_prospect_for_resources
-
-	allowed = {
-		has_dlc = "Waking the Tiger"
-	}
 }
 
 special_projects = {
 	
 	icon = generic_prospect_for_resources
-
-	allowed = {
-		has_dlc = "Waking the Tiger"
-	}
 }
 
 governments_in_exile = {
 	
 	icon = generic_formable_nations
 	picture = GFX_decision_cat_picture_government_in_exile
-	allowed = {
-		OR = {
-			has_dlc = "Man the Guns"
-			has_dlc = "By Blood Alone"
-		}
-	}
+
 	priority = 7
 }
 
@@ -268,12 +153,7 @@ category_exile_forces = {
 	
 	icon = infiltration
 	picture = GFX_decision_cat_picture_government_in_exile
-	allowed = {
-		OR = {
-			has_dlc = "Man the Guns"
-			has_dlc = "By Blood Alone"
-		}
-	}
+
 	priority = 6
 }
 category_test_decisions = {

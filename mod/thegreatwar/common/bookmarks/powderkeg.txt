@@ -3,18 +3,32 @@ bookmarks = {
 	bookmark = {
 		name = "POWDERKEG_NAME"
 		desc = "POWDERKEG_DESC"
-		date = 1910.5.1.1
+		date = 1910.5.1.12
 		picture = "GFX_select_date_1910"
 		default_country = "GER"
 		default = yes
 
-		"FRA" = {
+		filters = { continent } # was new_content as well
+		# filters can also contain 'label'
+		# in that case the countries below can have 'label = { label_1 }' or 'label = { label_1 label_2 }'
+		# all these labels will be gathered and displayed as filter buttons
+
+		# sort_unplayed_first = no            # defaults to yes: countries with unplayed content are listed first
+		# include_majors_in_minor_list = no   # defaults to yes: when a filter is active, majors also show in the mini list
+		# apply_filter_to_majors = yes        # defaults to no: when yes, the major row also respects the filter (only majors matching it are shown)
+		# apply_filter_to_other_country = yes # defaults to no: by default the "other" (---) entry is always shown; when yes it respects the filter too
+		# label_order = { label_1 label_2 }   # optional: forces the label filter button order; a warning is logged for
+		#                                     # any label used by a country that is missing from this list
+		# scrollable_country_list = yes       # defaults to no: scroll the minor list with its vertical scrollbar instead of the overflow dropdown
+
+		FRA = {
 			history = "FRA_POWDERKEG_DESC"
 			ideology = democratic
+			version = base_game
 			ideas = {
 				FRA_ww1_Revanchism
-				FRA_disjointed_government
 				ww1_Scramble_for_Africa
+				FRA_disjointed_government
 			}
 			focuses = {
 				FRA_ww1_triple_alliance
@@ -23,9 +37,10 @@ bookmarks = {
 			}
 		}
 
-		"TUR" = {
+		TUR = {
 			history = "TUR_POWDERKEG_DESC"
 			ideology = neutrality
+			version = base_game
 			ideas = {
 				ww1_Faith_Allah
 			}
@@ -36,12 +51,13 @@ bookmarks = {
 			}
 		}
 
-		"ENG" = {
+		ENG = {
 			history = "ENG_POWDERKEG_DESC"
 			ideology = democratic
+			version = base_game
 			ideas = {
-				stiff_upper_lip
 				ww1_Scramble_for_Africa
+				stiff_upper_lip
 			}
 			focuses = {
 				ENG_ww1_aviation_effort
@@ -50,11 +66,12 @@ bookmarks = {
 			}
 		}
 
-		"GER" = {
+		GER = {
 			history = "GER_POWDERKEG_DESC"
 			ideology = neutrality
+			version = base_game
 			ideas = {
-				#general_staff
+				German_staff_ww1
 				GER_ww1_North_German_Confederation
 				ww1_Scramble_for_Africa
 			}
@@ -65,9 +82,10 @@ bookmarks = {
 			}
 		}
 
-		"ITA" = {
+		ITA = {
 			history = "ITA_POWDERKEG_DESC"
 			ideology = democratic
+			version = base_game
 			ideas = {
 				ITA_ww1_Risorgimento
 				ww1_Scramble_for_Africa
@@ -79,27 +97,29 @@ bookmarks = {
 			}
 		}
 
-		"AUH" = {
+		AUH = {
 			history = "AUH_POWDERKEG_DESC"
 			ideology = neutrality
+			version = base_game
 			ideas = {
 				AUH_ww1_House_Habsburg_Lorraine
 				AUH_ww1_Multinational_State
 			}
 			focuses = {
+				AUH_ww1_balkans_policy
 				AUH_ww1_back_italy
 				AUH_ww1_military_advisors
-				AUH_ww1_aviation_effort
 			}
 		}
 
-		"RUS" = {
+		RUS = {
 			history = "RUS_POWDERKEG_DESC"
 			ideology = democratic
+			version = base_game
 			ideas = {
-			RUS_ww1_orthodox_church
-			RUS_ww1_tsushima_humiliation
-			RUS_ww1_mixed_railways
+				RUS_ww1_orthodox_church
+				RUS_ww1_tsushima_humiliation
+				RUS_ww1_mixed_railways
 			}
 			focuses = {
 				RUS_ww1_pro_fra
@@ -112,50 +132,61 @@ bookmarks = {
 			history = "OTHER_POWDERKEG_DESC"
 		}
 
-		# Minors ####
+		#### Minors ####
 
-		"USA" = {
+		USA = {
 			minor = yes
 			history = "USA_POWDERKEG_DESC"
 			ideology = democratic
+			version = base_game
 			ideas = {
 				USA_ww1_us_war_department
+				neutrality_idea
+				home_of_the_free
 			}
 			focuses = {
 				USA_ww1_MexicanRevolution
+				USA_ww1_SanctionJapanKorea
+				USA_ww1_UnderwoodTariffAct
 			}
 		}
 
-		"SER" = {
+		SER = {
 			minor = yes
 			history = "SER_POWDERKEG_DESC"
 			ideology = democratic
+			version = base_game
 			ideas = {
 				SER_ww1_zduhac
 				SER_ww1_blackhand
 			}
 			focuses = {
 				SER_first_balkan
+				SER_second_balkan
+				SER_ww1_DismantleSecretOrganizations
 			}
 		}
 
-		"BUL" = {
+		BUL = {
 			minor = yes
 			history = "BUL_POWDERKEG_DESC"
 			ideology = neutrality
+			version = base_game
 			ideas = {
 
 			}
 			focuses = {
 				BUL_ww1_balkan_league
 				BUL_first_balkan
+				BUL_second_balkan
 			}
 		}
 
-		"BEL" = {
+		BEL = {
 			minor = yes
 			history = "BEL_POWDERKEG_DESC"
 			ideology = democratic
+			version = base_game
 			ideas = {
 				ww1_idea_1839_agreement
 				ww1_Scramble_for_Africa
@@ -167,10 +198,11 @@ bookmarks = {
 			}
 		}
 
-		"GRE" = {
+		GRE = {
 			minor = yes
 			history = "GRE_POWDERKEG_DESC"
 			ideology = neutrality
+			version = base_game
 			ideas = {
 
 			}
@@ -179,10 +211,11 @@ bookmarks = {
 			}
 		}
 
-		"ROM" = {
+		ROM = {
 			minor = yes
 			history = "ROM_POWDERKEG_DESC"
 			ideology = democratic
+			version = base_game
 			ideas = {
 
 			}
@@ -191,53 +224,61 @@ bookmarks = {
 			}
 		}
 
-		"JAP" = {
+		JAP = {
 			minor = yes
 			history = "JAP_POWDERKEG_DESC"
 			ideology = neutrality
+			version = base_game
 			ideas = {
 				state_shintoism
+				JAP_zaibatsus
 			}
 			focuses = {
 				JAP_ww1_Japan_Korea_Treaty
 				JAP_ww1_Xinhai_Revolution_Opportunity
+				JAP_ww1_Celebrate_Tsushima
 			}
 		}
 		
-		"SPR" = {
+		SPR = {
 			minor = yes
 			history = "SPR_POWDERKEG_DESC"
 			ideology = neutrality
+			version = base_game
 			ideas = {
-				SPR_ww1_idea_generacion98
-				SPR_ww1_idea_industria
 				SPR_ww1_idea_tiempos
+				SPR_ww1_idea_industria
+				SPR_ww1_idea_generacion98
 			}
 			focuses = {
-				SPR_ww1_alfonsoxiii
+				SPR_ww1_lasemanatragica
 				SPR_ww1_unanuevaflota
 				SPR_ww1_africanismo
 			}
 		}
 
-		"MEX" = {
+		MEX = {
 			minor = yes
 			history = "MEX_POWDERKEG_DESC"
 			ideology = neutrality
+			version = base_game
 			ideas = {
 				MEX_ww1_mexico_prerevolution
 			}
 			focuses = {
 				mex_support_revolucionary_forces
+				MEX_ww1_support_diaz
+				mex_ww1_2nd_Mexican_American_war
 			}
 		}
 
-		"HOL" = {
+		HOL = {
 			minor = yes
 			history = "HOL_POWDERKEG_DESC"
 			ideology = democratic
+			version = base_game
 			ideas = {
-
+				neutrality_idea
 			}
 			focuses = {
 				HOL_ww1_ger_exchange_plan
@@ -245,10 +286,12 @@ bookmarks = {
 				HOL_Netherland_first
 			}
 		}
-		"QIN" = {
+
+		QIN = {
 			minor = yes
 			history = "QIN_POWDERKEG_DESC"
 			ideology = neutrality
+			version = base_game
 			ideas = {
 
 			}
@@ -256,10 +299,12 @@ bookmarks = {
 
 			}
 		}
-		"SWE" = {
+
+		SWE = {
 			minor = yes
 			history = "SWE_POWDERKEG_DESC"
 			ideology = democratic
+			version = base_game
 			ideas = {
 				neutrality_idea
 				SWE_ww1_idea_russophobia
@@ -267,22 +312,41 @@ bookmarks = {
 			focuses = {
 				SWE_ww1_conquer_finland
 				SWE_ww1_scandinavian_defence_union
+				SWE_ww1_boden_fortressIII
 			}
 		}
-		"CAN"={
+
+		CAN = {
 			minor = yes
 			history = "CAN_POWDERKEG_DESC"
 			ideology = democratic
+			version = base_game
 			ideas = {
 				CAN_idea_quebec_tension
 				CAN_broken_economy
-				CAN_broken_infrastructure
 				CAN_broken_industry
 			}
 			focuses = {
 				CAN_political
 				CAN_Americanism
 				CAN_kingdom_own
+			}
+		}
+
+		JBS = {
+			minor = yes
+			history = "JBS_POWDERKEG_DESC"
+			ideology = neutrality
+			version = base_game
+			label = { new_content }
+			ideas = {
+				ww1_Faith_Allah
+				SAU_tribalism
+			}
+			focuses = {
+				JBS_attack_nejd
+				JBS_get_rif_of_turkish_yoke
+				SAU_inflationary_policies
 			}
 		}
 

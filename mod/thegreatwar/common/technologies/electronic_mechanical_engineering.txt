@@ -463,19 +463,26 @@ technologies = {
 
 	
 	radio_detection = {
+		allow = {
+	 		ROOT = {
+				is_special_project_completed = sp:sp_air_radar
+			}
+		}
 
-		# 
 		enable_building = {
 			building = radar_station
 			level = 1
 		}
 		coordination_bonus = 0.01
 		path = {
-			leads_to_tech = decimetric_radar 
+			leads_to_tech = cavity_magnatron 
 			research_cost_coeff = 1
 		}
-		
-		research_cost = 1.5
+		#enable_equipment_modules = {
+		#	ship_radar_1
+		#	radio_navigation_1
+		#}
+		research_cost = 1.75
 		start_year = 1936
 		
 		folder = {
@@ -484,36 +491,60 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 1
+			factor = 0.1
 		}
 		
 		categories = {
 			electronics
 			radar_tech
 		}
+
 	}
 	
-	decimetric_radar = {
+	cavity_magnatron = { #was decimetric radar
 
 		# can build radars/radar boost in air/sea combat depends on radar level
-		
-		path = {
-			leads_to_tech = improved_decimetric_radar 
-			research_cost_coeff = 1
+		allow = {
+	 		ROOT = {
+				is_special_project_completed = sp:sp_air_radar
+			}
 		}
+
+		is_special_project_tech = yes
+		
 		coordination_bonus = 0.01
-		research_cost = 1.5
+		research_cost = 1.25
 		start_year = 1938
 		enable_equipment_modules = { 
-			ship_radar_1
+			ship_radar_2
+			
 		}
+		
 		folder = {
 			name = electronics_folder
 			position = { x = -2 y = 16 }
 		}
+
+		special_project_specialization = { specialization_air specialization_nuclear }
+
+		path = {
+			leads_to_tech = improved_cavity_magnatron 
+			research_cost_coeff = 1
+		}
 		
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 5
+			}
+			modifier = {
+				date < "1938.1.1"
+				factor = 0.5
+			}
 		}
 		
 		categories = {
@@ -527,7 +558,13 @@ technologies = {
 		}
 	}
 	
-	improved_decimetric_radar = {
+	improved_cavity_magnatron = {
+
+		allow = {
+	 		ROOT = {
+				is_special_project_completed = sp:sp_air_radar
+			}
+		}
 
 		# radar boost in air/sea combat depends on radar level
 		enable_building = {
@@ -538,12 +575,13 @@ technologies = {
 		enable_equipment_modules = { 
 			ship_radar_2
 		}
+
 		path = {
 			leads_to_tech = centimetric_radar 
 			research_cost_coeff = 1
 		}
 		
-		research_cost = 2
+		research_cost = 1.25
 		start_year = 1939
 		
 		folder = {
@@ -553,6 +591,17 @@ technologies = {
 		
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 5
+			}
+			modifier = {
+				date < "1939.1.1"
+				factor = 0.5
+			}
 		}
 		
 		categories = {
@@ -563,22 +612,32 @@ technologies = {
 	
 	centimetric_radar = {
 
+		allow = {
+	 		ROOT = {
+				is_special_project_completed = sp:sp_air_radar
+			}
+		}
 		# radar boost in air/sea combat depends on radar level
 		enable_building = {
 			building = radar_station
 			level = 4
 		}
-		coordination_bonus = 0.01
+		is_special_project_tech = yes
+		special_project_specialization = { specialization_air specialization_nuclear }
+		coordination_bonus = 0.02
+		static_anti_air_hit_chance_factor = 0.2
+
 		enable_equipment_modules = { 
-			ship_radar_3
-			tank_radio_3
+			air_air_radar_1
+			air_ground_radar_1
 		}
+		
 		path = {
-			leads_to_tech = improved_centimetric_radar 
+			leads_to_tech = phased_array 
 			research_cost_coeff = 1
 		}
 		
-		research_cost = 2.5
+		research_cost = 1.25
 		start_year = 1940
 		
 		folder = {
@@ -588,6 +647,17 @@ technologies = {
 		
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				factor = 4
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+			}
+			modifier = {
+				factor = 0.5
+				date < "1940.1.1"
+			}
 		}
 		
 		categories = {
@@ -596,23 +666,34 @@ technologies = {
 		}
 	}
 	
-	improved_centimetric_radar = {
-
+	phased_array = {
+		is_special_project_tech = yes
 		# radar boost in air/sea combat depends on radar level
+		allow = {
+			ROOT = {
+				is_special_project_completed = sp:sp_air_radar
+			}
+		}
 		enable_building = {
 			building = radar_station
 			level = 5
 		}
 		coordination_bonus = 0.01
-		
-		static_anti_air_hit_chance_factor = 0.2
+		enable_equipment_modules = {
+			air_air_radar_2
+			ship_radar_3
+		}
 
+		special_project_specialization = { specialization_air specialization_nuclear }
+
+		static_anti_air_hit_chance_factor = 0.2
+		
 		path = {
-			leads_to_tech = advanced_centimetric_radar 
+			leads_to_tech = monopulse_radar 
 			research_cost_coeff = 1
 		}
 		
-		research_cost = 2.5
+		research_cost = 1.25
 		start_year = 1941
 		
 		folder = {
@@ -622,6 +703,17 @@ technologies = {
 		
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 4
+			}
+			modifier = {
+				date < "1941.1.1"
+				factor = 0.5
+			}
 		}
 		
 		categories = {
@@ -630,18 +722,29 @@ technologies = {
 		}
 	}
 	
-	advanced_centimetric_radar = {
-
+	monopulse_radar = {
+		is_special_project_tech = yes
 		# radar boost in air/sea combat depends on radar level
+		allow = {
+			ROOT = {
+				is_special_project_completed = sp:sp_air_radar
+			}
+		}
 		enable_building = {
 			building = radar_station
 			level = 6
-		}		
+		}
 		coordination_bonus = 0.01
 		enable_equipment_modules = { 
 			ship_radar_4
+			air_ground_radar_2
+			
 		}
-		research_cost = 2.5
+		special_project_specialization = { specialization_air specialization_nuclear }
+		
+		static_anti_air_hit_chance_factor = 0.2
+		
+		research_cost = 1.25
 		start_year = 1942
 		
 		folder = {
@@ -651,6 +754,13 @@ technologies = {
 		
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 5
+			}
 		}
 		
 		categories = {
@@ -853,6 +963,11 @@ technologies = {
 
 	tankaircraft1 = {
 
+		enable_building = {
+			building = naval_facility
+			level = 1
+		}
+
 		army_bonus_air_superiority_factor = 0.01
 		category_all_armor = {
 			default_morale = 0.01
@@ -891,7 +1006,12 @@ technologies = {
 
 
 	dingfelder_engine1 = {
-	
+
+		enable_building = {
+			building = air_facility
+			level = 1
+		}
+
 		air_superiority_efficiency = 0.03
 				
 		research_cost = 1.0
@@ -913,6 +1033,11 @@ technologies = {
 
 	tanktrack1 = {
 	
+		enable_building = {
+			building = land_facility
+			level = 1
+		}
+
 		category_all_armor = {
 			breakthrough = 0.02
 		}
@@ -1409,10 +1534,10 @@ technologies = {
 			position = { x = 0 y = 12 }
 		}
 
-		folder = {
-			name = secret_weapons_folder
-			position = { x = 10 y = 0 }
-		}
+		#folder = {
+		#	name = secret_weapons_folder
+		#	position = { x = 10 y = 0 }
+		#}
 		
 		
 		ai_will_do = {
@@ -1540,6 +1665,16 @@ technologies = {
 
 		research_speed_factor = 0.01
 		
+		enable_building = {
+			building = nuclear_reactor_heavy_water
+			level = 1
+		}
+		enable_building = {
+			building = nuclear_facility
+			level = 1
+		}
+
+
 		path = {
 			leads_to_tech = nuclear_reactor 
 			research_cost_coeff = 1
@@ -1591,6 +1726,16 @@ technologies = {
 			building = nuclear_reactor
 			level = 1
 		}
+
+		IF = {
+			limit = {
+				has_dlc = "Gotterdammerung"
+			}
+			enable_building = {
+				building = commercial_nuclear_reactor
+			}
+		}
+		
 	}
 
 	nukes = {

@@ -1,29 +1,42 @@
-ARM_CustomDecision = {
-	ARM_claim_armenia_wargoal = {
-		available = {
+foreign_politics = {
+
+	ARM_retake_stolen_land = {
+
+		allowed = {
 			original_tag = ARM
-			date > 1920.9.1
+		}
+
+		visible = {
+			OR = {
+				has_global_flag = kis_treaty_of_versailles
+				has_global_flag = kis_second_treaty_frankfort
+			}
+		}
+
+		available = {
+			NOT = {
+				controls_state = 353
+				controls_state = 354
+			}
 		}
 
 		ai_will_do = {
-			factor = 1
+			factor = 0
 		}
 
 		fire_only_once = yes
 
 		complete_effect = {
 			# Wargoals
-			ARM = {
-				create_wargoal = {
-					target = TUR
-					type = take_state_focus
-					generator = { 353 354 }
-				}
-				create_wargoal = {
-					target = TUK
-					type = take_state_focus
-					generator = { 353 354 }
-				}
+			create_wargoal = {
+				target = 353.OWNER
+				type = take_state_focus
+				generator = { 353 }
+			}
+			create_wargoal = {
+				target = 354.OWNER
+				type = take_state_focus
+				generator = { 354 }
 			}
 		}
 	}

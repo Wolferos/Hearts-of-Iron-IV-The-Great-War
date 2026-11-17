@@ -1,0 +1,30 @@
+british_raj_gallipoli_distraction = {
+	enable = {
+		original_tag = RAJ
+		is_historical_focus_on = yes
+		has_global_flag = kis_franzferdinand_murdered
+		date > 1915.02.01
+		has_war_with = GER
+		has_war_with = TUR
+		has_war_with = PER
+		OR = {
+			is_subject_of = ENG
+			is_in_faction_with = ENG
+		}
+	}
+	abort = {
+		date > 1916.07.01
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = hoi4tgw_greater_iran_region
+		value = 75
+	}
+	
+	ai_strategy = {
+		type = invade
+		id = PER
+		value = 150	### The British Raj attempts to keep Persia busy while the Gallipoli campaign is ongoing so they can't help the Ottomans.
+	}
+}

@@ -1,29 +1,39 @@
-state = {
+state={
 	id=257
 	name="STATE_257" # Tambov
-	local_supplies = 1.0 manpower = 1779583
-	state_category=rural
-	provinces={ 232 275 313 340 367 396 471 3332 3389 9245 9312 9367 9422 11227 11296 11323 11351 11381 11436 }
+	manpower = 1779583
+	
+	state_category = rural
+	
 	resources={
-		wood=0
-		chromium=15
-		}
+		chromium=10
+	}
+
 	history={
-		owner=RUS
-		add_core_of=RUS
-		1936.1.1={ 
-			owner=SOV
-			add_core_of=SOV
-			buildings={
-				infrastructure=3
-				}
-			}
-		buildings={
-			infrastructure=3
-			}
+		owner = RUS
+		buildings = {
+			infrastructure = 2
+		}
+		add_core_of = RUS
+		victory_points = {
+			11351 1
+		}
+
 		1919.1.1 = {
-            owner = SOV
-            add_core_of = SOV
-        }
+			owner = SOV
+			controller = SOV
+			add_core_of = SOV
+			RUS = {
+				set_province_controller = 9422
+				set_province_controller = 471
+				set_province_controller = 313
+			}
 		}
 	}
+
+	provinces={
+		232 275 313 340 367 396 471 3332 3389 9245 9312 9367 9422 11227 11296 11323 11351 11381 11436 
+	}
+
+	local_supplies=0.0 
+}

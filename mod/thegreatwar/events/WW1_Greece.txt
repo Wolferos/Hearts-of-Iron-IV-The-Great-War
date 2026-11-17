@@ -54,66 +54,38 @@ country_event = {
 }
 #____________________________________________________________
 
-# GRE can attack TUR for the Greco-Turkish War
+# GRE can occupy Smyrna (without declaring war on the Ottoman Empire)
 #____________________________________________________________
 country_event = {
 	id = ww1_greece.6
 	title = ww1_greece.6.t
 	desc = ww1_greece.6.d
 	#picture = ww1_greece.6
+	fire_only_once = yes
+	mean_time_to_happen = {
+        days = 2
+    }
 
-	is_triggered_only = yes
+	trigger = {
+		tag = GRE
+		has_global_flag = kis_treaty_of_versailles
+		NOT = {
+			has_global_flag = occupation_of_smyrna
+		}
+        TUR = {
+            owns_state = 339 # Smyrna
+        }        
+	}
 	
 	# GRE Yes
 	option = {
 		name = ww1_greece.6.a
 		ai_chance = { factor = 100 }
-
-        if = {
-        	limit = {
-				TUR = {
-					exists = yes
-				}
-        	}
-        	GRE = {
-				declare_war_on = {
-					target = TUR
-					type = take_state
-					generator = { 340 341 342 347 }
-				}
-			}
-        }
-
-		if = {
-			limit = {
-				TUK = {
-					exists = yes
-				}
-			}
-			GRE = {
-				declare_war_on = {
-					target = TUK
-					type = take_state
-					generator = { 340 341 342 347 }
-				}				
-			}
-		}
-
-		if = {
-			limit = {
-				OR = {
-					country_exists = TUR
-					country_exists = TUK
-				}
-			}
-			add_named_threat = {
-				threat = 7
-				name = ww1_greece.6.t
-			}
-		}
+		set_global_flag = occupation_of_smyrna
 
 		hidden_effect = {
-			news_event = { days = 4 id = interwar_news.9 }
+			news_event = { hours = 3 random_hours = 3 id = interwar_news.9 }				# Occupation of Smyrna
+			news_event = { days = 4 id = interwar_news.8 }									# The Turkish National Movement, start the Greco-Turkish War
 		}
 	}
 

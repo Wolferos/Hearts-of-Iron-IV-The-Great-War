@@ -1,1 +1,2877 @@
-﻿
+﻿###########################
+# News Events
+###########################
+
+add_namespace = news
+
+# Baltic country annexed (base event baltic.5)
+news_event = {
+	id = news.69
+	title = news.69.t
+	desc = news.69.d
+	picture = GFX_news_event_064
+
+	major = yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = news.69_fired }
+	}
+
+	immediate = {
+		set_global_flag = news.69_fired
+	}
+	
+	option = {
+		name = news.69.a
+		trigger = {
+			has_government = communism
+		}
+	}
+
+	option = {
+		name = news.69.b
+		trigger = {
+			NOT = {
+				has_government = communism
+			}
+		}
+	}
+}
+
+#Baltic country puppeted (base event baltic.5)
+news_event = {
+	id = news.70
+	title = news.70.t
+	desc = news.70.d
+	picture = GFX_news_event_064
+
+	major = yes
+
+	trigger = {
+		NOT = { has_global_flag = news.70_fired }
+	}
+
+	immediate = {
+		set_global_flag = news.70_fired
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.69.a
+		trigger = {
+			has_government = communism
+		}
+	}
+
+	option = {
+		name = news.69.b
+		trigger = {
+			NOT = {
+				has_government = communism
+			}
+		}
+	}
+}
+
+#Hidden event to trigger actual annexation (base event baltic.5)
+news_event = {
+	id = news.71
+
+	hidden = yes
+
+	major = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { FROM = { tag = LIT } }
+		 	SOV = {
+		 		annex_country = {
+				target = LIT
+				transfer_troops = yes } 
+				add_named_threat = { threat = 2 name = soviet.35_threat_LIT }
+			}
+		}
+		if = {
+			limit = { FROM = { tag = FIN } }
+		 	SOV = { 
+		 		annex_country = {
+				target = FIN
+				transfer_troops = yes } 
+				add_named_threat = { threat = 5 name = soviet.35_threat_FIN }
+			}
+		}
+		if = {
+			limit = { FROM = { tag = EST } }
+		 	SOV = { 
+		 		annex_country = {
+				target = EST
+				transfer_troops = yes } 
+				add_named_threat = { threat = 2 name = soviet.35_threat_EST }
+			}
+		}
+		if = {
+			limit = { FROM = { tag = LAT } }
+		 	SOV = {
+		 		annex_country = {
+				target = LAT
+				transfer_troops = yes }
+				add_named_threat = { threat = 2 name = soviet.35_threat_LAT }
+			}
+		}
+	}
+}
+
+
+# The Fall of Warsaw (Germany)
+news_event = {
+	id = news.100
+	title = news.100.t
+	desc = news.100.d
+	picture = GFX_news_event_germany_victory
+	
+	major = yes
+	
+	trigger = {
+		10 = { is_controlled_by = GER }
+		10 = { is_owned_by = POL }
+		GER = { has_war_with = POL }
+		NOT = { has_global_flag = fall_of_warsaw_ger }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_warsaw_ger
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.100.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = POL
+			}
+		}
+	}
+	option = {
+		name = news.100.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = POL }
+	}
+}
+
+# The Fall of Paris (Germany)
+news_event = {
+	id = news.101
+	title = news.101.t
+	desc = news.101.d
+	picture = GFX_news_event_german_soldiers
+	
+	major = yes
+	
+	trigger = {
+		16 = { is_controlled_by = GER }
+		16 = { is_owned_by = FRA }
+		FRA = { has_war_with = GER }
+		NOT = { has_global_flag = fall_of_paris_ger }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_paris_ger
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.101.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = FRA
+			}
+		}
+	}
+	option = {
+		name = news.100.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = FRA }
+	}
+}
+
+# The Fall of London (Germany)
+news_event = {
+	id = news.102
+	title = news.102.t
+	desc = news.102.d
+	picture = GFX_news_event_soldiers_marching
+	
+	major = yes
+	
+	trigger = {
+		126 = { is_controlled_by = GER }
+		126 = { is_owned_by = ENG }
+		GER = { has_war_with = ENG }
+		NOT = { has_global_flag = fall_of_london_ger }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_london_ger
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = ENG
+			}
+		}
+	}
+	option = {
+		name = news.100.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = ENG }
+	}
+}
+
+# The Fall of Budapest (Generic)
+news_event = {
+	id = news.400
+	title = news.400.t
+	desc = news.400.desc
+	picture = GFX_news_event_generic_fall_of_budapest
+	
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+	
+	immediate = {
+		set_global_flag = fall_of_budapest_generic_flag
+	}
+	
+	option = {
+		name = news.400.a
+		trigger = {
+			NOT = {
+				TAG = HUN
+			}
+		}
+	}
+	option = {
+		name = news.400.b
+		trigger = { TAG = HUN }
+	}
+}
+
+# The Fall of Budapest (Soviets)
+news_event = {
+	id = news.401
+	title = news.401.t
+	desc = news.401.desc
+	picture = GFX_news_event_generic_soviet_occupation_of_budapest
+	
+	major = yes
+	
+	trigger = {
+		43 = { is_controlled_by = SOV }
+		43 = { is_owned_by = HUN }
+		SOV = { has_war_with = HUN }
+		NOT = { has_global_flag = fall_of_budapest_sov }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_budapest_sov
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.401.a
+		trigger = {
+			NOT = {
+				TAG = SOV
+				TAG = HUN
+			}
+		}
+	}
+	option = {
+		name = news.401.b
+		trigger = { TAG = SOV }
+	}
+	option = {
+		name = news.401.c
+		trigger = { TAG = HUN }
+	}
+}
+
+# The Fall of Leningrad
+news_event = {
+	id = news.103
+	title = news.103.t
+	desc = news.103.d
+	picture = GFX_news_event_soldiers_marching
+	
+	major = yes
+	
+	trigger = {
+		195 = { is_controlled_by = GER }
+		195 = { is_owned_by = SOV }
+		GER = { has_war_with = SOV }
+		NOT = { has_global_flag = fall_of_leningrad }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_leningrad
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = SOV
+			}
+		}
+	}
+	option = {
+		name = news.100.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.103.c
+		trigger = { TAG = SOV }
+	}
+}
+
+# The Fall of Kiev
+news_event = {
+	id = news.104
+	title = news.104.t
+	desc = news.104.d
+	picture = GFX_news_event_kiev_ruins
+	
+	major = yes
+	
+	trigger = {
+		202 = { is_controlled_by = GER }
+		202 = { is_owned_by = SOV }
+		SOV = { has_government = communism }
+		GER = { has_war_with = SOV }
+		NOT = { has_global_flag = fall_of_kiev }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_kiev
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = SOV
+			}
+		}
+	}
+	option = {
+		name = news.100.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.103.c
+		trigger = { TAG = SOV }
+	}
+}
+
+# The Fall of Stalingrad
+news_event = {
+	id = news.105
+	title = news.105.t
+	desc = {
+		text = news.105.d
+		trigger = {
+			#NOT = { SOV_is_opposition = yes }
+		}
+	}
+	#desc = {
+	#	text = news.105.d_alt
+	#	trigger = { SOV_is_opposition = yes }
+	#}
+
+	picture = GFX_news_event_soviet_soldiers_ruins
+	
+	major = yes
+	
+	trigger = {
+		217 = { is_controlled_by = GER }
+		217 = { is_owned_by = SOV }
+		GER = { has_war_with = SOV }
+		NOT = { has_global_flag = fall_of_stalingrad }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_stalingrad
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = SOV
+			}
+		}
+	}
+	option = {
+		name = news.100.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.103.c
+		trigger = { TAG = SOV }
+	}
+}
+
+# The Fall of Moscow
+news_event = {
+	id = news.106
+	title = news.106.t
+	desc = news.106.d
+	picture = GFX_news_event_soldiers_marching
+	
+	major = yes
+	
+	trigger = {
+		219 = { is_controlled_by = GER }
+		219 = { is_owned_by = SOV }
+		SOV = { has_war_with = GER }
+		NOT = { has_global_flag = fall_of_moscow }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_moscow
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.106.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = SOV
+			}
+		}
+	}
+	option = {
+		name = news.106.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.106.c
+		trigger = { TAG = SOV }
+	}
+}
+
+# The Fall of Sevastopol
+news_event = {
+	id = news.107
+	title = news.107.t
+	desc = news.107.d
+	picture = GFX_news_event_kiev_ruins
+	
+	major = yes
+	
+	trigger = {
+		137 = { is_controlled_by = GER }
+		137 = { is_owned_by = SOV }
+		GER = { has_war_with = SOV }
+		NOT = { has_global_flag = fall_of_sevastopol }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_sevastopol
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = SOV
+			}
+		}
+	}
+	option = {
+		name = news.100.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.103.c
+		trigger = { TAG = SOV }
+	}
+}
+
+# The Fall of Baku
+news_event = {
+	id = news.108
+	title = news.108.t
+	desc = news.108.d
+	picture = GFX_news_event_kiev_ruins
+	
+	major = yes
+	
+	trigger = {
+		229 = { is_controlled_by = GER }
+		229 = { is_owned_by = SOV }
+		GER = { has_war_with = SOV }
+		NOT = { has_global_flag = fall_of_baku }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_baku
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = SOV
+			}
+		}
+	}
+	option = {
+		name = news.100.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.103.c
+		trigger = { TAG = SOV }
+	}
+}
+
+# The Fall of Cairo (Germany)
+news_event = {
+	id = news.109
+	title = news.109.t
+	desc = news.109.d
+	picture = GFX_news_event_042
+	
+	major = yes
+	
+	trigger = {
+		446 = { is_controlled_by = GER }
+		446 = { is_owned_by = ENG }
+		GER = { has_war_with = ENG }
+		NOT = { has_global_flag = fall_of_cairo }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_cairo
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = ENG
+			}
+		}
+	}
+	option = {
+		name = news.100.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = ENG }
+	}
+}
+
+# The Fall of Washington
+news_event = {
+	id = news.110
+	title = news.110.t
+	desc = news.110.d
+	picture = GFX_news_event_soldiers_marching
+	
+	major = yes
+	
+	trigger = {
+		361 = { is_controlled_by = GER }
+		361 = { is_owned_by = USA }
+		GER = { has_war_with = USA }
+		NOT = { has_global_flag = fall_of_washington }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_washington
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = USA
+			}
+		}
+	}
+	option = {
+		name = news.100.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = USA }
+	}
+}
+
+# The Fall of New York
+news_event = {
+	id = news.111
+	title = news.111.t
+	desc = news.111.d
+	picture = GFX_news_event_soldiers_marching
+	
+	major = yes
+	
+	trigger = {
+		358 = { is_controlled_by = GER }
+		358 = { is_owned_by = USA }
+		GER = { has_war_with = USA }
+		NOT = { has_global_flag = fall_of_new_york }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_new_york
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = USA
+			}
+		}
+	}
+	option = {
+		name = news.100.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = USA }
+	}
+}
+
+# The Fall of Gibraltar (Germany)
+news_event = {
+	id = news.112
+	title = news.112.t
+	desc = news.112.d
+	picture = GFX_news_event_052
+	
+	major = yes
+	
+	trigger = {
+		118 = { is_controlled_by = GER }
+		118 = { is_owned_by = ENG }
+		GER = { has_war_with = ENG }
+		NOT = { has_global_flag = fall_of_gibraltar_ger }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_gibraltar_ger
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = ENG
+			}
+		}
+	}
+	option = {
+		name = news.100.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = ENG }
+	}
+}
+
+# The Fall of Cairo (Italy)
+news_event = {
+	id = news.113
+	title = news.109.t
+	desc = news.113.d
+	picture = GFX_news_event_italian_tank_desert
+	
+	major = yes
+	
+	trigger = {
+		446 = { is_controlled_by = ITA }
+		446 = { is_owned_by = ENG }
+		ITA = { has_war_with = ENG }
+		NOT = { has_global_flag = fall_of_cairo_ita }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_cairo_ita
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = ITA
+				TAG = ENG
+			}
+		}
+	}
+	option = {
+		name = news.113.b
+		trigger = { TAG = ITA }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = ENG }
+	}
+}
+
+# The Fall of Paris (Italy)
+news_event = {
+	id = news.114
+	title = news.101.t
+	desc = news.114.d
+	picture = GFX_news_event_soldiers_marching
+	
+	major = yes
+	
+	trigger = {
+		16 = { is_controlled_by = ITA }
+		16 = { is_owned_by = FRA }
+		ITA = { has_war_with = FRA }
+		NOT = { has_global_flag = fall_of_paris_ita }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_paris_ita
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = ITA
+				TAG = FRA
+			}
+		}
+	}
+	option = {
+		name = news.113.b
+		trigger = { TAG = ITA }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = FRA }
+	}
+}
+
+# The Fall of London (Italy)
+news_event = {
+	id = news.115
+	title = news.102.t
+	desc = news.115.d
+	picture = GFX_news_event_churchill_ruins
+	
+	major = yes
+	
+	trigger = {
+		126 = { is_controlled_by = ITA }
+		126 = { is_owned_by = ENG }
+		ITA = { has_war_with = ENG }
+		NOT = { has_global_flag = fall_of_london_ita }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_london_ita
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = ITA
+				TAG = ENG
+			}
+		}
+	}
+	option = {
+		name = news.113.b
+		trigger = { TAG = ITA }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = ENG }
+	}
+}
+
+# The Fall of Gibraltar (Italy)
+news_event = {
+	id = news.116
+	title = news.112.t
+	desc = news.116.d
+	picture = GFX_news_event_052
+	
+	major = yes
+	
+	trigger = {
+		118 = { is_controlled_by = ITA }
+		118 = { is_owned_by = ENG }
+		ITA = { has_war_with = ENG }
+		NOT = { has_global_flag = fall_of_gibraltar_ita }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_gibraltar_ita
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = ITA
+				TAG = ENG
+			}
+		}
+	}
+	option = {
+		name = news.113.b
+		trigger = { TAG = ITA }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = ENG }
+	}
+}
+
+# The Fall of Singapore
+news_event = {
+	id = news.117
+	title = news.117.t
+	desc = news.117.d
+	picture = GFX_news_event_038
+	
+	major = yes
+	
+	trigger = {
+		336 = { is_controlled_by = JAP }
+		OR = {
+			336 = {
+				is_owned_by = ENG
+			}
+			MAL = {
+				is_subject_of = ENG
+				owns_state = 336
+			}
+		}
+		JAP = { has_war_with = ENG }
+		NOT = { has_global_flag = fall_of_singapore }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_singapore
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = JAP
+				TAG = ENG
+				TAG = MAL
+			}
+		}
+	}
+	option = {
+		name = news.117.b
+		trigger = { TAG = JAP }
+	}
+	option = {
+		name = news.100.c
+		trigger = { 
+			OR = {
+				TAG = ENG 
+				TAG = MAL 
+			}
+		}
+	}
+}
+
+# The Fall of Pearl Harbor
+news_event = {
+	id = news.118
+	title = news.118.t
+	desc = news.118.d
+	picture = GFX_news_event_soldiers_marching
+	
+	major = yes
+	
+	trigger = {
+		629 = { is_controlled_by = JAP }
+		629 = { is_owned_by = USA }
+		JAP = { has_war_with = USA }
+		NOT = { has_global_flag = fall_of_pearl_harbor }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_pearl_harbor
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = JAP
+				TAG = USA
+			}
+		}
+	}
+	option = {
+		name = news.117.b
+		trigger = { TAG = JAP }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = USA }
+	}
+}
+
+# The Fall of Sydney
+news_event = {
+	id = news.119
+	title = news.119.t
+	desc = news.119.d
+	picture = GFX_news_event_047
+	
+	major = yes
+	
+	trigger = {
+		285 = { is_controlled_by = JAP }
+		285 = { is_owned_by = AST }
+		JAP = { has_war_with = AST }
+		NOT = { has_global_flag = fall_of_sydney }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_sydney
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = JAP
+				TAG = AST
+			}
+		}
+	}
+	option = {
+		name = news.117.b
+		trigger = { TAG = JAP }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = AST }
+	}
+}
+
+# The Fall of Los Angeles
+news_event = {
+	id = news.120
+	title = news.120.t
+	desc = news.120.d
+	picture = GFX_news_event_soldiers_marching
+	
+	major = yes
+	
+	trigger = {
+		378 = { is_controlled_by = JAP }
+		378 = { is_owned_by = USA }
+		JAP = { has_war_with = USA }
+		NOT = { has_global_flag = fall_of_los_angeles }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_los_angeles
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = JAP
+				TAG = USA
+			}
+		}
+	}
+	option = {
+		name = news.117.b
+		trigger = { TAG = JAP }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = USA }
+	}
+}
+
+# The Fall of Nanjing
+news_event = {
+	id = news.121
+	title = news.121.t
+	desc = news.121.d
+	picture = GFX_news_event_048
+	
+	major = yes
+	
+	trigger = {
+		613 = { is_controlled_by = JAP }
+		613 = { is_owned_by = CHI }
+		JAP = { has_war_with = CHI }
+		NOT = { has_global_flag = fall_of_nanjing }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_nanjing
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = JAP
+				TAG = CHI
+			}
+		}
+	}
+	option = {
+		name = news.117.b
+		trigger = { TAG = JAP }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = CHI }
+	}
+}
+
+# The Fall of Vladivostok
+news_event = {
+	id = news.122
+	title = news.122.t
+	desc = news.122.d
+	picture = GFX_news_event_050
+	
+	major = yes
+	
+	trigger = {
+		408 = { is_controlled_by = JAP }
+		408 = { is_owned_by = SOV }
+		JAP = { has_war_with = SOV }
+		NOT = { has_global_flag = fall_of_vladivostok }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_vladivostok
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = JAP
+				TAG = SOV
+			}
+		}
+	}
+	option = {
+		name = news.117.b
+		trigger = { TAG = JAP }
+	}
+	option = {
+		name = news.103.c
+		trigger = { TAG = SOV }
+	}
+}
+
+# The Fall of Hong Kong
+news_event = {
+	id = news.123
+	title = news.123.t
+	desc = news.123.d
+	picture = GFX_news_event_040
+	
+	major = yes
+	
+	trigger = {
+		326 = { is_controlled_by = JAP }
+		326 = { is_owned_by = ENG }
+		JAP = { has_war_with = ENG }
+		NOT = { has_global_flag = fall_of_hong_kong }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_hong_kong
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = JAP
+				TAG = ENG
+			}
+		}
+	}
+	option = {
+		name = news.117.b
+		trigger = { TAG = JAP }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = ENG }
+	}
+}
+
+# The Fall of Manila
+news_event = {
+	id = news.124
+	title = news.124.t
+	desc = news.124.d
+	picture = GFX_news_event_039
+	
+	major = yes
+	
+	trigger = {
+		327 = { is_controlled_by = JAP }
+		327 = { is_owned_by = PHI }
+		JAP = { has_war_with = PHI }
+		NOT = { has_global_flag = fall_of_manila }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_manila
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = JAP
+				TAG = PHI
+				TAG = USA
+			}
+		}
+	}
+	option = {
+		name = news.117.b
+		trigger = { TAG = JAP }
+	}
+	option = {
+		name = news.100.c
+		trigger = { 
+			OR = {
+				TAG = PHI 
+				TAG = USA
+			}
+		}
+	}
+}
+
+# The Fall of Calcutta
+news_event = {
+	id = news.125
+	title = news.125.t
+	desc = news.125.d
+	picture = GFX_news_event_046
+	
+	major = yes
+	
+	trigger = {
+		431 = { is_controlled_by = JAP }
+		OR = {
+			431 = {
+				is_owned_by = ENG
+			}
+			RAJ = {
+				is_subject_of = ENG
+				owns_state = 431
+			}
+		}
+		JAP = { has_war_with = ENG }
+		NOT = { has_global_flag = fall_of_calcutta }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_calcutta
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = JAP
+				TAG = ENG
+				TAG = RAJ
+			}
+		}
+	}
+	option = {
+		name = news.117.b
+		trigger = { TAG = JAP }
+	}
+	option = {
+		name = news.100.c
+		trigger = { 
+			OR = {
+				TAG = ENG 
+				TAG = RAJ 
+			}
+		}
+	}
+}
+
+# The Fall of New Delhi
+news_event = {
+	id = news.126
+	title = news.126.t
+	desc = news.126.d
+	picture = GFX_news_event_041
+	
+	major = yes
+	
+	trigger = {
+		439 = { is_controlled_by = JAP }
+		OR = {
+			439 = {
+				is_owned_by = ENG
+			}
+			RAJ = {
+				is_subject_of = ENG
+				owns_state = 439
+			}
+		}
+		JAP = { has_war_with = ENG }
+		NOT = { has_global_flag = fall_of_new_delhi }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_new_delhi
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = JAP
+				TAG = ENG
+				TAG = RAJ
+			}
+		}
+	}
+	option = {
+		name = news.117.b
+		trigger = { TAG = JAP }
+	}
+	option = {
+		name = news.100.c
+		trigger = { 
+			OR = {
+				TAG = ENG 
+				TAG = RAJ 
+			}
+		}
+	}
+}
+
+# The Fall of the Panama Canal
+news_event = {
+	id = news.127
+	title = news.127.t
+	desc = news.127.d
+	picture = GFX_news_event_soldiers_marching
+	
+	major = yes
+	
+	trigger = {
+		685 = { is_controlled_by = JAP }
+		685 = { is_owned_by = USA }
+		JAP = { has_war_with = USA }
+		NOT = { has_global_flag = fall_of_panama }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_panama
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = JAP
+				TAG = USA
+			}
+		}
+	}
+	option = {
+		name = news.117.b
+		trigger = { TAG = JAP }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = USA }
+	}
+}
+
+# The Fall of Berlin (USA)
+news_event = {
+	id = news.128
+	title = news.128.t
+	desc = news.128.d
+	picture = GFX_news_event_german_reichstag_ruins
+	
+	major = yes
+	
+	trigger = {
+		64 = { is_controlled_by = USA }
+		64 = { is_owned_by = GER }
+		USA = { has_war_with = GER }
+		NOT = { has_global_flag = fall_of_berlin_usa }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_berlin_usa
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.139.a
+		trigger = {
+			NOT = {
+				TAG = USA
+				TAG = GER
+			}
+		}
+	}
+	option = {
+		name = news.128.b
+		trigger = { TAG = USA }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = GER }
+	}
+}
+
+# The Fall of Berlin (Britain)
+news_event = {
+	id = news.129
+	title = news.128.t
+	desc = news.129.d
+	picture = GFX_news_event_054
+	
+	major = yes
+	
+	trigger = {
+		64 = { is_controlled_by = ENG }
+		64 = { is_owned_by = GER }
+		ENG = { has_war_with = GER }
+		NOT = { has_global_flag = fall_of_berlin_eng }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_berlin_eng
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.139.a
+		trigger = {
+			NOT = {
+				TAG = ENG
+				TAG = GER
+			}
+		}
+	}
+	option = {
+		name = news.129.b
+		trigger = { TAG = ENG }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = GER }
+	}
+}
+
+# The Fall of Berlin (France)
+news_event = {
+	id = news.130
+	title = news.128.t
+	desc = news.130.d
+	picture = GFX_news_event_german_reichstag_ruins_02
+	
+	major = yes
+	
+	trigger = {
+		64 = { is_controlled_by = FRA }
+		64 = { is_owned_by = GER }
+		FRA = { has_war_with = GER }
+		NOT = { has_global_flag = fall_of_berlin_fra }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_berlin_fra
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = FRA
+				TAG = GER
+			}
+		}
+	}
+	option = {
+		name = news.130.b
+		trigger = { TAG = FRA }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = GER }
+	}
+}
+
+# The Fall of Berlin (Poland)
+news_event = {
+	id = news.131
+	title = news.128.t
+	desc = news.131.d
+	picture = GFX_news_event_soldiers_marching
+	
+	major = yes
+	
+	trigger = {
+		64 = { is_controlled_by = POL }
+		64 = { is_owned_by = GER }
+		POL = { has_war_with = GER }
+		NOT = { has_global_flag = fall_of_berlin_pol }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_berlin_pol
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = POL
+				TAG = GER
+			}
+		}
+	}
+	option = {
+		name = news.131.b
+		trigger = { TAG = POL }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = GER }
+	}
+}
+
+# The Fall of Rome (Allies)
+news_event = {
+	id = news.132
+	title = news.132.t
+	desc = news.132.d
+	picture = GFX_news_event_057
+	
+	major = yes
+	
+	trigger = {
+		OR = {
+			2 = { is_controlled_by = ENG }
+			2 = { is_controlled_by = USA }
+			2 = { is_controlled_by = AST }
+			2 = { is_controlled_by = CAN }
+			2 = { is_controlled_by = NZL }
+			2 = { is_controlled_by = SAF }
+		}
+		OR = {
+			2 = { is_owned_by = ITA }
+			2 = { is_owned_by = GER }
+		}
+		NOT = { has_global_flag = fall_of_rome_allies }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_rome_allies
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = ENG
+				TAG = USA
+				TAG = AST
+				TAG = CAN
+				TAG = NZL
+				TAG = SAF
+				TAG = ITA
+				TAG = GER
+			}
+		}
+	}
+	option = {
+		name = news.132.b
+		trigger = {
+			OR = {
+				TAG = ENG
+				TAG = USA
+				TAG = AST
+				TAG = CAN
+				TAG = NZL
+				TAG = SAF
+			}
+		}
+	}
+	option = {
+		name = news.100.c
+		trigger = {
+			OR = {
+				TAG = GER 
+				TAG = ITA
+			}
+		}
+	}
+}
+
+# The Fall of Rome (France)
+news_event = {
+	id = news.133
+	title = news.132.t
+	desc = news.133.d
+	picture = GFX_news_event_french_parade
+	
+	major = yes
+	
+	trigger = {
+		2 = { is_controlled_by = FRA }
+		2 = { is_owned_by = ITA }
+		FRA = { has_war_with = ITA }
+		NOT = { has_global_flag = fall_of_rome_fra }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_rome_fra
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = FRA
+				TAG = ITA
+			}
+		}
+	}
+	option = {
+		name = news.130.b
+		trigger = { TAG = FRA }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = ITA }
+	}
+}
+
+# The Liberation of Paris (Allies)
+news_event = {
+	id = news.134
+	title = news.134.t
+	desc = news.134.d
+	picture = GFX_news_event_051
+	
+	major = yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = liberation_of_paris }
+		has_global_flag = fall_of_france
+	}
+	
+	immediate = {
+		set_global_flag = liberation_of_paris
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = ENG
+				TAG = USA
+				TAG = AST
+				TAG = FRA
+				TAG = CAN
+				TAG = NZL
+				TAG = SAF
+				TAG = GER
+			}
+		}
+	}
+	option = {
+		name = news.145.a
+		trigger = { 
+			OR = {
+				TAG = ENG
+				TAG = USA
+				TAG = AST
+				TAG = FRA
+				TAG = CAN
+				TAG = NZL
+				TAG = SAF
+			}
+		}
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = GER }
+	}
+}
+
+# The Fall of Tokyo (USA)
+news_event = {
+	id = news.135
+	title = news.135.t
+	desc = news.135.d
+	picture = GFX_news_event_053
+	
+	major = yes
+	
+	trigger = {
+		282 = { is_controlled_by = USA }
+		282 = { is_owned_by = JAP }
+		USA = { has_war_with = JAP }
+		NOT = { has_global_flag = fall_of_tokyo_usa }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_tokyo_usa
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = USA
+				TAG = JAP
+			}
+		}
+	}
+	option = {
+		name = news.128.b
+		trigger = { TAG = USA }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = JAP }
+	}
+}
+
+# The Fall of Moscow (Allies)
+news_event = {
+	id = news.136
+	title = news.106.t
+	desc = news.136.d
+	picture = GFX_news_event_soldiers_marching
+	
+	major = yes
+	
+	trigger = {
+		OR = {
+			219 = { is_controlled_by = ENG }
+			219 = { is_controlled_by = USA }
+			219 = { is_controlled_by = AST }
+			219 = { is_controlled_by = CAN }
+			219 = { is_controlled_by = NZL }
+			219 = { is_controlled_by = SAF }
+			219 = { is_controlled_by = FRA }
+		}
+		219 = { is_owned_by = SOV }
+		NOT = { has_global_flag = fall_of_moscow_allies }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_moscow_allies
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = ENG
+				TAG = USA
+				TAG = AST
+				TAG = CAN
+				TAG = NZL
+				TAG = SAF
+				TAG = SOV
+			}
+		}
+	}
+	option = {
+		name = news.132.b
+		trigger = { 
+			OR = {
+				TAG = ENG
+				TAG = USA
+				TAG = AST
+				TAG = CAN
+				TAG = NZL
+				TAG = SAF
+			}
+		}
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = SOV }
+	}
+}
+
+# The Liberation of London (USA)
+news_event = {
+	id = news.137
+	title = news.137.t
+	desc = news.137.d
+	picture = GFX_news_event_061
+	
+	major = yes
+	is_triggered_only = yes 
+	trigger = {
+		NOT = { has_global_flag = liberation_of_london }
+		has_global_flag = fall_of_london_ger
+	}
+	
+	immediate = {
+		set_global_flag = liberation_of_london
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = USA
+				TAG = GER
+			}
+		}
+	}
+	option = {
+		name = news.128.b
+		trigger = { TAG = USA }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = GER }
+	}
+}
+
+# The Fall of Warsaw (USSR)
+news_event = {
+	id = news.138
+	title = news.100.t
+	desc = news.138.d
+	picture = GFX_news_event_067
+	
+	major = yes
+	
+	trigger = {
+		10 = { is_controlled_by = SOV }
+		10 = { is_owned_by = POL }
+		SOV = { has_war_with = POL }
+		NOT = { has_global_flag = fall_of_warsaw_sov }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_warsaw_sov
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.100.a
+		trigger = {
+			NOT = {
+				TAG = SOV
+				TAG = POL
+			}
+		}
+	}
+	option = {
+		name = news.138.b
+		trigger = { TAG = SOV }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = POL }
+	}
+}
+
+# The Liberation of Warsaw
+news_event = {
+	id = news.139
+	title = news.139.t
+	desc = news.139.d
+	picture = GFX_news_event_polish_resistance_warsaw
+	
+	major = yes
+	is_triggered_only = yes
+	trigger = {
+		NOT = { has_global_flag = liberation_of_warsaw }
+		has_global_flag = fall_of_warsaw_ger
+	}
+	
+	immediate = {
+		set_global_flag = liberation_of_warsaw
+	}
+	
+	option = {
+		name = news.139.a
+		trigger = {
+			NOT = {
+				TAG = SOV
+				TAG = GER
+			}
+		}
+	}
+	option = {
+		name = news.138.b
+		trigger = { TAG = SOV }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = GER }
+	}
+}
+
+# The Fall of Berlin (USSR)
+news_event = {
+	id = news.140
+	title = news.128.t
+	desc = news.140.d
+	picture = GFX_news_event_german_reichstag_graffiti_ruins
+	
+	major = yes
+	
+	trigger = {
+		64 = { is_controlled_by = SOV }
+		64 = { is_owned_by = GER }
+		GER = { has_war_with = SOV }
+		NOT = { has_global_flag = fall_of_berlin_sov }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_berlin_sov
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.140.a
+		trigger = {
+			NOT = {
+				TAG = SOV
+				TAG = GER
+			}
+		}
+	}
+	option = {
+		name = news.140.b
+		trigger = { TAG = SOV }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = GER }
+	}
+}
+
+# The Fall of Rome (USSR)
+news_event = {
+	id = news.141
+	title = news.132.t
+	desc = news.141.d
+	picture = GFX_news_event_063
+	
+	major = yes
+	
+	trigger = {
+		2 = { is_controlled_by = SOV }
+		2 = { is_owned_by = ITA }
+		SOV = { has_war_with = ITA }
+		NOT = { has_global_flag = fall_of_rome_sov }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_rome_sov
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.140.a
+		trigger = {
+			NOT = {
+				TAG = SOV
+				TAG = ITA
+			}
+		}
+	}
+	option = {
+		name = news.138.b
+		trigger = { TAG = SOV }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = ITA }
+	}
+}
+
+# The Fall of Paris (USSR)
+news_event = {
+	id = news.142
+	title = news.101.t
+	desc = news.142.d
+	picture = GFX_news_event_064
+	
+	major = yes
+	
+	trigger = {
+		16 = { is_controlled_by = SOV }
+		16 = { is_owned_by = FRA }
+		SOV = { has_war_with = FRA }
+		NOT = { has_global_flag = fall_of_paris_sov }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_paris_sov
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.140.a
+		trigger = {
+			NOT = {
+				TAG = SOV
+				TAG = FRA
+			}
+		}
+	}
+	option = {
+		name = news.138.b
+		trigger = { TAG = SOV }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = FRA }
+	}
+}
+
+# The Liberation of Paris (USSR)
+news_event = {
+	id = news.143
+	title = news.134.t
+	desc = news.143.d
+	picture = GFX_news_event_073
+	
+	major = yes
+	
+	trigger = {
+		16 = { is_controlled_by = SOV }
+		16 = { is_owned_by = GER }
+		NOT = { has_global_flag = liberation_of_paris_sov }
+		has_global_flag = fall_of_france
+	}
+	
+	immediate = {
+		set_global_flag = liberation_of_paris_sov
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.143.a
+		trigger = {
+			NOT = {
+				TAG = SOV
+				TAG = GER
+			}
+		}
+	}
+	option = {
+		name = news.138.b
+		trigger = { TAG = SOV }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = GER }
+	}
+}
+
+# The Fall of London (USSR)
+news_event = {
+	id = news.144
+	title = news.102.t
+	desc = news.144.d
+	picture = GFX_news_event_063
+	
+	major = yes
+	
+	trigger = {
+		126 = { is_controlled_by = SOV }
+		126 = { is_owned_by = ENG }
+		SOV = { has_war_with = ENG }
+		NOT = { has_global_flag = fall_of_london_sov }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_london_sov
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.140.a
+		trigger = {
+			NOT = {
+				TAG = SOV
+				TAG = ENG
+			}
+		}
+	}
+	option = {
+		name = news.138.b
+		trigger = { TAG = SOV }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = ENG }
+	}
+}
+
+# The Liberation of London (USSR)
+news_event = {
+	id = news.145
+	title = news.137.t
+	desc = news.145.d
+	picture = GFX_news_event_063
+	
+	major = yes
+	
+	trigger = {
+		126 = { is_controlled_by = SOV }
+		126 = { is_owned_by = GER }
+		NOT = { has_global_flag = liberation_of_london_sov }
+		has_global_flag = fall_of_london_ger
+	}
+	
+	immediate = {
+		set_global_flag = liberation_of_london_sov
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = SOV
+				TAG = GER
+			}
+		}
+	}
+	option = {
+		name = news.138.b
+		trigger = { TAG = SOV }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = GER }
+	}
+}
+
+# The Fall of Tokyo (USSR)
+news_event = {
+	id = news.146
+	title = news.135.t
+	desc = news.146.d
+	picture = GFX_news_event_072
+	
+	major = yes
+	
+	trigger = {
+		282 = { is_controlled_by = SOV }
+		282 = { is_owned_by = JAP }
+		SOV = { has_war_with = JAP }
+		NOT = { has_global_flag = fall_of_tokyo_sov }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_tokyo_sov
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = SOV
+				TAG = JAP
+			}
+		}
+	}
+	option = {
+		name = news.138.b
+		trigger = { TAG = SOV }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = JAP }
+	}
+}
+
+# The Fall of Leningrad (Finland)
+news_event = {
+	id = news.147
+	title = news.103.t
+	desc = news.147.d
+	picture = GFX_news_event_056
+	
+	major = yes
+	
+	trigger = {
+		195 = { is_controlled_by = FIN }
+		195 = { is_owned_by = SOV }
+		SOV = { has_war_with = FIN }
+		NOT = { has_global_flag = fall_of_leningrad_fin }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_leningrad_fin
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = FIN
+				TAG = SOV
+			}
+		}
+	}
+	option = {
+		name = news.132.b
+		trigger = { TAG = FIN }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = SOV }
+	}
+}
+
+# The Fall of Tokyo (China)
+news_event = {
+	id = news.148
+	title = news.135.t
+	desc = news.148.d
+	picture = GFX_news_event_chinese_soldiers_march
+	
+	major = yes
+	
+	trigger = {
+		282 = { is_controlled_by = CHI }
+		282 = { is_owned_by = JAP }
+		JAP = { has_war_with = CHI }
+		NOT = { has_global_flag = fall_of_tokyo_chi }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_tokyo_chi
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = CHI
+				TAG = JAP
+			}
+		}
+	}
+	option = {
+		name = news.132.b
+		trigger = { TAG = CHI }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = JAP }
+	}
+}
+
+# The Fall of Gibraltar (Spain)
+news_event = {
+	id = news.149
+	title = news.112.t
+	desc = news.149.d
+	picture = GFX_news_event_052
+	
+	major = yes
+	
+	trigger = {
+		any_other_country = {
+			original_tag = SPR
+			controls_state = 118
+			has_war_with = ENG
+		}
+		118 = { is_owned_by = ENG }
+		NOT = {
+			AND = {
+				has_global_flag = spanish_civil_war
+				NOT = { has_global_flag = scw_over }
+			}
+		}
+		NOT = { has_global_flag = fall_of_gibraltar_spa }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_gibraltar_spa
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = { original_tag = SPR }
+			NOT = { tag = ENG }
+		}
+	}
+	option = {
+		name = news.132.b
+		trigger = { 
+			original_tag = SPR
+		}
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = ENG }
+	}
+}
+
+# Komet Sighted
+news_event = {
+	id = news.156
+	title = news.156.t
+	desc = news.156.d
+	picture = GFX_news_event_komet
+	
+	#major = yes
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = GER
+		is_special_project_completed = sp:sp_rocket_interceptor
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.156.a
+		add_stability = -0.01
+		custom_effect_tooltip = news.156.a.tt
+		add_stability = 0.01
+		custom_effect_tooltip = news.156.a.2.tt
+	}
+}
+
+# Faction Founded!
+news_event = {
+	id = news.159
+	title = news.159.t
+	desc = {
+		text = news.159.d_01
+		trigger = { FROM = { has_government = neutrality } }
+	}
+	desc = {
+		text = news.159.d_02
+		trigger = { FROM = { has_government = democratic } }
+	}
+	desc = {
+		text = news.159.d_03
+		trigger = { FROM = { has_government = fascism } }
+	}
+	desc = {
+		text = news.159.d_04
+		trigger = { FROM = { has_government = communism } }
+	}
+
+	picture = GFX_news_event_009
+	
+	major = yes
+
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			NOT = { tag = FROM }
+			NOT = { is_in_faction_with = FROM }
+		}
+		name = news.159.a
+		every_other_country = {
+			limit = { is_in_faction_with = FROM }
+			custom_effect_tooltip = news.159.tt
+		}
+	}
+	option = {
+		trigger = { tag = FROM }
+		name = news.159.b
+	}
+	option = {
+		trigger = {
+			NOT = { tag = FROM }
+			is_in_faction_with = FROM
+		}
+		name = news.159.c
+	}
+}
+
+# France bans communism
+news_event = {
+	id = news.161
+	title = news.161.t
+	desc = news.161.d
+	picture = GFX_news_event_worker_protests
+	
+	major = yes
+
+	is_triggered_only = yes
+	
+	option = {
+		trigger = { has_government = fascism }
+		name = news.161.a
+	}	
+	option = {
+		trigger = { has_government = communism }
+		name = news.161.b
+	}	
+	option = {
+		trigger = {
+			NOT = { has_government = fascism }
+			NOT = { has_government = communism }
+			NOT = { tag = FRA }
+		}
+		name = news.161.c
+	}	
+	option = {
+		trigger = { tag = FRA }
+		name = news.161.e
+	}
+}
+
+#FROM pursues nuclear technology
+news_event = {
+	id = news.174
+	title = news.174.t
+	picture = GFX_news_event_069
+	desc = news.174.d
+
+	major = yes
+
+	is_triggered_only = yes
+
+	#We should follow this development.
+	option = {
+		name = news.174.a
+		trigger = {
+			NOT = {
+				is_in_faction_with = FROM
+				has_war_with = FROM
+				tag = FROM
+			}
+		}
+	}
+
+	#Let us hope their research bears fruit.
+	option = {
+		name = news.174.b
+		trigger = {
+			is_in_faction_with = FROM
+			NOT = {
+				tag = FROM
+			}
+		}
+	}
+
+	#It will never amount to anything.
+	option = {
+		name = news.174.c
+		trigger = {
+			has_war_with = FROM
+		}
+	}
+
+	#We will conduct our research in secret.
+	option = {
+		name = news.174.e
+		trigger = {
+			tag = FROM
+		}
+	}
+}
+
+# GENERIC nation joins an Alliance
+news_event = {
+	id = news.289
+	title = news.289.t
+	picture = GFX_news_event_generic_sign_treaty3
+	desc = news.289.d
+
+	major = yes
+
+	is_triggered_only = yes
+
+	#Together we will prevail.
+	option = {
+		name = news.289.a
+		trigger = {
+			OR = {
+				has_country_flag = alliance_inviter@FROM
+				has_country_flag = alliance_applicant@FROM
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = alliance_inviter@FROM
+			clr_country_flag = alliance_applicant@FROM
+		}
+	}
+
+	#They prepare for what is coming.
+	option = {
+		name = news.289.b
+		trigger = {
+			NOT = { FROM = { has_war = yes } }
+			event_target:alliance_inviter = {
+				NOT = { has_war = yes }
+			}
+			NOT = {
+				any_allied_country = {
+					has_country_flag = alliance_applicant@FROM
+				}
+			}
+			AND = {
+				NOT = { has_country_flag = alliance_inviter@FROM }
+				NOT = { has_country_flag = alliance_applicant@FROM }
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = alliance_inviter@FROM
+			clr_country_flag = alliance_applicant@FROM
+		}
+	}
+
+	#It will not avail them!
+	option = {
+		name = news.289.c
+		trigger = {
+			any_enemy_country = {
+				OR = {
+					has_country_flag = alliance_inviter@FROM
+					has_country_flag = alliance_applicant@FROM
+				}
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = alliance_inviter@FROM
+			clr_country_flag = alliance_applicant@FROM
+		}
+	}
+
+	#The war escalates...
+	option = {
+		name = news.289.e
+		trigger = {
+			NOT = {
+				any_allied_country = {
+					OR = {
+						has_country_flag = alliance_inviter@FROM
+						has_country_flag = alliance_applicant@FROM
+					}
+				}
+				any_enemy_country = {
+					OR = {
+						has_country_flag = alliance_inviter@FROM
+						has_country_flag = alliance_applicant@FROM
+					}
+				}
+			}
+			event_target:alliance_inviter = {
+				has_war = yes
+			}
+			AND = {
+				NOT = { has_country_flag = alliance_inviter@FROM }
+				NOT = { has_country_flag = alliance_applicant@FROM }
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = alliance_inviter@FROM
+			clr_country_flag = alliance_applicant@FROM
+		}
+	}
+
+	#Our alliance grows stronger.
+	option = {
+		name = news.289.f
+		trigger = {
+			any_allied_country = {
+				OR = {
+					has_country_flag = alliance_inviter@FROM
+					has_country_flag = alliance_applicant@FROM
+				}
+			}
+			AND = {
+				NOT = { has_country_flag = alliance_inviter@FROM }
+				NOT = { has_country_flag = alliance_applicant@FROM }
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = alliance_inviter@FROM
+			clr_country_flag = alliance_applicant@FROM
+		}
+	}
+}
+
+# Humiliation in Africa
+news_event = {
+	id = news.337
+	title = news.337.title
+
+	desc = {
+		text = news.337.desc
+		trigger = {
+			ITA = {
+				NOT = {	owns_state = 550 } #ERITREA
+				NOT = {	owns_state = 559 } #SOMALILAND
+				NOT = {	owns_state = 792 } #JUBALAND hoi4tgw
+			}
+		}
+	}
+	desc = {
+		text = news.337.desc_some_states
+		trigger = {
+			ITA = {
+				NOT = {
+					AND = {
+						owns_state = 550 #ERITREA
+						owns_state = 559 #SOMALILAND
+						owns_state = 792 #JUBALAND hoi4tgw
+					}
+				}
+				count_triggers = {
+					amount = 1
+					owns_state = 550 #ERITREA
+					owns_state = 559 #SOMALILAND
+					owns_state = 792 #JUBALAND hoi4tgw
+				}
+			}
+		}
+	}
+	desc = {
+		text = news.337.desc_no_states
+		trigger = {
+			ITA = {
+				owns_state = 550 #ERITREA
+				owns_state = 559 #SOMALILAND
+				owns_state = 792 #JUBALAND hoi4tgw
+			}
+		}
+	}
+
+	picture = GFX_news_event_african_soldiers
+	
+	major = yes
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = humiliation_in_africa
+	}
+	
+	option = {
+		name = news.337.a
+		trigger = {
+			NOT = { tag = ITA }
+			NOT = { tag = ETH }
+			NOT = { has_government = fascism }
+		}
+	}
+	option = {
+		name = news.337.b
+		trigger = {
+			NOT = { tag = ITA }
+			NOT = { tag = ETH }
+			has_government = fascism
+		}
+	}
+	option = {
+		name = news.337.c
+		trigger = {
+			tag = ITA
+		}
+	}
+	option = {
+		name = news.337.d
+		trigger = {
+			tag = ETH
+		}
+	}
+}
+
+### Country reunited
+news_event = {
+	id = news.350
+	title = news.350.t
+	desc = news.350.desc
+	picture = GFX_news_event_generic_parliament
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.350.a
+		trigger = {
+			original_tag = ROOT
+			NOT = { has_government = ROOT }
+		}
+	}
+	option = {
+		name = news.350.b
+		trigger = {
+			original_tag = ROOT
+			has_government = ROOT
+		}
+	}
+	option = {
+		name = news.350.c
+		trigger = {
+			NOT = {
+				original_tag = ROOT
+			}
+		}
+	}
+}

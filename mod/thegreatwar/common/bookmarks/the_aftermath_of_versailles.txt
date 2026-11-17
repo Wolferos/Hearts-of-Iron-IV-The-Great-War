@@ -3,27 +3,44 @@ bookmarks = {
 	bookmark = {
 		name = "THE_AFTERMATH_OF_VERSAILLES_NAME"
 		desc = "THE_AFTERMATH_OF_VERSAILLES_DESC"
-		date = 1919.7.1.1
+		date = 1919.7.1.12
 		picture = "GFX_select_date_1919"
-		default_country = "POL"
+		default_country = "GER"
+		default = yes
+
+		filters = { continent } # was new_content as well
+		# filters can also contain 'label'
+		# in that case the countries below can have 'label = { label_1 }' or 'label = { label_1 label_2 }'
+		# all these labels will be gathered and displayed as filter buttons
+
+		# sort_unplayed_first = no            # defaults to yes: countries with unplayed content are listed first
+		# include_majors_in_minor_list = no   # defaults to yes: when a filter is active, majors also show in the mini list
+		# apply_filter_to_majors = yes        # defaults to no: when yes, the major row also respects the filter (only majors matching it are shown)
+		# apply_filter_to_other_country = yes # defaults to no: by default the "other" (---) entry is always shown; when yes it respects the filter too
+		# label_order = { label_1 label_2 }   # optional: forces the label filter button order; a warning is logged for
+		#                                     # any label used by a country that is missing from this list
+		# scrollable_country_list = yes       # defaults to no: scroll the minor list with its vertical scrollbar instead of the overflow dropdown
 
 		GER = {
 			history = GER_THE_AFTERMATH_OF_VERSAILLES_DESC
 			ideology = democratic
+			version = base_game
+			label = { new_content }
 			ideas = {
 				GER_interwar_spirit_BannedConscription
 				interwar_spirit_TheGreatWar_Loser
 			}
 			focuses = {
-				GER_interwar_beer_AntiSpartacists
-				GER_interwar_beer_HelpSovietAgainstPoland
-				GER_interwar_beer_hall_putsch
+				GER_int_crush_the_spartacists
+				GER_int_alte_kameraden
+				GER_int_beer_hall_putsch_succeeds
 			}
 		}
 
 		SOV = {
 			history = SOV_THE_AFTERMATH_OF_VERSAILLES_DESC
 			ideology = democratic
+			version = base_game
 			ideas = {
 				home_of_revolution
 				SOV_interwar_spirit_LeninRedArmy
@@ -38,19 +55,22 @@ bookmarks = {
 		RUS = {
 			history = RUS_THE_AFTERMATH_OF_VERSAILLES_DESC
 			ideology = democratic
+			version = base_game
+			label = { new_content }
 			ideas = {
 				RUS_ww1_orthodox_church
 			}
 			focuses = {
-				RUS_ww1_interwar_HonorRussianImperialFamily
-				RUS_ww1_interwar_TraitorVladimirovich
-				RUS_ww1_interwar_AlexanderIV
+				RUS_int_honor_the_imperial_family
+				RUS_int_disinherit_kirill_vladimirovich
+				RUS_int_tsar_michael_ii
 			}
 		}
 
 		POL = {
 			history = POL_THE_AFTERMATH_OF_VERSAILLES_DESC
 			ideology = democratic
+			version = base_game
 			ideas = {
 				POL_interwar_spirit_WielkopolskaUprising
 				POL_interwar_spirit_RuinedIndustry
@@ -64,6 +84,7 @@ bookmarks = {
 		TUR = {
 			history = TUR_THE_AFTERMATH_OF_VERSAILLES_DESC
 			ideology = democratic
+			version = base_game
 			ideas = {
 				ww1_Faith_Allah
 				interwar_spirit_TheGreatWar_Loser
@@ -75,10 +96,11 @@ bookmarks = {
 		TUK = {
 			history = TUK_THE_AFTERMATH_OF_VERSAILLES_DESC
 			ideology = neutrality
+			version = base_game
 			ideas = {
 				ww1_Faith_Allah
 				interwar_spirit_TheGreatWar_Loser
-				TUK_interwar_spirit_TurkishNationalMovement
+				TUK_turkish_national_movement
 			}
 			focuses = {
 				TUK_interwar_AntiGreekPropaganda
@@ -90,6 +112,7 @@ bookmarks = {
 		ITA = {
 			history = ITA_THE_AFTERMATH_OF_VERSAILLES_DESC
 			ideology = democratic
+			version = base_game
 			ideas = {
 				ITA_ww1_Risorgimento
 				interwar_spirit_TGWWinner_Italy
@@ -100,7 +123,7 @@ bookmarks = {
 			}
 		}
 
-		"---"={
+		"---" = {
 			history = "OTHER_THE_AFTERMATH_OF_VERSAILLES_DESC"
 		}
 
@@ -108,6 +131,7 @@ bookmarks = {
 			minor = yes
 			history = "FRA_THE_AFTERMATH_OF_VERSAILLES_DESC"
 			ideology = democratic
+			version = base_game
 			ideas = {
 				interwar_spirit_TheGreatWar_Winner
 			}
@@ -121,6 +145,7 @@ bookmarks = {
 			minor = yes
 			history = "ENG_THE_AFTERMATH_OF_VERSAILLES_DESC"
 			ideology = democratic
+			version = base_game
 			ideas = {
 				stiff_upper_lip
 				interwar_spirit_TheGreatWar_Winner
@@ -136,6 +161,7 @@ bookmarks = {
 			minor = yes
 			history = "USA_THE_AFTERMATH_OF_VERSAILLES_DESC"
 			ideology = democratic
+			version = base_game
 			ideas = {
 				USA_ww1_us_war_department
 				interwar_spirit_TheGreatWar_Winner
@@ -150,6 +176,7 @@ bookmarks = {
 			minor = yes
 			history = "JAP_THE_AFTERMATH_OF_VERSAILLES_DESC"
 			ideology = neutrality
+			version = base_game
 			ideas = {
 				state_shintoism
 				interwar_spirit_TheGreatWar_Winner

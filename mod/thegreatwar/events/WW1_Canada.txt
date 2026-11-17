@@ -646,6 +646,7 @@ country_event = {
 	option = {
 		name = canada.31.a
 		ENG_arthur_connaught = {
+			set_nationality = CAN
 			set_character_name = CAN_arthur_i
 			add_country_leader_role = {
 				promote_leader = yes
@@ -980,12 +981,11 @@ country_event = {
 		has_civil_war = no
 		#Don't Fire if US has pushed far into Canada
 		NOT = {
-			any_state = {
+			any_controlled_state = {
 				is_on_continent = north_america
 				NOT = {
 					state = 276
 				}
-				is_controlled_by = ROOT
 				is_owned_by = CAN
 			}
 		}
@@ -2566,44 +2566,7 @@ country_event = {
 	picture = GFX_report_event_royal_visit
 	option = {
 		name = canada.71.a
-		ENG_arthur_connaught = {
-			add_country_leader_role = {
-				promote_leader = yes
-				country_leader = {
-					ideology = oligarchism
-					traits = {
-						popular_figurehead
-					}
-				}
-			}
-			add_advisor_role = {
-				advisor = {
-					slot = political_advisor
-					idea_token = CAN_prince_arthur
-					allowed = {
-						original_tag = CAN
-					}
-					available = {
-						is_country_leader = no
-						NOT = {
-							has_government = communism
-						}
-					}
-					visible = {
-						OR = {
-							is_subject_of = ENG
-							AND = {
-								has_completed_focus = CAN_const_monarchy
-								is_in_faction_with = ENG
-							}
-						}
-					}
-					traits = {
-						popular_figurehead
-					}
-				}
-			}
-		}
+		add_political_power = 50
 	}
 }
 

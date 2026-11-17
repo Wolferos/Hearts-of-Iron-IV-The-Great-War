@@ -1,0 +1,684 @@
+﻿add_namespace = decisions
+
+# Recruit general for civil war event
+country_event = {
+	id = decisions.1
+	title = decisions.1.t
+	desc = decisions.1.desc
+	picture = GFX_report_event_generic_handshake
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					any_army_leader = {
+						average_stats < 2
+						is_field_marshal = no
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						NOT = { has_trait = hidden_sympathies }
+					}
+				}
+				random_army_leader = {
+					limit = {
+						average_stats < 2
+						is_field_marshal = no
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						NOT = { has_trait = hidden_sympathies }
+					}
+					set_unit_leader_flag = hidden_sympathies
+				}	
+			}
+			if = {
+				limit = {
+					any_army_leader = {
+						NOT = { average_stats < 2 }
+						average_stats < 3
+						is_field_marshal = no
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						NOT = { has_trait = hidden_sympathies }
+					}
+				}
+				random_army_leader = {
+					limit = {
+						NOT = { average_stats < 2 }
+						average_stats < 3
+						is_field_marshal = no
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						NOT = { has_trait = hidden_sympathies }
+					}
+					set_unit_leader_flag = hidden_sympathies
+				}	
+			}
+			if = {
+				limit = {
+					any_army_leader = {
+						NOT = { average_stats < 3 }
+						average_stats < 4
+						is_field_marshal = no
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						NOT = { has_trait = hidden_sympathies }
+					}
+				}
+				random_army_leader = {
+					limit = {
+						NOT = { average_stats < 3 }
+						average_stats < 4
+						is_field_marshal = no
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						NOT = { has_trait = hidden_sympathies }
+					}
+					set_unit_leader_flag = hidden_sympathies
+				}	
+			}
+			if = {
+				limit = {
+					any_army_leader = {
+						NOT = { average_stats < 4 }
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						is_field_marshal = no
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						NOT = { has_trait = hidden_sympathies }
+					}
+				}
+				random_army_leader = {
+					limit = {
+						NOT = { average_stats < 4 }
+						is_field_marshal = no
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						NOT = { has_trait = hidden_sympathies }
+					}
+					set_unit_leader_flag = hidden_sympathies
+				}	
+			}
+		}
+	}
+	
+	# Recruit weak leader
+	option = {
+		name = decisions.1.a
+		trigger = {
+			any_army_leader = {
+				is_field_marshal = no
+				average_stats < 2
+				has_unit_leader_flag = hidden_sympathies
+			}
+		}
+		add_command_power = -1
+		random_army_leader = {
+			limit = {
+				is_field_marshal = no
+				average_stats < 2
+				has_unit_leader_flag = hidden_sympathies
+			}
+			add_unit_leader_trait = hidden_sympathies
+		}
+		hidden_effect = {
+			every_army_leader = {
+				limit = {
+					has_unit_leader_flag = hidden_sympathies
+				}
+				clr_unit_leader_flag = hidden_sympathies
+			}
+		}
+	}
+
+	# Recruit below mediocre leader
+	option = {
+		name = decisions.1.b
+		trigger = {
+			any_army_leader = {
+				is_field_marshal = no
+				NOT = { average_stats < 2 }
+				average_stats < 3
+				has_unit_leader_flag = hidden_sympathies
+			}
+		}
+		add_command_power = -2
+		add_political_power = -10
+		random_army_leader = {
+			limit = {
+				is_field_marshal = no
+				NOT = { average_stats < 2 }
+				average_stats < 3
+				has_unit_leader_flag = hidden_sympathies
+			}
+			add_unit_leader_trait = hidden_sympathies
+		}
+		hidden_effect = {
+			every_army_leader = {
+				limit = {
+					has_unit_leader_flag = hidden_sympathies
+				}
+				clr_unit_leader_flag = hidden_sympathies
+			}
+		}
+	}
+
+	# Recruit above mediocre leader
+	option = {
+		name = decisions.1.c
+		trigger = {
+			any_army_leader = {
+				is_field_marshal = no
+				NOT = { average_stats < 3 }
+				average_stats < 4
+				has_unit_leader_flag = hidden_sympathies
+			}
+		}
+		add_command_power = -3
+		add_political_power = -20
+		random_army_leader = {
+			limit = {
+				is_field_marshal = no
+				NOT = { average_stats < 3 }
+				average_stats < 4
+				has_unit_leader_flag = hidden_sympathies
+			}
+			add_unit_leader_trait = hidden_sympathies
+		}
+		hidden_effect = {
+			every_army_leader = {
+				limit = {
+					has_unit_leader_flag = hidden_sympathies
+				}
+				clr_unit_leader_flag = hidden_sympathies
+			}
+		}
+	}
+
+	# Recruit great leader
+	option = {
+		name = decisions.1.d
+		trigger = {
+			any_army_leader = {
+				is_field_marshal = no
+				NOT = { average_stats < 4 }
+				has_unit_leader_flag = hidden_sympathies
+			}
+		}
+		add_command_power = -4
+		add_political_power = -30
+		random_army_leader = {
+			limit = {
+				is_field_marshal = no
+				NOT = { average_stats < 4 }
+				has_unit_leader_flag = hidden_sympathies
+			}
+			add_unit_leader_trait = hidden_sympathies
+		}
+		hidden_effect = {
+			every_army_leader = {
+				limit = {
+					has_unit_leader_flag = hidden_sympathies
+				}
+				clr_unit_leader_flag = hidden_sympathies
+			}
+		}
+	}
+}
+
+# Recruit field marshal for civil war event
+country_event = {
+	id = decisions.2
+	title = decisions.2.t
+	desc = decisions.2.desc
+	picture = GFX_report_event_generic_handshake
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					any_army_leader = {
+						average_stats < 2
+						is_field_marshal = yes
+						NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
+						NOT = { has_trait = hidden_sympathies }
+					}
+				}
+				random_army_leader = {
+					limit = {
+						average_stats < 2
+						is_field_marshal = yes
+						NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
+						NOT = { has_trait = hidden_sympathies }
+					}
+					set_unit_leader_flag = hidden_sympathies_marshal
+				}	
+			}
+			if = {
+				limit = {
+					any_army_leader = {
+						NOT = { average_stats < 2 }
+						average_stats < 3
+						is_field_marshal = yes
+						NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
+						NOT = { has_trait = hidden_sympathies }
+					}
+				}
+				random_army_leader = {
+					limit = {
+						NOT = { average_stats < 2 }
+						average_stats < 3
+						is_field_marshal = yes
+						NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
+						NOT = { has_trait = hidden_sympathies }
+					}
+					set_unit_leader_flag = hidden_sympathies_marshal
+				}	
+			}
+			if = {
+				limit = {
+					any_army_leader = {
+						NOT = { average_stats < 3 }
+						average_stats < 4
+						is_field_marshal = yes
+						NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
+						NOT = { has_trait = hidden_sympathies }
+					}
+				}
+				random_army_leader = {
+					limit = {
+						NOT = { average_stats < 3 }
+						average_stats < 4
+						is_field_marshal = yes
+						NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
+						NOT = { has_trait = hidden_sympathies }
+					}
+					set_unit_leader_flag = hidden_sympathies_marshal
+				}	
+			}
+			if = {
+				limit = {
+					any_army_leader = {
+						NOT = { average_stats < 4 }
+						is_field_marshal = yes
+						NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
+						NOT = { has_trait = hidden_sympathies }
+					}
+				}
+				random_army_leader = {
+					limit = {
+						NOT = { average_stats < 4 }
+						is_field_marshal = yes
+						NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
+						NOT = { has_trait = hidden_sympathies }
+					}
+					set_unit_leader_flag = hidden_sympathies_marshal
+				}	
+			}
+		}
+	}
+	
+	# Recruit weak leader
+	option = {
+		name = decisions.1.a
+		trigger = {
+			any_army_leader = {
+				is_field_marshal = yes
+				average_stats < 2
+				has_unit_leader_flag = hidden_sympathies_marshal
+			}
+		}
+		add_command_power = -1
+		random_army_leader = {
+			limit = {
+				is_field_marshal = yes
+				average_stats < 2
+				has_unit_leader_flag = hidden_sympathies_marshal
+			}
+			add_unit_leader_trait = hidden_sympathies
+		}
+		hidden_effect = {
+			every_army_leader = {
+				limit = {
+					has_unit_leader_flag = hidden_sympathies_marshal
+				}
+				clr_unit_leader_flag = hidden_sympathies_marshal
+			}
+		}
+	}
+
+	# Recruit below mediocre leader
+	option = {
+		name = decisions.1.b
+		trigger = {
+			any_army_leader = {
+				is_field_marshal = yes
+				NOT = { average_stats < 2 }
+				average_stats < 3
+				has_unit_leader_flag = hidden_sympathies_marshal
+			}
+		}
+		add_command_power = -2
+		add_political_power = -10
+		random_army_leader = {
+			limit = {
+				is_field_marshal = yes
+				NOT = { average_stats < 2 }
+				average_stats < 3
+				has_unit_leader_flag = hidden_sympathies_marshal
+			}
+			add_unit_leader_trait = hidden_sympathies
+		}
+		hidden_effect = {
+			every_army_leader = {
+				limit = {
+					has_unit_leader_flag = hidden_sympathies_marshal
+				}
+				clr_unit_leader_flag = hidden_sympathies_marshal
+			}
+		}
+	}
+
+	# Recruit above mediocre leader
+	option = {
+		name = decisions.1.c
+		trigger = {
+			any_army_leader = {
+				is_field_marshal = yes
+				NOT = { average_stats < 3 }
+				average_stats < 4
+				has_unit_leader_flag = hidden_sympathies_marshal
+			}
+		}
+		add_command_power = -3
+		add_political_power = -20
+		random_army_leader = {
+			limit = {
+				is_field_marshal = yes
+				NOT = { average_stats < 3 }
+				average_stats < 4
+				has_unit_leader_flag = hidden_sympathies_marshal
+			}
+			add_unit_leader_trait = hidden_sympathies
+		}
+		hidden_effect = {
+			every_army_leader = {
+				limit = {
+					has_unit_leader_flag = hidden_sympathies_marshal
+				}
+				clr_unit_leader_flag = hidden_sympathies_marshal
+			}
+		}
+	}
+
+	# Recruit great leader
+	option = {
+		name = decisions.1.d
+		trigger = {
+			any_army_leader = {
+				is_field_marshal = yes
+				NOT = { average_stats < 4 }
+				has_unit_leader_flag = hidden_sympathies_marshal
+			}
+		}
+		add_command_power = -4
+		add_political_power = -30
+		random_army_leader = {
+			limit = {
+				is_field_marshal = yes
+				NOT = { average_stats < 4 }
+				has_unit_leader_flag = hidden_sympathies_marshal
+			}
+			add_unit_leader_trait = hidden_sympathies
+		}
+		hidden_effect = {
+			every_army_leader = {
+				limit = {
+					has_unit_leader_flag = hidden_sympathies_marshal
+				}
+				clr_unit_leader_flag = hidden_sympathies_marshal
+			}
+		}
+	}
+}
+
+
+#Purchase old ships generic decision events (Moved from BBA file)
+
+# FROM wants to purcahse old ships
+country_event = {
+	id = generic_purchase_ships_events.01
+	title = generic_purchase_ships_events.01.t
+	desc = generic_purchase_ships_events.01.desc
+	is_triggered_only = yes
+	picture = GFX_report_event_merchant_ship_01
+	# Yes
+	option = {
+		name = generic_purchase_ships_events.01.a
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 50
+				is_in_faction_with = FROM
+			}
+			modifier = {
+				add = 50
+				has_same_ideology = yes
+			}
+			modifier = {
+				add = 10
+				has_opinion = {
+					target = FROM
+					value > 10
+				}
+			}
+			modifier = {
+				add = 20
+				has_opinion = {
+					target = FROM
+					value > 40
+				}
+			}
+			modifier = {
+				add = 30
+				has_opinion = {
+					target = FROM
+					value > 80
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = { 
+					has_war_with = FROM
+					has_civil_war = yes
+					has_capitulated = yes
+					has_opinion = {
+						target = FROM
+						value < 0
+					}
+				}
+			}
+		}
+		add_offsite_building = { type = industrial_complex  level = 1 }
+		FROM = {
+			country_event = {
+				id = generic_purchase_ships_events.02
+				days = 1
+			}
+		}
+	}
+	# No
+	option = {
+		name = generic_purchase_ships_events.01.b
+		ai_chance = {
+			base = 20
+		}
+		FROM = {
+			country_event = {
+				id = generic_purchase_ships_events.03
+				days = 1
+			}
+		}
+	}
+}
+
+# FROM agrees to sell ships
+country_event = {
+	id = generic_purchase_ships_events.02
+	title = generic_purchase_ships_events.02.t
+	desc = generic_purchase_ships_events.02.desc
+	is_triggered_only = yes
+	picture = GFX_report_event_ast_navy
+	option = {
+		name = generic_purchase_ships_events.02.a
+		ai_chance = {
+			base = 5
+		}	
+		ETH_get_ships_from_country = yes
+	}
+}
+
+# FROM refuses to sell ships
+country_event = {
+	id = generic_purchase_ships_events.03
+	title = generic_purchase_ships_events.03.t
+	desc = generic_purchase_ships_events.03.desc
+	is_triggered_only = yes
+	picture = GFX_report_event_ast_navy
+	option = {
+		name = generic_purchase_ships_events.03.a
+		ai_chance = {
+			base = 5
+		}
+		FROM = {
+			clr_country_flag = negotiating_ship_purchase_flag@ROOT
+		}
+	}
+}
+
+# FROM wants to purcahse old dreadnoughts
+country_event = {
+	id = generic_purchase_ships_events.04
+	title = generic_purchase_ships_events.04.t
+	desc = { 
+		text = generic_purchase_ships_events.04.desc.a 
+		trigger = {
+			original_tag = BRA
+			original_tag = ARG
+			original_tag = CHL
+			original_tag = URG
+			original_tag = PAR
+		}
+	}
+	desc = { 
+		text = generic_purchase_ships_events.04.desc.b
+		trigger = {
+			NOT = {
+				original_tag = BRA
+				original_tag = ARG
+				original_tag = CHL
+				original_tag = URG
+				original_tag = PAR
+			}
+		}
+	}
+	is_triggered_only = yes
+	picture = GFX_report_event_merchant_ship_04
+	# Yes
+	option = {
+		name = generic_purchase_ships_events.04.a
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 50
+				is_in_faction_with = FROM
+			}
+			modifier = {
+				add = 50
+				has_same_ideology = yes
+			}
+			modifier = {
+				add = 10
+				has_opinion = {
+					target = FROM
+					value > 10
+				}
+			}
+			modifier = {
+				add = 20
+				has_opinion = {
+					target = FROM
+					value > 40
+				}
+			}
+			modifier = {
+				add = 30
+				has_opinion = {
+					target = FROM
+					value > 80
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = { 
+					has_war_with = FROM
+					has_civil_war = yes
+					has_capitulated = yes
+					has_opinion = {
+						target = FROM
+						value < 0
+					}
+				}
+			}
+		}
+		add_offsite_building = { type = industrial_complex  level = 1 }
+		FROM = {
+			country_event = {
+				id = generic_purchase_ships_events.05
+				days = 1
+			}
+		}
+	}
+	# No
+	option = {
+		name = generic_purchase_ships_events.04.b
+		ai_chance = {
+			base = 20
+		}
+		FROM = {
+			country_event = {
+				id = generic_purchase_ships_events.06
+				days = 1
+			}
+		}
+	}
+}
+
+# FROM agrees to sell dreadnoughts
+country_event = {
+	id = generic_purchase_ships_events.05
+	title = generic_purchase_ships_events.05.t
+	desc = generic_purchase_ships_events.05.desc
+	is_triggered_only = yes
+	picture = GFX_report_event_ast_navy
+	option = {
+		name = generic_purchase_ships_events.05.a
+		ai_chance = {
+			base = 5
+		}	
+		SMB_get_dreadnoughts_from_country = yes
+	}
+}
+
+# FROM refuses to sell dreadnoughts
+country_event = {
+	id = generic_purchase_ships_events.06
+	title = generic_purchase_ships_events.06.t
+	desc = generic_purchase_ships_events.06.desc
+	is_triggered_only = yes
+	picture = GFX_report_event_ast_navy
+	option = {
+		name = generic_purchase_ships_events.06.a
+		ai_chance = {
+			base = 5
+		}
+		FROM = {
+			clr_country_flag = negotiating_dreadnought_purchase_flag@ROOT
+		}
+	}
+}

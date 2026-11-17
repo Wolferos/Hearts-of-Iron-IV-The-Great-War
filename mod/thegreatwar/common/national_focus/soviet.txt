@@ -274,6 +274,7 @@ focus_tree = {
 			}
 		}
 	}
+
 	focus = {
 		id = SOV_interwar_SpreadCommunism_GER
 		prerequisite = {
@@ -303,6 +304,7 @@ focus_tree = {
 			}
 		}
 	}
+
 	focus = {
 		id = SOV_interwar_SpreadCommunism_FRA
 		prerequisite = {
@@ -332,6 +334,7 @@ focus_tree = {
 			}
 		}
 	}
+
 	focus = {
 		id = SOV_interwar_WhiteRussiaProblem
 		icon = GFX_focus_eng_expose_the_belly_of_the_bear
@@ -368,6 +371,7 @@ focus_tree = {
 			add_political_power = 25
 		}
 	}
+
 	focus = {
 		id = SOV_interwar_poland
 		icon = GFX_goal_generic_position_armies
@@ -388,6 +392,7 @@ focus_tree = {
 			add_stability = -0.03
 		}
 	}
+
 	focus = {
 		id = SOV_interwar_CeaseFirePoland		# IRL Polish-Soviet War ended with a cease-fire on 18 October 1920 and The Peace of Riga was signed on 18 March 1921
 		icon = GFX_focus_generic_polish_deal
@@ -416,6 +421,7 @@ focus_tree = {
 			}
 		}
 	}
+
 	focus = {
 		id = SOV_interwar_WarPoland
 		mutually_exclusive = {
@@ -443,6 +449,7 @@ focus_tree = {
 			add_manpower = 10000
 		}
 	}
+
 	focus = {
 		id = SOV_interwar_balticstates
 		icon = GFX_focus_eng_move_to_secure_the_dominions
@@ -470,6 +477,7 @@ focus_tree = {
 			}
 		}
 	}
+
 	focus = {
 		id = SOV_interwar_Ukraine
 		icon = GFX_goal_generic_position_armies
@@ -490,6 +498,7 @@ focus_tree = {
 			add_stability = -0.02
 		}
 	}
+
 	focus = {
 		id = SOV_interwar_CeaseFireUkraine
 		icon = GFX_goal_generic_major_alliance
@@ -519,6 +528,7 @@ focus_tree = {
 			}
 		}
 	}
+
 	focus = {
 		id = SOV_interwar_WarUkraine
 		mutually_exclusive = {
@@ -643,6 +653,7 @@ focus_tree = {
 			}
 		}
 	}
+
 	focus = {
 		id = SOV_ww1_recover_after_civwar
 		icon = GFX_goal_generic_construction
@@ -665,6 +676,7 @@ focus_tree = {
 		x = 22
 		y = 0
 	}
+
 	focus = {
 		id = SOV_ww1_political_effort
 		icon = GFX_goal_generic_intelligence_exchange
@@ -683,6 +695,7 @@ focus_tree = {
 		x = 7
 		y = 1
 	}
+
 	focus = {
 		id = SOV_ww1_defend_revolution
 		icon = GFX_focus_generic_soviet_politics
@@ -713,6 +726,7 @@ focus_tree = {
 		x = 2
 		y = 2
 	}
+
 	focus = {
 		id = SOV_ww1_volunteers
 		icon = GFX_goal_generic_allies_build_infantry
@@ -724,9 +738,9 @@ focus_tree = {
 				idea = soviet_volunteers
 				days = 60
 			}
-			hidden_effect = {
-				load_oob = SOV_revolution_volunteers
-			}
+			#hidden_effect = {
+			#	load_oob = SOV_revolution_volunteers
+			#}
 		}
 		ai_will_do = {
 			factor = 10
@@ -735,6 +749,7 @@ focus_tree = {
 		x = 1
 		y = 3
 	}
+
 	focus = {
 		id = SOV_ww1_execute_imperial_family
 		icon = GFX_hoi4tgw_knifeintheback
@@ -761,6 +776,20 @@ focus_tree = {
 				modifier = romanovs_executed
 			}
 			set_global_flag = global_RomanovFamilyExecuted
+			hidden_effect = {
+				RUS = {
+					if = {
+						limit = {
+							has_start_date < 1919.1.1 #Must be here due to the 1919 start date
+						}
+						add_timed_idea = {
+							idea = RUS_int_royal_family_murdered
+							days = 720
+						}
+					}
+					mark_focus_tree_layout_dirty = yes
+				}
+			}
 		}
 		ai_will_do = {
 			factor = 10
@@ -769,6 +798,7 @@ focus_tree = {
 		x = 1
 		y = 4
 	}
+
 	focus = {
 		id = SOV_ww1_claim_victory
 		available = {
@@ -790,9 +820,257 @@ focus_tree = {
 			factor = 100
 		}
 		cost = 10
-		x = 1
+		x = 0
 		y = 5
 	}
+
+	focus = {
+		id = SOV_interwar_SupportSovietMongolia
+		icon = GFX_focus_YUG_pan_slavic_congress
+		prerequisite = {
+			focus = SOV_ww1_execute_imperial_family
+		}
+
+		available = {
+			country_exists = MON
+			MON = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+
+		completion_reward = {
+			MON = {
+				add_timed_idea = {
+					idea = comintern_influence
+					days = 30
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		cost = 8
+		x = 2
+		y = 5
+	}
+
+	focus = {
+		id = SOV_interwar_MongolianRevolution
+		icon = GFX_focus_generic_soviet_politics
+		prerequisite = {
+			focus = SOV_interwar_SupportSovietMongolia
+		}
+
+		available = {
+			date > 1920.1.1
+			country_exists = MON
+			MON = {
+				controls_state = 330
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+
+		completion_reward = {
+			MON = {
+				start_civil_war = {
+					keep_all_characters = yes
+					ruling_party = communism
+					ideology = communism
+					size = 0.5
+					states = {
+						330
+					}
+					capital = 330
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		cost = 15
+		x = 2
+		y = 6
+	}
+
+
+	focus = {
+		id = SOV_interwar_KazakhSteppe
+		icon = GFX_goal_generic_position_armies
+
+		available = {
+			has_global_flag = kis_treaty_of_versailles
+			SOV = {
+				controls_state = 585
+				has_government = communism
+			}
+		}
+
+		x = 25
+		y = 11
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = SOV_interwar_SupportTheYoungBukharanActivists # Support the Young Bukharan Activists
+		icon = GFX_focus_YUG_pan_slavic_congress
+		prerequisite = {
+			focus = SOV_interwar_KazakhSteppe
+		}
+
+		available = {
+			NOT = {
+				country_exists = BUK
+			}
+		}
+
+		cost = 10
+		x = 26
+		y = 12
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		completion_reward = {
+			BUK = {
+				add_popularity = {
+					ideology = communism
+					popularity = 1.0
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_interwar_BukharanPeoplesSovietRepublic # Bukharan People's Soviet Republic
+		icon = GFX_goal_generic_war_with_comintern
+		prerequisite = {
+			focus = SOV_interwar_SupportTheYoungBukharanActivists
+		}
+
+		available = {
+			NOT = {
+				country_exists = BUK
+			}
+		}
+
+		cost = 10
+		x = 26
+		y = 13
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			date > 1920.1.1
+			country_exists = RUS
+			RUS = {
+				controls_state = 814
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+
+		completion_reward = {
+
+			BUK = {
+				transfer_state = 814
+			}
+
+			RUS = {
+				create_wargoal = {
+					target = BUK
+					type = take_state
+					generator = {
+						814
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_interwar_KhorezmPeoplesSovietRepublic # Khorezm People's Soviet Republic
+		icon = GFX_focus_generic_soviet_politics
+		prerequisite = {
+			focus = SOV_interwar_KazakhSteppe
+		}
+
+		available = {
+			NOT = {
+				country_exists = KHI
+			}
+		}
+
+		cost = 10
+		x = 24
+		y = 13
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			date > 1920.1.1
+			country_exists = RUS
+			RUS = {
+				controls_state = 813
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+
+		completion_reward = {
+
+			KHI = {
+				transfer_state = 813
+			}
+
+			RUS = {
+				create_wargoal = {
+					target = KHI
+					type = take_state
+					generator = {
+						813
+					}
+				}
+			}
+
+			hidden_effect = {
+				KHI = {
+					add_popularity = {
+						ideology = communism
+						popularity = 1.0
+					}
+				}
+			}
+		}
+	}
+
+
+
+
 	focus = {
 		id = SOV_ww1_complete_revolution
 		available = {
@@ -818,6 +1096,7 @@ focus_tree = {
 		x = 7
 		y = 2
 	}
+
 	focus = {
 		id = SOV_ww1_soviet_constitution
 		icon = GFX_goal_generic_forceful_treaty
@@ -834,6 +1113,7 @@ focus_tree = {
 		x = 8
 		y = 3
 	}
+
 	focus = {
 		id = SOV_ww1_foster_new_values
 		icon = GFX_goal_generic_propaganda
@@ -843,17 +1123,6 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = -20
-			if = {
-				limit = {
-					country_exists = FIN
-					FIN = {
-						is_subject_of = SOV
-					}
-				}
-				country_event = {
-					id = ww1_soviet.1
-				}
-			}
 		}
 		ai_will_do = {
 			factor = 10
@@ -862,6 +1131,7 @@ focus_tree = {
 		x = 9
 		y = 4
 	}
+
 	focus = {
 		id = SOV_ww1_SWP
 		icon = GFX_goal_generic_production
@@ -883,6 +1153,7 @@ focus_tree = {
 		x = 9
 		y = 5
 	}
+
 	focus = {
 		id = SOV_ww1_workers_paradise
 		icon = GFX_goal_support_communism
@@ -990,19 +1261,6 @@ focus_tree = {
 			add_timed_idea = {
 				idea = red_terror
 				days = 180
-			}
-			hidden_effect = {
-				if = {
-					limit = {
-						country_exists = FIN
-						FIN = {
-							is_subject_of = SOV
-						}
-					}
-					country_event = {
-						id = ww1_soviet.1
-					}
-				}
 			}
 		}
 		ai_will_do = {
@@ -1267,19 +1525,6 @@ focus_tree = {
 			set_politics = {
 				ruling_party = fascism
 				elections_allowed = no
-			}
-			if = {
-				limit = {
-					country_exists = FIN
-					FIN = {
-						is_subject_of = SOV
-					}
-				}
-				FIN = {
-					country_event = {
-						id = ww1_soviet.1
-					}
-				}
 			}
 		}
 		ai_will_do = {
@@ -1758,9 +2003,9 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 10
+			base = 10
 			modifier = {
-				factor = 1
+				factor = 0
 				is_historical_focus_on = yes
 			}
 		}
@@ -1853,9 +2098,32 @@ focus_tree = {
 		y = 14
 		cost = 10
 		ai_will_do = {
-			factor = 0
+			base = 0
+			modifier = {
+				add = 15
+				date > 1924.1.1
+			}
+			modifier = {
+				add = 15
+				has_war = no
+			}
 		}
 		completion_reward = {
+			if = {
+				limit = { 
+					NOT = {
+						ARM = {
+							owns_state = 230
+						}
+					}
+				}
+				every_country = {
+					limit = {
+						owns_state = 230
+					}
+					country_event = { id = ww1_soviet.4 }
+				}
+			}
 			create_wargoal = {
 				type = annex_everything
 				target = ARM
@@ -1924,7 +2192,10 @@ focus_tree = {
 				}
 				dismantle_faction = yes
 			}
-			create_faction = comintern
+			create_faction_from_template = {
+				template = faction_template_third_international
+				name = comintern
+			}
 		}
 		ai_will_do = {
 			factor = 10
@@ -2425,7 +2696,7 @@ focus_tree = {
 		completion_reward = {
 			army_experience = 10
 			add_tech_bonus = {
-				name = trenchwarfare_bonus
+				name = trench_warfare_bonus
 				bonus = 0.15
 				uses = 1
 				technology = support_weapons
@@ -2452,7 +2723,7 @@ focus_tree = {
 		completion_reward = {
 			army_experience = 15
 			add_tech_bonus = {
-				name = gasmask_bonus
+				name = gas_mask_bonus
 				bonus = 0.15
 				uses = 1
 				technology = infantry_gasmask
@@ -2936,13 +3207,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_CAS
 		completion_reward = {
-			add_tech_bonus = {
-				name = pilotformation1_bonus
-				bonus = 0.15
-				uses = 1
-				technology = dogfighting_experience
-				technology = fighter_ace_initiative
-				technology = dispersed_fighting
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = formations_bonus
+			#	bonus = 0.15
+			#	uses = 1
+			#	technology = dogfighting_experience
+			#	technology = fighter_ace_initiative
+			#	technology = dispersed_fighting
+			#}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 		ai_will_do = {
@@ -2963,7 +3238,7 @@ focus_tree = {
 		icon = GFX_goal_generic_air_production
 		completion_reward = {
 			add_tech_bonus = {
-				name = aircraftprod_1_bonus
+				name = air_bonus
 				bonus = 0.15
 				uses = 1
 				category = air_equipment
@@ -2986,13 +3261,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_poland_goal
 		completion_reward = {
-			add_tech_bonus = {
-				name = pilotformation2_bonus
-				bonus = 0.15
-				uses = 1
-				technology = infrastructure_destruction
-				technology = dive_bombing
-				technology = operational_destruction
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = formations_bonus
+			#	bonus = 0.15
+			#	uses = 1
+			#	technology = infrastructure_destruction
+			#	technology = dive_bombing
+			#	technology = operational_destruction
+			#}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 		ai_will_do = {
@@ -3039,13 +3318,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_CAS
 		completion_reward = {
-			add_tech_bonus = {
-				name = pilotformation2_bonus
-				bonus = 0.15
-				uses = 1
-				technology = multialtitude_flying
-				technology = hunt_and_destroy
-				technology = fighter_veteran_initiative
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = formations_bonus
+			#	bonus = 0.15
+			#	uses = 1
+			#	technology = multialtitude_flying
+			#	technology = hunt_and_destroy
+			#	technology = fighter_veteran_initiative
+			#}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 		ai_will_do = {
@@ -3066,7 +3349,7 @@ focus_tree = {
 		icon = GFX_goal_generic_air_production
 		completion_reward = {
 			add_tech_bonus = {
-				name = aircraftprod_2_bonus
+				name = air_bonus
 				bonus = 0.2
 				uses = 1
 				category = air_equipment
@@ -3089,13 +3372,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_occupy_start_war
 		completion_reward = {
-			add_tech_bonus = {
-				name = pilotformation2_bonus
-				bonus = 0.2
-				uses = 1
-				technology = logistical_bombing
-				technology = strategic_destruction
-				technology = infiltration_bombing
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = formations_bonus
+			#	bonus = 0.15
+			#	uses = 1
+			#	technology = multialtitude_flying
+			#	technology = hunt_and_destroy
+			#	technology = fighter_veteran_initiative
+			#}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 		ai_will_do = {
@@ -4460,9 +4747,8 @@ focus_tree = {
 			focus = SOV_ww1_recover_after_civwar
 		}
 		available = {
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 		completion_reward = {
@@ -4679,14 +4965,17 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_occupy_states_coastal
 		completion_reward = {
-			add_tech_bonus = {
-				name = sub_op_bonus
-				bonus = 0.2
-				uses = 1
-				technology = convoy_interdiction_ti
-				technology = unrestricted_submarine_warfare
-				technology = wolfpacks
-				technology = advanced_submarine_warfare
+			#add_tech_bonus = { #TODO: Rework Doctrines?
+			#	name = sub_op_bonus
+			#	bonus = 0.2
+			#	uses = 1
+			#	technology = convoy_interdiction_ti
+			#	technology = unrestricted_submarine_warfare
+			#	technology = advanced_submarine_warfare
+			#}
+			add_mastery = {
+				amount = 75
+				folder = naval
 			}
 		}
 		ai_will_do = {

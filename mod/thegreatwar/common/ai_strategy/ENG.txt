@@ -1,0 +1,154 @@
+Dervish_ENG = {
+
+	enable = {
+		original_tag = ENG
+		country_exists = SOM
+	}
+
+	abort = {
+		OR = {
+			NOT = { country_exists = SOM }
+			has_global_flag = MSM_somali_victory
+		}
+	}
+
+	ai_strategy = {
+		type = put_unit_buffers
+		
+		# ratio of total armeis in country to be buffered
+		ratio = 0.1
+
+		# you can specify an order id. ratio of same orders ids will be share same ratio
+		order_id = 2
+		
+		# states to put garrison orders (if no state is friendly, strat is invalid)
+		states = { 
+			269
+		}
+		
+		# ai areas that the orders will use these buffers in
+		area = africa
+		
+		# by default if you have orders in target areas, the buffer will request less units. 
+		# you can override this to disable the feature
+		subtract_invasions_from_need = yes
+		subtract_fronts_from_need = yes
+	}
+}
+
+british_gallipoli_campaign = {
+	enable = {
+		original_tag = ENG
+		is_historical_focus_on = yes
+		has_global_flag = kis_franzferdinand_murdered
+		date > 1915.02.01
+		has_war_with = GER
+		has_war_with = TUR
+	}
+	abort = {
+		date > 1916.07.01
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = hoi4tgw_gallipoli_thingy
+		value = 200
+	}
+	
+	ai_strategy = {
+		type = consider_weak
+		id = TUR
+		value = 150
+	}
+	ai_strategy = {
+		type = invade
+		id = TUR
+		value = 150
+	}
+	ai_strategy = {
+		type = invade
+		id = GER
+		value = -20
+	}
+}
+
+british_defense_of_northern_france = {
+	enable = {
+		original_tag = ENG
+		has_global_flag = kis_franzferdinand_murdered
+		date > 1915.03.01
+		has_war_with = GER
+		is_in_faction_with = FRA
+	}
+	abort = {
+		OR = {
+			NOT = { has_war_with = GER }
+			date > 1930.01.01
+		}
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = normandy_landing_zone
+		value = 100
+	}
+	ai_strategy = {
+		type = area_priority
+		id = africa
+		value = -20
+	}
+}
+
+british_offensives_against_germany = {
+	enable = {
+		original_tag = FRA
+		is_historical_focus_on = yes
+		has_global_flag = kis_franzferdinand_murdered
+		date > 1915.04.01
+		has_war_with = GER
+	}
+	abort = {
+		OR = {
+			NOT = { has_war_with = GER }
+			date > 1930.01.01
+		}
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = normandy_landing_zone
+		value = 25
+	}
+	
+	ai_strategy = {
+		type = invade
+		id = GER
+		value = 75
+	}
+}
+
+british_war_with_japan = {
+	enable = {
+		original_tag = ENG
+		has_war_with = JAP
+	}
+	abort = {
+		NOT = { has_war_with = JAP }
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = japan
+		value = 100
+	}
+	ai_strategy = {
+		type = area_priority
+		id = asia
+		value = 70
+	}
+	ai_strategy = {
+		type = invade
+		id = JAP
+		value = 25
+	}
+}

@@ -1,35 +1,58 @@
 state = {
-	id=217
-	name="STATE_217"
-	local_supplies = 1.0 manpower = 1135070
-	state_category=city
-	provinces={ 498 520 3503 3517 3529 3555 6479 6503 6527 6541 6575 9442 9459 9474 9504 9530 11395 11447 11474 11484 }
-	resources={
-		wood=0
+	id = 217
+	name = "STATE_217"
+	manpower = 1135070
+	
+	state_category = city
+
+	history = {
+		owner = RUS
+		add_core_of = RUS
+		victory_points = {
+			3529 30 # Stalingrad
 		}
-	history={
-		victory_points={ 3529 30.0 }
-		owner=RUS
-		add_core_of=RUS
-		1936.1.1={ 
-			owner=SOV
-			add_core_of=SOV
-			victory_points={ 3529 30.0 }
-			buildings={
-				infrastructure=3
-				industrial_complex=1
-				air_base=1
-				arms_factory=1
-				}
-			}
-		1939.1.1={ buildings={ arms_factory=2 } }
-		buildings={
-			infrastructure=3
-			industrial_complex=1
-			}
+		buildings = {
+			infrastructure = 3
+			industrial_complex = 1
+		}
 		1919.1.1 = {
-            owner = SOV
-            add_core_of = SOV
-        }
+			add_core_of = SOV
+			SOV = {
+				set_province_controller = 11395
+				set_province_controller = 6479
+				set_province_controller = 6575
+				set_province_controller = 3517
+				set_province_controller = 6541
+				set_province_controller = 9530
+				set_province_controller = 3503
+				set_province_controller = 520
+				set_province_controller = 11484
+				set_province_controller = 11474
+			}
+		}
+		1926.1.1 = {
+			owner = SOV
+			controller = SOV
+		}
+		1936.1.1 = {
+			buildings = {
+				infrastructure = 4 #was: 7
+				arms_factory = 1
+				industrial_complex = 1
+				air_base = 1
+			}
+		}
+		1939.1.1 = {
+			buildings = {
+				arms_factory = 2
+			}
 		}
 	}
+
+	provinces = {
+		498 520 3503 3517 3529 3555 6479 6503 6527 6541 6575 9442 9459 9474 9504 9530 11395 11447 11474 11484 
+	}
+
+	local_supplies = 7.0 
+}
+

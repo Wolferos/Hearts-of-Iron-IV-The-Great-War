@@ -3,25 +3,17 @@
 ----------
 [**Download on Steam**](http://steamcommunity.com/sharedfiles/filedetails/?id=699709023) | [**Download on Mod DB**](http://www.moddb.com/mods/hearts-of-iron-iv-the-great-war1) | [**Download on Nexus Mods**](https://www.nexusmods.com/heartsofironiv/mods/4?tab=description)
 
-**Status:** Open Beta
-
-**Project Lead:** Wolferos
-
-**Current Version:** 0.22.4 "Klang der Seele"
-
-**Compatible with:** Hearts of Iron IV 1.13.6 (with or without Paid DLC)
-
 **Supported Languages:**
 - English
 - French (Integrated in the Mod)
 - German (Integrated in the Mod, mainly made by Proho16)
-- Russian (Already in the Mod thanks to the [Community of Strategium.ru](https://www.strategium.ru))
+- Russian (Integrated in the Mod, thanks to the [Community of Strategium.ru](https://www.strategium.ru))
 - Japanese ([+JP: The Great War](https://steamcommunity.com/sharedfiles/filedetails/?id=854550667) | [+JP: The Great War NEW](https://steamcommunity.com/sharedfiles/filedetails/?id=1886322088))
 - Polish ([The Great War: Polskie Tłumaczenie](http://steamcommunity.com/sharedfiles/filedetails/?id=1132448900))
 - Turkish ([The Great War - Türkçe Yama](https://steamcommunity.com/sharedfiles/filedetails/?id=2489532577))
 - Chinese ([Chinese Translation](https://steamcommunity.com/sharedfiles/filedetails/?id=1898664110) or [Old Chinese Translation](https://steamcommunity.com/sharedfiles/filedetails/?id=1447670167))
 - Korean ([The Great War - Korean Translation](https://steamcommunity.com/sharedfiles/filedetails/?id=1923476226) | [Mirror](https://hearts-of-iron-4.smods.ru/archives/4568))
-- Portugês do Brazil (Integrated in the Mod, experimental stage)
+- Brazilian Portuguese (Integrated in the Mod, experimental stage)
 - Spanish (Integrated in the Mod, experimental stage)
 
 ⚠️ Warning ⚠️ Old Saves may not work with newer versions of the Mod
@@ -122,6 +114,13 @@ THE FOLLOWING PEOPLE ALSO CONTRIBUTED ON THE PROJECT
    - tg90nor
    - Proho16
    - kremastra
+   - dungeon-slave
+   - Benjacho
+   - Xaelor
+   - thyablik
+   - Dr. Labgames
+   - PerdemDayi
 ----------
-[Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow
-[Austro-Hungarians Voices](http://steamcommunity.com/sharedfiles/filedetails/?id=946923873) made by Geodomus 
+   - [Flickering Flags Fix](http://steamcommunity.com/sharedfiles/filedetails/?id=850835220) made by Chairman Meow
+   - [Austro-Hungarians Voices](http://steamcommunity.com/sharedfiles/filedetails/?id=946923873) made by Geodomus
+   - [TGW Megasubmod](https://steamcommunity.com/sharedfiles/filedetails/?id=2440260349) made by Canadian Lemur, Ecrfour, Rayzin & ErekTheGreat

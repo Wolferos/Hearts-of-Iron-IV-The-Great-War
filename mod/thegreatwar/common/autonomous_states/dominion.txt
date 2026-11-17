@@ -1,10 +1,13 @@
 autonomy_state = {
 	id = autonomy_dominion
 	
-	min_freedom_level = 0.8	
+	min_freedom_level = 0.8
+	
 	manpower_influence = 0.2
 	
 	rule = {
+		desc = "RULE_DESC_IS_A_SUBJECT"
+	
 		can_not_declare_war = yes
 		can_decline_call_to_war = no
 		can_be_spymaster = yes
@@ -14,6 +17,8 @@ autonomy_state = {
 		autonomy_manpower_share = 0.0
 		extra_trade_to_overlord_factor = 0.25
 		overlord_trade_cost_factor = -0.25
+		peace_score_ratio_transferred_to_overlord = 0.05
+		lend_lease_tension_with_overlord = -0.1
 	}
 	
 	ai_subject_wants_higher = {
@@ -29,19 +34,23 @@ autonomy_state = {
 	}
 
 	allowed = {
-		has_dlc = "Together for Victory"
+		OVERLORD = { NOT = { has_government = fascism } }
 
-		if = {
-			limit = { has_dlc = "Death or Dishonor" }
-			NOT = { has_government = fascism }
+		NOT = {
+			AND = {
+				OVERLORD = { has_government = fascism } 
+				OVERLORD = { tag = JAP } 
+			}
+			AND = {
+				OVERLORD = { has_government = neutrality } 
+				OVERLORD = { tag = JAP } 
+			}
 		}
+	}
+	
+	can_take_level = {
 	}
 
 	can_lose_level = {
-		if = {
-			limit = {
-
-			}
-		}
 	}
 }

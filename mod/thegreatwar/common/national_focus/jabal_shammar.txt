@@ -1,0 +1,265 @@
+focus_tree = {
+	id = rashidi_focus
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = JBS
+		}
+	}
+	default = no
+
+	shared_focus = SAU_develop_the_industry
+	shared_focus = SAU_restructure_military_hc
+
+	focus = {
+		id = JBS_strengthen_the_emirate
+		icon = GFX_goal_generic_demand_territory
+		cost = 10
+		x = 3
+		y = 0
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SAU_tribalism
+				add_idea = JBS_strong_emirate_1
+			}
+		}
+	}
+
+	focus = {
+		id = JBS_consolidate_rashid_rule
+		icon = GFX_goal_generic_political_pressure
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = JBS_strengthen_the_emirate
+		prerequisite = { focus = JBS_strengthen_the_emirate }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = JBS_strong_emirate_1
+				add_idea = JBS_strong_emirate_2
+			}
+		}
+	}
+
+	focus = {
+		id = JBS_crack_down_on_ikhwan
+		icon = GFX_goal_demand_sudetenland
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = JBS_consolidate_rashid_rule
+		prerequisite = { focus = JBS_consolidate_rashid_rule }
+		mutually_exclusive = { focus = JBS_ally_ikhwan }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = JBS_strong_emirate_2
+				add_idea = JBS_strong_emirate_3
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.1
+			}
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = JBS_ally_ikhwan
+		icon = GFX_goal_tripartite_pact
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = JBS_consolidate_rashid_rule
+		prerequisite = { focus = JBS_consolidate_rashid_rule }
+		mutually_exclusive = { focus = JBS_crack_down_on_ikhwan }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = JBS_strong_emirate_2
+				add_idea = JBS_strong_emirate_3
+			}
+			add_war_support = 0.1
+		}
+	}
+
+	focus = {
+		id = JBS_centralize_state
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = JBS_ally_ikhwan
+		prerequisite = { focus = JBS_ally_ikhwan focus = JBS_crack_down_on_ikhwan }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = JBS_strong_emirate_3
+				add_idea = JBS_strong_emirate_4
+			}
+		}
+	}
+
+	focus = {
+		id = JBS_research
+		icon = GFX_focus_research
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = JBS_centralize_state
+		prerequisite = { focus = JBS_centralize_state }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = JBS_diplo
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = JBS_strengthen_the_emirate
+		prerequisite = { focus = JBS_strengthen_the_emirate }
+		completion_reward = {
+			add_political_power = 150
+		}
+	}
+
+	focus = {
+		id = JBS_attack_nejd
+		icon = GFX_goal_generic_attack_allies
+
+		available = {
+			date > 1914.6.1
+			country_exists = SAU
+		}
+
+		cost = 14.4
+		x = -1
+		y = 1
+		relative_position_id = JBS_diplo
+		prerequisite = { focus = JBS_diplo }
+		completion_reward = {
+			add_political_power = -50
+			create_wargoal = {
+				target = SAU
+				type = annex_everything
+			}
+		}
+	}
+
+	focus = {
+		id = JBS_desert_warfarte
+		icon = GFX_focus_RAJ_lions_of_the_great_war
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = JBS_attack_nejd
+		prerequisite = { focus = JBS_attack_nejd }
+		completion_reward = {
+			add_ideas = SAU_desert_warfare
+		}
+	}
+
+	focus = {
+		id = JBS_attack_kuwait
+		icon = GFX_goal_generic_territory_or_war
+		cost = 14.4
+		x = 1
+		y = 1
+		relative_position_id = JBS_diplo
+		prerequisite = { focus = JBS_diplo }
+		available = {
+			date > 1915.1.1
+			country_exists = KUW
+			TUR = {
+				has_war_with = ENG
+			}
+		}
+		completion_reward = {
+			add_political_power = -50
+			create_wargoal = {
+				target = KUW
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				is_historical_focus_on = no
+			}
+		}
+	}
+
+	focus = {
+		id = JBS_oil_exploration
+		icon = GFX_goal_generic_oil_refinery
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = JBS_attack_kuwait
+		prerequisite = { focus = JBS_attack_kuwait }
+		available = {
+			controls_state = 656
+		}
+		completion_reward = {
+			add_resource = {
+				type = oil
+				amount = 23
+				state = 656
+			}
+		}
+	}
+
+	focus = {
+		id = JBS_get_rif_of_turkish_yoke
+		icon = GFX_focus_generic_attack_turkey
+		cost = 15
+		x = 1
+		y = 1
+		relative_position_id = JBS_desert_warfarte
+		prerequisite = { focus = JBS_desert_warfarte }
+		prerequisite = { focus = JBS_oil_exploration }
+		available = {
+			date > 1915.6.1
+			country_exists = TUR
+			TUR = {
+				has_war_with = ENG
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = TUR
+				type = independence_wargoal
+			}
+		}
+	}
+
+	focus = {
+		id = JBS_caliphate
+		icon = GFX_hoi4tgw_islam
+		cost = 18
+		x = 2
+		y = 1
+		relative_position_id = JBS_research
+		prerequisite = { focus = JBS_research }
+		prerequisite = { focus = JBS_get_rif_of_turkish_yoke }
+		available = {
+			date > 1917.1.1
+			is_subject = no
+			NOT = {
+				country_exists = SAU
+			}
+		}
+		completion_reward = {
+			create_faction_from_template = {
+				template = faction_template_PER_islamic_faction
+				name = caliphate_faction
+			}
+			add_ideas = SAU_caliphate
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+}

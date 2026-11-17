@@ -220,23 +220,9 @@ country_event = {
 					add_state_core = 295
 					add_state_core = 538
 					add_state_core = 718
-					# SPECIAL_DLC Together for Victory
-					if = {
-						limit = {
-							has_dlc = "Together for Victory"
-						}
-						#IF-----------------------------------------
-						set_autonomy = {
-							target = BEL
-							autonomous_state = autonomy_integrated_puppet
-						}
-						#-------------------------------------------
-						#ELSE---------------------------------------
-						else = {
-							# WORK IN PROGRESS # Temporary Solution for Open Beta 0.1.9
-							puppet = BEL							# Default "else" even in vanilla
-						}
-						#-------------------------------------------
+					set_autonomy = {
+						target = BEL
+						autonomous_state = autonomy_integrated_puppet
 					}
 				}
 			}
@@ -311,14 +297,14 @@ country_event = {
 			if = {
 				limit = {
 					AUH = {
-						has_war_with = MTN
+						has_war_with = MNT
 						is_in_faction_with = GER
 					}
 				}
 				if = {
 					limit = {
 						CRO = {
-							is_puppet_of = AUH
+							is_subject_of = AUH
 						}
 					}
 					else = {
@@ -339,23 +325,9 @@ country_event = {
 					}
 				}
 				AUH = {
-					# SPECIAL_DLC Together for Victory
-					if = {
-						limit = {
-							has_dlc = "Together for Victory"
-						}
-						#IF-----------------------------------------
-						set_autonomy = {
-							target = SER
-							autonomous_state = autonomy_integrated_puppet
-						}
-						#-------------------------------------------
-						#ELSE---------------------------------------
-						else = {
-							# WORK IN PROGRESS # Temporary Solution for Open Beta 0.1.9
-							puppet = SER							# Default "else" even in vanilla
-						}
-						#-------------------------------------------
+					set_autonomy = {
+						target = SER
+						autonomous_state = autonomy_integrated_puppet
 					}
 				}
 			}
@@ -376,11 +348,13 @@ country_event = {
 					transfer_state = 658					# ABU DHABI
 					transfer_state = 659					# ADEN
 					transfer_state = 765					# QATAR
+					transfer_state = 828					# BAHRAIN
 					add_state_core = 184
 					add_state_core = 656
 					add_state_core = 658
 					add_state_core = 659
 					add_state_core = 765
+					add_state_core = 828
 					#Maybe Puppet or free Egypt?
 					if = {
 						limit = {
@@ -389,23 +363,9 @@ country_event = {
 								is_in_faction_with = ENG
 							}
 						}
-						# SPECIAL_DLC Together for Victory
-						if = {
-							limit = {
-								has_dlc = "Together for Victory"
-							}
-							#IF-----------------------------------------
-							set_autonomy = {
-								target = EGY
-								autonomous_state = autonomy_integrated_puppet
-							}
-							#-------------------------------------------
-							#ELSE---------------------------------------
-							else = {
-								# WORK IN PROGRESS # Temporary Solution for Open Beta 0.1.9
-								puppet = EGY								# Default "else" even in vanilla
-							}
-							#-------------------------------------------
+						set_autonomy = {
+							target = EGY
+							autonomous_state = autonomy_integrated_puppet
 						}
 					}
 				}
@@ -436,6 +396,7 @@ country_event = {
 						transfer_state = 661						# LIBYA
 						transfer_state = 662						# LIBYA
 						transfer_state = 663						# LIBYA
+						transfer_state = 826						# LIBYA
 					}
 				}
 				else = {
@@ -843,8 +804,17 @@ news_event = {
 		ai_chance = {
 			factor = 100
 		}
+		if = {
+			limit = {
+				tag = GER
+			}
+			custom_effect_tooltip = ww1_frankfurt.1.a_tt
+		}
 		hidden_effect = {
 			set_global_flag = kis_second_treaty_frankfort
+			every_country = {
+				mark_focus_tree_layout_dirty = yes
+			}
 		}
 	}
 }

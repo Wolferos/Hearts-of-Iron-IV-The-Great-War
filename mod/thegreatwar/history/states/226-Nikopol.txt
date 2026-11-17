@@ -1,32 +1,53 @@
-state = {
-	id = 226
-	name = "STATE_226" # Dnipropertovsk
-	local_supplies = 1.0
+state={
+	id=226
+	name="STATE_226" # Dnipropertovsk
 	manpower = 2391047
-	state_category = town
-
-	provinces = { 453 472 486 6423 9419 9433 9463 9479 11422 11437 11452 11561 }
-
-	resources = {
-		coal = 11
-		oil = 14
+	
+	state_category = large_town
+	
+	resources={
+		oil=14
+		coal=11
 	}
 
-	history = {
-		victory_points = { 11437 10 }
-		victory_points = { 11561 1 }
+	history={
 		owner = RUS
-		add_core_of = RUS
-
-		buildings = {
-			infrastructure = 3
-			industrial_complex = 1
+		victory_points = {
+			11437 10 
 		}
+		victory_points = {
+			11561 1
+		}
+		buildings = {
+			infrastructure = 3 #was: 5
+			industrial_complex = 2
+			air_base = 2
+		}
+		add_core_of = RUS
+		add_core_of = UKR
 
 		1919.1.1 = {
-            owner = UKR
-            add_core_of = UKR
-            add_core_of = SOV
-        }
+			owner = UKR
+			controller = SOV
+			add_core_of = SOV
+			RUS = {
+				set_province_controller = 486
+				set_province_controller = 472
+				set_province_controller = 453
+				set_province_controller = 11452
+				set_province_controller = 9479
+				set_province_controller = 9463
+			}
+		}
+		1926.1.1 = {
+			owner = SOV
+			controller = SOV
+		}
 	}
+
+	provinces={
+		453 472 486 6423 9419 9433 9463 9479 11422 11437 11452 11561 
+	}
+
+	local_supplies=0.0 
 }

@@ -18,3 +18,240 @@ italoturkish_war = {
 		value = 200
 	}
 }
+
+do_not_get_involved_in_the_balkan_wars = {
+	enable = {
+		original_tag = ITA
+	}
+	abort = {
+		OR = {
+			has_global_flag = kis_secondbalkanwar_victory
+			date > 1915.1.1
+		}
+	}
+	
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = SER
+		target_country = TUR
+		value = 500
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = SER
+		target_country = BUL
+		value = 500
+	}
+	#### #### #### ####
+	ai_strategy = {
+		type = alliance
+		id = SER
+		value = -500
+	}
+	ai_strategy = {
+		type = alliance
+		id = MNT
+		value = -250
+	}
+	ai_strategy = {
+		type = alliance
+		id = GRE
+		value = -250
+	}
+	ai_strategy = {
+		type = alliance
+		id = BUL
+		value = -250
+	}
+	ai_strategy = {
+		type = alliance
+		id = GER
+		value = -250
+	}
+	ai_strategy = {
+		type = alliance
+		id = FRA
+		value = -250
+	}
+	#### #### #### ####
+	ai_strategy = {
+		type = ignore
+		id = SER
+		value = 100
+	}
+	ai_strategy = {
+		type = ignore
+		id = MNT
+		value = 100
+	}
+	ai_strategy = {
+		type = ignore
+		id = GRE
+		value = 100
+	}
+	ai_strategy = {
+		type = ignore
+		id = BUL
+		value = 100
+	}
+}
+
+handle_the_ottomans_on_your_own_italy = {
+	enable = {
+		original_tag = ITA
+		has_war_with = TUR
+		NOT = {
+			OR = {
+				is_in_faction_with = GER
+				is_in_faction_with = FRA
+			}
+		}
+	}
+	abort = {
+		OR = {
+			has_global_flag = kis_franzferdinand_murdered
+			has_war_with = AUH
+			has_war_with = FRA
+			date > 1916.1.1
+		}
+	}
+	
+	ai_strategy = {
+		type = alliance
+		id = SER
+		value = -200
+	}
+	ai_strategy = {
+		type = alliance
+		id = MNT
+		value = -200
+	}
+	ai_strategy = {
+		type = alliance
+		id = GRE
+		value = -200
+	}
+	ai_strategy = {
+		type = alliance
+		id = BUL
+		value = -200
+	}
+	ai_strategy = {
+		type = alliance
+		id = GER
+		value = -400
+	}
+	ai_strategy = {
+		type = alliance
+		id = FRA
+		value = -400
+	}
+}
+
+Dervish_ITA = {
+
+	enable = {
+		original_tag = ITA
+		country_exists = SOM
+	}
+
+	abort = {
+		OR = {
+			NOT = { country_exists = SOM }
+			has_global_flag = MSM_somali_victory
+		}
+	}
+
+	ai_strategy = {
+		type = put_unit_buffers
+		
+		# ratio of total armeis in country to be buffered
+		ratio = 0.1
+
+		# you can specify an order id. ratio of same orders ids will be share same ratio
+		order_id = 2
+		
+		# states to put garrison orders (if no state is friendly, strat is invalid)
+		states = { 
+			559
+		}
+		
+		# ai areas that the orders will use these buffers in
+		area = africa
+		
+		# by default if you have orders in target areas, the buffer will request less units. 
+		# you can override this to disable the feature
+		subtract_invasions_from_need = yes
+		subtract_fronts_from_need = yes
+	}
+
+}
+
+italian_homeland_defense = {
+	enable = {
+		original_tag = ITA
+		OR = {
+			owns_state = 2
+			owns_state = 162
+			owns_state = 161
+			owns_state = 160
+			owns_state = 159
+			owns_state = 158
+		}
+		OR = {
+			has_war_with = AUH
+			has_war_with = FRA
+		}
+	}
+	abort = {
+		AND = {
+			NOT = { has_war_with = AUH }
+			NOT = { has_war_with = FRA }
+		}
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = italy
+		value = 50
+	}
+}
+
+italian_battles_of_the_isonzo_river = {
+	enable = {
+		original_tag = ITA
+		is_historical_focus_on = yes
+		has_global_flag = kis_franzferdinand_murdered
+		date > 1915.05.01
+		has_war_with = AUH
+		is_in_faction_with = FRA
+	}
+	abort = {
+		OR = {
+			NOT = { has_war_with = AUH }
+			date > 1917.11.01
+		}
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = italy
+		value = 50
+	}
+	ai_strategy = {
+		type = area_priority
+		id = greater_balkans
+		value = 100
+	}
+	
+	ai_strategy = {
+		type = consider_weak
+		id = AUH
+		value = 200
+	}
+	ai_strategy = {
+		type = invade
+		id = AUH
+		value = 200
+	}
+}

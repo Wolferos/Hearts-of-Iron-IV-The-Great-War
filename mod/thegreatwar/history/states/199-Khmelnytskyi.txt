@@ -1,36 +1,44 @@
-state = {
+state={
 	id=199
 	name="STATE_199"
-	local_supplies = 1.0 manpower = 1424022
-	state_category=town
-	provinces={ 462 3430 3457 3511 6429 6509 }
-	resources={
-		wood=0
-		}
-	history={
-		owner=RUS
-		add_core_of=RUS
-		1936.1.1={ 
-			owner=SOV
-			add_core_of=SOV
-			buildings={
-				infrastructure=3
-				industrial_complex=1
-				air_base=3
-				}
-			}
-		buildings={
-			infrastructure=3
-			industrial_complex=1
-			}
-		1919.1.1 = {
-            owner = UKR
-            add_core_of = UKR
-            add_core_of = SOV
+	manpower = 1424022
+	
+	state_category = large_town
 
-            POL = {
-				set_province_controller = 6509	
+	history={
+		victory_points = {
+			3457 5
+		}
+		owner = RUS
+		buildings = {
+			infrastructure = 3 #was: 5
+			industrial_complex = 1
+		}
+		add_core_of = RUS
+		add_core_of = UKR
+
+		1919.1.1 = {
+			owner = UKR
+			controller = UKR
+			add_core_of = SOV
+			POL = {
+				set_province_controller = 6509
 			}
-        }
+		}
+		1926.1.1 = {
+			owner = SOV
+			controller = SOV
+		}
+		1936.1.1 = {
+			buildings = {
+				air_base = 3
+			}
 		}
 	}
+
+	provinces={
+		462 3430 3457 3511 6429 6509 
+	}
+
+	local_supplies=4.0 
+}

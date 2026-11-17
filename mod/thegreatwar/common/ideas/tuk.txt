@@ -37,12 +37,6 @@ ideas = {
 		}
 	}
 
-	army_chief = {
-		TUK_fevzi_cakmak = { # Fevzi Çakmak # https://en.wikipedia.org/wiki/Fevzi_%C3%87akmak
-			allowed = { tag = TUK } traits = { army_chief_defensive_1 } ai_will_do = { factor=1 }
-		}
-	}
-
 	navy_chief = {
 		TUK_rauf_orbay = { # Rauf Orbay # https://tr.wikipedia.org/wiki/Rauf_Orbay
 			allowed = { tag = TUK } traits = { navy_chief_decisive_battle_1 } ai_will_do = { factor=1 }
@@ -73,14 +67,51 @@ ideas = {
 
 
 	#====================================================================================
-	# TUK : Turkish National Movement
+
 	country = {
 
-		TUK_interwar_spirit_TurkishNationalMovement = {
+		TUK_turkish_national_movement = { # TUK : Turkish National Movement
+
+			picture = raj_marginalized_muslim_community_angry
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
 			modifier = {
 				experience_gain_army = 0.2
 				army_morale_factor = 0.05
 				conscription_factor = 0.03
+				army_core_attack_factor = 0.15
+				army_core_defence_factor = 0.2
+			}
+		}
+
+		TUK_abdulmejid_ii = {
+
+			name = TUR_abdulmejid_ii
+
+			picture = TUR_abdulmejid_ii
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			modifier = {
+				army_morale_factor = 0.05
+				conscription_factor = 0.03
+				stability_factor = 0.15
+				war_support_factor = 0.15
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.05
 			}
 		}
 	}
