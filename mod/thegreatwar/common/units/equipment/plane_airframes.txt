@@ -1,5 +1,6 @@
 equipments = {
 
+	#to make sure that an airframe appears in the air designer make sure to add it in interface/equipmentdesigner/planes/plane_blueprints_generic.gui, otherwise it will not show up
 	small_plane_airframe = {
 		year = 1912
 
@@ -32,11 +33,12 @@ equipments = {
 		manpower = 20
 		fuel_consumption = 0.05
 		build_cost_ic = 16
-
 		resources = {
-			#aluminium = 2
-			#rubber = 1
+			aluminium = 2
+			rubber = 1
 		}
+
+		lend_lease_cost = 8
 
 		module_slots = {
 			fixed_main_weapon_slot = {
@@ -91,6 +93,10 @@ equipments = {
 					plane_special_module_defense_turret
 				}
 			}
+		}
+		module_count_limit = {
+			module = guided_anti_ship_missile
+			count < 2
 		}
 
 		module_count_limit = {
@@ -149,6 +155,11 @@ equipments = {
 		}
 
 		module_count_limit = {
+			category = nav_bomber_weapon
+			count < 2
+		}
+
+		module_count_limit = {
 			category = plane_special_module_bomb_sights
 			count < 2
 		}
@@ -174,7 +185,7 @@ equipments = {
 		}
 
 		default_modules = {
-			fixed_main_weapon_slot = light_mg_2x
+			fixed_main_weapon_slot = empty
 			fixed_auxiliary_weapon_slot_1 = empty
 			engine_type_slot = engine_1_1x
 			special_type_slot_1 = empty
@@ -191,7 +202,7 @@ equipments = {
 		priority = 5
 
 		air_range = 500
-		maximum_speed = 0
+		maximum_speed = 200
 		air_agility = 45
 		air_defence = 7
 		weight = 3
@@ -208,7 +219,7 @@ equipments = {
 		priority = 5
 
 		air_range = 650
-		maximum_speed = 0
+		maximum_speed = 225
 		air_agility = 50
 		air_defence = 9
 		weight = 4
@@ -284,7 +295,7 @@ equipments = {
 		priority = 5
 
 		air_range = 900
-		maximum_speed = 0
+		maximum_speed = 250
 		air_agility = 65
 		air_defence = 11
 		weight = 5
@@ -387,7 +398,7 @@ equipments = {
 		priority = 5
 
 		air_range = 1100
-		maximum_speed = 0
+		maximum_speed = 275
 		air_agility = 80
 		air_defence = 12
 		weight = 6
@@ -497,7 +508,7 @@ equipments = {
 		priority = 5
 
 		air_range = 2000
-		maximum_speed = 0
+		maximum_speed = 300
 		air_agility = 85
 		air_defence = 18
 		weight = 7
@@ -1409,8 +1420,8 @@ equipments = {
 		fuel_consumption = 0
 		build_cost_ic = 8
 		resources = {
-			#aluminium = 2
-			#rubber = 1
+			aluminium = 2
+			rubber = 1
 		}
 
 		module_slots = {
