@@ -134,7 +134,7 @@ focus_tree = {
 		}
 
 		cost = 14.4
-		x = -1
+		x = 0
 		y = 1
 		relative_position_id = JBS_diplo
 		prerequisite = { focus = JBS_diplo }
@@ -161,65 +161,14 @@ focus_tree = {
 	}
 
 	focus = {
-		id = JBS_attack_kuwait
-		icon = GFX_goal_generic_territory_or_war
-		cost = 14.4
-		x = 1
-		y = 1
-		relative_position_id = JBS_diplo
-		prerequisite = { focus = JBS_diplo }
-		available = {
-			date > 1915.1.1
-			country_exists = KUW
-			TUR = {
-				has_war_with = ENG
-			}
-		}
-		completion_reward = {
-			add_political_power = -50
-			create_wargoal = {
-				target = KUW
-				type = annex_everything
-			}
-		}
-		ai_will_do = {
-			base = 0
-			modifier = {
-				add = 1
-				is_historical_focus_on = no
-			}
-		}
-	}
-
-	focus = {
-		id = JBS_oil_exploration
-		icon = GFX_goal_generic_oil_refinery
-		cost = 10
-		x = 0
-		y = 1
-		relative_position_id = JBS_attack_kuwait
-		prerequisite = { focus = JBS_attack_kuwait }
-		available = {
-			controls_state = 656
-		}
-		completion_reward = {
-			add_resource = {
-				type = oil
-				amount = 23
-				state = 656
-			}
-		}
-	}
-
-	focus = {
 		id = JBS_get_rif_of_turkish_yoke
 		icon = GFX_focus_generic_attack_turkey
 		cost = 15
-		x = 1
+		x = -1
 		y = 1
 		relative_position_id = JBS_desert_warfarte
+		mutually_exclusive = { focus = JBS_loyal_ottoman_ally }
 		prerequisite = { focus = JBS_desert_warfarte }
-		prerequisite = { focus = JBS_oil_exploration }
 		available = {
 			date > 1915.6.1
 			country_exists = TUR
@@ -234,6 +183,52 @@ focus_tree = {
 			}
 		}
 	}
+	
+	focus = {
+		id = JBS_loyal_ottoman_ally
+		icon = GFX_focus_generic_befriend_turkey
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = JBS_desert_warfarte
+		mutually_exclusive = { focus = JBS_get_rif_of_turkish_yoke }
+		prerequisite = { focus = JBS_desert_warfarte }
+		available = {
+			is_subject_of = TUR
+		}
+		completion_reward = {
+		    add_political_power = 100
+			add_stability = -0.1
+			add_war_support = -0.1
+		}
+	}
+	
+	focus = {
+		id = JBS_ask_for_hejaz_and_yemen
+		icon = GFX_focus_IRQ_restoration_of_hejaz
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = JBS_loyal_ottoman_ally
+		mutually_exclusive = { focus = JBS_get_rif_of_turkish_yoke }
+		prerequisite = { focus = JBS_desert_warfarte }
+		available = {
+			is_subject_of = TUR
+			TUR = {
+			    controls_state = 293
+			    controls_state = 856
+			    controls_state = 855
+			    controls_state = 679
+		    }
+		}
+		completion_reward = {
+		    TUR = {
+			    country_event = {
+				    id = ww1_ottoman.64 hours = 10
+				}
+			}
+		}
+	}
 
 	focus = {
 		id = JBS_caliphate
@@ -243,20 +238,38 @@ focus_tree = {
 		y = 1
 		relative_position_id = JBS_research
 		prerequisite = { focus = JBS_research }
-		prerequisite = { focus = JBS_get_rif_of_turkish_yoke }
+		prerequisite = { focus = JBS_get_rif_of_turkish_yoke focus = JBS_loyal_ottoman_ally }
 		available = {
-			date > 1917.1.1
-			is_subject = no
+		    controls_state = 857
+			controls_state = 292
 			NOT = {
 				country_exists = SAU
 			}
 		}
 		completion_reward = {
-			create_faction_from_template = {
-				template = faction_template_PER_islamic_faction
-				name = caliphate_faction
-			}
+		    set_cosmetic_tag = JBS_caliphate
 			add_ideas = SAU_caliphate
+			every_state = {
+			    limit = {
+	                OR = {
+					    is_core_of = SAU
+						is_core_of = HEJ
+						is_core_of = YEM
+						is_core_of = OMA
+						is_core_of = UAE
+					}
+				}
+				add_core_of = JBS
+			}
+		    if = {
+			    limit = {
+				    is_subject = no
+				}
+				create_faction_from_template = {
+				    template = faction_template_PER_islamic_faction
+				    name = caliphate_faction
+			    }
+			}
 		}
 		ai_will_do = {
 			base = 0
