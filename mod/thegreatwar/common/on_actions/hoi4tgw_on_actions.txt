@@ -1,6 +1,6 @@
 on_actions = {
 
-    on_startup = {
+	on_startup = {
 		#Changing the Ottoman Codes for 1919 Start Date
 		effect = {
 			IF = {
@@ -9,40 +9,40 @@ on_actions = {
 				}
 				TUR = {
 					remove_ideas = {
-					    TUR_Mehmed_V_ns
-					    TUR_secularization_ns
-					    TUR_westernization_ns
-					    TUR_foreign_military_advisors_ns
-	                    TUR_separatist_movements_ns
-                        TUR_nationalist_education_ns
-                        TUR_three_pashas_ns
-                        TUR_one_party_state_ns
-                        TUR_pan_turkism_ns
-                        TUR_one_nation_one_religion_one_country_ns
-                        TUR_jihad_ns
-                        TUR_sinai_campaign_ns
-                        TUR_yemen_campaign_ns
-                        TUR_sarikamish_operation_ns
+						TUR_Mehmed_V_ns
+						TUR_secularization_ns
+						TUR_westernization_ns
+						TUR_foreign_military_advisors_ns
+						TUR_separatist_movements_ns
+						TUR_nationalist_education_ns
+						TUR_three_pashas_ns
+						TUR_one_party_state_ns
+						TUR_pan_turkism_ns
+						TUR_one_nation_one_religion_one_country_ns
+						TUR_jihad_ns
+						TUR_sinai_campaign_ns
+						TUR_yemen_campaign_ns
+						TUR_sarikamish_operation_ns
 						TUR_turkish_refugees_ns
-	                }
+					}
 					
 					add_political_power = -700
 					
 					remove_state_claim = 659
-			        remove_state_claim = 658
+					remove_state_claim = 658
 					remove_state_claim = 656
-			        remove_state_claim = 182
+					remove_state_claim = 182
 					remove_state_claim = 229
-			        remove_state_claim = 232
+					remove_state_claim = 232
 					remove_state_claim = 821
-			        remove_state_claim = 828
+					remove_state_claim = 828
 					remove_state_claim = 827
 					remove_state_claim = 212
 				}
 				every_state = {
-				    limit = {
-					    OR = {
-						    region = 127
+					limit = {
+						OR = {
+							region = 127
 							region = 28
 							region = 237
 							region = 225
@@ -67,8 +67,8 @@ on_actions = {
 					date > 1919.1.1
 				}
 				every_state = {
-				    limit = {
-					    OR = {
+					limit = {
+						OR = {
 							region = 38
 							region = 22
 							region = 21
@@ -89,9 +89,9 @@ on_actions = {
 					date > 1919.1.1
 				}
 				FRA = {
-				    set_province_controller = 10087
-				    set_province_controller = 1088
-			    }
+					set_province_controller = 10087
+					set_province_controller = 1088
+				}
 			}
 		}
 	}
@@ -277,7 +277,7 @@ on_actions = {
 			}
 		}
 		#Unlock focus when Ottomans Recapture Selanik From the Second Action Army
-        effect = {
+		effect = {
 			if = {
 				limit = {
 					original_tag = MAC
@@ -286,7 +286,33 @@ on_actions = {
 					}
 				}
 				TUR = {
-				    set_country_flag = TUR_beated_the_second_action_army_cflg
+					set_country_flag = TUR_beated_the_second_action_army_cflg
+				}
+			}
+		}
+	}
+
+	on_war_relation_added = {
+		effect = {
+			FROM = {
+				if = {
+					limit = {
+						has_idea = BLL_russian_protection_ns
+						PREV.PREV = {
+							NOT = {
+								has_idea = BLL_russian_protection_ns
+							}
+						}
+					}
+					PREV.PREV = {
+						save_event_target_as = attacker
+					}
+					RUS = {
+						country_event = {
+							id = ww1_generic.1
+							days = 1
+						}
+					}
 				}
 			}
 		}

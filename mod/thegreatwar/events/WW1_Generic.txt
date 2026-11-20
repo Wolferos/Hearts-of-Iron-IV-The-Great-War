@@ -1,0 +1,48 @@
+add_namespace = ww1_generic
+
+# Ally Under Attack
+country_event = {
+	id = ww1_generic.1
+	title = ww1_generic.1.t
+	desc = ww1_generic.1.d
+	picture = GFX_report_event_soldiers_parade
+
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_generic.1.a
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				FROM = {
+					tag = SER
+				}
+				has_global_flag = kis_franzferdinand_murdered
+				NOT = {
+					has_global_flag = kis_war
+				}
+			}
+		}
+		add_war_support = -0.05
+		FROM = {
+			if = {
+				limit = {
+					has_idea = BLL_russian_protection_ns
+				}
+				remove_ideas = BLL_russian_protection_ns
+			}
+		}
+	}
+
+	option = {
+		name = ww1_generic.2.b
+		ai_chance = {
+			base = 10
+		}
+		declare_war_on = {
+			target = event_target:attacker
+			type = annex_everything
+		}
+	}
+}
