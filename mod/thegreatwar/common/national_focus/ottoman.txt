@@ -2903,7 +2903,7 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 7
-		x = 8
+		x = 7
 		y = 6
 		relative_position_id = TUR_ww1_healing_the_sick_man
 	}
@@ -2927,7 +2927,7 @@ focus_tree = {
 			factor = 0
 		}
 		cost = 10
-		x = 6
+		x = 9
 		y = 6
 		relative_position_id = TUR_ww1_healing_the_sick_man
 	}
@@ -3267,7 +3267,7 @@ focus_tree = {
 		}
 		cost = 10
 		x = 8
-		y = 9
+		y = 8
 		relative_position_id = TUR_ww1_healing_the_sick_man
 	}
 	focus = {
@@ -3299,7 +3299,7 @@ focus_tree = {
 		}
 		cost = 10
 		x = 8
-		y = 10
+		y = 9
 		relative_position_id = TUR_ww1_healing_the_sick_man
 	}
 	focus = {
@@ -3744,454 +3744,267 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 51
+		x = 53
 		y = 0
 	}
 	focus = {
-		id = TUR_ww1_equipment_effort
-		prerequisite = {
-			focus = TUR_ww1_army_effort
-		}
-		icon = GFX_goal_generic_small_arms
+		id = TUR_ww1_standardize_army_uniforms
+		icon = GFX_focus_generic_little_entente
+		prerequisite = { focus = TUR_ww1_army_effort }
 		completion_reward = {
-			army_experience = 10
-			add_tech_bonus = {
-				name = infantry_weapons_bonus
-				bonus = 0.15
-				uses = 1
-				category = infantry_weapons
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 50
-		y = 1
-	}
-	focus = {
-		id = TUR_ww1_artillery_effort_1
-		prerequisite = {
-			focus = TUR_ww1_army_effort
-		}
-		icon = GFX_goal_generic_army_artillery2
-		completion_reward = {
-			army_experience = 10
-			add_tech_bonus = {
-				name = infantry_weapons_bonus
-				bonus = 0.15
-				uses = 1
-				category = artillery
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 52
-		y = 1
-	}
-	focus = {
-		id = TUR_ww1_artillery_effort_2
-		prerequisite = {
-			focus = TUR_ww1_artillery_effort_1
-		}
-		available = {
-			date > 1912.1.1
-		}
-		icon = GFX_goal_generic_army_artillery2
-		completion_reward = {
-			army_experience = 10
-			add_tech_bonus = {
-				name = infantry_weapons_bonus
-				bonus = 0.15
-				uses = 1
-				category = artillery
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 52
-		y = 3
-	}
-	focus = {
-		id = TUR_ww1_artillery_effort_3
-		prerequisite = {
-			focus = TUR_ww1_artillery_effort_2
-		}
-		available = {
-			date > 1914.1.1
-		}
-		icon = GFX_goal_generic_army_artillery2
-		completion_reward = {
-			army_experience = 10
-			add_tech_bonus = {
-				name = infantry_weapons_bonus
-				bonus = 0.15
-				uses = 1
-				category = artillery
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 52
-		y = 5
-	}
-	focus = {
-		id = TUR_ww1_doctrine_effort
-		prerequisite = {
-			focus = TUR_ww1_army_effort
-		}
-		available = {
-			date > 1911.1.1
-		}
-		icon = GFX_goal_generic_army_doctrines
-		completion_reward = {
-			army_experience = 15
-			add_doctrine_cost_reduction = {
-				name = land_doc_bonus
-				cost_reduction = 0.2
-				uses = 1
-				category = land_doctrine
-			}
-			swap_ideas = {
-				remove_idea = TUR_army_of_bygone_era_ns
-				add_idea = TUR_army_of_bygone_era_1_ns 
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 51
-		y = 2
-	}
-	focus = {
-		id = TUR_ww1_equipment_effort_2
-		prerequisite = {
-			focus = TUR_ww1_equipment_effort
-		}
-		available = {
-			date > 1912.1.1
-		}
-		icon = GFX_goal_generic_small_arms
-		completion_reward = {
-			army_experience = 10
-			add_tech_bonus = {
-				name = infantry_artillery_bonus
-				bonus = 0.15
-				uses = 1
-				category = infantry_weapons
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 50
-		y = 3
-	}
-	focus = {
-		id = TUR_ww1_trenchwarfare
-		prerequisite = {
-			focus = TUR_ww1_equipment_effort
-		}
-		available = {
-			date > 1911.1.1
-		}
-		icon = GFX_goal_generic_military_sphere
-		completion_reward = {
-			army_experience = 10
-			add_tech_bonus = {
-				name = trench_warfare_bonus
-				bonus = 0.15
-				uses = 1
-				technology = support_weapons
-				technology = support_weapons2
-				technology = support_weapons3
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 49
-		y = 2
-	}
-	focus = {
-		id = TUR_ww1_gasmask_focus
-		prerequisite = {
-			focus = TUR_ww1_trenchwarfare
-		}
-		available = {
-			date > 1913.1.1
-		}
-		icon = GFX_hoi4tgw_gasmask
-		completion_reward = {
-			army_experience = 15
-			add_tech_bonus = {
-				name = gas_mask_bonus
-				bonus = 0.15
-				uses = 1
-				technology = infantry_gasmask
-				technology = chemical_research2
-				technology = chemical_research3
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 49
-		y = 4
-	}
-	focus = {
-		id = TUR_ww1_special_forces
-		prerequisite = {
-			focus = TUR_ww1_gasmask_focus
-		}
-		available = {
-			date > 1915.1.1
-		}
-		icon = GFX_goal_generic_special_forces
-		completion_reward = {
-			army_experience = 15
-			add_tech_bonus = {
-				name = special_forces_bonus
-				bonus = 0.15
-				uses = 1
-				technology = marines
-				technology = marines2
-				technology = tech_mountaineers
-				technology = tech_mountaineers2
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 49
-		y = 6
-	}
-	focus = {
-		id = TUR_ww1_army_motorization_focus
-		available = {
-			date > 1917.1.1
-		}
-		icon = GFX_goal_generic_army_motorized
-		prerequisite = {
-			focus = TUR_ww1_special_forces
-		}
-		x = 49
-		y = 8
-		cost = 10
-		ai_will_do = {
-			factor = 10
-		}
-		completion_reward = {
-			army_experience = 5
-			add_tech_bonus = {
-				name = mech_army_bonus
-				bonus = 0.2
-				uses = 1
-				technology = early_motorised
-				technology = ww1_ambulance2
-			}
-		}
-	}
-	focus = {
-		id = TUR_ww1_doctrine_effort_2
-		prerequisite = {
-			focus = TUR_ww1_doctrine_effort
-		}
-		available = {
-			date > 1913.1.1
-		}
-		icon = GFX_goal_generic_army_doctrines
-		completion_reward = {
-			army_experience = 15
-			add_doctrine_cost_reduction = {
-				name = land_doc_bonus
-				cost_reduction = 0.2
-				uses = 1
-				category = land_doctrine
-			}
-			swap_ideas = {
-				remove_idea = TUR_army_of_bygone_era_1_ns
-				add_idea = TUR_army_of_bygone_era_2_ns
-			}
 			
 		}
 		ai_will_do = {
 			factor = 10
 		}
 		cost = 10
-		x = 51
+		x = 0
+		y = 1
+		relative_position_id = TUR_ww1_army_effort
+	}
+	focus = {
+		id = TUR_ww1_depoliticize_the_army
+		icon = GFX_focus_generic_advanced_military_studies
+		prerequisite = { focus = TUR_ww1_standardize_army_uniforms }
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		cost = 10
+		x = 0
+		y = 2
+		relative_position_id = TUR_ww1_army_effort
+	}
+	focus = {
+		id = TUR_ww1_german_model_army
+		icon = GFX_focus_GER_german_hegemony_in_the_middle_east_neutrality
+		prerequisite = { focus = TUR_ww1_depoliticize_the_army }
+		mutually_exclusive = { focus = TUR_ww1_french_model_army }
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		cost = 10
+		x = 1
+		y = 3
+		relative_position_id = TUR_ww1_army_effort
+	}
+	focus = {
+		id = TUR_ww1_german_training
+		icon = GFX_goal_continuous_reduce_training_time
+		prerequisite = { focus = TUR_ww1_german_model_army }
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		cost = 10
+		x = 1
 		y = 4
+		relative_position_id = TUR_ww1_army_effort
 	}
 	focus = {
-		id = TUR_ww1_equipment_effort_3
-		prerequisite = {
-			focus = TUR_ww1_equipment_effort_2
-		}
-		available = {
-			date > 1914.1.1
-		}
-		icon = GFX_goal_generic_small_arms
+		id = TUR_ww1_french_model_army
+		icon = GFX_focus_chi_reach_out_to_france
+		prerequisite = { focus = TUR_ww1_depoliticize_the_army }
+		mutually_exclusive = { focus = TUR_ww1_german_model_army }
 		completion_reward = {
-			army_experience = 10
-			add_tech_bonus = {
-				name = infantry_artillery_bonus
-				bonus = 0.15
-				uses = 1
-				category = infantry_weapons
-			}
+			
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = -1
+		y = 3
+		relative_position_id = TUR_ww1_army_effort
+	}
+	focus = {
+		id = TUR_ww1_french_training
+		icon = GFX_goal_continuous_reduce_training_time
+		prerequisite = { focus = TUR_ww1_french_model_army }
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = -1
+		y = 4
+		relative_position_id = TUR_ww1_army_effort
+	}
+	focus = {
+		id = TUR_ww1_promote_junior_officers
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = TUR_ww1_french_training focus = TUR_ww1_german_training }
+		completion_reward = {
+			
 		}
 		ai_will_do = {
 			factor = 10
 		}
 		cost = 10
-		x = 50
+		x = 0
 		y = 5
+		relative_position_id = TUR_ww1_army_effort
 	}
 	focus = {
-		id = TUR_ww1_doctrine_effort_3
-		prerequisite = {
-			focus = TUR_ww1_doctrine_effort_2
-		}
-		available = {
-			date > 1915.1.1
-		}
-		icon = GFX_goal_generic_army_doctrines
+		id = TUR_ww1_common_language_for_the_army
+		icon = GFX_focus_generic_manpower
+		prerequisite = { focus = TUR_ww1_promote_junior_officers }
 		completion_reward = {
-			army_experience = 15
-			add_doctrine_cost_reduction = {
-				name = land_doc_bonus
-				cost_reduction = 0.2
-				uses = 1
-				category = land_doctrine
-			}
-			remove_ideas = { TUR_army_of_bygone_era_2_ns }
+			
 		}
 		ai_will_do = {
 			factor = 10
 		}
 		cost = 10
-		x = 51
+		x = -2
 		y = 6
+		relative_position_id = TUR_ww1_army_effort
 	}
 	focus = {
-		id = TUR_ww1_equipment_effort_4
-		prerequisite = {
-			focus = TUR_ww1_equipment_effort_3
-		}
-		available = {
-			date > 1916.1.1
-		}
-		icon = GFX_goal_generic_small_arms
+		id = TUR_ww1_reform_the_conscription_system
+		icon = GFX_focus_generic_military_academy
+		prerequisite = { focus = TUR_ww1_common_language_for_the_army }
 		completion_reward = {
-			army_experience = 20
-			add_tech_bonus = {
-				name = infantry_artillery_bonus
-				bonus = 0.2
-				uses = 1
-				category = infantry_weapons
-			}
+			
 		}
 		ai_will_do = {
 			factor = 10
 		}
 		cost = 10
-		x = 50
+		x = -2
 		y = 7
+		relative_position_id = TUR_ww1_army_effort
 	}
 	focus = {
-		id = TUR_ww1_artillery_effort_4
-		prerequisite = {
-			focus = TUR_ww1_artillery_effort_3
-		}
-		available = {
-			date > 1916.1.1
-		}
-		icon = GFX_goal_generic_army_artillery2
+		id = TUR_ww1_improve_supply_chains
+		icon = GFX_focus_generic_supply_line
+		prerequisite = { focus = TUR_ww1_reform_the_conscription_system }
 		completion_reward = {
-			army_experience = 20
-			add_tech_bonus = {
-				name = infantry_artillery_bonus
-				bonus = 0.2
-				uses = 1
-				category = artillery
-			}
+			
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 		cost = 10
-		x = 52
-		y = 7
-	}
-	focus = {
-		id = TUR_ww1_armor_effort_1
-		prerequisite = {
-			focus = TUR_ww1_equipment_effort_4
-		}
-		prerequisite = {
-			focus = TUR_ww1_doctrine_effort_3
-		}
-		prerequisite = {
-			focus = TUR_ww1_artillery_effort_4
-		}
-		available = {
-			date > 1917.1.1
-		}
-		icon = GFX_hoi4tgw_renaultft
-		completion_reward = {
-			army_experience = 50
-			add_tech_bonus = {
-				name = armor_bonus
-				bonus = 0.15
-				uses = 2
-				category = armor
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 51
+		x = -2
 		y = 8
+		relative_position_id = TUR_ww1_army_effort
 	}
 	focus = {
-		id = TUR_ww1_armor_effort_2
-		prerequisite = {
-			focus = TUR_ww1_armor_effort_1
-		}
-		prerequisite = {
-			focus = TUR_ww1_army_motorization_focus
-		}
-		available = {
-			date > 1918.1.1
-		}
-		icon = GFX_goal_generic_army_tanks
+		id = TUR_ww1_full_army_modernization
+		icon = GFX_focus_generic_little_entente
+		prerequisite = { focus = TUR_ww1_improve_supply_chains }
 		completion_reward = {
-			army_experience = 75
-			add_tech_bonus = {
-				name = armor_bonus
-				bonus = 0.1
-				uses = 2
-				category = armor
-			}
+			
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 		cost = 10
-		x = 50
+		x = -2
 		y = 9
+		relative_position_id = TUR_ww1_army_effort
+	}
+	focus = {
+		id = TUR_ww1_develop_ottoman_guns
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = TUR_ww1_promote_junior_officers }
+		mutually_exclusive = { focus = TUR_ww1_stick_to_western_guns }
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = 0
+		y = 6
+		relative_position_id = TUR_ww1_army_effort
+	}
+	focus = {
+		id = TUR_ww1_ottoman_artilerry
+		icon = GFX_goal_generic_army_artillery2
+		prerequisite = { focus = TUR_ww1_develop_ottoman_guns }
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = 0
+		y = 7
+		relative_position_id = TUR_ww1_army_effort
+	}
+	focus = {
+		id = TUR_ww1_ottoman_chemical_corps
+		icon = GFX_hoi4tgw_gasmask
+		prerequisite = { focus = TUR_ww1_ottoman_artilerry }
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = 0
+		y = 8
+		relative_position_id = TUR_ww1_army_effort
+	}
+	focus = {
+		id = TUR_ww1_ottoman_tank_projects
+		icon = GFX_hoi4tgw_renaultft
+		prerequisite = { focus = TUR_ww1_ottoman_chemical_corps }
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = 0
+		y = 9
+		relative_position_id = TUR_ww1_army_effort
+	}
+	focus = {
+		id = TUR_ww1_stick_to_western_guns
+		icon = GFX_focus_generic_reorient_production
+		prerequisite = { focus = TUR_ww1_promote_junior_officers }
+		mutually_exclusive = { focus = TUR_ww1_develop_ottoman_guns }
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = 2
+		y = 6
+		relative_position_id = TUR_ww1_army_effort
+	}
+	focus = {
+		id = TUR_ww1_strike_international_market_deals
+		icon = GFX_focus_generic_money_for_equipment
+		prerequisite = { focus = TUR_ww1_stick_to_western_guns }
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = 2
+		y = 7
+		relative_position_id = TUR_ww1_army_effort
 	}
 	#############################################################################
 	focus = {
@@ -4290,413 +4103,132 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 56
+		x = 57
 		y = 0
 	}
 	focus = {
-		id = TUR_ww1_aviation_effort_2
-		prerequisite = {
-			focus = TUR_ww1_aviation_effort
-		}
-		icon = GFX_goal_generic_air_doctrine
+		id = TUR_ww1_ottoman_planes
+		icon = GFX_goal_generic_air_production
+		prerequisite = { focus = TUR_ww1_aviation_effort }
+		mutually_exclusive = { focus = TUR_ww1_continue_with_zeppelins }
 		completion_reward = {
-			air_experience = 15
-			add_doctrine_cost_reduction = {
-				name = air_doc_bonus
-				cost_reduction = 0.15
-				uses = 1
-				category = air_doctrine
-			}
+			
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 		cost = 10
-		x = 56
+		x = -1
 		y = 1
+		relative_position_id = TUR_ww1_aviation_effort
 	}
 	focus = {
-		id = TUR_ww1_airship_focus
-		prerequisite = {
-			focus = TUR_ww1_aviation_effort_2
-		}
-		available = {
-			date > 1911.1.1
-		}
-		icon = GFX_hoi4tgw_zeppelin
+		id = TUR_ww1_building_more_airports
+		icon = GFX_goal_generic_build_airforce
+		prerequisite = { focus = TUR_ww1_ottoman_planes }
 		completion_reward = {
-			add_tech_bonus = {
-				name = fighter_bonus
-				bonus = 0.15
-				uses = 1
-				technology = ww1_zeppelin1
-				technology = ww1_zeppelin2
-			}
+			
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 		cost = 10
-		x = 58
+		x = -1
 		y = 2
+		relative_position_id = TUR_ww1_aviation_effort
 	}
 	focus = {
-		id = TUR_ww1_fighter_focus
-		prerequisite = {
-			focus = TUR_ww1_aviation_effort_2
-		}
-		available = {
-			date > 1911.1.1
-		}
+		id = TUR_ww1_ottoman_fighter_project
 		icon = GFX_goal_generic_air_fighter
+		prerequisite = { focus = TUR_ww1_building_more_airports }
 		completion_reward = {
-			add_tech_bonus = {
-				name = fighter_bonus
-				bonus = 0.15
-				uses = 1
-				technology = ww1_fighter1
-				technology = ww1_fighter1b
-				technology = ww1_fighter2
-				technology = ww1_fighter2b
-			}
+			
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 		cost = 10
-		x = 54
-		y = 2
-		mutually_exclusive = {
-			focus = TUR_ww1_bomber_focus
-		}
-	}
-	focus = {
-		id = TUR_ww1_bomber_focus
-		prerequisite = {
-			focus = TUR_ww1_aviation_effort_2
-		}
-		available = {
-			date > 1911.1.1
-		}
-		icon = GFX_goal_generic_air_bomber
-		completion_reward = {
-			add_tech_bonus = {
-				name = bomber_bonus
-				bonus = 0.15
-				uses = 1
-				category = tactical_bomber
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 56
-		y = 2
-		mutually_exclusive = {
-			focus = TUR_ww1_fighter_focus
-		}
-	}
-	focus = {
-		id = TUR_ww1_aviation_effort_3
-		prerequisite = {
-			focus = TUR_ww1_bomber_focus
-			focus = TUR_ww1_fighter_focus
-			focus = TUR_ww1_airship_focus
-		}
-		available = {
-			date > 1912.1.1
-		}
-		icon = GFX_goal_generic_air_doctrine
-		completion_reward = {
-			air_experience = 15
-			add_doctrine_cost_reduction = {
-				name = air_doc_bonus
-				cost_reduction = 0.15
-				uses = 1
-				category = air_doctrine
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 56
+		x = -1
 		y = 3
+		relative_position_id = TUR_ww1_aviation_effort
 	}
 	focus = {
-		id = TUR_ww1_pilotformation_1
-		prerequisite = {
-			focus = TUR_ww1_aviation_effort_3
-		}
-		available = {
-			date > 1913.1.1
-		}
-		icon = GFX_goal_generic_CAS
+		id = TUR_ww1_ottoman_bombers
+		icon = GFX_goal_generic_air_bomber
+		prerequisite = { focus = TUR_ww1_ottoman_fighter_project }
 		completion_reward = {
-			#add_tech_bonus = { #TODO: Rework Doctrines?
-			#	name = formations_bonus
-			#	bonus = 0.15
-			#	uses = 1
-			#	technology = dogfighting_experience
-			#	technology = fighter_ace_initiative
-			#	technology = dispersed_fighting
-			#}
-			add_mastery = {
-				amount = 50
-				folder = air
-			}
+			
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 		cost = 10
-		x = 54
+		x = -1
 		y = 4
+		relative_position_id = TUR_ww1_aviation_effort
 	}
 	focus = {
-		id = TUR_ww1_aircraftprod_1
-		prerequisite = {
-			focus = TUR_ww1_aviation_effort_3
-		}
-		available = {
-			date > 1913.1.1
-		}
-		icon = GFX_goal_generic_air_production
+		id = TUR_ww1_continue_with_zeppelins
+		icon = GFX_hoi4tgw_zeppelin
+		prerequisite = { focus = TUR_ww1_aviation_effort }
+		mutually_exclusive = { focus = TUR_ww1_ottoman_planes }
 		completion_reward = {
-			add_tech_bonus = {
-				name = air_bonus
-				bonus = 0.15
-				uses = 1
-				category = air_equipment
-			}
+			
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 		cost = 10
-		x = 56
-		y = 4
+		x = 1
+		y = 1
+		relative_position_id = TUR_ww1_aviation_effort
 	}
 	focus = {
-		id = TUR_ww1_airbomb_1
-		prerequisite = {
-			focus = TUR_ww1_aviation_effort_3
-		}
-		available = {
-			date > 1913.1.1
-		}
-		icon = GFX_goal_poland_goal
+		id = TUR_ww1_our_own_zeppelin_projects
+		icon = GFX_goal_continuous_repairments
+		prerequisite = { focus = TUR_ww1_continue_with_zeppelins }
+		mutually_exclusive = { focus = TUR_ww1_continue_to_use_german_zeppelins }
 		completion_reward = {
-			#add_tech_bonus = { #TODO: Rework Doctrines?
-			#	name = formations_bonus
-			#	bonus = 0.15
-			#	uses = 1
-			#	technology = infrastructure_destruction
-			#	technology = dive_bombing
-			#	technology = operational_destruction
-			#}
-			add_mastery = {
-				amount = 50
-				folder = air
-			}
+			
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 		cost = 10
-		x = 58
-		y = 4
+		x = 1
+		y = 2
+		relative_position_id = TUR_ww1_aviation_effort
 	}
 	focus = {
-		id = TUR_ww1_aviation_effort_4
-		prerequisite = {
-			focus = TUR_ww1_pilotformation_1
-			focus = TUR_ww1_aircraftprod_1
-			focus = TUR_ww1_airbomb_1
-		}
-		available = {
-			date > 1914.1.1
-		}
+		id = TUR_ww1_continue_to_use_german_zeppelins
 		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = TUR_ww1_continue_with_zeppelins }
+		mutually_exclusive = { focus = TUR_ww1_our_own_zeppelin_projects }
 		completion_reward = {
-			air_experience = 15
-			add_doctrine_cost_reduction = {
-				name = air_doc_bonus
-				cost_reduction = 0.15
-				uses = 1
-				category = air_doctrine
-			}
+			
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 		cost = 10
-		x = 56
-		y = 5
+		x = 3
+		y = 2
+		relative_position_id = TUR_ww1_aviation_effort
 	}
 	focus = {
-		id = TUR_ww1_pilotformation_2
-		prerequisite = {
-			focus = TUR_ww1_aviation_effort_4
-		}
-		available = {
-			date > 1915.1.1
-		}
-		icon = GFX_goal_generic_CAS
-		completion_reward = {
-			#add_tech_bonus = { #TODO: Rework Doctrines?
-			#	name = formations_bonus
-			#	bonus = 0.15
-			#	uses = 1
-			#	technology = multialtitude_flying
-			#	technology = hunt_and_destroy
-			#	technology = fighter_veteran_initiative
-			#}
-			add_mastery = {
-				amount = 50
-				folder = air
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 54
-		y = 6
-	}
-	focus = {
-		id = TUR_ww1_aircraftprod_2
-		prerequisite = {
-			focus = TUR_ww1_aviation_effort_4
-		}
-		available = {
-			date > 1915.1.1
-		}
-		icon = GFX_goal_generic_air_production
-		completion_reward = {
-			add_tech_bonus = {
-				name = air_bonus
-				bonus = 0.2
-				uses = 1
-				category = air_equipment
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 56
-		y = 6
-	}
-	focus = {
-		id = TUR_ww1_airbomb_2
-		prerequisite = {
-			focus = TUR_ww1_aviation_effort_4
-		}
-		available = {
-			date > 1915.1.1
-		}
-		icon = GFX_goal_generic_occupy_start_war
-		completion_reward = {
-			#add_tech_bonus = { #TODO: Rework Doctrines?
-			#	name = formations_bonus
-			#	bonus = 0.15
-			#	uses = 1
-			#	technology = multialtitude_flying
-			#	technology = hunt_and_destroy
-			#	technology = fighter_veteran_initiative
-			#}
-			add_mastery = {
-				amount = 50
-				folder = air
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 58
-		y = 6
-	}
-	focus = {
-		id = TUR_ww1_aviation_effort_5
-		prerequisite = {
-			focus = TUR_ww1_pilotformation_2
-			focus = TUR_ww1_aircraftprod_2
-			focus = TUR_ww1_airbomb_2
-		}
-		available = {
-			date > 1916.1.1
-		}
-		icon = GFX_goal_generic_air_doctrine
-		completion_reward = {
-			air_experience = 15
-			add_doctrine_cost_reduction = {
-				name = air_doc_bonus
-				cost_reduction = 0.15
-				uses = 1
-				category = air_doctrine
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 56
-		y = 7
-	}
-	focus = {
-		id = TUR_ww1_air_innovation
-		prerequisite = {
-			focus = TUR_ww1_aviation_effort_5
-		}
-		available = {
-			date > 1917.1.1
-		}
-		icon = GFX_goal_generic_air_fighter2
-		completion_reward = {
-			air_experience = 20
-			add_tech_bonus = {
-				name = ww1_air_innovation_bonus
-				bonus = 0.2
-				uses = 1
-				technology = ww1_fighter3
-				technology = ww1_fighter4
-				technology = early_fighter
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 55
-		y = 8
-	}
-	focus = {
-		id = TUR_ww1_navalair
-		prerequisite = {
-			focus = TUR_ww1_aviation_effort_5
-		}
-		available = {
-			date > 1917.1.1
-		}
+		id = TUR_ww1_flying_artilerrys
 		icon = GFX_goal_generic_air_naval_bomber
+		prerequisite = { focus = TUR_ww1_continue_to_use_german_zeppelins focus = TUR_ww1_our_own_zeppelin_projects }
 		completion_reward = {
-			add_tech_bonus = {
-				name = nav_bomber_bonus
-				bonus = 0.15
-				ahead_reduction = 1
-				uses = 1
-				category = naval_bomber
-			}
+			
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 		cost = 10
-		x = 57
-		y = 8
+		x = 2
+		y = 3
+		relative_position_id = TUR_ww1_aviation_effort
 	}
 	###########################################################################################################################
 	focus = {
@@ -4836,499 +4368,115 @@ focus_tree = {
 			factor = 10
 		}
 		cost = 10
-		x = 61
+		x = 62
 		y = 0
 	}
 	focus = {
-		id = TUR_ww1_newnavalcanons_1
-		relative_position_id = TUR_ww1_naval_effort
-		prerequisite = {
-			focus = TUR_ww1_naval_effort
-		}
-		icon = GFX_hoi4tgw_navalcanons
+		id = TUR_ww1_order_british_ships
+		icon = GFX_focus_generic_refit_civilian_ships
+		prerequisite = { focus = TUR_ww1_naval_effort }
 		completion_reward = {
-			navy_experience = 15
-			add_doctrine_cost_reduction = {
-				name = newnavalcanons_1_bonus
-				cost_reduction = 0.15
-				uses = 1
-				category = naval_doctrine
-			}
+			
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 		cost = 10
 		x = 0
 		y = 1
+		relative_position_id = TUR_ww1_naval_effort
 	}
 	focus = {
-		id = TUR_ww1_dreadnought_effort
-		relative_position_id = TUR_ww1_naval_effort
-		prerequisite = {
-			focus = TUR_ww1_newnavalcanons_1
-		}
-		available = {
-			date > 1911.1.1
-		}
-		icon = GFX_goal_generic_navy_battleship
+		id = TUR_ww1_modern_dockyards
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus =TUR_ww1_order_british_ships }
 		completion_reward = {
-			add_tech_bonus = {
-				name = cr_bonus
-				bonus = 0.15
-				uses = 1
-				technology = ww1_battleship0
-				technology = ww1_battleship1
-				technology = ww1_battleship2
-			}
+			
 		}
 		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				all_owned_state = {
-					OR = {
-						is_coastal = no
-						dockyard < 1
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 		cost = 10
 		x = 0
 		y = 2
+		relative_position_id = TUR_ww1_naval_effort
 	}
 	focus = {
-		id = TUR_ww1_newnavalcanons_2
-		relative_position_id = TUR_ww1_naval_effort
-		prerequisite = {
-			focus = TUR_ww1_dreadnought_effort
-		}
-		available = {
-			date > 1912.1.1
-		}
-		icon = GFX_goal_generic_army_artillery
-		completion_reward = {
-			navy_experience = 15
-			add_doctrine_cost_reduction = {
-				name = newnavalcanons_2_bonus
-				cost_reduction = 0.15
-				uses = 1
-				category = naval_doctrine
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 0
-		y = 3
-	}
-	focus = {
-		id = TUR_ww1_flexible_navy
-		relative_position_id = TUR_ww1_naval_effort
-		prerequisite = {
-			focus = TUR_ww1_newnavalcanons_2
-		}
-		available = {
-			date > 1913.1.1
-		}
-		icon = GFX_goal_generic_occupy_states_coastal
-		completion_reward = {
-			add_mastery = {
-				amount = 75
-				folder = naval
-			}
-		}
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				all_owned_state = {
-					OR = {
-						is_coastal = no
-						dockyard < 1
-					}
-				}
-			}
-		}
-		cost = 10
-		x = 1
-		y = 4
-		mutually_exclusive = {
-			focus = TUR_ww1_large_navy
-		}
-	}
-	focus = {
-		id = TUR_ww1_large_navy
-		relative_position_id = TUR_ww1_naval_effort
-		prerequisite = {
-			focus = TUR_ww1_newnavalcanons_2
-		}
-		available = {
-			date > 1913.1.1
-		}
-		icon = GFX_goal_generic_navy_doctrines_tactics
-		completion_reward = {
-			add_tech_bonus = {
-				name = fleet_in_being_bonus
-				bonus = 0.2
-				uses = 1
-				category = fleet_in_being_tree
-			}
-		}
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				all_owned_state = {
-					OR = {
-						is_coastal = no
-						dockyard < 1
-					}
-				}
-			}
-		}
-		cost = 10
-		x = -1
-		y = 4
-		mutually_exclusive = {
-			focus = TUR_ww1_flexible_navy
-		}
-	}
-	focus = {
-		id = TUR_ww1_submarine_effort
-		relative_position_id = TUR_ww1_naval_effort
-		prerequisite = {
-			focus = TUR_ww1_flexible_navy
-			focus = TUR_ww1_large_navy
-		}
-		available = {
-			date > 1914.1.1
-		}
-		icon = GFX_goal_generic_navy_submarine
-		completion_reward = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}
-				add_tech_bonus = {
-					name = ss_bonus
-					bonus = 0.2
-					uses = 1
-					technology = ww1_submarine1_mtg
-					technology = ww1_submarine2_mtg
-				}
-			}
-			if = {
-				limit = {
-					not = {
-						has_dlc = "Man the Guns"
-					}
-				}
-				add_tech_bonus = {
-					name = ss_bonus
-					bonus = 0.2
-					uses = 1
-					technology = ww1_submarine1
-					technology = ww1_submarine2
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				all_owned_state = {
-					OR = {
-						is_coastal = no
-						dockyard < 1
-					}
-				}
-			}
-		}
-		cost = 10
-		x = -1
-		y = 5
-	}
-	focus = {
-		id = TUR_ww1_cruiser_effort
-		relative_position_id = TUR_ww1_naval_effort
-		prerequisite = {
-			focus = TUR_ww1_flexible_navy
-			focus = TUR_ww1_large_navy
-		}
-		available = {
-			date > 1914.1.1
-		}
-		icon = GFX_goal_generic_navy_cruiser
-		completion_reward = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}
-				add_tech_bonus = {
-					name = cr_bonus
-					bonus = 0.2
-					uses = 1
-					technology = ww1_light_cruiser0_mtg
-					technology = ww1_light_cruiser1_mtg
-					technology = ww1_light_cruiser2_mtg
-				}
-			}
-			if = {
-				limit = {
-					not = {
-						has_dlc = "Man the Guns"
-					}
-				}
-				add_tech_bonus = {
-					name = cr_bonus
-					bonus = 0.2
-					uses = 1
-					technology = ww1_light_cruiser0
-					technology = ww1_light_cruiser1
-					technology = ww1_light_cruiser2
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				all_owned_state = {
-					OR = {
-						is_coastal = no
-						dockyard < 1
-					}
-				}
-			}
-		}
-		cost = 10
-		x = 1
-		y = 5
-	}
-	focus = {
-		id = TUR_ww1_destroyer_effort
-		relative_position_id = TUR_ww1_naval_effort
-		prerequisite = {
-			focus = TUR_ww1_submarine_effort
-		}
-		available = {
-			date > 1915.1.1
-		}
-		icon = GFX_goal_generic_wolf_pack
-		completion_reward = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}
-				add_tech_bonus = {
-					name = dd_bonus
-					bonus = 0.2
-					uses = 1
-					technology = ww1_destroyer0_mtg
-					technology = ww1_destroyer1_mtg
-					technology = ww1_destroyer2_mtg
-				}
-			}
-			if = {
-				limit = {
-					not = {
-						has_dlc = "Man the Guns"
-					}
-				}
-				add_tech_bonus = {
-					name = dd_bonus
-					bonus = 0.2
-					uses = 1
-					technology = ww1_destroyer0
-					technology = ww1_destroyer1
-					technology = ww1_destroyer2
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				all_owned_state = {
-					OR = {
-						is_coastal = no
-						dockyard < 1
-					}
-				}
-			}
-		}
-		cost = 10
-		x = -1
-		y = 6
-	}
-	focus = {
-		id = TUR_ww1_capital_ships_effort
-		relative_position_id = TUR_ww1_naval_effort
-		prerequisite = {
-			focus = TUR_ww1_cruiser_effort
-		}
-		available = {
-			date > 1915.1.1
-		}
+		id = TUR_ww1_continue_the_ottoman_navy_tradition
 		icon = GFX_goal_generic_navy_battleship
+		prerequisite = { focus = TUR_ww1_modern_dockyards }
+		mutually_exclusive = { focus = TUR_ww1_switch_to_wolfpacks }
 		completion_reward = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}
-				navy_experience = 25
-				add_tech_bonus = {
-					name = capital_ships_bonus
-					bonus = 0.2
-					uses = 1
-					technology = ww1_battlecruiser0_mtg
-					technology = ww1_battlecruiser1_mtg
-					technology = ww1_battlecruiser2_mtg
-					technology = early_battleship_mtg
-					technology = seaplane_carrier_mtg
-				}
-			}
-			if = {
-				limit = {
-					not = {
-						has_dlc = "Man the Guns"
-					}
-				}
-				navy_experience = 25
-				add_tech_bonus = {
-					name = capital_ships_bonus
-					bonus = 0.2
-					uses = 1
-					technology = ww1_battlecruiser0
-					technology = ww1_battlecruiser1
-					technology = ww1_battlecruiser2
-					technology = early_battleship
-					technology = seaplane_carrier
-				}
-			}
+			
 		}
 		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				all_owned_state = {
-					OR = {
-						is_coastal = no
-						dockyard < 1
-					}
-				}
-			}
-		}
-		cost = 10
-		x = 1
-		y = 6
-	}
-	focus = {
-		id = TUR_ww1_newnavalcanons_3
-		relative_position_id = TUR_ww1_naval_effort
-		prerequisite = {
-			focus = TUR_ww1_capital_ships_effort
-		}
-		prerequisite = {
-			focus = TUR_ww1_destroyer_effort
-		}
-		available = {
-			date > 1916.1.1
-		}
-		icon = GFX_goal_generic_army_artillery
-		completion_reward = {
-			navy_experience = 15
-			add_doctrine_cost_reduction = {
-				name = newnavalcanons_3_bonus
-				cost_reduction = 0.2
-				uses = 1
-				category = naval_doctrine
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 0
-		y = 7
-	}
-	focus = {
-		id = TUR_ww1_navyreform
-		relative_position_id = TUR_ww1_naval_effort
-		prerequisite = {
-			focus = TUR_ww1_newnavalcanons_3
-		}
-		available = {
-			date > 1917.1.1
-		}
-		icon = GFX_goal_generic_amphibious_assault
-		completion_reward = {
-			navy_experience = 25
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		cost = 10
-		x = 0
-		y = 8
-	}
-	focus = {
-		id = TUR_ww1_carrier_focus
-		relative_position_id = TUR_ww1_naval_effort
-		prerequisite = {
-			focus = TUR_ww1_navyreform
-		}
-		available = {
-			date > 1918.1.1
-		}
-		icon = GFX_goal_generic_navy_carrier
-		completion_reward = {
-			navy_experience = 25
-			add_tech_bonus = {
-				name = uk_carrier_focus
-				bonus = 0.3
-				uses = 2
-				category = cv_tech
-			}
-		}
-		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 		cost = 10
 		x = -1
-		y = 9
+		y = 3
+		relative_position_id = TUR_ww1_naval_effort
 	}
 	focus = {
-		id = TUR_ww1_antisubmarine
-		relative_position_id = TUR_ww1_naval_effort
-		prerequisite = {
-			focus = TUR_ww1_navyreform
-		}
-		available = {
-			date > 1918.1.1
-		}
-		icon = GFX_goal_generic_navy_anti_submarine
+		id = TUR_ww1_build_modern_dreadnoughts
+		icon = GFX_focus_generic_navy_battleship2
+		prerequisite = { focus = TUR_ww1_continue_the_ottoman_navy_tradition }
 		completion_reward = {
-			navy_experience = 15
-			add_doctrine_cost_reduction = {
-				name = newnavalcanons_3_bonus
-				cost_reduction = 0.3
-				uses = 1
-				category = naval_doctrine
-			}
+			
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
+		}
+		cost = 10
+		x = -1
+		y = 4
+		relative_position_id = TUR_ww1_naval_effort
+	}
+	focus = {
+		id = TUR_ww1_switch_to_wolfpacks
+		icon = GFX_goal_generic_navy_submarine
+		prerequisite = { focus = TUR_ww1_modern_dockyards }
+		mutually_exclusive = { focus = TUR_ww1_continue_the_ottoman_navy_tradition }
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			factor = 0
 		}
 		cost = 10
 		x = 1
-		y = 9
+		y = 3
+		relative_position_id = TUR_ww1_naval_effort
+	}
+	focus = {
+		id = TUR_ww1_build_modern_submarines
+		icon = GFX_focus_PRC_submarines
+		prerequisite = { focus = TUR_ww1_switch_to_wolfpacks }
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = 1
+		y = 4
+		relative_position_id = TUR_ww1_naval_effort
+	}
+	focus = {
+		id = TUR_ww1_hegemony_in_the_mediterrean_sea
+		icon = GFX_focus_generic_mediterranean_sea_focus
+		prerequisite = { focus = TUR_ww1_build_modern_dreadnoughts focus = TUR_ww1_build_modern_submarines }
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		cost = 10
+		x = 0
+		y = 5
+		relative_position_id = TUR_ww1_naval_effort
 	}
 	###########################################################################################################################
 	focus = {
