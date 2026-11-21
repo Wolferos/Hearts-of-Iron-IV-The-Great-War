@@ -1,0 +1,252 @@
+#!gfx:interface/tgw_goals.gfx
+shared_focus = {
+	id = BLL_balkan_politics
+	icon = GFX_hoi4tgw_balkans_policy
+
+	cost = 5
+	x = 5
+	y = 0
+	offset = {
+		x = 2
+		trigger = {
+			has_focus_tree = bul_focus
+		}
+	}
+	offset = {
+		x = 2
+		trigger = {
+			has_focus_tree = ser_focus
+		}
+	}
+	offset = {
+		x = 9
+		y = 9
+		trigger = {
+			has_focus_tree = balkan_generic_focus
+		}
+	}
+
+	completion_reward = {
+		add_stability = 0.05
+		add_political_power = 100
+	}
+
+	search_filters = {
+		FOCUS_FILTER_HISTORICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+### ANTI-OTTOMAN POLICY --- HISTORICAL ###
+shared_focus = {
+	id = BLL_anti_ottoman_policy
+	icon = GFX_goal_generic_political_pressure
+
+	prerequisite = { focus = BLL_balkan_politics }
+	mutually_exclusive = { focus = BLL_appeasement_in_the_balkans }
+
+	cost = 5
+	x = 1
+	y = 1
+	relative_position_id = BLL_balkan_politics
+
+	completion_reward = {
+		add_opinion_modifier = {
+			target = TUR
+			modifier = HOI4TGW_Opinion_anti_ottoman_policy_malus
+		}
+		reverse_add_opinion_modifier = {
+			target = TUR
+			modifier = HOI4TGW_Opinion_anti_ottoman_policy_malus
+		}
+	}
+
+	search_filters = {
+		FOCUS_FILTER_HISTORICAL #FOCUS_FILTER_DIPLOMATIC
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+joint_focus = {
+	id = BLL_form_the_balkan_league
+	icon = GFX_focus_BUL_free_balkan_states
+	text_icon = NORDIC_focus_style
+
+	prerequisite = { focus = BLL_anti_ottoman_policy }
+
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = BLL_anti_ottoman_policy
+
+	completion_reward_joint_originator = {
+		set_rule = {
+			can_create_factions = yes
+		}
+		create_faction_from_template = faction_template_balkan_league
+		set_country_flag = BLL_balkan_league_leader
+		custom_effect_tooltip = generic_skip_one_line_tt
+		unlock_decision_tooltip = BLL_strike_the_ottomans
+		hidden_effect = {
+			news_event = { id = kis_news.108 hours = 6 }
+			every_collection_element = {
+				input = {
+					input = collection:ww1_balkan_countries
+				}
+				if = {
+					limit = {
+						NOT = {
+							original_tag = ROOT
+						}
+						has_completed_focus = BLL_anti_ottoman_policy
+					}
+					country_event = { id = ww1_firstbalkan.3 hours = 6 }
+				}
+			}
+		}
+	}
+
+	completion_reward_joint_member = {
+		effect_tooltip = {
+			if = {
+				limit = {
+					has_completed_focus = BLL_anti_ottoman_policy
+				}
+				country_event = { id = ww1_firstbalkan.3 hours = 6 }
+			}
+		}
+	}
+
+	search_filters = {
+		FOCUS_FILTER_HISTORICAL #FOCUS_FILTER_DIPLOMATIC
+	}
+
+	ai_will_do = {
+		base = 10
+	}
+}
+
+### APPEASEMENT IN THE BALKANS --- ALT-HIST ###
+
+shared_focus = {
+	id = BLL_appeasement_in_the_balkans
+	icon = GFX_goal_generic_national_unity
+
+	prerequisite = { focus = BLL_balkan_politics }
+	mutually_exclusive = { focus = BLL_anti_ottoman_policy }
+
+	cost = 5
+	x = -1
+	y = 1
+	relative_position_id = BLL_balkan_politics
+
+	available = {
+		has_war = no
+	}
+
+	completion_reward = {
+		add_ideas = BLL_appeasement_in_the_balkans_ns
+	}
+
+	search_filters = {
+		FOCUS_FILTER_POLITICAL #FOCUS_FILTER_DIPLOMATIC
+	}
+
+	ai_will_do = {
+		base = 10
+		modifier = {
+			factor = 0
+			is_historical_focus_on = yes
+			NOT = {
+				has_focus_tree = ser_focus
+				has_focus_tree = bul_focus
+				original_tag = ROM
+				original_tag = ALB
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = BLL_pacifism
+	icon = GFX_goal_anschluss
+
+	prerequisite = { focus = BLL_appeasement_in_the_balkans }
+
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = BLL_appeasement_in_the_balkans
+
+	available = {
+		has_war = no
+	}
+
+	completion_reward = {
+		swap_ideas = {
+			remove_idea = BLL_appeasement_in_the_balkans_ns
+			add_idea = BLL_pacifism_ns
+		}
+	}
+
+	search_filters = {
+		FOCUS_FILTER_STABILITY
+	}
+
+	ai_will_do = {
+		base = 10
+	}
+}
+
+shared_focus = {
+	id = BLL_rescind_our_claims_on_ottoman_land
+	icon = GFX_goal_generic_forceful_treaty
+
+	prerequisite = { focus = BLL_pacifism }
+
+	cost = 10
+	x = 0
+	y = 1
+	relative_position_id = BLL_pacifism
+
+	available = {
+		NOT = {
+			has_war_with = TUR
+		}
+	}
+
+	bypass = {
+		NOT = {
+			TUR = {
+				any_owned_state = {
+					is_claimed_by = ROOT
+				}
+			}
+		}
+	}
+
+	completion_reward = {
+		TUR = {
+			every_owned_state = {
+				limit = {
+					is_claimed_by = ROOT
+				}
+				remove_claim_by = ROOT
+			}
+		}
+	}
+
+	#search_filters = {
+		#FOCUS_FILTER_DIPLOMATIC
+	#}
+
+	ai_will_do = {
+		base = 10
+	}
+}

@@ -263,44 +263,17 @@ focus_tree = {
 		}
 		icon = GFX_hoi4tgw_auh_end_dual_monarchy_emperor
 		available = {
-			# SPECIAL_DLC Together for Victory
-			if = {
-				limit = {
-					has_dlc = "Together for Victory"
-				}
-				#IF-----------------------------------------
-				has_country_flag = emperor_franz_dead
-				has_government = neutrality
-				country_exists = HUN
-				HUN = {
-					is_subject = yes
-				}
-				#-------------------------------------------
-				#ELSE---------------------------------------
-				else = {
-					has_country_flag = emperor_franz_dead
-					has_government = neutrality
-				}
-				#-------------------------------------------
+			has_country_flag = emperor_franz_dead
+			has_government = neutrality
+			country_exists = HUN
+			HUN = {
+				is_subject = yes
 			}
 		}
 		completion_reward = {
-			# SPECIAL_DLC Together for Victory
-			if = {
-				limit = {
-					has_dlc = "Together for Victory"
-				}
-				#IF-----------------------------------------
-				annex_country = {
-					target = HUN
-					transfer_troops = yes
-				}
-				#-------------------------------------------
-				#ELSE---------------------------------------
-				else = {
-					add_political_power = 100
-				}
-				#-------------------------------------------
+			annex_country = {
+				target = HUN
+				transfer_troops = yes
 			}
 		}
 		ai_will_do = {
@@ -341,7 +314,7 @@ focus_tree = {
 			add_political_power = -100
 			add_stability = -0.05
 			add_timed_idea = {
-				idea = kis_auh_unifyrealm_focus
+				idea = AUH_ww1_unify_realm_ns
 				days = 730
 			}
 		}
@@ -983,7 +956,9 @@ focus_tree = {
 			}
 			AUH = {
 				controls_state = 39
+				controls_state = 850
 				controls_state = 736
+				controls_state = 852
 			}
 			ITA = {
 				has_country_flag = ITA_Lib_War_End_Victory
@@ -1456,12 +1431,13 @@ focus_tree = {
 		available = {
 			AUH = {
 				controls_state = 39
+				controls_state = 850
 				controls_state = 153
 				controls_state = 736
 			}
 		}
 		completion_reward = {
-			39 = {
+			851 = {
 				add_building_construction = {
 					type = bunker
 					level = 1
@@ -1474,6 +1450,8 @@ focus_tree = {
 					province = 9598
 					instant_build = yes
 				}
+			}
+			39 = {
 				add_building_construction = {
 					type = bunker
 					level = 1
@@ -1546,6 +1524,7 @@ focus_tree = {
 		icon = GFX_goal_generic_construct_military
 		available = {
 			AUH = {
+				controls_state = 804
 				controls_state = 104
 				controls_state = 109
 				controls_state = 45
@@ -1553,7 +1532,7 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			104 = {
+			804 = {
 				add_building_construction = {
 					type = trench
 					level = 1
@@ -1566,6 +1545,8 @@ focus_tree = {
 					province = 953
 					instant_build = yes
 				}
+			}
+			104 = {
 				add_building_construction = {
 					type = trench
 					level = 1
@@ -1790,6 +1771,8 @@ focus_tree = {
 				target = BOS
 				transfer_troops = yes
 			}
+			add_state_core = 104
+			add_state_core = 804
 		}
 		ai_will_do = {
 			factor = 850
@@ -1931,9 +1914,7 @@ focus_tree = {
 		available = {
 			country_exists = AUH
 			country_exists = BUL
-			BUL = {
-				has_country_flag = kis_secondbalkan_war
-			}
+			has_global_flag = second_balkan_war
 		}
 		completion_reward = {
 			add_ideas = foreign_expeditions_focus

@@ -1,0 +1,414 @@
+###########################
+# BBA Italian Events
+###########################
+
+add_namespace = BBA_italy_missiolinis
+add_namespace = BBA_italy_second_italo_ethiopian_war
+add_namespace = BBA_italy_local_rulers
+add_namespace = BBA_italy_air_accident
+add_namespace = BBA_italy_naval_cooperation_programs
+add_namespace = BBA_italy_colonial_management
+add_namespace = BBA_italy_bop
+add_namespace = BBA_italy_civil_war
+add_namespace = BBA_italy_research_agreement
+add_namespace = BBA_italy_pact
+add_namespace = BBA_italy_decide_the_fate_of_mussolini
+add_namespace = BBA_italy_purge_the_party
+add_namespace = BBA_italy_recognize_the_empire
+add_namespace = BBA_italy_sends_military_support
+add_namespace = BBA_italy_communist_events
+add_namespace = BBA_italy_democratic_events
+add_namespace = BBA_italy_anti_colonialism_events
+add_namespace = BBA_italy_interaction_events
+add_namespace = BBA_italy_interaction_events_news
+add_namespace = BBA_italy_council_deposes_duce
+add_namespace = BBA_italy_human_torpedo_raid
+
+# Germany Tries to Anchluss Austria
+country_event = {
+	id = BBA_italy_interaction_events.24
+	title = BBA_italy_interaction_events.24.t 
+	desc = BBA_italy_interaction_events.24.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	# Fight alone
+	option = { 
+		name = BBA_italy_interaction_events.24.a 
+
+		ai_chance = { 
+			base = 60
+		}
+
+		GER = {
+			country_event = {
+			    id = BBA_italy_interaction_events.25
+			    days = 1
+			    random_days = 2
+			}
+		}
+		add_war_support = 0.15
+
+		AUS = {
+			country_event = {
+				id = AUS_political_events.106
+				hours = 12
+			}
+		}
+	}
+
+	# Request Assistance
+	option = { 
+		name = BBA_italy_interaction_events.24.b 
+
+		ai_chance = { 
+			base = 30
+			#modifier = {
+			#	add = 60
+			#	has_dino_grandi = yes
+			#}
+		}
+
+		GER = {
+			country_event = {
+			    id = BBA_italy_interaction_events.25
+			    days = 1
+			}
+		}
+
+		IF = {
+			limit = {
+				ENG = {
+					NOT = {
+						has_guaranteed = AUS
+					}
+				}
+			}
+			ENG = {
+				country_event = {
+				    id = BBA_italy_interaction_events.27
+				    days = 12
+				}
+			}
+		}
+
+		
+		IF = {
+			limit = {
+				FRA = {
+					NOT = {
+						has_guaranteed = AUS
+					}
+				}
+			}
+			FRA = {
+				country_event = {
+				    id = BBA_italy_interaction_events.28
+				    days = 12
+				}
+			}
+		}
+
+		add_stability = -0.1
+		add_war_support = -0.05
+
+		IF = {
+			limit = {#Checks if ENG is hosting exiled ETH or if an ally does
+				ITA_hosting_exiled_ethiopia = yes
+				ITA = { #ITA must be at war with ETH
+					has_war_with = ETH
+				}
+			}
+			ENG = {
+				set_country_flag = ITA_italy_asks_ethiopian_host_for_help
+			}
+		}
+
+		AUS = {
+			country_event = {
+				id = AUS_political_events.106
+				days = 1
+			}
+		}
+	}
+
+	# Back down, cower in fear and wait for your demise
+	option = { 
+		name = BBA_italy_interaction_events.24.c 
+
+		ai_chance = { 
+			base = 10
+		}
+
+		GER = {
+			country_event = {
+			    id = BBA_italy_interaction_events.26
+			    days = 1
+			}
+		}
+		add_war_support = -0.1
+		add_stability = -0.15
+		ITA = {
+			diplomatic_relation = {
+			    country = AUS
+			    relation = guarantee
+			    active = no
+			}
+
+			add_ai_strategy = { #cancel and then some
+				type = protect 
+				id = FROM
+				value = -100
+			}
+		}
+
+		AUS = {
+			country_event = {
+				id = AUS_political_events.105
+				hours = 12
+			}
+		}
+	}
+}
+
+# Italy stands up to us!
+country_event = {
+	id = BBA_italy_interaction_events.25
+	title = BBA_italy_interaction_events.25.t 
+	desc = BBA_italy_interaction_events.25.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	# They are getting ahead of themselves
+	option = { 
+		name = BBA_italy_interaction_events.25.a 
+
+		ai_chance = { 
+			base = 90
+		}
+	}
+
+	# Sadly we must back down...
+	option = { 
+		name = BBA_italy_interaction_events.25.b 
+		ai_chance = { 
+			base = 10
+		}
+
+		add_stability = -0.1
+		add_war_support = -0.2
+		add_popularity = {
+		    ideology = fascism
+		    popularity = -0.3
+		}
+	}
+}
+
+#Germany Backs Down
+news_event = {
+	id = BBA_italy_interaction_events_news.1
+	title = BBA_italy_interaction_events_news.1.t
+	desc = BBA_italy_interaction_events_news.1.desc
+	picture = GFX_news_event_generic_parliament
+	
+	is_triggered_only = yes
+	
+	option = { #Us
+		name = BBA_italy_interaction_events_news.1.a
+		trigger = {
+			tag = ROOT
+		}
+	}
+
+	option = { #Them
+		name = BBA_italy_interaction_events_news.1.b
+		trigger = {
+			NOT = { tag = ROOT }
+		}
+	}
+}
+
+# Italy Backs Down 
+country_event = {
+	id = BBA_italy_interaction_events.26
+	title = BBA_italy_interaction_events.26.t 
+	desc = BBA_italy_interaction_events.26.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	# alright.. on to the next one I guess
+	option = { 
+		name = BBA_italy_interaction_events.26.a 
+		
+		
+	}
+}
+
+# (ENG) Italy wants our help against Germany
+country_event = {
+	id = BBA_italy_interaction_events.27
+	title = BBA_italy_interaction_events.27.t 
+	desc = BBA_italy_interaction_events.27.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	# Alright chaps, we're going in again
+	option = { 
+		name = BBA_italy_interaction_events.27.a 
+		trigger = {
+			NOT= {
+				has_country_flag = ITA_italy_asks_ethiopian_host_for_help
+			}
+		}
+
+		ai_chance = { 
+			base = 50
+			#modifier = {
+			#	add = 15
+			#	ITA = {
+			#		has_dino_grandi = yes
+			#	}
+			#}
+		}
+
+		add_war_support = 0.05
+		add_stability = -0.15
+
+		ENG = {
+			give_guarantee = AUS
+		}
+
+		hidden_effect = {
+			every_country = {
+				news_event = { hours = 6 id = BBA_italy_interaction_events_news.2 }
+			}
+		}
+	}
+
+	#Make Italy sign peace with Ethiopia
+	option = { 
+		name = BBA_italy_interaction_events.27.b
+		trigger = {
+			has_country_flag = ITA_italy_asks_ethiopian_host_for_help
+		}
+
+		ai_chance = { 
+			base = 50
+			#modifier = {
+			#	add = 15
+			#	ITA = {
+			#		has_dino_grandi = yes
+			#	}
+			#}
+		}
+		custom_effect_tooltip = ITA_if_Italy_accepts_tt
+		effect_tooltip = {
+			add_war_support = 0.05
+			add_stability = -0.15
+
+			ENG = {
+				give_guarantee = AUS
+			}
+		}
+
+		FROM = {
+			country_event = { id = BBA_italo_ethiopian_war_events.500 hours = 2 }
+		}
+	}
+
+	# Blimey no, why should we care about the continent?
+	option = { 
+		name = BBA_italy_interaction_events.27.c 
+
+		ai_chance = { 
+			base = 50
+		}
+
+		add_stability = 0.1
+	}
+}
+
+# The UK has guaranteed Austrian Independence
+news_event = {
+	id = BBA_italy_interaction_events_news.2
+	title = BBA_italy_interaction_events_news.2.t
+	desc = BBA_italy_interaction_events_news.2.desc
+	picture = GFX_news_event_generic_parliament
+		
+	is_triggered_only = yes
+
+	option = { #Wow
+		name = BBA_italy_interaction_events_news.2.a 
+		
+	}
+}
+
+# (FRA) Italy wants our help against Germany
+country_event = {
+	id = BBA_italy_interaction_events.28
+	title = BBA_italy_interaction_events.28.t 
+	desc = BBA_italy_interaction_events.28.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	# Oui, pour la liberté!
+	option = { 
+		name = BBA_italy_interaction_events.28.a 
+
+		ai_chance = { 
+			base = 50
+			#modifier = {
+			#	add = 15
+			#	ITA = {
+			#		has_dino_grandi = yes
+			#	}
+			#}
+		}
+
+		add_war_support = 0.05
+		add_stability = -0.15
+
+		FRA = {
+			give_guarantee = AUS
+		}
+
+		hidden_effect = {
+			every_country = {
+				news_event = { hours = 6 id = BBA_italy_interaction_events_news.3 }
+			}
+		}
+	}
+
+	# This whole ordeal seems quite phony...
+	option = { 
+		name = BBA_italy_interaction_events.28.b 
+
+		ai_chance = { 
+			base = 50
+		}
+
+		add_stability = 0.1	
+	}
+}
+
+# The French have guaranteed Austrian Independence
+news_event = {
+	id = BBA_italy_interaction_events_news.3
+	title = BBA_italy_interaction_events_news.3.t
+	desc = BBA_italy_interaction_events_news.3.desc
+	picture = GFX_news_event_generic_parliament
+	
+	is_triggered_only = yes
+
+	option = { #Stunning
+		name = BBA_italy_interaction_events_news.3.a 
+		
+	}
+} 

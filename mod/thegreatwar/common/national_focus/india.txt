@@ -1,0 +1,1095 @@
+focus_tree = {
+	id = raj_focus
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = RAJ
+		}
+	}
+
+	default = no
+
+	continuous_focus_position = { x = 50 y = 2000 }
+
+	shared_focus = army_effort
+	shared_focus = aviation_effort
+	shared_focus = industrial_effort
+	shared_focus = naval_effort
+	shared_focus = ww1_interwar_Aftermath
+	shared_focus = ww1_interwar_Position_RussianCivilWar_SupportRed
+
+	focus = {
+		id = RAJ_appoint_new_governor
+		icon = GFX_goal_generic_demand_territory
+		cost = 10
+		x = 7
+		y = 0
+		
+		completion_reward = {
+			add_political_power = 120
+			custom_effect_tooltip = generic_skip_one_line_tt
+			promote_character = RAJ_lord_hardinge
+		}
+	}
+	
+	focus = {
+		id = RAJ_recalcitrance
+		icon = GFX_goal_generic_political_pressure
+		cost = 10
+		prerequisite = {
+			focus = RAJ_appoint_new_governor
+		}
+		mutually_exclusive = {
+			focus = RAJ_loyal_government
+		}
+		x = 6
+		y = 1
+		available = {
+			NOT = { has_global_flag = raj_indian_congress_uprising }
+		}
+
+		completion_reward = {
+			add_stability = -0.07
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { is_subject_of = ENG }
+				add_opinion_modifier = { 
+					target = ENG
+					modifier =  HOI4TGW_Opinion_hostile_diplomatic_relations
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+			}
+			if = {
+				limit = { is_subject = yes }
+				add_autonomy_score = {
+					value = 100
+					localization = RAJ_recalcitrance
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+			}
+			if = {
+				limit = { has_idea = RAJ_satyagraha }
+				swap_ideas = {
+					remove_idea = RAJ_satyagraha
+					add_idea = RAJ_satyagraha_recalcitrance
+				}
+			}
+		}
+	}
+	focus = {
+		id = RAJ_indian_revolutionary_officers
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		prerequisite = {
+			focus = RAJ_recalcitrance
+		}
+		x = 5
+		y = 2
+		completion_reward = {
+			show_unit_leaders_tooltip = RAJ_sayajirao_gaekwad
+			show_unit_leaders_tooltip = RAJ_pratap_singh
+			show_unit_leaders_tooltip = RAJ_ganga_singh
+		}
+	}
+	focus = {
+		id = RAJ_satyagraha
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 10
+		prerequisite = {
+			focus = RAJ_recalcitrance
+		}
+		mutually_exclusive = {
+			focus = RAJ_ottoman_mission
+			focus = RAJ_enemy_of_the_enemy
+		}
+		x = 0
+		y = 3
+		available = {
+			democratic > 0.20
+		}
+		bypass = {
+			is_subject = no
+		}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = RAJ_satyagraha_recalcitrance
+				add_idea = RAJ_satyagraha_gandhi
+			}
+		}
+	}
+	focus = {
+		id = RAJ_national_strikes
+		icon = GFX_focus_RAJ_clamp_down_on_corruption
+		cost = 10
+		prerequisite = {
+			focus = RAJ_satyagraha
+		}
+		x = 0
+		y = 4
+		available = {
+			democratic > 0.25
+		}
+		
+		completion_reward = {
+			add_ideas = RAJ_national_strikes
+		}
+	}
+	focus = {
+		id = RAJ_secret_connections
+		icon = GFX_goal_generic_dangerous_deal
+		cost = 10
+		prerequisite = {
+			focus = RAJ_recalcitrance
+		}
+		x = 3
+		y = 2
+		completion_reward = {
+			add_political_power = 100
+			add_popularity = { 
+				ideology = democratic
+				popularity = 0.10
+			}
+		}	
+	}
+	focus = {
+		id = RAJ_ottoman_mission
+		icon = GFX_focus_TUR_pivot_to_the_past
+		cost = 10
+		prerequisite = {
+			focus = RAJ_secret_connections
+		}
+		mutually_exclusive = {
+			focus = RAJ_enemy_of_the_enemy
+			focus = RAJ_satyagraha
+		}
+		x = 2
+		y = 3
+		available = { 
+			NOT = {
+				has_war_with = TUR
+			} 
+		}
+		bypass = {
+			has_war_with = TUR
+		}
+		completion_reward = {
+			add_opinion_modifier = { 
+				target = TUR
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+			reverse_add_opinion_modifier = { 
+				target = TUR
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_ideas = RAJ_ottoman_advisors 
+		}
+	}
+	focus = {
+		id = RAJ_cooperation_with_muslim_league
+		icon = GFX_focus_RAJ_seek_allies_with_the_muslim_league
+		cost = 10
+		prerequisite = {
+			focus = RAJ_ottoman_mission
+		}
+		x = 2
+		y = 4
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = RAJ_muslim_community
+				add_idea = RAJ_cooperation_with_muslim_community
+			}
+		}
+	}
+	focus = {
+		id = RAJ_disobedient_princes
+		icon = GFX_focus_RAJ_provincial_autonomy
+		cost = 10
+		prerequisite = {
+			focus = RAJ_recalcitrance
+		}
+		x = 6
+		y = 4
+		bypass = {
+			any_owned_state = {
+				NOT = {
+					has_dynamic_modifier = RAJ_ww1_princely_autonomy
+				}
+			}
+		}
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					has_dynamic_modifier = RAJ_ww1_princely_autonomy
+				}
+				remove_dynamic_modifier = {
+					modifier = RAJ_ww1_princely_autonomy
+				}
+				add_dynamic_modifier = {
+					modifier = RAJ_ww1_princely_autonomy_2
+				}
+			}
+		}
+	}
+	focus = {
+		id = RAJ_enemy_of_the_enemy
+		icon = GFX_focus_ger_return_of_the_kaiser
+		cost = 10
+		prerequisite = {
+			focus = RAJ_secret_connections
+		}
+		mutually_exclusive = {
+			focus = RAJ_ottoman_mission
+			focus = RAJ_satyagraha
+		}
+		x = 4
+		y = 3
+		available = { 
+			NOT = {
+				has_war_with = GER
+			} 
+		}
+		bypass = {
+			has_war_with = GER
+		}
+		completion_reward = {
+			add_opinion_modifier = { 
+				target = GER 
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+			reverse_add_opinion_modifier = {
+				target = GER 
+				modifier =  HOI4TGW_Opinion_improved_diplomatic_relations
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_ideas = RAJ_german_military_advisors
+		}
+	}
+	focus = {
+		id = RAJ_secret_armament
+		icon = GFX_focus_RAJ_lions_of_the_great_war
+		cost = 10
+		prerequisite = {
+			focus = RAJ_enemy_of_the_enemy
+		}
+		x = 4
+		y = 4
+		completion_reward = {
+			add_war_support = 0.05
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 4500
+				producer = GER
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 75
+				producer = GER
+			}
+		}
+	}
+	focus = {
+		id = RAJ_independence_day
+		icon = GFX_focus_eng_decolonization
+		cost = 10
+		prerequisite = {
+			focus = RAJ_secret_armament
+			focus = RAJ_cooperation_with_muslim_league
+			focus = RAJ_national_strikes
+		}
+		prerequisite = {
+			focus = RAJ_disobedient_princes
+		}
+		x = 3
+		y = 5
+		available = {
+			neutrality < 0.70
+		}
+		completion_reward = {
+			custom_effect_tooltip = RAJ_independence_day_effect_tt
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { is_subject = no }
+				add_stability = 0.10
+				add_war_support = 0.10
+			}
+			if = {
+				limit = { is_subject = yes }
+				OVERLORD = { set_country_flag = overlord_lost_india end_puppet = ROOT }
+				add_stability = 0.10
+				add_war_support = 0.10
+				if = {
+					limit = { is_in_faction = yes }
+					leave_faction = yes
+				}
+				hidden_effect = {
+					set_cosmetic_tag = RAJ_FREE
+				}
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = no
+				}
+				news_event = ww1_raj.3
+			}
+			if = {
+				limit = { 
+					is_subject = yes 
+					democratic < 0.5
+				}
+				start_civil_war = {
+					ideology = neutrality
+					size = 0.30
+				}
+				hidden_effect = {
+					random_other_country = {
+						limit = { original_tag = RAJ has_government = neutrality }
+						#OVERLORD = {
+						#	set_autonomy = {
+						#		target = PREV
+						#		autonomy_state = autonomy_colony
+						#	}
+						#}
+						set_cosmetic_tag = RAJ_UK
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = RAJ_form_national_army 
+		icon = GFX_focus_RAJ_indianisation_of_army
+		cost = 10
+		prerequisite = {
+			focus = RAJ_independence_day
+		}
+		x = 2
+		y = 6
+		completion_reward = {
+			add_ideas = RAJ_indian_military_staff 
+		}
+	}
+	focus = {
+		id = RAJ_gurkha_warriors
+		icon = GFX_focus_RAJ_indian_gurkhas
+		cost = 10
+		prerequisite = {
+			focus = RAJ_form_national_army
+		}
+		x = 1
+		y = 7
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = RAJ_indian_military_staff
+				add_idea = RAJ_indian_military_staff_2
+			}
+		}
+	}
+	focus = {
+		id = RAJ_rebuild_nation
+		icon = GFX_goal_generic_construction2
+		cost = 10
+		prerequisite = {
+			focus = RAJ_independence_day
+		}
+		x = 4
+		y = 6
+		available = {
+			has_civil_war = no
+		}
+		completion_reward = {
+			add_timed_idea = { idea = RAJ_rebuild_nation days = 365 } 
+		}
+	}
+	focus = {
+		id = RAJ_constitution_of_india
+		icon = GFX_focus_hol_the_foundations_of_defense
+		cost = 10
+		prerequisite = {
+			focus = RAJ_rebuild_nation
+		}
+		prerequisite = {
+			focus = RAJ_form_national_army
+		}
+		x = 3
+		y = 7
+		available = {
+			is_subject = no
+		}
+		completion_reward = {
+			add_political_power = 100
+			country_event = ww1_raj.4
+		}
+	}
+	focus = {
+		id = RAJ_national_unity
+		icon = GFX_goal_generic_national_unity
+		cost = 10
+		prerequisite = {
+			focus = RAJ_constitution_of_india
+		}
+		x = 0
+		y = 8
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					has_dynamic_modifier = RAJ_ww1_princely_autonomy_2
+				}
+				remove_dynamic_modifier = {
+					modifier = RAJ_ww1_princely_autonomy_2
+				}
+			}
+		}
+	}
+	focus = {
+		id = RAJ_legends_of_bharat
+		icon = GFX_focus_spr_torchbearers_of_tomorrow
+		cost = 10
+		prerequisite = {
+			focus = RAJ_national_unity
+		}
+		x = 0
+		y = 9
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = RAJ_protect_himalaya
+		icon = GFX_goal_generic_territory_or_war
+		cost = 10
+		prerequisite = {
+			focus = RAJ_constitution_of_india
+		}
+		x = 2
+		y = 8
+		bypass = {
+			OR = {
+				NEP = { exists = no }
+				NEP = { is_subject = no }
+				NEP = { is_subject_of = RAJ }
+			}
+			OR = {
+				BHU = { exists = no }
+				BHU = { is_subject = no }
+				BHU = { is_subject_of = RAJ }
+			}
+		}
+		available = {
+			is_subject = no
+		}
+		
+		completion_reward = {
+			hidden_effect = {
+				if = {
+					limit = { NEP = { is_subject = yes NOT = { is_subject_of = ROOT } } }
+					NEP = { country_event = ww1_raj.6 }
+				}
+				if = {
+					limit = { BHU = { is_subject = yes NOT = { is_subject_of = ROOT } } }
+					BHU = { country_event = ww1_raj.6 }
+				}
+			}
+			effect_tooltip = {
+				OVERLORD = { 
+					end_puppet = NEP
+					end_puppet = BHU
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				ROOT = { give_guarantee = NEP }
+				ROOT = { give_guarantee = BHU }
+			}
+		}
+	}
+	focus = {
+		id = RAJ_spread_anti_colonial_spirit
+		icon = GFX_goal_generic_alliance
+		cost = 10
+		prerequisite = {
+			focus = RAJ_protect_himalaya
+		}
+		x = 2
+		y = 9
+		completion_reward = {
+			set_rule = { can_create_factions = yes }
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_other_country = {
+				limit = { 
+					NOT = { has_war_with = RAJ }
+					any_owned_state = { is_core_of = RAJ }
+				}
+				country_event = ww1_raj.9
+			}
+		}
+	}
+	focus = {
+		id = RAJ_solve_the_muslim_question
+		icon = GFX_focus_RAJ_two_nation_theory
+		cost = 10
+		prerequisite = {
+			focus = RAJ_constitution_of_india
+		}
+		x = 4
+		y = 8
+		bypass = {
+			NOT = { has_idea = RAJ_muslim_community }
+			NOT = { has_idea = RAJ_cooperation_with_muslim_community }
+		}
+		completion_reward = {
+			country_event = ww1_raj.5
+		}
+	}
+	focus = {
+		id = RAJ_religious_harmony
+		icon = GFX_focus_smiling_buddha
+		cost = 10
+		prerequisite = {
+			focus = RAJ_solve_the_muslim_question
+		}
+		x = 4
+		y = 9
+		available = {
+			has_idea = RAJ_muslim_community_happy
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = RAJ_muslim_community_happy
+				add_idea = RAJ_muslim_community_very_happy
+			}
+		}
+	}
+	focus = {
+		id = RAJ_fight_colonial_corruption
+		icon = GFX_focus_ARG_crackdown_on_corruption
+		cost = 10
+		prerequisite = {
+			focus = RAJ_rebuild_nation
+		}
+		x = 5
+		y = 7
+		available = {
+			NOT = { has_idea = RAJ_rebuild_nation }
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = RAJ_agrarian_society
+				add_idea = RAJ_agrarian_society_2
+			}
+		}
+	}
+	focus = {
+		id = RAJ_university_of_calcutta
+		icon = GFX_focus_research
+		cost = 10
+		prerequisite = {
+			focus = RAJ_rebuild_nation
+		}
+		x = 6
+		y = 8
+		completion_reward = {
+			remove_ideas = QIN_low_literacy_rate
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = RAJ_the_riches_of_india
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		cost = 10
+		prerequisite = {
+			focus = RAJ_university_of_calcutta
+		}
+		x = 6
+		y = 9
+		completion_reward = {
+			add_ideas = RAJ_the_riches_of_india
+		}
+	}
+	focus = {
+		id = RAJ_loyal_government
+		icon = GFX_focus_RAJ_his_majestys_loyal_government
+		cost = 10
+		prerequisite = {
+			focus = RAJ_appoint_new_governor
+		}
+		mutually_exclusive = {
+			focus = RAJ_recalcitrance
+		}
+		x = 8
+		y = 1
+		completion_reward = {
+			add_autonomy_score = {
+				value = -100
+				localization = RAJ_loyal_government
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			swap_ideas = {
+				remove_idea = RAJ_satyagraha
+				add_idea = RAJ_satyagraha_passive
+			}
+			add_popularity = { 
+				ideology = democratic
+				popularity = 0.14
+			}
+			add_popularity = { 
+				ideology = communism
+				popularity = 0.07
+			}
+		}
+	}
+	focus = {
+		id = RAJ_establish_the_order_on_durand_line
+		icon = GFX_goal_generic_military_sphere
+		cost = 10
+		prerequisite = {
+			focus = RAJ_loyal_government
+		}
+		x = 8
+		y = 2
+		bypass = {
+			NOT = { is_neighbor_of = AFG }
+		}
+		completion_reward = {
+			add_stability = 0.05
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_owned_state = {
+				limit = {
+					has_dynamic_modifier = RAJ_ww1_local_unrest
+					OR = {
+						state = 987
+						state = 442
+					}
+				}
+				remove_dynamic_modifier = {
+					modifier = RAJ_ww1_local_unrest
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = RAJ_establish_the_order_on_durand_line_effect_tt
+		}
+	}
+	focus = {
+		id = RAJ_order_in_baluchistan
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		cost = 10
+		prerequisite = {
+			focus = RAJ_establish_the_order_on_durand_line
+		}
+		x = 7
+		y = 3
+		bypass = {
+			NOT = {
+				owns_state = 444
+				owns_state = 988
+				owns_state = 1012
+			}
+		}
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					has_dynamic_modifier = RAJ_ww1_local_unrest
+					OR = {
+						state = 444
+						state = 988
+						state = 1012
+					}
+				}
+				remove_dynamic_modifier = {
+					modifier = RAJ_ww1_local_unrest
+				}
+			}
+		}
+	}
+	focus = {
+		id = RAJ_order_in_burma
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		cost = 10
+		prerequisite = {
+			focus = RAJ_establish_the_order_on_durand_line
+		}
+		x = 9
+		y = 3
+		bypass = {
+			NOT = {
+				any_owned_state = {
+					is_core_of = BRM
+				}
+			}
+		}
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					has_dynamic_modifier = RAJ_ww1_local_unrest
+					is_core_of = BRM
+				}
+				remove_dynamic_modifier = {
+					modifier = RAJ_ww1_local_unrest
+				}
+			}
+		}
+	}
+	focus = {
+		id = RAJ_reunification_of_bengal
+		icon = GFX_focus_RAJ_united_bengal
+		cost = 10
+		prerequisite = {
+			focus = RAJ_order_in_burma
+			focus = RAJ_order_in_baluchistan
+		}
+		x = 8
+		y = 4
+		bypass = {
+			NOT = {
+				controls_state = 430
+				controls_state = 431
+			}
+		}
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 430
+						state = 431
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = RAJ_ww1_bengal_province
+				}
+			}
+		}
+	}
+	focus = {
+		id = RAJ_persian_south
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		cost = 10
+		prerequisite = {
+			focus = RAJ_reunification_of_bengal
+		}
+		x = 8
+		y = 6
+
+	}
+	focus = {
+		id = RAJ_deal_with_dissidence
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+		cost = 10
+		prerequisite = {
+			focus = RAJ_loyal_government
+		}
+		x = 11
+		y = 2
+		completion_reward = {
+			remove_ideas = RAJ_satyagraha
+		}
+	}
+	focus = {
+		id = RAJ_fight_against_terror
+		icon = GFX_goal_generic_attack_allies
+		cost = 10
+		prerequisite = {
+			focus = RAJ_deal_with_dissidence
+		}
+		x = 10
+		y = 4
+        completion_reward = {
+		    add_political_power = 75
+		    add_stability = 0.05
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = RAJ_all_indian_education_program
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		prerequisite = {
+			focus = RAJ_fight_against_terror
+		}
+		prerequisite = {
+			focus = RAJ_reunification_of_bengal
+		}
+		x = 9
+		y = 5
+		completion_reward = {
+			remove_ideas = QIN_low_literacy_rate
+		}
+	}
+	focus = {
+		id = RAJ_crush_ghadar_movement
+		icon = GFX_focus_spr_crush_the_revolution
+		cost = 10
+		prerequisite = {
+			focus = RAJ_fight_against_terror
+		}
+		x = 11
+		y = 5
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = RAJ_consolidate_princely_states
+		icon = GFX_focus_generic_monarchy_1
+		cost = 10
+		prerequisite = {
+			focus = RAJ_deal_with_dissidence
+		}
+		x = 12
+		y = 3
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					has_dynamic_modifier = RAJ_ww1_princely_autonomy
+				}
+				remove_dynamic_modifier = {
+					modifier = RAJ_ww1_princely_autonomy
+				}
+				add_dynamic_modifier = {
+					modifier = RAJ_ww1_princely_autonomy_3
+				}
+			}
+		}
+	}
+	focus = {
+		id = RAJ_indian_officers
+		icon = GFX_focus_RAJ_indian_gentlemen_offcers
+		cost = 10
+		prerequisite = {
+			focus = RAJ_consolidate_princely_states
+		}
+		x = 12
+		y = 4
+		completion_reward = {
+			add_ideas = RAJ_indian_military_staff
+		}
+	}
+	focus = {
+		id = RAJ_simla_accord
+		icon = GFX_goal_generic_position_armies
+		cost = 10
+		available = {
+		    has_war = no
+		    OR = {
+			    QIN = {
+					exists = yes
+					has_war = no
+				}
+				CHI = {
+					exists = yes
+					has_war = no
+				}
+			}
+		}
+		prerequisite = {
+			focus = RAJ_reunification_of_bengal
+		}
+		completion_reward = {
+			if = {
+			    limit = {
+				    QIN = {
+					    exists = yes
+					}
+				}
+				QIN = {
+				    country_event = { id = ww1_raj.14 hours = 10 }
+				}
+			}
+			else = {
+			    CHI = {
+				    country_event = { id = ww1_raj.14 hours = 10 }
+				}
+			}
+		}
+		x = 7
+		y = 5
+
+	}
+	focus = {
+		id = RAJ_defense_of_india_law
+		icon = GFX_focus_RAJ_british_investors
+		cost = 10
+		available = {
+		    ENG = {
+			    has_war = yes
+			}
+		}
+		prerequisite = {
+			focus = RAJ_consolidate_princely_states
+		}
+		completion_reward = {
+		    add_ideas = {
+			    RAJ_defense_of_india_law_ns
+			}
+		}
+		x = 13
+		y = 5
+
+	}
+	focus = {
+		id = RAJ_tibet_expedition
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		cost = 10
+		available = {
+		    TIB = {
+			    exists = yes
+				is_subject = no
+				has_war = no
+			}
+		}
+		prerequisite = {
+			focus = RAJ_simla_accord
+		}
+		completion_reward = {
+		    create_wargoal = {
+			    target = TIB
+				type = take_state_focus
+			}
+		}
+		x = 7
+		y = 7
+
+	}
+	focus = {
+		id = RAJ_raj_expedition_forces
+		icon = GFX_focus_generic_commonwealth_build_infantry
+		cost = 10
+		available = {
+		    ENG = {
+			    has_war = yes
+			}
+		}
+		prerequisite = {
+			focus = RAJ_defense_of_india_law
+		}
+		completion_reward = {
+		    add_ideas = {
+			    RAJ_indian_expeditionary_forces_ns
+			}
+		}
+		x = 13
+		y = 6
+
+	}
+	focus = {
+		id = RAJ_develop_self_government
+		icon = GFX_goal_generic_national_unity
+		cost = 10
+		prerequisite = {
+			focus = RAJ_crush_ghadar_movement
+		}
+		prerequisite = {
+			focus = RAJ_defense_of_india_law
+		}
+		prerequisite = {
+			focus = RAJ_all_indian_education_program
+		}
+		x = 11
+		y = 6
+		completion_reward = {
+			add_autonomy_score = {
+				value = 150
+				localization = RAJ_develop_self_government
+			}
+		}
+	}
+	focus = {
+		id = RAJ_dominion_of_india
+		icon = GFX_focus_RAJ_the_dominion_of_india
+		cost = 10
+		prerequisite = {
+			focus = RAJ_develop_self_government
+		}
+		x = 11
+		y = 7
+		available = {
+			OR = {
+				is_major = yes
+				compare_autonomy_state > autonomy_puppet
+			}
+		}
+		bypass = {
+			is_subject = no
+		}
+		completion_reward = {
+			set_cosmetic_tag = RAJ_UK_dominion
+		}
+	}
+	focus = {
+		id = RAJ_indian_empire
+		icon = GFX_focus_RAJ_the_jewel_becomes_the_crown
+		cost = 10
+		prerequisite = {
+			focus = RAJ_dominion_of_india
+		}
+		x = 11
+		y = 8
+
+	}
+	focus = {
+		id = RAJ_rajabazar_science_college
+		icon = GFX_focus_research
+		cost = 10
+		prerequisite = {
+			focus = RAJ_all_indian_education_program
+		}
+		x = 9
+		y = 7
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = RAJ_suzerain_of_himalaya
+		icon = GFX_focus_generic_attack_nepal
+		cost = 10
+		prerequisite = {
+			focus = RAJ_indian_empire
+		}
+		completion_reward = {
+		    annex_country = {
+			    target = NEP
+				transfer_troops = yes
+			}
+		}
+		x = 11
+		y = 9
+
+	}
+	focus = {
+		id = RAJ_suzerain_of_malaya
+		icon = GFX_focus_PHI_malayo_polynesia
+		cost = 10
+		prerequisite = {
+			focus = RAJ_indian_empire
+		}
+		completion_reward = {
+		    annex_country = {
+			    target = MAL
+				transfer_troops = yes
+			}
+		}
+		x = 13
+		y = 9
+
+	}
+	focus = {
+		id = RAJ_suzerain_of_persia
+		icon = GFX_focus_generic_attack_iran
+		cost = 10
+		prerequisite = {
+			focus = RAJ_indian_empire
+		}
+		completion_reward = {
+		    create_wargoal = {
+				type = puppet_wargoal_focus
+				target = PER
+			}
+		}
+		x = 9
+		y = 9
+		
+	}
+
+}

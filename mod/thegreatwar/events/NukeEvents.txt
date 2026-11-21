@@ -18,6 +18,15 @@ news_event = {
 	fire_only_once = yes
 
 	immediate = {
+		if = {
+			limit = {
+				tag = ITA
+				has_government = fascism
+				FROM = { state = 378 }
+			}
+			set_country_flag = duce_nukedem_flag
+		}
+		
 		news_event = { id = nuke_dropped.1 days = 1 }
 	}
 	
@@ -402,7 +411,7 @@ news_event = {
 					NOT = { has_war_with = DEN }
 				}
 				AND = {
-					NOT = { owns_state = 39 }
+					NOT = { owns_state = 37 }
 					NOT = { tag = SWE }
 					NOT = { has_war_with = DEN }
 				}
@@ -413,14 +422,14 @@ news_event = {
 	option = {
 		name = nuke_dropped.12.b
 		trigger = {
-			owns_state = 39
+			owns_state = 37
 		}
 	}
 	
 	option = {
 		name = nuke_dropped.12.c
 		trigger = {
-			NOT = { owns_state = 39 }
+			NOT = { owns_state = 37 }
 			tag = SWE
 			has_war_with = DEN
 		}

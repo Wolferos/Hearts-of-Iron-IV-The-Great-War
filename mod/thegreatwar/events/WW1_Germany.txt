@@ -34,7 +34,6 @@ country_event = {
 	id=ww1_germany.9
 	picture=ww1_germany_9NULL
 	fire_only_once=yes
-	is_triggered_only=no
 	mean_time_to_happen={
 		days=1
 		}
@@ -70,9 +69,6 @@ country_event = {
 
     option = {
         name = ww1_germany.16.a
-        ai_chance = {
-            factor = 100
-        }
         GER = {
             load_oob = "KIS_GER_Schutztruppe"#Schutztruppe Deployment
         }
@@ -204,7 +200,9 @@ country_event = {
 
 	option = {
 		name = ww1_germany.21.a
-		ai_chance = { factor = 80 }
+		ai_chance = {
+			base = 80
+		}
 		GER = {
 			diplomatic_relation = {
 				country = HOL
@@ -216,7 +214,9 @@ country_event = {
 	}
 	option = {
 		name = ww1_germany.21.b
-		ai_chance = { factor = 20 }
+		ai_chance = {
+			base = 20
+		}
 	}
 }
 #____________________________________________________________
@@ -234,21 +234,30 @@ country_event = {
 
 	option = {
 		name = ww1_germany.22.a
-		ai_chance = { factor = 10 }
+		ai_chance = {
+			base = 10
+		}
 		SWE={ add_opinion_modifier={ target=GER modifier=ger_tur_diplomacy_focus } if={ limit={ SWE={ is_ai=yes NOT={ is_in_faction=yes } NOT={ is_subject=yes } } GER={ is_faction_leader=yes } } GER={ add_to_faction=SWE } } if={ limit={ GER={ has_government=fascism } } add_ideas=fascist_influence } if={ limit={ GER={ has_government=communism } } add_ideas=communist_influence } if={ limit={ GER={ has_government=democratic } } add_ideas=democratic_influence } country_event={ id=generic.1 } }
 		111 = { add_claim_by = SWE }
+		926 = { add_claim_by = SWE }
+		927 = { add_claim_by = SWE }
+		928 = { add_claim_by = SWE }
 		145 = { add_claim_by = SWE }
 		146 = { add_claim_by = SWE }
 		147 = { add_claim_by = SWE }
 		148 = { add_claim_by = SWE }
+		929 = { add_claim_by = SWE }
 		149 = { add_claim_by = SWE }
 		150 = { add_claim_by = SWE }
+		930 = { add_claim_by = SWE }
 		722 = { add_claim_by = SWE }
 		set_global_flag = swedenincp
 	}
 	option = {
 		name = ww1_germany.22.b
-		ai_chance = { factor = 90 }
+		ai_chance = {
+			base = 90
+		}
 	}
 }
 #____________________________________________________________
@@ -266,7 +275,9 @@ country_event = {
 
 	option = {
 		name = ww1_germany.24.a
-		ai_chance = { factor = 50 }
+		ai_chance = {
+			base = 50
+		}
 		GER = {
 			diplomatic_relation = {
 				country = DEN
@@ -278,11 +289,13 @@ country_event = {
 	}
 	option = {
 		name = ww1_germany.24.b
-		ai_chance = { factor = 50 }
+		ai_chance = {
+			base = 50
+		}
 		GER = {
 			create_wargoal = {
-					type = annex_everything
-					target = DEN
+				type = annex_everything
+				target = DEN
 			}
 		}
 	}
@@ -314,20 +327,24 @@ country_event = {
 
 	option = {
 		name = ww1_kis_news_christmastruce.210.a
-		ai_chance = { factor = 90 }
+		ai_chance = {
+			base = 90
+		}
 		GER = {
 			add_political_power = -80
 			army_experience = 60
-			add_timed_idea = { idea = ww1_Christmas_Truth_Repressed days = 30 }
+			add_timed_idea = { idea = ww1_christmas_truce_repressed days = 30 }
 		}
 	}
 	option = {
 		name = ww1_kis_news_christmastruce.210.b
-		ai_chance = { factor = 10 }
+		ai_chance = {
+			base = 10
+		}
 		GER = {
 			add_political_power = 80
 			army_experience = -60
-			add_timed_idea = { idea = ww1_Christmas_Truth_Ignored days = 30 }
+			add_timed_idea = { idea = ww1_christmas_truce_ignored days = 30 }
 		}
 	}
 }
@@ -344,7 +361,6 @@ country_event = {
 
 	option = {
 		name = ww1_germany.25.a
-		ai_chance = { factor = 100 }
 		
 		custom_effect_tooltip = "Austria Hungary is going to divided according to everybodys claims and cores."
 		
@@ -399,9 +415,11 @@ country_event = {
 		    CRO = {
 		    	transfer_state = 109
 		    	transfer_state = 103
+		    	transfer_state = 1108
 		    	transfer_state = 104
 		    	add_state_core = 109
 		    	add_state_core = 103
+		    	add_state_core = 1108
 		    	add_state_core = 104
 		    	create_country_leader = {
 	                name = "Karl I"
@@ -583,7 +601,7 @@ country_event = {
 		hidden_effect = {
 			set_autonomy = { 
 				target = CRI
-				autonomy_state = autonomy_integrated_puppet
+				autonomy_state = autonomy_ww1_integrated_protectorate
 			}
 		}
 	}
@@ -617,7 +635,7 @@ country_event = {
 	option = {
 		name = ww1_germany.32.a
 		ai_chance = {
-			factor = 100
+			base = 100
 		}
 		add_political_power = -50
 		add_stability = -0.03
@@ -627,7 +645,7 @@ country_event = {
 	option = {
 		name = ww1_germany.32.b
 		ai_chance = {
-			factor = 0
+			base = 0
 		}
 		add_political_power = 100
 		add_war_support = 0.1
@@ -636,6 +654,247 @@ country_event = {
 				target = UKR
 				type = puppet_wargoal_focus
 			}
+		}
+	}
+}
+
+# Berlin Baghdad Railway Line Start "To Germany"
+country_event = {
+	id = ww1_germany.33
+	title = ww1_germany.33.t
+	desc = ww1_germany.33.d
+	picture = COUNTRY_hoi4tgw_report_austria_hungary
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.33.a
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = -100
+		add_ideas = {
+		    GER_BB_railway_ns
+		}
+		TUR = {
+			country_event = { id = ww1_germany.34 hours = 6 }
+		}
+		set_global_flag = BB_railway_accepted_gflg
+	}
+
+	option = {
+		name = ww1_germany.33.b
+		ai_chance = {
+			base = 0
+		}
+		TUR = {
+			country_event = { id = ww1_germany.36 hours = 6 }
+		}
+	}
+}
+
+# Berlin Baghdad Railway Line Accepted "To Ottomans"
+country_event = {
+	id = ww1_germany.34
+	title = ww1_germany.34.t
+	desc = ww1_germany.34.d
+	picture = GFX_report_event_ETH_rif_map
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.34.a
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+		    ENG = {
+			    country_event = { id = ww1_germany.36 hours = 72 }
+			}
+		}
+	}
+}
+
+# Berlin Baghdad Railway Line Rejcetion "To Ottomans"
+country_event = {
+	id = ww1_germany.35
+	title = ww1_germany.35.t
+	desc = ww1_germany.35.d
+	picture = GFX_report_event_ETH_rif_map
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.35.a
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = -50
+	}
+}
+
+# Berlin Baghdad Railway Line Britain Noticed The Railway "To Britain"
+country_event = {
+	id = ww1_germany.36
+	title = ww1_germany.36.t
+	desc = ww1_germany.36.d
+	picture = GFX_report_event_AST_winston_platypus_2
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.36.a
+		ai_chance = {
+			base = 100
+		}
+		add_war_support = 0.05
+		GER = {
+			country_event = { id = ww1_germany.37 hours = 48 }
+		}
+		hidden_effect = {
+		    news_event = {
+			    id = kis_news.124
+				hours = 8
+			}
+		}
+	}
+	
+	option = {
+		name = ww1_germany.36.b
+		ai_chance = {
+			base = 0
+		}
+		add_political_power = -25
+		add_war_support = -0.03
+	}
+}
+
+# Berlin Baghdad Railway Line Britain Threatens With War "To Germany"
+country_event = {
+	id = ww1_germany.37
+	title = ww1_germany.37.t
+	desc = ww1_germany.37.d
+	picture = GFX_report_event_AST_winston_platypus_2
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.37.a
+		ai_chance = {
+			base = 0
+		}
+		add_war_support = 0.05
+		hidden_effect = {
+		    ENG = {
+			    declare_war_on = {
+				    type = annex_everything
+				    target = GER
+			    }
+				declare_war_on = {
+				    type = annex_everything
+				    target = TUR
+			    }
+			}
+			GER = {
+			    add_to_faction = TUR
+			}
+		}
+	}
+	
+	option = {
+		name = ww1_germany.37.b
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = -25
+		add_war_support = -0.03
+		remove_ideas = {
+		    GER_BB_railway_ns
+		}
+		TUR = {
+			country_event = { id = ww1_germany.38 hours = 6 }
+		} 
+		set_global_flag = BB_railway_canceled_gflg
+	}
+}
+
+# Berlin Baghdad Railway Line Germany Drops Out "To Ottomans"
+country_event = {
+	id = ww1_germany.38
+	title = ww1_germany.38.t
+	desc = ww1_germany.38.d
+	picture = GFX_report_event_german_reichstag_gathering
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.38.a
+		add_political_power = -50
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Berlin Baghdad Railway Line Germany Drops Out "To Ottomans"
+country_event = {
+	id = ww1_germany.39
+	title = ww1_germany.39.t
+	desc = ww1_germany.39.d
+	picture = GFX_report_event_german_reichstag_gathering
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = ww1_germany.39.a
+		ai_chance = {
+			base = 50
+		}
+		RKA = {
+			create_country_leader = {
+				name = GER_paul_von_lettow_vorbeck
+				picture = GFX_Portrait_GER_paul_von_lettow_vorbeck
+				ideology = despotism
+				traits = {
+					GER_ww1_the_lion_of_afrika
+				}
+			}
+			complete_national_focus = RKA_the_lion_of_africa
+		}
+	}
+
+	option = {
+		name = ww1_germany.39.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		RKA = {
+			create_country_leader = {
+				name = GER_hermann_goring
+				picture = "gfx/hoi4tgw_portraits/RKA/country_leaders/GER_hermann_goring.dds"
+				ideology = despotism
+				traits = {
+					GER_ww1_the_lion_of_afrika
+				}
+			}
+			complete_national_focus = RKA_the_goring_administration
 		}
 	}
 }

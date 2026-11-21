@@ -4,6 +4,305 @@
 
 add_namespace = news
 
+# Remilitarization of the Rhineland (Peaceful)
+news_event = {
+	id = news.25
+	title = news.25.t
+	desc = news.25.d
+	picture = GFX_news_event_hitler_speech
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.25.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = FRA
+				TAG = ENG
+				is_in_faction_with = GER
+			}
+		}
+	}
+	option = {
+		name = news.25.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.25.c
+		trigger = { TAG = FRA }
+	}
+	option = {
+		name = news.25.e
+		trigger = { TAG = ENG }
+	}
+	option = {
+		name = news.25.b
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = FRA
+				TAG = ENG
+			}
+			is_in_faction_with = GER
+		}
+	}
+}
+
+# Remilitarization of the Rhineland (France and Britain go to war)
+news_event = {
+	id = news.26
+	title = news.25.t
+	desc = news.26.d
+	picture = GFX_news_event_020
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.26.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = FRA
+				TAG = ENG
+			}
+		}
+	}
+	option = {
+		name = news.26.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.26.c
+		trigger = { TAG = FRA }
+	}
+	option = {
+		name = news.26.e
+		trigger = { TAG = ENG }
+	}
+}
+
+# Remilitarization of the Rhineland (France goes to war)
+news_event = {
+	id = news.27
+	title = news.25.t
+	desc = news.27.d
+	picture = GFX_news_event_german_inspect_troops
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.26.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = FRA
+			}
+		}
+	}
+	option = {
+		name = news.26.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.26.c
+		trigger = { TAG = FRA }
+	}
+}
+
+# Anschluss of Austria
+news_event = {
+	id = news.36
+	title = news.36.t
+	desc = news.36.d
+	picture = GFX_news_event_german_speech
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.36.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = ITA
+				TAG = FRA
+				TAG = ENG
+			}
+		}
+	}
+	option = {
+		name = news.36.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.36.c
+		trigger = { TAG = ITA }
+	}
+	option = {
+		name = news.36.e
+		trigger = {
+			OR = {
+				TAG = FRA
+				TAG = ENG
+			}
+		}
+	}
+}
+
+# Munich Agreement
+news_event = {
+	id = news.56
+	title = news.56.t
+	desc = news.56.d
+	picture = GFX_news_event_019
+
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.56.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = ENG
+				TAG = CZE
+			}
+		}
+	}
+	option = {
+		name = news.56.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.56.c
+		trigger = { TAG = ENG }
+	}
+	option = {
+		name = news.56.e
+		trigger = { TAG = CZE }
+	}
+}
+
+# Sudeten Crisis (French and British Support)
+news_event = {
+	id = news.57
+	title = news.57.t
+	desc = news.57.d
+	picture = GFX_news_event_009
+
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.57.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = ENG
+				TAG = FRA
+				TAG = CZE
+			}
+		}
+	}
+	option = {
+		name = news.57.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.57.c
+		trigger = {
+			OR = {
+				TAG = ENG
+				TAG = FRA
+			}
+		}
+	}
+	option = {
+		name = news.57.e
+		trigger = { TAG = CZE }
+	}
+}
+
+# Sudeten Crisis (French Support)
+news_event = {
+	id = news.58
+	title = news.57.t
+	desc = news.58.d
+	picture = GFX_news_event_009
+
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.57.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = ENG
+				TAG = FRA
+				TAG = CZE
+			}
+		}
+	}
+	option = {
+		name = news.58.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.58.c
+		trigger = { TAG = ENG }
+	}
+	option = {
+		name = news.58.e
+		trigger = { TAG = CZE }
+	}
+	option = {
+		name = news.58.f
+		trigger = { TAG = FRA }
+	}
+}
+
+# Munich Agreement (Czechs Resist)
+news_event = {
+	id = news.59
+	title = news.59.t
+	desc = news.59.d
+	picture = GFX_news_event_009
+
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.59.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = CZE
+			}
+		}
+	}
+	option = {
+		name = news.59.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.59.c
+		trigger = { TAG = CZE }
+	}
+}
+
 # Baltic country annexed (base event baltic.5)
 news_event = {
 	id = news.69
@@ -266,8 +565,6 @@ news_event = {
 	major = yes
 
 	is_triggered_only = yes
-
-	fire_only_once = no
 	
 	immediate = {
 		set_global_flag = fall_of_budapest_generic_flag
@@ -609,8 +906,8 @@ news_event = {
 	major = yes
 	
 	trigger = {
-		446 = { is_controlled_by = GER }
-		446 = { is_owned_by = ENG }
+		907 = { is_controlled_by = GER }
+		907 = { is_owned_by = ENG }
 		GER = { has_war_with = ENG }
 		NOT = { has_global_flag = fall_of_cairo }
 	}
@@ -781,8 +1078,8 @@ news_event = {
 	major = yes
 	
 	trigger = {
-		446 = { is_controlled_by = ITA }
-		446 = { is_owned_by = ENG }
+		907 = { is_controlled_by = ITA }
+		907 = { is_owned_by = ENG }
 		ITA = { has_war_with = ENG }
 		NOT = { has_global_flag = fall_of_cairo_ita }
 	}
@@ -2469,6 +2766,89 @@ news_event = {
 	}
 }
 
+# Remilitarization of the Rhineland (Germany Backs Down, Allied Pressure)
+news_event = {
+	id = news.151
+	title = news.151.t
+	desc = news.151.d
+	picture = GFX_news_event_hitler_speech2
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.151.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = FRA
+				TAG = ENG
+				is_in_faction_with = GER
+			}
+		}
+	}
+	option = {
+		name = news.151.b
+		trigger = { 
+			OR = {
+				TAG = GER 
+				is_in_faction_with = GER
+			}
+		}
+	}
+	option = {
+		name = news.151.c
+		trigger = {
+			OR = { 
+				TAG = FRA
+				TAG = ENG
+			}
+		}
+	}
+}
+
+# Remilitarization of the Rhineland (Germany Backs Down, French Pressure)
+news_event = {
+	id = news.152
+	title = news.151.t
+	desc = news.152.d
+	picture = GFX_news_event_hitler_speech2
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.151.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = FRA
+				TAG = ENG
+				is_in_faction_with = GER
+			}
+		}
+	}
+	option = {
+		name = news.151.b
+		trigger = { 
+			OR = {
+				TAG = GER 
+				is_in_faction_with = GER
+			}
+		}
+	}
+	option = {
+		name = news.152.c
+		trigger = { TAG = FRA }
+	}
+	option = {
+		name = news.152.e
+		trigger = { TAG = ENG }
+	}
+}
+
 # Komet Sighted
 news_event = {
 	id = news.156
@@ -2633,6 +3013,127 @@ news_event = {
 	}
 }
 
+#Germany Exerts Influence Over Czechoslovakia
+news_event = {
+	id = news.200
+	title = news.200.t
+	desc = news.200.d
+	picture = GFX_news_event_hitler_speech
+
+	major = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		CZE = {
+			save_event_target_as = Czech
+		}
+	}
+
+	#German friendship is preferable to German overlordship.
+	option = {
+		name = news.200.a
+		trigger = {
+			tag = CZE
+		}
+	}
+
+	#The Czech have always been friends of the Germans.
+	option = {
+		name = news.200.b
+		trigger = {
+			tag = GER
+		}
+	}
+
+	#The [From.GetName] continues to expand their sphere of influence unabated.
+	option = {
+		name = news.200.c
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = communism
+			}
+			NOT = {
+				OR = {
+					tag = GER
+					tag = CZE
+					tag = ENG
+				}
+			}
+		}
+	}
+
+	#Peace for our time?
+	option = {
+		name = news.200.e
+		trigger = {
+			NOT = {
+				OR = {
+					has_government = democratic
+					has_government = communism
+				}
+			}
+			NOT = {
+				OR = {
+					tag = GER
+					tag = CZE
+					tag = ENG
+				}
+			}
+		}
+	}
+
+	#Great news for when [Root.GetLeader] returns from vacation in Munich!
+	option = {
+		name = news.200.f
+		trigger = {
+			tag = ENG
+		}
+	}
+}
+
+# Anschluss of Austria in civil war
+news_event = {
+	id = news.237
+	title = news.237.t
+	desc = news.237.d
+	picture = GFX_news_event_german_speech
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.237.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = ITA
+				TAG = FRA
+				TAG = ENG
+			}
+		}
+	}
+	option = {
+		name = news.237.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.237.c
+		trigger = { TAG = ITA }
+	}
+	option = {
+		name = news.237.e
+		trigger = {
+			OR = {
+				TAG = FRA
+				TAG = ENG
+			}
+		}
+	}
+}
+
 # GENERIC nation joins an Alliance
 news_event = {
 	id = news.289
@@ -2765,7 +3266,7 @@ news_event = {
 			ITA = {
 				NOT = {	owns_state = 550 } #ERITREA
 				NOT = {	owns_state = 559 } #SOMALILAND
-				NOT = {	owns_state = 792 } #JUBALAND hoi4tgw
+				NOT = {	owns_state = 844 } #JUBALAND hoi4tgw
 			}
 		}
 	}
@@ -2777,14 +3278,14 @@ news_event = {
 					AND = {
 						owns_state = 550 #ERITREA
 						owns_state = 559 #SOMALILAND
-						owns_state = 792 #JUBALAND hoi4tgw
+						owns_state = 844 #JUBALAND hoi4tgw
 					}
 				}
 				count_triggers = {
 					amount = 1
 					owns_state = 550 #ERITREA
 					owns_state = 559 #SOMALILAND
-					owns_state = 792 #JUBALAND hoi4tgw
+					owns_state = 844 #JUBALAND hoi4tgw
 				}
 			}
 		}
@@ -2795,7 +3296,7 @@ news_event = {
 			ITA = {
 				owns_state = 550 #ERITREA
 				owns_state = 559 #SOMALILAND
-				owns_state = 792 #JUBALAND hoi4tgw
+				owns_state = 844 #JUBALAND hoi4tgw
 			}
 		}
 	}

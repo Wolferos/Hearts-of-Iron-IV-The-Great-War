@@ -1,0 +1,35 @@
+focus_tree = {
+	id = dshs_focus
+	country = {
+		base = 0
+		modifier = {
+			add = 10
+			tag = CRO
+			has_cosmetic_tag = CRO_dshs
+		}
+	}
+
+	focus = {
+		id = SHS_int_unify_with_serbia
+		icon = GFX_goal_generic_demand_territory
+		cost = 10
+		x = 0
+		y = 0
+		available = {
+			has_country_flag = great_war_winner
+			country_exists = SER
+		}
+		ai_will_do = {
+			base = 200
+		}
+		completion_reward = {
+			SER = {
+				annex_country = {
+					target = ROOT
+					transfer_troops = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+}

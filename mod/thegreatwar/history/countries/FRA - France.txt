@@ -17,15 +17,16 @@ if = {
 	create_faction_from_template = faction_template_entente # France is the Leader of the Entente
 	add_to_faction = FRA
 	add_to_faction = RUS
+	set_country_flag = ENT_entente_leader
 }
 
 set_autonomy = {
 	target = MOR
-	autonomy_state = autonomy_colony
+	autonomy_state = autonomy_ww1_protectorate
 }
 set_autonomy = {
 	target = TUN
-	autonomy_state = autonomy_colony
+	autonomy_state = autonomy_ww1_protectorate
 }
 
 if = {
@@ -248,7 +249,7 @@ recruit_character = FRA_ronarc_h
 
 	add_ideas = {
 		FRA_ww1_Revanchism
-		ww1_Scramble_for_Africa
+		ww1_legacy_of_the_scramble_for_africa
 		FRA_disjointed_government
 		limited_conscription
 	}
@@ -536,7 +537,7 @@ recruit_character = FRA_ronarc_h
 
 	add_ideas = {
 		FRA_ww1_Revanchism
-		ww1_Scramble_for_Africa
+		ww1_legacy_of_the_scramble_for_africa
 		limited_conscription
 	}
 
@@ -558,7 +559,7 @@ create_equipment_variant = { name="Aventurier Class" type=destroyer_1910 parent_
 	set_global_flag = kis_massproduction
 	set_global_flag = kis_suffragettes
 	set_global_flag = kis_olympicgames
-	set_global_flag = kis_xinhaire
+	set_global_flag = kis_xinhai_revolution
 	set_global_flag = kis_monalisastolen
 	set_global_flag = kis_king_death_george
 	set_global_flag = kis_titanic_sinked
@@ -566,7 +567,7 @@ create_equipment_variant = { name="Aventurier Class" type=destroyer_1910 parent_
 	set_global_flag = kis_firstbalkanwar_victory
 	set_global_flag = kis_secondbalkanwar_victory
 	set_global_flag = kis_roland_garros
-	set_global_flag = kis_xinhaire_end
+	set_global_flag = kis_xinhai_revolution_ended
 	set_global_flag = kingdom_montenegro_proclaimed
 	set_global_flag = kis_start_1914
 }
@@ -574,12 +575,12 @@ create_equipment_variant = { name="Aventurier Class" type=destroyer_1910 parent_
 1919.1.1 = {
 
 	add_ideas = {
-		interwar_spirit_TheGreatWar_Winner
+		ww1_victoror_of_the_great_war
 	}
 
 	remove_ideas = {
 		FRA_ww1_Revanchism
-		ww1_Scramble_for_Africa
+		ww1_legacy_of_the_scramble_for_africa
 	}
 
 	oob = "FRA_1919"
@@ -591,8 +592,7 @@ create_equipment_variant = { name="Aventurier Class" type=destroyer_1910 parent_
 	set_global_flag = kis_spanishflu
 	set_global_flag = kis_brestlitovsk
 	set_global_flag = kis_whitesvsreds
-	set_global_flag = kis_ask_ger_surrend
-	set_global_flag = kis_player_decided_ger_surrend
+	set_global_flag = kis_great_war_german_surrender
 	set_global_flag = kis_Rasputin_Murdered
 
 	SOV = {
@@ -650,20 +650,6 @@ create_equipment_variant = { name="Aventurier Class" type=destroyer_1910 parent_
 		}
 	}
 
-	# Greco-Turkish War
-	GRE = {
-		declare_war_on = {
-			target = TUR
-			type = take_state
-			generator = { 340 341 342 347 }
-		}
-		declare_war_on = {
-			target = TUK
-			type = take_state
-			generator = { 340 341 342 347 }
-		}
-	}
-
 
 	# The Hungarian Republic supported by Romania is taking back the control over Hungarian Soviet Republic
 	HSR = {
@@ -697,14 +683,14 @@ create_equipment_variant = { name="Aventurier Class" type=destroyer_1910 parent_
 		declare_war_on = {
 			target = SOV
 			type = take_state_focus
-			generator = { 189 11 }
+			generator = { 189 11 814 }
 		}
 	}
 	LAT = {
 		declare_war_on = {
 			target = SOV
 			type = take_state_focus
-			generator = { 190 12 }
+			generator = { 190 12 808 810 }
 		}
 	}
 	EST = {

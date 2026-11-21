@@ -1,23 +1,35 @@
 state = {
-	id=100
-	name="STATE_100"
-	local_supplies = 1.0
+	id = 100
+	name = "STATE_100"
 	manpower = 115870
-	state_category=rural
-	provinces= { 4861 12674 12689 	}
-	resources={
-		wood=0
-		steel=1
+	
+	state_category = rural
+	resources = {
+		steel = 1
 	}
-	history={
-		victory_points={ 12674 1 }
-		owner=DEN
-		add_core_of=DEN
-		add_core_of=ICE
+	
+	history = {
+		owner = DEN
+		victory_points = { 12674 1 }
+		buildings = {
+			infrastructure = 1
+			12674 = {
+				naval_base = 1
+			}
+		}
+		add_core_of = DEN
+		add_core_of = ICE
 
-		buildings={
-			infrastructure=2
-			12674={ naval_base=1 }
+		1936.1.1 = {
+			buildings = { #TODO: Should be readded to 1910 when adding Iceland to the map for balance
+				dockyard = 1
+				industrial_complex = 1
 			}
 		}
 	}
+	provinces = {
+		4861 12674 12689 13266 13267 13268 13271
+	}
+
+	local_supplies = 1.0 
+}

@@ -4,7 +4,7 @@ ideas = {
         designer = yes
         chantiers_de_penhoet = {
             allowed = {
-                TAG = FRA
+                original_tag = FRA
             }
             research_bonus = {
                 naval_equipment = 0.10
@@ -16,7 +16,7 @@ ideas = {
         }
         arsenal_de_brest = {
             allowed = {
-                TAG = FRA
+                original_tag = FRA
             }
             research_bonus = {
                 naval_equipment = 0.10
@@ -28,7 +28,7 @@ ideas = {
         }
         a_c_de_la_loire = {
             allowed = {
-                TAG = FRA
+                original_tag = FRA
             }
             research_bonus = {
                 naval_equipment = 0.10
@@ -43,7 +43,7 @@ ideas = {
         designer = yes
         nieuport = {
             allowed = {
-                TAG = FRA
+                original_tag = FRA
             }
             research_bonus = {
                 air_equipment = 0.10
@@ -55,7 +55,7 @@ ideas = {
         }
         morane_saulnier = {
             allowed = {
-                TAG = FRA
+                original_tag = FRA
             }
             research_bonus = {
                 air_equipment = 0.10
@@ -69,7 +69,7 @@ ideas = {
         designer = yes
         somua = {
             allowed = {
-                TAG = FRA
+                original_tag = FRA
             }
             research_bonus = {
                 motorized_equipment = 0.10
@@ -81,7 +81,7 @@ ideas = {
 
         mas = {
             allowed = {
-                TAG = FRA
+                original_tag = FRA
             }
             research_bonus = {
                 infantry_weapons = 0.10
@@ -92,7 +92,7 @@ ideas = {
         }
         schneider = {
             allowed = {
-                TAG = FRA
+                original_tag = FRA
             }
             research_bonus = {
                 artillery = 0.10
@@ -107,7 +107,7 @@ ideas = {
 
 #        kuhlmann = {
  #           allowed = {
- #               TAG = FRA
+ #               original_tag = FRA
  #           }
  #           research_bonus = {
 #                electronics = 0.10
@@ -120,7 +120,7 @@ ideas = {
 
         saint_gobain = {
             allowed = {
-                TAG = FRA
+                original_tag = FRA
             }
             research_bonus = {
                 industry = 0.10
@@ -133,7 +133,7 @@ ideas = {
         }
         famh = {
             allowed = {
-                TAG = FRA
+                original_tag = FRA
             }
             research_bonus = {
                 industry = 0.10
@@ -148,7 +148,7 @@ ideas = {
         designer = yes
         renault_fra = {
             allowed = {
-                TAG = FRA
+                original_tag = FRA
             }
             research_bonus = {
                 armor = 0.10
@@ -304,12 +304,14 @@ ideas = {
             allowed_civil_war = {
                 NOT = {
                     OR = {
-                        has_government = fascism AND = {
+                        has_government = fascism
+                        AND = {
                             NOT = {
                                 has_government = communism
                             }
-                            any_country = {
-                                original_tag = FRA has_government = communism
+                            any_country_with_original_tag = {
+                                original_tag_to_check = FRA
+                                has_government = communism
                             }
                         }
                     }
@@ -372,12 +374,14 @@ ideas = {
             allowed_civil_war = {
                 NOT = {
                     OR = {
-                        has_government = communism AND = {
+                        has_government = communism
+                        AND = {
                             NOT = {
                                 has_government = fascism
                             }
-                            any_country = {
-                                original_tag = FRA has_government = fascism
+                            any_country_with_original_tag = {
+                                original_tag_to_check = FRA
+                                has_government = fascism
                             }
                         }
                     }

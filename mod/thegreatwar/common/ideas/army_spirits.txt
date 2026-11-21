@@ -329,13 +329,13 @@ ideas = {
 				army_leader_cost_factor = -0.15
 				custom_modifier_tooltip = political_loyalty_spirit_tt
 			}
-			allowed_to_remove = {
-				OR = {
-					has_completed_focus = CHI_end_military_primacy
-					has_completed_focus = CHI_close_whampoa 
-					has_completed_focus = CHI_focus_on_meritocratic_principles
-				}
-			}
+			#allowed_to_remove = {
+			#	OR = {
+			#		has_completed_focus = CHI_end_military_primacy
+			#		has_completed_focus = CHI_close_whampoa 
+			#		has_completed_focus = CHI_focus_on_meritocratic_principles
+			#	}
+			#}
 			ai_will_do = {
 				base = 1
 				modifier = {
@@ -417,22 +417,9 @@ ideas = {
 		proper_heritage_spirit = {
 			ledger = army
 			available = {
-				IF = {
-					limit = { 
-						original_tag = AFG 
-						has_dlc = "Graveyard of Empires"
-					}
-					OR = {
-						has_completed_focus = AFG_reintroduce_war_elephants
-						has_doctrine = grand_battleplan
-						has_doctrine = mounted_infantry
-					}
-				}
-				ELSE = {
-					OR = {
-						has_doctrine = grand_battleplan
-						has_doctrine = mounted_infantry
-					}
+				OR = {
+					has_doctrine = grand_battleplan
+					has_doctrine = mounted_infantry
 				}
 			}
 

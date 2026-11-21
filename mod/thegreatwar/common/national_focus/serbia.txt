@@ -7,11 +7,12 @@ focus_tree = {
 			add = 10
 			tag = SER
 		}
-		modifier = {
-			add = 10
-			original_tag = SER
-		}
 	}
+
+	continuous_focus_position = { x = 50 y = 1200 }
+
+	shared_focus = BLL_balkan_politics
+
 	###########################################################################################################################
 	# POLITICAL
 	###########################################################################################################################
@@ -469,301 +470,7 @@ focus_tree = {
 	# Bloc 1
 	#-----------------------------------------------------------------------
 	focus = {
-		id = SER_ww1_BalkansPolitics
-		prerequisite = {
-			focus = SER_ww1_diplomatic_effort
-		}
-		icon = GFX_goal_generic_territory_or_war
-		completion_reward = {
-			add_stability = 0.05
-			add_political_power = 100
-		}
-		ai_will_do = {
-			factor = 2000
-		}
-		cost = 10
-		x = 7
-		y = 1
-	}
-	#Peace in Balkans Focus
-	focus = {
-		id = SER_ww1_ApeasementBalkans
-		prerequisite = {
-			focus = SER_ww1_BalkansPolitics
-		}
-		icon = GFX_goal_generic_national_unity
-		available = {
-			NOT = {
-				has_war = yes
-			}
-		}
-		completion_reward = {
-			add_political_power = -80
-			add_ideas = isolation
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = 6
-		y = 2
-		mutually_exclusive = {
-			focus = SER_ww1_anti_ottoman
-		}
-	}
-	focus = {
-		id = SER_ww1_stop_support_albania
-		prerequisite = {
-			focus = SER_ww1_ApeasementBalkans
-		}
-		icon = GFX_goal_generic_more_territorial_claims
-		available = {
-			NOT = {
-				has_war = yes
-			}
-		}
-		completion_reward = {
-			add_political_power = -100
-			add_opinion_modifier = {
-				target = TUR
-				modifier = HOI4TGW_Opinion_improved_diplomatic_relations
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = 6
-		y = 3
-	}
-	focus = {
-		id = SER_ww1_stop_support_montenegro
-		prerequisite = {
-			focus = SER_ww1_stop_support_albania
-		}
-		icon = GFX_goal_generic_attack_allies
-		available = {
-			NOT = {
-				has_war = yes
-			}
-		}
-		completion_reward = {
-			add_political_power = -20
-			add_opinion_modifier = {
-				target = MNT
-				modifier = HOI4TGW_Opinion_hostile_diplomatic_relations
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = 6
-		y = 4
-	}
-	focus = {
-		id = SER_ww1_remove_claims_on_ottoman
-		prerequisite = {
-			focus = SER_ww1_stop_support_montenegro
-		}
-		icon = GFX_goal_generic_forceful_treaty
-		available = {
-			NOT = {
-				has_war = yes
-			}
-		}
-		completion_reward = {
-			760 = {
-				remove_claim_by = SER
-			}
-			759 = {
-				remove_claim_by = SER
-			}
-			106 = {
-				remove_claim_by = SER
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		cost = 10
-		x = 6
-		y = 5
-	}
-	#War in Balkans Focus
-	focus = {
-		id = SER_ww1_anti_ottoman
-		prerequisite = {
-			focus = SER_ww1_BalkansPolitics
-		}
-		icon = GFX_goal_generic_political_pressure
-		mutually_exclusive = {
-			focus = SER_ww1_ApeasementBalkans
-		}
-		completion_reward = {
-			add_political_power = 70
-			add_opinion_modifier = {
-				target = TUR
-				modifier = HOI4TGW_Opinion_anti_ottoman_policy_malus
-			}
-		}
-		ai_will_do = {
-			factor = 2000
-		}
-		cost = 10
-		x = 8
-		y = 2
-	}
-	focus = {
-		id = SER_ww1_italo_turkish_opportunity
-		prerequisite = {
-			focus = SER_ww1_anti_ottoman
-		}
-		icon = GFX_goal_generic_occupy_states_ongoing_war
-		available = {
-			date>1911.1.1
-			ITA = {
-				exists = yes
-			}
-			TUR = {
-				exists = yes
-			}
-			ITA = {
-				has_country_flag = italian_libya_war
-			}
-		}
-		completion_reward = {
-			army_experience = 5
-			add_manpower = 20000
-			add_stability = 0.01
-		}
-		ai_will_do = {
-			factor = 2000
-		}
-		cost = 10
-		x = 8
-		y = 3
-	}
-	focus = {
-		id = SER_balkan_league
-		icon = GFX_goal_generic_alliance
-		prerequisite = {
-			focus = SER_ww1_italo_turkish_opportunity
-		}
-		available = {
-			date > 1912.1.1
-			SER = {
-				exists = yes
-				is_subject = no
-			}
-			BUL = {
-				exists = yes
-				is_subject = no
-			}
-			GRE = {
-				exists = yes
-				is_subject = no
-			}
-			MNT = {
-				exists = yes
-				is_subject = no
-			}
-			TUR = {
-				exists = yes
-				is_subject = no
-			}
-		}
-		bypass = {
-			or = {
-				is_in_faction_with = GRE
-				is_in_faction_with = BUL
-				is_in_faction_with = MNT
-				BUL = {
-					has_completed_focus = BUL_ww1_balkan_league
-				}
-			}
-		}
-		completion_reward = {
-			country_event = {
-				id = ww1_firstbalkan.2
-				days = 1
-			}
-		}
-		cost = 5
-		ai_will_do = {
-			factor = 2000
-		}
-		x = 8
-		y = 4
-	}
-	focus = {
-		id = SER_first_balkan
-		prerequisite = {
-			focus = SER_balkan_league
-		}
-		icon = GFX_goal_generic_military_deal
-		available = {
-			date > 1912.3.1
-			OR = {
-				TUR = {
-					owns_state = 184 
-				}	
-				TUR = {
-					owns_state = 760
-				}
-				TUR = {
-					owns_state = 761
-				}
-				TUR = {
-					owns_state = 788
-				}	
-			}	
-			SER = {
-				exists = yes
-				is_subject = no
-			}
-			BUL = {
-				exists = yes
-				is_subject = no
-			}
-			TUR = {
-				exists = yes
-				is_subject = no
-			}
-			OR = {
-				SER = {
-					is_in_faction_with = BUL
-				}
-				SER = {
-					is_in_faction_with = GRE
-				}
-				SER = {
-					is_in_faction_with = MNT
-				}
-			}
-		}
-		bypass = {
-			OR = {
-				has_war_with = TUR
-				is_in_faction_with = TUR
-			}
-		}
-		completion_reward = {
-			country_event = ww1_firstbalkan.4
-		}
-		cost = 5
-		ai_will_do = {
-			factor = 2000
-		}
-		x = 8
-		y = 5
-	}
-	focus = {
 		id = SER_ww1_GreeceFriend
-		prerequisite = {
-			focus = SER_first_balkan
-			focus = SER_ww1_remove_claims_on_ottoman
-		}
 		icon = GFX_goal_tripartite_pact
 		available = {
 			NOT = {
@@ -782,30 +489,26 @@ focus_tree = {
 		}
 		cost = 10
 		x = 7
-		y = 6
+		y = 5
 	}
 	focus = {
-		id = SER_second_balkan
+		id = SER_victory_in_the_second_balkan_war
 		prerequisite = {
 			focus = SER_ww1_GreeceFriend
 		}
 		icon = GFX_goal_generic_occupy_states_ongoing_war
 		available = {
-			date > 1913.3.1
-			country_exists = SER
-			country_exists = BUL
-			has_global_flag = kis_firstbalkanwar_victory
-			has_war_with = BUL
+			has_global_flag = kis_secondbalkanwar_victory
 		}
 		completion_reward = {
-			add_manpower = 10000
+			add_war_support = 0.05
 		}
 		cost = 10
 		ai_will_do = {
 			factor = 2000
 		}
 		x = 7
-		y = 7
+		y = 6
 	}
 	#----------------------------------------------------------------------- 
 	# Bloc 2
@@ -848,9 +551,6 @@ focus_tree = {
 	focus = {
 		id = SER_ww1_pro_fra
 		prerequisite = {
-			focus = SER_ww1_anti_ottoman
-		}
-		prerequisite = {
 			focus = SER_ww1_anti_auh
 		}
 		icon = GFX_hoi4tgw_marianne
@@ -891,9 +591,6 @@ focus_tree = {
 	}
 	focus = {
 		id = SER_ww1_pro_rus
-		prerequisite = {
-			focus = SER_ww1_anti_ottoman
-		}
 		prerequisite = {
 			focus = SER_ww1_anti_auh
 		}
@@ -1245,17 +942,20 @@ focus_tree = {
 		icon = GFX_goal_generic_construct_military
 		available = {
 			SER = {
+				controls_state = 803
 				controls_state = 108
 			}
 		}
 		completion_reward = {
-			108 = {
+			803 = {
 				add_building_construction = {
 					type = trench
 					level = 3
 					province = 11857
 					instant_build = yes
 				}
+			}
+			108 = {
 				add_building_construction = {
 					type = trench
 					level = 3
@@ -1365,6 +1065,9 @@ focus_tree = {
 			103 = {
 				add_core_of = CRO
 			}
+			1108 = {
+				add_core_of = CRO
+			}
 		}
 		ai_will_do = {
 			factor = 0
@@ -1387,6 +1090,7 @@ focus_tree = {
 			AUH = {
 				controls_state = 109
 				controls_state = 103
+				controls_state = 1108
 			}
 		}
 		completion_reward = {
@@ -1400,6 +1104,7 @@ focus_tree = {
 					generator = {
 						109
 						103
+						1108
 					}
 				}
 			}
@@ -4261,5 +3966,69 @@ focus_tree = {
 		cost = 10
 		x = 39
 		y = 9
+	}
+	###########################################################################################################################
+	# INTERWAR - VICTORY
+	###########################################################################################################################
+	focus = {
+		id = SER_int_annex_montenegro
+		icon = GFX_goal_generic_demand_territory
+		cost = 10
+		x = 8
+		y = 10
+		available = {
+			has_country_flag = great_war_winner
+		}
+		bypass = {
+			MNT = {
+				exists = no
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		completion_reward = {
+			MNT = {
+				country_event = int_serbia.1
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+	focus = {
+		id = SER_int_proclaim_yugoslavia
+		icon = GFX_goal_SER_yugoslavia
+		prerequisite = {
+			focus = SER_int_annex_montenegro
+		}
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = SER_int_annex_montenegro
+		available = {
+			any_state_of = {
+				target = constant:state_groups.yugoslavia
+				is_controlled_by = ROOT
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		completion_reward = {
+			every_state = {
+				limit = {
+					#yugoslavia_states = yes #TODO Set Manually
+					OR = {
+						is_core_of = SLV
+						is_core_of = CRO
+						is_core_of = BOS
+						is_core_of = MNT
+						is_core_of = SER
+						is_core_of = MAC
+					}
+				}
+				add_core_of = ROOT
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 	}
 }

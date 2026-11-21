@@ -306,7 +306,7 @@ focus_tree = {
 		icon = GFX_goal_generic_soviet_construction
 		completion_reward = {
 			add_political_power = -100
-			news_event = ww1_italy.16
+			country_event = ww1_italy.16
 		}
 		ai_will_do = {
 			factor = 0
@@ -738,11 +738,12 @@ focus_tree = {
 		completion_reward = {
 			add_state_claim = 452
 			add_state_claim = 446
+			add_state_claim = 907
 			add_state_claim = 447
 			add_state_claim = 453
 			add_state_claim = 456
 			add_state_claim = 457
-			add_state_claim = 752
+			add_state_claim = 1085
 		}
 		ai_will_do = {
 			factor = 0
@@ -828,9 +829,12 @@ focus_tree = {
 		icon = GFX_goal_generic_occupy_states_ongoing_war
 		completion_reward = {
 			add_state_claim = 39
+			add_state_claim = 850
 			add_state_claim = 103
+			add_state_claim = 1108
 			add_state_claim = 163
 			add_state_claim = 736
+			add_state_claim = 852
 		}
 		ai_will_do = {
 			factor = 2000
@@ -859,6 +863,9 @@ focus_tree = {
 		completion_reward = {
 			add_state_claim = 539
 			add_state_claim = 541
+			add_state_claim = 893
+			add_state_claim = 894
+			add_state_claim = 895
 			add_state_claim = 546
 			add_state_claim = 769
 			add_state_claim = 770
@@ -983,9 +990,8 @@ focus_tree = {
 			}
 		}
 		bypass = {
-			ITA = {
-				is_in_faction_with = FRA
-			}
+			is_in_faction_with = FRA
+			has_country_flag = kis_italy_accept_auh_offer
 		}
 		prerequisite = {
 			focus = ITA_ww1_the_great_war_started
@@ -997,11 +1003,6 @@ focus_tree = {
 			focus = ITA_ww1_trieste_tyrol
 		}
 		icon = GFX_goal_tripartite_pact
-		bypass = {
-			ITA = {
-				has_country_flag = kis_italy_accept_auh_offer
-			}
-		}
 		completion_reward = {
 			FRA = {
 				add_to_faction = ITA
@@ -1151,6 +1152,7 @@ focus_tree = {
 			ITA = {
 				controls_state = 2
 				controls_state = 117
+				controls_state = 849
 				controls_state = 156
 				controls_state = 157
 				controls_state = 158
@@ -1169,6 +1171,13 @@ focus_tree = {
 				}
 			}
 			117 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			849 = {
 				add_building_construction = {
 					type = infrastructure
 					level = 1
@@ -1579,8 +1588,8 @@ focus_tree = {
 		available = {
 			#has_global_flag = SUPER_GLOBAL_Agadir_Crisis_Historical
 			country_exists = TUR
-			date>1911.8.8
-			date<1913.1.1
+			date > 1911.8.8
+			date < 1913.1.1
 		}
 		bypass = {
 			OR = {
@@ -3914,9 +3923,6 @@ focus_tree = {
 		prerequisite = {
 			focus = ITA_ww1_dockyard_effort_2
 		}
-		available = {
-			date > 1915.1.1
-		}
 		icon = GFX_goal_generic_construct_naval_dockyard
 		ai_will_do = {
 			factor = 10
@@ -4162,9 +4168,6 @@ focus_tree = {
 		id = ITA_ww1_extra_tech_slot_2
 		prerequisite = {
 			focus = ITA_ww1_infrastructure_effort_4
-		}
-		available = {
-			date > 1918.1.1
 		}
 		icon = GFX_focus_research
 		available = {
@@ -4803,6 +4806,7 @@ focus_tree = {
 			country_exists = AUS
 			ITA = {
 				controls_state = 39
+				controls_state = 850
 			}
 			is_subject = no
 			OR = {
@@ -4818,6 +4822,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			39 = {
+				set_demilitarized_zone = no
+			}
+			850 = {
 				set_demilitarized_zone = no
 			}
 		}
@@ -4842,7 +4849,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			remove_ideas = {
-				interwar_spirit_TheGreatWar_Winner
+				ww1_victoror_of_the_great_war
 			}
 			add_political_power = 50
 		}
@@ -4892,7 +4899,7 @@ focus_tree = {
 				type = take_state_focus
 				target = TUR
 				generator = {
-					341
+					797
 				}
 				expire = 0
 			}
@@ -4900,7 +4907,7 @@ focus_tree = {
 				type = take_state_focus
 				target = TUK
 				generator = {
-					341
+					797
 				}
 				expire = 0
 			}
@@ -5043,6 +5050,7 @@ focus_tree = {
 				elections_allowed = no
 			}
 			add_named_threat = {
+				name = ITA_interwar_march_on_rome
 				threat = 1
 			}
 			news_event = {
@@ -5267,8 +5275,11 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_state_claim = 1			#Corsica
-			add_state_claim = 44			#Albania
+			add_state_claim = 44			#Central Albania
+			add_state_claim = 934			#Shokeder
+			add_state_claim = 805			#Northern Epirus
 			add_state_claim = 103			#Dalmatia
+			add_state_claim = 1108			#Charlestown
 		}
 		ai_will_do = {
 			factor = 5
@@ -5321,6 +5332,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_named_threat = {
+				name = ITA_interwar_OccupationOfCorfu
 				threat = 5
 			}
 			add_stability = -0.01
@@ -5345,14 +5357,11 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = ITA_interwar_DeescalationWithGreece
 		}
-		x = 24
-		y = 16
-		cost = 10
 		available = {
 			country_exists = GRE
 			GRE = {
 				owns_state = 185
-				owns_state = 758
+				owns_state = 1090
 			}
 		}
 		x = 26
@@ -5364,7 +5373,7 @@ focus_tree = {
 				type = take_state_focus
 				generator = {
 					185
-					758
+					1090
 				}
 			}
 		}

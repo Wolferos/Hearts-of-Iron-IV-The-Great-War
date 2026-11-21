@@ -1,0 +1,567 @@
+###########################
+# Yugoslavian Events
+###########################
+
+add_namespace = DOD_yugoslavia
+
+# Yugoslavia pressured by Germany - after Anschluss - event for GER
+country_event = {
+	id = DOD_yugoslavia.30
+	title = DOD_yugoslavia.30.t
+	desc = DOD_yugoslavia.30.desc
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	option = { # put the squeeze on them
+		name = DOD_yugoslavia.30.a
+		ai_chance = {
+			base = 70
+		}
+
+		YUG = { 
+			country_event = {
+				id = DOD_yugoslavia.31 
+				hours = 6
+				random_hours = 12
+			}	
+			set_country_flag = YUG_GER_pressure_1 #for ai_weights in focus tree
+		}
+		
+	}	
+	option = { # not interested
+		name = DOD_yugoslavia.30.b
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes 
+			}
+		}
+		
+	}
+
+}
+
+#Yugoslavia pressured by Germany - First event - event for YUG
+country_event = {
+	id = DOD_yugoslavia.31
+	title = DOD_yugoslavia.31.t
+	desc = DOD_yugoslavia.31.desc
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+		
+	option = { # not that bad yet
+		name = DOD_yugoslavia.31.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes 
+			}
+		}
+
+		add_opinion_modifier = {
+			target = FROM
+			modifier = YUG_GER_pressured_us_annoyed_opm
+		}	
+		set_country_flag = YUG_stands_up_to_german_pressure_once_flag
+		
+	}
+
+	option = { # We must keep up good relation with them...
+		name = DOD_yugoslavia.31.b
+		ai_chance = {
+			base = 50
+		}
+		
+		FROM = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = YUG_wavering_to_GER_pressure_opm
+			}
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = YUG_wavering_to_GER_pressure_reverse_opm
+		}
+			
+		set_country_flag = YUG_wavered_to_german_pressure_once_flag
+		
+	}
+		
+	
+}
+
+# Yugoslavia pressured by Germany - Fate of CZE - event for GER
+country_event = {
+	id = DOD_yugoslavia.32
+	title = DOD_yugoslavia.30.t
+	desc = DOD_yugoslavia.32.desc
+	picture = GFX_report_event_german_troops
+	
+	is_triggered_only = yes
+	
+	option = { # put the squeeze on them
+		name = DOD_yugoslavia.32.a
+		ai_chance = {
+			base = 80
+		}
+
+		YUG = { 
+			country_event = {
+				id = DOD_yugoslavia.33 
+				hours = 6
+				random_hours = 12
+			}	
+			set_country_flag = YUG_GER_pressure_2 #for ai_weights
+		}
+		
+	}	
+	option = { # not interested
+		name = DOD_yugoslavia.32.b
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes 
+			}
+		}
+		
+	}
+		
+	
+}
+
+#Yugoslavia pressured by Germany - Second event
+country_event = {
+	id = DOD_yugoslavia.33
+	title = DOD_yugoslavia.31.t
+	desc = DOD_yugoslavia.33.desc
+	picture = GFX_report_event_german_troops
+	
+	is_triggered_only = yes
+		
+	option = { # not that bad 
+		name = DOD_yugoslavia.33.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes 
+			}
+		}
+
+		IF = {
+			limit = {
+				has_country_flag = YUG_stands_up_to_german_pressure_once_flag
+			}
+			set_country_flag = YUG_stands_up_to_german_pressure_twice_flag
+			clr_country_flag = YUG_stands_up_to_german_pressure_once_flag
+		}		
+		ELSE_IF = {
+			limit = {
+				has_country_flag = YUG_wavered_to_german_pressure_once_flag
+			}
+			set_country_flag = YUG_wavered_to_german_pressure_once_and_stood_up_once_flag
+		}
+		
+	}
+
+	option = { # This is getting serious, we must crack down on anti-German elements immediately!
+		name = DOD_yugoslavia.33.b
+		ai_chance = {
+			base = 50
+		}
+
+		add_stability = -0.03
+
+		IF = {
+			limit = {
+				has_idea = anti_german_military
+			}
+			remove_ideas = anti_german_military
+		}
+
+		add_popularity = {
+			ideology = FROM
+			popularity = 0.05
+		}	
+
+		IF = {
+			limit = {
+				has_country_flag = YUG_wavered_to_german_pressure_once_flag
+			}
+			set_country_flag = YUG_wavered_to_german_pressure_twice_flag
+			clr_country_flag = YUG_wavered_to_german_pressure_once_flag
+		}		
+		ELSE_IF = {
+			limit = {
+				has_country_flag = YUG_stands_up_to_german_pressure_once_flag
+			}
+			set_country_flag = YUG_wavered_to_german_pressure_once_and_stood_up_once_flag
+		}
+		
+	}
+}
+
+# Yugoslavia pressured by Germany - Last Warning - after Fall of France - event for GER
+country_event = {
+	id = DOD_yugoslavia.34
+	title = DOD_yugoslavia.30.t
+	desc = DOD_yugoslavia.34.desc
+	picture = GFX_report_event_german_troops_paris
+	
+	mean_time_to_happen = {
+		days = 5
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = GER
+		has_government = fascism
+		NOT = {
+			has_war_with = YUG
+		}
+		YUG = {
+			is_in_faction = no
+		}
+		FRA = {
+			OR = {
+				has_capitulated = yes
+				is_subject_of = GER
+			}
+		}
+	}
+	
+	option = { # put the squeeze on them
+		name = DOD_yugoslavia.34.a
+		ai_chance = {
+			base = 90
+		}
+
+		YUG = { 
+			country_event = {
+				id = DOD_yugoslavia.35
+				hours = 6
+				random_hours = 12
+			}
+		}
+		
+	}	
+	option = { # not interested
+		name = DOD_yugoslavia.34.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes 
+			}
+		}
+
+
+		
+	}
+		
+	
+}
+
+# Yugoslavia pressured by Germany - third event - event for YUG
+country_event = {
+	id = DOD_yugoslavia.35
+	title = DOD_yugoslavia.31.t
+	desc = DOD_yugoslavia.35.desc
+	picture = GFX_report_event_german_troops_paris
+	
+	is_triggered_only = yes
+		
+	option = { # not that bad
+		name = DOD_yugoslavia.35.a
+		ai_chance = {
+			base = 30
+		}
+
+		add_political_power = -25
+
+		add_popularity = {
+			ideology = FROM
+			popularity = 0.05
+		}	
+
+		FROM = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = YUG_wavering_to_GER_pressure_2_opm
+			}
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = YUG_wavering_to_GER_pressure_reverse_2_opm
+		}
+		
+	}
+
+	option = { # No, we must not placate them further!
+		name = DOD_yugoslavia.35.b
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes 
+			}
+		}
+
+		add_war_support = 0.05
+
+		FROM = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = enemy_of_the_reich_opm
+			}	
+		}
+		
+	}
+		
+	
+}
+
+
+
+# Yugoslavia pressured by Britain - Balkan Strategy - event for ENG
+country_event = {
+	id = DOD_yugoslavia.40
+	title = DOD_yugoslavia.30.t
+	desc = DOD_yugoslavia.40.desc
+	picture = GFX_report_event_chamberlain_announce
+	
+	is_triggered_only = yes
+	
+	option = { # put the squeeze on them
+		name = DOD_yugoslavia.40.a
+		ai_chance = {
+			base = 70
+		}
+
+		YUG = { 
+			country_event = {
+				id = DOD_yugoslavia.41 
+				hours = 6
+				random_hours = 12
+			} 
+		}
+		
+	}	
+	option = { # not interested
+		name = DOD_yugoslavia.40.b
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes 
+			}
+		}
+		
+	}
+		
+	
+}
+
+# Yugoslavia pressured by Britain - First event - event for YUG
+country_event = {
+	id = DOD_yugoslavia.41
+	title = DOD_yugoslavia.41.t
+	desc = DOD_yugoslavia.41.desc
+	picture = GFX_report_event_french_british_officers
+	
+	is_triggered_only = yes
+		
+	option = { # not that bad yet
+		name = DOD_yugoslavia.41.a
+		ai_chance = {
+			base = 30
+		}
+
+		add_popularity = {
+			ideology = FROM
+			popularity = 0.05
+		}	
+		
+	}	
+}
+
+# Yugoslavia pressured by Britain - Munich - event for ENG
+country_event = {
+	id = DOD_yugoslavia.42
+	title = DOD_yugoslavia.30.t
+	desc = DOD_yugoslavia.42.desc
+	picture = GFX_report_event_french_british_officers
+	
+	is_triggered_only = yes
+	
+	option = { # put the squeeze on them
+		name = DOD_yugoslavia.42.a
+		ai_chance = {
+			base = 70
+		}
+		YUG = { 
+			country_event = {
+				id = DOD_yugoslavia.43 
+				hours = 6
+				random_hours = 12
+			} 
+		}
+		
+	}	
+	option = { # not interested
+		name = DOD_yugoslavia.42.b
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes 
+			}
+		}
+
+
+		
+	}
+	
+}
+
+# Yugoslavia pressured by Britain - Second event - event for YUG
+country_event = {
+	id = DOD_yugoslavia.43
+	title = DOD_yugoslavia.41.t
+	desc = DOD_yugoslavia.43.desc
+	picture = GFX_report_event_canadian_soldiers
+	
+	is_triggered_only = yes
+		
+	option = { # not that bad yet
+		name = DOD_yugoslavia.43.a
+		ai_chance = {
+			base = 30
+		}
+
+
+		
+	}	
+}
+
+#Yugoslavia pressured by Britain - late 1940, last warning - event for ENG
+country_event = {
+	id = DOD_yugoslavia.44
+	title = DOD_yugoslavia.30.t
+	desc = DOD_yugoslavia.44.desc
+	picture = GFX_report_event_french_british_officers
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ENG
+		is_historical_focus_on = no
+		has_government = democratic
+		has_war_with = GER
+		NOT = { has_war_with = YUG }
+		NOT = { is_in_faction_with = YUG }
+		YUG = { is_in_faction = no }
+		YUG = { NOT = { has_war_with = GER } }
+		YUG = { exists = yes }
+	}
+
+	mean_time_to_happen = { days = 4 }
+	
+	option = { # put the squeeze on them
+		name = DOD_yugoslavia.44.a
+		ai_chance = {
+			base = 90
+		}
+		YUG = { 
+			country_event = {
+				id = DOD_yugoslavia.45  
+				hours = 6
+				random_hours = 12
+			} 
+		}
+		hidden_effect = { 
+			country_event = { 
+				id = DOD_yugoslavia.46 
+				days = 180 
+				random = 672 
+			} 
+		}
+		
+	}	
+	option = { # not interested
+		name = DOD_yugoslavia.44.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes 
+			}
+		}
+
+
+
+	}
+}
+
+#Yugoslavia pressured by Britain - Third event - event for YUG
+country_event = {
+	id = DOD_yugoslavia.45
+	title = DOD_yugoslavia.41.t
+	desc = DOD_yugoslavia.45.desc
+	picture = GFX_report_event_british_inspect_troops
+	
+	is_triggered_only = yes
+		
+	option = { # not that bad yet
+		name = DOD_yugoslavia.45.a
+		ai_chance = {
+			base = 30
+		}
+		
+		custom_effect_tooltip = YUG_if_we_dont_side_with_britain_within_a_year_warning_tt
+
+	}	
+}
+
+# Yugoslavia pressured by Britain - war - event for ENG
+country_event = {
+	id = DOD_yugoslavia.46
+	title = DOD_yugoslavia.30.t
+	desc = DOD_yugoslavia.46.desc
+	picture = GFX_report_event_ast_army
+	
+	is_triggered_only = yes
+	fire_only_once = yes 
+	trigger = {
+		tag = ENG
+		has_government = democratic
+		YUG = { is_in_faction = no }
+		YUG = { exists = yes }
+		has_war_with = GER
+	}
+	
+	option = { # put the squeeze on them
+		name = DOD_yugoslavia.46.a
+		ai_chance = {
+			base = 90
+		}
+
+		declare_war_on = {
+			target = YUG
+			type = puppet_wargoal_focus
+		}
+		
+	}	
+	option = { # not interested
+		name = DOD_yugoslavia.46.b
+		ai_chance = {
+			base = 10
+		}
+	}
+}

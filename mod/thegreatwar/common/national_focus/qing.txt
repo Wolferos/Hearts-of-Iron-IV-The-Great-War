@@ -1,0 +1,565 @@
+focus_tree = {
+	id = qing_focus
+	
+	country = {
+		factor = 0
+
+		modifier = {
+			add = 10
+			tag = QIN
+		}
+	}
+
+	shared_focus = political_effort
+	shared_focus = ww1_diplomatic_effort
+	shared_focus = army_effort
+	shared_focus = aviation_effort
+	shared_focus = naval_effort
+	shared_focus = ww1_interwar_Aftermath
+
+	continuous_focus_position = { x = 50 y = 1700 }
+
+	focus = {
+		id = QIN_continue_the_new_policies
+		icon = GFX_focus_generic_improve_the_administration
+		mutually_exclusive = { focus = QIN_return_to_the_old_ways }
+		x = 27
+		y = 0
+
+		cost = 10
+
+		ai_will_do = {
+			base = 30
+		}
+
+		available = {
+			OR = {
+				has_global_flag = kis_xinhai_revolution_ended
+				has_global_flag = kis_xinhai_revolution_stopped
+			}
+		}
+
+		bypass = {
+
+		}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = QIN_new_policies_1
+				add_idea = QIN_new_policies_2
+			}
+		}
+	}
+
+	focus = {
+		id = QIN_build_rural_schools
+		icon = GFX_goal_KTG_Educate_natives
+		prerequisite = { focus = QIN_continue_the_new_policies }
+		x = -1
+		y = 1
+		relative_position_id = QIN_continue_the_new_policies
+
+		cost = 10
+
+		ai_will_do = {
+			base = 30
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		completion_reward = {
+			QIN_increase_debt_burden = yes
+			remove_ideas = QIN_low_literacy_rate
+		}
+	}
+
+	focus = {
+		id = QIN_currency_reform
+		icon = GFX_focus_generic_currency_reforms
+		prerequisite = { focus = QIN_build_rural_schools }
+		prerequisite = { focus = QIN_land_reform }
+		x = 1
+		y = 1
+		relative_position_id = QIN_build_rural_schools
+
+		cost = 10
+
+		ai_will_do = {
+			base = 30
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		completion_reward = {
+			QIN_decrease_debt_burden = yes
+			swap_ideas = {
+				remove_idea = QIN_new_policies_3
+				add_idea = QIN_new_policies_4
+			}
+		}
+	}
+
+	focus = {
+		id = QIN_land_reform
+		icon = GFX_goal_generic_land_reform
+		prerequisite = { focus = QIN_continue_the_new_policies }
+		x = 1
+		y = 1
+		relative_position_id = QIN_continue_the_new_policies
+
+		cost = 10
+
+		ai_will_do = {
+			base = 30
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		completion_reward = {
+			QIN_decrease_debt_burden = yes
+			swap_ideas = {
+				remove_idea = QIN_new_policies_2
+				add_idea = QIN_new_policies_3
+			}
+		}
+	}
+
+	focus = {
+		id = QIN_in_the_way_of_zhili
+		icon = GFX_goal_QIE_zhili
+		prerequisite = { focus = QIN_land_reform focus = QIN_establish_the_ministry_of_agriculture }
+		x = 1
+		y = 1
+		relative_position_id = QIN_land_reform
+
+		cost = 10
+
+		ai_will_do = {
+			base = 30
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		completion_reward = {
+			QIN_decrease_debt_burden = yes
+			if = {
+				limit = {
+					has_completed_focus = QIN_land_reform
+				}
+				swap_ideas = {
+					remove_idea = QIN_new_policies_3
+					add_idea = QIN_new_policies_4
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = QIN_establish_the_ministry_of_agriculture
+				}
+				swap_ideas = {
+					remove_idea = QIN_agrarian_society_1
+					add_idea = QIN_agrarian_society_2
+				}
+			}
+			else = {
+				custom_effect_tooltip = QIN_in_the_way_of_zhili_lf_tt
+				swap_ideas = {
+					remove_idea = QIN_new_policies_3
+					add_idea = QIN_new_policies_4
+				}
+				custom_effect_tooltip = QIN_in_the_way_of_zhili_ap_tt
+				swap_ideas = {
+					remove_idea = QIN_agrarian_society_1
+					add_idea = QIN_agrarian_society_2
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = QIN_focus_on_the_west
+		icon = YUN_GFX_Goal_Secure_Western_China
+		prerequisite = { focus = QIN_currency_reform }
+		prerequisite = { focus = QIN_in_the_way_of_zhili }
+		x = -1
+		y = 1
+		relative_position_id = QIN_currency_reform
+
+		cost = 10
+
+		ai_will_do = {
+			base = 30
+		}
+
+		available = {
+			OR = {
+				NOT = {
+					has_completed_focus = QIN_focus_on_the_east
+				}
+				has_completed_focus = QIN_expand_the_shanghai_port
+			}
+		}
+
+		bypass = {
+
+		}
+
+		completion_reward = {
+			QIN_increase_debt_burden = yes
+			every_controlled_state = {
+				limit = {
+					OR = {
+						state = 619
+						state = 759
+						state = 1042
+						state = 617
+						state = 618
+						state = 329
+						state = 330
+						state = 817
+						state = 818
+						state = 819
+						state = 820
+						state = 604
+						state = 754
+						state = 755
+						state = 283
+						state = 756
+						state = 1045
+						state = 1044
+						state = 753
+						state = 616
+						state = 1040
+						state = 621
+						state = 1043
+						state = 746
+						state = 622
+						state = 1032
+						state = 1046
+						state = 744
+						state = 615
+						state = 752
+						state = 751
+						state = 325
+						state = 747
+						state = 603
+						state = 748
+						state = 611
+						state = 1039
+						state = 612
+						state = 715
+						state = 714
+						state = 761
+						state = 717
+						state = 328
+					}
+				}
+				ETH_upgrade_state_category = yes
+			}
+		}
+	}
+
+	focus = {
+		id = QIN_reinfroce_the_imperial_periferies
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = QIN_focus_on_the_west }
+		x = 0
+		y = 1
+		relative_position_id = QIN_focus_on_the_west
+
+		cost = 10
+
+		ai_will_do = {
+			base = 30
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		completion_reward = {
+			every_controlled_state = {
+				limit = {
+					OR = {
+						state = 329
+						state = 330
+						state = 817
+						state = 818
+						state = 819
+						state = 820
+						state = 618
+						state = 617
+						state = 619
+						state = 759
+						state = 1042
+					}
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = QIN_focus_on_the_east
+		icon = YUN_GFX_Goal_Secure_Coastal_China
+		prerequisite = { focus = QIN_currency_reform }
+		prerequisite = { focus = QIN_in_the_way_of_zhili }
+		x = 1
+		y = 1
+		relative_position_id = QIN_currency_reform
+
+		cost = 10
+
+		ai_will_do = {
+			base = 30
+		}
+
+		available = {
+			OR = {
+				NOT = {
+					has_completed_focus = QIN_focus_on_the_west
+				}
+				has_completed_focus = QIN_reinfroce_the_imperial_periferies
+			}
+		}
+
+		bypass = {
+
+		}
+
+		completion_reward = {
+			QIN_increase_debt_burden = yes
+			every_controlled_state = {
+				limit = {
+					OR = {
+						state = 728
+						state = 729
+						state = 326
+						state = 592
+						state = 593
+						state = 594
+						state = 1033
+						state = 595
+						state = 596
+						state = 600
+						state = 602
+						state = 620
+						state = 749
+						state = 607
+						state = 597
+						state = 1038
+						state = 613
+						state = 1034
+						state = 1035
+						state = 743
+						state = 1083
+						state = 614
+						state = 608
+						state = 609
+						state = 610
+						state = 716
+						state = 744
+						state = 605
+						state = 1037
+						state = 1041
+						state = 599
+					}
+				}
+				ETH_upgrade_state_category = yes
+			}
+		}
+	}
+
+	focus = {
+		id = QIN_expand_the_shanghai_port
+		icon = GFX_focus_generic_refit_civilian_ships
+		prerequisite = { focus = QIN_focus_on_the_east }
+		x = 0
+		y = 1
+		relative_position_id = QIN_focus_on_the_east
+
+		cost = 10
+
+		ai_will_do = {
+			base = 30
+		}
+
+		available = {
+			controls_state = 613
+			613 = { is_demilitarized_zone = no }
+		}
+
+		bypass = {
+
+		}
+
+		completion_reward = {
+			613 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = QIN_return_to_the_old_ways
+		icon = GFX_focus_generic_farmland
+		mutually_exclusive = { focus = QIN_continue_the_new_policies }
+		x = 4
+		y = 0
+		relative_position_id = QIN_continue_the_new_policies
+
+		cost = 10
+
+		ai_will_do = {
+			base = 30
+		}
+
+		available = {
+			OR = {
+				has_global_flag = kis_xinhai_revolution_ended
+				has_global_flag = kis_xinhai_revolution_stopped
+			}
+		}
+
+		bypass = {
+
+		}
+
+		completion_reward = {
+			remove_ideas = QIN_new_policies_1
+		}
+	}
+
+	focus = {
+		id = QIN_religious_schools
+		icon = GFX_goal_QIE_confucianism
+		prerequisite = { focus = QIN_return_to_the_old_ways }
+		x = 1
+		y = 1
+		relative_position_id = QIN_return_to_the_old_ways
+
+		cost = 10
+
+		ai_will_do = {
+			base = 30
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		completion_reward = {
+			QIN_increase_debt_burden = yes
+			swap_ideas = {
+				remove_idea = QIN_low_literacy_rate
+				add_idea = QIN_confuscianist_thought
+			}
+		}
+	}
+
+	focus = {
+		id = QIN_establish_the_ministry_of_agriculture
+		icon = GFX_goal_agricultural_policies
+		prerequisite = { focus = QIN_return_to_the_old_ways }
+		x = -1
+		y = 1
+		relative_position_id = QIN_return_to_the_old_ways
+
+		cost = 10
+
+		ai_will_do = {
+			base = 30
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		completion_reward = {
+			QIN_decrease_debt_burden = yes
+			add_ideas = QIN_agrarian_society_1
+		}
+	}
+
+	focus = {
+		id = QIN_ramp_up_agricultural_production
+		icon = GFX_focus_generic_agriculture
+		prerequisite = { focus = QIN_establish_the_ministry_of_agriculture }
+		prerequisite = { focus = QIN_religious_schools }
+		prerequisite = { focus = QIN_in_the_way_of_zhili }
+		x = 1
+		y = 2
+		relative_position_id = QIN_establish_the_ministry_of_agriculture
+
+		cost = 10
+
+		ai_will_do = {
+			base = 30
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		completion_reward = {
+			QIN_decrease_debt_burden = yes
+			swap_ideas = {
+				remove_idea = QIN_agrarian_society_2
+				add_idea = QIN_agrarian_society_3
+			}
+		}
+	}
+
+}

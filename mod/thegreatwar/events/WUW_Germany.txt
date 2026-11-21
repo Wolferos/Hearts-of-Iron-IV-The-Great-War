@@ -1,0 +1,755 @@
+##############################
+##############################
+##### WUW GERMANY EVENTS #####
+##############################
+##############################
+
+add_namespace = germany_mefo_bills
+add_namespace = wuw_GER_military_events
+add_namespace = wuw_GER_diplomacy
+add_namespace = wuw_GER_news
+add_namespace = wuw_GER_releasable
+add_namespace = wuw_GER_civil_war
+add_namespace = wuw_GER_mutual_guarantees
+add_namespace = wuw_GER_weltpolitik
+add_namespace = wuw_GER_chinese_diplomacy
+add_namespace = wuw_GER_monroe
+add_namespace = wuw_GER_monroe_news
+add_namespace = wuw_GER_reichskommissariats
+add_namespace = wuw_GER_legions
+add_namespace = wuw_GER_realpolitik
+add_namespace = GOT_GER_integrated_puppet_economies
+add_namespace = wuw_GER_the_battle_of_britain
+add_namespace = wuw_GER_uncertain_future
+add_namespace = wuw_GER_german_politics
+add_namespace = GER_operation_panzerfaust_events
+add_namespace = GOT_GER_amerikabomber
+add_namespace = GOT_GER_fading_eagle
+
+#### INNER CIRCLE ###
+add_namespace = GER_inner_circle
+add_namespace = GER_inner_circle_todt
+add_namespace = GER_inner_circle_speer
+add_namespace = GER_inner_circle_goring
+add_namespace = GER_inner_circle_himmler
+add_namespace = GER_inner_circle_goebbels
+add_namespace = GER_inner_circle_hess
+add_namespace = GER_inner_circle_bormann
+
+#Germany is influencing other countries
+country_event = {
+	id = wuw_GER_diplomacy.10
+	title = generic.1.t #Intentional
+	desc = { #Intentional
+		text = generic.1.d_neutral_good
+		trigger = {
+			has_government = FROM
+		}
+	}
+	desc = { #Intentional
+		text = generic.1.d_bad
+		trigger = {
+			NOT = { has_government = FROM }
+		}
+	}
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = { #Very well....
+		name = wuw_GER_diplomacy.10.a
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+					target = FROM
+					value > 24
+				}
+			}
+			modifier = {
+				factor = 1.5
+				strength_ratio = {
+				    tag = FROM
+				    ratio < 0.75
+				}
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = {
+				    tag = FROM
+				    ratio < 0.5
+				}
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = {
+				    tag = FROM
+				    ratio < 1
+				}
+			}
+			modifier = {
+				factor = 0
+				is_major = yes
+			}
+		}
+
+		IF = {
+			limit = {
+				FROM = {
+					has_government = fascism
+				}
+			}
+			add_timed_idea = {
+				idea = GER_fascism_influence
+				days = 730
+			}
+		}		
+		ELSE_IF = {
+			limit = {
+				FROM = {
+					has_government = democratic
+				}
+			}
+			add_timed_idea = {
+				idea = GER_democratic_influence
+				days = 730
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				FROM = {
+					has_government = neutrality
+				}
+			}
+			add_timed_idea = {
+				idea = GER_neutrality_influence
+				days = 730
+			}
+		}
+
+		if = {
+			limit = {
+				original_tag = CZE
+				has_country_flag = GER_influencing_CZE_flag
+			}
+			add_opinion_modifier = { target = GER modifier = ger_cze_diplomatic_focus }
+			clr_country_flag = GER_influencing_CZE_flag
+		}
+		else = {
+			add_opinion_modifier = { 
+				target = GER 
+				modifier = GER_german_influence
+			}
+		}
+
+	}
+
+	option = { #How dare they?!
+		name = wuw_GER_diplomacy.10.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				add = 15
+				has_opinion = {
+					target = FROM
+					value < -29
+				}
+			}
+			modifier = {
+				add = 15
+				has_opinion = {
+					target = FROM
+					value < -49
+				}
+			}
+		}
+
+		add_political_power = -25
+		
+		FROM = {
+			country_event = { id = wuw_GER_diplomacy.11 hours = 5 random_hours = 5 }
+		}
+	}
+}
+country_event = { #FROM has foiled our influencing efforts
+	id = wuw_GER_diplomacy.11
+	title = wuw_GER_diplomacy.11.t
+	desc = wuw_GER_diplomacy.11.desc 
+	picture = GFX_report_event_tank_factory
+
+	is_triggered_only = yes
+
+	option = { #How dare they?!
+		name = wuw_GER_diplomacy.11.a 
+
+		effect_tooltip = {
+			FROM = {
+				IF = {
+					limit = {
+						ROOT = {
+							has_government = fascism
+						}
+					}
+					remove_ideas = GER_fascism_influence
+				}		
+				ELSE_IF = {
+					limit = {
+						ROOT = {
+							has_government = democratic
+						}
+					}
+					remove_ideas = GER_democratic_influence
+				}
+				ELSE_IF = {
+					limit = {
+						ROOT = {
+							has_government = neutrality
+						}
+					}
+					remove_ideas = GER_neutrality_influence
+				}
+				ELSE_IF = {
+					limit = {
+						ROOT = {
+							has_government = communism
+						}
+					}
+					remove_ideas = GER_communist_influence
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				remove_opinion_modifier = { 
+					target = GER 
+					modifier = GER_german_influence
+				}
+			}
+		}
+
+	}
+}
+
+country_event = { #The Civil War broke out
+	id = wuw_GER_diplomacy.75
+	title = wuw_GER_diplomacy.75.t
+	desc = wuw_GER_diplomacy.75.desc
+	picture = GFX_report_event_generic_communist_militia
+
+	is_triggered_only = yes
+
+	option = { #we are communist now!
+		name = wuw_GER_diplomacy.75.a
+		ai_chance = {
+			base = 10
+		}
+
+		hidden_effect = {
+			if = {
+				limit = {
+					capital_scope = { is_on_continent = europe }
+				}
+				random_owned_controlled_state = {
+					limit = { is_on_continent = europe }
+					set_variable = { ROOT.temp_capital = THIS.id }
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					set_variable = { ROOT.temp_capital = THIS.id }
+				}
+			}
+		}
+
+		start_civil_war = {
+			ideology = ROOT
+			ruling_party = communism
+			size = 0.5 #since this triggers when the country goes over 50% communism
+			capital = var:ROOT.temp_capital
+		}
+
+		every_country_with_original_tag = {
+			original_tag_to_check = ROOT
+
+			limit = {
+				has_government = communism
+			}
+
+			add_to_array = { GER.started_communist_cw_here = THIS }
+
+			set_country_flag = GER_spurred_communist_cw_flag
+		}
+	}
+
+	option = { #Fight back the red menace!
+		name = wuw_GER_diplomacy.75.b
+		ai_chance = {
+			base = 2
+		}
+
+		hidden_effect = {
+			if = {
+				limit = {
+					capital_scope = { is_on_continent = europe }
+				}
+				random_owned_controlled_state = {
+					limit = { is_on_continent = europe }
+					set_variable = { ROOT.temp_capital = THIS.id }
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					set_variable = { ROOT.temp_capital = THIS.id }
+				}
+			}
+		}
+
+		start_civil_war = {
+			ideology = communism
+			ruling_party = ROOT
+			size = 0.5 #since this triggers when the country goes over 50% communism
+			capital = var:ROOT.temp_capital
+		}
+
+		every_country_with_original_tag = {
+			original_tag_to_check = ROOT
+
+			limit = {
+				has_government = communism
+			}
+
+			add_to_array = { GER.started_communist_cw_here = THIS }
+
+			set_country_flag = GER_spurred_communist_cw_flag
+		}
+	}
+}
+
+#GER wants to integrate CZE
+country_event = { 
+	id = wuw_GER_diplomacy.117
+	title = wuw_GER_realpolitik.16.t #Intentional
+	desc = wuw_GER_realpolitik.16.desc #Intentional
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	#We cannot refuse them
+	option = { 
+		name = wuw_GER_diplomacy.117.a
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 2
+				has_government = FROM
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = {
+				    tag = FROM
+				    ratio < 0.75
+				}
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = {
+				    tag = FROM
+				    ratio < 0.5
+				}
+			}
+			modifier = {
+				factor = 0.5
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = ROOT
+				}
+			}
+			modifier = {
+				factor = 0.5
+				any_other_country = {
+					is_major = yes
+					is_in_faction_with = ROOT
+				}
+			}
+		}
+
+		FROM = { # FROM Accepts
+			country_event = { 
+				id = wuw_GER_diplomacy.118
+				hours = 5 
+				random_hours = 6
+			}
+		}
+
+		effect_tooltip = {
+			FROM = {
+				annex_country = {
+					target = ROOT
+					transfer_troops = yes
+				}
+			}
+			every_state = {
+				limit = {
+					is_owned_and_controlled_by = CZE
+					OR = {
+						state = 69
+						state = 74
+						state = 972
+					}
+				}
+				add_core_of = PREV
+			}
+		}
+	}
+
+	# We will never submit!
+	option = {
+		name = wuw_GER_diplomacy.117.b
+		ai_chance = {
+			base = 2
+			modifier = {
+				factor = 5
+				strength_ratio = {
+				    tag = FROM
+				    ratio > 1
+				}
+			}
+			modifier = {
+				factor = 5
+				strength_ratio = {
+				    tag = FROM
+				    ratio > 1.25
+				}
+			}
+			modifier = {
+				factor = 0
+				is_subject_of = FROM
+			}
+		}
+
+		add_war_support = 0.1
+
+		custom_effect_tooltip = generic_skip_one_line_tt
+
+		FROM = { # FROM Rejects
+			country_event = { 
+				id = wuw_GER_diplomacy.118
+				hours = 5 
+				random_hours = 6
+			}
+		}
+	}
+}
+ 
+# Germany annexes CZE peacefully
+country_event = { 
+	id = wuw_GER_diplomacy.118
+	title = wuw_GER_diplomacy.118.t
+	desc = wuw_GER_realpolitik.8.desc #Intentional
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = { # A great day for the German nation!
+		name = wuw_GER_realpolitik.8.a #Intentional
+		
+		annex_country = {
+			target = FROM
+			transfer_troops = yes
+		}
+
+		custom_effect_tooltip =  generic_skip_one_line_tt
+		
+		every_state = {
+			limit = {
+				OR = {
+					state = 69
+					state = 74
+					state = 972
+				}
+			}
+			add_core_of = PREV
+		}
+
+		custom_effect_tooltip =  generic_skip_one_line_tt
+
+		every_state = {
+			limit = {
+				is_owned_by = ROOT
+				OR = {
+					state = 9
+					state = 75
+					state = 72
+				}
+			}
+			add_compliance = 60
+		}
+
+		custom_effect_tooltip =  generic_skip_one_line_tt
+
+		every_state = {
+			limit = {
+				is_owned_by = ROOT
+				OR = {
+					state = 70
+					state = 71
+					state = 664
+					state = 73
+				}
+			}
+			add_compliance = 15
+		}
+
+		#custom_effect_tooltip =  generic_skip_one_line_tt
+		
+		#GER_czechoslovakia_modify_mefo_bills_or_economy_of_conquest = yes
+		#GER_seize_gold_reserves_in_europe_peacefully = yes
+	}
+}
+
+#CZE Rejects our offer - event for GER
+country_event = { 
+	id = wuw_GER_diplomacy.119
+	title = wuw_GER_diplomacy.119.t
+	desc = wuw_GER_diplomacy.113.desc #Intentional
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	# In that case we must respect their wishes
+	option = { 
+		name = wuw_GER_realpolitik.38.a	#Intentional	
+		ai_chance = {
+			base = 10
+		}
+
+		add_stability = 0.1
+		add_political_power = 50
+
+	}
+
+	#CZE must be destroyed
+	option = { 
+		name = wuw_GER_realpolitik.9.a #Intentional	
+		ai_chance = {
+			base = 90
+		}
+
+		create_wargoal = {
+			type = annex_everything
+			target = FROM
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					is_subject_of = ROOT
+				}
+			}
+			end_puppet = FROM
+		}
+		if = {
+			limit = {
+				is_faction_leader = yes
+				FROM = {
+					is_in_faction_with = ROOT
+				}
+			}
+			ROOT = { remove_from_faction = FROM }
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					is_in_faction_with = ROOT
+				}
+			}
+			ROOT = { leave_faction = yes }
+		}
+
+		custom_effect_tooltip = generic_skip_one_line_tt
+
+		every_state = {
+			limit = {
+				is_owned_and_controlled_by = CZE
+				OR = {
+					state = 69
+					state = 74
+					state = 972
+				}
+			}
+			add_core_of = PREV
+		}
+	}
+}
+
+country_event = { #The Civil War broke out (Monarchist)
+	id = wuw_GER_realpolitik.27
+	title = wuw_GER_realpolitik.27.t
+	desc = wuw_GER_realpolitik.27.desc
+	picture = GFX_report_event_GER_grenzshutz_forces
+
+	is_triggered_only = yes
+
+	option = { #we are monarchist now!
+		name = wuw_GER_realpolitik.27.a
+		ai_chance = {
+			base = 10
+		}
+
+		hidden_effect = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				set_variable = { ROOT.temp_capital = THIS.id }
+			}
+		}
+
+		start_civil_war = {
+			ideology = ROOT
+			ruling_party = neutrality
+			size = 0.4 # since this triggers when the country goes over 50% neutrality
+			capital = var:ROOT.temp_capital
+		}
+	}
+
+	option = { #Fight back the white menace!
+		name = wuw_GER_realpolitik.27.b
+		ai_chance = {
+			base = 2
+			modifier = {
+				factor = 0
+				check_variable = {
+					num_owned_states < 2
+				}
+			}
+		}
+
+		hidden_effect = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				set_variable = { ROOT.temp_capital = THIS.id }
+			}
+		}
+
+		start_civil_war = {
+			ideology = neutrality
+			ruling_party = ROOT
+			size = 0.5 # since this triggers when the country goes over 50% neutrality
+			capital = var:ROOT.temp_capital
+		}
+
+	}
+}
+
+country_event = { #The Civil War broke out (Democratic)
+	id = wuw_GER_realpolitik.28
+	title = wuw_GER_realpolitik.28.t
+	desc = wuw_GER_realpolitik.28.desc
+	picture = GFX_report_event_generic_polish_machinegunners
+
+	is_triggered_only = yes
+
+	option = { #we are a republic now!
+		name = wuw_GER_realpolitik.28.a
+		ai_chance = {
+			base = 10
+		}
+
+		hidden_effect = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				set_variable = { ROOT.temp_capital = THIS.id }
+			}
+		}
+
+		start_civil_war = {
+			ideology = ROOT
+			ruling_party = democratic
+			size = 0.4 # since this triggers when the country goes over 50% democratic
+			capital = var:ROOT.temp_capital
+		}
+	}
+
+	option = { #Fight back the azure menace!
+		name = wuw_GER_realpolitik.28.b
+		ai_chance = {
+			base = 2
+			modifier = {
+				factor = 0
+				check_variable = {
+					num_owned_states < 2
+				}
+			}
+		}
+
+		hidden_effect = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				set_variable = { ROOT.temp_capital = THIS.id }
+			}
+		}
+
+		start_civil_war = {
+			ideology = democratic
+			ruling_party = ROOT
+			size = 0.5 # since this triggers when the country goes over 50% democratic
+			capital = var:ROOT.temp_capital
+		}
+		
+	}
+}
+
+country_event = { #The Civil War broke out (Fascist)
+	id = wuw_GER_realpolitik.29
+	title = wuw_GER_realpolitik.29.t
+	desc = wuw_GER_realpolitik.29.desc
+	picture = GFX_report_event_GER_black_reichswehr_forces
+
+	is_triggered_only = yes
+
+	option = { #we are a bad place now!
+		name = wuw_GER_realpolitik.29.a
+		ai_chance = {
+			base = 10
+		}
+
+		hidden_effect = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				set_variable = { ROOT.temp_capital = THIS.id }
+			}
+		}
+
+		start_civil_war = {
+			ideology = ROOT
+			ruling_party = fascism
+			size = 0.4 # since this triggers when the country goes over 50% fascism
+			capital = var:ROOT.temp_capital
+		}
+	}
+
+	option = { #Fight back the brown menace!
+		name = wuw_GER_realpolitik.29.b
+		ai_chance = {
+			base = 2
+			modifier = {
+				factor = 0
+				check_variable = {
+					num_owned_states < 2
+				}
+			}
+		}
+
+		hidden_effect = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				set_variable = { ROOT.temp_capital = THIS.id }
+			}
+		}
+
+		start_civil_war = {
+			ideology = fascism
+			ruling_party = ROOT
+			size = 0.5 # since this triggers when the country goes over 50% fascism
+			capital = var:ROOT.temp_capital
+		}
+		
+	}
+}

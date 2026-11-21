@@ -1,36 +1,61 @@
-state = {
+
+state={
 	id=362
 	name="STATE_362"
-	local_supplies = 1.0 manpower = 4151054
-	state_category=large_city
-	provinces={ 788 801 865 873 951 1506 3823 3917 3925 3941 3975 4627 6846 6850 6958 6971 7466 7558 7588 7646 9779 9923 9931 10343 10412 10439 10441 11738 11841 11873 11888 }
-	resources={
-		wood=62
-		coal=225
-		}
+	resources = {
+		wood = 52
+		coal = 43
+	}
+
 	history={
-		victory_points={ 788 10 }
-		owner=USA
-		add_core_of=USA
-		1936.1.1={ 
-			owner=USA
-			add_core_of=USA
-			victory_points={ 788 10 }
-			buildings={
-				infrastructure=4
-				industrial_complex=3
-				air_base=10
-				dockyard=4
-				788={ naval_base=10  }
+		owner = USA
+		buildings = {
+			infrastructure = 3 #was: 6
+			industrial_complex = 2
+			dockyard = 3
+			air_base = 3
+			788 = {
+				naval_base = 10
+				naval_supply_hub = 1
+				naval_headquarters = {
+					level = 1
+					allowed = {
+						has_dlc = "No Compromise, No Surrender"
+					}
 				}
 			}
-		1939.1.1={ buildings={ industrial_complex=4 dockyard=5 } }
-		buildings={
-			infrastructure=4
-			industrial_complex=4
-			air_base=2
-			dockyard=3
-			788={ naval_base=10  }
+
+		}
+		add_core_of = USA
+		victory_points = {
+			788 10 
+		}
+		victory_points = {
+			10412 15 
+		}
+
+		1936.1.1 = {
+			buildings = {
+				air_base = 6
+				fuel_silo = 1
+				dockyard = 4
 			}
 		}
+
+		1939.1.1 = {
+			buildings = {
+				dockyard = 5
+			}
+		}
+
 	}
+
+	provinces={
+		788 865 873 951 1506 3823 3917 3925 6846 7558 9779 9931 10343 10412 10439 11738 11841 11873 
+	}
+
+	local_supplies=11.0
+	manpower=2249080
+	buildings_max_level_factor=1.000
+	state_category=large_city
+}

@@ -207,18 +207,25 @@ news_event = {
 	desc = kis_news.105.d
 	picture = ww1_news_8
 	major = yes
+	fire_only_once = yes
 	trigger = {
 		date > 1918.1.01
 		NOT = {
 			has_global_flag = kis_spanishflu
 		}
 	}
-	mean_time_to_happen = {
-		days = 0
-	}
 	immediate = {
 		set_global_flag = kis_spanishflu
 		hidden_effect = {
+			every_country = {
+				limit = {
+					has_war = yes
+				}
+				add_timed_idea = {
+					idea = ww1_spanish_flu
+					days = 360
+				}
+			}
 		}
 	}
 	option = {
@@ -263,23 +270,10 @@ news_event = {
 	desc = ww1_xinhai.2.d
 	picture = EVENT_hoi4tgw_xinhai_revolution
 	major = yes
-	trigger = {
-		#date > 1911.10.25
-		has_global_flag = kis_xinhairenews
-		NOT = {
-			has_global_flag = kis_xinhaire
-		}
-		NOT = {
-			TAG = QIN
-		}
-	}
-	mean_time_to_happen = {
-		days = 0
-	}
+	is_triggered_only = yes
+
 	immediate = {
-		set_global_flag = kis_xinhaire
-		hidden_effect = {
-		}
+		set_global_flag = kis_xinhai_revolution
 	}
 	option = {
 		name = kis_news.107.a
@@ -567,23 +561,21 @@ news_event = {
 	title = kis_news.119.t
 	desc = kis_news.119.d
 	picture = EVENT_hoi4tgw_xinhai_end
+	is_triggered_only = yes
 	major = yes
+
 	trigger = {
-		has_global_flag = kis_xinhairenews
+		has_global_flag = kis_xinhai_revolution
 		NOT = {
-			has_global_flag = kis_xinhaire_end
+			has_global_flag = kis_xinhai_revolution_ended
 		}
 		QIN = {
 			has_civil_war = no
 		}
 	}
-	mean_time_to_happen = {
-		days = 0
-	}
+
 	immediate = {
-		set_global_flag = kis_xinhaire_end
-		hidden_effect = {
-		}
+		set_global_flag = kis_xinhai_revolution_ended
 	}
 	option = {
 		name = kis_news.119.a
@@ -654,3 +646,34 @@ news_event = {
 }
 
 #____________________________________________________________
+# Xinhai Revolution End
+#____________________________________________________________
+news_event = {
+	id = kis_news.123
+	title = kis_news.23.t
+	desc = kis_news.23.d
+	picture = EVENT_hoi4tgw_xinhai_end
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = kis_news.23.a
+	}
+}
+
+#____________________________________________________________
+# Berlin Baghdad Railway Causes a Crises
+#____________________________________________________________
+news_event = {
+	id = kis_news.124
+	title = kis_news.124.t
+	desc = kis_news.124.d
+	picture = GFX_news_event_secure_the_wayward_ally
+	
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = kis_news.124.a
+	}
+}

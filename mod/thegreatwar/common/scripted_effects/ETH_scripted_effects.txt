@@ -1,0 +1,501 @@
+ETH_set_up_lon_arms_resolution_effect = {
+	add_relation_rule_override = {
+		can_access_market = no
+		trigger = has_lon_arms_embargo
+		usage_desc = lon_arms_resolution_tt
+	}
+}
+
+ETH_upgrade_state_category = {
+	IF = {
+		limit = { has_state_category = wasteland }
+		set_state_category = pastoral
+	}
+	ELSE_IF = {
+		limit = { has_state_category = pastoral }
+		set_state_category = rural
+	}
+	ELSE_IF = {
+		limit = { has_state_category = rural }
+		set_state_category = town
+	}
+	ELSE_IF = {
+		limit = { has_state_category = town }
+		set_state_category = large_town
+	}
+	ELSE_IF = {
+		limit = { has_state_category = large_town }
+		set_state_category = city
+	}
+	ELSE_IF = {
+		limit = { has_state_category = city }
+		set_state_category = large_city
+	}
+	ELSE_IF = {
+		limit = { has_state_category = large_city }
+		set_state_category = metropolis
+	}
+	ELSE_IF = {
+		limit = { has_state_category = metropolis }
+		set_state_category = megalopolis
+	}
+}
+
+ETH_add_random_building_slot_effect = {
+	random_owned_controlled_state = {
+		limit = {
+			NOT = {
+				has_state_flag = ETH_has_random_building_slot_added
+			}
+			free_building_slots = {
+				building = arms_factory
+				size > 0
+				include_locked = yes
+			}
+			OR = {
+				is_in_home_area = yes
+				NOT = {
+					owner = {
+						any_owned_state = {
+							free_building_slots = {
+								building = arms_factory
+								size > 0
+								include_locked = yes
+							}
+							is_in_home_area = yes
+						}
+					}
+				}
+			}
+		}
+		add_extra_state_shared_building_slots = 1
+		set_state_flag = ETH_has_random_building_slot_added
+	}
+}
+
+ETH_add_random_civ_factory_effect = {
+		random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+							OR = {
+								state = 961
+								state = 962
+								state = 963
+								state = 964
+								state = 965
+								state = 966
+								state = 967
+								state = 968
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+}
+
+ETH_add_random_mil_factory_effect = {
+	random_owned_controlled_state = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 0
+				include_locked = yes
+			}
+			OR = {
+				is_in_home_area = yes
+				NOT = {
+					owner = {
+						any_owned_state = {
+							free_building_slots = {
+								building = arms_factory
+								size > 0
+								include_locked = yes
+							}
+							is_in_home_area = yes
+						}
+					}
+				}
+			}
+		}
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+		}
+	}
+}
+
+ETH_get_ships_from_country = { #MOved this here from event in ETH. This works with events where FROM is the country making the ships and ROOT is the country receiving it. Check which country it is and transfers an appropriate amount of ships of a template depending on the country. Currently only works with USA, ENG, GER and SOV.
+	IF = {
+		limit = {
+			 FROM = {
+			 	tag = ENG
+			 }
+		}
+		IF = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			ENG = {
+				create_ship = {
+					type = ship_hull_light_1
+					equipment_variant = "S Class"
+					creator = ENG
+					name = "S Class I"
+				}
+				create_ship = {
+					type = ship_hull_light_1
+					equipment_variant = "S Class"
+					creator = ENG
+					name = "S Class II"
+				}
+				create_ship = {
+					type = ship_hull_light_1
+					equipment_variant = "S Class"
+					creator = ENG
+					name = "S Class III"
+				}
+				create_ship = {
+					type = ship_hull_light_1
+					equipment_variant = "S Class"
+					creator = ENG
+					name = "S Class IV"
+				}
+				create_ship = {
+					type = ship_hull_light_1
+					equipment_variant = "S Class"
+					creator = ENG
+					name = "S Class V"
+				}
+				create_ship = {
+					type = ship_hull_light_1
+					equipment_variant = "S Class"
+					creator = ENG
+					name = "S Class VI"
+				}
+				
+			
+				#Transfer British Destroyers
+				transfer_ship={
+				  prefer_name = "S Class I"
+				  type = destroyer
+				  target = ROOT
+				  exclude_refitting = no
+				}
+				transfer_ship={
+				  prefer_name = "S Class II"
+				  type = destroyer
+				  target = ROOT
+				  exclude_refitting = no
+				}
+				transfer_ship={
+				  prefer_name = "S Class III"
+				  type = destroyer
+				  target = ROOT
+				  exclude_refitting = no
+				}
+				transfer_ship={
+				  prefer_name = "S Class IV"
+				  type = destroyer
+				  target = ROOT
+				  exclude_refitting = no
+				}
+				transfer_ship={
+				  prefer_name = "S Class V"
+				  type = destroyer
+				  target = ROOT
+				  exclude_refitting = no
+				}
+				transfer_ship={
+				  prefer_name = "S Class VI"
+				  type = destroyer
+				  target = ROOT
+				  exclude_refitting = no
+				}
+			}
+		}
+		ELSE = {
+			ROOT = {
+				create_ship = {
+					type = destroyer_1
+					equipment_variant = "A/B/C/D Class"
+					creator = "ENG"
+				}
+			}
+		}	
+		ENG = { set_country_flag = sold_ships_to_us@ROOT }
+	}
+	ELSE_IF = {
+		limit = {
+			 FROM = {
+			 	tag = SOV
+			 }
+		}
+		SOV = {
+			create_ship = {
+				type = ship_hull_heavy_1
+				equipment_variant = "Marat Class"
+				creator = SOV
+				name = "Marat Class BB I"
+			}
+			create_ship = {
+				type = ship_hull_heavy_1
+				equipment_variant = "Marat Class"
+				creator = SOV
+				name = "Marat Class BB II"
+			}
+			transfer_ship={
+			  prefer_name = "Marat Class BB I"
+			  type = battleship
+			  target = ROOT
+			  exclude_refitting = no
+			}
+			transfer_ship={
+			  prefer_name = "Marat Class BB II"
+			  type = battleship
+			  target = ROOT
+			  exclude_refitting = no
+			}
+		}
+		SOV = { set_country_flag = sold_ships_to_us@ROOT }
+		
+	}
+	ELSE_IF = {
+		limit = {
+			 FROM = {
+			 	tag = GER
+			 }
+		}
+		GER = {
+			create_ship = {
+				type = ship_hull_submarine_1
+				equipment_variant = "Type II Class"
+				creator = GER
+				name = "Type IIA U-1"
+			}
+			transfer_ship={
+			  prefer_name = "Type IIA U-1"
+			  type = submarine
+			  target = ROOT
+			  exclude_refitting = no
+			}
+			create_ship = {
+				type = ship_hull_submarine_1
+				equipment_variant = "Type II Class"
+				creator = GER
+				name = "Type IIA U-2"
+			}
+			transfer_ship={
+			  prefer_name = "Type IIA U-2"
+			  type = submarine
+			  target = ROOT
+			  exclude_refitting = no
+			}
+			create_ship = {
+				type = ship_hull_submarine_1
+				equipment_variant = "Type II Class"
+				creator = GER
+				name = "Type IIA U-3"
+			}
+			transfer_ship={
+			  prefer_name = "Type IIA U-3"
+			  type = submarine
+			  target = ROOT
+			  exclude_refitting = no
+			}
+			create_ship = {
+				type = ship_hull_submarine_1
+				equipment_variant = "Type II Class"
+				creator = GER
+				name = "Type IIA U-4"
+			}
+			transfer_ship={
+			  prefer_name = "Type IIA U-4"
+			  type = submarine
+			  target = ROOT
+			  exclude_refitting = no
+			}
+			create_ship = {
+				type = ship_hull_submarine_1
+				equipment_variant = "Type II Class"
+				creator = GER
+				name = "Type IIA U-5"
+			}
+			transfer_ship={
+			  prefer_name = "Type IIA U-5"
+			  type = submarine
+			  target = ROOT
+			  exclude_refitting = no
+			}
+			create_ship = {
+				type = ship_hull_submarine_1
+				equipment_variant = "Type II Class"
+				creator = GER
+				name = "Type IIA U-6"
+			}
+			transfer_ship={
+			  prefer_name = "Type IIA U-6"
+			  type = submarine
+			  target = ROOT
+			  exclude_refitting = no
+			}
+			create_ship = {
+				type = ship_hull_submarine_1
+				equipment_variant = "Type II Class"
+				creator = GER
+				name = "Type IIA U-7"
+			}
+			transfer_ship={
+			  prefer_name = "Type IIA U-7"
+			  type = submarine
+			  target = ROOT
+			  exclude_refitting = no
+			}
+			create_ship = {
+				type = ship_hull_submarine_1
+				equipment_variant = "Type II Class"
+				creator = GER
+				name = "Type IIA U-8"
+			}
+			transfer_ship={
+			  prefer_name = "Type IIA U-8"
+			  type = submarine
+			  target = ROOT
+			  exclude_refitting = no
+			}
+			create_ship = {
+				type = ship_hull_submarine_1
+				equipment_variant = "Type II Class"
+				creator = GER
+				name = "Type IIA U-9"
+			}
+			transfer_ship={
+			  prefer_name = "Type IIA U-9"
+			  type = submarine
+			  target = ROOT
+			  exclude_refitting = no
+			}
+			create_ship = {
+				type = ship_hull_submarine_1
+				equipment_variant = "Type II Class"
+				creator = GER
+				name = "Type IIA U-10"
+			}
+			transfer_ship={
+			  prefer_name = "Type IIA U-10"
+			  type = submarine
+			  target = ROOT
+			  exclude_refitting = no
+			}
+		}
+		GER = { set_country_flag = sold_ships_to_us@ROOT }
+	}
+	ELSE_IF = {
+		limit = {
+			 FROM = {
+			 	tag = USA
+			 }
+		}
+		USA = {
+			create_ship = {
+				type = ship_hull_light_1
+				equipment_variant = "Clemson Class"
+				creator = USA
+				name = "Clemson Class I"
+			}
+			create_ship = {
+				type = ship_hull_light_1
+				equipment_variant = "Clemson Class"
+				creator = USA
+				name = "Clemson Class II"
+			}
+			create_ship = {
+				type = ship_hull_light_1
+				equipment_variant = "Clemson Class"
+				creator = USA
+				name = "Clemson Class III"
+			}
+			create_ship = {
+				type = ship_hull_light_1
+				equipment_variant = "Clemson Class"
+				creator = USA
+				name = "Clemson Class IV"
+			}
+			create_ship = {
+				type = ship_hull_light_1
+				equipment_variant = "Clemson Class"
+				creator = USA
+				name = "Clemson Class V"
+			}
+			create_ship = {
+				type = ship_hull_light_1
+				equipment_variant = "Clemson Class"
+				creator = USA
+				name = "Clemson Class VI"
+			}
+		
+			#Transfer US Destroyers
+			transfer_ship={
+			  prefer_name = "Clemson Class I"
+			  type = destroyer
+			  target = ROOT
+			  exclude_refitting = no
+			}
+			transfer_ship={
+			  prefer_name = "Clemson Class II"
+			  type = destroyer
+			  target = ROOT
+			  exclude_refitting = no
+			}
+			transfer_ship={
+			  prefer_name = "Clemson Class III"
+			  type = destroyer
+			  target = ROOT
+			  exclude_refitting = no
+			}
+			transfer_ship={
+			  prefer_name = "Clemson Class IV"
+			  type = destroyer
+			  target = ROOT
+			  exclude_refitting = no
+			}
+			transfer_ship={
+			  prefer_name = "Clemson Class V"
+			  type = destroyer
+			  target = ROOT
+			  exclude_refitting = no
+			}
+			transfer_ship={
+			  prefer_name = "Clemson Class VI"
+			  type = destroyer
+			  target = ROOT
+			  exclude_refitting = no
+			}
+			USA = { set_country_flag = sold_ships_to_us@ROOT }
+		}
+	}
+}

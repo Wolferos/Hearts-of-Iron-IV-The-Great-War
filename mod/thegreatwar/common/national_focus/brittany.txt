@@ -1,0 +1,401 @@
+focus_tree = {
+	id = brittany_focus
+	default = no
+	country = {
+		factor = 0
+
+		modifier = {
+			add = 10
+			tag = BRI
+		}
+	}
+
+	shared_focus = political_effort
+	shared_focus = ww1_diplomatic_effort
+	shared_focus = army_effort
+	shared_focus = aviation_effort
+	shared_focus = industrial_effort
+	shared_focus = naval_effort
+	shared_focus = ww1_interwar_Aftermath
+
+	focus = {
+		id = BRI_the_restored_kingdom
+		icon = GFX_focus_generic_monarchy_1
+		mutually_exclusive = {
+			focus = ww1_interwar_Aftermath
+		}
+		available = {
+			has_global_flag = kis_second_treaty_frankfort
+		}
+		completion_reward = {  
+		add_political_power = 50
+		add_stability = 0.1
+		}
+		ai_will_do = { factor = 20 }
+		cost = 2
+		x = 20
+		y = 11
+	}
+	###########################################################################################################################
+	# Irish Relationship
+	###########################################################################################################################
+	focus = {
+		id = BRI_celtic_brotherhood_with_ireland
+		icon = GFX_focus_generic_little_entente
+		prerequisite = {focus = BRI_the_restored_kingdom}
+		available = {IRE = {exists = yes NOT = {has_war_with = ROOT}}}
+		completion_reward = {  
+		IRE = {
+			add_opinion_modifier = {
+				target = BRI
+				modifier = celtic_brotherhood
+			}
+			}
+			add_opinion_modifier = {
+				target = IRE
+				modifier = celtic_brotherhood
+			}
+		}
+		ai_will_do = { factor = 20 }
+		cost = 10
+		x = 19
+		y = 12
+	}
+	focus = {
+		id = BRI_cultural_exchange_with_ireland
+		icon = GFX_goal_generic_positive_trade_relations
+		prerequisite = {focus = BRI_begin_the_restoration_of_breton_culture}
+		prerequisite = {focus = BRI_celtic_brotherhood_with_ireland}
+		available = {IRE = {exists = yes NOT = {has_war_with = ROOT}}}
+		completion_reward = {  
+		IRE = {
+		country_event = { id = ww1_brittany.2 days = 1 }
+		}
+		}
+		ai_will_do = { factor = 20 }
+		cost = 10
+		x = 18
+		y = 13
+	}
+	###########################################################################################################################
+	# Cultural and Political
+	###########################################################################################################################
+	focus = {
+		id = BRI_begin_the_restoration_of_breton_culture
+		icon = GFX_goal_generic_national_unity
+		prerequisite = {focus = BRI_the_restored_kingdom}
+		completion_reward = { 
+		add_political_power = 200
+		}
+		ai_will_do = { factor = 20 }
+		cost = 10
+		x = 16
+		y = 12
+	}
+	focus = {
+		id = BRI_prohibit_the_use_of_french
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = {focus = BRI_begin_the_restoration_of_breton_culture}
+		completion_reward = {  
+		add_stability = -0.05
+		add_political_power = 30
+		}
+		ai_will_do = { factor = 20 }
+		cost = 10
+		x = 16
+		y = 13
+	}
+	focus = {
+		id = BRI_begin_replacing_french_loan_words
+		icon = GFX_focus_generic_concessions
+		prerequisite = {focus = BRI_prohibit_the_use_of_french}
+		completion_reward = {  
+		add_stability = -0.1
+		add_political_power = 20
+		}
+		ai_will_do = { factor = 20 }
+		cost = 10
+		x = 16
+		y = 14
+	}
+	focus = {
+		id = BRI_purge_the_french_bureacracy
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = {focus = BRI_prohibit_the_use_of_french}
+		completion_reward = {  
+		add_stability = -0.2
+		add_political_power = -100
+		set_province_name = {
+			id = 6536
+			name = "An Oriant"
+		}
+		set_province_name = {
+			id = 9495
+			name = "Roazhon"
+		}
+		set_province_name = {
+			id = 11465
+			name = "Naoned"
+		}
+		14 = {
+		set_state_name = "Breizh"
+		}
+		}
+		ai_will_do = { factor = 20 }
+		cost = 10
+		x = 14
+		y = 14
+	}
+	focus = {
+		id = BRI_breton_culture_revived
+		icon = GFX_goal_generic_propaganda
+		prerequisite = {focus = BRI_begin_replacing_french_loan_words}
+		prerequisite = {focus = BRI_purge_the_french_bureacracy}
+		completion_reward = {  
+		add_ideas = BRI_breton_cultural_revival
+		14 = {remove_core_of = FRA}
+		}
+		ai_will_do = { factor = 20 }
+		cost = 10
+		x = 16
+		y = 15
+	}
+	###########################################################################################################################
+	# Military
+	###########################################################################################################################
+	focus = {
+		id = BRI_a_breton_army
+		icon = GFX_goal_generic_axis_build_infantry
+		prerequisite = {focus = BRI_the_restored_kingdom}
+		completion_reward = {  
+		army_experience = 25
+		add_tech_bonus = {
+		bonus = 0.5
+		uses = 1
+		category = land_doctrine
+		}
+		}
+		ai_will_do = { factor = 20 }
+		cost = 7
+		x = 21
+		y = 12
+	}
+	focus = {
+		id = BRI_invite_german_instructors
+		icon = GFX_goal_generic_military_deal
+		prerequisite = {focus = BRI_a_breton_army}
+		completion_reward = {
+		add_ideas = german_advisors
+		add_tech_bonus = {
+		bonus = 0.4
+		uses = 1
+		category = land_doctrine
+		}
+		}
+		ai_will_do = { factor = 20 }
+		cost = 7
+		x = 21
+		y = 13
+	}
+	focus = {
+		id = BRI_purchase_german_equipment
+		icon = GFX_goal_generic_small_arms
+		prerequisite = {focus = BRI_invite_german_instructors}
+		completion_reward = {
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 1500
+			producer = GER
+		}
+		}
+		ai_will_do = { factor = 20 }
+		cost = 7
+		x = 21
+		y = 14
+	}
+	focus = {
+		id = BRI_a_domestic_arms_industry
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = {focus = BRI_invite_german_instructors}
+		completion_reward = {
+		14 = {
+		add_building_construction = {
+		type = arms_factory
+		level = 2
+		instant_build = yes
+		}
+		add_extra_state_shared_building_slots = 2
+		}
+		}
+		ai_will_do = { factor = 20 }
+		cost = 7
+		x = 23
+		y = 14
+	}
+	focus = {
+		id = BRI_stir_breton_nationalism
+		icon = GFX_focus_generic_manpower
+		prerequisite = {focus = BRI_a_domestic_arms_industry focus = BRI_purchase_german_equipment}
+		completion_reward = {
+		add_ideas = BRI_breton_nationalism
+		add_manpower = 12000
+		}
+		ai_will_do = { factor = 20 }
+		cost = 7
+		x = 22
+		y = 15
+	}
+	focus = {
+		id = BRI_a_breton_airforce
+		icon = GFX_goal_generic_build_airforce
+		prerequisite = {focus = BRI_the_restored_kingdom}
+		completion_reward = { 
+		14 = {
+		add_building_construction = {
+			type = air_base
+			level = 2
+			instant_build = yes
+		}
+		}
+		air_experience = 25
+		add_tech_bonus = {
+		bonus = 0.5
+		uses = 1
+		category = air_doctrine
+		}
+		}
+		ai_will_do = { factor = 20 }
+		cost = 7
+		x = 25
+		y = 12
+	}
+	focus = {
+		id = BRI_purchase_fighters_from_germany
+		icon = GFX_goal_generic_air_fighter
+		prerequisite = {focus = BRI_a_breton_airforce}
+		completion_reward = {  
+			add_equipment_to_stockpile = {
+				type = medium_plane_fighter_airframe
+				amount = 70
+				producer = GER
+			}
+		}
+		ai_will_do = { factor = 20 }
+		cost = 7
+		x = 25
+		y = 13
+	}
+	focus = {
+		id = BRI_purchase_seaplanes_from_germany
+		icon = GFX_goal_generic_air_naval_bomber
+		prerequisite = {focus = BRI_a_breton_airforce}
+		completion_reward = { 
+			add_equipment_to_stockpile = {
+				type = seaplane_equipment
+				amount = 30
+				producer = GER
+			}
+		}
+		ai_will_do = { factor = 20 }
+		cost = 7
+		x = 27
+		y = 13
+	}
+	focus = {
+		id = BRI_purchase_bombers_from_germany
+		icon = GFX_goal_generic_air_bomber
+		prerequisite = {focus = BRI_purchase_fighters_from_germany}
+		completion_reward = {  
+			add_equipment_to_stockpile = {
+				type = tac_bomber_equipment
+				amount = 20
+				producer = GER
+			}
+		}
+		ai_will_do = { factor = 20 }
+		cost = 7
+		x = 25
+		y = 14
+	}
+	focus = {
+		id = BRI_license_german_aircraft
+		icon = GFX_goal_generic_air_production
+		prerequisite = {focus = BRI_purchase_bombers_from_germany}
+		completion_reward = {  
+		}
+		ai_will_do = { factor = 20 }
+		cost = 7
+		x = 25
+		y = 15
+	}
+	focus = {
+		id = BRI_a_breton_fleet
+		icon = GFX_goal_generic_build_navy
+		prerequisite = {focus = BRI_the_restored_kingdom}
+		completion_reward = { 
+			navy_experience = 25
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+		ai_will_do = { factor = 20 }
+		cost = 7
+		x = 29
+		y = 12
+	}
+	focus = {
+		id = BRI_purchase_ships_from_germany
+		icon = GFX_goal_generic_navy_cruiser
+		prerequisite = {focus = BRI_a_breton_fleet}
+		completion_reward = {  
+		}
+		ai_will_do = { factor = 20 }
+		cost = 7
+		x = 29
+		y = 13
+	}
+	focus = {
+		id = BRI_breton_shipbuilding_bureau
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = {focus = BRI_purchase_ships_from_germany}
+		completion_reward = {  
+			add_ideas = BRI_breton_shipbuilding_bureau
+		}
+		ai_will_do = { factor = 20 }
+		cost = 7
+		x = 29
+		y = 14
+	}
+	focus = {
+		id = BRI_breton_officer_academy
+		icon = GFX_focus_generic_military_mission
+		prerequisite = {focus = BRI_stir_breton_nationalism}
+		prerequisite = {focus = BRI_license_german_aircraft}
+		prerequisite = {focus = BRI_breton_shipbuilding_bureau}
+		completion_reward = {  
+			army_experience = 10
+			navy_experience = 10
+			air_experience = 10
+			add_ideas = BRI_breton_officer_academy
+		}
+		ai_will_do = { factor = 20 }
+		cost = 10
+		x = 26
+		y = 16
+	}
+	focus = {
+		id = BRI_expand_university_of_rennes
+		icon = GFX_focus_research
+		prerequisite = {focus = BRI_breton_officer_academy}
+		prerequisite = {focus = BRI_breton_culture_revived}
+		completion_reward = { 
+			add_research_slot = 1
+		}
+		ai_will_do = { factor = 20 }
+		cost = 10
+		x = 21
+		y = 17
+	}
+}

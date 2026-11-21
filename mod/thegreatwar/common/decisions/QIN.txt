@@ -1,0 +1,253 @@
+foreign_affairs = {
+
+	QIN_infiltrating_the_tongmenghui = {
+
+		allowed = {
+			original_tag = QIN
+		}
+
+		activation = {
+			always = no
+		}
+
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+
+		is_good = no
+
+		days_mission_timeout = 481
+
+		ai_will_do = {
+			base = 1
+		}
+
+		fire_only_once = yes
+
+		timeout_effect = {
+			country_event = ww1_xinhai.1
+		}
+	}
+
+	QIN_xinhai_revolution = {
+
+		allowed = {
+			original_tag = QIN
+		}
+
+		activation = {
+			always = no
+		}
+
+		available = {
+			NOT = {
+				has_idea = QIN_massive_debt_burden_1
+				hidden_trigger = {
+					has_idea = QIN_massive_debt_burden_1
+					has_idea = QIN_massive_debt_burden_2
+					has_idea = QIN_massive_debt_burden_3
+					has_idea = QIN_massive_debt_burden_4
+					has_idea = QIN_massive_debt_burden_5
+				}
+			}
+			has_stability > 0.5
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 620
+			}
+		}
+
+		is_good = no
+
+		days_mission_timeout = 48
+
+		ai_will_do = {
+			base = 1
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			remove_ideas = QIN_revolutionary_woes
+			set_global_flag = kis_xinhai_revolution_stopped
+		}
+
+		timeout_effect = {
+			country_event = ww1_xinhai.2
+			remove_ideas = QIN_revolutionary_woes
+			add_timed_idea = {
+				idea = QIN_aftermath_of_xinhai
+				days = 720
+			}
+			hidden_effect = {
+				load_oob = "QIN_Civil_War"
+				set_global_flag = kis_xinhai_revolution
+				set_autonomy = { # Release Mongolia
+					target = MON
+					autonomy_state = autonomy_free
+				}
+				set_autonomy = { # Release Tibet
+					target = TIB
+					autonomy_state = autonomy_free
+				}
+				set_autonomy = { # Release Tanu
+					target = TAN
+					autonomy_state = autonomy_free
+				}
+				set_autonomy = { # Release Kumul
+					target = KUM
+					autonomy_state = autonomy_free
+				}
+				RUS = {
+					set_autonomy = {
+						target = TAN
+						autonomy_state = autonomy_dominion
+					}
+				}
+				CHI = {
+					transfer_state = 620
+
+					declare_war_on = {
+						target = QIN
+						type = annex_everything
+					}
+
+					set_stability = 0.9
+					load_oob = "PRC_1911_Wuchang"
+
+					add_timed_idea = {
+						idea = ww1_revolution
+						days = 150
+					}
+
+					create_field_marshal = {
+						name = "Huang Xing"
+						portrait_path = "gfx/hoi4tgw_portraits/CHI/army_generals/CHI_Huang_Xing.dds"
+						traits = {
+							defensive_doctrine
+						}
+						skill = 3
+					}
+					create_corps_commander = {
+						name = "Song Jiaoren"
+						portrait_path = "gfx/generals/CHI_Song_Jiaoren.dds"
+						traits = {
+							fortress_buster
+						}
+						skill = 1
+					}
+					create_corps_commander = {
+						name = "Li Yuanhong"
+						portrait_path = "gfx/generals/CHI_Li_Yuanhong.dds"
+						traits = {}
+						skill = 1
+					}
+					create_corps_commander = {
+						name = "Xu Shichang"
+						id = 15144 portrait_path = "gfx/generals/CHI_xu_shichang.dds"
+						traits = {
+							old_guard
+						}
+						skill = 1
+					}
+					create_corps_commander = {
+						name = "Wang Shizen"
+						id = 15155 portrait_path = "gfx/generals/CHI_wang_shizen.dds"
+						traits = {
+							old_guard
+						}
+						skill = 1
+					}
+					create_corps_commander = {
+						name = "Yang Zengxin"
+						id = 15171 portrait_path = "gfx/generals/CHI_yang_zengxin.dds"
+						traits = {
+							old_guard
+						}
+						skill = 1
+					}
+					create_corps_commander = {
+						name = "Yin Chang"
+						id = 15172 portrait_path = "gfx/generals/CHI_yin_chang.dds"
+						traits = {
+							old_guard
+						}
+						skill = 1
+					}
+					create_corps_commander = {
+						name = "Zhang Huaizhi"
+						id = 15175 portrait_path = "gfx/generals/CHI_zhang_huaizhi.dds"
+						traits = {
+							old_guard
+						}
+						skill = 1
+					}
+					create_corps_commander = {
+						name = "Zhang Xun"
+						id = 15179 portrait_path = "gfx/generals/CHI_zhang_xun.dds"
+						traits = {
+							old_guard
+						}
+						skill = 2
+					}
+					create_navy_leader = {
+						name = "Cheng Biguang"
+						id = 15087 portrait_path = "gfx/admiral/CHI_cheng_biguang.dds"
+						traits = {}
+						skill = 3
+					}
+					create_navy_leader = {
+						name = "Du Henchen"
+						id = 15088 portrait_path = "gfx/admiral/CHI_du_henchen.dds"
+						traits = {}
+						skill = 1
+					}
+					create_navy_leader = {
+						name = "Du Xigui"
+						id = 15089 portrait_path = "gfx/admiral/CHI_du_xigui.dds"
+						traits = {}
+						skill = 2
+					}
+
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.98
+					}
+
+					set_politics = {
+						ruling_party = democratic
+						elections_allowed = yes
+					}
+
+					news_event = {
+						id = kis_news.107
+						hours = 6
+					}
+
+					country_event = {
+						id = ww1_xinhai.3
+						days = 10
+					}
+
+					add_timed_idea = {
+						idea = ww1_revolution
+						days = 250
+					}
+
+					add_manpower = 500000
+
+					add_equipment_to_stockpile = {
+						type = infantry_equipment_0
+						amount = 10000
+						producer = QIN
+					}
+				}
+			}
+		}
+	}
+
+}

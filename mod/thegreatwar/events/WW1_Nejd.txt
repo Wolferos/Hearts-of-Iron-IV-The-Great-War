@@ -1,0 +1,47 @@
+﻿###########################
+# Soviet Events
+###########################
+
+add_namespace = ww1_nejd
+
+#Seizing Dammam from the Ottomans
+country_event = {
+	id = ww1_nejd.1
+	title = ww1_nejd.1.t
+	desc = ww1_nejd.1.d
+	picture = GFX_report_event_finnish_letter
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = SAU
+
+        TUR = {
+		    controls_state = 859
+		}
+		date > 1913.4.4
+		
+		has_civil_war = no
+	}
+
+	mean_time_to_happen = { days = 1 }
+
+	option = {
+		name = ww1_nejd.1.a
+		ai_chance = {
+			base = 100
+		}
+		transfer_state = 859
+		set_cosmetic_tag = SAU_nejd_and_hasa
+		TUR = {
+		    country_event = { id = ww1_ottoman.48 hours = 10 }
+		}
+	}
+
+	option = {
+		name = ww1_nejd.1.b
+		ai_chance = {
+			base = 0
+		}
+	}
+}
