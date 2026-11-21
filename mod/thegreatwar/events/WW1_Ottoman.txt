@@ -989,6 +989,24 @@ country_event = {
 		970 = {
 			add_dynamic_modifier = { modifier = TUR_autonomus_ottoman_vilayet }
 		}
+		
+		custom_effect_tooltip = generic_skip_one_line_tt
+		
+		934 = {
+			remove_dynamic_modifier = { modifier = TUR_albanian_revolt }
+		}
+		44 = {
+			remove_dynamic_modifier = { modifier = TUR_albanian_revolt }
+		}
+		805 = {
+			remove_dynamic_modifier = { modifier = TUR_albanian_revolt }
+		}
+		802 = {
+			remove_dynamic_modifier = { modifier = TUR_albanian_revolt }
+		}
+		970 = {
+			remove_dynamic_modifier = { modifier = TUR_albanian_revolt }
+		}
 	}
 	option =  {
 		name = ww1_ottoman.45.b
@@ -1386,7 +1404,24 @@ country_event = {
 			    has_country_leader = { name = "Mehmed V" }
 			}
 			kill_country_leader = yes
-			promote_character = TUR_mehmed_vi
+			TUR_mehmed_vi = {
+			    add_country_leader_role = {
+			      	promote_leader = yes
+			      	country_leader = {
+			      		ideology = autocracy
+			      		expire = "1938.1.1.1"
+			      		traits = {
+					        ww1_the_caliph
+					    }
+			      	}
+			    }
+		    }
+		}
+		else_if = {
+		    limit = {
+			    has_country_flag = Mehmed_V_has_not_chosen
+			}
+			#Do absolutely nothing
 		}
 		else = {
 		    swap_ideas = {
