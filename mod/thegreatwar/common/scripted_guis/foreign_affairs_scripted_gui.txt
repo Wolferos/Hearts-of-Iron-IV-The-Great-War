@@ -5,6 +5,14 @@ scripted_gui = {
 		window_name = foreign_affairs_scripted_gui_window
 
 		effects = {
+			foreign_affairs_minor_actions_button_click = {
+				ww1_clear_foreign_affairs_flags = yes
+				set_country_flag = foreign_affairs_minor_actions_button_enabled_cflg
+			}
+			foreign_affairs_minor_actions_enabled_button_click = {
+				ww1_clear_foreign_affairs_flags = yes
+			}
+
 			foreign_affairs_great_war_button_click = {
 				ww1_clear_foreign_affairs_flags = yes
 				set_country_flag = foreign_affairs_great_war_button_enabled_cflg
@@ -47,6 +55,15 @@ scripted_gui = {
 		}
 
 		triggers = {
+			foreign_affairs_minor_actions_button_visible = {
+				NOT = {
+					has_country_flag = foreign_affairs_minor_actions_button_enabled_cflg
+				}
+			}
+			foreign_affairs_minor_actions_enabled_button_visible = {
+				has_country_flag = foreign_affairs_minor_actions_button_enabled_cflg
+			}
+
 			foreign_affairs_great_war_button_visible = {
 				NOT = {
 					has_country_flag = foreign_affairs_great_war_button_enabled_cflg
@@ -120,6 +137,9 @@ scripted_gui = {
 		}
 
 		properties = {
+			foreign_affairs_minor_actions_button = { frame = 1 }
+			foreign_affairs_minor_actions_enabled_button = { frame = 2 }
+
 			foreign_affairs_great_war_button = { frame = 1 }
 			foreign_affairs_great_war_enabled_button = { frame = 2 }
 
